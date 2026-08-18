@@ -95,7 +95,7 @@
     { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", comingSoon: true, price: "€49 · $49", launchPrice: "€39 · $39" },
     { name: "MalibuToDo", tagline: "Pulls every To-Do marker across your Final Cut Pro libraries into one organized task list.", href: "/apps/malibutodo", iconFallback: "✅", comingSoon: true, price: "€19 · $19", launchPrice: "€15 · $15" },
     { name: "Malibu Conform", tagline: "Conforms Final Cut Pro timelines into DaVinci Resolve Studio — spatial/PAR-aware, multicam angle selection, verbatim image fidelity.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", comingSoon: true, price: "€79 · $79", launchPrice: "€63 · $63" },
-    { name: "Malibu Sound2Pro", tagline: "Bridges Final Cut Pro audio straight into a Pro Tools session via AAF — built to do what X2Pro does, better.", href: "/apps/malibu-sound2pro", icon: "/apps/malibu-sound2pro/icon.png", comingSoon: true, price: "€79 · $79", launchPrice: "€63 · $63" }
+    { name: "Malibu Sound2Pro", tagline: "Bridges Final Cut Pro audio into a Pro Tools session via AAF. Development is currently on hold.", icon: "/apps/malibu-sound2pro/icon.png", badgeText: "On hold" }
   ];
 
   var everydayApps = [
@@ -139,7 +139,8 @@
         '</div></div>';
     }
 
-    var badgeHtml = app.comingSoon ? '<span class="badge">Coming soon</span>' : '';
+    var badgeHtml = app.badgeText ? '<span class="badge">' + escapeHtml(app.badgeText) + '</span>'
+      : app.comingSoon ? '<span class="badge">Coming soon</span>' : '';
 
     var inner = '<div class="card-top"><h3>' + escapeHtml(app.name) + '</h3>' + iconHtml + '</div>' +
       badgeHtml +
