@@ -105,6 +105,25 @@
     font-size: 13.5px; font-family: inherit; resize: vertical;
   }
 
+  .item-screenshot-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .screenshot-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px;
+    border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2);
+    color: var(--muted); font-size: 12.5px; cursor: pointer;
+  }
+  .screenshot-btn:hover { color: var(--text); border-color: #3a3b42; }
+  .screenshot-thumb-wrap { position: relative; display: inline-block; }
+  .screenshot-thumb {
+    width: 44px; height: 44px; border-radius: 8px; object-fit: cover;
+    border: 1px solid var(--border); display: block;
+  }
+  .screenshot-remove {
+    position: absolute; top: -6px; right: -6px; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--problem); color: #fff; border: none;
+    font-size: 11px; line-height: 18px; text-align: center; cursor: pointer; padding: 0;
+  }
+  .screenshot-status { font-size: 12px; color: var(--muted); }
+
   .finish-row {
     position: sticky; bottom: 0; margin-top: 24px; padding: 16px 16px 20px;
     background: linear-gradient(to bottom, transparent, var(--bg) 30%);
@@ -179,6 +198,13 @@
     var r = state.itemResults[String(flatIndex)];
     return (r && r.note) || "";
   }
+
+  function screenshotOf(flatIndex) {
+    var r = state.itemResults[String(flatIndex)];
+    return (r && r.screenshot) || null;
+  }
+
+  var screenshotPreviews = {};
 
   function nextStatus(s) {
     if (s === "open") return "ok";
@@ -308,6 +334,7 @@
           (fi.item.note ? '<div class="item-expected"><b>Note:</b> ' + escapeHtml(fi.item.note) + '</div>' : '') +
           '<div class="item-note-label">Your notes</div>' +
           '<textarea class="item-note" data-note-for="' + fi.flatIndex + '" placeholder="Optional — describe what happened">' + escapeHtml(noteOf(fi.flatIndex)) + '</textarea>' +
+          renderScreenshotRow(fi.flatIndex) +
           '</div>';
       });
       html += '</div></div>';
@@ -318,6 +345,48 @@
 
     app.innerHTML = html;
     wireRunEvents();
+  }
+
+  function renderScreenshotRow(flatIndex) {
+    var filename = screenshotOf(flatIndex);
+    var previewUrl = screenshotPreviews[flatIndex];
+    if (filename) {
+      return '<div class="item-screenshot-row">' +
+        (previewUrl
+          ? '<div class="screenshot-thumb-wrap"><img class="screenshot-thumb" src="' + previewUrl + '">' +
+            '<button type="button" class="screenshot-remove" data-remove-screenshot="' + flatIndex + '">×</button></div>'
+          : '<div class="screenshot-thumb-wrap" style="width:44px;height:44px;border-radius:8px;background:var(--panel-2);border:1px solid var(--border);"></div>') +
+        '<span class="screenshot-status">Screenshot attached</span>' +
+        '</div>';
+    }
+    return '<div class="item-screenshot-row">' +
+      '<label class="screenshot-btn">📎 Attach screenshot' +
+      '<input type="file" accept="image/*" data-screenshot-for="' + flatIndex + '" style="display:none">' +
+      '</label>' +
+      '<span class="screenshot-status" data-screenshot-status="' + flatIndex + '"></span>' +
+      '</div>';
+  }
+
+  function uploadScreenshot(flatIndex, file) {
+    screenshotPreviews[flatIndex] = URL.createObjectURL(file);
+    var statusEl = document.querySelector('[data-screenshot-status="' + flatIndex + '"]');
+    if (statusEl) statusEl.textContent = "Uploading…";
+
+    var body = new FormData();
+    body.append("edit_token", state.editToken);
+    body.append("screenshot", file);
+
+    fetch(API + "/" + state.runId + "/screenshot", { method: "POST", body: body })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error((res.j && res.j.error) || "Upload failed");
+        setResult(flatIndex, { screenshot: res.j.filename });
+      })
+      .catch(function (e) {
+        delete screenshotPreviews[flatIndex];
+        alert(e.message || "Could not upload the screenshot. Please try again.");
+        render();
+      });
   }
 
   function chip(key, label) {
@@ -345,6 +414,19 @@
       el.onblur = function () {
         var idx = el.getAttribute("data-note-for");
         setResult(idx, { note: el.value });
+      };
+    });
+    app.querySelectorAll("[data-screenshot-for]").forEach(function (el) {
+      el.onchange = function () {
+        var idx = el.getAttribute("data-screenshot-for");
+        if (el.files && el.files[0]) uploadScreenshot(idx, el.files[0]);
+      };
+    });
+    app.querySelectorAll("[data-remove-screenshot]").forEach(function (el) {
+      el.onclick = function () {
+        var idx = el.getAttribute("data-remove-screenshot");
+        delete screenshotPreviews[idx];
+        setResult(idx, { screenshot: null });
       };
     });
     var finishBtn = document.getElementById("finish-btn");
