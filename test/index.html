@@ -105,7 +105,13 @@
     font-size: 13.5px; font-family: inherit; resize: vertical;
   }
 
-  .item-screenshot-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .item-screenshot-row {
+    margin-top: 10px; display: flex; align-items: center; gap: 10px;
+    border-radius: 8px; border: 1px solid transparent; transition: border-color .1s ease, background .1s ease;
+  }
+  .item-screenshot-row.drag-active {
+    border-color: var(--accent); background: rgba(94,161,255,0.08);
+  }
   .screenshot-btn {
     display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px;
     border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2);
@@ -351,7 +357,7 @@
     var filename = screenshotOf(flatIndex);
     var previewUrl = screenshotPreviews[flatIndex];
     if (filename) {
-      return '<div class="item-screenshot-row">' +
+      return '<div class="item-screenshot-row" data-screenshot-row="' + flatIndex + '">' +
         (previewUrl
           ? '<div class="screenshot-thumb-wrap"><img class="screenshot-thumb" src="' + previewUrl + '">' +
             '<button type="button" class="screenshot-remove" data-remove-screenshot="' + flatIndex + '">×</button></div>'
@@ -359,11 +365,11 @@
         '<span class="screenshot-status">Screenshot attached</span>' +
         '</div>';
     }
-    return '<div class="item-screenshot-row">' +
+    return '<div class="item-screenshot-row" data-screenshot-row="' + flatIndex + '">' +
       '<label class="screenshot-btn">📎 Attach screenshot' +
       '<input type="file" accept="image/*" data-screenshot-for="' + flatIndex + '" style="display:none">' +
       '</label>' +
-      '<span class="screenshot-status" data-screenshot-status="' + flatIndex + '"></span>' +
+      '<span class="screenshot-status" data-screenshot-status="' + flatIndex + '">Or paste / drop an image here</span>' +
       '</div>';
   }
 
@@ -387,6 +393,25 @@
         alert(e.message || "Could not upload the screenshot. Please try again.");
         render();
       });
+  }
+
+  // Paste target = whichever item's note textarea currently has focus (data-note-for="N"); with
+  // nothing focused there's no item to attach to, so the paste is ignored — same "no target, no
+  // attach" behavior as the native app's Cmd+V handling. Registered once at top level (not
+  // re-wired per render) since `paste` is a document-level event, unlike the click/drop handlers
+  // in `wireRunEvents()` which must be re-attached after every `innerHTML` replace.
+  function handlePaste(e) {
+    var active = document.activeElement;
+    var idx = active && active.getAttribute && active.getAttribute("data-note-for");
+    if (idx == null) return;
+    var items = (e.clipboardData && e.clipboardData.items) || [];
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image/") === 0) {
+        var file = items[i].getAsFile();
+        if (file) { e.preventDefault(); uploadScreenshot(idx, file); }
+        return;
+      }
+    }
   }
 
   function chip(key, label) {
@@ -420,6 +445,17 @@
       el.onchange = function () {
         var idx = el.getAttribute("data-screenshot-for");
         if (el.files && el.files[0]) uploadScreenshot(idx, el.files[0]);
+      };
+    });
+    app.querySelectorAll("[data-screenshot-row]").forEach(function (row) {
+      var idx = row.getAttribute("data-screenshot-row");
+      row.ondragover = function (e) { e.preventDefault(); row.classList.add("drag-active"); };
+      row.ondragleave = function () { row.classList.remove("drag-active"); };
+      row.ondrop = function (e) {
+        e.preventDefault();
+        row.classList.remove("drag-active");
+        var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (file && file.type.indexOf("image/") === 0) uploadScreenshot(idx, file);
       };
     });
     app.querySelectorAll("[data-remove-screenshot]").forEach(function (el) {
@@ -461,6 +497,8 @@
     if (!state.scenario) return;
     if (!state.runId) { renderStart(); } else { renderRun(); }
   }
+
+  document.addEventListener("paste", handlePaste);
 
   if (!scenarioId) {
     app.innerHTML = '<div class="center error">No test scenario specified.</div>';
