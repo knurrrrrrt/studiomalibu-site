@@ -106,7 +106,7 @@
   }
 
   .item-screenshot-row {
-    margin-top: 10px; display: flex; align-items: center; gap: 10px;
+    margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     border-radius: 8px; border: 1px solid transparent; transition: border-color .1s ease, background .1s ease;
   }
   .item-screenshot-row.drag-active {
@@ -208,9 +208,18 @@
     return (r && r.note) || "";
   }
 
-  function screenshotOf(flatIndex) {
+  // Ticket #204 (Sam): a step used to carry at most one screenshot. Reads the new plural
+  // "screenshots" array; falls back to wrapping the old singular "screenshot" key for runs
+  // written before this change went live — same backward-compat contract the native app's
+  // TestItemResult.init(from:) uses (see that file's own comment for why the fallback only
+  // triggers when the new key is truly ABSENT, not just empty — an explicit [] must stick after
+  // a removal, never resurrect the stale singular value).
+  function screenshotsOf(flatIndex) {
     var r = state.itemResults[String(flatIndex)];
-    return (r && r.screenshot) || null;
+    if (!r) return [];
+    if (Array.isArray(r.screenshots)) return r.screenshots;
+    if (r.screenshot) return [r.screenshot];
+    return [];
   }
 
   function fileOf(flatIndex) {
@@ -362,23 +371,27 @@
     wireRunEvents();
   }
 
+  // Ticket #204 (Sam): a step can now carry several screenshots, not just one — the button is
+  // always visible (re-labeled "Add another" once at least one is attached) instead of only
+  // appearing when empty, and each thumbnail gets its own remove control.
   function renderScreenshotRow(flatIndex) {
-    var filename = screenshotOf(flatIndex);
-    var previewUrl = screenshotPreviews[flatIndex];
-    if (filename) {
-      return '<div class="item-screenshot-row" data-screenshot-row="' + flatIndex + '">' +
+    var filenames = screenshotsOf(flatIndex);
+    var previews = screenshotPreviews[flatIndex] || {};
+    var thumbs = filenames.map(function (filename) {
+      var previewUrl = previews[filename];
+      return '<div class="screenshot-thumb-wrap">' +
         (previewUrl
-          ? '<div class="screenshot-thumb-wrap"><img class="screenshot-thumb" src="' + previewUrl + '">' +
-            '<button type="button" class="screenshot-remove" data-remove-screenshot="' + flatIndex + '">×</button></div>'
-          : '<div class="screenshot-thumb-wrap" style="width:44px;height:44px;border-radius:8px;background:var(--panel-2);border:1px solid var(--border);"></div>') +
-        '<span class="screenshot-status">Screenshot attached</span>' +
+          ? '<img class="screenshot-thumb" src="' + previewUrl + '">'
+          : '<div class="screenshot-thumb"></div>') +
+        '<button type="button" class="screenshot-remove" data-remove-screenshot="' + flatIndex + '" data-remove-screenshot-file="' + escapeHtml(filename) + '">×</button>' +
         '</div>';
-    }
+    }).join("");
     return '<div class="item-screenshot-row" data-screenshot-row="' + flatIndex + '">' +
-      '<label class="screenshot-btn">📎 Attach screenshot' +
+      thumbs +
+      '<label class="screenshot-btn">📎 ' + (filenames.length ? "Add another" : "Attach screenshot") +
       '<input type="file" accept="image/*" data-screenshot-for="' + flatIndex + '" style="display:none">' +
       '</label>' +
-      '<span class="screenshot-status" data-screenshot-status="' + flatIndex + '">Or paste / drop an image here</span>' +
+      '<span class="screenshot-status" data-screenshot-status="' + flatIndex + '">' + (filenames.length ? "" : "Or paste / drop an image here") + '</span>' +
       '</div>';
   }
 
@@ -404,7 +417,6 @@
   }
 
   function uploadScreenshot(flatIndex, file) {
-    screenshotPreviews[flatIndex] = URL.createObjectURL(file);
     var statusEl = document.querySelector('[data-screenshot-status="' + flatIndex + '"]');
     if (statusEl) statusEl.textContent = "Uploading…";
 
@@ -416,10 +428,13 @@
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (!res.ok) throw new Error((res.j && res.j.error) || "Upload failed");
-        setResult(flatIndex, { screenshot: res.j.filename });
+        // Filename keyed by the SERVER-returned name (PocketBase renames uploads), not known
+        // until now — appends to the existing list rather than replacing it (#204).
+        if (!screenshotPreviews[flatIndex]) screenshotPreviews[flatIndex] = {};
+        screenshotPreviews[flatIndex][res.j.filename] = URL.createObjectURL(file);
+        setResult(flatIndex, { screenshots: screenshotsOf(flatIndex).concat([res.j.filename]) });
       })
       .catch(function (e) {
-        delete screenshotPreviews[flatIndex];
         alert(e.message || "Could not upload the screenshot. Please try again.");
         render();
       });
@@ -549,8 +564,9 @@
     app.querySelectorAll("[data-remove-screenshot]").forEach(function (el) {
       el.onclick = function () {
         var idx = el.getAttribute("data-remove-screenshot");
-        delete screenshotPreviews[idx];
-        setResult(idx, { screenshot: null });
+        var filename = el.getAttribute("data-remove-screenshot-file");
+        if (screenshotPreviews[idx]) delete screenshotPreviews[idx][filename];
+        setResult(idx, { screenshots: screenshotsOf(idx).filter(function (f) { return f !== filename; }) });
       };
     });
     app.querySelectorAll("[data-file-for]").forEach(function (el) {
