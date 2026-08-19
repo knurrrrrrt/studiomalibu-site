@@ -129,6 +129,8 @@
     font-size: 11px; line-height: 18px; text-align: center; cursor: pointer; padding: 0;
   }
   .screenshot-status { font-size: 12px; color: var(--muted); }
+  .file-chip { display: inline-flex; align-items: center; gap: 8px; }
+  .file-chip .screenshot-remove { position: static; flex-shrink: 0; }
 
   .finish-row {
     position: sticky; bottom: 0; margin-top: 24px; padding: 16px 16px 20px;
@@ -143,6 +145,7 @@
   <div class="center">Loading test scenario…</div>
 </div>
 
+<script src="vendor/jszip.min.js"></script>
 <script>
 (function () {
   var API = "https://api.malibureview.app/api/test-run";
@@ -208,6 +211,11 @@
   function screenshotOf(flatIndex) {
     var r = state.itemResults[String(flatIndex)];
     return (r && r.screenshot) || null;
+  }
+
+  function fileOf(flatIndex) {
+    var r = state.itemResults[String(flatIndex)];
+    return (r && r.file) || null;
   }
 
   var screenshotPreviews = {};
@@ -341,6 +349,7 @@
           '<div class="item-note-label">Your notes</div>' +
           '<textarea class="item-note" data-note-for="' + fi.flatIndex + '" placeholder="Optional — describe what happened">' + escapeHtml(noteOf(fi.flatIndex)) + '</textarea>' +
           renderScreenshotRow(fi.flatIndex) +
+          renderFileRow(fi.flatIndex) +
           '</div>';
       });
       html += '</div></div>';
@@ -373,6 +382,27 @@
       '</div>';
   }
 
+  // Distinct from the screenshot row (Knut, 2026-08-19: separate "attach file" control, not
+  // merged with the screenshot button) — arbitrary files (XML, layout files, etc.), plus whole
+  // folders/bundles zipped client-side before upload (Sam's MalibuBurn layouts, which can't
+  // travel any other way). Shows the actual filename, unlike the screenshot row, which never
+  // shows one — a file's name usually carries real meaning ("layout.zip" vs "notes.xml").
+  function renderFileRow(flatIndex) {
+    var filename = fileOf(flatIndex);
+    if (filename) {
+      return '<div class="item-screenshot-row" data-file-row="' + flatIndex + '">' +
+        '<span class="file-chip"><span class="screenshot-btn">📄 ' + escapeHtml(filename) + '</span>' +
+        '<button type="button" class="screenshot-remove" data-remove-file="' + flatIndex + '">×</button></span>' +
+        '</div>';
+    }
+    return '<div class="item-screenshot-row" data-file-row="' + flatIndex + '">' +
+      '<label class="screenshot-btn">📎 Attach file' +
+      '<input type="file" data-file-for="' + flatIndex + '" style="display:none">' +
+      '</label>' +
+      '<span class="screenshot-status" data-file-status="' + flatIndex + '">Or drop a file or folder here</span>' +
+      '</div>';
+  }
+
   function uploadScreenshot(flatIndex, file) {
     screenshotPreviews[flatIndex] = URL.createObjectURL(file);
     var statusEl = document.querySelector('[data-screenshot-status="' + flatIndex + '"]');
@@ -393,6 +423,64 @@
         alert(e.message || "Could not upload the screenshot. Please try again.");
         render();
       });
+  }
+
+  function uploadFile(flatIndex, file) {
+    var statusEl = document.querySelector('[data-file-status="' + flatIndex + '"]');
+    if (statusEl) statusEl.textContent = "Uploading…";
+
+    var body = new FormData();
+    body.append("edit_token", state.editToken);
+    body.append("file", file, file.name);
+
+    fetch(API + "/" + state.runId + "/file", { method: "POST", body: body })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error((res.j && res.j.error) || "Upload failed");
+        setResult(flatIndex, { file: res.j.filename });
+      })
+      .catch(function (e) {
+        alert(e.message || "Could not upload the file. Please try again.");
+        render();
+      });
+  }
+
+  function readDirEntries(dirReader) {
+    return new Promise(function (resolve, reject) { dirReader.readEntries(resolve, reject); });
+  }
+
+  function fileFromEntry(fileEntry) {
+    return new Promise(function (resolve, reject) { fileEntry.file(resolve, reject); });
+  }
+
+  // Recursive walk of a dropped folder's File and Directory Entries API tree (Sam's MalibuBurn
+  // layouts — a folder can't be uploaded any other way). readEntries() can return a partial
+  // batch per call, per spec — must keep calling until it returns empty, not just once.
+  async function collectFilesFromDirectory(dirEntry, pathPrefix) {
+    var reader = dirEntry.createReader();
+    var collected = [];
+    var batch;
+    do {
+      batch = await readDirEntries(reader);
+      for (var i = 0; i < batch.length; i++) {
+        var entry = batch[i];
+        var entryPath = pathPrefix + entry.name;
+        if (entry.isDirectory) {
+          collected = collected.concat(await collectFilesFromDirectory(entry, entryPath + "/"));
+        } else {
+          collected.push({ path: entryPath, file: await fileFromEntry(entry) });
+        }
+      }
+    } while (batch.length > 0);
+    return collected;
+  }
+
+  async function zipDirectoryEntry(dirEntry) {
+    var files = await collectFilesFromDirectory(dirEntry, dirEntry.name + "/");
+    var zip = new JSZip();
+    files.forEach(function (f) { zip.file(f.path, f.file); });
+    var blob = await zip.generateAsync({ type: "blob" });
+    return new File([blob], dirEntry.name + ".zip", { type: "application/zip" });
   }
 
   // Paste target = whichever item's note textarea currently has focus (data-note-for="N"); with
@@ -463,6 +551,42 @@
         var idx = el.getAttribute("data-remove-screenshot");
         delete screenshotPreviews[idx];
         setResult(idx, { screenshot: null });
+      };
+    });
+    app.querySelectorAll("[data-file-for]").forEach(function (el) {
+      el.onchange = function () {
+        var idx = el.getAttribute("data-file-for");
+        if (el.files && el.files[0]) uploadFile(idx, el.files[0]);
+      };
+    });
+    app.querySelectorAll("[data-file-row]").forEach(function (row) {
+      var idx = row.getAttribute("data-file-row");
+      row.ondragover = function (e) { e.preventDefault(); row.classList.add("drag-active"); };
+      row.ondragleave = function () { row.classList.remove("drag-active"); };
+      row.ondrop = function (e) {
+        e.preventDefault();
+        row.classList.remove("drag-active");
+        var items = e.dataTransfer && e.dataTransfer.items;
+        var entry = items && items.length && items[0].webkitGetAsEntry ? items[0].webkitGetAsEntry() : null;
+        if (entry && entry.isDirectory) {
+          var statusEl = document.querySelector('[data-file-status="' + idx + '"]');
+          if (statusEl) statusEl.textContent = "Zipping…";
+          zipDirectoryEntry(entry)
+            .then(function (zipFile) { uploadFile(idx, zipFile); })
+            .catch(function (err) {
+              alert(err.message || "Could not zip the folder. Please try again.");
+              render();
+            });
+          return;
+        }
+        var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (file) uploadFile(idx, file);
+      };
+    });
+    app.querySelectorAll("[data-remove-file]").forEach(function (el) {
+      el.onclick = function () {
+        var idx = el.getAttribute("data-remove-file");
+        setResult(idx, { file: null });
       };
     });
     var finishBtn = document.getElementById("finish-btn");
