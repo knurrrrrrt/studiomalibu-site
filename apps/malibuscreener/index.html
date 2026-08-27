@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Screen Capture · Screen Recording for macOS</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="Malibu Screen Capture is a professional screen recorder for macOS with multi-track audio, webcam capture, and Final Cut Pro XML export.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#64D2FF;--teal:#0A84C4;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#fff}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
+  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(100,210,255,.12),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(100,210,255,.08);border:1px solid rgba(100,210,255,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),#0A84C4);color:#fff;box-shadow:0 8px 30px rgba(100,210,255,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:50px 0;position:relative}
+  .workflow::before{content:"";position:absolute;top:32px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
+  .wstep{text-align:center;padding:0 12px}
+  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;position:relative;z-index:1}
+  .wstep h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+  .wstep p{font-size:12.5px;color:var(--muted)}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(100,210,255,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(100,210,255,.10),rgba(10,132,196,.07));border:1px solid rgba(100,210,255,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.workflow{grid-template-columns:1fr 1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.foot-inner{flex-direction:column}}
+
+  .lr-form{display:inline-flex;gap:6px;margin-top:6px;align-items:center}
+  .lr-form input[type=email]{font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;width:170px}
+  .lr-form input[type=email]::placeholder{color:rgba(255,255,255,.4)}
+  .lr-form button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:none;background:rgba(255,255,255,.16);color:inherit;cursor:pointer}
+  .lr-form button:hover{background:rgba(255,255,255,.24)}
+  .lr-form button:disabled{opacity:.5;cursor:default}
+  .lr-success{font-size:13px;color:inherit;opacity:.85}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="Malibu Screen Capture"> Malibu Screen Capture</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🎥 Screen Recording · Multi-Track · macOS</span>
+    <h1 data-i18n="hero.h1">Record your screen.<br><span class="grad">Land in an FCP timeline.</span></h1>
+    <p class="lead" data-i18n="hero.lead">Malibu Screen Capture captures your screen in high quality via ScreenCaptureKit — system audio, microphone, and webcam as separate tracks — and exports straight into a Final Cut Pro timeline, ready to edit.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/malibuscreener-updates/MalibuScreener-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">ScreenCaptureKit · Multi-track audio · Webcam PiP · FCPXML export</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
+    <h2 class="section-title" data-i18n="wf.title">Record, layer, export.</h2>
+    <div class="workflow">
+      <div class="wstep">
+        <div class="wnum">🎚️</div>
+        <h3 data-i18n="w1.h">Pick your sources</h3>
+        <p data-i18n="w1.p">Choose system audio, microphone, secondary audio, and an optional webcam overlay.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🎥</div>
+        <h3 data-i18n="w2.h">Record at native quality</h3>
+        <p data-i18n="w2.p">High-quality capture at up to 50fps and native display resolution.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🖱️</div>
+        <h3 data-i18n="w3.h">Cursor stays editable</h3>
+        <p data-i18n="w3.p">Cursor movement is captured on its own video layer for post-production flexibility.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🎞️</div>
+        <h3 data-i18n="w4.h">Export to FCP</h3>
+        <p data-i18n="w4.p">A multi-track FCPXML lands directly in Final Cut Pro — audio and webcam already split onto separate tracks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
+    <h2 class="section-title" data-i18n="feat.title">A screen recorder that hands off to editing, not just a file.</h2>
+    <p class="section-intro" data-i18n="feat.intro">Built for content that gets edited afterward — tutorials, reviews, bug reports — not just a flat capture.</p>
+    <div class="grid">
+      <div class="feature">
+        <span class="fico">🖥️</span>
+        <h3 data-i18n="f1.t">High-quality capture</h3>
+        <p data-i18n="f1.p">Apple's ScreenCaptureKit at up to 50fps, native display resolution.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎙️</span>
+        <h3 data-i18n="f2.t">Multi-track audio</h3>
+        <p data-i18n="f2.p">System audio, microphone, and secondary inputs recorded as separate tracks.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📷</span>
+        <h3 data-i18n="f3.t">Webcam picture-in-picture</h3>
+        <p data-i18n="f3.p">Optional webcam overlay, recorded as its own layer.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🖱️</span>
+        <h3 data-i18n="f4.t">Cursor as its own layer</h3>
+        <p data-i18n="f4.p">Cursor movement is a separate video layer, so you can style or hide it in post.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎞️</span>
+        <h3 data-i18n="f5.t">FCPXML export</h3>
+        <p data-i18n="f5.p">Lands directly in a multi-track Final Cut Pro timeline, ready to edit.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎨</span>
+        <h3 data-i18n="f6.t">Metal effects pipeline</h3>
+        <p data-i18n="f6.p">Built-in video effects rendered via Metal for real-time processing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why Malibu Screen Capture</div>
+    <h2 class="section-title" data-i18n="why.title">For screen recordings that become real edits.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="t1.k">🎞️ Editable from the start</div><p data-i18n="t1.p">Separate audio and webcam tracks mean you're not untangling a flat recording later.</p></div>
+      <div class="t"><div class="k" data-i18n="t2.k">🖱️ Cursor control</div><p data-i18n="t2.p">Style, hide, or highlight the cursor in post since it lives on its own layer.</p></div>
+      <div class="t"><div class="k" data-i18n="t3.k">🎙️ Real multi-track audio</div><p data-i18n="t3.p">System audio and mic never get mixed down before you can separate them.</p></div>
+      <div class="t"><div class="k" data-i18n="t4.k">🔒 Local</div><p data-i18n="t4.p">Recordings stay on your Mac unless you choose to export or share them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibuscreener-updates/MalibuScreener-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> Malibu Screen Capture</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">Malibu Screen Capture is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Download",
+    "hero.pill":"🎥 Bildschirmaufnahme · Multi-Track · macOS",
+    "hero.h1":'Nimm deinen Bildschirm auf.<br><span class="grad">Landet direkt in der FCP-Timeline.</span>',
+    "hero.lead":"Malibu Screen Capture nimmt deinen Bildschirm in hoher Qualität via ScreenCaptureKit auf — System-Audio, Mikrofon und Webcam als separate Spuren — und exportiert direkt in eine Final-Cut-Pro-Timeline, startklar zum Schneiden.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"ScreenCaptureKit · Multi-Track-Audio · Webcam-PiP · FCPXML-Export",
+    "wf.eyebrow":"Der Workflow","wf.title":"Aufnehmen, schichten, exportieren.",
+    "w1.h":"Quellen wählen","w1.p":"System-Audio, Mikrofon, Zusatz-Audio und optional ein Webcam-Overlay auswählen.",
+    "w2.h":"In nativer Qualität aufnehmen","w2.p":"Hochwertige Aufnahme mit bis zu 50fps und nativer Bildschirmauflösung.",
+    "w3.h":"Cursor bleibt editierbar","w3.p":"Die Cursor-Bewegung wird auf einer eigenen Videospur erfasst — volle Flexibilität in der Postproduktion.",
+    "w4.h":"Export nach FCP","w4.p":"Ein Multi-Track-FCPXML landet direkt in Final Cut Pro — Audio und Webcam bereits auf getrennten Spuren.",
+    "feat.eyebrow":"Was drin steckt","feat.title":"Ein Screen Recorder, der nicht nur eine Datei abliefert, sondern zur Weiterbearbeitung übergibt.",
+    "feat.intro":"Gebaut für Inhalte, die danach geschnitten werden — Tutorials, Reviews, Bug-Reports — nicht nur eine flache Aufnahme.",
+    "f1.t":"Hochwertige Aufnahme","f1.p":"Apples ScreenCaptureKit mit bis zu 50fps, native Bildschirmauflösung.",
+    "f2.t":"Multi-Track-Audio","f2.p":"System-Audio, Mikrofon und Zusatz-Inputs werden als separate Spuren aufgenommen.",
+    "f3.t":"Webcam Picture-in-Picture","f3.p":"Optionales Webcam-Overlay, aufgenommen als eigene Ebene.",
+    "f4.t":"Cursor als eigene Ebene","f4.p":"Die Cursor-Bewegung ist eine eigene Videoebene — in der Post stylen oder ausblenden.",
+    "f5.t":"FCPXML-Export","f5.p":"Landet direkt in einer Multi-Track-Final-Cut-Pro-Timeline, startklar zum Schneiden.",
+    "f6.t":"Metal-Effekt-Pipeline","f6.p":"Eingebaute Video-Effekte, gerendert über Metal für Echtzeit-Verarbeitung.",
+    "why.eyebrow":"Warum Malibu Screen Capture","why.title":"Für Bildschirmaufnahmen, die zu echten Schnitten werden.",
+    "t1.k":"🎞️ Von Anfang an editierbar","t1.p":"Getrennte Audio- und Webcam-Spuren bedeuten: keine Entwirrung einer flachen Aufnahme im Nachhinein.",
+    "t2.k":"🖱️ Cursor-Kontrolle","t2.p":"Den Cursor in der Post stylen, ausblenden oder hervorheben, da er auf einer eigenen Ebene liegt.",
+    "t3.k":"🎙️ Echtes Multi-Track-Audio","t3.p":"System-Audio und Mikrofon werden nie vor der Trennung zusammengemischt.",
+    "t4.k":"🔒 Lokal","t4.p":"Aufnahmen bleiben auf deinem Mac, bis du sie exportierst oder teilst.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu Screen Capture ist ein Produktivitäts-Tool für macOS. Feedback? Bitte den In-App-Feedback-Button nutzen — das ist der einzige Kanal, den wir überwachen und beantworten; E-Mails zur App werden nicht verfolgt. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🎥 Screen Recording · Multi-Track · macOS",
+    "hero.h1":'Record your screen.<br><span class="grad">Land in an FCP timeline.</span>',
+    "hero.lead":"Malibu Screen Capture captures your screen in high quality via ScreenCaptureKit — system audio, microphone, and webcam as separate tracks — and exports straight into a Final Cut Pro timeline, ready to edit.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"ScreenCaptureKit · Multi-track audio · Webcam PiP · FCPXML export",
+    "wf.eyebrow":"The Workflow","wf.title":"Record, layer, export.",
+    "w1.h":"Pick your sources","w1.p":"Choose system audio, microphone, secondary audio, and an optional webcam overlay.",
+    "w2.h":"Record at native quality","w2.p":"High-quality capture at up to 50fps and native display resolution.",
+    "w3.h":"Cursor stays editable","w3.p":"Cursor movement is captured on its own video layer for post-production flexibility.",
+    "w4.h":"Export to FCP","w4.p":"A multi-track FCPXML lands directly in Final Cut Pro — audio and webcam already split onto separate tracks.",
+    "feat.eyebrow":"What's inside","feat.title":"A screen recorder that hands off to editing, not just a file.",
+    "feat.intro":"Built for content that gets edited afterward — tutorials, reviews, bug reports — not just a flat capture.",
+    "f1.t":"High-quality capture","f1.p":"Apple's ScreenCaptureKit at up to 50fps, native display resolution.",
+    "f2.t":"Multi-track audio","f2.p":"System audio, microphone, and secondary inputs recorded as separate tracks.",
+    "f3.t":"Webcam picture-in-picture","f3.p":"Optional webcam overlay, recorded as its own layer.",
+    "f4.t":"Cursor as its own layer","f4.p":"Cursor movement is a separate video layer, so you can style or hide it in post.",
+    "f5.t":"FCPXML export","f5.p":"Lands directly in a multi-track Final Cut Pro timeline, ready to edit.",
+    "f6.t":"Metal effects pipeline","f6.p":"Built-in video effects rendered via Metal for real-time processing.",
+    "why.eyebrow":"Why Malibu Screen Capture","why.title":"For screen recordings that become real edits.",
+    "t1.k":"🎞️ Editable from the start","t1.p":"Separate audio and webcam tracks mean you're not untangling a flat recording later.",
+    "t2.k":"🖱️ Cursor control","t2.p":"Style, hide, or highlight the cursor in post since it lives on its own layer.",
+    "t3.k":"🎙️ Real multi-track audio","t3.p":"System audio and mic never get mixed down before you can separate them.",
+    "t4.k":"🔒 Local","t4.p":"Recordings stay on your Mac unless you choose to export or share them.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu Screen Capture is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+
+// --- Launch-request submit handler (shared across coming-soon pages) ---
+window.submitLaunchRequest = function(form, appName){
+  var input = form.querySelector('input[type=email]');
+  var btn = form.querySelector('button');
+  var email = input.value.trim();
+  if(!email) return false;
+  btn.disabled = true;
+  var origLabel = btn.textContent;
+  btn.textContent = '...';
+  fetch('https://api.malibureview.app/api/collections/launch_requests/records', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({app_module: appName, email: email, source: 'coming-soon-website'})
+  }).then(function(r){
+    if(r.ok){
+      form.style.display = 'none';
+      if(form.nextElementSibling) form.nextElementSibling.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = origLabel;
+    }
+  }).catch(function(){
+    btn.disabled = false;
+    btn.textContent = origLabel;
+  });
+  return false;
+};
+
+</body>
+</html>

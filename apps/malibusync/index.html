@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MalibuSync · Dual-System Audio Sync for Final Cut Pro</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="MalibuSync syncs camera and sound by timecode — and delivers a finished FCPXML with metadata, channel selection, and multicam straight into Final Cut Pro.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#4D90F5;--teal:#2DD4BF;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#fff}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
+  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(77,144,245,.14),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--teal);background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),#2563EB);color:#fff;box-shadow:0 8px 30px rgba(77,144,245,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  /* Workflow steps */
+  .workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:50px 0;position:relative}
+  .workflow::before{content:"";position:absolute;top:32px;left:calc(16.67% + 16px);right:calc(16.67% + 16px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
+  .wstep{text-align:center;padding:0 16px}
+  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;position:relative;z-index:1}
+  .wstep h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .wstep p{font-size:13px;color:var(--muted)}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(77,144,245,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .what-you-get{background:linear-gradient(135deg,rgba(77,144,245,.08),rgba(45,212,191,.05));border:1px solid rgba(77,144,245,.2);border-radius:16px;padding:36px 40px;margin:40px 0}
+  .what-you-get h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:18px}
+  .get-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+  .get-list li{font-size:14px;color:var(--muted);display:flex;align-items:flex-start;gap:9px}
+  .get-list li::before{content:"✓";color:var(--brand);font-weight:700;flex-shrink:0;margin-top:2px}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(77,144,245,.10),rgba(45,212,191,.07));border:1px solid rgba(77,144,245,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+
+  /* Coming-soon patch — wird entfernt wenn App launched */
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.workflow{grid-template-columns:1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.what-you-get{padding:24px}.foot-inner{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="MalibuSync"> MalibuSync</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🎬 Dual-System Audio · Final Cut Pro · macOS</span>
+    <h1 data-i18n="hero.h1">Two folders in.<br><span class="grad">Finished FCPXML out.</span></h1>
+    <p class="lead" data-i18n="hero.lead">MalibuSync matches camera and sound by timecode, automatically selects the best audio channel, pulls all metadata from the set — and delivers an FCPXML directly into Final Cut Pro. No roundtrip, no manual entry.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">Timecode · Clap detection · ALE/CSV · Lockit Network · Multicam</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
+    <h2 class="section-title" data-i18n="wf.title">Three steps. Done.</h2>
+    <div class="workflow">
+      <div class="wstep">
+        <div class="wnum">📁</div>
+        <h3 data-i18n="w1.h">Video folder + Audio folder</h3>
+        <p data-i18n="w1.p">MOV, MXF, MP4 und WAV, BWF, AIF. Rekursiv, beliebige Ordnerstruktur.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">⚡</div>
+        <h3 data-i18n="w2.h">MalibuSync matches</h3>
+        <p data-i18n="w2.p">Timecode-Überlappung, Klappe, Metadaten aus ALE/CSV und Lockit — alles automatisch.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🎬</div>
+        <h3 data-i18n="w3.h">Ready in Final Cut Pro</h3>
+        <p data-i18n="w3.p">FCPXML mit synchronisierten Clips, Multicam und vollständigen Set-Metadaten. Direkt importierbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
+    <h2 class="section-title" data-i18n="feat.title">Everything a professional set needs.</h2>
+    <p class="section-intro" data-i18n="feat.intro">MalibuSync thinks through the entire workflow — from TC matching to the finished audio channel structure at the edit suite.</p>
+    <div class="grid">
+      <div class="feature">
+        <span class="fico">⏱️</span>
+        <h3 data-i18n="f1.t">Timecode Matching</h3>
+        <p data-i18n="f1.p">Reads TC directly from the MOV container (tmcd atom) and BWF files (bext chunk). Supports drop-frame, non-drop-frame, and all common frame rates. Offspeed and slow-motion clips are handled correctly.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">👏</span>
+        <h3 data-i18n="f2.t">Clap as Fallback</h3>
+        <p data-i18n="f2.p">When no timecode is available: adaptive transient detection finds the clap in the audio automatically. Works even with offspeed material that has unreliable TC.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎚️</span>
+        <h3 data-i18n="f3.t">Automatic Channel Selection</h3>
+        <p data-i18n="f3.p">MalibuSync analyzes all audio tracks and automatically selects the best channel per clip — Iso Mix, Boom, or Lav. The channel structure arrives in Final Cut Pro fully configured.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📋</span>
+        <h3 data-i18n="f4.t">ALE and CSV Import</h3>
+        <p data-i18n="f4.p">Camera reports in ALE or CSV format are read and the metadata (Scene, Take, Reel, Notes) written directly into FCP metadata fields — no manual entry required.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📡</span>
+        <h3 data-i18n="f5.t">Lockit Network</h3>
+        <p data-i18n="f5.p">On productions using the Lockit wireless system, MalibuSync pulls set metadata live via the Lockit Network REST API. Scene, Take, timecode status — directly from the set.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎞️</span>
+        <h3 data-i18n="f6.t">Sync Clips + Multicam</h3>
+        <p data-i18n="f6.p">When multiple cameras share timecode overlap, MalibuSync automatically creates multicam clips with separate angles — in addition to the individual synchronized clips.</p>
+      </div>
+    </div>
+
+    <div class="what-you-get">
+      <h3 data-i18n="wyg.title">What the FCPXML contains</h3>
+      <ul class="get-list">
+        <li data-i18n="g1">Synchronized clips with video and all audio tracks</li>
+        <li data-i18n="g2">Multicam clips for multi-camera shoots (automatically grouped)</li>
+        <li data-i18n="g3">Scene / Take / Reel / Notes in FCP metadata fields</li>
+        <li data-i18n="g4">Audio channel roles (Lav, Boom, Iso Mix) correctly assigned</li>
+        <li data-i18n="g5">Active channel pre-selected — inactive channels switchable with one click</li>
+        <li data-i18n="g6">LUFS targeting and Voice Isolation as FCP Audio Adjustments</li>
+        <li data-i18n="g7">Sync and pickup markers on the clips</li>
+        <li data-i18n="g8">Non-destructive — not a single file is modified</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why MalibuSync</div>
+    <h2 class="section-title" data-i18n="why.title">One step. No roundtrip.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="w1.k">⚡ Direct</div><p data-i18n="w1.p">No XML exports, no re-importing, no intermediate steps. MalibuSync produces a finished FCPXML — it goes into FCP once and that's it.</p></div>
+      <div class="t"><div class="k" data-i18n="w2.k">📋 Metadata-complete</div><p data-i18n="w2.p">Scene, Take, Reel, channel names, audio roles — all pulled automatically from ALE, CSV, or Lockit. The assistant types nothing.</p></div>
+      <div class="t"><div class="k" data-i18n="w3.k">🎚️ Channel intelligence</div><p data-i18n="w3.p">Which of the 8 audio tracks is the best? MalibuSync decides automatically and pre-configures the channel structure in FCP.</p></div>
+      <div class="t"><div class="k" data-i18n="w4.k">🔒 Local</div><p data-i18n="w4.p">Everything runs on your Mac. No cloud upload, no privacy concern. Footage stays where it is.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> MalibuSync</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit Network is a product of Lockit Sound. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Jetzt laden",
+    "hero.pill":"🎬 Dual-System Audio · Final Cut Pro · macOS",
+    "hero.h1":'Zwei Ordner rein.<br><span class="grad">Fertige FCPXML raus.</span>',
+    "hero.lead":"MalibuSync matcht Kamera und Ton per Timecode, wählt automatisch den besten Audiokanal, übernimmt alle Metadaten aus dem Set — und liefert eine FCPXML direkt in Final Cut Pro. Kein Roundtrip, kein manuelles Eintippen.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"Timecode · Clap-Erkennung · ALE/CSV · Lockit Network · Multicam",
+    "wf.eyebrow":"Der Workflow","wf.title":"Drei Schritte. Fertig.",
+    "w1.h":"Video-Ordner + Ton-Ordner","w1.p":"MOV, MXF, MP4 und WAV, BWF, AIF. Rekursiv, beliebige Ordnerstruktur.",
+    "w2.h":"MalibuSync matcht","w2.p":"Timecode-Überlappung, Klappe, Metadaten aus ALE/CSV und Lockit — alles automatisch.",
+    "w3.h":"Fertig in Final Cut Pro","w3.p":"FCPXML mit synchronisierten Clips, Multicam und vollständigen Set-Metadaten. Direkt importierbar.",
+    "feat.eyebrow":"Was drin steckt","feat.title":"Alles was ein professioneller Set braucht.",
+    "feat.intro":"MalibuSync denkt den ganzen Workflow durch — vom TC-Match bis zur fertigen Audiokanalstruktur im Schnittplatz.",
+    "f1.t":"Timecode-Matching","f1.p":"Liest TC direkt aus dem MOV-Container (tmcd-Atom) und aus BWF-Dateien (bext-Chunk). Unterstützt Drop-Frame, Non-Drop-Frame und alle gängigen Framerates. Offspeed- und Slow-Motion-Clips werden korrekt behandelt.",
+    "f2.t":"Klappe als Fallback","f2.p":"Wenn kein Timecode vorhanden ist: adaptive Transient-Erkennung findet den Klappenknall im Audio automatisch. Auch bei Offspeed-Material das keinen verlässlichen TC hat.",
+    "f3.t":"Automatische Kanalauswahl","f3.p":"MalibuSync analysiert alle Audiospuren und wählt automatisch den besten Kanal pro Clip — Iso-Mix, Boom oder Lav. Die Kanalstruktur landet direkt fertig konfiguriert in Final Cut Pro.",
+    "f4.t":"ALE- und CSV-Import","f4.p":"Kamera-Reports im ALE- oder CSV-Format werden eingelesen und die Metadaten (Scene, Take, Reel, Notes) direkt in die FCP-Metadatenfelder geschrieben — ohne manuelles Eintippen.",
+    "f5.t":"Lockit Network","f5.p":"Auf Produktionen mit Lockit-Wireless-System zieht MalibuSync Set-Metadaten live über die Lockit Network REST-API. Scene, Take, Timecode-Status direkt vom Set.",
+    "f6.t":"Sync Clips + Multicam","f6.p":"Bei mehreren Kameras mit Timecode-Überlappung erstellt MalibuSync automatisch Multicam-Clips mit separaten Angles — zusätzlich zu den einzelnen synchronisierten Clips.",
+    "wyg.title":"Was die FCPXML enthält",
+    "g1":"Synchronisierte Clips mit Video + allen Audiospuren",
+    "g2":"Multicam-Clips bei mehreren Kameras (automatisch gruppiert)",
+    "g3":"Scene / Take / Reel / Notes in FCP-Metadatenfeldern",
+    "g4":"Audiokanalrollen (Lav, Boom, Iso-Mix) korrekt zugewiesen",
+    "g5":"Aktiver Kanal vorausgewählt — passiver per Klick einschaltbar",
+    "g6":"LUFS-Targeting und Voice Isolation als FCP Audio Adjustments",
+    "g7":"Sync- und Pickup-Marker direkt auf den Clips",
+    "g8":"Non-destruktiv — kein einziges File wird verändert",
+    "why.eyebrow":"Warum MalibuSync","why.title":"Ein Schritt. Kein Roundtrip.",
+    "w1.k":"⚡ Direkt","w1.p":"Keine XML-Exporte, kein erneutes Einlesen, keine Zwischenschritte. MalibuSync produziert eine fertige FCPXML — die geht einmal in FCP und das war's.",
+    "w2.k":"📋 Metadaten-vollständig","w2.p":"Scene, Take, Reel, Kanalbezeichnungen, Audio-Rollen — alles aus ALE, CSV oder Lockit automatisch übernommen. Der Assistent tippt nichts mehr ein.",
+    "w3.k":"🎚️ Kanal-Intelligenz","w3.p":"Welcher der 8 Audiospuren ist der beste? MalibuSync entscheidet das automatisch und konfiguriert die Kanalstruktur in FCP fertig vor.",
+    "w4.k":"🔒 Lokal","w4.p":"Alles läuft auf deinem Mac. Kein Cloud-Upload, kein Datenschutzproblem. Footage bleibt wo es ist.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"MalibuSync ist ein professionelles Werkzeug für Post-Production. Final Cut Pro ist eine Marke von Apple Inc. Lockit Network ist ein Produkt von Lockit Sound. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🎬 Dual-System Audio · Final Cut Pro · macOS",
+    "hero.h1":'Two folders in.<br><span class="grad">Finished FCPXML out.</span>',
+    "hero.lead":"MalibuSync matches camera and sound by timecode, automatically selects the best audio channel, pulls all metadata from the set — and delivers an FCPXML directly into Final Cut Pro. No roundtrip, no manual entry.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"Timecode · Clap detection · ALE/CSV · Lockit Network · Multicam",
+    "wf.eyebrow":"The Workflow","wf.title":"Three steps. Done.",
+    "w1.h":"Video folder + Audio folder","w1.p":"MOV, MXF, MP4 and WAV, BWF, AIF. Recursive, any folder structure.",
+    "w2.h":"MalibuSync matches","w2.p":"Timecode overlap, clap detection, metadata from ALE/CSV and Lockit — all automatic.",
+    "w3.h":"Ready in Final Cut Pro","w3.p":"FCPXML with synchronized clips, multicam, and complete set metadata. Ready to import.",
+    "feat.eyebrow":"What's inside","feat.title":"Everything a professional set needs.",
+    "feat.intro":"MalibuSync thinks through the entire workflow — from TC matching to the finished audio channel structure at the edit suite.",
+    "f1.t":"Timecode Matching","f1.p":"Reads TC directly from the MOV container (tmcd atom) and BWF files (bext chunk). Supports drop-frame, non-drop-frame, and all common frame rates. Offspeed and slow-motion clips are handled correctly.",
+    "f2.t":"Clap as Fallback","f2.p":"When no timecode is available: adaptive transient detection finds the clap in the audio automatically. Works even with offspeed material that has unreliable TC.",
+    "f3.t":"Automatic Channel Selection","f3.p":"MalibuSync analyzes all audio tracks and automatically selects the best channel per clip — Iso Mix, Boom, or Lav. The channel structure arrives in Final Cut Pro fully configured.",
+    "f4.t":"ALE and CSV Import","f4.p":"Camera reports in ALE or CSV format are read and the metadata (Scene, Take, Reel, Notes) written directly into FCP metadata fields — no manual entry required.",
+    "f5.t":"Lockit Network","f5.p":"On productions using the Lockit wireless system, MalibuSync pulls set metadata live via the Lockit Network REST API. Scene, Take, timecode status — directly from the set.",
+    "f6.t":"Sync Clips + Multicam","f6.p":"When multiple cameras share timecode overlap, MalibuSync automatically creates multicam clips with separate angles — in addition to the individual synchronized clips.",
+    "wyg.title":"What the FCPXML contains",
+    "g1":"Synchronized clips with video and all audio tracks",
+    "g2":"Multicam clips for multi-camera shoots (automatically grouped)",
+    "g3":"Scene / Take / Reel / Notes in FCP metadata fields",
+    "g4":"Audio channel roles (Lav, Boom, Iso Mix) correctly assigned",
+    "g5":"Active channel pre-selected — inactive channels switchable with one click",
+    "g6":"LUFS targeting and Voice Isolation as FCP Audio Adjustments",
+    "g7":"Sync and pickup markers on the clips",
+    "g8":"Non-destructive — not a single file is modified",
+    "why.eyebrow":"Why MalibuSync","why.title":"One step. No roundtrip.",
+    "w1.k":"⚡ Direct","w1.p":"No XML exports, no re-importing, no intermediate steps. MalibuSync produces a finished FCPXML — it goes into FCP once and that's it.",
+    "w2.k":"📋 Metadata-complete","w2.p":"Scene, Take, Reel, channel names, audio roles — all pulled automatically from ALE, CSV, or Lockit. The assistant types nothing.",
+    "w3.k":"🎚️ Channel intelligence","w3.p":"Which of the 8 audio tracks is the best? MalibuSync decides automatically and pre-configures the channel structure in FCP.",
+    "w4.k":"🔒 Local","w4.p":"Everything runs on your Mac. No cloud upload, no privacy concern. Footage stays where it is.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit Network is a product of Lockit Sound. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+
+</script>
+</body>
+</html>

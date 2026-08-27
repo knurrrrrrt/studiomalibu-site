@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Meter · EBU R128 Loudness for macOS</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="Malibu Meter measures EBU R128 loudness in real time — as a standalone macOS app, no DAW required. For system audio, individual apps, or any input device.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#34C759;--teal:#30D158;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#fff}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
+  .hero{text-align:center;padding:90px 0 60px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(52,199,89,.12),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(52,199,89,.08);border:1px solid rgba(52,199,89,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),#00C896);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),#00A040);color:#fff;box-shadow:0 8px 30px rgba(52,199,89,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  .meter-demo{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 32px;margin:40px auto;max-width:640px;display:flex;gap:32px;align-items:flex-end}
+  .meter-bars{display:flex;gap:8px;align-items:flex-end;height:120px;flex:1}
+  .bar-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
+  .bar-track{width:100%;background:rgba(52,199,89,.08);border-radius:4px;height:110px;position:relative;overflow:hidden;border:1px solid rgba(52,199,89,.15)}
+  .bar-fill{position:absolute;bottom:0;left:0;right:0;border-radius:3px}
+  .bar-l .bar-fill{height:72%;background:linear-gradient(to top,#34C759,#FFD60A 85%,#FF453A 100%)}
+  .bar-r .bar-fill{height:68%;background:linear-gradient(to top,#34C759,#FFD60A 85%,#FF453A 100%)}
+  .bar-label{font-size:10px;color:var(--muted);font-weight:600}
+  .meter-lufs{display:flex;flex-direction:column;gap:10px;min-width:160px}
+  .lufs-row{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:rgba(52,199,89,.06);border:1px solid rgba(52,199,89,.15);border-radius:8px}
+  .lufs-key{font-size:11px;font-weight:600;color:var(--muted)}
+  .lufs-val{font-size:13px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+  .lufs-val.warn{color:#FFD60A}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(52,199,89,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .modes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:32px 0}
+  .mode{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .mode .mico{font-size:20px;margin-bottom:10px}
+  .mode h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:5px}
+  .mode p{font-size:13px;color:var(--muted)}
+  .presets{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+  .preset-chip{padding:8px 16px;border-radius:100px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted)}
+  .preset-chip.ok{border-color:rgba(52,199,89,.4);color:var(--brand)}
+  .preset-chip.warn{border-color:rgba(255,214,10,.4);color:#FFD60A}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(52,199,89,.10),rgba(48,209,88,.07));border:1px solid rgba(52,199,89,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+
+  /* Coming-soon patch — wird entfernt wenn App launched */
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.meter-demo{flex-direction:column}.modes-grid{grid-template-columns:1fr}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.foot-inner{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="Malibu Meter"> Malibu Meter</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🎚️ EBU R128 · Broadcast Loudness · macOS</span>
+    <h1 data-i18n="hero.h1">EBU R128.<br><span class="grad">No DAW required.</span></h1>
+    <p class="lead" data-i18n="hero.lead">Malibu Meter measures Integrated LUFS, True Peak, and Loudness Range to EBU R128 in real time — as a standalone macOS app. No plugin, no DAW launch. For system audio, individual input devices, or directly from a single app.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">libebur128 · 60 fps · 4 input modes · True Peak with 4× oversampling</p>
+    <div class="meter-demo">
+      <div class="meter-bars">
+        <div class="bar-wrap bar-l"><div class="bar-track"><div class="bar-fill"></div></div><span class="bar-label">L</span></div>
+        <div class="bar-wrap bar-r"><div class="bar-track"><div class="bar-fill"></div></div><span class="bar-label">R</span></div>
+      </div>
+      <div class="meter-lufs">
+        <div class="lufs-row"><span class="lufs-key">Momentary</span><span class="lufs-val">−14.2 LU</span></div>
+        <div class="lufs-row"><span class="lufs-key">Short-Term</span><span class="lufs-val">−16.1 LU</span></div>
+        <div class="lufs-row"><span class="lufs-key">Integrated</span><span class="lufs-val">−23.0 LU</span></div>
+        <div class="lufs-row"><span class="lufs-key">Loudness Range</span><span class="lufs-val">8.3 LU</span></div>
+        <div class="lufs-row"><span class="lufs-key">True Peak</span><span class="lufs-val warn">−1.0 dBTP</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="modes.eyebrow">4 Input Modes</div>
+    <h2 class="section-title" data-i18n="modes.title">Every audio source on your Mac.</h2>
+    <p class="section-intro" data-i18n="modes.intro">No restart, no routing, no interface changes. Switch with one click.</p>
+    <div class="modes-grid">
+      <div class="mode"><div class="mico">🎙️</div><h3 data-i18n="m1.h">System mic / audio device</h3><p data-i18n="m1.p">Measures signal from any connected input device: microphone, audio interface, mixer. Direct Core Audio AUHAL integration.</p></div>
+      <div class="mode"><div class="mico">🔊</div><h3 data-i18n="m2.h">System output (screen audio)</h3><p data-i18n="m2.p">Measures everything your Mac outputs — via ScreenCaptureKit. Useful for checking the mix from FCP or QuickTime without inserting a plugin.</p></div>
+      <div class="mode"><div class="mico">📱</div><h3 data-i18n="m3.h">Single app (Process Tap)</h3><p data-i18n="m3.p">Taps the audio of a specific app directly — e.g. Final Cut Pro. With automatic level compensation for Apple's undocumented internal attenuation.</p></div>
+      <div class="mode"><div class="mico">🎚️</div><h3 data-i18n="m4.h">AVAudioEngine (default)</h3><p data-i18n="m4.p">Standard input routing via AVAudioEngine. Fastest startup, for general monitoring tasks.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's measured</div>
+    <h2 class="section-title" data-i18n="feat.title">Broadcast standard. Complete.</h2>
+    <p class="section-intro" data-i18n="feat.intro">Malibu Meter uses libebur128 — the reference implementation of EBU R128 / ITU-R BS.1770-4. No DIY approximation.</p>
+    <div class="grid">
+      <div class="feature"><span class="fico">📊</span><h3 data-i18n="f1.t">Integrated LUFS</h3><p data-i18n="f1.p">Gated loudness over the entire program per EBU R128. Silence blocks below −70 LUFS are automatically excluded. Pass/fail against broadcast presets.</p></div>
+      <div class="feature"><span class="fico">⏱️</span><h3 data-i18n="f2.t">Momentary + Short-Term</h3><p data-i18n="f2.p">Momentary (400ms window) for dialog peaks. Short-Term (3s window) for segments. Both real-time at 60 fps.</p></div>
+      <div class="feature"><span class="fico">📏</span><h3 data-i18n="f3.t">Loudness Range (LRA)</h3><p data-i18n="f3.p">Dynamic variation of the program in loudness units. Essential for productions with explicit LRA requirements (e.g. Netflix: max 20 LU).</p></div>
+      <div class="feature"><span class="fico">🔺</span><h3 data-i18n="f4.t">True Peak (4× oversampling)</h3><p data-i18n="f4.p">Measures between samples where normal peak meters are blind. 4× oversampling for inter-sample peaks per BS.1770-4. Not −1.0 dBFS but −1.0 dBTP.</p></div>
+      <div class="feature"><span class="fico">✅</span><h3 data-i18n="f5.t">Broadcast presets</h3><p data-i18n="f5.p">EBU R128 (−23 LUFS), Netflix (−27 LUFS), ATSC A/85 (−24 LUFS), Apple Podcasts (−16 LUFS), and more. Green pass / red fail directly in the meter.</p></div>
+      <div class="feature"><span class="fico">⚡</span><h3 data-i18n="f6.t">60 fps CVDisplayLink</h3><p data-i18n="f6.p">Rendering in sync with the display refresh rate via CVDisplayLink — with stack-up prevention so queued frames don't pile up. No lag.</p></div>
+    </div>
+    <div style="margin-top:32px">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px" data-i18n="presets.label">Broadcast presets:</p>
+      <div class="presets">
+        <span class="preset-chip ok">EBU R128 −23 LUFS</span>
+        <span class="preset-chip ok">Netflix −27 LUFS</span>
+        <span class="preset-chip">ATSC A/85 −24 LUFS</span>
+        <span class="preset-chip">Apple Podcasts −16 LUFS</span>
+        <span class="preset-chip warn">True Peak −1 dBTP</span>
+        <span class="preset-chip">Custom</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why Malibu Meter</div>
+    <h2 class="section-title" data-i18n="why.title">Standalone instead of plugin.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="t1.k">🔌 No plugin required</div><p data-i18n="t1.p">Nuendo, Audition, iZotope Insight — all require a DAW launch and a plugin insert. Malibu Meter runs standalone, measuring any audio source on your Mac without a DAW.</p></div>
+      <div class="t"><div class="k" data-i18n="t2.k">📱 App monitoring</div><p data-i18n="t2.p">Measure Final Cut Pro accurately without leaving FCP or inserting a plugin: Process Tap taps the app audio directly — with auto-compensation for Apple's internal attenuation.</p></div>
+      <div class="t"><div class="k" data-i18n="t3.k">📐 ISO standard</div><p data-i18n="t3.p">libebur128 is the reference implementation — the same basis used by broadcast hardware. Measurements are reproducible and certifiable.</p></div>
+      <div class="t"><div class="k" data-i18n="t4.k">🎨 Configurable</div><p data-i18n="t4.p">Scales (EBU R128, VU, K-20/14/12, Linear, DIN), custom gradients, color themes — for editing suites that depend on on-screen monitoring.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> Malibu Meter</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">Malibu Meter is a professional post-production tool. libebur128 is an open-source library (MIT License). EBU R128 is a standard by the European Broadcasting Union. ITU-R BS.1770 is a standard by the International Telecommunication Union. Studio Malibu is not affiliated with these organizations. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Jetzt laden",
+    "hero.pill":"🎚️ EBU R128 · Broadcast Loudness · macOS",
+    "hero.h1":'EBU R128.<br><span class="grad">Ohne DAW.</span>',
+    "hero.lead":"Malibu Meter misst Integrated LUFS, True Peak und Loudness Range nach EBU R128 in Echtzeit — als standalone macOS-App. Kein Plugin, kein DAW-Start. Für System-Audio, einzelne Eingabegeräte oder direkt das Audio einer einzelnen App.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"libebur128 · 60 fps · 4 Input-Modi · True Peak mit 4× Oversampling",
+    "modes.eyebrow":"4 Input-Modi","modes.title":"Jede Audio-Quelle auf dem Mac.",
+    "modes.intro":"Kein Neustart, kein Routing, keine Schnittstelle. Umschalten per Klick.",
+    "m1.h":"System-Mikrofon / Audiogerät","m1.p":"Misst das Signal von jedem angeschlossenen Eingabegerät: Mikrofon, Audio-Interface, Mischpult. Direkte Core Audio AUHAL-Integration.",
+    "m2.h":"System-Ausgabe (Screen Audio)","m2.p":"Misst alles was der Mac ausgibt — über ScreenCaptureKit. Nützlich um den Mix aus FCP oder QuickTime zu prüfen, ohne ein Plugin einzusetzen.",
+    "m3.h":"Einzelne App (Process Tap)","m3.p":"Zapft das Audio einer bestimmten App direkt an — z.B. Final Cut Pro. Mit automatischer Pegel-Kompensation für Apples undokumentierte interne Abschwächung.",
+    "m4.h":"AVAudioEngine (Standard)","m4.p":"Standard-Eingabe-Routing via AVAudioEngine. Schnellster Start, für allgemeine Monitoring-Aufgaben.",
+    "feat.eyebrow":"Was gemessen wird","feat.title":"Broadcast-Standard. Vollständig.",
+    "feat.intro":"Malibu Meter nutzt libebur128 — die Referenz-Implementierung des EBU R128 / ITU-R BS.1770-4 Standards. Keine DIY-Näherung.",
+    "f1.t":"Integrated LUFS","f1.p":"Gated Loudness über das gesamte Programm nach EBU R128. Stille-Blöcke unter −70 LUFS werden automatisch ausgeschlossen. Pass/Fail gegen Broadcast-Presets.",
+    "f2.t":"Momentary + Short-Term","f2.p":"Momentary (400ms-Fenster) für Spitzen im Dialog. Short-Term (3s-Fenster) für Abschnitte. Beide in Echtzeit bei 60 fps.",
+    "f3.t":"Loudness Range (LRA)","f3.p":"Dynamik-Schwankung des Programms in Loudness Units. Entscheidend für Produktionen mit expliziten LRA-Anforderungen (z.B. Netflix: max. 20 LU).",
+    "f4.t":"True Peak (4× Oversampling)","f4.p":"Misst zwischen den Samples, wo normale Peak-Meter blind sind. 4-faches Oversampling für Inter-Sample-Peaks nach BS.1770-4. Nicht −1.0 dBFS sondern −1.0 dBTP.",
+    "f5.t":"Broadcast-Presets","f5.p":"EBU R128 (−23 LUFS), Netflix (−27 LUFS), ATSC A/85 (−24 LUFS), Apple Podcasts (−16 LUFS) und weitere. Grünes Pass / rotes Fail direkt im Meter.",
+    "f6.t":"60 fps CVDisplayLink","f6.p":"Rendering synchron zur Display-Refresh-Rate via CVDisplayLink — mit Stack-Up-Prevention damit sich gequeuete Frames nicht häufen. Keine Lags.",
+    "presets.label":"Broadcast-Presets:",
+    "why.eyebrow":"Warum Malibu Meter","why.title":"Standalone statt Plugin.",
+    "t1.k":"🔌 Kein Plugin nötig","t1.p":"Nuendo, Audition, iZotope Insight — alle verlangen einen DAW-Start und ein Plugin-Insert. Malibu Meter läuft standalone, misst jede Audio-Quelle auf dem Mac ohne DAW.",
+    "t2.k":"📱 App-Monitoring","t2.p":"Final Cut Pro genau messen ohne FCP zu verlassen oder ein Plugin einzufügen: Process Tap zapft das App-Audio direkt an — mit Auto-Kompensation für Apples interne Abschwächung.",
+    "t3.k":"📐 ISO-Standard","t3.p":"libebur128 ist die Referenz-Implementierung — dieselbe Basis die Broadcast-Hardware nutzt. Messungen sind reproduzierbar und zertifizierbar.",
+    "t4.k":"🎨 Konfigurierbar","t4.p":"Skalierungen (EBU R128, VU, K-20/14/12, Linear, DIN), Custom Gradients, Farbthemen — für Editing-Suiten die auf Bildschirm-Monitoring angewiesen sind.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu Meter ist ein professionelles Werkzeug für Post-Production. libebur128 ist eine Open-Source-Library (MIT-Lizenz). EBU R128 ist ein Standard der European Broadcasting Union. ITU-R BS.1770 ist ein Standard der International Telecommunication Union. Studio Malibu steht in keiner Verbindung zu diesen Organisationen. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🎚️ EBU R128 · Broadcast Loudness · macOS",
+    "hero.h1":'EBU R128.<br><span class="grad">No DAW required.</span>',
+    "hero.lead":"Malibu Meter measures Integrated LUFS, True Peak, and Loudness Range to EBU R128 in real time — as a standalone macOS app. No plugin, no DAW launch. For system audio, individual input devices, or directly from a single app.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"libebur128 · 60 fps · 4 input modes · True Peak with 4× oversampling",
+    "modes.eyebrow":"4 Input Modes","modes.title":"Every audio source on your Mac.",
+    "modes.intro":"No restart, no routing, no interface changes. Switch with one click.",
+    "m1.h":"System mic / audio device","m1.p":"Measures signal from any connected input device: microphone, audio interface, mixer. Direct Core Audio AUHAL integration.",
+    "m2.h":"System output (screen audio)","m2.p":"Measures everything your Mac outputs — via ScreenCaptureKit. Useful for checking the mix from FCP or QuickTime without inserting a plugin.",
+    "m3.h":"Single app (Process Tap)","m3.p":"Taps the audio of a specific app directly — e.g. Final Cut Pro. With automatic level compensation for Apple's undocumented internal attenuation.",
+    "m4.h":"AVAudioEngine (default)","m4.p":"Standard input routing via AVAudioEngine. Fastest startup, for general monitoring tasks.",
+    "feat.eyebrow":"What's measured","feat.title":"Broadcast standard. Complete.",
+    "feat.intro":"Malibu Meter uses libebur128 — the reference implementation of EBU R128 / ITU-R BS.1770-4. No DIY approximation.",
+    "f1.t":"Integrated LUFS","f1.p":"Gated loudness over the entire program per EBU R128. Silence blocks below −70 LUFS are automatically excluded. Pass/fail against broadcast presets.",
+    "f2.t":"Momentary + Short-Term","f2.p":"Momentary (400ms window) for dialog peaks. Short-Term (3s window) for segments. Both real-time at 60 fps.",
+    "f3.t":"Loudness Range (LRA)","f3.p":"Dynamic variation of the program in loudness units. Essential for productions with explicit LRA requirements (e.g. Netflix: max 20 LU).",
+    "f4.t":"True Peak (4× oversampling)","f4.p":"Measures between samples where normal peak meters are blind. 4× oversampling for inter-sample peaks per BS.1770-4. Not −1.0 dBFS but −1.0 dBTP.",
+    "f5.t":"Broadcast presets","f5.p":"EBU R128 (−23 LUFS), Netflix (−27 LUFS), ATSC A/85 (−24 LUFS), Apple Podcasts (−16 LUFS), and more. Green pass / red fail directly in the meter.",
+    "f6.t":"60 fps CVDisplayLink","f6.p":"Rendering in sync with the display refresh rate via CVDisplayLink — with stack-up prevention so queued frames don't pile up. No lag.",
+    "presets.label":"Broadcast presets:",
+    "why.eyebrow":"Why Malibu Meter","why.title":"Standalone instead of plugin.",
+    "t1.k":"🔌 No plugin required","t1.p":"Nuendo, Audition, iZotope Insight — all require a DAW launch and a plugin insert. Malibu Meter runs standalone, measuring any audio source on your Mac without a DAW.",
+    "t2.k":"📱 App monitoring","t2.p":"Measure Final Cut Pro accurately without leaving FCP or inserting a plugin: Process Tap taps the app audio directly — with auto-compensation for Apple's internal attenuation.",
+    "t3.k":"📐 ISO standard","t3.p":"libebur128 is the reference implementation — the same basis used by broadcast hardware. Measurements are reproducible and certifiable.",
+    "t4.k":"🎨 Configurable","t4.p":"Scales (EBU R128, VU, K-20/14/12, Linear, DIN), custom gradients, color themes — for editing suites that depend on on-screen monitoring.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu Meter is a professional post-production tool. libebur128 is an open-source library (MIT License). EBU R128 is a standard by the European Broadcasting Union. ITU-R BS.1770 is a standard by the International Telecommunication Union. Studio Malibu is not affiliated with these organizations. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+(function(){
+  const bars=[document.querySelector('.bar-l .bar-fill'),document.querySelector('.bar-r .bar-fill')];
+  const targets=[72,68];let tick=0;
+  if(!bars[0])return;
+  setInterval(function(){
+    tick++;
+    bars.forEach(function(b,i){
+      const noise=(Math.sin(tick*0.13+i*1.7)*8+Math.sin(tick*0.31+i)*5);
+      const pct=Math.max(10,Math.min(96,targets[i]+noise));
+      if(b)b.style.height=pct+'%';
+    });
+  },80);
+})();
+
+</script>
+</body>
+</html>

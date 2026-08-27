@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MalibuDictate · Push-to-Talk Dictation for macOS</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="MalibuDictate transcribes what you say anywhere on macOS — with optional AI rewriting to clean it up as you go.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#FF5C8A;--teal:#FF8FAE;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#fff}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
+  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,138,.12),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(255,92,138,.08);border:1px solid rgba(255,92,138,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),#D6336C);color:#fff;box-shadow:0 8px 30px rgba(255,92,138,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:50px 0;position:relative}
+  .workflow::before{content:"";position:absolute;top:32px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
+  .wstep{text-align:center;padding:0 12px}
+  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;position:relative;z-index:1}
+  .wstep h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+  .wstep p{font-size:12.5px;color:var(--muted)}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(255,92,138,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(255,92,138,.10),rgba(255,143,174,.07));border:1px solid rgba(255,92,138,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.workflow{grid-template-columns:1fr 1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.foot-inner{flex-direction:column}}
+
+  .lr-form{display:inline-flex;gap:6px;margin-top:6px;align-items:center}
+  .lr-form input[type=email]{font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;width:170px}
+  .lr-form input[type=email]::placeholder{color:rgba(255,255,255,.4)}
+  .lr-form button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:none;background:rgba(255,255,255,.16);color:inherit;cursor:pointer}
+  .lr-form button:hover{background:rgba(255,255,255,.24)}
+  .lr-form button:disabled{opacity:.5;cursor:default}
+  .lr-success{font-size:13px;color:inherit;opacity:.85}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="MalibuDictate"> MalibuDictate</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🎙️ Push-to-Talk · Dictation · macOS</span>
+    <h1 data-i18n="hero.h1">Push to talk.<br><span class="grad">Get clean text back.</span></h1>
+    <p class="lead" data-i18n="hero.lead">Hold a hotkey, speak, let go — MalibuDictate transcribes what you said anywhere on macOS, with optional AI rewriting to clean it up before it lands in your text field.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">Multi-engine transcription · Optional AI rewriting · Works anywhere</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
+    <h2 class="section-title" data-i18n="wf.title">Hold, speak, done.</h2>
+    <div class="workflow">
+      <div class="wstep">
+        <div class="wnum">⌨️</div>
+        <h3 data-i18n="w1.h">Hold the hotkey</h3>
+        <p data-i18n="w1.p">Press and hold anywhere in macOS — any app, any text field — to start dictating.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🎙️</div>
+        <h3 data-i18n="w2.h">Speak naturally</h3>
+        <p data-i18n="w2.p">Choose the transcription engine that fits — Apple Speech, WhisperKit, or Parakeet.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">✨</div>
+        <h3 data-i18n="w3.h">Optional AI cleanup</h3>
+        <p data-i18n="w3.p">Let Claude tidy up filler words and formatting before the text lands — or skip it for raw transcription.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">⌨️</div>
+        <h3 data-i18n="w4.h">Text lands where you are</h3>
+        <p data-i18n="w4.p">No app-switching — the result is typed directly into whatever field you were using.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
+    <h2 class="section-title" data-i18n="feat.title">Dictation that fits how you actually write.</h2>
+    <p class="section-intro" data-i18n="feat.intro">Push-to-talk anywhere on macOS — no dedicated app to switch into, no dictation window to manage.</p>
+    <div class="grid">
+      <div class="feature">
+        <span class="fico">⌨️</span>
+        <h3 data-i18n="f1.t">Push-to-talk anywhere</h3>
+        <p data-i18n="f1.p">One global hotkey works in any app — emails, chat, notes, code comments — wherever your cursor is.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🎙️</span>
+        <h3 data-i18n="f2.t">Multiple transcription engines</h3>
+        <p data-i18n="f2.p">Switch between Apple Speech, WhisperKit, and Parakeet depending on language and accuracy needs.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">✨</span>
+        <h3 data-i18n="f3.t">Optional AI rewriting</h3>
+        <p data-i18n="f3.p">Send your dictation through Claude to clean up filler words, fix punctuation, and tighten phrasing — entirely optional.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📜</span>
+        <h3 data-i18n="f4.t">Dictation history</h3>
+        <p data-i18n="f4.p">Every dictation is kept so you can find and reuse something you said earlier.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🔊</span>
+        <h3 data-i18n="f5.t">Clear start cue</h3>
+        <p data-i18n="f5.p">A short audio cue marks the start of recording, so you always know exactly when it's listening.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🔒</span>
+        <h3 data-i18n="f6.t">Your choice on privacy</h3>
+        <p data-i18n="f6.p">On-device transcription options are available if you'd rather nothing leave your Mac; the AI-rewrite step is opt-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why MalibuDictate</div>
+    <h2 class="section-title" data-i18n="why.title">Faster than typing, cleaner than raw ASR.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="t1.k">⌨️ No app-switching</div><p data-i18n="t1.p">Dictate directly into whatever you're already working on — an email, a doc, a terminal.</p></div>
+      <div class="t"><div class="k" data-i18n="t2.k">🎙️ Pick your engine</div><p data-i18n="t2.p">Not locked into one transcription model — choose what performs best for your voice and language.</p></div>
+      <div class="t"><div class="k" data-i18n="t3.k">✨ Clean, not just accurate</div><p data-i18n="t3.p">Raw transcription is full of "um"s and run-on sentences. The optional AI pass fixes that before you see it.</p></div>
+      <div class="t"><div class="k" data-i18n="t4.k">🔒 Your call on privacy</div><p data-i18n="t4.p">On-device engines available; the AI-rewrite step is opt-in, not required.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> MalibuDictate</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">MalibuDictate is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Download",
+    "hero.pill":"🎙️ Push-to-Talk · Diktat · macOS",
+    "hero.h1":'Knopf drücken, sprechen.<br><span class="grad">Sauberer Text kommt raus.</span>',
+    "hero.lead":"Hotkey halten, sprechen, loslassen — MalibuDictate transkribiert überall in macOS, was du sagst, mit optionalem KI-Rewriting, bevor der Text in deinem Textfeld landet.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"Mehrere Transkriptions-Engines · Optionales KI-Rewriting · Funktioniert überall",
+    "wf.eyebrow":"Der Workflow","wf.title":"Halten, sprechen, fertig.",
+    "w1.h":"Hotkey halten","w1.p":"Überall in macOS gedrückt halten — jede App, jedes Textfeld — um zu diktieren.",
+    "w2.h":"Natürlich sprechen","w2.p":"Die passende Transkriptions-Engine wählen — Apple Speech, WhisperKit oder Parakeet.",
+    "w3.h":"Optionales KI-Cleanup","w3.p":"Claude räumt Füllwörter und Formatierung auf, bevor der Text landet — oder roh übernehmen, ganz nach Wahl.",
+    "w4.h":"Text landet, wo du bist","w4.p":"Kein App-Wechsel nötig — das Ergebnis wird direkt in das aktuelle Feld getippt.",
+    "feat.eyebrow":"Was drin steckt","feat.title":"Diktat, das zu deiner Arbeitsweise passt.",
+    "feat.intro":"Push-to-Talk überall in macOS — keine eigene App, kein Diktat-Fenster zu verwalten.",
+    "f1.t":"Push-to-Talk überall","f1.p":"Ein globaler Hotkey funktioniert in jeder App — E-Mails, Chat, Notizen, Code-Kommentare — wo auch immer der Cursor steht.",
+    "f2.t":"Mehrere Transkriptions-Engines","f2.p":"Zwischen Apple Speech, WhisperKit und Parakeet wechseln, je nach Sprache und Genauigkeitsanspruch.",
+    "f3.t":"Optionales KI-Rewriting","f3.p":"Diktat durch Claude schicken, um Füllwörter zu entfernen, Zeichensetzung zu korrigieren und Formulierungen zu straffen — komplett optional.",
+    "f4.t":"Diktat-Verlauf","f4.p":"Jedes Diktat bleibt erhalten, damit du etwas Früheres wiederfinden und wiederverwenden kannst.",
+    "f5.t":"Klares Start-Signal","f5.p":"Ein kurzer Ton markiert den Aufnahmestart, damit immer klar ist, wann zugehört wird.",
+    "f6.t":"Deine Entscheidung bei Privacy","f6.p":"On-Device-Transkription verfügbar, falls nichts deinen Mac verlassen soll; der KI-Rewrite-Schritt ist opt-in.",
+    "why.eyebrow":"Warum MalibuDictate","why.title":"Schneller als Tippen, sauberer als rohe ASR.",
+    "t1.k":"⌨️ Kein App-Wechsel","t1.p":"Direkt in das diktieren, woran du gerade arbeitest — eine E-Mail, ein Dokument, ein Terminal.",
+    "t2.k":"🎙️ Engine frei wählbar","t2.p":"Nicht an ein Transkriptionsmodell gebunden — wähle, was für deine Stimme und Sprache am besten funktioniert.",
+    "t3.k":"✨ Sauber, nicht nur akkurat","t3.p":"Rohe Transkription steckt voller 'ähms' und Schachtelsätze. Der optionale KI-Durchgang räumt das vor der Anzeige auf.",
+    "t4.k":"🔒 Deine Wahl bei Privacy","t4.p":"On-Device-Engines verfügbar; der KI-Rewrite-Schritt ist optional, nicht Pflicht.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"MalibuDictate ist ein Produktivitäts-Tool für macOS. Feedback? Bitte den In-App-Feedback-Button nutzen — das ist der einzige Kanal, den wir überwachen und beantworten; E-Mails zur App werden nicht verfolgt. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🎙️ Push-to-Talk · Dictation · macOS",
+    "hero.h1":'Push to talk.<br><span class="grad">Get clean text back.</span>',
+    "hero.lead":"Hold a hotkey, speak, let go — MalibuDictate transcribes what you said anywhere on macOS, with optional AI rewriting to clean it up before it lands in your text field.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"Multi-engine transcription · Optional AI rewriting · Works anywhere",
+    "wf.eyebrow":"The Workflow","wf.title":"Hold, speak, done.",
+    "w1.h":"Hold the hotkey","w1.p":"Press and hold anywhere in macOS — any app, any text field — to start dictating.",
+    "w2.h":"Speak naturally","w2.p":"Choose the transcription engine that fits — Apple Speech, WhisperKit, or Parakeet.",
+    "w3.h":"Optional AI cleanup","w3.p":"Let Claude tidy up filler words and formatting before the text lands — or skip it for raw transcription.",
+    "w4.h":"Text lands where you are","w4.p":"No app-switching — the result is typed directly into whatever field you were using.",
+    "feat.eyebrow":"What's inside","feat.title":"Dictation that fits how you actually write.",
+    "feat.intro":"Push-to-talk anywhere on macOS — no dedicated app to switch into, no dictation window to manage.",
+    "f1.t":"Push-to-talk anywhere","f1.p":"One global hotkey works in any app — emails, chat, notes, code comments — wherever your cursor is.",
+    "f2.t":"Multiple transcription engines","f2.p":"Switch between Apple Speech, WhisperKit, and Parakeet depending on language and accuracy needs.",
+    "f3.t":"Optional AI rewriting","f3.p":"Send your dictation through Claude to clean up filler words, fix punctuation, and tighten phrasing — entirely optional.",
+    "f4.t":"Dictation history","f4.p":"Every dictation is kept so you can find and reuse something you said earlier.",
+    "f5.t":"Clear start cue","f5.p":"A short audio cue marks the start of recording, so you always know exactly when it's listening.",
+    "f6.t":"Your choice on privacy","f6.p":"On-device transcription options are available if you'd rather nothing leave your Mac; the AI-rewrite step is opt-in.",
+    "why.eyebrow":"Why MalibuDictate","why.title":"Faster than typing, cleaner than raw ASR.",
+    "t1.k":"⌨️ No app-switching","t1.p":"Dictate directly into whatever you're already working on — an email, a doc, a terminal.",
+    "t2.k":"🎙️ Pick your engine","t2.p":"Not locked into one transcription model — choose what performs best for your voice and language.",
+    "t3.k":"✨ Clean, not just accurate","t3.p":"Raw transcription is full of \"um\"s and run-on sentences. The optional AI pass fixes that before you see it.",
+    "t4.k":"🔒 Your call on privacy","t4.p":"On-device engines available; the AI-rewrite step is opt-in, not required.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"MalibuDictate is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+
+// --- Launch-request submit handler (shared across coming-soon pages) ---
+window.submitLaunchRequest = function(form, appName){
+  var input = form.querySelector('input[type=email]');
+  var btn = form.querySelector('button');
+  var email = input.value.trim();
+  if(!email) return false;
+  btn.disabled = true;
+  var origLabel = btn.textContent;
+  btn.textContent = '...';
+  fetch('https://api.malibureview.app/api/collections/launch_requests/records', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({app_module: appName, email: email, source: 'coming-soon-website'})
+  }).then(function(r){
+    if(r.ok){
+      form.style.display = 'none';
+      if(form.nextElementSibling) form.nextElementSibling.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = origLabel;
+    }
+  }).catch(function(){
+    btn.disabled = false;
+    btn.textContent = origLabel;
+  });
+  return false;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu NotesBar · Formatting Bar &amp; Slash Commands for Apple Notes</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="Malibu NotesBar adds a floating formatting toolbar and Notion-style slash commands directly inside Apple Notes on macOS.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#5AC8FA;--teal:#0A84FF;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#fff}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
+  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(90,200,250,.12),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(90,200,250,.08);border:1px solid rgba(90,200,250,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--teal));color:#fff;box-shadow:0 8px 30px rgba(90,200,250,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:50px 0;position:relative}
+  .workflow::before{content:"";position:absolute;top:32px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
+  .wstep{text-align:center;padding:0 12px}
+  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;position:relative;z-index:1}
+  .wstep h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+  .wstep p{font-size:12.5px;color:var(--muted)}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(90,200,250,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(90,200,250,.10),rgba(10,132,255,.07));border:1px solid rgba(90,200,250,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.workflow{grid-template-columns:1fr 1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.foot-inner{flex-direction:column}}
+
+  .lr-form{display:inline-flex;gap:6px;margin-top:6px;align-items:center}
+  .lr-form input[type=email]{font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;width:170px}
+  .lr-form input[type=email]::placeholder{color:rgba(255,255,255,.4)}
+  .lr-form button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:none;background:rgba(255,255,255,.16);color:inherit;cursor:pointer}
+  .lr-form button:hover{background:rgba(255,255,255,.24)}
+  .lr-form button:disabled{opacity:.5;cursor:default}
+  .lr-success{font-size:13px;color:inherit;opacity:.85}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="Malibu NotesBar"> Malibu NotesBar</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🗒️ Formatting Bar · Slash Commands · Apple Notes</span>
+    <h1 data-i18n="hero.h1">A formatting bar for Notes.<br><span class="grad">Plus slash commands.</span></h1>
+    <p class="lead" data-i18n="hero.lead">Malibu NotesBar adds a floating formatting toolbar and Notion-style slash commands directly inside Apple Notes — two things the app has never had. Select text and the bar appears automatically right at your selection; type a forward slash and a command menu opens.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/malibunotesbar-updates/MalibuNotesBar-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">Floating formatting bar · Slash commands · Apple Notes</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
+    <h2 class="section-title" data-i18n="wf.title">Select, format, slash.</h2>
+    <div class="workflow">
+      <div class="wstep">
+        <div class="wnum">🔐</div>
+        <h3 data-i18n="w1.h">Grant Accessibility once</h3>
+        <p data-i18n="w1.p">During onboarding, you grant Malibu NotesBar Accessibility permission once — that's what lets it see your text selection inside Apple Notes.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">🖊️</div>
+        <h3 data-i18n="w2.h">Select text in Notes</h3>
+        <p data-i18n="w2.p">Highlight any text in a note and a floating formatting bar appears automatically right at your selection.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">✅</div>
+        <h3 data-i18n="w3.h">Click to format</h3>
+        <p data-i18n="w3.p">Bold, italic, headings, lists, checklists — one click applies it, no menu diving, no keyboard-only shortcuts to memorize.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">⚡</div>
+        <h3 data-i18n="w4.h">Type / for commands</h3>
+        <p data-i18n="w4.p">Type a forward slash to bring up a Notion-style command menu — headings, lists, a fenced code block, dividers, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
+    <h2 class="section-title" data-i18n="feat.title">The formatting bar and slash commands Apple Notes never had.</h2>
+    <p class="section-intro" data-i18n="feat.intro">One-click buttons right at your selection, and a slash command menu when you'd rather type — both live inside Apple Notes itself.</p>
+    <div class="grid">
+      <div class="feature">
+        <span class="fico">🗒️</span>
+        <h3 data-i18n="f1.t">Floating formatting bar</h3>
+        <p data-i18n="f1.p">Select text inside Apple Notes and a formatting bar appears automatically, right where you're working — no hunting through menus.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🅱️</span>
+        <h3 data-i18n="f2.t">One-click formatting</h3>
+        <p data-i18n="f2.p">Bold, italic, underline, strikethrough, monospaced, heading, and link — plus increase/decrease indent, text size, and remove formatting, all one click away.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📋</span>
+        <h3 data-i18n="f3.t">A full list toolkit</h3>
+        <p data-i18n="f3.p">Bullet lists, dashed lists, numbered lists, and checklists — every list type Apple Notes' own toolbar leaves out.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">⚡</span>
+        <h3 data-i18n="f4.t">Slash commands</h3>
+        <p data-i18n="f4.p">Type / to open a Notion-style command menu: Heading 1–3, bullet and numbered lists, checklist, a fenced code block, and a divider.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🧩</span>
+        <h3 data-i18n="f5.t">Table, template &amp; AI-assist</h3>
+        <p data-i18n="f5.p">The slash menu also includes entries for a table, a template, and AI-assist — right alongside the formatting commands.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🍎</span>
+        <h3 data-i18n="f6.t">Built for Apple Notes</h3>
+        <p data-i18n="f6.p">Malibu NotesBar's default and primary scope is Apple Notes — built to make Notes itself better, not to replace it with something heavier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why Malibu NotesBar</div>
+    <h2 class="section-title" data-i18n="why.title">Built for Apple Notes, not instead of it.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="t1.k">🍎 Built for Apple Notes</div><p data-i18n="t1.p">The default and headline use case is Apple Notes — not a system-wide overlay bolted onto everything.</p></div>
+      <div class="t"><div class="k" data-i18n="t2.k">🧭 Notion-style structure, no app switch</div><p data-i18n="t2.p">Slash commands and structure, without giving up Apple Notes for something heavier like Notion or Obsidian.</p></div>
+      <div class="t"><div class="k" data-i18n="t3.k">🔐 One-time Accessibility permission</div><p data-i18n="t3.p">Malibu NotesBar works through macOS Accessibility — grant it once during onboarding, then it just works.</p></div>
+      <div class="t"><div class="k" data-i18n="t4.k">🎛️ Opt-in beyond Notes</div><p data-i18n="t4.p">Apple Notes is the primary target, but the app can be extended to other apps you choose to opt into.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibunotesbar-updates/MalibuNotesBar-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> Malibu NotesBar</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">Malibu NotesBar is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Download",
+    "hero.pill":"🗒️ Formatting-Bar · Slash-Commands · Apple Notes",
+    "hero.h1":'Eine Formatierungsleiste für Notizen.<br><span class="grad">Plus Slash-Commands.</span>',
+    "hero.lead":"Malibu NotesBar bringt eine schwebende Formatierungsleiste und Notion-artige Slash-Commands direkt in Apple Notes — beides fehlt der App bisher komplett. Markiere Text und die Leiste erscheint automatisch genau an deiner Auswahl; tippe einen Schrägstrich und ein Befehlsmenü öffnet sich.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"Schwebende Formatierungsleiste · Slash-Commands · Apple Notes",
+    "wf.eyebrow":"Der Workflow","wf.title":"Auswählen, formatieren, Slash.",
+    "w1.h":"Einmalig Bedienungshilfen erlauben","w1.p":"Beim Onboarding erlaubst du Malibu NotesBar einmalig den Zugriff über die macOS-Bedienungshilfen (Accessibility) — nur so kann die App deine Textauswahl in Apple Notes erkennen.",
+    "w2.h":"Text in Notes markieren","w2.p":"Markiere Text in einer Notiz und eine schwebende Formatierungsleiste erscheint automatisch genau an deiner Auswahl.",
+    "w3.h":"Mit einem Klick formatieren","w3.p":"Fett, kursiv, Überschriften, Listen, Checklisten — ein Klick genügt, kein Menü-Wühlen, keine reinen Tastenkombinationen zum Auswendiglernen.",
+    "w4.h":"Slash für Befehle tippen","w4.p":"Tippe einen Schrägstrich, um ein Notion-artiges Befehlsmenü zu öffnen — Überschriften, Listen, ein Code-Block, Trennlinien und mehr.",
+    "feat.eyebrow":"Was drin steckt","feat.title":"Die Formatierungsleiste und Slash-Commands, die Apple Notes nie hatte.",
+    "feat.intro":"Ein-Klick-Buttons genau an deiner Auswahl, und ein Slash-Befehlsmenü, wenn du lieber tippst — beides direkt in Apple Notes selbst.",
+    "f1.t":"Schwebende Formatierungsleiste","f1.p":"Markiere Text in Apple Notes und eine Formatierungsleiste erscheint automatisch genau dort — kein Suchen in Menüs.",
+    "f2.t":"Ein-Klick-Formatierung","f2.p":"Fett, kursiv, unterstrichen, durchgestrichen, Monospace, Überschrift und Link — plus Einzug erhöhen/verringern, Textgröße ändern und Formatierung entfernen, alles mit einem Klick.",
+    "f3.t":"Volles Listen-Toolkit","f3.p":"Aufzählungslisten, gestrichelte Listen, nummerierte Listen und Checklisten — jeder Listentyp, den Apple Notes' eigene Leiste nicht bietet.",
+    "f4.t":"Slash-Commands","f4.p":"Tippe / für ein Notion-artiges Befehlsmenü: Überschrift 1–3, Aufzählungs- und nummerierte Listen, Checkliste, ein Code-Block und eine Trennlinie.",
+    "f5.t":"Tabelle, Vorlage & KI-Unterstützung","f5.p":"Das Slash-Menü enthält außerdem Einträge für Tabelle, Vorlage und KI-Unterstützung — direkt neben den Formatierungsbefehlen.",
+    "f6.t":"Gebaut für Apple Notes","f6.p":"Der Standard- und Haupteinsatzbereich von Malibu NotesBar ist Apple Notes — gebaut, um Notes selbst besser zu machen, nicht um es durch etwas Schwereres zu ersetzen.",
+    "why.eyebrow":"Warum Malibu NotesBar","why.title":"Gebaut für Apple Notes, nicht als Ersatz dafür.",
+    "t1.k":"🍎 Gebaut für Apple Notes","t1.p":"Der Standard- und Haupteinsatzzweck ist Apple Notes — kein systemweiter Overlay, der auf alles gestülpt wird.",
+    "t2.k":"🧭 Notion-Struktur, ohne App-Wechsel","t2.p":"Slash-Commands und Struktur, ohne Apple Notes für etwas Schwereres wie Notion oder Obsidian aufzugeben.",
+    "t3.k":"🔐 Einmalige Bedienungshilfen-Freigabe","t3.p":"Malibu NotesBar arbeitet über die macOS-Bedienungshilfen — einmal beim Onboarding erlauben, dann läuft es einfach.",
+    "t4.k":"🎛️ Opt-in über Notes hinaus","t4.p":"Apple Notes ist der Haupteinsatzbereich, aber die App lässt sich auf weitere Apps erweitern, die du selbst auswählst.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu NotesBar ist ein Produktivitäts-Tool für macOS. Feedback? Bitte den In-App-Feedback-Button nutzen — das ist der einzige Kanal, den wir überwachen und beantworten; E-Mails zur App werden nicht verfolgt. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🗒️ Formatting Bar · Slash Commands · Apple Notes",
+    "hero.h1":'A formatting bar for Notes.<br><span class="grad">Plus slash commands.</span>',
+    "hero.lead":"Malibu NotesBar adds a floating formatting toolbar and Notion-style slash commands directly inside Apple Notes — two things the app has never had. Select text and the bar appears automatically right at your selection; type a forward slash and a command menu opens.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"Floating formatting bar · Slash commands · Apple Notes",
+    "wf.eyebrow":"The Workflow","wf.title":"Select, format, slash.",
+    "w1.h":"Grant Accessibility once","w1.p":"During onboarding, you grant Malibu NotesBar Accessibility permission once — that's what lets it see your text selection inside Apple Notes.",
+    "w2.h":"Select text in Notes","w2.p":"Highlight any text in a note and a floating formatting bar appears automatically right at your selection.",
+    "w3.h":"Click to format","w3.p":"Bold, italic, headings, lists, checklists — one click applies it, no menu diving, no keyboard-only shortcuts to memorize.",
+    "w4.h":"Type / for commands","w4.p":"Type a forward slash to bring up a Notion-style command menu — headings, lists, a fenced code block, dividers, and more.",
+    "feat.eyebrow":"What's inside","feat.title":"The formatting bar and slash commands Apple Notes never had.",
+    "feat.intro":"One-click buttons right at your selection, and a slash command menu when you'd rather type — both live inside Apple Notes itself.",
+    "f1.t":"Floating formatting bar","f1.p":"Select text inside Apple Notes and a formatting bar appears automatically, right where you're working — no hunting through menus.",
+    "f2.t":"One-click formatting","f2.p":"Bold, italic, underline, strikethrough, monospaced, heading, and link — plus increase/decrease indent, text size, and remove formatting, all one click away.",
+    "f3.t":"A full list toolkit","f3.p":"Bullet lists, dashed lists, numbered lists, and checklists — every list type Apple Notes' own toolbar leaves out.",
+    "f4.t":"Slash commands","f4.p":"Type / to open a Notion-style command menu: Heading 1–3, bullet and numbered lists, checklist, a fenced code block, and a divider.",
+    "f5.t":"Table, template & AI-assist","f5.p":"The slash menu also includes entries for a table, a template, and AI-assist — right alongside the formatting commands.",
+    "f6.t":"Built for Apple Notes","f6.p":"Malibu NotesBar's default and primary scope is Apple Notes — built to make Notes itself better, not to replace it with something heavier.",
+    "why.eyebrow":"Why Malibu NotesBar","why.title":"Built for Apple Notes, not instead of it.",
+    "t1.k":"🍎 Built for Apple Notes","t1.p":"The default and headline use case is Apple Notes — not a system-wide overlay bolted onto everything.",
+    "t2.k":"🧭 Notion-style structure, no app switch","t2.p":"Slash commands and structure, without giving up Apple Notes for something heavier like Notion or Obsidian.",
+    "t3.k":"🔐 One-time Accessibility permission","t3.p":"Malibu NotesBar works through macOS Accessibility — grant it once during onboarding, then it just works.",
+    "t4.k":"🎛️ Opt-in beyond Notes","t4.p":"Apple Notes is the primary target, but the app can be extended to other apps you choose to opt into.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu NotesBar is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+
+// --- Launch-request submit handler (shared across coming-soon pages) ---
+window.submitLaunchRequest = function(form, appName){
+  var input = form.querySelector('input[type=email]');
+  var btn = form.querySelector('button');
+  var email = input.value.trim();
+  if(!email) return false;
+  btn.disabled = true;
+  var origLabel = btn.textContent;
+  btn.textContent = '...';
+  fetch('https://api.malibureview.app/api/collections/launch_requests/records', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({app_module: appName, email: email, source: 'coming-soon-website'})
+  }).then(function(r){
+    if(r.ok){
+      form.style.display = 'none';
+      if(form.nextElementSibling) form.nextElementSibling.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = origLabel;
+    }
+  }).catch(function(){
+    btn.disabled = false;
+    btn.textContent = origLabel;
+  });
+  return false;
+};
+</script>
+</body>
+</html>

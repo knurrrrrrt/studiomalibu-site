@@ -123,9 +123,13 @@
   }
 
   function renderCard(app) {
-    var href = app.externalHref || (app.href ? SITE + app.href : null);
+    // Apps with an internal `href` now have their full page hosted locally under apps/<slug>/
+    // (ported from knuthake.de) — link/icon stay local instead of pointing back at knuthake.de.
+    // Apps with `externalHref` (LifeLotse, TaxLotse) are separate products and keep linking out;
+    // apps with neither (Sound2Pro on hold, FundusKit) keep their icon hotlinked as before.
+    var href = app.externalHref || app.href || null;
     var iconHtml = app.icon
-      ? '<img src="' + SITE + app.icon + '" alt="">'
+      ? '<img src="' + (app.href ? app.icon : SITE + app.icon) + '" alt="">'
       : app.iconFallback
       ? '<div class="icon-fallback">' + app.iconFallback + '</div>'
       : '';

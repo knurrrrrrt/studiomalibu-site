@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MalibuMesh · P2P Folder Sync for Post-Production Teams</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="MalibuMesh syncs production folders directly between team members — P2P, no cloud upload, no shared server. Project-based, with roles and permissions.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#2DD4BF;--teal:#00C8B0;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-left{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
+  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
+  .lang-sw button.active{background:var(--brand);color:#08080C}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#08080C}
+  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.12),transparent 70%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
+  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--teal));color:#08080C;box-shadow:0 8px 30px rgba(45,212,191,.25)}
+  .btn .ico{font-size:20px}
+  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
+  /* Project UI mockup */
+  .project-demo{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin:40px auto;max-width:580px;text-align:left}
+  .demo-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .demo-dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+  .demo-title{font-size:14px;font-weight:700;color:#fff}
+  .demo-badge{font-size:11px;padding:3px 10px;border-radius:100px;background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.25);color:var(--brand);margin-left:auto}
+  .folder-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;margin-bottom:6px}
+  .folder-row:nth-child(1){background:rgba(45,212,191,.06)}
+  .folder-row:nth-child(2){background:rgba(45,212,191,.04)}
+  .folder-row:nth-child(3){background:rgba(45,212,191,.02)}
+  .folder-icon{font-size:16px}
+  .folder-name{font-size:13px;font-weight:600;color:#fff;flex:1}
+  .folder-status{font-size:11px;font-weight:600;color:var(--brand)}
+  .folder-status.syncing{color:#FFD60A}
+  .member-row{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .avatar{width:26px;height:26px;border-radius:50%;background:rgba(45,212,191,.2);border:1.5px solid rgba(45,212,191,.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand)}
+  .member-name{font-size:12px;color:var(--muted)}
+  .member-role{font-size:11px;font-weight:600;margin-left:auto;padding:2px 8px;border-radius:100px;background:rgba(45,212,191,.1);color:var(--brand)}
+  section.block{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
+  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
+  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:50px 0;position:relative}
+  .workflow::before{content:"";position:absolute;top:32px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
+  .wstep{text-align:center;padding:0 12px}
+  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;position:relative;z-index:1}
+  .wstep h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+  .wstep p{font-size:12.5px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:rgba(45,212,191,.35)}
+  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
+  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
+  .feature p{font-size:14px;color:var(--muted)}
+  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+  .trust .t p{font-size:13.5px;color:var(--muted)}
+  .download{background:linear-gradient(135deg,rgba(45,212,191,.10),rgba(0,200,176,.07));border:1px solid rgba(45,212,191,.2);border-radius:20px;padding:48px 40px;text-align:center}
+  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+  .download p{color:var(--muted);margin-bottom:28px}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px}
+  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
+
+  /* Coming-soon patch — wird entfernt wenn App launched */
+  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
+  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
+  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:700px){.workflow{grid-template-columns:1fr 1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.download{padding:28px}.foot-inner{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a class="nav-back" href="https://knuthake.de">← knuthake.de</a>
+      <div class="brand"><img class="mark" src="icon.png" alt="MalibuMesh"> MalibuMesh</div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill" data-i18n="hero.pill">🔄 P2P Folder Sync · Post-Production · macOS</span>
+    <h1 data-i18n="hero.h1">One code.<br><span class="grad">All folders synced.</span></h1>
+    <p class="lead" data-i18n="hero.lead">MalibuMesh synchronizes production folders directly between team members — without cloud upload, without a shared server. Project-based: one invite, all folders, roles per person.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.malibureview.app/malibumediasync-updates/MalibuMesh-latest.dmg">
+        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 14+</small></span>
+      </a>
+    </div>
+    <p class="micro" data-i18n="hero.micro">P2P · Syncthing engine · Project layer · No cloud upload · Roles + permissions</p>
+
+    <!-- Project UI mockup -->
+    <div class="project-demo">
+      <div class="demo-header">
+        <div class="demo-dot"></div>
+        <div class="demo-title">Tatort Folge 42</div>
+        <div class="demo-badge" data-i18n="demo.badge">● All in sync</div>
+      </div>
+      <div class="folder-row">
+        <span class="folder-icon">📁</span>
+        <span class="folder-name">Masters</span>
+        <span class="folder-status" data-i18n="demo.synced">In sync</span>
+      </div>
+      <div class="folder-row">
+        <span class="folder-icon">📁</span>
+        <span class="folder-name">FX_Shots</span>
+        <span class="folder-status syncing" data-i18n="demo.syncing">Syncing 47%</span>
+      </div>
+      <div class="folder-row">
+        <span class="folder-icon">📁</span>
+        <span class="folder-name">Musik_Candidates</span>
+        <span class="folder-status" data-i18n="demo.synced">Synchron</span>
+      </div>
+      <div class="member-row">
+        <div class="avatar">T</div><div class="avatar" style="margin-left:-8px">L</div>
+        <span class="member-name" data-i18n="demo.members">Tom, Lisa</span>
+        <span class="member-role" data-i18n="demo.role">Editor / Viewer</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
+    <h2 class="section-title" data-i18n="wf.title">Four steps. Team synchronized.</h2>
+    <div class="workflow">
+      <div class="wstep">
+        <div class="wnum">📁</div>
+        <h3 data-i18n="w1.h">Create project</h3>
+        <p data-i18n="w1.p">Create a project, add folders — regardless of where they live on the external drive.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">📨</div>
+        <h3 data-i18n="w2.h">Share pairing ID</h3>
+        <p data-i18n="w2.p">One-time pairing ID via iMessage or Slack. No account, no login, no cloud registration.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">📂</div>
+        <h3 data-i18n="w3.h">Choose paths</h3>
+        <p data-i18n="w3.p">The other team member selects a local destination path per folder. Everyone can name and place their folders differently.</p>
+      </div>
+      <div class="wstep">
+        <div class="wnum">✅</div>
+        <h3 data-i18n="w4.h">Sync runs</h3>
+        <p data-i18n="w4.p">P2P directly between Macs. No cloud server. Throughput visible in the menu status. Green badge when everything is in sync.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
+    <h2 class="section-title" data-i18n="feat.title">Project sync, not folder sync.</h2>
+    <p class="section-intro" data-i18n="feat.intro">Syncthing is powerful but technical. MalibuMesh adds a project layer on top: one invite, all folders, roles per person — no terminal, no config files.</p>
+    <div class="grid">
+      <div class="feature">
+        <span class="fico">🗂️</span>
+        <h3 data-i18n="f1.t">Project layer</h3>
+        <p data-i18n="f1.p">Multiple folders belong to the same project. One invite syncs them all — regardless of where the folders live on each person's Mac. No manual folder-by-folder setup.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">👥</span>
+        <h3 data-i18n="f2.t">Rollen und Berechtigungen</h3>
+        <p data-i18n="f2.p">Editor, Viewer, Receive-Only — configurable per person and per folder. The VFX supervisor sees only FX_Shots, the sound designer only the audio folders.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🔒</span>
+        <h3 data-i18n="f3.t">No cloud upload</h3>
+        <p data-i18n="f3.p">Files go directly from Mac to Mac — P2P. No Dropbox server, no AWS bucket. Footage stays in the production infrastructure. Even with 100 GB of raw material.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🖥️</span>
+        <h3 data-i18n="f4.t">Seed node (always-on)</h3>
+        <p data-i18n="f4.p">An optional always-on node — e.g. a NAS or VPS — keeps files available even when the main Mac is offline. Like your own mini cloud server, but P2P.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">📊</span>
+        <h3 data-i18n="f5.t">Menu bar status</h3>
+        <p data-i18n="f5.p">Green checkmark when everything is in sync. Running throughput and sync progress directly in the menu bar item — no window to open, no web interface.</p>
+      </div>
+      <div class="feature">
+        <span class="fico">🔄</span>
+        <h3 data-i18n="f6.t">New folders automatically</h3>
+        <p data-i18n="f6.p">When a folder is added to the project, all other team members get a prompt: "New folder — where?" No manual re-invite, no config change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="why.eyebrow">Why MalibuMesh</div>
+    <h2 class="section-title" data-i18n="why.title">The best of Syncthing — without the setup.</h2>
+    <div class="trust">
+      <div class="t"><div class="k" data-i18n="t1.k">📦 One invite = all folders</div><p data-i18n="t1.p">Syncthing and Resilio require a separate invite for each folder. With MalibuMesh you invite a person to the project — and all folders are shared in one step.</p></div>
+      <div class="t"><div class="k" data-i18n="t2.k">🔒 No subscription, no server</div><p data-i18n="t2.p">Resilio Sync Pro is subscription-based. Dropbox uploads to third-party servers. MalibuMesh uses an open-source engine, runs entirely locally, and needs no paid service.</p></div>
+      <div class="t"><div class="k" data-i18n="t3.k">🎬 Built for post-production</div><p data-i18n="t3.p">Production folders are large, distributed, and complex. MalibuMesh understands that: folders can live on different external drives, roles differ per project phase.</p></div>
+      <div class="t"><div class="k" data-i18n="t4.k">🖥️ Native macOS app</div><p data-i18n="t4.p">Syncthing runs in a browser interface. MalibuMesh is a native macOS app with a sidebar, menu bar item, and project view — exactly how Mac users expect it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="download">
+  <div class="wrap">
+    <div class="download">
+      <h2 data-i18n="dl.title">Download now.</h2>
+      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 14+.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibumediasync-updates/MalibuMesh-latest.dmg">
+          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 14+</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> MalibuMesh</div>
+        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
+        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="https://knuthake.de">knuthake.de</a>
+      </div>
+    </div>
+    <p class="disclaimer" data-i18n="foot.legal">MalibuMesh uses Syncthing as its sync engine. Syncthing is an open-source project (MPL-2.0 license). Studio Malibu is not affiliated with the Syncthing project. © 2026 Studio Malibu / Knut Hake.</p>
+  </div>
+</footer>
+
+<script>
+const T={
+  de:{
+    "nav.cta":"Jetzt laden",
+    "hero.pill":"🔄 P2P Folder Sync · Post-Production · macOS",
+    "hero.h1":'Ein Code.<br><span class="grad">Alle Ordner gesynct.</span>',
+    "hero.lead":"MalibuMesh synchronisiert Produktionsordner direkt zwischen Team-Mitgliedern — ohne Cloud-Upload, ohne gemeinsamen Server. Projekt-basiert: Eine Einladung, alle Ordner, Rollen pro Person.",
+    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 14+</small>",
+    "hero.micro":"P2P · Syncthing-Engine · Projekt-Layer · Kein Cloud-Upload · Rollen + Berechtigungen",
+    "demo.badge":"● Alles synchron",
+    "demo.synced":"Synchron",
+    "demo.syncing":"Syncing 47%",
+    "demo.members":"Tom, Lisa",
+    "demo.role":"Editor / Viewer",
+    "wf.eyebrow":"Der Workflow","wf.title":"Vier Schritte. Team synchronisiert.",
+    "w1.h":"Projekt anlegen","w1.p":"Projekt erstellen, Ordner hinzufügen — egal wo sie auf der externen Festplatte liegen.",
+    "w2.h":"Pairing-ID teilen","w2.p":"Einmalige Pairing-ID per iMessage oder Slack. Kein Account, kein Login, keine Cloud-Registrierung.",
+    "w3.h":"Pfade wählen","w3.p":"Das andere Team-Mitglied wählt lokal pro Ordner einen Zielpfad. Jeder kann seine Ordner anders nennen und ablegen.",
+    "w4.h":"Sync läuft","w4.p":"P2P direkt zwischen den Macs. Kein Cloud-Server. Durchsatz im Menü-Status sichtbar. Grüner Badge wenn alles synchron ist.",
+    "feat.eyebrow":"Was drin steckt","feat.title":"Projekt-Sync statt Ordner-Sync.",
+    "feat.intro":"Syncthing ist mächtig, aber technisch. MalibuMesh legt eine Projekt-Schicht drüber: eine Einladung, alle Ordner, Rollen pro Person — ohne Terminal und ohne Config-Dateien.",
+    "f1.t":"Projekt-Layer","f1.p":"Mehrere Ordner gehören zum selben Projekt. Eine Einladung synchronisiert alle — egal wo die Ordner auf den jeweiligen Macs liegen. Kein manuelles Ordner-für-Ordner-Setup.",
+    "f2.t":"Rollen und Berechtigungen","f2.p":"Editor, Viewer, Receive-Only — pro Person und pro Ordner separat konfigurierbar. Der VFX-Supervisor sieht nur FX_Shots, der Sounddesigner nur die Audio-Ordner.",
+    "f3.t":"Kein Cloud-Upload","f3.p":"Dateien gehen direkt von Mac zu Mac — P2P. Kein Dropbox-Server, kein AWS-Bucket. Footage bleibt in der Produktionsinfrastruktur. Auch bei 100 GB Raw-Material.",
+    "f4.t":"Seed Node (Always-On)","f4.p":"Ein optionaler Always-On-Knoten — z.B. ein NAS oder ein VPS — hält Dateien auch dann verfügbar wenn der Haupt-Mac offline ist. Wie ein eigener Mini-Cloud-Server, aber P2P.",
+    "f5.t":"Menüleisten-Status","f5.p":"Grüner Haken wenn alles synchron. Laufender Durchsatz und Sync-Fortschritt direkt im Menüleisten-Item — kein Fenster öffnen, kein Web-Interface.",
+    "f6.t":"Neue Ordner automatisch","f6.p":"Wenn ein Ordner zum Projekt hinzugefügt wird, bekommen alle anderen Team-Mitglieder einen Prompt: 'Neuer Ordner — wohin?' Kein manuelles Re-Invite, keine Config-Änderung.",
+    "why.eyebrow":"Warum MalibuMesh","why.title":"Das Beste aus Syncthing — ohne den Setup.",
+    "t1.k":"📦 Eine Einladung = alle Ordner","t1.p":"Syncthing und Resilio verlangen für jeden Ordner eine separate Einladung. Bei MalibuMesh lädt man eine Person ins Projekt ein — und alle Ordner werden in einem Schritt geteilt.",
+    "t2.k":"🔒 Kein Abo, kein Server","t2.p":"Resilio Sync Pro ist Subscription-basiert. Dropbox lädt auf fremde Server. MalibuMesh nutzt eine Open-Source-Engine, läuft vollständig lokal und braucht keinen bezahlten Dienst.",
+    "t3.k":"🎬 Gemacht für Post-Production","t3.p":"Produktionsordner sind groß, verteilt und komplex. MalibuMesh versteht das: Ordner können auf verschiedenen externen Festplatten liegen, Rollen unterscheiden sich pro Phase.",
+    "t4.k":"🖥️ Native macOS App","t4.p":"Syncthing läuft im Browser-Interface. MalibuMesh ist eine native macOS-App mit Sidebar, Menüleisten-Item und Projekt-Ansicht — so wie man es vom Mac kennt.",
+    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 14+.",
+    "dl.btn":"Mac-App laden<small>DMG · macOS 14+</small>",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"MalibuMesh nutzt Syncthing als Sync-Engine. Syncthing ist ein Open-Source-Projekt (MPL-2.0-Lizenz). Studio Malibu steht in keiner Verbindung zum Syncthing-Projekt. © 2026 Studio Malibu / Knut Hake."
+  },
+  en:{
+    "nav.cta":"Download",
+    "hero.pill":"🔄 P2P Folder Sync · Post-Production · macOS",
+    "hero.h1":'One code.<br><span class="grad">All folders synced.</span>',
+    "hero.lead":"MalibuMesh synchronizes production folders directly between team members — without cloud upload, without a shared server. Project-based: one invite, all folders, roles per person.",
+    "hero.btn":"Download for Mac<small>Notarized · macOS 14+</small>",
+    "hero.micro":"P2P · Syncthing engine · Project layer · No cloud upload · Roles + permissions",
+    "demo.badge":"● All in sync",
+    "demo.synced":"In sync",
+    "demo.syncing":"Syncing 47%",
+    "demo.members":"Tom, Lisa",
+    "demo.role":"Editor / Viewer",
+    "wf.eyebrow":"The Workflow","wf.title":"Four steps. Team synchronized.",
+    "w1.h":"Create project","w1.p":"Create a project, add folders — regardless of where they live on the external drive.",
+    "w2.h":"Share pairing ID","w2.p":"One-time pairing ID via iMessage or Slack. No account, no login, no cloud registration.",
+    "w3.h":"Choose paths","w3.p":"The other team member selects a local destination path per folder. Everyone can name and place their folders differently.",
+    "w4.h":"Sync runs","w4.p":"P2P directly between Macs. No cloud server. Throughput visible in the menu status. Green badge when everything is in sync.",
+    "feat.eyebrow":"What's inside","feat.title":"Project sync, not folder sync.",
+    "feat.intro":"Syncthing is powerful but technical. MalibuMesh adds a project layer on top: one invite, all folders, roles per person — no terminal, no config files.",
+    "f1.t":"Project layer","f1.p":"Multiple folders belong to the same project. One invite syncs them all — regardless of where the folders live on each person's Mac. No manual folder-by-folder setup.",
+    "f2.t":"Roles and permissions","f2.p":"Editor, Viewer, Receive-Only — configurable per person and per folder. The VFX supervisor sees only FX_Shots, the sound designer only the audio folders.",
+    "f3.t":"No cloud upload","f3.p":"Files go directly from Mac to Mac — P2P. No Dropbox server, no AWS bucket. Footage stays in the production infrastructure. Even with 100 GB of raw material.",
+    "f4.t":"Seed node (always-on)","f4.p":"An optional always-on node — e.g. a NAS or VPS — keeps files available even when the main Mac is offline. Like your own mini cloud server, but P2P.",
+    "f5.t":"Menu bar status","f5.p":"Green checkmark when everything is in sync. Running throughput and sync progress directly in the menu bar item — no window to open, no web interface.",
+    "f6.t":"New folders automatically","f6.p":"When a folder is added to the project, all other team members get a prompt: 'New folder — where?' No manual re-invite, no config change.",
+    "why.eyebrow":"Why MalibuMesh","why.title":"The best of Syncthing — without the setup.",
+    "t1.k":"📦 One invite = all folders","t1.p":"Syncthing and Resilio require a separate invite for each folder. With MalibuMesh you invite a person to the project — and all folders are shared in one step.",
+    "t2.k":"🔒 No subscription, no server","t2.p":"Resilio Sync Pro is subscription-based. Dropbox uploads to third-party servers. MalibuMesh uses an open-source engine, runs entirely locally, and needs no paid service.",
+    "t3.k":"🎬 Built for post-production","t3.p":"Production folders are large, distributed, and complex. MalibuMesh understands that: folders can live on different external drives, roles differ per project phase.",
+    "t4.k":"🖥️ Native macOS app","t4.p":"Syncthing runs in a browser interface. MalibuMesh is a native macOS app with a sidebar, menu bar item, and project view — exactly how Mac users expect it.",
+    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 14+.",
+    "dl.btn":"Download for Mac<small>DMG · macOS 14+</small>",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"MalibuMesh uses Syncthing as its sync engine. Syncthing is an open-source project (MPL-2.0 license). Studio Malibu is not affiliated with the Syncthing project. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+function applyLang(l){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=T[l][el.getAttribute('data-i18n')];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  localStorage.setItem('malibu-lang',l);
+}
+function setLang(l){applyLang(l);}
+(function(){
+  const s=localStorage.getItem('malibu-lang');
+  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
+  applyLang(s||b);
+})();
+
+</script>
+</body>
+</html>
