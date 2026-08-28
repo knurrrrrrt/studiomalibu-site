@@ -67,6 +67,18 @@
     "#sm-nav .sm-links>a:hover{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
     "#sm-nav .sm-links>a.active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
     "#sm-nav .sm-spacer{flex:1;min-width:12px;}" +
+    "#sm-menu{position:relative;flex:none;display:none;align-items:center;}" +
+    "#sm-menu.sm-menu-visible{display:flex;}" +
+    "#sm-menu-toggle{display:flex;align-items:center;gap:5px;background:none;border:none;padding:7px 9px;border-radius:7px;color:#a5a5ad;cursor:pointer;font:inherit;font-weight:500;white-space:nowrap;}" +
+    "#sm-menu-toggle:hover,#sm-menu.sm-open #sm-menu-toggle{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
+    "#sm-menu-toggle svg{width:15px;height:15px;flex:none;}" +
+    "#sm-menu-panel{position:absolute;top:100%;right:0;margin-top:8px;display:none;flex-direction:column;min-width:220px;" +
+    "background:rgba(16,16,20,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);" +
+    "border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:8px;box-shadow:0 16px 40px rgba(0,0,0,0.5);}" +
+    "#sm-menu.sm-open #sm-menu-panel{display:flex;}" +
+    "#sm-menu-panel a{padding:8px 10px;border-radius:8px;color:#c8c8ce;font-weight:500;white-space:nowrap;}" +
+    "#sm-menu-panel a:hover{background:rgba(255,255,255,0.07);color:#fff;}" +
+    "#sm-menu-panel a.active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
     "#sm-dd{position:relative;flex:none;display:flex;align-items:center;border-radius:7px;color:#a5a5ad;transition:background .15s,color .15s;}" +
     "#sm-dd:hover,#sm-dd.sm-open{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
     "#sm-dd.sm-dd-active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
@@ -124,6 +136,12 @@
         '<div id="sm-dd-panel">' + panelHtml + '</div>' +
       '</div>' +
       '<div class="sm-links">' + linksHtml + '</div>' +
+      '<div id="sm-menu">' +
+        '<button id="sm-menu-toggle" type="button" aria-label="More pages">' +
+          '<svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>' +
+        '</button>' +
+        '<div id="sm-menu-panel">' + linksHtml + '</div>' +
+      '</div>' +
       '<div class="sm-spacer"></div>' +
       '<a class="sm-discord" href="https://discord.gg/sgFQ7WZtN4" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord" title="Join our Discord">' +
         '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>' +
@@ -139,7 +157,28 @@
     e.stopPropagation();
     dd.classList.toggle("sm-open");
   });
+
+  var menu = document.getElementById("sm-menu");
+  var menuToggle = document.getElementById("sm-menu-toggle");
+  var smLinks = nav.querySelector(".sm-links");
+  menuToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    menu.classList.toggle("sm-open");
+  });
   document.addEventListener("click", function (e) {
     if (!dd.contains(e.target)) dd.classList.remove("sm-open");
+    if (!menu.contains(e.target)) menu.classList.remove("sm-open");
   });
+
+  // .sm-links can scroll horizontally, but that's not discoverable (hidden
+  // scrollbar, no visual cue) -- so whenever it doesn't fully fit, swap in
+  // a proper dropdown menu that guarantees every page stays reachable.
+  function checkNavOverflow() {
+    var overflowing = smLinks.scrollWidth > smLinks.clientWidth + 1;
+    menu.classList.toggle("sm-menu-visible", overflowing);
+    if (!overflowing) menu.classList.remove("sm-open");
+  }
+  checkNavOverflow();
+  window.addEventListener("resize", checkNavOverflow);
 })();
