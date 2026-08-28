@@ -5,58 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FCP Talent Pool · Studio Malibu Berlin</title>
 <meta name="description" content="Editors, assistant editors, and workflow builders who work with Final Cut Pro on real productions.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    color-scheme: dark;
-    --bg: #0e0f12; --panel: #17181c; --panel-hover: #1d1e23; --border: #2a2b30;
-    --text: #e8e8ea; --muted: #9a9aa2; --accent: #5ea1ff;
-    --role-editor: #5ea1ff; --role-assistant: #7bc67e; --role-workflow: #b968ff;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: inherit; }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
-  .eyebrow { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 0.6rem; }
-  h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.9rem; }
-  .lede { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 620px; margin: 0 0 2rem; }
+:root{
+  --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
+  --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
+  --gold:#D9A441; --gold-dim:#8A6A2E;
+  --c-editor:#5B8DD9; --c-assistant:#7BAE6F; --c-workflow:#B07BC9;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;}
+a{color:inherit;}
+.wrap{max-width:1100px;margin:0 auto;padding:2.2rem 2rem 5rem;}
+.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.3rem;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spacing:0.01em;margin:0;font-weight:400;}
+.lede{font-size:0.92rem;color:var(--muted);line-height:1.6;max-width:640px;margin:0 0 1.6rem;}
 
-  .cta {
-    display: block; padding: 1.6rem 1.7rem; border-radius: 16px;
-    background: var(--panel); border: 1px solid var(--border); margin-bottom: 2.6rem;
-  }
-  .cta h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: #fff; }
-  .cta p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0 0 1.1rem; }
-  .cta a.btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.88rem; font-weight: 600; color: #fff;
-    background: var(--accent); padding: 0.65rem 1.2rem; border-radius: 10px; text-decoration: none;
-  }
-  .cta a.btn:hover { opacity: 0.9; }
+.cta{display:block;padding:1.4rem 1.6rem;border-radius:14px;background:var(--panel);border:1px solid var(--line);margin-bottom:2rem;}
+.cta h2{font-size:1rem;margin:0 0 0.4rem;color:#fff;font-family:'Inter',sans-serif;}
+.cta p{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0 0 0.9rem;}
+.cta a.btn{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.84rem;font-weight:600;color:#1A1206;background:var(--gold);padding:0.6rem 1.1rem;border-radius:8px;text-decoration:none;}
+.cta a.btn:hover{background:#e8b559;}
 
-  .empty { padding: 3rem 1.5rem; text-align: center; border: 1px dashed var(--border); border-radius: 16px; color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+.search-input{width:100%;max-width:320px;font:inherit;font-size:0.82rem;padding:0.5rem 0.8rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-bottom:1rem;}
+.search-input::placeholder{color:var(--dim);}
+.search-input:focus{outline:none;border-color:var(--gold-dim);}
+#filters{display:flex;flex-direction:column;gap:0.5rem;padding-bottom:1.3rem;margin-bottom:1.6rem;border-bottom:1px solid var(--line);}
+.filter-group{display:flex;align-items:center;gap:0.7rem;}
+.filter-label{flex:0 0 auto;width:6.2rem;font-size:0.62rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--dim);}
+.filter-chips{display:flex;gap:0.35rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.filter-chips::-webkit-scrollbar{display:none;}
+.chip{flex:0 0 auto;white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+.chip:hover{border-color:var(--gold-dim);color:var(--text);}
+.chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
 
-  .roster { display: flex; flex-direction: column; gap: 0.8rem; }
-  .person { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem 1.4rem; }
-  .person-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  .person h3 { font-size: 1rem; margin: 0; color: #fff; }
-  .roles { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .role-tag { font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; color: #0e0f12; }
-  .role-tag.editor { background: var(--role-editor); }
-  .role-tag.assistant { background: var(--role-assistant); }
-  .role-tag.workflow { background: var(--role-workflow); }
-  .person .resume { font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin: 0.6rem 0 0; }
-  .person .meta { font-size: 0.78rem; color: var(--dim, var(--muted)); margin-top: 0.6rem; }
-  .person .meta a { color: var(--accent); text-decoration: none; }
+.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1.2rem;}
+.grid{display:flex;flex-direction:column;gap:0.7rem;}
+.person{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.4rem;}
+.person-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.person h3{font-size:1rem;margin:0;color:#fff;font-family:'Inter',sans-serif;}
+.tags{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.tag{font-size:0.62rem;letter-spacing:0.03em;padding:0.22rem 0.55rem;border-radius:100px;white-space:nowrap;border:1px solid var(--line);color:var(--muted);}
+.tag.role-editor{color:#fff;background:var(--c-editor);border-color:var(--c-editor);}
+.tag.role-assistant{color:#fff;background:var(--c-assistant);border-color:var(--c-assistant);}
+.tag.role-workflow{color:#fff;background:var(--c-workflow);border-color:var(--c-workflow);}
+.person .resume{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0.6rem 0 0;}
+.meta-row{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.7rem;}
+.meta-row a{color:var(--gold);text-decoration:none;font-size:0.78rem;}
 
-  footer { color: var(--muted); font-size: 0.82rem; margin-top: 3rem; opacity: 0.85; }
+.empty{padding:3rem 1.5rem;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:0.9rem;line-height:1.6;}
+
+footer.site-footer{margin-top:3rem;font-size:0.8rem;color:var(--dim);}
+footer.site-footer a{text-decoration:underline;color:var(--dim);}
+@media(max-width:600px){h1{font-size:1.7rem;}}
 </style>
 </head>
 <body>
 <script src="/nav.js" defer></script>
 <div class="wrap">
-  <p class="eyebrow">A working pool, not a directory of names</p>
-  <h1>FCP Talent Pool</h1>
-  <p class="lede">Editors, assistant editors, and workflow builders who actually work in Final Cut Pro — with real productions and real experience behind their listing. Especially useful for finding assistant editors, where FCP fluency is hard to screen for from a CV alone.</p>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">A working pool, not a directory of names</p>
+      <h1>FCP Talent Pool</h1>
+    </div>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search by name, resume, or location&hellip;">
+  </div>
+  <p class="lede">Editors, assistant editors, and workflow builders who actually work in Final Cut Pro &mdash; with real productions and real experience behind their listing. Especially useful for finding assistant editors, where FCP fluency is hard to screen for from a CV alone.</p>
 
   <div class="cta">
     <h2>Join the pool</h2>
@@ -64,14 +79,145 @@
     <a class="btn" href="https://app.notion.com/p/209864892e5d4c5e8dfeafcd52694cc3?v=3cab7d0d78478123a917000c22c45858" target="_blank" rel="noopener noreferrer">Submit your profile &rarr;</a>
   </div>
 
-  <div class="roster" id="roster"></div>
-  <div class="empty" id="emptyState">
-    No one's listed yet &mdash; be the first to join the pool above.
-  </div>
+  <div id="filters"></div>
+  <p class="count-note" id="countNote"></p>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="emptyState" style="display:none;">No one matches these filters yet.</div>
 
-  <footer>
+  <footer class="site-footer">
     Listings are added and updated by hand after review &mdash; not a live feed.
   </footer>
 </div>
+
+<script id="peopleData" type="application/json">[]</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('peopleData').textContent);
+  var ROLES = ['Editor','Assistant Editor','Workflow Builder'];
+  var ROLE_CLASS = {'Editor':'role-editor','Assistant Editor':'role-assistant','Workflow Builder':'role-workflow'};
+
+  DATA.forEach(function(d){
+    d.text = [d.name, d.resume, d.country, (d.roles||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+  });
+
+  var countries = [];
+  DATA.forEach(function(d){ if (d.country && countries.indexOf(d.country) === -1) countries.push(d.country); });
+  countries.sort();
+
+  var state = { role: 'All', country: 'All', remote: 'All', q: '' };
+
+  function renderFilters(){
+    var wrap = document.getElementById('filters');
+    wrap.innerHTML = '';
+
+    var roleRow = document.createElement('div');
+    roleRow.className = 'filter-group';
+    roleRow.innerHTML = '<span class="filter-label">Role</span>';
+    var roleChips = document.createElement('div');
+    roleChips.className = 'filter-chips';
+    ['All'].concat(ROLES).forEach(function(r){
+      var c = document.createElement('button');
+      c.className = 'chip' + (state.role === r ? ' active' : '');
+      c.textContent = r;
+      c.onclick = function(){ state.role = r; renderFilters(); renderGrid(); };
+      roleChips.appendChild(c);
+    });
+    roleRow.appendChild(roleChips);
+    wrap.appendChild(roleRow);
+
+    if (countries.length) {
+      var countryRow = document.createElement('div');
+      countryRow.className = 'filter-group';
+      countryRow.innerHTML = '<span class="filter-label">Location</span>';
+      var countryChips = document.createElement('div');
+      countryChips.className = 'filter-chips';
+      ['All'].concat(countries).forEach(function(c0){
+        var c = document.createElement('button');
+        c.className = 'chip' + (state.country === c0 ? ' active' : '');
+        c.textContent = c0;
+        c.onclick = function(){ state.country = c0; renderFilters(); renderGrid(); };
+        countryChips.appendChild(c);
+      });
+      countryRow.appendChild(countryChips);
+      wrap.appendChild(countryRow);
+    }
+
+    var remoteRow = document.createElement('div');
+    remoteRow.className = 'filter-group';
+    remoteRow.innerHTML = '<span class="filter-label">Remote</span>';
+    var remoteChips = document.createElement('div');
+    remoteChips.className = 'filter-chips';
+    ['All', 'Remote-capable', 'Has own system'].forEach(function(r){
+      var c = document.createElement('button');
+      c.className = 'chip' + (state.remote === r ? ' active' : '');
+      c.textContent = r;
+      c.onclick = function(){ state.remote = r; renderFilters(); renderGrid(); };
+      remoteChips.appendChild(c);
+    });
+    remoteRow.appendChild(remoteChips);
+    wrap.appendChild(remoteRow);
+  }
+
+  function matches(d){
+    if (state.role !== 'All' && (d.roles||[]).indexOf(state.role) === -1) return false;
+    if (state.country !== 'All' && d.country !== state.country) return false;
+    if (state.remote === 'Remote-capable' && !d.remote) return false;
+    if (state.remote === 'Has own system' && !d.ownSystem) return false;
+    if (state.q && d.text.indexOf(state.q) === -1) return false;
+    return true;
+  }
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function renderCard(d){
+    var tags = (d.roles||[]).map(function(r){
+      return '<span class="tag ' + (ROLE_CLASS[r]||'') + '">' + escapeHtml(r) + '</span>';
+    }).join('');
+
+    var meta = '';
+    if (d.country) meta += '<span class="tag">' + escapeHtml(d.country) + '</span>';
+    if (d.years) meta += '<span class="tag">' + d.years + ' yrs with FCP</span>';
+    if (d.remote) meta += '<span class="tag">Remote-capable</span>';
+    if (d.ownSystem) meta += '<span class="tag">Has own system</span>';
+    if (d.showContact && d.website) meta += '<a href="' + escapeHtml(d.website) + '" target="_blank" rel="noopener noreferrer">Portfolio &rarr;</a>';
+    if (d.showContact && d.email) meta += '<a href="mailto:' + escapeHtml(d.email) + '">' + escapeHtml(d.email) + '</a>';
+
+    return '<div class="person">' +
+      '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
+      (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
+      (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
+      '</div>';
+  }
+
+  function renderGrid(){
+    var filtered = DATA.filter(matches);
+    document.getElementById('grid').innerHTML = filtered.map(renderCard).join('');
+    document.getElementById('countNote').textContent = DATA.length ? (filtered.length + ' of ' + DATA.length + ' listed') : '';
+    document.getElementById('emptyState').style.display = (DATA.length && !filtered.length) ? 'block' : 'none';
+    document.getElementById('grid').style.display = filtered.length ? 'flex' : 'none';
+  }
+
+  document.getElementById('searchInput').addEventListener('input', function(e){
+    state.q = e.target.value.trim().toLowerCase();
+    renderGrid();
+  });
+
+  if (DATA.length) {
+    renderFilters();
+  } else {
+    document.getElementById('filters').style.display = 'none';
+    document.getElementById('searchInput').style.display = 'none';
+  }
+  renderGrid();
+  if (!DATA.length) {
+    document.getElementById('emptyState').style.display = 'block';
+    document.getElementById('emptyState').textContent = "No one's listed yet — be the first to join the pool above.";
+  }
+})();
+</script>
 </body>
 </html>
