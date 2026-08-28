@@ -65,15 +65,13 @@
     "#sm-nav .sm-links>a:hover{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
     "#sm-nav .sm-links>a.active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
     "#sm-nav .sm-spacer{flex:1;min-width:12px;}" +
-    "#sm-dd{position:relative;flex:none;}" +
-    "#sm-dd{display:flex;align-items:center;}" +
-    "#sm-dd .sm-dd-trigger{display:flex;align-items:center;padding:7px 4px 7px 11px;border-radius:7px;color:#a5a5ad;font-weight:500;white-space:nowrap;transition:background .15s,color .15s;}" +
-    "#sm-dd .sm-dd-trigger:hover{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
-    "#sm-dd .sm-dd-trigger.active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
+    "#sm-dd{position:relative;flex:none;display:flex;align-items:center;border-radius:7px;color:#a5a5ad;transition:background .15s,color .15s;}" +
+    "#sm-dd:hover,#sm-dd.sm-open{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
+    "#sm-dd.sm-dd-active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
+    "#sm-dd .sm-dd-trigger{display:flex;align-items:center;padding:7px 2px 7px 11px;color:inherit;font-weight:500;white-space:nowrap;}" +
     "#sm-dd .sm-dd-caret{width:9px;height:9px;flex:none;opacity:0.7;transition:transform .15s;}" +
     "#sm-dd.sm-open .sm-dd-caret{transform:rotate(180deg);}" +
-    "#sm-dd .sm-dd-toggle{display:flex;align-items:center;background:none;border:none;padding:7px 8px 7px 0;margin-left:-6px;color:#a5a5ad;cursor:pointer;border-radius:7px;transition:background .15s,color .15s;}" +
-    "#sm-dd .sm-dd-toggle:hover,#sm-dd.sm-open .sm-dd-toggle{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
+    "#sm-dd .sm-dd-toggle{display:flex;align-items:center;background:none;border:none;padding:7px 10px 7px 2px;color:inherit;cursor:pointer;}" +
     "#sm-dd-panel{position:absolute;top:100%;left:0;margin-top:8px;display:none;grid-template-columns:repeat(3,168px);gap:22px;" +
     "background:rgba(16,16,20,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);" +
     "border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px;box-shadow:0 16px 40px rgba(0,0,0,0.5);}" +
@@ -116,8 +114,8 @@
   nav.innerHTML =
     '<div class="sm-inner">' +
       '<a class="sm-brand" href="/"><span class="sm-dot"></span><span class="sm-word">Studio Malibu Berlin</span></a>' +
-      '<div id="sm-dd">' +
-        '<a class="sm-dd-trigger' + (isActive("/apps/") ? ' active' : '') + '" href="/apps/">Apps</a>' +
+      '<div id="sm-dd"' + (isActive("/apps/") ? ' class="sm-dd-active"' : '') + '>' +
+        '<a class="sm-dd-trigger" href="/apps/">Apps</a>' +
         '<button class="sm-dd-toggle" type="button" aria-label="Toggle apps menu">' +
           '<svg class="sm-dd-caret" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
         '</button>' +
