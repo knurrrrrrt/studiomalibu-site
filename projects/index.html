@@ -36,6 +36,7 @@ a{color:inherit;}
 .nav-back{display:inline-block;font-size:0.8rem;color:var(--muted);text-decoration:none;margin-bottom:1.1rem;}
 .nav-back:hover{color:var(--text);}
 .hero{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.3rem;}
 h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spacing:0.01em;margin:0;font-weight:400;}
 .search-input{width:100%;max-width:320px;font:inherit;font-size:0.82rem;padding:0.5rem 0.8rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);}
 .search-input::placeholder{color:var(--dim);}
@@ -82,7 +83,10 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 <div class="wrap">
   <a class="nav-back" href="/">&larr; Studio Malibu Berlin</a>
   <div class="hero">
-    <h1>FCP Projects Around the World</h1>
+    <div>
+      <p class="eyebrow">A showcase by editors around the world</p>
+      <h1>FCP Projects Around the World</h1>
+    </div>
     <input type="text" id="searchInput" class="search-input" placeholder="Search by title, director, editor, distributor, or production company&hellip;">
   </div>
   <div id="filters"></div>
