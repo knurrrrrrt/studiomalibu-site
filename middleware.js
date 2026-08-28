@@ -3,7 +3,7 @@ export const config = {
 };
 
 const USERNAME = 'steven';
-const PASSWORD = 'fcp-curriculum-2026';
+const PASSWORD = 'ThisShouldSeeTheWorld';
 
 export default function middleware(request) {
   const auth = request.headers.get('authorization');
