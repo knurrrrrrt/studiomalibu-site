@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Videos &amp; Infographics · Studio Malibu Berlin</title>
+<meta name="description" content="Curated Final Cut Pro tutorial videos grouped by creator, plus Payton's FCPX quick-reference infographics.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
+  --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
+  --gold:#D9A441; --gold-dim:#8A6A2E;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;}
+a{color:inherit;}
+.wrap{max-width:1100px;margin:0 auto;padding:2.2rem 2rem 5rem;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.4rem;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spacing:0.01em;margin:0 0 1.1rem;font-weight:400;}
+
+.section-toggle{display:flex;gap:0.5rem;margin-bottom:1.6rem;border-bottom:1px solid var(--line);}
+.section-toggle button{font:inherit;font-size:0.95rem;font-weight:600;color:var(--dim);background:none;border:none;cursor:pointer;padding:0.6rem 0.2rem 0.8rem;margin-right:1.4rem;border-bottom:2px solid transparent;font-family:'Inter',sans-serif;}
+.section-toggle button.active{color:var(--text);border-bottom-color:var(--gold);}
+
+.search-input{width:100%;max-width:340px;font:inherit;font-size:0.82rem;padding:0.55rem 0.8rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-bottom:1rem;}
+.search-input::placeholder{color:var(--dim);}
+.search-input:focus{outline:none;border-color:var(--gold-dim);}
+
+.filter-chips{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+.chip{white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+.chip:hover{border-color:var(--gold-dim);color:var(--text);}
+.chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
+
+.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1.2rem;}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;}
+.video-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.video-thumb{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.video-thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.video-thumb .play svg{width:52px;height:52px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));}
+.video-thumb iframe{width:100%;height:100%;border:0;display:block;}
+.video-card .meta{padding:0.8rem 0.9rem;}
+.video-card h3{font-size:0.85rem;font-weight:600;margin:0 0 0.25rem;line-height:1.35;color:var(--text);}
+.video-card p{font-size:0.75rem;color:var(--dim);margin:0;}
+.hidden{display:none !important;}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;}
+.info-card img{width:100%;display:block;}
+.info-note{font-size:0.82rem;color:var(--dim);line-height:1.6;margin-top:1.6rem;border-left:2px solid var(--gold-dim);padding-left:0.8rem;}
+
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;padding:2rem;z-index:1000;cursor:zoom-out;}
+.lightbox img{max-width:100%;max-height:100%;border-radius:8px;}
+
+footer.site-footer{margin-top:3rem;font-size:0.8rem;color:var(--dim);}
+footer.site-footer a{text-decoration:underline;color:var(--dim);}
+@media(max-width:600px){h1{font-size:1.8rem;}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <p class="eyebrow">Curated, not comprehensive &mdash; grouped by who made it</p>
+  <h1>Videos &amp; Infographics</h1>
+
+  <div class="section-toggle">
+    <button id="tabVideosBtn" class="active">Videos</button>
+    <button id="tabInfoBtn">Infographics</button>
+  </div>
+
+  <div id="videosSection">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search video titles&hellip;">
+    <div class="filter-chips" id="creatorChips"></div>
+    <p class="count-note" id="countNote"></p>
+    <div class="video-grid" id="videoGrid"></div>
+  </div>
+
+  <div id="infoSection" class="hidden">
+    <div class="info-grid" id="infoGrid"></div>
+    <p class="info-note">We're still cataloguing Payton's full library of FCPX tip graphics &mdash; more are being added as we track them down.</p>
+  </div>
+
+  <footer class="site-footer">
+    Know a great FCP tutorial or infographic we're missing? Get in touch via <a href="https://knuthake.de">knuthake.de</a>.
+  </footer>
+</div>
+
+<script id="videoData" type="application/json">[{"id":"HqUP7Zgeuck","title":"Learn Final Cut Pro in Under 60 Minutes","author":"Ripple Training"},{"id":"OZXimf5y1wE","title":"The Greg Protocols - Part 1: one editor's journey from Fast9 to Final Cut 10","author":"Unauthorized FCPX"},{"id":"QxMH_w1khZk","title":"Ep 2 - The Browser","author":"Unauthorized FCPX"},{"id":"c92ddJjudys","title":"Ep 5 - Sharing and Deliveries","author":"Unauthorized FCPX"},{"id":"97i0IB5K52U","title":"Reverb Effect - FCP FTW","author":"Thomas Grove Carter"},{"id":"UM1hZRw0UTU","title":"Ways of trimming pt1 - FCP FTW","author":"Thomas Grove Carter"},{"id":"pnwn_IFscMk","title":"Ways of trimming pt2 - FCP FTW","author":"Thomas Grove Carter"},{"id":"t0jVjiPK5Pk","title":"Ways of trimming pt3 - FCP FTW","author":"Thomas Grove Carter"},{"id":"FkqtmzSONfg","title":"Export audio stems with Roles - FCP FTW","author":"Thomas Grove Carter"},{"id":"mRbJH-GDumg","title":"Top 10.3 features in the new Final Cut Pro X","author":"Thomas Grove Carter"},{"id":"jkSeS2FTYPk","title":"Getting Started in FCP 10.4: Exploring the User Interface","author":"Ripple Training"},{"id":"mVEwc1wB478","title":"Getting Starting in FCP 10.4: Assembling a Movie","author":"Ripple Training"},{"id":"JrTJ3GXV2eQ","title":"Getting Started in FCP 10.4: Adding Effects","author":"Ripple Training"},{"id":"JIgQpbYdaEY","title":"Avid & FCPX - Omit a shot in Final Cut X vs Avid","author":"Hollywood:FCP"},{"id":"syfRvfGAscE","title":"Getting Started with Final Cut Pro: Beginners Tutorial","author":"Tyler Stalman"},{"id":"jK_L9C71OtU","title":"The Greg Protocols - Part 2: One month in...","author":"Unauthorized FCPX"},{"id":"KDs8Pi4saAw","title":"Ep 3 - Viewer & Timeline Part 1","author":"Unauthorized FCPX"},{"id":"KIsaf62oeLs","title":"Ep 6 - Assistant Editing Basics - With Jay Frosting","author":"Unauthorized FCPX"},{"id":"bNsJxKN_4z0","title":"Using Clip Connections - FCP FTW","author":"Thomas Grove Carter"},{"id":"oYwrjH0wnRU","title":"Collapse your stacked timeline - FCP FTW","author":"Thomas Grove Carter"},{"id":"vszt5ohr4Wk","title":"More detailed control - FCP FTW","author":"Thomas Grove Carter"},{"id":"Skt6L_v359Q","title":"Reject the bad / Favourite the good - FCP FTW","author":"Thomas Grove Carter"},{"id":"JNH2rvVgu1s","title":"Connected Storylines - FCP FTW","author":"Thomas Grove Carter"},{"id":"X7-DkoK2NZg","title":"Dupe Detection in Final Cut Pro?! - FCP FTW","author":"Thomas Grove Carter"},{"id":"2V_8-X37f3Y","title":"Play back clips in sequence, without making a sequence - FCP FTW","author":"Thomas Grove Carter"},{"id":"Xvn7x2NWlBc","title":"Getting Started in FCP 10.4: Importing Media","author":"Ripple Training"},{"id":"vINXQJQO9O8","title":"Getting Started in FCP 10.4: Working with Sound","author":"Ripple Training"},{"id":"-H_rfppYJy0","title":"Getting Started in FCP 10.4: Color Correcting","author":"Ripple Training"},{"id":"lcojnS_IMHE","title":"Getting Started in FCP 10.4: Sharing Your Movie","author":"Ripple Training"},{"id":"JMQcZH7V_aA","title":"How To Do Hollywood Movie TRANSITIONS and EFFECTS in Final Cut Pro X","author":"Bryan Francisco"},{"id":"f0C3zfcdldA","title":"Timeline Crash Course - for Professional Editors - Bonus Episode!","author":"Unauthorized FCPX"},{"id":"BBKkfO2mF90","title":"Ep 1 - Overview","author":"Unauthorized FCPX"},{"id":"Z7NVqfdkp84","title":"Ep 4 - Viewer and Timeline Part 2","author":"Unauthorized FCPX"},{"id":"LAym_YdlT_o","title":"Ep 7 - Basic Film Editing","author":"Unauthorized FCPX"},{"id":"b7D5nBOFRko","title":"What clips (or bits of clips) have you used? - FCP FTW","author":"Thomas Grove Carter"},{"id":"TmJ7RqxUjtc","title":"Clips don't fit the frame? - FCP FTW","author":"Thomas Grove Carter"},{"id":"IFoYpsXFro0","title":"Select clips to create a sequence in that order - FCP FTW","author":"Thomas Grove Carter"},{"id":"iRXfnINl-8s","title":"Multicam editing in a Music Video - FCP FTW","author":"Thomas Grove Carter"},{"id":"Fb_NhRBZLWc","title":"Custom Speed Shortcuts - FCP FTW","author":"Thomas Grove Carter"},{"id":"jlv4BsRy7X4","title":"Organise you timeline with Roles - FCP FTW","author":"Thomas Grove Carter"},{"id":"brH-kfoy2tA","title":"Get clips to the timeline quickly - FCP FTW","author":"Thomas Grove Carter"},{"id":"4aKzkMEbrzs","title":"Getting Started in FCP 10.4: Adding Titles & Transitions","author":"Ripple Training"},{"id":"xypjLcoId4k","title":"Getting Started in FCP 10.4: Editing 360 Movies","author":"Ripple Training"},{"id":"dO4EDMG5cSg","title":"Avid & FCPX - Swapping Shots in Final Cut X vs Avid","author":"Hollywood:FCP"}]</script>
+<script>
+(function(){
+  var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
+  var DEFAULT_CREATOR = 'Thomas Grove Carter';
+
+  var creators = [];
+  VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
+  creators.sort(function(a,b){
+    if (a === DEFAULT_CREATOR) return -1;
+    if (b === DEFAULT_CREATOR) return 1;
+    return a.localeCompare(b);
+  });
+
+  var state = { creator: creators.indexOf(DEFAULT_CREATOR) !== -1 ? DEFAULT_CREATOR : 'All', q: '' };
+
+  function renderChips(){
+    var wrap = document.getElementById('creatorChips');
+    wrap.innerHTML = '';
+    ['All'].concat(creators).forEach(function(c){
+      var b = document.createElement('button');
+      b.className = 'chip' + (state.creator === c ? ' active' : '');
+      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')');
+      b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
+      wrap.appendChild(b);
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function matches(v){
+    if (state.creator !== 'All' && v.author !== state.creator) return false;
+    if (state.q && v.title.toLowerCase().indexOf(state.q) === -1) return false;
+    return true;
+  }
+
+  function renderCard(v){
+    var div = document.createElement('div');
+    div.className = 'video-card';
+    div.innerHTML =
+      '<div class="video-thumb" data-id="' + v.id + '">' +
+        '<img src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg" alt="" loading="lazy">' +
+        '<div class="play"><svg viewBox="0 0 68 48"><path d="M66.5,7.7c-0.8-2.9-2.5-5.2-5.4-6C55.8,0,34,0,34,0S12.2,0,6.9,1.7c-2.9,0.8-5.2,3.1-5.4,6C0,13.1,0,24,0,24s0,10.9,1.5,16.3c0.8,2.9,2.5,5.2,5.4,6C12.2,48,34,48,34,48s21.8,0,27.1-1.7c2.9-0.8,4.6-3.1,5.4-6C68,34.9,68,24,68,24S68,13.1,66.5,7.7z" fill="#D9A441"></path><path d="M 45,24 27,14 27,34" fill="#1A1206"></path></svg></div>' +
+      '</div>' +
+      '<div class="meta"><h3>' + escapeHtml(v.title) + '</h3><p>' + escapeHtml(v.author) + '</p></div>';
+    div.querySelector('.video-thumb').addEventListener('click', function(){
+      this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    });
+    return div;
+  }
+
+  function renderGrid(){
+    var filtered = VIDEOS.filter(matches);
+    var grid = document.getElementById('videoGrid');
+    grid.innerHTML = '';
+    filtered.forEach(function(v){ grid.appendChild(renderCard(v)); });
+    document.getElementById('countNote').textContent = filtered.length + ' of ' + VIDEOS.length + ' videos';
+  }
+
+  document.getElementById('searchInput').addEventListener('input', function(e){
+    state.q = e.target.value.trim().toLowerCase();
+    renderGrid();
+  });
+
+  renderChips();
+  renderGrid();
+
+  var tabVideosBtn = document.getElementById('tabVideosBtn');
+  var tabInfoBtn = document.getElementById('tabInfoBtn');
+  var videosSection = document.getElementById('videosSection');
+  var infoSection = document.getElementById('infoSection');
+  tabVideosBtn.addEventListener('click', function(){
+    tabVideosBtn.classList.add('active'); tabInfoBtn.classList.remove('active');
+    videosSection.classList.remove('hidden'); infoSection.classList.add('hidden');
+  });
+  tabInfoBtn.addEventListener('click', function(){
+    tabInfoBtn.classList.add('active'); tabVideosBtn.classList.remove('active');
+    infoSection.classList.remove('hidden'); videosSection.classList.add('hidden');
+  });
+
+  var INFOGRAPHICS = ["/videos/infographics/00_FCPX_Tab_to_Change_Marker_Type._Create__edit.jpg", "/videos/infographics/01_FCPX_Bring_Logging_Notes_to_your_Timeline.jpg", "/videos/infographics/02_FCPX_Show_only_Used_Media_in_current_Timeline.jpg", "/videos/infographics/03_FCPX_Copy__Paste_Finder_items_into_a_timeline.jpg", "/videos/infographics/04_FCPX_Try_Harder_when_Syncing_Multicam._Set.jpg", "/videos/infographics/05_FCPX_Sweeten_Audio_Visually_via_Waveforms.jpg", "/videos/infographics/06_FCPX_Increment_Current_Project_and_Open_Dupe.jpg", "/videos/infographics/07_FCPX_Copy_audio_only_portion_of_clip_for_use.png"];
+  var infoGrid = document.getElementById('infoGrid');
+  INFOGRAPHICS.forEach(function(src){
+    var card = document.createElement('div');
+    card.className = 'info-card';
+    card.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+    card.addEventListener('click', function(){
+      var lb = document.createElement('div');
+      lb.className = 'lightbox';
+      lb.innerHTML = '<img src="' + src + '">';
+      lb.addEventListener('click', function(){ lb.remove(); });
+      document.body.appendChild(lb);
+    });
+    infoGrid.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>

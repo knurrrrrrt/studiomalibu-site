@@ -2,8 +2,7 @@
   var LINKS = [
     { label: "Apps", href: "/apps/" },
     { label: "Workflow", href: "/workflow/" },
-    { label: "Videos", href: "/videos/" },
-    { label: "Infographics", href: "/infographics/" },
+    { label: "Videos & Infographics", href: "/videos/" },
     { label: "Ideas for FCP", href: "/ideas/" },
     { label: "Talent Pool", href: "/experts/" },
     { label: "FCP Around the World", href: "/projects/" }
