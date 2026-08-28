@@ -91,8 +91,9 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   </div>
 
   <div id="infoSection" class="hidden">
+    <div class="filter-chips" id="infoChips"></div>
     <div class="info-grid" id="infoGrid"></div>
-    <p class="info-note">All 24 of Payton's (@tpayton) FCPX tip graphics from our reference collection &mdash; if you spot more of his out there, let us know. We checked all 24 against current Final Cut Pro: 21 are confirmed still accurate. The 3 marked <strong>"double-check"</strong> touch areas Apple has since reworked (the Text/Titles tool, audio pan behavior, transition-selection shortcuts) &mdash; the core idea is still likely right, just verify the exact steps in your own FCP before relying on them.</p>
+    <p class="info-note">All 24 of Payton's (@tpayton) FCPX tip graphics from our reference collection &mdash; if you spot more of his out there, let us know. We checked all 24 against current Final Cut Pro: 21 are confirmed still accurate. The 3 marked <strong>"double-check"</strong> touch areas Apple has since reworked (the Text/Titles tool, audio pan behavior, transition-selection shortcuts) &mdash; the core idea is still likely right, just verify the exact steps in your own FCP before relying on them.<br><br>Plus 9 of Charlie Austin's (fcpxpert.net) "Gif-Tips" from 2016 &mdash; short animated demos rather than static cards. FCPX's UI has moved on in places since then, so treat the exact clicks as a rough guide, not gospel.</p>
   </div>
 
   <footer class="site-footer">
@@ -290,10 +291,36 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     searchInputEl.classList.add('hidden');
   });
 
-  var INFOGRAPHICS = ["/videos/infographics/00_FCPX_Tab_to_Change_Marker_Type._Create__edit.jpg", "/videos/infographics/01_FCPX_Bring_Logging_Notes_to_your_Timeline.jpg", "/videos/infographics/02_FCPX_Show_only_Used_Media_in_current_Timeline.jpg", "/videos/infographics/03_FCPX_Copy__Paste_Finder_items_into_a_timeline.jpg", "/videos/infographics/04_FCPX_Try_Harder_when_Syncing_Multicam._Set.jpg", "/videos/infographics/05_FCPX_Sweeten_Audio_Visually_via_Waveforms.jpg", "/videos/infographics/06_FCPX_Increment_Current_Project_and_Open_Dupe.jpg", "/videos/infographics/07_FCPX_Copy_audio_only_portion_of_clip_for_use.png", "/videos/infographics/08_FCPX_Keep_complex_audio_cleanup_out_of_the_way.png", "/videos/infographics/09_AddRemove_Speed_Transitions.jpg", "/videos/infographics/10_FCPX_Expand_all_Library_Events__Folders_with.jpeg", "/videos/infographics/11_FCPX_ExpandCollapse_all_Groups_in_the_Browser.jpeg", "/videos/infographics/12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "/videos/infographics/13_FCPX_Glue_clips_together_into_a_storyline_by.jpg", "/videos/infographics/14_FCPX_Fast_J__L_cuts._Shift-_to_select_audio_ends.jpg", "/videos/infographics/15_FCPX_Perform_a_fast_Drop-In_edit._Select_range.jpg", "/videos/infographics/16_FCPX_Custom_Resolution_Timeline_adding_clip_to.jpg", "/videos/infographics/17_FCPX_Precisely_edit_music_to_a_specific_length.jpeg", "/videos/infographics/18_Ye_Old_Stereo_Pan_Law.jpg", "/videos/infographics/19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "/videos/infographics/20_FCPX_Add_Transitions_via_Paste._Copy_Timeline.png", "/videos/infographics/21_FCPX_Replacechange_ALL_Transitions_during.png", "/videos/infographics/22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png", "/videos/infographics/23_FCPX_Reveal_missingoffline_items_or_effects_by.png"];
+  var PAYTON_FILES = ["00_FCPX_Tab_to_Change_Marker_Type._Create__edit.jpg", "01_FCPX_Bring_Logging_Notes_to_your_Timeline.jpg", "02_FCPX_Show_only_Used_Media_in_current_Timeline.jpg", "03_FCPX_Copy__Paste_Finder_items_into_a_timeline.jpg", "04_FCPX_Try_Harder_when_Syncing_Multicam._Set.jpg", "05_FCPX_Sweeten_Audio_Visually_via_Waveforms.jpg", "06_FCPX_Increment_Current_Project_and_Open_Dupe.jpg", "07_FCPX_Copy_audio_only_portion_of_clip_for_use.png", "08_FCPX_Keep_complex_audio_cleanup_out_of_the_way.png", "09_AddRemove_Speed_Transitions.jpg", "10_FCPX_Expand_all_Library_Events__Folders_with.jpeg", "11_FCPX_ExpandCollapse_all_Groups_in_the_Browser.jpeg", "12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "13_FCPX_Glue_clips_together_into_a_storyline_by.jpg", "14_FCPX_Fast_J__L_cuts._Shift-_to_select_audio_ends.jpg", "15_FCPX_Perform_a_fast_Drop-In_edit._Select_range.jpg", "16_FCPX_Custom_Resolution_Timeline_adding_clip_to.jpg", "17_FCPX_Precisely_edit_music_to_a_specific_length.jpeg", "18_Ye_Old_Stereo_Pan_Law.jpg", "19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "20_FCPX_Add_Transitions_via_Paste._Copy_Timeline.png", "21_FCPX_Replacechange_ALL_Transitions_during.png", "22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png", "23_FCPX_Reveal_missingoffline_items_or_effects_by.png"];
   var NEEDS_VERIFY = ["12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png"];
+  var CHARLIE_FILES = ["Skim.gif", "Blade.gif", "Gather-Secondary.gif", "Gather-Clip.gif", "Join-Split.gif", "Pan-Handle.gif", "Rename-Storylines.gif", "Rename-Gap.gif", "Multi-Secondary.gif"];
+
+  var INFOGRAPHICS = PAYTON_FILES.map(function(f){
+    return { src: '/videos/infographics/' + f, author: 'Payton' };
+  }).concat(CHARLIE_FILES.map(function(f){
+    return { src: '/videos/infographics/charlie-austin/' + f, author: 'Charlie Austin' };
+  }));
+
+  var infoState = { author: 'All' };
+  var infoAuthors = ['Payton', 'Charlie Austin'];
+
+  function renderInfoChips(){
+    var wrap = document.getElementById('infoChips');
+    wrap.innerHTML = '';
+    ['All'].concat(infoAuthors).forEach(function(a){
+      var b = document.createElement('button');
+      b.className = 'chip' + (infoState.author === a ? ' active' : '');
+      b.textContent = a + (a === 'All' ? '' : ' (' + INFOGRAPHICS.filter(function(i){return i.author===a;}).length + ')');
+      b.onclick = function(){ infoState.author = a; renderInfoChips(); renderInfoGrid(); };
+      wrap.appendChild(b);
+    });
+  }
+
   var infoGrid = document.getElementById('infoGrid');
-  INFOGRAPHICS.forEach(function(src){
+  function renderInfoGrid(){
+    infoGrid.innerHTML = '';
+    INFOGRAPHICS.filter(function(i){ return infoState.author === 'All' || i.author === infoState.author; }).forEach(function(i){
+    var src = i.src;
     var card = document.createElement('div');
     card.className = 'info-card';
     var needsVerify = NEEDS_VERIFY.some(function(f){ return src.indexOf(f) !== -1; });
@@ -302,7 +329,10 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     card.addEventListener('click', openInfo);
     trackHover(card, openInfo);
     infoGrid.appendChild(card);
-  });
+    });
+  }
+  renderInfoChips();
+  renderInfoGrid();
 })();
 </script>
 </body>
