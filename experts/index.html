@@ -11,7 +11,7 @@
   --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
   --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
   --gold:#D9A441; --gold-dim:#8A6A2E;
-  --c-editor:#5B8DD9; --c-assistant:#7BAE6F; --c-workflow:#B07BC9;
+  --c-editor:#5B8DD9; --c-assistant:#7BAE6F; --c-workflow:#B07BC9; --c-vfx:#D9834B;
 }
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;}
@@ -50,7 +50,9 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .tag.role-editor{color:#fff;background:var(--c-editor);border-color:var(--c-editor);}
 .tag.role-assistant{color:#fff;background:var(--c-assistant);border-color:var(--c-assistant);}
 .tag.role-workflow{color:#fff;background:var(--c-workflow);border-color:var(--c-workflow);}
+.tag.role-vfx{color:#fff;background:var(--c-vfx);border-color:var(--c-vfx);}
 .person .resume{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0.6rem 0 0;}
+.person .languages{font-size:0.78rem;color:var(--dim);line-height:1.5;margin:0.35rem 0 0;}
 .contact-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;}
 .contact-row a{color:var(--gold);text-decoration:none;font-size:0.78rem;}
 .contact-row a:hover{text-decoration:underline;}
@@ -96,11 +98,11 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 <script>
 (function(){
   var DATA = JSON.parse(document.getElementById('peopleData').textContent);
-  var ROLES = ['Editor','Assistant Editor','Workflow Builder'];
-  var ROLE_CLASS = {'Editor':'role-editor','Assistant Editor':'role-assistant','Workflow Builder':'role-workflow'};
+  var ROLES = ['Editor','Assistant Editor','VFX Editor','Workflow Builder'];
+  var ROLE_CLASS = {'Editor':'role-editor','Assistant Editor':'role-assistant','VFX Editor':'role-vfx','Workflow Builder':'role-workflow'};
 
   DATA.forEach(function(d){
-    d.text = [d.name, d.resume, d.country, (d.roles||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    d.text = [d.name, d.resume, d.country, d.languages, (d.roles||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
   });
 
   var countries = [];
@@ -195,6 +197,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     return '<div class="person">' +
       '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
       (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
+      (d.languages ? '<p class="languages">' + escapeHtml(d.languages) + '</p>' : '') +
       (contact ? '<div class="contact-row">' + contact + '</div>' : '') +
       (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
       '</div>';
