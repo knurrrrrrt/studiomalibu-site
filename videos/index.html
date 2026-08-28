@@ -47,8 +47,9 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spa
 .hidden{display:none !important;}
 
 .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
-.info-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;}
+.info-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;}
 .info-card img{width:100%;display:block;}
+.info-card .verify-badge{position:absolute;top:0.5rem;right:0.5rem;font-size:0.6rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#1A1206;background:var(--gold);padding:0.2rem 0.5rem;border-radius:100px;}
 .info-note{font-size:0.82rem;color:var(--dim);line-height:1.6;margin-top:1.6rem;border-left:2px solid var(--gold-dim);padding-left:0.8rem;}
 
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;padding:2rem;z-index:1000;cursor:zoom-out;}
@@ -79,7 +80,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   <div id="infoSection" class="hidden">
     <div class="info-grid" id="infoGrid"></div>
-    <p class="info-note">All 24 of Payton's (@tpayton) FCPX tip graphics from our reference collection &mdash; if you spot more of his out there, let us know.</p>
+    <p class="info-note">All 24 of Payton's (@tpayton) FCPX tip graphics from our reference collection &mdash; if you spot more of his out there, let us know. We checked all 24 against current Final Cut Pro: 21 are confirmed still accurate. The 3 marked <strong>"double-check"</strong> touch areas Apple has since reworked (the Text/Titles tool, audio pan behavior, transition-selection shortcuts) &mdash; the core idea is still likely right, just verify the exact steps in your own FCP before relying on them.</p>
   </div>
 
   <footer class="site-footer">
@@ -172,11 +173,13 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   });
 
   var INFOGRAPHICS = ["/videos/infographics/00_FCPX_Tab_to_Change_Marker_Type._Create__edit.jpg", "/videos/infographics/01_FCPX_Bring_Logging_Notes_to_your_Timeline.jpg", "/videos/infographics/02_FCPX_Show_only_Used_Media_in_current_Timeline.jpg", "/videos/infographics/03_FCPX_Copy__Paste_Finder_items_into_a_timeline.jpg", "/videos/infographics/04_FCPX_Try_Harder_when_Syncing_Multicam._Set.jpg", "/videos/infographics/05_FCPX_Sweeten_Audio_Visually_via_Waveforms.jpg", "/videos/infographics/06_FCPX_Increment_Current_Project_and_Open_Dupe.jpg", "/videos/infographics/07_FCPX_Copy_audio_only_portion_of_clip_for_use.png", "/videos/infographics/08_FCPX_Keep_complex_audio_cleanup_out_of_the_way.png", "/videos/infographics/09_AddRemove_Speed_Transitions.jpg", "/videos/infographics/10_FCPX_Expand_all_Library_Events__Folders_with.jpeg", "/videos/infographics/11_FCPX_ExpandCollapse_all_Groups_in_the_Browser.jpeg", "/videos/infographics/12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "/videos/infographics/13_FCPX_Glue_clips_together_into_a_storyline_by.jpg", "/videos/infographics/14_FCPX_Fast_J__L_cuts._Shift-_to_select_audio_ends.jpg", "/videos/infographics/15_FCPX_Perform_a_fast_Drop-In_edit._Select_range.jpg", "/videos/infographics/16_FCPX_Custom_Resolution_Timeline_adding_clip_to.jpg", "/videos/infographics/17_FCPX_Precisely_edit_music_to_a_specific_length.jpeg", "/videos/infographics/18_Ye_Old_Stereo_Pan_Law.jpg", "/videos/infographics/19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "/videos/infographics/20_FCPX_Add_Transitions_via_Paste._Copy_Timeline.png", "/videos/infographics/21_FCPX_Replacechange_ALL_Transitions_during.png", "/videos/infographics/22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png", "/videos/infographics/23_FCPX_Reveal_missingoffline_items_or_effects_by.png"];
+  var NEEDS_VERIFY = ["12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png"];
   var infoGrid = document.getElementById('infoGrid');
   INFOGRAPHICS.forEach(function(src){
     var card = document.createElement('div');
     card.className = 'info-card';
-    card.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+    var needsVerify = NEEDS_VERIFY.some(function(f){ return src.indexOf(f) !== -1; });
+    card.innerHTML = '<img src="' + src + '" alt="" loading="lazy">' + (needsVerify ? '<span class="verify-badge">Double-check</span>' : '');
     card.addEventListener('click', function(){
       var lb = document.createElement('div');
       lb.className = 'lightbox';
