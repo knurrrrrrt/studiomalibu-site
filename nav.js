@@ -1,20 +1,22 @@
 (function () {
   var LINKS = [
     { label: "Apps", href: "/apps/" },
-    { label: "Workflow", href: "/workflow/" },
-    { label: "Videos & Infographics", href: "/videos/" },
-    { label: "Ideas for FCP", href: "/ideas/" },
-    { label: "Talent Pool", href: "/experts/" },
-    { label: "FCP Around the World", href: "/projects/" }
+    { label: "FCP Videos & Infographics", href: "/videos/" },
+    { label: "FCP Ideas", href: "/ideas/" },
+    { label: "FCP Talent Pool", href: "/experts/" },
+    { label: "FCP Around the World", href: "/projects/" },
+    { label: "FCP Workflow", href: "/workflow/" }
   ];
 
   var css = "" +
     "#sm-nav{position:sticky;top:0;left:0;right:0;z-index:1000;" +
-    "height:52px;display:flex;align-items:center;gap:22px;padding:0 20px;" +
+    "height:52px;display:flex;align-items:stretch;" +
     "background:rgba(10,10,13,0.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);" +
     "border-bottom:1px solid rgba(255,255,255,0.08);" +
     "font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;" +
     "font-size:13px;}" +
+    "#sm-nav .sm-inner{width:100%;max-width:1100px;margin:0 auto;padding:0 20px;" +
+    "display:flex;align-items:center;gap:22px;}" +
     "#sm-nav a{text-decoration:none;color:inherit;}" +
     "#sm-nav .sm-brand{display:flex;align-items:center;gap:8px;flex:none;color:#f0f0f2;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;}" +
     "#sm-nav .sm-dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,#5ea1ff,#b968ff);flex:none;}" +
@@ -24,7 +26,7 @@
     "#sm-nav .sm-links a:hover{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
     "#sm-nav .sm-links a.active{color:#f0f0f2;background:rgba(255,255,255,0.1);}" +
     "#sm-nav .sm-spacer{flex:1;min-width:12px;}" +
-    "@media(max-width:640px){#sm-nav{gap:14px;padding:0 14px;}#sm-nav .sm-brand span.sm-word{display:none;}}";
+    "@media(max-width:640px){#sm-nav .sm-inner{gap:14px;padding:0 14px;}#sm-nav .sm-brand span.sm-word{display:none;}}";
 
   var style = document.createElement("style");
   style.textContent = css;
@@ -44,9 +46,11 @@
   var nav = document.createElement("div");
   nav.id = "sm-nav";
   nav.innerHTML =
-    '<a class="sm-brand" href="/"><span class="sm-dot"></span><span class="sm-word">Studio Malibu Berlin</span></a>' +
-    '<div class="sm-links">' + linksHtml + '</div>' +
-    '<div class="sm-spacer"></div>';
+    '<div class="sm-inner">' +
+      '<a class="sm-brand" href="/"><span class="sm-dot"></span><span class="sm-word">Studio Malibu Berlin</span></a>' +
+      '<div class="sm-links">' + linksHtml + '</div>' +
+      '<div class="sm-spacer"></div>' +
+    '</div>';
 
   document.body.insertBefore(nav, document.body.firstChild);
 })();
