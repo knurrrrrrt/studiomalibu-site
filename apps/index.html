@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Malibu Berlin</title>
+<meta name="description" content="macOS tools built by a working film editor — for film post-production, and for everyday work beyond it.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0f12;
+    --panel: #17181c;
+    --border: #2a2b30;
+    --text: #e8e8ea;
+    --muted: #9a9aa2;
+    --accent: #5ea1ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem 5rem; }
+  h1 { font-size: 2.2rem; margin: 0 0 0.8rem; }
+  .lede { color: var(--muted); font-size: 1.05rem; max-width: 620px; margin: 0 0 0.9rem; line-height: 1.55; }
+  .lede.small { font-size: 0.9rem; opacity: 0.85; }
+  .lede.smaller { font-size: 0.82rem; opacity: 0.75; margin-bottom: 3rem; }
+  h2.section { font-size: 1.2rem; margin: 3rem 0 1.1rem; color: #fff; }
+  h2.section:first-of-type { margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; }
+  .card {
+    display: block; text-decoration: none; height: 100%;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.5rem; transition: border-color 0.15s;
+  }
+  .card:hover { border-color: #3a3b42; }
+  .card-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 0.7rem; }
+  .card h3 { font-size: 1.05rem; color: #fff; margin: 0; }
+  .card img { width: 30px; height: 30px; border-radius: 7px; object-fit: cover; flex-shrink: 0; background: var(--border); }
+  .card .icon-fallback {
+    width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
+    background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+  }
+  .card p.tagline { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0.5rem 0 0; }
+  .card .price-row { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 1rem; gap: 0.6rem; }
+  .card .price-old { font-size: 0.62rem; color: var(--muted); opacity: 0.6; text-decoration: line-through; margin: 0; }
+  .card .price-new { font-size: 0.7rem; font-weight: 600; color: #fff; margin: 1px 0 0; }
+  .card .price-label { font-size: 0.6rem; color: var(--muted); margin: 1px 0 0; }
+  .badge {
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+    border-radius: 100px; padding: 2px 8px; margin-top: 0.4rem;
+  }
+  footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
+  footer a { text-decoration: underline; }
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <h1>Studio Malibu Berlin</h1>
+  <p class="lede">macOS tools built by a working film editor — some for film post-production, some for everyday work. Every app is notarized, signed, and auto-updates.</p>
+  <p class="lede small">Give real feedback during your 10-day trial (or after buying) — every 5 issues we act on earns another 5% off (5, 10, 15, 20, 25, up to 30% at 30), on the app you're testing or any other. Use the in-app Feedback button to get started.</p>
+  <p class="lede smaller">Prices are one-time purchases and include two years of free macOS updates. After that, the app keeps working as-is — a paid update to support a newer macOS costs 50% of the original price. Downloads and purchases happen on knuthake.de.</p>
+
+  <h2 class="section">For film post-production</h2>
+  <div class="grid" id="grid-post"></div>
+
+  <h2 class="section">For everyday work</h2>
+  <div class="grid" id="grid-everyday"></div>
+
+  <h2 class="section">Also from Studio Malibu Berlin</h2>
+  <div class="grid" id="grid-personal"></div>
+
+  <footer>
+    Have feedback on one of these apps? Please use the in-app Feedback button — that's the only channel we monitor and respond to.
+    See our <a href="https://www.knuthake.de/datenschutz">Privacy Policy</a> for details on what each app sends and why.
+  </footer>
+</div>
+
+<script>
+(function () {
+  var SITE = "https://www.knuthake.de";
+
+  var postProductionApps = [
+    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", price: "€29 · $29", launchPrice: "€23 · $23" },
+    { name: "MalibuMesh", tagline: "P2P folder sync for post-production teams — no cloud upload, no shared server.", href: "/apps/malibu-media-sync", icon: "/apps/malibu-media-sync/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "MalibuReview", tagline: "Live edit review — streams your FCP cut to the director in real time, frame-accurate markers, no screen-share. Available by request.", href: "/apps/malibu-review", icon: "/apps/malibu-review/icon.png", comingSoon: true, price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", comingSoon: true, price: "€49 · $49", launchPrice: "€39 · $39" },
+    { name: "MalibuToDo", tagline: "Pulls every To-Do marker across your Final Cut Pro libraries into one organized task list.", href: "/apps/malibutodo", iconFallback: "✅", comingSoon: true, price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "Malibu Conform", tagline: "Conforms Final Cut Pro timelines into DaVinci Resolve Studio — spatial/PAR-aware, multicam angle selection, verbatim image fidelity.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", comingSoon: true, price: "€79 · $79", launchPrice: "€63 · $63" },
+    { name: "Malibu Sound2Pro", tagline: "Bridges Final Cut Pro audio into a Pro Tools session via AAF. Development is currently on hold.", icon: "/apps/malibu-sound2pro/icon.png", badgeText: "On hold" }
+  ];
+
+  var everydayApps = [
+    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "Malibu Calc", tagline: "A notepad-style calculator — write calculations line by line, with labels and linked values.", href: "/apps/malibucalc", icon: "/apps/malibucalc/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "Malibu Screen Capture", tagline: "Screen recording with multi-track audio and webcam — cursor-aware auto-zoom, exports straight to an FCP timeline.", href: "/apps/malibuscreener", icon: "/apps/malibuscreener/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "Malibu Meeting Notes", tagline: "On-device meeting recorder with local transcription and AI summarization.", href: "/apps/malibumeeting", icon: "/apps/malibumeeting/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "Malibu NotesBar", tagline: "A floating formatting toolbar and Notion-style slash commands, built directly into Apple Notes.", href: "/apps/malibu-notesbar", icon: "/apps/malibu-notesbar/icon.png", price: "€9 · $9", launchPrice: "€7 · $7" }
+  ];
+
+  var personalApps = [
+    { name: "MalibuPlay", tagline: "Local remote control for Sonos — Apple Music or Spotify, commercial-free radio, no Sonos app, no cloud.", href: "/apps/malibuplay", icon: "/apps/malibuplay/icon.png", comingSoon: true, price: "€9 · $9", launchPrice: "€7 · $7" },
+    { name: "Malibu Occhio", tagline: "Direct Bluetooth control for Occhio/Casambi lamps — no HomeKit, no hub, drag to dim and steer light direction.", href: "/apps/malibu-occhio", icon: "/apps/malibu-occhio/icon.png", comingSoon: true, price: "€9 · $9", launchPrice: "€7 · $7" },
+    { name: "Malibu Marantz", tagline: "Fast native remote control for Marantz/Denon AV receivers — volume, inputs, surround modes, and presets.", href: "/apps/malibu-marantz", icon: "/apps/malibu-marantz/icon.png", comingSoon: true, price: "€9 · $9", launchPrice: "€7 · $7" },
+    { name: "LifeLotse", tagline: "An independent insurance and finance assistant for iOS/macOS — not an affiliate, your data stays local. Germany-focused.", externalHref: "https://lifelotse.de", icon: "/apps/lifelotse/icon.png" },
+    { name: "TaxLotse", tagline: "An independent tax assistant, from the same team as LifeLotse. Germany-focused.", externalHref: "https://taxlotse.de", icon: "/apps/taxlotse/icon.png", comingSoon: true },
+    { name: "FundusKit", tagline: "Costume/prop inventory management for film and theater productions — offline-first, multi-user, on-device photo search.", icon: "/apps/funduskit/icon.png" }
+  ];
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function renderCard(app) {
+    // Apps with an internal `href` now have their full page hosted locally under apps/<slug>/
+    // (ported from knuthake.de) — link/icon stay local instead of pointing back at knuthake.de.
+    // Apps with `externalHref` (LifeLotse, TaxLotse) are separate products and keep linking out;
+    // apps with neither (Sound2Pro on hold, FundusKit) keep their icon hotlinked as before.
+    var href = app.externalHref || app.href || null;
+    var iconHtml = app.icon
+      ? '<img src="' + (app.href ? app.icon : SITE + app.icon) + '" alt="">'
+      : app.iconFallback
+      ? '<div class="icon-fallback">' + app.iconFallback + '</div>'
+      : '';
+
+    var priceHtml = "";
+    if (app.price) {
+      priceHtml = '<div class="price-row"><div>' +
+        (app.launchPrice ? '<p class="price-old">' + escapeHtml(app.price) + '</p>' : '') +
+        '<p class="price-new">' + escapeHtml(app.launchPrice || app.price) + '</p>' +
+        (app.launchPrice ? '<p class="price-label">Launch price</p>' : '') +
+        '</div></div>';
+    }
+
+    var badgeHtml = app.badgeText ? '<span class="badge">' + escapeHtml(app.badgeText) + '</span>'
+      : app.comingSoon ? '<span class="badge">Coming soon</span>' : '';
+
+    var inner = '<div class="card-top"><h3>' + escapeHtml(app.name) + '</h3>' + iconHtml + '</div>' +
+      badgeHtml +
+      '<p class="tagline">' + escapeHtml(app.tagline) + '</p>' +
+      priceHtml;
+
+    if (href) {
+      var target = app.externalHref ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return '<a class="card" href="' + href + '"' + target + '>' + inner + '</a>';
+    }
+    return '<div class="card">' + inner + '</div>';
+  }
+
+  function renderGrid(id, apps) {
+    document.getElementById(id).innerHTML = apps.map(renderCard).join("");
+  }
+
+  renderGrid("grid-post", postProductionApps);
+  renderGrid("grid-everyday", everydayApps);
+  renderGrid("grid-personal", personalApps);
+})();
+</script>
+</body>
+</html>
