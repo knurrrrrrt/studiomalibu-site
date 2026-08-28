@@ -51,6 +51,8 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .tag.role-assistant{color:#fff;background:var(--c-assistant);border-color:var(--c-assistant);}
 .tag.role-workflow{color:#fff;background:var(--c-workflow);border-color:var(--c-workflow);}
 .person .resume{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0.6rem 0 0;}
+.filmography-link{display:inline-block;font-size:0.78rem;color:var(--gold);text-decoration:none;margin:0.4rem 0 0;}
+.filmography-link:hover{text-decoration:underline;}
 .meta-row{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.7rem;}
 .meta-row a{color:var(--gold);text-decoration:none;font-size:0.78rem;}
 
@@ -75,8 +77,8 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   <div class="cta">
     <h2>Join the pool</h2>
-    <p>Tell us what you've cut, assisted on, or built for Final Cut Pro. Submissions are reviewed before anything goes live, and you choose whether your contact details are shown publicly or kept private.</p>
-    <a class="btn" href="https://app.notion.com/p/209864892e5d4c5e8dfeafcd52694cc3?v=3cab7d0d78478123a917000c22c45858" target="_blank" rel="noopener noreferrer">Submit your profile &rarr;</a>
+    <p>Tell us what you've cut, assisted on, or built for Final Cut Pro &mdash; reach out and we'll get you listed. Listings are added by hand after a quick review, and you choose whether your contact details are shown publicly or kept private.</p>
+    <a class="btn" href="https://knuthake.de" target="_blank" rel="noopener noreferrer">Get in touch &rarr;</a>
   </div>
 
   <div id="filters"></div>
@@ -189,6 +191,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     return '<div class="person">' +
       '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
       (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
+      (d.filmographyUrl ? '<a class="filmography-link" href="' + escapeHtml(d.filmographyUrl) + '" target="_blank" rel="noopener noreferrer">Full filmography &rarr;</a>' : '') +
       (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
       '</div>';
   }
