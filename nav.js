@@ -6,7 +6,6 @@
     { label: "FCP Around the World", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Workflow", href: "/workflow/" },
-    { label: "FCP Assistant Editing", href: "/curriculum/" },
     { label: "Film Craft", href: "/film-craft/" }
   ];
 
