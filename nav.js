@@ -61,7 +61,7 @@
     "#sm-nav a{text-decoration:none;color:inherit;}" +
     "#sm-nav .sm-brand{display:flex;align-items:center;gap:8px;flex:none;color:#f0f0f2;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;}" +
     "#sm-nav .sm-dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,#5ea1ff,#b968ff);flex:none;}" +
-    "#sm-nav .sm-links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}" +
+    "#sm-nav .sm-links{display:flex;align-items:center;gap:4px;overflow-x:auto;min-width:0;scrollbar-width:none;-ms-overflow-style:none;}" +
     "#sm-nav .sm-links::-webkit-scrollbar{display:none;}" +
     "#sm-nav .sm-links>a{flex:none;white-space:nowrap;padding:7px 11px;border-radius:7px;color:#a5a5ad;font-weight:500;transition:background .15s,color .15s;}" +
     "#sm-nav .sm-links>a:hover{color:#f0f0f2;background:rgba(255,255,255,0.06);}" +
