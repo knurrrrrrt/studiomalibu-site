@@ -17,22 +17,25 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',-apple-
 a{color:inherit;}
 .wrap{max-width:1100px;margin:0 auto;padding:2.2rem 2rem 5rem;}
 .eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.4rem;}
-h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spacing:0.01em;margin:0 0 1.1rem;font-weight:400;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spacing:0.01em;margin:0 0 0.5rem;font-weight:400;}
 
-.section-toggle{display:flex;gap:0.5rem;margin-bottom:1.6rem;border-bottom:1px solid var(--line);}
-.section-toggle button{font:inherit;font-size:0.95rem;font-weight:600;color:var(--dim);background:none;border:none;cursor:pointer;padding:0.6rem 0.2rem 0.8rem;margin-right:1.4rem;border-bottom:2px solid transparent;font-family:'Inter',sans-serif;}
+.section-toggle{display:flex;align-items:center;gap:0.4rem;margin-bottom:1.1rem;border-bottom:1px solid var(--line);}
+.section-toggle button{font:inherit;font-size:0.95rem;font-weight:600;color:var(--dim);background:none;border:none;cursor:pointer;padding:0.6rem 0.2rem 0.7rem;margin-right:1rem;border-bottom:2px solid transparent;font-family:'Inter',sans-serif;}
 .section-toggle button.active{color:var(--text);border-bottom-color:var(--gold);}
+.section-toggle .search-input{margin:0 0 0 auto;}
 
-.search-input{width:100%;max-width:340px;font:inherit;font-size:0.82rem;padding:0.55rem 0.8rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-bottom:1rem;}
+.search-input{width:220px;max-width:44vw;font:inherit;font-size:0.8rem;padding:0.4rem 0.7rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);}
 .search-input::placeholder{color:var(--dim);}
 .search-input:focus{outline:none;border-color:var(--gold-dim);}
 
-.filter-chips{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.4rem;}
+.filter-chips{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1rem;}
 .chip{white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
 .chip:hover{border-color:var(--gold-dim);color:var(--text);}
 .chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
 
-.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1.2rem;}
+.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1rem;}
+.curator-note-small{font-size:0.72rem;color:var(--dim);margin:0 0 1.1rem;}
+.curator-note-small a{color:var(--gold);}
 
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;}
 .video-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
@@ -73,15 +76,15 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 <div class="wrap">
   <p class="eyebrow">Curated, not comprehensive &mdash; grouped by who made it</p>
   <h1>Videos &amp; Infographics</h1>
+  <p class="curator-note-small">This is Knut's own curated pick, not a complete list &mdash; if you know a video that really belongs here, <a href="https://knuthake.de">let him know</a>.</p>
 
   <div class="section-toggle">
     <button id="tabVideosBtn" class="active">Videos</button>
     <button id="tabInfoBtn">Infographics</button>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search video titles&hellip;">
   </div>
 
   <div id="videosSection">
-    <p class="curator-note">This is Knut's own curated pick, not a complete list &mdash; if you know a video that really belongs here, <a href="https://knuthake.de">let him know</a>.</p>
-    <input type="text" id="searchInput" class="search-input" placeholder="Search video titles&hellip;">
     <div class="filter-chips" id="creatorChips"></div>
     <p class="count-note" id="countNote"></p>
     <div class="video-grid" id="videoGrid"></div>
@@ -275,13 +278,16 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var tabInfoBtn = document.getElementById('tabInfoBtn');
   var videosSection = document.getElementById('videosSection');
   var infoSection = document.getElementById('infoSection');
+  var searchInputEl = document.getElementById('searchInput');
   tabVideosBtn.addEventListener('click', function(){
     tabVideosBtn.classList.add('active'); tabInfoBtn.classList.remove('active');
     videosSection.classList.remove('hidden'); infoSection.classList.add('hidden');
+    searchInputEl.classList.remove('hidden');
   });
   tabInfoBtn.addEventListener('click', function(){
     tabInfoBtn.classList.add('active'); tabVideosBtn.classList.remove('active');
     infoSection.classList.remove('hidden'); videosSection.classList.add('hidden');
+    searchInputEl.classList.add('hidden');
   });
 
   var INFOGRAPHICS = ["/videos/infographics/00_FCPX_Tab_to_Change_Marker_Type._Create__edit.jpg", "/videos/infographics/01_FCPX_Bring_Logging_Notes_to_your_Timeline.jpg", "/videos/infographics/02_FCPX_Show_only_Used_Media_in_current_Timeline.jpg", "/videos/infographics/03_FCPX_Copy__Paste_Finder_items_into_a_timeline.jpg", "/videos/infographics/04_FCPX_Try_Harder_when_Syncing_Multicam._Set.jpg", "/videos/infographics/05_FCPX_Sweeten_Audio_Visually_via_Waveforms.jpg", "/videos/infographics/06_FCPX_Increment_Current_Project_and_Open_Dupe.jpg", "/videos/infographics/07_FCPX_Copy_audio_only_portion_of_clip_for_use.png", "/videos/infographics/08_FCPX_Keep_complex_audio_cleanup_out_of_the_way.png", "/videos/infographics/09_AddRemove_Speed_Transitions.jpg", "/videos/infographics/10_FCPX_Expand_all_Library_Events__Folders_with.jpeg", "/videos/infographics/11_FCPX_ExpandCollapse_all_Groups_in_the_Browser.jpeg", "/videos/infographics/12_Adobe_measures_in_11000_em_FCPX_1100_em.jpeg", "/videos/infographics/13_FCPX_Glue_clips_together_into_a_storyline_by.jpg", "/videos/infographics/14_FCPX_Fast_J__L_cuts._Shift-_to_select_audio_ends.jpg", "/videos/infographics/15_FCPX_Perform_a_fast_Drop-In_edit._Select_range.jpg", "/videos/infographics/16_FCPX_Custom_Resolution_Timeline_adding_clip_to.jpg", "/videos/infographics/17_FCPX_Precisely_edit_music_to_a_specific_length.jpeg", "/videos/infographics/18_Ye_Old_Stereo_Pan_Law.jpg", "/videos/infographics/19_Obeying_the_Pan_Law_FCPX_Pan_Lawlessness.jpg", "/videos/infographics/20_FCPX_Add_Transitions_via_Paste._Copy_Timeline.png", "/videos/infographics/21_FCPX_Replacechange_ALL_Transitions_during.png", "/videos/infographics/22_FCPX_ReplaceAdjust_SINGLE_Transition_during.png", "/videos/infographics/23_FCPX_Reveal_missingoffline_items_or_effects_by.png"];
