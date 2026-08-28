@@ -1,6 +1,7 @@
 (function () {
   var LINKS = [
     { label: "FCP Videos & Infographics", href: "/videos/" },
+    { label: "FCP Training", href: "/training/" },
     { label: "FCP Ideas", href: "/ideas/" },
     { label: "FCP Around the World", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
