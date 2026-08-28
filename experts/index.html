@@ -53,7 +53,7 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .tag.role-vfx{color:#fff;background:var(--c-vfx);border-color:var(--c-vfx);}
 .person .resume{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0.6rem 0 0;}
 .person .languages{font-size:0.78rem;color:var(--dim);line-height:1.5;margin:0.35rem 0 0;}
-.contact-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;}
+.contact-row{display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;}
 .contact-row a{color:var(--gold);text-decoration:none;font-size:0.78rem;}
 .contact-row a:hover{text-decoration:underline;}
 .meta-row{display:flex;justify-content:flex-end;gap:0.4rem;flex-wrap:wrap;margin-top:0.7rem;}
@@ -190,6 +190,10 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     var meta = '';
     if (d.country) meta += '<span class="tag">' + escapeHtml(d.country) + '</span>';
     if (d.years) meta += '<span class="tag">' + d.years + ' yrs with FCP</span>';
+    (d.languages ? d.languages.split(',') : []).forEach(function(lang){
+      lang = lang.trim();
+      if (lang) meta += '<span class="tag">' + escapeHtml(lang) + '</span>';
+    });
     if (d.remote) meta += '<span class="tag">Remote-capable</span>';
     if (d.ownSystem) meta += '<span class="tag">Has own system</span>';
     if (d.showContact && d.website) meta += '<a href="' + escapeHtml(d.website) + '" target="_blank" rel="noopener noreferrer">Portfolio &rarr;</a>';
@@ -197,7 +201,6 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     return '<div class="person">' +
       '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
       (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
-      (d.languages ? '<p class="languages">' + escapeHtml(d.languages) + '</p>' : '') +
       (contact ? '<div class="contact-row">' + contact + '</div>' : '') +
       (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
       '</div>';
