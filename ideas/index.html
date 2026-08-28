@@ -38,6 +38,16 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spa
 .chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
 
 .count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1.2rem;}
+
+.big-section{margin:0 0 2.4rem;}
+.big-section h2{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;font-weight:400;letter-spacing:0.01em;margin:0 0 0.5rem;color:var(--text);}
+.big-intro{font-size:0.85rem;color:var(--muted);line-height:1.6;margin:0 0 1.2rem;max-width:680px;}
+.big-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.9rem;margin-bottom:1.4rem;}
+.big-card{background:var(--card);border:1px solid var(--gold-dim);border-top:2px solid var(--gold);border-radius:12px;padding:1.2rem 1.3rem;}
+.big-card h3{font-size:0.98rem;font-weight:600;margin:0 0 0.5rem;color:#fff;line-height:1.35;}
+.big-card p{font-size:0.83rem;color:var(--muted);line-height:1.6;margin:0;}
+.section-divider{border:none;border-top:1px solid var(--line);margin:0 0 2rem;}
+
 .grid{display:flex;flex-direction:column;gap:0.7rem;}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
@@ -68,6 +78,34 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   </div>
   <p class="intro">We genuinely love cutting on Final Cut Pro &mdash; this list exists because of that, not despite it. Over the years we've sent Apple's Pro Apps team detailed, friendly feedback: bug reports, workflow gaps we hit on real feature films and series, and feature requests that would make FCP more accessible and more complete for other editors. Below is the actual list, unfiltered.</p>
   <p class="note">This is our own feedback, shared here exactly as we submitted it to Apple. If you're running into something similar in Final Cut Pro, send Apple feedback too &mdash; they read all of it, and it genuinely helps make the app better.</p>
+
+  <div class="big-section">
+    <h2>The Big Picture</h2>
+    <p class="big-intro">Some of what we've sent Apple wasn't a single bug or feature, but a proposal for something more structural &mdash; the kind of fix that would resolve a dozen smaller items at once. Here's the short version of that thinking.</p>
+    <div class="big-grid">
+      <div class="big-card">
+        <h3>Real master clips &mdash; one source of truth</h3>
+        <p>FCP has no canonical master-clip object: one record per source that every copy, including Synchronized and Multicam Clips, refers back to. Without it, metadata and colour changes don't ripple across copies, duplicate clips pile up, and multi-machine workflows can leave multicam angles black or drop mask data. A true master-clip model would fix that at the root &mdash; and it's the foundation for real collaboration and colour tools, too.</p>
+      </div>
+      <div class="big-card">
+        <h3>Link media by content, not by file path</h3>
+        <p>FCP links media by file path today, so a file's modified date alone can flag a byte-identical clip as changed, and relinking after a move or a drive swap is a constant chore. Keying media by content hash instead would make relinking a non-issue &mdash; each machine resolves the hash against whatever it already has, wherever that media lives.</p>
+      </div>
+      <div class="big-card">
+        <h3>Sync the structure, not the media</h3>
+        <p>Real multi-editor, multi-assistant collaboration needs more than the workarounds available today. The opportunity: sync clip identity and metadata across machines while leaving media storage to whatever a team already uses &mdash; a SAN, LucidLink, local drives &mdash; and make that work self-hosted too, not just through iCloud, so productions that can't route editorial data through consumer cloud storage aren't locked out.</p>
+      </div>
+      <div class="big-card">
+        <h3>Collaboration built on "who has what open"</h3>
+        <p>The model this industry already trusts is bin-locking, &agrave; la Avid: see who's working on what, never step on active work. That feels like a smaller, more native-feeling opportunity than reinventing collaboration around a live-document editing model.</p>
+      </div>
+      <div class="big-card">
+        <h3>A colour pipeline that travels with the source</h3>
+        <p>Third-party colour-management tools already exist for FCP, but as per-clip effects a grade lives on the copy, not the source &mdash; so colour decisions have to be reapplied by hand across every event and library instead of travelling with the media. Solving that needs the master-clip foundation above.</p>
+      </div>
+    </div>
+  </div>
+  <hr class="section-divider">
 
   <input type="text" id="searchInput" class="search-input" placeholder="Search ideas and bug reports&hellip;">
   <div id="filters"></div>
