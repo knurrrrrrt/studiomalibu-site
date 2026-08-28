@@ -57,7 +57,7 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .card.flipped .card-inner{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);}
 .face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:1px solid var(--line);}
 .front{background-color:#0A0908;}
-.front-blur{position:absolute;inset:-8px;background-size:cover;background-position:center;filter:blur(18px) brightness(0.55);transform:scale(1.15);}
+.front-blur{position:absolute;inset:-8px;background-size:cover;background-position:center;}
 .front-sharp{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;}
 .front.no-poster{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--card),#0A0908);}
 .front.no-poster .no-poster-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--dim);text-align:center;padding:1rem;line-height:1.15;}
@@ -155,7 +155,7 @@ function renderGrid(){
   document.getElementById('countNote').textContent = `Showing ${filtered.length} of ${PROJECTS.length} productions.`;
   document.getElementById('grid').innerHTML = filtered.map((p,i) => {
     const frontHtml = p.poster
-      ? `<div class="front-blur" style="background-image:url('/projects/posters/${encodeURIComponent(p.poster)}');"></div>
+      ? `<div class="front-blur" style="background-image:url('/projects/posters/blur/${encodeURIComponent(p.poster)}');"></div>
          <div class="front-sharp" style="background-image:url('/projects/posters/${encodeURIComponent(p.poster)}');"></div>`
       : `<div class="no-poster-title">${esc(p.title)}</div>`;
     return `
