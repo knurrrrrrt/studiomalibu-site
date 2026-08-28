@@ -4,6 +4,7 @@
     { label: "Workflow", href: "/workflow/" },
     { label: "Videos", href: "/videos/" },
     { label: "Infographics", href: "/infographics/" },
+    { label: "Ideas for FCP", href: "/ideas/" },
     { label: "FCP Around the World", href: "/projects/" }
   ];
 
