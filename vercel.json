@@ -4,6 +4,7 @@
   ],
   "redirects": [
     { "source": "/curriculum", "destination": "/assistant-editing/", "permanent": true },
+    { "source": "/curriculum/", "destination": "/assistant-editing/", "permanent": true },
     { "source": "/curriculum/:path*", "destination": "/assistant-editing/:path*", "permanent": true }
   ]
 }
