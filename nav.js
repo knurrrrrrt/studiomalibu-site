@@ -2,11 +2,11 @@
   var LINKS = [
     { label: "FCP Videos & Infographics", href: "/videos/" },
     { label: "FCP Training", href: "/training/" },
-    { label: "Film Craft", href: "/film-craft/" },
     { label: "FCP Ideas", href: "/ideas/" },
     { label: "FCP Around the World", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
-    { label: "FCP Workflow", href: "/workflow/" }
+    { label: "FCP Workflow", href: "/workflow/" },
+    { label: "Film Craft", href: "/film-craft/" }
   ];
 
   // Kept in sync by hand with the app arrays in apps/index.html (postProductionApps/

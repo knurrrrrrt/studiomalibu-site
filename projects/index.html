@@ -10,7 +10,7 @@
 :root{
   --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
   --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
-  --gold:#D9A441; --gold-dim:#8A6A2E;
+  --gold:#5EA1FF; --gold-dim:#3E6FA3;
   --c-film:#D9714B; --c-film-txt:#3A1A0E;
   --c-stream:#5B8DD9; --c-stream-txt:#0E2340;
   --c-tv:#7BAE6F; --c-tv-txt:#173312;
@@ -20,13 +20,13 @@
 :root[data-theme="light"]{
   --bg:#F7F3EA; --panel:#FFFFFF; --card:#FFFFFF; --line:#E4DDCC;
   --text:#241F17; --muted:#726A57; --dim:#A79E88;
-  --gold:#A9762B; --gold-dim:#C79A4C;
+  --gold:#2B6CA9; --gold-dim:#7FADDA;
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme="dark"]){
     --bg:#F7F3EA; --panel:#FFFFFF; --card:#FFFFFF; --line:#E4DDCC;
     --text:#241F17; --muted:#726A57; --dim:#A79E88;
-    --gold:#A9762B; --gold-dim:#C79A4C;
+    --gold:#2B6CA9; --gold-dim:#7FADDA;
   }
 }
 *{box-sizing:border-box;}
@@ -48,7 +48,7 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .filter-chips::-webkit-scrollbar{display:none;}
 .chip{flex:0 0 auto;white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
 .chip:hover{border-color:var(--gold-dim);color:var(--text);}
-.chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
+.chip.active{background:var(--gold);border-color:var(--gold);color:#0B1A2E;font-weight:600;}
 @media(max-width:600px){h1{font-size:1.7rem;}}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.3rem;perspective:1200px;}
 .card-outer{display:flex;flex-direction:column;}
@@ -68,7 +68,7 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .back-row .v{color:var(--text);}
 .award{font-size:0.68rem;color:var(--gold);margin-top:auto;padding-top:0.6rem;border-top:1px solid var(--line);line-height:1.4;}
 .imdb{display:inline-block;margin-top:0.6rem;font-size:0.7rem;color:var(--gold);text-decoration:none;border:1px solid var(--gold-dim);padding:0.25rem 0.6rem;border-radius:5px;}
-.imdb:hover{background:var(--gold);color:#1A1206;}
+.imdb:hover{background:var(--gold);color:#0B1A2E;}
 .card-info{margin-top:0.85rem;}
 .card-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;font-weight:400;letter-spacing:0.01em;margin:0 0 0.2rem;color:var(--text);line-height:1.1;}
 .card-info .info-row{display:flex;align-items:baseline;justify-content:space-between;gap:0.5rem;}
