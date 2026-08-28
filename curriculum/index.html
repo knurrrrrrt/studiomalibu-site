@@ -38,7 +38,7 @@ input{font-family:inherit;color:inherit}
 
 /* ---------------- TOPBAR ---------------- */
 .topbar{height:60px;display:flex;align-items:center;gap:16px;padding:0 22px;border-bottom:1px solid var(--line);background:var(--sidebar);flex:none}
-.brandmark{display:flex;align-items:center;gap:10px;flex:none;min-width:0}
+.brandmark{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .brandmark .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--teal));flex:none}
 .brandmark .names{display:flex;flex-direction:column;gap:1px;min-width:0}
 .brandmark .t1{font-weight:700;font-size:13.5px;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -149,9 +149,9 @@ figure.shot figcaption{margin-top:8px;font-size:11px;color:var(--dim);font-famil
     </div>
   </div>
   <div class="divider"></div>
-  <span class="preview-badge" title="This is a living document — FCP's UI evolves, so double-check anything that looks unfamiliar in your current version.">
+  <span class="preview-badge" title="FCP's UI evolves, so double-check anything that looks unfamiliar in your current version.">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-    Last updated August 2026
+    Living document &middot; updated Aug 2026
   </span>
   <div class="topbar-spacer"></div>
   <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
