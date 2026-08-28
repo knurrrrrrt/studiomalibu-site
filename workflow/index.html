@@ -29,6 +29,13 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 /* ---------------- SIDEBAR (tree) ---------------- */
 .sidebar{background:var(--sidebar);border-right:1px solid var(--line);overflow-y:auto;padding:16px 14px 40px}
 
+.search-wrap{position:relative;margin-bottom:12px;flex:none}
+.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--dim);pointer-events:none}
+.search-input{width:100%;padding:9px 12px 9px 32px;border-radius:9px;border:1px solid var(--line);background:var(--card);font-size:12.5px;color:var(--text)}
+.search-input:focus{outline:none;border-color:var(--brand)}
+.search-input::placeholder{color:var(--dim)}
+.no-results{padding:10px 9px;font-size:12px;color:var(--dim)}
+.phase-group.hidden,.bereich-item.hidden,.card-btn.hidden{display:none}
 .sidebar-toolbar{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 14px;margin-bottom:2px}
 .sidebar-toolbar .label{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
 .collapse-all{display:flex;align-items:center;gap:5px;padding:5px 9px;border-radius:7px;font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line)}
@@ -121,10 +128,15 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 
 <div class="app">
   <nav class="sidebar" id="sidebar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Search everything…" autocomplete="off">
+    </div>
     <div class="sidebar-toolbar">
       <span class="label">Contents</span>
     </div>
     <div id="tree"></div>
+    <div class="no-results" id="noResults" style="display:none">No matching topics.</div>
   </nav>
 
   <main class="main" id="main">
@@ -149,6 +161,12 @@ button{font-family:inherit;cursor:pointer;background:none;border:none;color:inhe
 <script>
 const CARDS = JSON.parse(document.getElementById('cardData').textContent);
 const byId = Object.fromEntries(CARDS.map(c => [c.id, c]));
+function stripHtml(html){
+  const d = document.createElement('div');
+  d.innerHTML = html || '';
+  return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+}
+CARDS.forEach(c => { c.text = stripHtml(c.full) + ' ' + (c.summary||''); });
 const ICONS = JSON.parse(document.getElementById('iconData').textContent);
 
 document.getElementById('fcpIcons').innerHTML = `<img src="${ICONS.fcp_mac}" alt="Final Cut Pro (Mac App Store)" title="Final Cut Pro (Mac App Store)"><img src="${ICONS.fcp_ipad}" alt="Final Cut Pro (subscription / iPad)" title="Final Cut Pro (subscription / iPad)">`;
@@ -205,6 +223,43 @@ PHASES.forEach(p => {
     </div>`;
   tree.appendChild(group);
 });
+
+const searchInput = document.getElementById('searchInput');
+const noResults = document.getElementById('noResults');
+const preFilterOpenIds = new Set();
+searchInput.addEventListener('input', () => applyFilter(searchInput.value));
+
+function applyFilter(raw){
+  const f = (raw || '').trim().toLowerCase();
+  if(f && preFilterOpenIds.size === 0){
+    document.querySelectorAll('.card-list.open').forEach(list => preFilterOpenIds.add(list.id));
+  }
+  let anyMatch = false;
+  document.querySelectorAll('.phase-group').forEach(group => {
+    let groupHasMatch = false;
+    group.querySelectorAll('.bereich-item').forEach(item => {
+      let itemHasMatch = false;
+      const list = item.querySelector('.card-list');
+      item.querySelectorAll('.card-btn').forEach(btn => {
+        const c = byId[btn.dataset.id];
+        const hay = (c.title + ' ' + c.text).toLowerCase();
+        const match = !f || hay.indexOf(f) !== -1;
+        btn.classList.toggle('hidden', !match);
+        if(match) itemHasMatch = true;
+      });
+      item.classList.toggle('hidden', !itemHasMatch);
+      if(itemHasMatch){
+        groupHasMatch = true;
+        if(f) setExpanded(list, item.querySelector('.bereich-btn'), true);
+        else if(!preFilterOpenIds.has(list.id)) setExpanded(list, item.querySelector('.bereich-btn'), false);
+      }
+    });
+    group.classList.toggle('hidden', !groupHasMatch);
+    if(groupHasMatch) anyMatch = true;
+  });
+  noResults.style.display = (f && !anyMatch) ? 'block' : 'none';
+  if(!f) preFilterOpenIds.clear();
+}
 
 function renderBereichRow(phaseKey, bereich){
   const items = CARDS.filter(c => c.phase===phaseKey && c.bereich===bereich).sort((a,b)=>a.order-b.order);
