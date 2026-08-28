@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FCP Talent Pool · Studio Malibu Berlin</title>
+<meta name="description" content="Editors, assistant editors, and workflow builders who work with Final Cut Pro on real productions.">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0f12; --panel: #17181c; --panel-hover: #1d1e23; --border: #2a2b30;
+    --text: #e8e8ea; --muted: #9a9aa2; --accent: #5ea1ff;
+    --role-editor: #5ea1ff; --role-assistant: #7bc67e; --role-workflow: #b968ff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
+  .eyebrow { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 0.6rem; }
+  h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.9rem; }
+  .lede { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 620px; margin: 0 0 2rem; }
+
+  .cta {
+    display: block; padding: 1.6rem 1.7rem; border-radius: 16px;
+    background: var(--panel); border: 1px solid var(--border); margin-bottom: 2.6rem;
+  }
+  .cta h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: #fff; }
+  .cta p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0 0 1.1rem; }
+  .cta a.btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.88rem; font-weight: 600; color: #fff;
+    background: var(--accent); padding: 0.65rem 1.2rem; border-radius: 10px; text-decoration: none;
+  }
+  .cta a.btn:hover { opacity: 0.9; }
+
+  .empty { padding: 3rem 1.5rem; text-align: center; border: 1px dashed var(--border); border-radius: 16px; color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+
+  .roster { display: flex; flex-direction: column; gap: 0.8rem; }
+  .person { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem 1.4rem; }
+  .person-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .person h3 { font-size: 1rem; margin: 0; color: #fff; }
+  .roles { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .role-tag { font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; color: #0e0f12; }
+  .role-tag.editor { background: var(--role-editor); }
+  .role-tag.assistant { background: var(--role-assistant); }
+  .role-tag.workflow { background: var(--role-workflow); }
+  .person .resume { font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin: 0.6rem 0 0; }
+  .person .meta { font-size: 0.78rem; color: var(--dim, var(--muted)); margin-top: 0.6rem; }
+  .person .meta a { color: var(--accent); text-decoration: none; }
+
+  footer { color: var(--muted); font-size: 0.82rem; margin-top: 3rem; opacity: 0.85; }
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <p class="eyebrow">A working pool, not a directory of names</p>
+  <h1>FCP Talent Pool</h1>
+  <p class="lede">Editors, assistant editors, and workflow builders who actually work in Final Cut Pro — with real productions and real experience behind their listing. Especially useful for finding assistant editors, where FCP fluency is hard to screen for from a CV alone.</p>
+
+  <div class="cta">
+    <h2>Join the pool</h2>
+    <p>Tell us what you've cut, assisted on, or built for Final Cut Pro. Submissions are reviewed before anything goes live, and you choose whether your contact details are shown publicly or kept private.</p>
+    <a class="btn" href="https://app.notion.com/p/209864892e5d4c5e8dfeafcd52694cc3?v=3cab7d0d78478123a917000c22c45858" target="_blank" rel="noopener noreferrer">Submit your profile &rarr;</a>
+  </div>
+
+  <div class="roster" id="roster"></div>
+  <div class="empty" id="emptyState">
+    No one's listed yet &mdash; be the first to join the pool above.
+  </div>
+
+  <footer>
+    Listings are added and updated by hand after review &mdash; not a live feed.
+  </footer>
+</div>
+</body>
+</html>

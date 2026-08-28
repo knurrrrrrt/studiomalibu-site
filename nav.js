@@ -5,6 +5,7 @@
     { label: "Videos", href: "/videos/" },
     { label: "Infographics", href: "/infographics/" },
     { label: "Ideas for FCP", href: "/ideas/" },
+    { label: "Talent Pool", href: "/experts/" },
     { label: "FCP Around the World", href: "/projects/" }
   ];
 
