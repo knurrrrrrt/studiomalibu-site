@@ -146,29 +146,11 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var qlkOverlay = document.getElementById('qlkOverlay');
   var qlkBody = document.getElementById('qlkBody');
   var qlkClose = document.getElementById('qlkClose');
-  var ytPlayer = null;
-  var ytApiLoading = false;
-
-  function loadYT(cb){
-    if (window.YT && window.YT.Player) { cb(); return; }
-    var done = false;
-    var finish = function(){ if (done) return; done = true; cb(); };
-    var prevReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function(){ if (prevReady) prevReady(); finish(); };
-    if (!ytApiLoading) {
-      ytApiLoading = true;
-      var tag = document.createElement('script');
-      tag.src = 'https://www.youtube-nocookie.com/iframe_api';
-      document.head.appendChild(tag);
-    }
-    setTimeout(function(){ if (!done) cb(true); }, 3000);
-  }
 
   function closeSheet(){
     qlkOverlay.classList.add('hidden');
     qlkBody.innerHTML = '';
     document.body.style.overflow = '';
-    if (ytPlayer) { try { ytPlayer.destroy(); } catch(e){} ytPlayer = null; }
   }
 
   function openSheet(){
@@ -177,30 +159,13 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   }
 
   function openVideoSheet(id){
-    qlkBody.innerHTML = '<div id="qlkYtHost"></div>';
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    qlkBody.innerHTML = '';
+    qlkBody.appendChild(iframe);
     openSheet();
-    loadYT(function(apiBlocked){
-      var host = document.getElementById('qlkYtHost');
-      if (!host) return;
-      if (apiBlocked || !window.YT || !window.YT.Player) {
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-        iframe.allowFullscreen = true;
-        host.replaceWith(iframe);
-        return;
-      }
-      ytPlayer = new YT.Player('qlkYtHost', {
-        videoId: id,
-        host: 'https://www.youtube-nocookie.com',
-        playerVars: { autoplay: 1, rel: 0 },
-        events: {
-          onStateChange: function(e){
-            if (e.data === YT.PlayerState.ENDED) closeSheet();
-          }
-        }
-      });
-    });
   }
 
   qlkClose.addEventListener('click', closeSheet);
@@ -259,7 +224,6 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   // Preload the player API in the background so the first click doesn't
   // have to wait for the script to download+parse before the video starts.
-  loadYT(function(){});
 })();
 </script>
 </body>

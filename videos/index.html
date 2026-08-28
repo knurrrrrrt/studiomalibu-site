@@ -115,33 +115,12 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var qlkOverlay = document.getElementById('qlkOverlay');
   var qlkBody = document.getElementById('qlkBody');
   var qlkClose = document.getElementById('qlkClose');
-  var ytPlayer = null;
-  var ytApiLoading = false;
   var hoveredPreview = null;
-
-  function loadYT(cb){
-    if (window.YT && window.YT.Player) { cb(); return; }
-    var done = false;
-    var finish = function(){ if (done) return; done = true; cb(); };
-    var prevReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function(){ if (prevReady) prevReady(); finish(); };
-    if (!ytApiLoading) {
-      ytApiLoading = true;
-      var tag = document.createElement('script');
-      tag.src = 'https://www.youtube-nocookie.com/iframe_api';
-      document.head.appendChild(tag);
-    }
-    // Some browsers (Safari ITP, privacy-focused browsers) block the YouTube
-    // iframe API script outright. If it hasn't loaded after a few seconds,
-    // fall back to a plain embed instead of leaving an empty black box.
-    setTimeout(function(){ if (!done) cb(true); }, 3000);
-  }
 
   function closeSheet(){
     qlkOverlay.classList.add('hidden');
     qlkBody.innerHTML = '';
     document.body.style.overflow = '';
-    if (ytPlayer) { try { ytPlayer.destroy(); } catch(e){} ytPlayer = null; }
   }
 
   function openSheet(){
@@ -150,33 +129,13 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   }
 
   function openVideoSheet(id){
-    qlkBody.innerHTML = '<div id="qlkYtHost"></div>';
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    qlkBody.innerHTML = '';
+    qlkBody.appendChild(iframe);
     openSheet();
-    loadYT(function(apiBlocked){
-      var host = document.getElementById('qlkYtHost');
-      if (!host) return; // sheet was closed before the API responded
-      if (apiBlocked || !window.YT || !window.YT.Player) {
-        // The iframe API script never loaded (blocked by a content/tracker
-        // blocker in Safari/Firefox-based browsers) -- fall back to a plain
-        // embed so the video still plays, just without auto-close-on-end.
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-        iframe.allowFullscreen = true;
-        host.replaceWith(iframe);
-        return;
-      }
-      ytPlayer = new YT.Player('qlkYtHost', {
-        videoId: id,
-        host: 'https://www.youtube-nocookie.com',
-        playerVars: { autoplay: 1, rel: 0 },
-        events: {
-          onStateChange: function(e){
-            if (e.data === YT.PlayerState.ENDED) closeSheet();
-          }
-        }
-      });
-    });
   }
 
   function openImageSheet(src){
@@ -278,7 +237,6 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   // Preload the player API in the background so the first click doesn't
   // have to wait for the script to download+parse before the video starts.
-  loadYT(function(){});
 
   var tabVideosBtn = document.getElementById('tabVideosBtn');
   var tabInfoBtn = document.getElementById('tabInfoBtn');
