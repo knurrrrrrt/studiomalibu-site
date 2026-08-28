@@ -45,6 +45,8 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .person{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.4rem;}
 .person-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
 .person h3{font-size:1rem;margin:0;color:#fff;font-family:'Inter',sans-serif;}
+.name-row{display:flex;align-items:center;flex-wrap:wrap;gap:0.6rem;}
+.lang-inline{display:flex;flex-wrap:wrap;gap:0.35rem;}
 .tags{display:flex;gap:0.4rem;flex-wrap:wrap;}
 .tag{font-size:0.62rem;letter-spacing:0.03em;padding:0.22rem 0.55rem;border-radius:100px;white-space:nowrap;border:1px solid var(--line);color:var(--muted);}
 .tag.role-editor{color:#fff;background:var(--c-editor);border-color:var(--c-editor);}
@@ -53,10 +55,10 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .tag.role-vfx{color:#fff;background:var(--c-vfx);border-color:var(--c-vfx);}
 .person .resume{font-size:0.85rem;color:var(--muted);line-height:1.55;margin:0.6rem 0 0;}
 .person .languages{font-size:0.78rem;color:var(--dim);line-height:1.5;margin:0.35rem 0 0;}
-.contact-row{display:flex;flex-direction:column;gap:0.3rem;margin-top:0.5rem;}
+.contact-row{display:flex;flex-direction:column;gap:0.3rem;margin-top:0.4rem;}
 .contact-row a{color:var(--gold);text-decoration:none;font-size:0.78rem;}
 .contact-row a:hover{text-decoration:underline;}
-.meta-row{display:flex;justify-content:flex-end;gap:0.4rem;flex-wrap:wrap;margin-top:0.7rem;}
+.meta-row{display:flex;justify-content:flex-end;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem;}
 .meta-row a{color:var(--muted);text-decoration:none;font-size:0.72rem;}
 
 .empty{padding:3rem 1.5rem;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:0.9rem;line-height:1.6;}
@@ -100,16 +102,26 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var DATA = JSON.parse(document.getElementById('peopleData').textContent);
   var ROLES = ['Editor','Assistant Editor','VFX Editor','Workflow Builder'];
   var ROLE_CLASS = {'Editor':'role-editor','Assistant Editor':'role-assistant','VFX Editor':'role-vfx','Workflow Builder':'role-workflow'};
+  var CONTENT_TYPES = ['Narrative','Commercials','Music Videos','Documentaries','Social'];
 
   DATA.forEach(function(d){
-    d.text = [d.name, d.resume, d.country, d.languages, (d.roles||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    d.text = [d.name, d.resume, d.country, d.languages, (d.roles||[]).join(' '), (d.contentTypes||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
   });
 
   var countries = [];
   DATA.forEach(function(d){ if (d.country && countries.indexOf(d.country) === -1) countries.push(d.country); });
   countries.sort();
 
-  var state = { role: 'All', country: 'All', remote: 'All', q: '' };
+  var languages = [];
+  DATA.forEach(function(d){
+    (d.languages ? d.languages.split(',') : []).forEach(function(l){
+      l = l.trim();
+      if (l && languages.indexOf(l) === -1) languages.push(l);
+    });
+  });
+  languages.sort();
+
+  var state = { role: 'All', country: 'All', remote: 'All', language: 'All', contentType: 'All', q: '' };
 
   function renderFilters(){
     var wrap = document.getElementById('filters');
@@ -161,6 +173,38 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     });
     remoteRow.appendChild(remoteChips);
     wrap.appendChild(remoteRow);
+
+    if (languages.length) {
+      var langRow = document.createElement('div');
+      langRow.className = 'filter-group';
+      langRow.innerHTML = '<span class="filter-label">Language</span>';
+      var langChips = document.createElement('div');
+      langChips.className = 'filter-chips';
+      ['All'].concat(languages).forEach(function(l){
+        var c = document.createElement('button');
+        c.className = 'chip' + (state.language === l ? ' active' : '');
+        c.textContent = l;
+        c.onclick = function(){ state.language = l; renderFilters(); renderGrid(); };
+        langChips.appendChild(c);
+      });
+      langRow.appendChild(langChips);
+      wrap.appendChild(langRow);
+    }
+
+    var contentRow = document.createElement('div');
+    contentRow.className = 'filter-group';
+    contentRow.innerHTML = '<span class="filter-label">Content</span>';
+    var contentChips = document.createElement('div');
+    contentChips.className = 'filter-chips';
+    ['All'].concat(CONTENT_TYPES).forEach(function(t){
+      var c = document.createElement('button');
+      c.className = 'chip' + (state.contentType === t ? ' active' : '');
+      c.textContent = t;
+      c.onclick = function(){ state.contentType = t; renderFilters(); renderGrid(); };
+      contentChips.appendChild(c);
+    });
+    contentRow.appendChild(contentChips);
+    wrap.appendChild(contentRow);
   }
 
   function matches(d){
@@ -168,6 +212,8 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     if (state.country !== 'All' && d.country !== state.country) return false;
     if (state.remote === 'Remote-capable' && !d.remote) return false;
     if (state.remote === 'Has own system' && !d.ownSystem) return false;
+    if (state.language !== 'All' && (!d.languages || d.languages.indexOf(state.language) === -1)) return false;
+    if (state.contentType !== 'All' && (d.contentTypes||[]).indexOf(state.contentType) === -1) return false;
     if (state.q && d.text.indexOf(state.q) === -1) return false;
     return true;
   }
@@ -193,6 +239,10 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
       if (lang) languages += '<span class="tag">' + escapeHtml(lang) + '</span>';
     });
 
+    var contentTypes = (d.contentTypes||[]).map(function(c){
+      return '<span class="tag">' + escapeHtml(c) + '</span>';
+    }).join('');
+
     var meta = '';
     if (d.country) meta += '<span class="tag">' + escapeHtml(d.country) + '</span>';
     if (d.years) meta += '<span class="tag">' + d.years + ' yrs with FCP</span>';
@@ -201,10 +251,13 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     if (d.showContact && d.website) meta += '<a href="' + escapeHtml(d.website) + '" target="_blank" rel="noopener noreferrer">Portfolio &rarr;</a>';
 
     return '<div class="person">' +
-      '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
+      '<div class="person-top">' +
+        '<div class="name-row"><h3>' + escapeHtml(d.name) + '</h3>' + (languages ? '<div class="lang-inline">' + languages + '</div>' : '') + '</div>' +
+        '<div class="tags">' + tags + '</div>' +
+      '</div>' +
       (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
       (contact ? '<div class="contact-row">' + contact + '</div>' : '') +
-      (languages ? '<div class="meta-row languages-row">' + languages + '</div>' : '') +
+      (contentTypes ? '<div class="meta-row content-types-row">' + contentTypes + '</div>' : '') +
       (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
       '</div>';
   }
