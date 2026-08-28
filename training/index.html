@@ -46,6 +46,30 @@ h2.section-title:first-of-type{border-top:none;padding-top:0;}
 footer.site-footer{margin-top:1.5rem;font-size:0.8rem;color:var(--dim);}
 footer.site-footer a{text-decoration:underline;color:var(--dim);}
 @media(max-width:600px){h1{font-size:1.8rem;}}
+
+.filter-chips{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1rem;}
+.chip{white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+.chip:hover{border-color:var(--gold-dim);color:var(--text);}
+.chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
+.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1rem;}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;}
+.video-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.video-thumb{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.video-thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.video-thumb .play svg{width:52px;height:52px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));}
+.video-card .meta{padding:0.8rem 0.9rem;}
+.video-card h3{font-size:0.85rem;font-weight:600;margin:0 0 0.25rem;line-height:1.35;color:var(--text);}
+.video-card p{font-size:0.75rem;color:var(--dim);margin:0;}
+
+.qlk-overlay{position:fixed;inset:0;background:rgba(8,7,5,0.86);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.2rem;z-index:2000;}
+.qlk-overlay.hidden{display:none;}
+.qlk-sheet{position:relative;max-width:98vw;max-height:100%;}
+.qlk-close{position:absolute;top:-46px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#EDE8DE;font-size:19px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;}
+.qlk-close:hover{background:rgba(255,255,255,0.16);}
+.qlk-body{background:var(--panel);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);max-height:90vh;display:inline-flex;}
+.qlk-body iframe,.qlk-body #qlkYtHost{width:min(96vw,calc(90vh * 16 / 9));aspect-ratio:16/9;border:0;display:block;}
 </style>
 </head>
 <body>
@@ -64,7 +88,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
       <p>Steve Martin has been teaching Final Cut Pro since 1999. Core Training, Media Management, Sound, Color and Multicam courses, kept current with every FCP release — the closest thing to a structured curriculum for the app.</p>
       <div class="links">
         <a href="https://www.rippletraining.com/" target="_blank" rel="noopener noreferrer">rippletraining.com &rarr;</a>
-        <a href="/videos/">Free videos on our Videos page &rarr;</a>
+        <a href="#free-videos">Free videos below &rarr;</a>
       </div>
     </div>
 
@@ -74,40 +98,26 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
       <p>Two decades as a producer/editor, with weekly free FCP &amp; Motion tutorials on YouTube and a structured paid course, "Final Cut Rock Star," updated for FCP 12 — she explains the why, not just the click-path.</p>
       <div class="links">
         <a href="https://jennjager.com/" target="_blank" rel="noopener noreferrer">jennjager.com &rarr;</a>
-        <a href="https://www.youtube.com/c/JennJagerProTutorials" target="_blank" rel="noopener noreferrer">YouTube &rarr;</a>
+        <a href="#free-videos">Free videos below &rarr;</a>
       </div>
     </div>
 
     <div class="provider-card">
-      <span class="tag">YouTube + paid course</span>
-      <h3><a href="https://fcpacademy.com/" target="_blank" rel="noopener noreferrer">Dylan John &mdash; FCP Academy</a></h3>
-      <p>Weekly Final Cut Pro tutorials on YouTube covering color grading, retouching techniques and export settings, plus a paid Color Grading Masterclass through his FCP Academy.</p>
-      <div class="links">
-        <a href="https://fcpacademy.com/" target="_blank" rel="noopener noreferrer">fcpacademy.com &rarr;</a>
-        <a href="/videos/">Free videos on our Videos page &rarr;</a>
-      </div>
-    </div>
-
-    <div class="provider-card">
-      <span class="tag">YouTube + paid course</span>
+      <span class="tag">Apple Motion course</span>
       <h3><a href="https://www.youtube.com/thefinalcutbro" target="_blank" rel="noopener noreferrer">Dylan Bates &mdash; The Final Cut Bro</a></h3>
-      <p>Apple Certified Instructor for Final Cut Pro &amp; Motion, with 190+ free tutorials on plugins, effects and workflow. His paid Apple Motion Masterclass (41 lessons) teaches building your own publishable Final Cut Pro templates and plugins in Motion.</p>
+      <p>Not a Final Cut Pro course itself &mdash; his paid Apple Motion Masterclass (41 lessons) teaches Apple Motion, the companion app, so you can build your own publishable Final Cut Pro templates and plugins. His regular free tutorials are proper FCP tips and live on our Videos page.</p>
       <div class="links">
         <a href="https://fcbplugins.com/b/motionmasterclass" target="_blank" rel="noopener noreferrer">Motion Masterclass &rarr;</a>
         <a href="/videos/">Free videos on our Videos page &rarr;</a>
       </div>
     </div>
 
-    <div class="provider-card">
-      <span class="tag">Free + long-running</span>
-      <h3><a href="https://larryjordan.com/" target="_blank" rel="noopener noreferrer">Larry Jordan</a></h3>
-      <p>One of the longest-running names in FCP training — 360+ videos covering everything from fundamentals to deep workflow questions, plus a newsletter that tracks what actually changes release to release.</p>
-      <div class="links">
-        <a href="https://larryjordan.com/" target="_blank" rel="noopener noreferrer">larryjordan.com &rarr;</a>
-      </div>
-    </div>
-
   </div>
+
+  <h2 class="section-title" id="free-videos">Free videos from Ripple Training &amp; Jenn Jager</h2>
+  <div class="filter-chips" id="creatorChips"></div>
+  <p class="count-note" id="countNote"></p>
+  <div class="video-grid" id="videoGrid" style="margin-bottom:2.4rem;"></div>
 
   <h2 class="section-title">A word of caution</h2>
   <div class="warn-box">
@@ -121,5 +131,131 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     Know a great FCP trainer we're missing &mdash; or one we should warn about? Get in touch via <a href="https://knuthake.de">knuthake.de</a>.
   </footer>
 </div>
+
+<div class="qlk-overlay hidden" id="qlkOverlay">
+  <div class="qlk-sheet">
+    <button class="qlk-close" id="qlkClose" type="button" aria-label="Close preview">&times;</button>
+    <div class="qlk-body" id="qlkBody"></div>
+  </div>
+</div>
+
+<script id="videoData" type="application/json">[{"id": "HqUP7Zgeuck", "title": "Learn Final Cut Pro in Under 60 Minutes", "author": "Ripple Training"}, {"id": "jkSeS2FTYPk", "title": "Getting Started in FCP 10.4: Exploring the User Interface", "author": "Ripple Training"}, {"id": "mVEwc1wB478", "title": "Getting Starting in FCP 10.4: Assembling a Movie", "author": "Ripple Training"}, {"id": "JrTJ3GXV2eQ", "title": "Getting Started in FCP 10.4: Adding Effects", "author": "Ripple Training"}, {"id": "Xvn7x2NWlBc", "title": "Getting Started in FCP 10.4: Importing Media", "author": "Ripple Training"}, {"id": "vINXQJQO9O8", "title": "Getting Started in FCP 10.4: Working with Sound", "author": "Ripple Training"}, {"id": "-H_rfppYJy0", "title": "Getting Started in FCP 10.4: Color Correcting", "author": "Ripple Training"}, {"id": "lcojnS_IMHE", "title": "Getting Started in FCP 10.4: Sharing Your Movie", "author": "Ripple Training"}, {"id": "4aKzkMEbrzs", "title": "Getting Started in FCP 10.4: Adding Titles & Transitions", "author": "Ripple Training"}, {"id": "xypjLcoId4k", "title": "Getting Started in FCP 10.4: Editing 360 Movies", "author": "Ripple Training"}, {"id": "281mCfA-umM", "title": "Final Cut Pro Beginner Tutorial | Get Editing in Less Than 20 Minutes!", "author": "Jenn Jager"}, {"id": "-gaT4mwU6CM", "title": "Create Titles, Effects, Transitions and Generators for Final Cut Pro!", "author": "Jenn Jager"}, {"id": "8vynHJ0zimA", "title": "Transform Appearances with FCP's New Auto Mask!", "author": "Jenn Jager"}, {"id": "YG_3jaRijSw", "title": "The Secret Hack for Better Auto Mask Results in Final Cut Pro!", "author": "Jenn Jager"}, {"id": "MgFMB9nKn8E", "title": "Beat Detection in Final Cut Pro | FULL TUTORIAL", "author": "Jenn Jager"}, {"id": "sJw9gNojxx8", "title": "5 More Magnetic Mask Ideas in Final Cut Pro!", "author": "Jenn Jager"}, {"id": "t4n7wQKtHT0", "title": "REAL Keyframes in Final Cut Pro, Finally!", "author": "Jenn Jager"}, {"id": "t-W3yucLf74", "title": "Full Height Browser in FCP... ON THE RIGHT! You need to see these custom layouts.", "author": "Jenn Jager"}, {"id": "wqoCdpLiC2E", "title": "How to Get Your FCP Transcripts in Under 2 Minutes", "author": "Jenn Jager"}, {"id": "tF825ywlf8I", "title": "9 Time Saving (and Butt Saving!) AI Tools in FCP", "author": "Jenn Jager"}, {"id": "fupRtfM6PNA", "title": "Faster Editing for FCP | 2026 Update", "author": "Jenn Jager"}, {"id": "kZVDivrGVvI", "title": "No Camera, No Problem!  Making an AI Powered Client Video in Final Cut Pro", "author": "Jenn Jager"}]</script>
+<script>
+(function(){
+  var qlkOverlay = document.getElementById('qlkOverlay');
+  var qlkBody = document.getElementById('qlkBody');
+  var qlkClose = document.getElementById('qlkClose');
+  var ytPlayer = null;
+  var ytApiLoading = false;
+
+  function loadYT(cb){
+    if (window.YT && window.YT.Player) { cb(); return; }
+    var done = false;
+    var finish = function(){ if (done) return; done = true; cb(); };
+    var prevReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function(){ if (prevReady) prevReady(); finish(); };
+    if (!ytApiLoading) {
+      ytApiLoading = true;
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube-nocookie.com/iframe_api';
+      document.head.appendChild(tag);
+    }
+    setTimeout(function(){ if (!done) cb(true); }, 3000);
+  }
+
+  function closeSheet(){
+    qlkOverlay.classList.add('hidden');
+    qlkBody.innerHTML = '';
+    document.body.style.overflow = '';
+    if (ytPlayer) { try { ytPlayer.destroy(); } catch(e){} ytPlayer = null; }
+  }
+
+  function openSheet(){
+    qlkOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openVideoSheet(id){
+    qlkBody.innerHTML = '<div id="qlkYtHost"></div>';
+    openSheet();
+    loadYT(function(apiBlocked){
+      var host = document.getElementById('qlkYtHost');
+      if (!host) return;
+      if (apiBlocked || !window.YT || !window.YT.Player) {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        host.replaceWith(iframe);
+        return;
+      }
+      ytPlayer = new YT.Player('qlkYtHost', {
+        videoId: id,
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: { autoplay: 1, rel: 0 },
+        events: {
+          onStateChange: function(e){
+            if (e.data === YT.PlayerState.ENDED) closeSheet();
+          }
+        }
+      });
+    });
+  }
+
+  qlkClose.addEventListener('click', closeSheet);
+  qlkOverlay.addEventListener('click', function(e){ if (e.target === qlkOverlay) closeSheet(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !qlkOverlay.classList.contains('hidden')) closeSheet();
+  });
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
+  var creators = [];
+  VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
+  var state = { creator: 'All' };
+
+  function renderChips(){
+    var wrap = document.getElementById('creatorChips');
+    wrap.innerHTML = '';
+    ['All'].concat(creators).forEach(function(c){
+      var b = document.createElement('button');
+      b.className = 'chip' + (state.creator === c ? ' active' : '');
+      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')');
+      b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderCard(v){
+    var div = document.createElement('div');
+    div.className = 'video-card';
+    div.innerHTML =
+      '<div class="video-thumb" data-id="' + v.id + '">' +
+        '<img src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg" alt="" loading="lazy">' +
+        '<div class="play"><svg viewBox="0 0 68 48"><path d="M66.5,7.7c-0.8-2.9-2.5-5.2-5.4-6C55.8,0,34,0,34,0S12.2,0,6.9,1.7c-2.9,0.8-5.2,3.1-5.4,6C0,13.1,0,24,0,24s0,10.9,1.5,16.3c0.8,2.9,2.5,5.2,5.4,6C12.2,48,34,48,34,48s21.8,0,27.1-1.7c2.9-0.8,4.6-3.1,5.4-6C68,34.9,68,24,68,24S68,13.1,66.5,7.7z" fill="#D9A441"></path><path d="M 45,24 27,14 27,34" fill="#1A1206"></path></svg></div>' +
+      '</div>' +
+      '<div class="meta"><h3>' + escapeHtml(v.title) + '</h3><p>' + escapeHtml(v.author) + '</p></div>';
+    var thumb = div.querySelector('.video-thumb');
+    thumb.addEventListener('click', function(){ openVideoSheet(v.id); });
+    return div;
+  }
+
+  function renderGrid(){
+    var filtered = VIDEOS.filter(function(v){ return state.creator === 'All' || v.author === state.creator; });
+    var grid = document.getElementById('videoGrid');
+    grid.innerHTML = '';
+    filtered.forEach(function(v){ grid.appendChild(renderCard(v)); });
+    document.getElementById('countNote').textContent = filtered.length + ' of ' + VIDEOS.length + ' videos';
+  }
+
+  renderChips();
+  renderGrid();
+})();
+</script>
 </body>
 </html>
