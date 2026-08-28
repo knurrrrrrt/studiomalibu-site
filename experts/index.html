@@ -187,13 +187,15 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     if (d.filmographyUrl) contact += '<a href="' + escapeHtml(d.filmographyUrl) + '" target="_blank" rel="noopener noreferrer">Full filmography &rarr;</a>';
     if (d.showContact && d.email) contact += '<a href="mailto:' + escapeHtml(d.email) + '">' + escapeHtml(d.email) + '</a>';
 
+    var languages = '';
+    (d.languages ? d.languages.split(',') : []).forEach(function(lang){
+      lang = lang.trim();
+      if (lang) languages += '<span class="tag">' + escapeHtml(lang) + '</span>';
+    });
+
     var meta = '';
     if (d.country) meta += '<span class="tag">' + escapeHtml(d.country) + '</span>';
     if (d.years) meta += '<span class="tag">' + d.years + ' yrs with FCP</span>';
-    (d.languages ? d.languages.split(',') : []).forEach(function(lang){
-      lang = lang.trim();
-      if (lang) meta += '<span class="tag">' + escapeHtml(lang) + '</span>';
-    });
     if (d.remote) meta += '<span class="tag">Remote-capable</span>';
     if (d.ownSystem) meta += '<span class="tag">Has own system</span>';
     if (d.showContact && d.website) meta += '<a href="' + escapeHtml(d.website) + '" target="_blank" rel="noopener noreferrer">Portfolio &rarr;</a>';
@@ -202,6 +204,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
       '<div class="person-top"><h3>' + escapeHtml(d.name) + '</h3><div class="tags">' + tags + '</div></div>' +
       (d.resume ? '<p class="resume">' + escapeHtml(d.resume) + '</p>' : '') +
       (contact ? '<div class="contact-row">' + contact + '</div>' : '') +
+      (languages ? '<div class="meta-row languages-row">' + languages + '</div>' : '') +
       (meta ? '<div class="meta-row">' + meta + '</div>' : '') +
       '</div>';
   }
