@@ -86,6 +86,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   <div id="videosSection">
     <div class="filter-chips" id="creatorChips"></div>
+    <div class="filter-chips" id="theoryChips"></div>
     <p class="count-note" id="countNote"></p>
     <div class="video-grid" id="videoGrid"></div>
   </div>
@@ -204,9 +205,12 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
   var DEFAULT_CREATOR = 'Thomas Grove Carter';
   var CREATOR_PRIORITY = ['Thomas Grove Carter', 'Unauthorized FCPX', 'Hollywood:FCP'];
+  var FILM_THEORY_CREATORS = ['Every Frame a Painting'];
 
   var creators = [];
   VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
+  var theoryCreators = creators.filter(function(c){ return FILM_THEORY_CREATORS.indexOf(c) !== -1; });
+  creators = creators.filter(function(c){ return FILM_THEORY_CREATORS.indexOf(c) === -1; });
   creators.sort(function(a,b){
     var ia = CREATOR_PRIORITY.indexOf(a), ib = CREATOR_PRIORITY.indexOf(b);
     if (ia !== -1 || ib !== -1) {
@@ -228,6 +232,15 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
       b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')');
       b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
       wrap.appendChild(b);
+    });
+    var theoryWrap = document.getElementById('theoryChips');
+    theoryWrap.innerHTML = '';
+    theoryCreators.forEach(function(c){
+      var b = document.createElement('button');
+      b.className = 'chip' + (state.creator === c ? ' active' : '');
+      b.textContent = c + ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')';
+      b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
+      theoryWrap.appendChild(b);
     });
   }
 
