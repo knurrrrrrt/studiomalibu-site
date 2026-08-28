@@ -61,7 +61,6 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .front-sharp{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;}
 .front.no-poster{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--card),#0A0908);}
 .front.no-poster .no-poster-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--dim);text-align:center;padding:1rem;line-height:1.15;}
-.flag-badge{position:absolute;top:0.7rem;right:0.7rem;font-size:1.15rem;line-height:1;background:rgba(10,9,7,0.55);border-radius:6px;padding:0.3rem 0.4rem;backdrop-filter:blur(3px);}
 .back{background:var(--card);transform:rotateY(180deg);-webkit-transform:rotateY(180deg);padding:1.1rem;display:flex;flex-direction:column;overflow-y:auto;}
 .back-title{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:0.01em;margin:0 0 0.7rem;line-height:1.05;color:var(--gold);}
 .back-row{font-size:0.76rem;line-height:1.5;margin-bottom:0.5rem;}
@@ -72,8 +71,10 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1;letter-spa
 .imdb:hover{background:var(--gold);color:#1A1206;}
 .card-info{margin-top:0.85rem;}
 .card-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;font-weight:400;letter-spacing:0.01em;margin:0 0 0.2rem;color:var(--text);line-height:1.1;}
+.card-info .info-row{display:flex;align-items:baseline;justify-content:space-between;gap:0.5rem;}
 .card-info p{font-size:0.78rem;color:var(--muted);margin:0;}
 .card-info .type{color:var(--gold);}
+.card-info .flag-inline{flex:none;font-size:0.95rem;line-height:1;}
 .count-note{margin-top:2.5rem;font-size:0.8rem;color:var(--dim);border-top:1px solid var(--line);padding-top:1.2rem;}
 footer.site-footer{margin-top:3rem;font-size:0.8rem;color:var(--dim);}
 footer.site-footer a{text-decoration:underline;color:var(--dim);}
@@ -165,7 +166,6 @@ function renderGrid(){
         <div class="card-inner">
           <div class="face front${p.poster ? '' : ' no-poster'}">
             ${frontHtml}
-            <span class="flag-badge">${p.flag}</span>
           </div>
           <div class="face back">
             <div class="back-title">${esc(p.title)}</div>
@@ -182,7 +182,10 @@ function renderGrid(){
       </div>
       <div class="card-info">
         <h3>${esc(p.title)}</h3>
-        <p><span class="type">${esc(p.year)}</span> &bull; ${esc(p.type)}</p>
+        <div class="info-row">
+          <p><span class="type">${esc(p.year)}</span> &bull; ${esc(p.type)}</p>
+          <span class="flag-inline">${p.flag}</span>
+        </div>
       </div>
     </div>`;
   }).join('');
