@@ -155,8 +155,8 @@ function renderGrid(){
   document.getElementById('countNote').textContent = `Showing ${filtered.length} of ${PROJECTS.length} productions.`;
   document.getElementById('grid').innerHTML = filtered.map((p,i) => {
     const frontHtml = p.poster
-      ? `<div class="front-blur" style="background-image:url('posters/${encodeURIComponent(p.poster)}');"></div>
-         <div class="front-sharp" style="background-image:url('posters/${encodeURIComponent(p.poster)}');"></div>`
+      ? `<div class="front-blur" style="background-image:url('/projects/posters/${encodeURIComponent(p.poster)}');"></div>
+         <div class="front-sharp" style="background-image:url('/projects/posters/${encodeURIComponent(p.poster)}');"></div>`
       : `<div class="no-poster-title">${esc(p.title)}</div>`;
     return `
     <div class="card-outer">
