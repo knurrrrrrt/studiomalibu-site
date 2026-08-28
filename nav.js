@@ -3,8 +3,8 @@
     { label: "Apps", href: "/apps/" },
     { label: "FCP Videos & Infographics", href: "/videos/" },
     { label: "FCP Ideas", href: "/ideas/" },
-    { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Around the World", href: "/projects/" },
+    { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Workflow", href: "/workflow/" }
   ];
 
