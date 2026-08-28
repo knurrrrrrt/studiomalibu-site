@@ -6,6 +6,8 @@
 <title>FCP Training · Studio Malibu Berlin</title>
 <meta name="description" content="Knut's curated picks for real Final Cut Pro training — plus who to watch out for.">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://i.ytimg.com">
 <style>
 :root{
   --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
@@ -255,6 +257,10 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   renderChips();
   renderGrid();
+
+  // Preload the player API in the background so the first click doesn't
+  // have to wait for the script to download+parse before the video starts.
+  loadYT(function(){});
 })();
 </script>
 </body>

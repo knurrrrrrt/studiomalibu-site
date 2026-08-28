@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Film Craft · Studio Malibu Berlin</title>
+<meta name="description" content="Video essays on film editing, directing and storytelling craft -- not FCP-specific, just genuinely great analysis.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://i.ytimg.com">
+<style>
+:root{
+  --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
+  --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
+  --gold:#D9A441; --gold-dim:#8A6A2E;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;}
+a{color:inherit;}
+.wrap{max-width:1100px;margin:0 auto;padding:2.2rem 2rem 5rem;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.4rem;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:2.3rem;line-height:1;letter-spacing:0.01em;margin:0 0 0.5rem;font-weight:400;}
+.curator-note-small{font-size:0.72rem;color:var(--dim);margin:0 0 1.1rem;}
+.curator-note-small a{color:var(--gold);}
+
+.search-input{width:220px;max-width:44vw;font:inherit;font-size:0.8rem;padding:0.4rem 0.7rem;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin:0 0 1.1rem;}
+.search-input::placeholder{color:var(--dim);}
+.search-input:focus{outline:none;border-color:var(--gold-dim);}
+
+.filter-chips{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1rem;}
+.chip{white-space:nowrap;font-size:0.72rem;padding:0.28rem 0.65rem;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+.chip:hover{border-color:var(--gold-dim);color:var(--text);}
+.chip.active{background:var(--gold);border-color:var(--gold);color:#1A1206;font-weight:600;}
+
+.count-note{font-size:0.78rem;color:var(--dim);margin:0 0 1.2rem;}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;}
+.video-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.video-thumb{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.video-thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.video-thumb .play svg{width:52px;height:52px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));}
+.video-card .meta{padding:0.8rem 0.9rem;}
+.video-card h3{font-size:0.85rem;font-weight:600;margin:0 0 0.25rem;line-height:1.35;color:var(--text);}
+.video-card p{font-size:0.75rem;color:var(--dim);margin:0;}
+
+.qlk-overlay{position:fixed;inset:0;background:rgba(8,7,5,0.86);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.2rem;z-index:2000;}
+.qlk-overlay.hidden{display:none;}
+.qlk-sheet{position:relative;max-width:98vw;max-height:100%;}
+.qlk-close{position:absolute;top:-46px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#EDE8DE;font-size:19px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;}
+.qlk-close:hover{background:rgba(255,255,255,0.16);}
+.qlk-body{background:var(--panel);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);max-height:90vh;display:inline-flex;}
+.qlk-body iframe,.qlk-body #qlkYtHost{width:min(96vw,calc(90vh * 16 / 9));aspect-ratio:16/9;border:0;display:block;}
+
+footer.site-footer{margin-top:3rem;font-size:0.8rem;color:var(--dim);}
+footer.site-footer a{text-decoration:underline;color:var(--dim);}
+@media(max-width:600px){h1{font-size:1.8rem;}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <p class="eyebrow">Curated, not comprehensive &mdash; grouped by who made it</p>
+  <h1>Film Craft</h1>
+  <p class="curator-note-small">Video essays on editing, directing and storytelling craft &mdash; not Final Cut Pro specific, just genuinely great analysis Knut wanted a home for. Know a great one we're missing? <a href="https://knuthake.de">Let him know</a>.</p>
+
+  <input type="text" id="searchInput" class="search-input" placeholder="Search video titles&hellip;">
+  <div class="filter-chips" id="creatorChips"></div>
+  <p class="count-note" id="countNote"></p>
+  <div class="video-grid" id="videoGrid"></div>
+
+  <footer class="site-footer">
+    Know a great film-craft essay we're missing? Get in touch via <a href="https://knuthake.de">knuthake.de</a>.
+  </footer>
+</div>
+
+<div class="qlk-overlay hidden" id="qlkOverlay">
+  <div class="qlk-sheet">
+    <button class="qlk-close" id="qlkClose" type="button" aria-label="Close preview">&times;</button>
+    <div class="qlk-body" id="qlkBody"></div>
+  </div>
+</div>
+
+<script id="videoData" type="application/json">[{"id": "dUOdQxQkVt8", "title": "Mother (2009) - The Telephoto Profile Shot", "author": "Every Frame a Painting"}, {"id": "Y0TnU80idDA", "title": "The Imposter (2012) - Looking into the Lens", "author": "Every Frame a Painting"}, {"id": "8q4X2vDRfRk", "title": "The Spielberg Oner", "author": "Every Frame a Painting"}, {"id": "pdSKot0psNg", "title": "Wolf Children (2012) - The Lateral Tracking Shot", "author": "Every Frame a Painting"}, {"id": "3FOzD4Sfgag", "title": "Edgar Wright - How to Do Visual Comedy", "author": "Every Frame a Painting"}, {"id": "NUrTRjEXjSM", "title": "Martin Scorsese - The Art of Silence", "author": "Every Frame a Painting"}, {"id": "2THVvshvq0Q", "title": "Michael Bay - What is Bayhem?", "author": "Every Frame a Painting"}, {"id": "oz49vQwSoTE", "title": "Satoshi Kon - Editing Space & Time", "author": "Every Frame a Painting"}, {"id": "uFfq2zblGXw", "title": "A Brief Look at Texting and the Internet in Film", "author": "Every Frame a Painting"}, {"id": "I8lQKLjmoWI", "title": "Robin Williams - In Motion", "author": "Every Frame a Painting"}, {"id": "QPAloq5MCUA", "title": "David Fincher - And the Other Way is Wrong", "author": "Every Frame a Painting"}, {"id": "5V-k-p4wzxg", "title": "The Silence of the Lambs - Who Wins the Scene?", "author": "Every Frame a Painting"}, {"id": "X05TDsoSg2Y", "title": "Snowpiercer - Left or Right", "author": "Every Frame a Painting"}, {"id": "Z1PCtIaM_GQ", "title": "Jackie Chan - How to Do Action Comedy", "author": "Every Frame a Painting"}, {"id": "jGc-K7giqKM", "title": "The Bad Sleep Well (1960) - The Geometry of a Scene", "author": "Every Frame a Painting"}, {"id": "wsI8UES59TM", "title": "Drive (2011) - The Quadrant System", "author": "Every Frame a Painting"}, {"id": "doaQC-S8de8", "title": "Akira Kurosawa - Composing Movement", "author": "Every Frame a Painting"}, {"id": "1GXv2C7vwX0", "title": "F for Fake (1973) - How to Structure a Video Essay", "author": "Every Frame a Painting"}, {"id": "KjY9kf7TuUU", "title": "Lynne Ramsay - The Poetry of Details", "author": "Every Frame a Painting"}, {"id": "FfGKNJ4mldE", "title": "In Praise of Chairs", "author": "Every Frame a Painting"}, {"id": "kHpXle4NqWI", "title": "Chuck Jones - The Evolution of an Artist", "author": "Every Frame a Painting"}, {"id": "ojm74VGsZBU", "title": "Vancouver Never Plays Itself", "author": "Every Frame a Painting"}, {"id": "UWEjxkkB8Xs", "title": "Buster Keaton - The Art of the Gag", "author": "Every Frame a Painting"}, {"id": "v4seDVfgwOg", "title": "Memories of Murder (2003) - Ensemble Staging", "author": "Every Frame a Painting"}, {"id": "5UE3jz_O_EM", "title": "Joel & Ethan Coen - Shot | Reverse Shot", "author": "Every Frame a Painting"}, {"id": "3Q3eITC01Fg", "title": "How Does an Editor Think and Feel?", "author": "Every Frame a Painting"}, {"id": "7vfqkvwW2fs", "title": "The Marvel Symphonic Universe", "author": "Every Frame a Painting"}, {"id": "IEfQ_9DIItI", "title": "Hollywood Scores & Soundtracks: What Do They Sound Like? Do They Sound Like Things?? Let's Find Out!", "author": "Every Frame a Painting"}, {"id": "wa1O3nqW5hQ", "title": "Where Do You Put the Camera?", "author": "Every Frame a Painting"}, {"id": "X_aYXYUT5l8", "title": "What Would Billy Wilder Do?", "author": "Every Frame a Painting"}, {"id": "mn2Dcy-NDTw", "title": "The Sustained Two-Shot", "author": "Every Frame a Painting"}, {"id": "cRcfHkPDt5I", "title": "Fight Scenes: Overlap Your Edits", "author": "This Guy Edits"}, {"id": "02JF19lJ29M", "title": "The Science Behind Film Editing", "author": "This Guy Edits"}, {"id": "ANK8UpPPFlg", "title": "3 Mistakes All Beginner Editors Make", "author": "This Guy Edits"}, {"id": "3qYB1qLx4R8", "title": "Whiplash's Brilliant Editing - A Breakdown", "author": "This Guy Edits"}, {"id": "Jb2RRoEt4_M", "title": "Audio Design: Sound is 70% of What You See", "author": "This Guy Edits"}, {"id": "C2eHpxOzjqY", "title": "DUNKIRK: Editing the Suspense Snowball", "author": "This Guy Edits"}, {"id": "i9mGSDluh9g", "title": "The 7 Laws of Film Editing", "author": "This Guy Edits"}, {"id": "f7fHwLEtx3U", "title": "Why Does an Edit Feel Right? (According to Science)", "author": "This Guy Edits"}, {"id": "Ehvh5adVqMo", "title": "Lessons from the Top Film Editors", "author": "This Guy Edits"}, {"id": "Pr-YtQlSU_I", "title": "This One Thing Will Make Your Editing Better", "author": "This Guy Edits"}, {"id": "zoE6x4xQh7s", "title": "7 Editing Tips That Are Simple And Beautiful", "author": "This Guy Edits"}, {"id": "ma1rD2OP85c", "title": "Parasite's Perfect Montage", "author": "Nerdwriter1"}, {"id": "GfqD5WqChUY", "title": "How David Fincher Hijacks Your Eyes", "author": "Nerdwriter1"}, {"id": "bVCLiPYIqxo", "title": "The Butterfly Effect, Literally", "author": "Nerdwriter1"}, {"id": "ufdvYrTeTuU", "title": "How Louis CK Tells A Joke", "author": "Nerdwriter1"}, {"id": "z18LY6NME1s", "title": "Arrival: A Response To Bad Movies", "author": "Nerdwriter1"}, {"id": "4kSGkGKwp9U", "title": "Westworld: What Makes Anthony Hopkins Great", "author": "Nerdwriter1"}, {"id": "Gksxu-yeWcU", "title": "Passengers, Rearranged", "author": "Nerdwriter1"}, {"id": "he3x5flTFPg", "title": "Parasite — The Power of Symbols", "author": "Lessons from the Screenplay"}, {"id": "pFUKeD3FJm8", "title": "The Dark Knight — Creating the Ultimate Antagonist", "author": "Lessons from the Screenplay"}, {"id": "CF3lFPW4E1o", "title": "Gone Girl — Don't Underestimate the Screenwriter", "author": "Lessons from the Screenplay"}, {"id": "0b3UCZv8QxQ", "title": "Did the THX logo predict the Dark Knight in 1983?", "author": "Storytelling Workshop"}, {"id": "TuYJUdoMB4Y", "title": "Spielberg's 3 Editing Tricks That Rewire Your Brain", "author": "Storytelling Workshop"}]</script>
+<script>
+(function(){
+  var qlkOverlay = document.getElementById('qlkOverlay');
+  var qlkBody = document.getElementById('qlkBody');
+  var qlkClose = document.getElementById('qlkClose');
+  var ytPlayer = null;
+  var ytApiLoading = false;
+  var hoveredPreview = null;
+
+  function loadYT(cb){
+    if (window.YT && window.YT.Player) { cb(); return; }
+    var done = false;
+    var finish = function(){ if (done) return; done = true; cb(); };
+    var prevReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function(){ if (prevReady) prevReady(); finish(); };
+    if (!ytApiLoading) {
+      ytApiLoading = true;
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube-nocookie.com/iframe_api';
+      document.head.appendChild(tag);
+    }
+    setTimeout(function(){ if (!done) cb(true); }, 3000);
+  }
+
+  function closeSheet(){
+    qlkOverlay.classList.add('hidden');
+    qlkBody.innerHTML = '';
+    document.body.style.overflow = '';
+    if (ytPlayer) { try { ytPlayer.destroy(); } catch(e){} ytPlayer = null; }
+  }
+
+  function openSheet(){
+    qlkOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openVideoSheet(id){
+    qlkBody.innerHTML = '<div id="qlkYtHost"></div>';
+    openSheet();
+    loadYT(function(apiBlocked){
+      var host = document.getElementById('qlkYtHost');
+      if (!host) return;
+      if (apiBlocked || !window.YT || !window.YT.Player) {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        host.replaceWith(iframe);
+        return;
+      }
+      ytPlayer = new YT.Player('qlkYtHost', {
+        videoId: id,
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: { autoplay: 1, rel: 0 },
+        events: {
+          onStateChange: function(e){
+            if (e.data === YT.PlayerState.ENDED) closeSheet();
+          }
+        }
+      });
+    });
+  }
+
+  qlkClose.addEventListener('click', closeSheet);
+  qlkOverlay.addEventListener('click', function(e){ if (e.target === qlkOverlay) closeSheet(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !qlkOverlay.classList.contains('hidden')) { closeSheet(); return; }
+    if (e.code === 'Space' && qlkOverlay.classList.contains('hidden') && hoveredPreview) {
+      e.preventDefault();
+      hoveredPreview();
+    }
+  });
+
+  function trackHover(el, openFn){
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('mouseenter', function(){ hoveredPreview = openFn; });
+    el.addEventListener('mouseleave', function(){ if (hoveredPreview === openFn) hoveredPreview = null; });
+    el.addEventListener('focus', function(){ hoveredPreview = openFn; });
+    el.addEventListener('blur', function(){ if (hoveredPreview === openFn) hoveredPreview = null; });
+  }
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
+  var DEFAULT_CREATOR = 'Every Frame a Painting';
+
+  var creators = [];
+  VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
+  creators.sort(function(a,b){
+    if (a === DEFAULT_CREATOR) return -1;
+    if (b === DEFAULT_CREATOR) return 1;
+    return VIDEOS.filter(function(v){return v.author===b;}).length - VIDEOS.filter(function(v){return v.author===a;}).length;
+  });
+
+  var state = { creator: 'All', q: '' };
+
+  function renderChips(){
+    var wrap = document.getElementById('creatorChips');
+    wrap.innerHTML = '';
+    ['All'].concat(creators).forEach(function(c){
+      var b = document.createElement('button');
+      b.className = 'chip' + (state.creator === c ? ' active' : '');
+      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')');
+      b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
+      wrap.appendChild(b);
+    });
+  }
+
+  function matches(v){
+    if (state.creator !== 'All' && v.author !== state.creator) return false;
+    if (state.q && v.title.toLowerCase().indexOf(state.q) === -1) return false;
+    return true;
+  }
+
+  function renderCard(v){
+    var div = document.createElement('div');
+    div.className = 'video-card';
+    div.innerHTML =
+      '<div class="video-thumb" data-id="' + v.id + '">' +
+        '<img src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg" alt="" loading="lazy">' +
+        '<div class="play"><svg viewBox="0 0 68 48"><path d="M66.5,7.7c-0.8-2.9-2.5-5.2-5.4-6C55.8,0,34,0,34,0S12.2,0,6.9,1.7c-2.9,0.8-5.2,3.1-5.4,6C0,13.1,0,24,0,24s0,10.9,1.5,16.3c0.8,2.9,2.5,5.2,5.4,6C12.2,48,34,48,34,48s21.8,0,27.1-1.7c2.9-0.8,4.6-3.1,5.4-6C68,34.9,68,24,68,24S68,13.1,66.5,7.7z" fill="#D9A441"></path><path d="M 45,24 27,14 27,34" fill="#1A1206"></path></svg></div>' +
+      '</div>' +
+      '<div class="meta"><h3>' + escapeHtml(v.title) + '</h3><p>' + escapeHtml(v.author) + '</p></div>';
+    var thumb = div.querySelector('.video-thumb');
+    var open = function(){ openVideoSheet(v.id); };
+    thumb.addEventListener('click', open);
+    trackHover(thumb, open);
+    return div;
+  }
+
+  function renderGrid(){
+    var filtered = VIDEOS.filter(matches);
+    var grid = document.getElementById('videoGrid');
+    grid.innerHTML = '';
+    filtered.forEach(function(v){ grid.appendChild(renderCard(v)); });
+    document.getElementById('countNote').textContent = filtered.length + ' of ' + VIDEOS.length + ' videos';
+  }
+
+  document.getElementById('searchInput').addEventListener('input', function(e){
+    state.q = e.target.value.trim().toLowerCase();
+    renderGrid();
+  });
+
+  renderChips();
+  renderGrid();
+
+  // Preload the player API in the background so the first click doesn't
+  // have to wait for the script to download+parse before the video starts.
+  loadYT(function(){});
+})();
+</script>
+</body>
+</html>
