@@ -5,7 +5,8 @@
     { label: "FCP Worldwide", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Ideas", href: "/ideas/" },
-    { label: "Film Craft", href: "/film-craft/" }
+    { label: "Film Craft", href: "/film-craft/" },
+    { label: "Gear & Tools", href: "/gear/" }
   ];
 
   // Kept in sync by hand with the app arrays in apps/index.html (postProductionApps/

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gear &amp; Tools · Studio Malibu Berlin</title>
+<meta name="description" content="Knut's curated FCP edit suite — hardware, apps, and plugins actually in daily use, plus the alternatives we've built ourselves.">
+<style>
+:root{
+  --bg:#0C0B09; --panel:#151310; --card:#1A1815; --line:#2C2822;
+  --text:#EDE8DE; --muted:#9B9384; --dim:#615A4C;
+  --gold:#5EA1FF; --gold-dim:#3E6FA3;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Avenir Next','Avenir',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+a{color:inherit;}
+.wrap{max-width:1100px;margin:0 auto;padding:2.2rem 2rem 5rem;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 0.4rem;}
+h1{font-size:2.3rem;line-height:1;letter-spacing:-0.02em;margin:0 0 0.5rem;font-weight:600;}
+.curator-note{font-size:0.72rem;color:var(--dim);margin:0 0 1.6rem;max-width:640px;}
+.curator-note a{color:var(--gold);}
+
+h2.section-title{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 1rem;padding-top:1.4rem;border-top:1px solid var(--line);}
+h2.section-title:first-of-type{border-top:none;padding-top:0;}
+
+.gear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:0.4rem;}
+.gear-card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
+.gear-card.own{border-color:var(--gold-dim);}
+.gear-thumb{aspect-ratio:16/10;background:var(--panel);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.gear-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.gear-thumb.contain img{object-fit:contain;padding:0.9rem;}
+.gear-meta{padding:0.85rem 0.95rem 1rem;display:flex;flex-direction:column;gap:0.35rem;flex:1;}
+.gear-card h3{margin:0;font-size:0.92rem;font-weight:600;}
+.gear-card h3 a{color:var(--text);text-decoration:none;}
+.gear-card h3 a:hover{color:var(--gold);}
+.gear-card p{margin:0;font-size:0.76rem;line-height:1.55;color:var(--muted);}
+.gear-alt{margin-top:auto;padding-top:0.4rem;font-size:0.72rem;color:var(--dim);border-top:1px solid var(--line);}
+.gear-alt a{color:var(--gold);font-weight:600;}
+.gear-soon,.gear-own{display:inline-block;font-size:0.6rem;letter-spacing:0.04em;text-transform:uppercase;font-weight:700;color:var(--gold);background:rgba(94,161,255,0.12);border:1px solid var(--gold-dim);border-radius:100px;padding:0.1rem 0.5rem;margin-left:0.4rem;}
+
+footer.site-footer{margin-top:3rem;font-size:0.8rem;color:var(--dim);}
+footer.site-footer a{text-decoration:underline;color:var(--dim);}
+@media(max-width:600px){h1{font-size:1.8rem;}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <p class="eyebrow">Curated, not comprehensive — what's actually in daily use</p>
+  <h1>Gear &amp; Tools</h1>
+  <p class="curator-note">Knut's own FCP edit suite, top to bottom — hardware, companion apps, plugins, and the Studio Malibu tools (marked <span class="gear-own">Studio Malibu</span>) built to fill a few of the gaps. Know something that belongs here? <a href="https://knuthake.de">Let him know</a>.</p>
+
+  <h2 class="section-title">Hardware</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/macbook-pro.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.apple.com/macbook-pro/" target="_blank" rel="noopener noreferrer">MacBook Pro</a></h3><p>The edit suite's actual workhorse.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/asus-pa329c.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.asus.com/displays-desktops/monitors/proart/proart-display-pa329c/" target="_blank" rel="noopener noreferrer">Asus ProArt PA329C</a></h3><p>32-inch 4K HDR reference monitor — HDR-10, 98% DCI-P3, hardware calibration.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/caldigit-ts5-plus.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.caldigit.com/thunderbolt-5-dock-ts5-plus/" target="_blank" rel="noopener noreferrer">CalDigit TS5 Plus</a></h3><p>Thunderbolt 5 dock — 20 ports, dual TB5 host charging up to 140W.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/owc-envoy-pro-sx.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.owc.com/solutions/envoy-pro-sx" target="_blank" rel="noopener noreferrer">OWC Envoy Pro SX</a></h3><p>Rugged portable SSD, up to 2847 MB/s over Thunderbolt/USB4.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/audient-id14.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://audient.com/products/audio-interfaces/id14/overview/" target="_blank" rel="noopener noreferrer">Audient iD14</a></h3><p>10-in / 6-out audio interface.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/abacus-c-box.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.abacus-electronics.de/produkte/aktivlautsprecher/c-box.html" target="_blank" rel="noopener noreferrer">Abacus C-Box</a></h3><p>Compact high-end nearfield monitors for the desktop.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/neumann-kh120-ii.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.neumann.com/en-us/products/monitors/kh-120-ii" target="_blank" rel="noopener noreferrer">Neumann KH 120 II</a></h3><p>Nearfield studio monitor — DSP room alignment, linear response to 21 kHz.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/shure-mv51.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.shure.com/en-US/products/microphones/mv51?variant=MV51-DIG" target="_blank" rel="noopener noreferrer">Shure MV51</a></h3><p>Large-diaphragm condenser mic.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/loupedeck-ct.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://loupedeck.com/de/shop/loupedeck-ct/" target="_blank" rel="noopener noreferrer">Loupedeck CT</a></h3><p>Custom editing console with dials and shortcut keys for creative work.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/asus-pa32usd.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.asus.com/displays-desktops/monitors/proart/proart-display-oled-pa32usd/" target="_blank" rel="noopener noreferrer">Asus ProArt PA32USD</a></h3><p>31.5-inch 4K QD-OLED at 240Hz, 99% DCI-P3, 1000-nit HDR, dual 12G-SDI and dual Thunderbolt 4 — a reference monitor built for color-critical work.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/razer-tartarus-v2.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.razer.com/gaming-keypads/razer-tartarus-v2" target="_blank" rel="noopener noreferrer">Razer Tartarus V2</a></h3><p>32 programmable keys, 8-way thumbpad, and a scroll wheel — a one-handed keypad for shortcut-heavy editing.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/svalboard.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://svalboard.com/" target="_blank" rel="noopener noreferrer">Svalboard</a></h3><p>Ergonomic split keyboard with 50 magneto-optical keys and an integrated trackball, fitted to your own hand size.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">FCP Workflow Tools</h2>
+  <div class="gear-grid">
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/syncscript-pro/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/syncscript-pro">SyncScript Pro</a><span class="gear-own">Studio Malibu</span></h3><p>Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibusync/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibusync">MalibuSync</a><span class="gear-own">Studio Malibu</span></h3><p>Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/sync-n-link-x.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.intelligentassistance.com/sync-n-link-x/" target="_blank" rel="noopener noreferrer">Sync-N-Link X</a></h3><p>Batch-syncs picture to sound by timecode or waveform straight from an FCPXML.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibu-burn/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibu-burn">Malibu Burn</a><span class="gear-own">Studio Malibu</span><span class="gear-soon">Soon</span></h3><p>Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibu-conform/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibu-conform">Malibu Conform</a><span class="gear-own">Studio Malibu</span><span class="gear-soon">Soon</span></h3><p>Conforms Final Cut Pro timelines into DaVinci Resolve Studio — spatial/PAR-aware, multicam angle selection.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/x2pro.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://x2pro.net" target="_blank" rel="noopener noreferrer">X2 Pro AAF Export</a></h3><p>Exports FCP timelines to AAF for Pro Tools handoff.</p><p class="gear-alt">Alternative: <a href="https://aafx.app/" target="_blank" rel="noopener noreferrer">AAFx</a></p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/edl-x.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://xmil.biz/EDL-X/EDL-X.shtml" target="_blank" rel="noopener noreferrer">EDL-X</a></h3><p>Creates CMX 3600 EDLs from FCP XML for handoff to DaVinci Resolve, Smoke, and other post systems.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/shot-notes-x.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://apps.apple.com/us/app/shot-notes-x/id853468135?mt=12" target="_blank" rel="noopener noreferrer">Shot Notes X</a></h3><p>Merges script supervisor notes (CSV/ScriptE/Movie Slate) with FCP or Premiere clips.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/producers-best-friend.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.intelligentassistance.com/producers-best-friend/" target="_blank" rel="noopener noreferrer">Producers Best Friend</a></h3><p>Formatted .xlsx report of clips, titles, and filters used across Events and Projects.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/lockit-network.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://lockitnetwork.com/home-de/" target="_blank" rel="noopener noreferrer">Lockit Network</a></h3><p>Handles daily reports and metadata workflow from set to post.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">FCP Companion Apps</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/commandpost.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://commandpost.io" target="_blank" rel="noopener noreferrer">CommandPost</a></h3><p>Free, open-source app that adds hundreds of features and control-surface support to FCP.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/postlab.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://hedge.video/postlab/concepts" target="_blank" rel="noopener noreferrer">PostLab</a></h3><p>Real-time collaboration on FCP and Premiere projects and media.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/postsync.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://chrisroyfilms.com/postsync/" target="_blank" rel="noopener noreferrer">PostSync</a></h3><p>Preps and keeps a macOS workstation ready for daily post-production demands.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibu-media-sync/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibu-media-sync">MalibuMesh</a><span class="gear-own">Studio Malibu</span></h3><p>P2P folder sync for post-production teams — no cloud upload, no shared server.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/resilio.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.resilio.com" target="_blank" rel="noopener noreferrer">Resilio Sync</a></h3><p>Fast P2P file sync and share, no central server.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Mac Edit Suite Apps</h2>
+  <div class="gear-grid">
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibu-meter/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibu-meter">Malibu Meter</a><span class="gear-own">Studio Malibu</span></h3><p>Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/soundsource.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://rogueamoeba.com/soundsource/" target="_blank" rel="noopener noreferrer">SoundSource</a></h3><p>Per-app volume, output routing, and effects right from the menu bar.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/loopback.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://rogueamoeba.com/loopback/" target="_blank" rel="noopener noreferrer">Loopback</a></h3><p>Cable-free audio routing between apps.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/bettertouchtool.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://folivora.ai" target="_blank" rel="noopener noreferrer">BetterTouchTool</a></h3><p>Deep customization for trackpad, Magic Trackpad, and other input devices.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/sideshowfx.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.sideshowfx.net/final-cut-pro-profiles" target="_blank" rel="noopener noreferrer">SideshowFX</a></h3><p>Final Cut Pro profiles for Stream Deck.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/truhu.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://truhu.app" target="_blank" rel="noopener noreferrer">TruHu</a></h3><p>App-based monitor color calibration in a few simple steps.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/synqr.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://synqr.app" target="_blank" rel="noopener noreferrer">SynQR</a></h3><p>Measure your DAW's video offset with your iPhone, in real time.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Audio Plugins &amp; Sound Libraries</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/soundly.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://getsoundly.com" target="_blank" rel="noopener noreferrer">Soundly</a></h3><p>Cloud + local sound effects library with search, voice designer, and drag-and-drop into any DAW.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/soundly-place-it.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://getsoundly.com/tools/" target="_blank" rel="noopener noreferrer">Soundly Place It</a></h3><p>Emulates a chosen speaker in one of 40 recorded environments, based on real convolution impulse responses.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/izotope-postproduction-suite.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.izotope.com/en/products/rx-post-production-suite.html" target="_blank" rel="noopener noreferrer">iZotope RX Post Production Suite</a></h3><p>Dialogue cleanup, noise reduction, and repair tools used in every session.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/izotope-ambiance-match.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.izotope.com/en/products/rx/features/ambience-match.html" target="_blank" rel="noopener noreferrer">iZotope Ambience Match</a></h3><p>Pull ambience-only clips from RX for editing room tone.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/fabfilter-pro-q4.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.fabfilter.com/products/pro-q-3-equalizer-plug-in" target="_blank" rel="noopener noreferrer">FabFilter Pro-Q</a></h3><p>Visually clear, precise parametric EQ.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/waves-vocal-rider.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.waves.com/plugins/vocal-rider" target="_blank" rel="noopener noreferrer">Waves Vocal Rider</a></h3><p>Automatic vocal level riding.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/audioease-indoor.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.audioease.com/indoor/" target="_blank" rel="noopener noreferrer">Audio Ease Indoor</a></h3><p>Convolution reverb for placing dialogue convincingly in any room.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Essential Video Effects</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/add-motion.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://fxfactory.com/info/osmaddmotion/" target="_blank" rel="noopener noreferrer">Add Motion</a></h3><p>Move, pop, and swing text or graphics without keyframes, directly inside FCP.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/alex4d-grow-shrink.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://blog.alex4d.com/2012/09/06/alex-4d-grow-shrink-effect/" target="_blank" rel="noopener noreferrer">Alex4D Grow/Shrink</a></h3><p>Free FCP effect for a subtle scale "creep in" over a clip's lifetime.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Essential Mac Apps</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/raycast.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.raycast.com" target="_blank" rel="noopener noreferrer">Raycast</a></h3><p>Fast, extendable launcher — tasks, calculations, shared links, and more.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/swish.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://highlyopinionated.co/swish/" target="_blank" rel="noopener noreferrer">Swish</a></h3><p>Window management done right.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/bloom.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://bloomapp.club/" target="_blank" rel="noopener noreferrer">Bloom</a></h3><p>Finder, but refined — multi-pane layouts, fast search, regex rename, cloud support.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibuclip/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibuclip">MalibuClip</a><span class="gear-own">Studio Malibu</span></h3><p>Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, redaction.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibudictate/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibudictate">MalibuDictate</a><span class="gear-own">Studio Malibu</span></h3><p>Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Edit Suite Organization</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/notion.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.notion.so" target="_blank" rel="noopener noreferrer">Notion</a></h3><p>Digital film codebook for the whole production.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/apple-notes.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://support.apple.com/guide/notes/welcome/mac" target="_blank" rel="noopener noreferrer">Apple Notes</a></h3><p>A shared note for all project documents and info.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/scriptation.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://scriptation.com/" target="_blank" rel="noopener noreferrer">Scriptation</a></h3><p>Script breakdown and note transfer, Emmy-winning paperless-on-set tool.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/pdf-expert.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://pdfexpert.com" target="_blank" rel="noopener noreferrer">PDF Expert</a></h3><p>PDF reader with a proper dark theme for reading scripts.</p></div>
+    </div>
+    <div class="gear-card own">
+      <div class="gear-thumb" style="font-size:2.4rem;">✅</div>
+      <div class="gear-meta"><h3><a href="/apps/malibutodo">MalibuToDo</a><span class="gear-own">Studio Malibu</span><span class="gear-soon">Soon</span></h3><p>Pulls every To-Do marker across your Final Cut Pro libraries into one organized task list.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">PostPro Workflow Helpers</h2>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/editready.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://hedge.video/editready/benefits" target="_blank" rel="noopener noreferrer">EditReady</a></h3><p>Fast transcode/rewrap for edit-friendly codecs.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/editingtools-io.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://en.editingtools.io/" target="_blank" rel="noopener noreferrer">Editingtools.io</a></h3><p>Web-based generators, scripts, and converters for FCP, Premiere, Avid, and Resolve.</p></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Remote Working</h2>
+  <div class="gear-grid">
+    <div class="gear-card own">
+      <div class="gear-thumb contain"><img src="/apps/malibu-review/icon.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="/apps/malibu-review">MalibuReview</a><span class="gear-own">Studio Malibu</span><span class="gear-soon">Soon</span></h3><p>Live edit review — streams your FCP cut to the director in real time, frame-accurate markers, no screen-share.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/frameio.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://frame.io" target="_blank" rel="noopener noreferrer">Frame.io</a></h3><p>Review and approval platform for video.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/louper.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.louper.io" target="_blank" rel="noopener noreferrer">Louper</a></h3><p>Live collaboration for video pros.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/parsec.png" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://parsec.app/solutions/vfx-editing" target="_blank" rel="noopener noreferrer">Parsec</a></h3><p>Low-latency remote desktop access for editing rigs.</p></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-thumb"><img src="/gear/images/push-mic-control.jpg" alt="" loading="lazy"></div>
+      <div class="gear-meta"><h3><a href="https://www.waerfa.com/push-mic-control-a-push-to-talk-ptt-manager" target="_blank" rel="noopener noreferrer">Push Mic Control</a></h3><p>Push-to-talk manager — the mic only listens when you want it to.</p></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    Know a great tool, plugin, or piece of gear we're missing? Get in touch via <a href="https://knuthake.de">knuthake.de</a>.
+  </footer>
+</div>
+</body>
+</html>
