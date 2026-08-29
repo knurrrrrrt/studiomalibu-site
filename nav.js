@@ -1,10 +1,10 @@
 (function () {
   var LINKS = [
     { label: "FCP Videos", href: "/videos/" },
-    { label: "FCP Ideas", href: "/ideas/" },
     { label: "FCP Worldwide", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Workflow", href: "/workflow/" },
+    { label: "FCP Ideas", href: "/ideas/" },
     { label: "Film Craft", href: "/film-craft/" }
   ];
 
