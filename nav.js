@@ -1,9 +1,8 @@
 (function () {
   var LINKS = [
-    { label: "FCP Videos & Infographics", href: "/videos/" },
-    { label: "FCP Training", href: "/training/" },
+    { label: "FCP Videos", href: "/videos/" },
     { label: "FCP Ideas", href: "/ideas/" },
-    { label: "FCP Around the World", href: "/projects/" },
+    { label: "FCP Worldwide", href: "/projects/" },
     { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Workflow", href: "/workflow/" },
     { label: "Film Craft", href: "/film-craft/" }

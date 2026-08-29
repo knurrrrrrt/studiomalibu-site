@@ -5,6 +5,9 @@
   "redirects": [
     { "source": "/curriculum", "destination": "/assistant-editing/", "permanent": true },
     { "source": "/curriculum/", "destination": "/assistant-editing/", "permanent": true },
-    { "source": "/curriculum/:path*", "destination": "/assistant-editing/:path*", "permanent": true }
+    { "source": "/curriculum/:path*", "destination": "/assistant-editing/:path*", "permanent": true },
+    { "source": "/training", "destination": "/videos/#training", "permanent": true },
+    { "source": "/training/", "destination": "/videos/#training", "permanent": true },
+    { "source": "/training/:path*", "destination": "/videos/#training", "permanent": true }
   ]
 }
