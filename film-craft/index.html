@@ -135,12 +135,19 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
   var DEFAULT_CREATOR = 'Every Frame a Painting';
+  var END_CREATORS = ['INDEPTH Sound Design', 'Film Score and More'];
 
   var creators = [];
   VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
   creators.sort(function(a,b){
     if (a === DEFAULT_CREATOR) return -1;
     if (b === DEFAULT_CREATOR) return 1;
+    var aEnd = END_CREATORS.indexOf(a), bEnd = END_CREATORS.indexOf(b);
+    if (aEnd !== -1 || bEnd !== -1) {
+      if (aEnd === -1) return -1;
+      if (bEnd === -1) return 1;
+      return aEnd - bEnd;
+    }
     return VIDEOS.filter(function(v){return v.author===b;}).length - VIDEOS.filter(function(v){return v.author===a;}).length;
   });
 
