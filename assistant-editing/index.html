@@ -385,9 +385,11 @@ figure.shot figcaption{margin-top:8px;font-size:11px;color:var(--dim);font-famil
     }
   }
 
+  var DEFAULT_LEAF_ID = '2-1-the-magnetic-timeline';
+
   function route(){
     var hash = location.hash.replace(/^#/, '');
-    if(!hash){ currentLeafId = null; renderEmpty(); renderTree(searchInput.value); return; }
+    if(!hash){ renderLeaf(DEFAULT_LEAF_ID, null); return; }
     var parts = hash.split('~');
     renderLeaf(parts[0], parts[1] || null);
   }
