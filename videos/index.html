@@ -239,12 +239,19 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   var DEFAULT_CREATOR = 'Thomas Grove Carter';
   var MISC_LABEL = 'Miscellaneous';
   var MISC_AUTHORS = ['Dylan John', 'The Final Cut Bro', 'Brad West', 'Tyler Stalman'];
-  var CREATOR_PRIORITY = ['Thomas Grove Carter', 'Unauthorized FCPX', 'Hollywood:FCP', 'Bryan Francisco', 'Ryan Nangle', MISC_LABEL];
+  var EFFECTS_LABEL = 'Effects';
+  var EFFECTS_AUTHORS = ['Ryan Nangle', 'Bryan Francisco'];
+  var EFFECTS_VIDEO_IDS = ['LYqLkQ76Po0', 'kKURRGfShGg', '9koJXQGXhKM', 'PS4YQpA1JM4', '-_ezg9AUhMk', 'DlZwCA-hSaE', 'WQETBlm5c7A'];
+  var CREATOR_PRIORITY = ['Thomas Grove Carter', 'Unauthorized FCPX', 'Hollywood:FCP', EFFECTS_LABEL, MISC_LABEL];
 
-  function chipFor(author){ return MISC_AUTHORS.indexOf(author) !== -1 ? MISC_LABEL : author; }
+  function chipFor(v){
+    if (EFFECTS_VIDEO_IDS.indexOf(v.id) !== -1 || EFFECTS_AUTHORS.indexOf(v.author) !== -1) return EFFECTS_LABEL;
+    if (MISC_AUTHORS.indexOf(v.author) !== -1) return MISC_LABEL;
+    return v.author;
+  }
 
   var creators = [];
-  VIDEOS.forEach(function(v){ var c = chipFor(v.author); if (creators.indexOf(c) === -1) creators.push(c); });
+  VIDEOS.forEach(function(v){ var c = chipFor(v); if (creators.indexOf(c) === -1) creators.push(c); });
   creators.sort(function(a,b){
     var ia = CREATOR_PRIORITY.indexOf(a), ib = CREATOR_PRIORITY.indexOf(b);
     if (ia !== -1 || ib !== -1) {
@@ -263,7 +270,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     ['All'].concat(creators).forEach(function(c){
       var b = document.createElement('button');
       b.className = 'chip' + (state.creator === c ? ' active' : '');
-      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return chipFor(v.author)===c;}).length + ')');
+      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return chipFor(v)===c;}).length + ')');
       b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
       wrap.appendChild(b);
     });
@@ -276,7 +283,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   }
 
   function matches(v){
-    if (state.creator !== 'All' && chipFor(v.author) !== state.creator) return false;
+    if (state.creator !== 'All' && chipFor(v) !== state.creator) return false;
     if (state.q && v.title.toLowerCase().indexOf(state.q) === -1) return false;
     return true;
   }
