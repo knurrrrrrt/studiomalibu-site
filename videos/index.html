@@ -237,10 +237,14 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
 
   var VIDEOS = JSON.parse(document.getElementById('videoData').textContent);
   var DEFAULT_CREATOR = 'Thomas Grove Carter';
-  var CREATOR_PRIORITY = ['Thomas Grove Carter', 'Unauthorized FCPX', 'Hollywood:FCP', 'The Final Cut Bro', 'Tyler Stalman', 'Dylan John', 'Bryan Francisco'];
+  var MISC_LABEL = 'Miscellaneous';
+  var MISC_AUTHORS = ['Dylan John', 'The Final Cut Bro', 'Brad West'];
+  var CREATOR_PRIORITY = ['Thomas Grove Carter', 'Unauthorized FCPX', 'Hollywood:FCP', MISC_LABEL, 'Tyler Stalman', 'Bryan Francisco'];
+
+  function chipFor(author){ return MISC_AUTHORS.indexOf(author) !== -1 ? MISC_LABEL : author; }
 
   var creators = [];
-  VIDEOS.forEach(function(v){ if (creators.indexOf(v.author) === -1) creators.push(v.author); });
+  VIDEOS.forEach(function(v){ var c = chipFor(v.author); if (creators.indexOf(c) === -1) creators.push(c); });
   creators.sort(function(a,b){
     var ia = CREATOR_PRIORITY.indexOf(a), ib = CREATOR_PRIORITY.indexOf(b);
     if (ia !== -1 || ib !== -1) {
@@ -259,7 +263,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
     ['All'].concat(creators).forEach(function(c){
       var b = document.createElement('button');
       b.className = 'chip' + (state.creator === c ? ' active' : '');
-      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return v.author===c;}).length + ')');
+      b.textContent = c + (c === 'All' ? '' : ' (' + VIDEOS.filter(function(v){return chipFor(v.author)===c;}).length + ')');
       b.onclick = function(){ state.creator = c; renderChips(); renderGrid(); };
       wrap.appendChild(b);
     });
@@ -272,7 +276,7 @@ footer.site-footer a{text-decoration:underline;color:var(--dim);}
   }
 
   function matches(v){
-    if (state.creator !== 'All' && v.author !== state.creator) return false;
+    if (state.creator !== 'All' && chipFor(v.author) !== state.creator) return false;
     if (state.q && v.title.toLowerCase().indexOf(state.q) === -1) return false;
     return true;
   }
