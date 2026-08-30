@@ -44,6 +44,11 @@
   .tile h2 { font-size: 1.05rem; margin: 0; color: #fff; }
   .tile p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; margin: 0; }
   .tile .cta { margin-top: auto; font-size: 0.78rem; color: var(--accent); font-weight: 600; padding-top: 0.3rem; }
+  .tile .cta:not(:first-of-type) { margin-top: 0; padding-top: 0; }
+  .tile a.cta { text-decoration: none; }
+  .tile a.cta:hover { text-decoration: underline; }
+  .tile .extra-link { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+  .tile .extra-link:hover { color: var(--accent); text-decoration: underline; }
 
   .about { display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; padding-top: 2.6rem; border-top: 1px solid var(--border); }
   .about h2 { font-size: 1.1rem; margin: 0 0 0.7rem; color: #fff; }
@@ -70,12 +75,13 @@
       <p>Notarized macOS tools for film post-production and everyday work &mdash; sync, metering, review, and more.</p>
       <span class="cta">Browse the apps &rarr;</span>
     </a>
-    <a class="tile" href="/workflow/">
+    <div class="tile">
       <div class="mark">&#128203;</div>
       <h2>Workflow</h2>
       <p>Our full Final Cut Pro feature-film workflow, searchable end to end &mdash; from ingest to turnover.</p>
-      <span class="cta">Read the workflow &rarr;</span>
-    </a>
+      <a class="extra-link" href="/assistant-editing/">The Assistant Editor&rsquo;s Guide by Steven Moyer &rarr;</a>
+      <a class="cta" href="/workflow/">Read the workflow &rarr;</a>
+    </div>
     <a class="tile" href="/videos/">
       <div class="mark">&#128250;</div>
       <h2>Videos &amp; Infographics</h2>
