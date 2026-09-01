@@ -16,13 +16,13 @@
     {
       heading: "For film post-production",
       apps: [
-        { name: "SyncScript Pro", href: "/apps/syncscript-pro" },
         { name: "MalibuSync", href: "/apps/malibusync" },
         { name: "Malibu Meter", href: "/apps/malibu-meter" },
-        { name: "MalibuMesh", href: "/apps/malibu-media-sync", beta: true },
-        { name: "MalibuReview", href: "/apps/malibu-review", soon: true },
+        { name: "SyncScript Pro", href: "/apps/syncscript-pro", beta: true },
         { name: "Malibu Burn", href: "/apps/malibu-burn", beta: true },
         { name: "MalibuToDo", href: "/apps/malibutodo", beta: true },
+        { name: "MalibuMesh", href: "/apps/malibu-media-sync", beta: true },
+        { name: "MalibuReview", href: "/apps/malibu-review", soon: true },
         { name: "Malibu Conform", href: "/apps/malibu-conform", soon: true }
       ]
     },
