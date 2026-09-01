@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Malibu — Decision</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0f12;
+    --panel: #17181c;
+    --panel-2: #1f2025;
+    --border: #2a2b30;
+    --text: #e8e8ea;
+    --muted: #9a9aa2;
+    --accent: #5ea1ff;
+    --accent-soft: #5ea1ff26;
+    --ok: #35c759;
+    --ok-soft: #35c7591f;
+    --problem: #ff5a52;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 96px; }
+  .center { text-align: center; padding: 80px 20px; color: var(--muted); }
+  .error { color: var(--problem); }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .description { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 28px; max-width: 62ch; }
+
+  .voter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+  }
+  .voter-bar input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    font-size: 13.5px;
+  }
+  .voter-bar .label { color: var(--muted); white-space: nowrap; }
+  .voter-bar .status { color: var(--ok); font-weight: 600; white-space: nowrap; }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .option-card {
+    text-align: left;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 16px 15px;
+    background: var(--panel);
+    cursor: pointer;
+    box-shadow: 0 1px 2px #00000040, 0 8px 24px -12px #00000060;
+    position: relative;
+    transition: border-color 0.15s ease, transform 0.08s ease;
+    display: block;
+    width: 100%;
+    color: inherit;
+    font-family: inherit;
+  }
+  .option-card:hover { border-color: var(--accent); }
+  .option-card:active { transform: scale(0.985); }
+  .option-card.recommended { border-color: var(--accent); }
+  .option-card.picked { border-color: var(--ok); background: var(--ok-soft); }
+  .option-card:disabled { cursor: default; opacity: 0.65; }
+
+  .option-card .tag {
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 700;
+  }
+  .option-card.picked .tag { color: var(--ok); }
+  .option-card h4 { font-size: 14.5px; font-weight: 600; margin: 0 0 6px; padding-right: 22px; }
+  .option-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.45; }
+
+  .option-card .checkmark {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    color: var(--ok);
+    display: none;
+    font-weight: 700;
+  }
+  .option-card.picked .checkmark { display: block; }
+
+  footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="center">Loading…</div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var API = "https://api.malibureview.app/api/collections";
+  var app = document.getElementById("app");
+
+  var pathParts = location.pathname.split("/").filter(Boolean);
+  var decisionId = pathParts[1] || "";
+
+  var VOTER_KEY = "malibu_decide_voter"; // { name, email } — reused across every decision on this browser
+  var voteKeyFor = function (id) { return "malibu_decide_vote_" + id; }; // { voteId, optionId } per decision
+
+  function loadVoter() {
+    try { return JSON.parse(localStorage.getItem(VOTER_KEY) || "null") || { name: "", email: "" }; }
+    catch (e) { return { name: "", email: "" }; }
+  }
+  function saveVoter(v) {
+    try { localStorage.setItem(VOTER_KEY, JSON.stringify(v)); } catch (e) {}
+  }
+  function loadMyVote(id) {
+    try { return JSON.parse(localStorage.getItem(voteKeyFor(id)) || "null"); }
+    catch (e) { return null; }
+  }
+  function saveMyVote(id, v) {
+    try { localStorage.setItem(voteKeyFor(id), JSON.stringify(v)); } catch (e) {}
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  var state = { decision: null, voter: loadVoter(), myVote: null, error: null };
+
+  function render() {
+    if (state.error) {
+      app.innerHTML = '<div class="center error">' + esc(state.error) + '</div>';
+      return;
+    }
+    var d = state.decision;
+    if (!d) { app.innerHTML = '<div class="center">Loading…</div>'; return; }
+
+    var voterReady = state.voter.name.trim().length > 0;
+
+    var optionsHtml = "";
+    for (var i = 0; i < d.options.length; i++) {
+      var opt = d.options[i];
+      var picked = state.myVote && state.myVote.optionId === opt.id;
+      var cls = "option-card" + (opt.recommended ? " recommended" : "") + (picked ? " picked" : "");
+      optionsHtml +=
+        '<button type="button" class="' + cls + '" data-option="' + esc(opt.id) + '"' +
+        (voterReady ? "" : " disabled") + '>' +
+          '<span class="checkmark">&#10003;</span>' +
+          (opt.tag ? '<span class="tag">' + esc(picked ? "Chosen" : opt.tag) + '</span>' : "") +
+          '<h4>' + esc(opt.title) + '</h4>' +
+          '<p>' + esc(opt.body) + '</p>' +
+        '</button>';
+    }
+
+    app.innerHTML =
+      '<div class="eyebrow">Studio Malibu' + (d.app_module ? ' &middot; ' + esc(d.app_module) : '') + '</div>' +
+      '<h1>' + esc(d.title) + '</h1>' +
+      (d.description ? '<div class="description">' + esc(d.description) + '</div>' : '') +
+      '<div class="voter-bar">' +
+        '<span class="label">Your name:</span>' +
+        '<input id="voterName" type="text" placeholder="So we know who picked what" value="' + esc(state.voter.name) + '">' +
+        (state.myVote ? '<span class="status">Voted &#10003;</span>' : '') +
+      '</div>' +
+      '<div class="options">' + optionsHtml + '</div>' +
+      '<footer>Your name is stored so we can tell who picked what — nothing else is tracked. Clicking a card again lets you change your pick.</footer>';
+
+    document.getElementById("voterName").addEventListener("change", function (e) {
+      state.voter.name = e.target.value.trim();
+      saveVoter(state.voter);
+      render();
+    });
+    var buttons = document.querySelectorAll("[data-option]");
+    for (var j = 0; j < buttons.length; j++) {
+      buttons[j].addEventListener("click", onPick);
+    }
+  }
+
+  function onPick(ev) {
+    if (!state.voter.name.trim()) {
+      alert("Please enter your name first, above the options.");
+      return;
+    }
+    var optionId = ev.currentTarget.getAttribute("data-option");
+    castVote(optionId);
+  }
+
+  function castVote(optionId) {
+    var method = state.myVote ? "PATCH" : "POST";
+    var url = state.myVote
+      ? API + "/feedback_decision_votes/records/" + state.myVote.voteId
+      : API + "/feedback_decision_votes/records";
+    fetch(url, {
+      method: method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        decision_id: decisionId,
+        voter_name: state.voter.name,
+        voter_email: state.voter.email || "",
+        option_id: optionId
+      })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("vote failed (" + res.status + ")");
+        return res.json();
+      })
+      .then(function (rec) {
+        state.myVote = { voteId: rec.id, optionId: rec.option_id };
+        saveMyVote(decisionId, state.myVote);
+        render();
+      })
+      .catch(function (err) {
+        alert("Couldn't save your pick — " + err.message + ". Please try again.");
+      });
+  }
+
+  function load() {
+    if (!decisionId) {
+      state.error = "No decision ID in the link.";
+      render();
+      return;
+    }
+    fetch(API + "/feedback_decisions/records/" + decisionId)
+      .then(function (res) {
+        if (res.status === 404) throw new Error("This decision doesn't exist, or isn't publicly shared.");
+        if (!res.ok) throw new Error("Couldn't load this decision (" + res.status + ").");
+        return res.json();
+      })
+      .then(function (decision) {
+        state.decision = decision;
+        state.myVote = loadMyVote(decisionId);
+        render();
+      })
+      .catch(function (err) {
+        state.error = err.message;
+        render();
+      });
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/test/:id", "destination": "/test/index.html" }
+    { "source": "/test/:id", "destination": "/test/index.html" },
+    { "source": "/decide/:id", "destination": "/decide/index.html" }
   ],
   "redirects": [
     { "source": "/curriculum", "destination": "/assistant-editing/", "permanent": true },
