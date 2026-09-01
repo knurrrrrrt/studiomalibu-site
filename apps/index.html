@@ -56,6 +56,9 @@
     color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--border);
     border-radius: 100px; padding: 2px 8px; margin-top: 0.4rem;
   }
+  .badge-beta {
+    color: var(--accent); background: rgba(94,161,255,0.1); border-color: rgba(94,161,255,0.3);
+  }
   footer { color: var(--muted); font-size: 0.85rem; margin-top: 3rem; }
   footer a { text-decoration: underline; }
 </style>
@@ -91,7 +94,7 @@
     { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
     { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
     { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", price: "€29 · $29", launchPrice: "€23 · $23" },
-    { name: "MalibuMesh", tagline: "P2P folder sync for post-production teams — no cloud upload, no shared server.", href: "/apps/malibu-media-sync", icon: "/apps/malibu-media-sync/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "MalibuMesh", tagline: "P2P folder sync for post-production teams — no cloud upload, no shared server.", href: "/apps/malibu-media-sync", icon: "/apps/malibu-media-sync/icon.png", beta: true },
     { name: "MalibuReview", tagline: "Live edit review — streams your FCP cut to the director in real time, frame-accurate markers, no screen-share. Available by request.", href: "/apps/malibu-review", icon: "/apps/malibu-review/icon.png", comingSoon: true, price: "€99 · $99", launchPrice: "€79 · $79" },
     { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", comingSoon: true, price: "€49 · $49", launchPrice: "€39 · $39" },
     { name: "MalibuToDo", tagline: "Pulls every To-Do marker across your Final Cut Pro libraries into one organized task list.", href: "/apps/malibutodo", iconFallback: "✅", comingSoon: true, price: "€19 · $19", launchPrice: "€15 · $15" },
@@ -145,7 +148,8 @@
     }
 
     var badgeHtml = app.badgeText ? '<span class="badge">' + escapeHtml(app.badgeText) + '</span>'
-      : app.comingSoon ? '<span class="badge">Coming soon</span>' : '';
+      : app.comingSoon ? '<span class="badge">Coming soon</span>'
+      : app.beta ? '<span class="badge badge-beta">Beta</span>' : '';
 
     var inner = '<div class="card-top"><h3>' + escapeHtml(app.name) + '</h3>' + iconHtml + '</div>' +
       badgeHtml +
