@@ -56,8 +56,8 @@ h1{font-family:'Avenir Next','Avenir',-apple-system,BlinkMacSystemFont,sans-seri
 .card.flipped .card-inner{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);}
 .face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:1px solid var(--line);}
 .front{background-color:#0A0908;}
-.front-blur{position:absolute;inset:-8px;background-size:cover;background-position:center;}
-.front-sharp{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;}
+.front-blur{position:absolute;inset:-8px;background-size:cover;background-position:center;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform;}
+.front-sharp{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform;}
 .front.no-poster{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--card),#0A0908);}
 .front.no-poster .no-poster-title{font-family:'Avenir Next','Avenir',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1.1rem;color:var(--dim);text-align:center;padding:1rem;line-height:1.15;}
 .back{background:var(--card);transform:rotateY(180deg);-webkit-transform:rotateY(180deg);padding:1.1rem;display:flex;flex-direction:column;overflow-y:auto;}
