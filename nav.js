@@ -19,10 +19,10 @@
         { name: "SyncScript Pro", href: "/apps/syncscript-pro" },
         { name: "MalibuSync", href: "/apps/malibusync" },
         { name: "Malibu Meter", href: "/apps/malibu-meter" },
-        { name: "MalibuMesh", href: "/apps/malibu-media-sync" },
+        { name: "MalibuMesh", href: "/apps/malibu-media-sync", beta: true },
         { name: "MalibuReview", href: "/apps/malibu-review", soon: true },
-        { name: "Malibu Burn", href: "/apps/malibu-burn", soon: true },
-        { name: "MalibuToDo", href: "/apps/malibutodo", soon: true },
+        { name: "Malibu Burn", href: "/apps/malibu-burn", beta: true },
+        { name: "MalibuToDo", href: "/apps/malibutodo", beta: true },
         { name: "Malibu Conform", href: "/apps/malibu-conform", soon: true }
       ]
     },
@@ -31,10 +31,10 @@
       apps: [
         { name: "MalibuClip", href: "/apps/malibuclip" },
         { name: "MalibuDictate", href: "/apps/malibudictate" },
-        { name: "Malibu Calc", href: "/apps/malibucalc" },
-        { name: "Malibu Screen Capture", href: "/apps/malibuscreener" },
-        { name: "Malibu Meeting Notes", href: "/apps/malibumeeting" },
-        { name: "Malibu NotesBar", href: "/apps/malibu-notesbar" }
+        { name: "Malibu Calc", href: "/apps/malibucalc", beta: true },
+        { name: "Malibu Screen Capture", href: "/apps/malibuscreener", beta: true },
+        { name: "Malibu Meeting Notes", href: "/apps/malibumeeting", beta: true },
+        { name: "Malibu NotesBar", href: "/apps/malibu-notesbar", beta: true }
       ]
     },
     {
@@ -96,6 +96,7 @@
     "#sm-dd-panel a{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 8px;margin:0 -8px;border-radius:6px;color:#c8c8ce;font-weight:500;white-space:nowrap;}" +
     "#sm-dd-panel a:hover{background:rgba(255,255,255,0.07);color:#fff;}" +
     "#sm-dd-panel .sm-dd-soon{font-size:9px;letter-spacing:0.02em;color:#6e6e78;font-weight:600;}" +
+    "#sm-dd-panel .sm-dd-beta{font-size:9px;letter-spacing:0.02em;color:#ffb454;font-weight:600;}" +
     "@media(max-width:640px){#sm-nav .sm-inner{gap:14px;padding:0 14px;}#sm-nav .sm-brand span.sm-word{display:none;}" +
     "#sm-dd-panel{grid-template-columns:1fr;gap:14px;left:-14px;max-width:calc(100vw - 28px);}}";
 
@@ -118,7 +119,8 @@
     var itemsHtml = g.apps.map(function (a) {
       var target = a.external ? ' target="_blank" rel="noopener noreferrer"' : "";
       return '<a href="' + a.href + '"' + target + '>' + a.name +
-        (a.soon ? '<span class="sm-dd-soon">Soon</span>' : '') + '</a>';
+        (a.soon ? '<span class="sm-dd-soon">In the works</span>' : '') +
+        (a.beta ? '<span class="sm-dd-beta">Beta</span>' : '') + '</a>';
     }).join("");
     return '<div class="sm-dd-col"><p class="sm-dd-heading">' + g.heading + '</p>' + itemsHtml + '</div>';
   }).join("");

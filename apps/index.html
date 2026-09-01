@@ -98,8 +98,7 @@
     { name: "MalibuReview", tagline: "Live edit review — streams your FCP cut to the director in real time, frame-accurate markers, no screen-share. Available by request.", href: "/apps/malibu-review", icon: "/apps/malibu-review/icon.png", comingSoon: true, price: "€99 · $99", launchPrice: "€79 · $79" },
     { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", beta: true },
     { name: "MalibuToDo", tagline: "Pulls every To-Do marker across your Final Cut Pro libraries into one organized task list.", href: "/apps/malibutodo", iconFallback: "✅", beta: true },
-    { name: "Malibu Conform", tagline: "Conforms Final Cut Pro timelines into DaVinci Resolve Studio — spatial/PAR-aware, multicam angle selection, verbatim image fidelity.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", comingSoon: true, price: "€79 · $79", launchPrice: "€63 · $63" },
-    { name: "Malibu Sound2Pro", tagline: "Bridges Final Cut Pro audio into a Pro Tools session via AAF. Development is currently on hold.", icon: "/apps/malibu-sound2pro/icon.png", badgeText: "On hold" }
+    { name: "Malibu Conform", tagline: "Conforms Final Cut Pro timelines into DaVinci Resolve Studio — spatial/PAR-aware, multicam angle selection, verbatim image fidelity.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", comingSoon: true, price: "€79 · $79", launchPrice: "€63 · $63" }
   ];
 
   var everydayApps = [
@@ -148,7 +147,7 @@
     }
 
     var badgeHtml = app.badgeText ? '<span class="badge">' + escapeHtml(app.badgeText) + '</span>'
-      : app.comingSoon ? '<span class="badge">Coming soon</span>'
+      : app.comingSoon ? '<span class="badge">In the works</span>'
       : app.beta ? '<span class="badge badge-beta">Beta</span>' : '';
 
     var inner = '<div class="card-top"><h3>' + escapeHtml(app.name) + '</h3>' + iconHtml + '</div>' +
