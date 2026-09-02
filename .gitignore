@@ -1,0 +1,3 @@
+.DS_Store
+scripts/sync_report.json
+scripts/__pycache__/
