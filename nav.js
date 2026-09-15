@@ -12,6 +12,11 @@
   // Kept in sync by hand with the app arrays in apps/index.html (postProductionApps/
   // everydayApps/personalApps) -- only apps with a real local href or externalHref are
   // listed here (skips Malibu Sound2Pro/on-hold and FundusKit/no page yet).
+  // 2026-09-15: pulled every internal-only tool Knut isn't ready to release publicly
+  // yet (MalibuToDo, MalibuMesh, MalibuReview, Malibu Calc, Malibu Screen Capture,
+  // Malibu Meeting Notes, Malibu NotesBar, MalibuPlay, Malibu Occhio, Malibu Marantz,
+  // TaxLotse) -- these stay internal until he decides to actually put them in
+  // circulation. Malibu Conform stays (already in beta).
   var APP_GROUPS = [
     {
       heading: "For film post-production",
@@ -20,9 +25,6 @@
         { name: "Malibu Meter", href: "/apps/malibu-meter" },
         { name: "SyncScript Pro", href: "/apps/syncscript-pro", beta: true },
         { name: "Malibu Burn", href: "/apps/malibu-burn", beta: true },
-        { name: "MalibuToDo", href: "/apps/malibutodo", beta: true },
-        { name: "MalibuMesh", href: "/apps/malibu-media-sync", beta: true },
-        { name: "MalibuReview", href: "/apps/malibu-review", soon: true },
         { name: "Malibu Conform", href: "/apps/malibu-conform", soon: true }
       ]
     },
@@ -30,21 +32,13 @@
       heading: "For everyday work",
       apps: [
         { name: "MalibuClip", href: "/apps/malibuclip" },
-        { name: "MalibuDictate", href: "/apps/malibudictate" },
-        { name: "Malibu Calc", href: "/apps/malibucalc", beta: true },
-        { name: "Malibu Screen Capture", href: "/apps/malibuscreener", beta: true },
-        { name: "Malibu Meeting Notes", href: "/apps/malibumeeting", beta: true },
-        { name: "Malibu NotesBar", href: "/apps/malibu-notesbar", beta: true }
+        { name: "MalibuDictate", href: "/apps/malibudictate" }
       ]
     },
     {
       heading: "Also from Studio Malibu",
       apps: [
-        { name: "MalibuPlay", href: "/apps/malibuplay", soon: true },
-        { name: "Malibu Occhio", href: "/apps/malibu-occhio", soon: true },
-        { name: "Malibu Marantz", href: "/apps/malibu-marantz", soon: true },
-        { name: "LifeLotse", href: "https://lifelotse.de", external: true },
-        { name: "TaxLotse", href: "https://taxlotse.de", external: true, soon: true }
+        { name: "LifeLotse", href: "https://lifelotse.de", external: true }
       ]
     }
   ];

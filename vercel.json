@@ -11,6 +11,24 @@
     { "source": "/training/", "destination": "/videos/#training", "permanent": true },
     { "source": "/training/:path*", "destination": "/videos/#training", "permanent": true },
     { "source": "/apps/malibu-review", "destination": "/apps/", "permanent": false },
-    { "source": "/apps/malibu-review/:path*", "destination": "/apps/", "permanent": false }
+    { "source": "/apps/malibu-review/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibutodo", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibutodo/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-media-sync", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-media-sync/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibucalc", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibucalc/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibuscreener", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibuscreener/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibumeeting", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibumeeting/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-notesbar", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-notesbar/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibuplay", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibuplay/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-occhio", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-occhio/:path*", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-marantz", "destination": "/apps/", "permanent": false },
+    { "source": "/apps/malibu-marantz/:path*", "destination": "/apps/", "permanent": false }
   ]
 }
