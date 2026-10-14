@@ -64,23 +64,23 @@
 <p>MalibuSync needs macOS 14 or later, and Final Cut Pro to import the result.</p>
 <p>Timecode is read from MOV, MP4 and M4V picture files and from WAV and BWF sound files. MXF and BRAW files are scanned as picture files, but MalibuSync has no verified timecode reader for them.</p>
 <h2 id="en0-add-your-folders">Add your folders</h2>
-<p>Drop the shoot-day folder onto <strong class="ui">Drop one folder containing video AND audio</strong>. If picture and sound live in different places, use <strong class="ui">Drop Video Folder or File</strong> and <strong class="ui">Drop Audio Folder or File</strong> instead. Those two zones also accept single files. If you drop several items at once, the first fills the zone and the rest are added as extra sources. Subfolders are read recursively.</p>
+<p>Drop the folder of your shoot day onto <strong class="ui">Drop one folder containing video AND audio</strong>. If picture and sound live in different places, use <strong class="ui">Drop Video Folder or File</strong> and <strong class="ui">Drop Audio Folder or File</strong> instead. Those two zones also accept single files. If you drop several items at once, the first fills the zone and the rest are added as extra sources. Subfolders are read recursively.</p>
 <h2 id="en0-scan-and-match">Scan and match</h2>
 <p>Click <strong class="ui">Scan &amp; Match</strong>. MalibuSync reads the timecodes and date of every file and pairs picture with sound by timecode overlap. No ALE file and no Lockit data are needed for this. When the scan has found clips, the window switches to the results.</p>
 <h2 id="en0-review-the-matches">Review the matches</h2>
 <p>The results have two pages. <strong class="ui">Match Results</strong> is the table of all clips. <strong class="ui">Sync Check</strong> shows the clip list on the left and the player with timeline and metadata sidebar on the right.</p>
 <p>In Sync Check, press Space to play or pause, and J, K and L to shuttle. The left and right arrow keys step one frame, and Shift with an arrow steps five frames.</p>
 <h2 id="en0-correct-and-lock-a-sync">Correct and lock a sync</h2>
-<p>If a clip is off, ⌘⌥-click the waveform at the clap to set the clap point, or move the audio with the comma and period keys. When a clip is right, press ⌘L to lock it, and press Return, the shortcut for <strong class="ui">Mark Synced</strong>, to confirm it. The steps are in the how-to "Correct and lock a sync".</p>
+<p>If a clip is off, click the waveform at the clap with ⌘⌥ held to set the clap point, or move the audio with the comma and period keys. When a clip is right, press ⌘L to lock it, and press Return, the shortcut for <strong class="ui">Mark Synced</strong>, to confirm it. The steps are in the guide "Correct and lock a sync".</p>
 <h2 id="en0-add-metadata-optional">Add metadata (optional)</h2>
 <p>On the Match Results page, <strong class="ui">Import ALE / CSV</strong> merges a camera or sound report onto the matched clips (once a file is loaded, the button shows its file name), and <strong class="ui">Sync Lockit</strong> pulls scene and take data from LockitNetwork. Both are optional; export works without them.</p>
 <h2 id="en0-export-to-final-cut-pro">Export to Final Cut Pro</h2>
-<p>Click <strong class="ui">Export FCPXML</strong> in the footer. In the sheet, check <strong class="ui">Event Name</strong>, then click <strong class="ui">Export &amp; Open in FCP</strong> to save the file and open it in Final Cut Pro, or <strong class="ui">Export FCPXML</strong> to only save it. The how-to "Export to Final Cut Pro" lists all options.</p>
+<p>Click <strong class="ui">Export FCPXML</strong> in the footer. In the sheet, check <strong class="ui">Event Name</strong>, then click <strong class="ui">Export &amp; Open in FCP</strong> to save the file and open it in Final Cut Pro, or <strong class="ui">Export FCPXML</strong> to only save it. The guide "Export to Final Cut Pro" lists all options.</p>
 <h1 id="en1-add-forgotten-files-to-a-session">Add forgotten files to a session</h1>
 <p>Use this when you forgot a folder or picked the wrong one, and you do not want to lose the work you have already done.</p>
 <h2 id="en1-add-the-folders">Add the folders</h2>
 <ol>
-<li>Click <strong class="ui">Add Raw Files</strong>… on the import screen. The button appears once the session has clips. You can also choose <strong class="ui">Add Raw Files</strong>… from the overflow menu (the three-dot button with the tooltip More actions for this session) in the title row of the results.</li>
+<li>Click <strong class="ui">Add Raw Files</strong>… on the import screen. The button appears once the session has clips. You can also choose <strong class="ui">Add Raw Files</strong>… from the overflow menu in the title row of the results. That is the button with three dots and the tooltip More actions for this session.</li>
 <li>Pick one or more folders.</li>
 <li>Read the summary alert titled <strong class="ui">Add Raw Files</strong>. It says how many files were added, and a run that found nothing new says so.</li>
 </ol>
@@ -91,7 +91,7 @@
 <h2 id="en1-when-the-button-is-greyed-out">When the button is greyed out</h2>
 <p><strong class="ui">Add Raw Files</strong>… is unavailable while a scan, a Smart Audio analysis or a Lockit sync is running. Wait for it to finish, then try again.</p>
 <h2 id="en1-as-a-last-resort-reset-the-session">As a last resort: reset the session</h2>
-<p>If a session is beyond repair, right-click it in the sessions sidebar and choose <strong class="ui">Reset Session</strong>…. This throws away all matches, manual sync adjustments, sync anchors, locks, approvals, clip renames and imported ALE and Lockit metadata, and imports the same folders again. It cannot be undone.</p>
+<p>If a session is beyond repair, click it with the right mouse button in the sessions sidebar and choose <strong class="ui">Reset Session</strong>…. This throws away all matches, manual sync adjustments, sync anchors, locks, approvals, clip renames and imported ALE and Lockit metadata, and imports the same folders again. It cannot be undone.</p>
 <p>If none of the session's media folders can be reached, for example because the drive is unmounted, the reset is refused and nothing is changed. If at least one folder is reachable, the reset goes ahead and imports only what is there.</p>
 <h1 id="en2-correct-and-lock-a-sync">Correct and lock a sync</h1>
 <p>Use this in Sync Check when a clip's sound does not line up with the picture.</p>
@@ -104,14 +104,14 @@
 <h2 id="en2-set-the-clap-point">Set the clap point</h2>
 <ol>
 <li>Move the playhead to the clap in the sound.</li>
-<li>Press Shift+C to set the clap point at the playhead. Alternatively, ⌘⌥-click the waveform at the clap.</li>
+<li>Press Shift+C to set the clap point at the playhead. Alternatively, click the waveform at the clap with ⌘⌥ held.</li>
 <li>Press Option+C to jump back to the clap point later.</li>
 </ol>
 <p>A plain click on the waveform only moves the playhead. It does not change the clap point.</p>
 <h2 id="en2-nudge-the-audio">Nudge the audio</h2>
 <p>Press the period key to slip the audio one frame later, and the comma key to slip it one frame earlier. Hold Shift to move ten frames at a time.</p>
 <h2 id="en2-lock-and-confirm">Lock and confirm</h2>
-<p>When the clip is right, press ⌘L to lock it. The clip's context menu has <strong class="ui">Lock Sync</strong> and <strong class="ui">Unlock Sync</strong>, and the Sync Check transport button shows <strong class="ui">Lock Sync</strong> and, once locked, <strong class="ui">Locked</strong>. A locked clip is not recalculated by a later re-sync, and it ignores attempts to set a new clap point until you unlock it. Press Return, the shortcut for <strong class="ui">Mark Synced</strong>, to confirm the clip. Return toggles the confirmation.</p>
+<p>When the clip is right, press ⌘L to lock it. The clip's context menu has <strong class="ui">Lock Sync</strong> and <strong class="ui">Unlock Sync</strong>. With several clips selected, the context menu and the selection's action bar offer a <strong class="ui">Lock Sync</strong> menu with <strong class="ui">Lock Sync</strong> and <strong class="ui">Unlock Sync</strong> for all selected clips at once. The Sync Check transport button shows <strong class="ui">Lock Sync</strong> and, once locked, <strong class="ui">Locked</strong>. A later sync run does not recalculate a locked clip, and it accepts no new clap point until you unlock it. Press Return, the shortcut for <strong class="ui">Mark Synced</strong>, to confirm the clip. Return toggles the confirmation.</p>
 <h2 id="en2-check-by-looping">Check by looping</h2>
 <p>Press C to loop plus and minus 12 frames around the clap point. Press Escape to clear the loop.</p>
 <h2 id="en2-undo-a-mistake">Undo a mistake</h2>
@@ -134,7 +134,7 @@
 <p>Every column of an imported file is exported to Final Cut Pro as its own named metadata field. The exceptions are Scene, Take and Tape, which already have their own fields. The Camera column goes to Final Cut Pro's Camera Name field by default.</p>
 <p>To send a column somewhere else, or to leave it out, open Settings, then the Metadata tab, then <strong class="ui">ALE / CSV → FCP Field Mapping</strong>. Use <strong class="ui">Find column</strong> to filter the list, and set a column to Off to leave it out. This section lists columns only after a file has been imported.</p>
 <h2 id="en3-remove-the-imported-data">Remove the imported data</h2>
-<p>Choose <strong class="ui">Clear ALE Metadata</strong> from the overflow menu (the three-dot button with the tooltip More actions for this session) in the results title row. The item is available when at least one clip carries ALE metadata, and it asks for confirmation. It removes the metadata from the clips; the loaded file stays loaded. ⌘Z undoes it.</p>
+<p>Choose <strong class="ui">Clear ALE Metadata</strong> from the overflow menu in the results title row. That is the button with three dots and the tooltip More actions for this session. The item is available when at least one clip carries ALE metadata, and it asks for confirmation. It removes the metadata from the clips; the loaded file stays loaded. ⌘Z undoes it.</p>
 <h1 id="en4-sync-metadata-from-lockitnetwork">Sync metadata from LockitNetwork</h1>
 <p>Use this to pull scene, take and slate metadata from your shoot's LockitNetwork project onto the matched clips. It needs a LockitNetwork account and an internet connection.</p>
 <h2 id="en4-sign-in">Sign in</h2>
@@ -150,9 +150,9 @@
 <h2 id="en4-run-the-sync">Run the sync</h2>
 <p>On the <strong class="ui">Match Results</strong> page, click <strong class="ui">Sync Lockit</strong>. The button is available when you are signed in, a project is assigned to the session's folder and no sync is running. An alert titled <strong class="ui">LockitNetwork Sync</strong> reports the result.</p>
 <h2 id="en4-choose-which-source-wins">Choose which source wins</h2>
-<p>When Lockit, an ALE or CSV file, and the media file itself disagree about Scene or Take, <strong class="ui">Metadata Source Priority</strong> decides. The default order is LockitNetwork, then CSV / ALE, then File (iXML). If you changed the order, <strong class="ui">Reset to default</strong> appears and restores it.</p>
+<p>When Lockit, an ALE or CSV file, and the media file itself disagree about Scene or Take, <strong class="ui">Metadata Source Priority</strong> decides. The default order is LockitNetwork, then CSV / ALE, then File (iXML). If you changed the order, <strong class="ui">Reset to default (Lockit &gt; CSV/ALE &gt; File)</strong> appears and restores it.</p>
 <h2 id="en4-remove-the-lockit-data">Remove the Lockit data</h2>
-<p>Choose <strong class="ui">Clear Lockit Metadata</strong> from the overflow menu (the three-dot button with the tooltip More actions for this session) in the results title row.</p>
+<p>Choose <strong class="ui">Clear Lockit Metadata</strong> from the overflow menu in the results title row. That is the button with three dots and the tooltip More actions for this session.</p>
 <h1 id="en5-export-to-final-cut-pro">Export to Final Cut Pro</h1>
 <p>Use this to turn the matched session into an FCPXML file for Final Cut Pro.</p>
 <h2 id="en5-open-the-export-sheet">Open the export sheet</h2>
@@ -195,7 +195,7 @@
 <p>The sliders <strong class="ui">Voice Isolation</strong>, <strong class="ui">Loudness</strong> and <strong class="ui">Loudness Uniformity</strong> can be changed in <strong class="ui">Custom</strong> mode. They start at 50%, 40% and 30%. The other modes set their own values.</p>
 <h2 id="en6-let-the-analysis-run">Let the analysis run</h2>
 <p>The analysis starts by itself in the background after a scan. The <strong class="ui">Analyzed</strong> column in Match Results shows which clips are done.</p>
-<p>To run it again, for example after you changed the mode, choose <strong class="ui">Run Smart Audio Analysis</strong> from the overflow menu (the three-dot button with the tooltip More actions for this session) in the results title row. It asks before overwriting channel selections you made by hand.</p>
+<p>To run it again, for example after you changed the mode, choose <strong class="ui">Run Smart Audio Analysis</strong> from the overflow menu in the results title row. That is the button with three dots and the tooltip More actions for this session. It asks before overwriting channel selections you made by hand.</p>
 <p>The buttons in the export sheet stay unavailable until the analysis has finished.</p>
 <h2 id="en6-what-ends-up-in-final-cut-pro">What ends up in Final Cut Pro</h2>
 <p>MalibuSync writes the Voice Isolation and Loudness values, with the Loudness Uniformity, as Final Cut Pro audio enhancements on the clip's audio roles. Final Cut Pro applies the processing when it plays the clip.</p>
@@ -214,18 +214,18 @@
 <p>Sound files that are scanned: WAV, BWF, AIF and AIFF.</p>
 <p>Timecode is read from MOV, MP4 and M4V picture files, and from WAV and BWF sound files. MXF and BRAW files are scanned, but there is no verified timecode reader for them. AIF and AIFF files are scanned, but no timecode is read from them.</p>
 <h2 id="en7-how-clips-are-synced">How clips are synced</h2>
-<p>A clip's sync method is one of Timecode, Clap-based or Manual. Timecode is the default. Clips detected as slow motion default to Clap-based. MalibuSync does not match by comparing waveforms.</p>
+<p>A clip is synced by Timecode, Clap-based or Manual. Timecode is the default. Clips detected as slow motion default to Clap-based. MalibuSync does not match clips by comparing waveforms.</p>
 <h2 id="en7-timecode-from-a-sound-channel">Timecode from a sound channel</h2>
 <p>In Settings, then the Audio tab, <strong class="ui">Read timecode from LTC audio channel</strong> makes MalibuSync decode linear timecode from one channel of a WAV or BWF file. The reading is used only when the file has no timecode in its header. The switch is off by default, and the channel defaults to channel 8. Change it with the stepper.</p>
 <h2 id="en7-the-two-result-pages">The two result pages</h2>
 <p><strong class="ui">Match Results</strong> is the table of all clips, grouped by cluster. <strong class="ui">Sync Check</strong> is the clip list with the player, timeline and metadata sidebar.</p>
-<p><strong class="ui">Import ALE / CSV</strong> and <strong class="ui">Sync Lockit</strong> appear on Match Results only. Once a file is loaded, the first button shows the file's name instead of its label. The overflow menu (the three-dot button with the tooltip More actions for this session) appears on both pages.</p>
+<p><strong class="ui">Import ALE / CSV</strong> and <strong class="ui">Sync Lockit</strong> appear on Match Results only. Once a file is loaded, the first button shows the file's name instead of its label. The overflow menu appears on both pages. That is the button with three dots and the tooltip More actions for this session.</p>
 <h2 id="en7-overflow-menu">Overflow menu</h2>
 <ul>
 <li><strong class="ui">Clear Lockit Metadata</strong> and <strong class="ui">Clear ALE Metadata</strong> remove imported metadata.</li>
 <li><strong class="ui">Add Raw Files</strong>… folds more folders into the session.</li>
 <li><strong class="ui">Raw Files</strong>… switches the Sync Check page to the list of raw files.</li>
-<li><strong class="ui">Run Smart Audio Analysis</strong> re-runs the analysis.</li>
+<li><strong class="ui">Run Smart Audio Analysis</strong> runs the analysis again.</li>
 <li><strong class="ui">Re-sync all</strong> recomputes the audio matches of every clip except locked clips and Duplicate at Project Rate clips, and keeps manual offsets, sync anchors, manual clip names, pickup flags and exclude flags. It discards all Smart Audio results; run <strong class="ui">Run Smart Audio Analysis</strong> afterwards.</li>
 <li><strong class="ui">Reset all clips</strong> clears manual offsets, sync anchors, locks and approvals; automatic timecode offsets stay.</li>
 <li><strong class="ui">Restart Matching</strong>… goes back to the import screen. Click <strong class="ui">Scan &amp; Match</strong> there to run the matcher over the same folders again.</li>
@@ -234,7 +234,7 @@
 <ul>
 <li>Space: play or pause.</li>
 <li>J, K, L: shuttle reverse, stop, forward.</li>
-<li>K held with L or J: slow-motion scrub forward or reverse.</li>
+<li>K held with L or J: slow motion scrub forward or reverse.</li>
 <li>Left and right arrow: step one frame. With Shift: five frames.</li>
 <li>Up and down arrow: previous and next edit point.</li>
 <li>Home and End: start and end of the video.</li>
@@ -269,7 +269,7 @@
 <h2 id="en7-trial-and-license">Trial and license</h2>
 <p>MalibuSync asks for your email address before first use, and checks your trial or license with the Studio Malibu license server. The trial length is set by the license server. When it ends, the app shows an alert with <strong class="ui">Quit MalibuSync</strong> and <strong class="ui">Enter License Key</strong>…, and the window behind it offers <strong class="ui">Buy MalibuSync</strong> and <strong class="ui">I Already Have a License</strong>. A license key is also entered with <strong class="ui">Enter License Key</strong>… in Settings, then the License tab.</p>
 <h2 id="en7-network-connections">Network connections</h2>
-<p>MalibuSync connects to the internet for the license check, for updates through Sparkle, for the LockitNetwork sync when you run it, and for in-app feedback when you send it.</p>
+<p>MalibuSync connects to the internet for the license check, for updates through Sparkle, for the LockitNetwork sync when you run it, and for feedback from the app when you send it.</p>
 <p>On the Diagnostics page, <strong class="ui">Automatically save export diagnostics</strong> is off by default. When you turn it on, every export also saves a local copy with a manifest, and <strong class="ui">Send to FCP</strong> uploads a Diagnostics ticket automatically, without you sending feedback. The ticket contains the FCPXML with absolute media paths, session and clip names, and the macOS account name.</p>
 <h1 id="en8-troubleshooting">Troubleshooting</h1>
 <h2 id="en8-the-export-buttons-are-unavailable">The export buttons are unavailable</h2>
@@ -277,9 +277,9 @@
 <p>Solution: match your files first, or wait until the analysis has finished. The buttons unlock by themselves.</p>
 <h2 id="en8-the-export-sheet-says-clips-have-not-been-analyzed">The export sheet says clips have not been analyzed</h2>
 <p>Cause: some clips have no Smart Audio result. A clip whose audio drive is not connected, or whose audio file could not be read, stays not analyzed. With Smart Audio <strong class="ui">Mode</strong> set to <strong class="ui">Off</strong>, no clip is analyzed. <strong class="ui">Re-sync all</strong> also discards every result. Those clips are exported without Voice Isolation and Loudness.</p>
-<p>Solution: reconnect the drive, make sure <strong class="ui">Mode</strong> is not <strong class="ui">Off</strong>, then choose <strong class="ui">Run Smart Audio Analysis</strong> from the overflow menu (the three-dot button with the tooltip More actions for this session) in the results title row.</p>
+<p>Solution: reconnect the drive, make sure <strong class="ui">Mode</strong> is not <strong class="ui">Off</strong>, then choose <strong class="ui">Run Smart Audio Analysis</strong> from the overflow menu in the results title row. That is the button with three dots and the tooltip More actions for this session.</p>
 <h2 id="en8-a-channel-in-final-cut-pro-has-no-voice-isolation-or-loudness">A channel in Final Cut Pro has no Voice Isolation or Loudness</h2>
-<p>Cause: by default only the active channels get the adjustment. A channel that is inactive at export time starts unprocessed when you enable it in Final Cut Pro. A channel where no speech was detected never gets an adjustment. In the <strong class="ui">Standard</strong>, <strong class="ui">Studio</strong> and <strong class="ui">Cinematic</strong> modes, Voice Isolation is applied only to channels whose signal-to-noise ratio is below the mode's threshold. A clip that was not analyzed carries no adjustment at all.</p>
+<p>Cause: by default only the active channels get the adjustment. A channel that is inactive at export time starts unprocessed when you enable it in Final Cut Pro. A channel where no speech was detected never gets an adjustment. In the <strong class="ui">Standard</strong>, <strong class="ui">Studio</strong> and <strong class="ui">Cinematic</strong> modes, a channel gets Voice Isolation only when its ratio of signal to noise is below the mode's threshold. A clip that was not analyzed carries no adjustment at all.</p>
 <p>Solution: turn on <strong class="ui">Apply Voice Isolation + Loudness to every channel, not just active ones</strong> in Settings, then the Audio tab, and export again.</p>
 <h2 id="en8-sync-lockit-is-unavailable">Sync Lockit is unavailable</h2>
 <p>Cause: you are not signed in to LockitNetwork, or no Lockit project is assigned to the session's folder, or a Lockit sync is already running. The button's tooltip names the missing step.</p>
@@ -299,55 +299,55 @@
 <h2 id="en8-clips-from-mxf-braw-or-aiff-files-are-not-matched-by-timecode">Clips from MXF, BRAW or AIFF files are not matched by timecode</h2>
 <p>Cause: timecode is read only from MOV, MP4 and M4V picture files and from WAV and BWF sound files. For MXF, BRAW and AIF or AIFF files MalibuSync has no timecode reader.</p>
 <p>Solution: there is no setting for this at the moment. For WAV and BWF files that have no timecode in the header, the LTC channel reading can supply it; see the reference.</p>
-<h2 id="en8-a-slow-motion-clip-has-no-sound">A slow-motion clip has no sound</h2>
+<h2 id="en8-a-slow-motion-clip-has-no-sound">A slow motion clip has no sound</h2>
 <p>Cause: for a clip whose sensor frame rate differs from the project rate, the sound found by the timecode match is not used by default. The clip stays without audio, because timecode cannot be trusted across the retime.</p>
 <p>Solution: in the clip's Offspeed section in the sidebar, choose <strong class="ui">Clap</strong> or <strong class="ui">Manual</strong> for the audio, or sync the audio by hand. Audio you attach or adjust by hand is always played and exported.</p>
-<p class="ver">Written for version 0.17.18.</p>
+<p class="ver">Written for version 0.17.20.</p>
     </article>
-    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-vergessene-dateien-zu-einer-session-hinzuf-gen">Vergessene Dateien zu einer Session hinzufügen</a><a class="l1" href="#de2-sync-korrigieren-und-sperren">Sync korrigieren und sperren</a><a class="l1" href="#de3-einen-ale-oder-csv-report-importieren">Einen ALE- oder CSV-Report importieren</a><a class="l1" href="#de4-metadaten-aus-lockitnetwork-abgleichen">Metadaten aus LockitNetwork abgleichen</a><a class="l1" href="#de5-nach-final-cut-pro-exportieren">Nach Final Cut Pro exportieren</a><a class="l1" href="#de6-smart-audio-einrichten">Smart Audio einrichten</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-vergessene-dateien-zu-einer-session-hinzuf-gen">Vergessene Dateien zu einer Session hinzufügen</a><a class="l1" href="#de2-sync-korrigieren-und-sperren">Sync korrigieren und sperren</a><a class="l1" href="#de3-einen-bericht-im-format-ale-oder-csv-importieren">Einen Bericht im Format ALE oder CSV importieren</a><a class="l1" href="#de4-metadaten-aus-lockitnetwork-abgleichen">Metadaten aus LockitNetwork abgleichen</a><a class="l1" href="#de5-nach-final-cut-pro-exportieren">Nach Final Cut Pro exportieren</a><a class="l1" href="#de6-smart-audio-einrichten">Smart Audio einrichten</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
 <h1 id="de0-erste-schritte">Erste Schritte</h1>
 <p>Diese Anleitung führt einen Drehtag vom Kartendump bis zu einer FCPXML, die du in Final Cut Pro importieren kannst.</p>
 <h2 id="de0-was-du-brauchst">Was du brauchst</h2>
-<p>MalibuSync braucht macOS 14 oder neuer und Final Cut Pro, um das Ergebnis zu importieren.</p>
-<p>Timecode wird aus MOV-, MP4- und M4V-Bilddateien sowie aus WAV- und BWF-Tondateien gelesen. MXF- und BRAW-Dateien werden als Bilddateien gescannt, aber MalibuSync hat dafür keinen verifizierten Timecode-Leser.</p>
+<p>MalibuSync braucht macOS 14 oder neuer. Um das Ergebnis zu importieren, brauchst du Final Cut Pro.</p>
+<p>Den Timecode liest MalibuSync aus Bilddateien in MOV, MP4 und M4V sowie aus Tondateien in WAV und BWF. MXF und BRAW scannt es ebenfalls als Bilddateien, hat dafür aber keinen verifizierten Leser für Timecode.</p>
 <h2 id="de0-ordner-hinzuf-gen">Ordner hinzufügen</h2>
-<p>Ziehe den Drehtag-Ordner auf <strong class="ui">Drop one folder containing video AND audio</strong>. Liegen Bild und Ton an getrennten Orten, nutze stattdessen <strong class="ui">Drop Video Folder or File</strong> und <strong class="ui">Drop Audio Folder or File</strong>. Diese beiden Zonen nehmen auch einzelne Dateien an. Ziehst du mehrere Objekte auf einmal hinein, füllt das erste die Zone und die übrigen werden als zusätzliche Quellen ergänzt. Unterordner werden rekursiv gelesen.</p>
+<p>Ziehe den Ordner deines Drehtags auf <strong class="ui">Drop one folder containing video AND audio</strong>. Liegen Bild und Ton an getrennten Orten, nimm stattdessen <strong class="ui">Drop Video Folder or File</strong> und <strong class="ui">Drop Audio Folder or File</strong>. Diese beiden Zonen nehmen auch einzelne Dateien an. Ziehst du mehrere Objekte auf einmal hinein, füllt das erste die Zone, und die übrigen kommen als zusätzliche Quellen dazu. Unterordner werden auf allen Ebenen mitgelesen.</p>
 <h2 id="de0-scannen-und-matchen">Scannen und matchen</h2>
-<p>Klicke auf <strong class="ui">Scan &amp; Match</strong>. MalibuSync liest Timecode und Datum jeder Datei und ordnet Bild und Ton per Timecode-Überlappung zu. Dafür sind weder eine ALE-Datei noch Lockit-Daten nötig. Hat der Scan Clips gefunden, wechselt das Fenster zu den Ergebnissen.</p>
+<p>Klicke auf <strong class="ui">Scan &amp; Match</strong>. MalibuSync liest Timecode und Datum jeder Datei und ordnet Bild und Ton zu, wenn sich ihr Timecode überlappt. Eine Datei im Format ALE oder Daten aus Lockit brauchst du dafür nicht. Hat der Scan Clips gefunden, zeigt das Fenster die Ergebnisse.</p>
 <h2 id="de0-treffer-pr-fen">Treffer prüfen</h2>
-<p>Die Ergebnisse haben zwei Seiten. <strong class="ui">Match Results</strong> ist die Tabelle aller Clips. <strong class="ui">Sync Check</strong> zeigt links die Clip-Liste und rechts den Player mit Timeline und Metadaten-Seitenleiste.</p>
-<p>In Sync Check startest und stoppst du mit der Leertaste, und mit J, K und L shuttlest du. Mit den Pfeiltasten links und rechts gehst du ein Bild zurück oder vor, mit Umschalt fünf Bilder.</p>
+<p>Die Ergebnisse haben zwei Seiten. <strong class="ui">Match Results</strong> ist die Tabelle aller Clips. <strong class="ui">Sync Check</strong> zeigt links die Liste der Clips und rechts den Player mit Timeline und Seitenleiste für Metadaten.</p>
+<p>In Sync Check startest und stoppst du mit der Leertaste, und mit J, K und L fährst du vor und zurück. Die Pfeiltasten links und rechts gehen ein Bild zurück oder vor, mit Umschalt sind es fünf Bilder.</p>
 <h2 id="de0-sync-korrigieren-und-sperren">Sync korrigieren und sperren</h2>
-<p>Liegt ein Clip daneben, klicke mit ⌘⌥ in die Waveform an der Klappe, um den Klappenpunkt zu setzen, oder verschiebe den Ton mit den Tasten Komma und Punkt. Stimmt ein Clip, sperrst du ihn mit ⌘L und bestätigst ihn mit Return, dem Kürzel für <strong class="ui">Mark Synced</strong>. Die Schritte stehen in der Anleitung „Sync korrigieren und sperren“.</p>
+<p>Liegt ein Clip daneben, klicke mit ⌘⌥ in die Waveform an der Klappe, um den Klappenpunkt zu setzen. Oder verschiebe den Ton mit den Tasten Komma und Punkt. Stimmt ein Clip, sperrst du ihn mit ⌘L und bestätigst ihn mit Return, dem Kürzel für <strong class="ui">Mark Synced</strong>. Die Schritte stehen in der Anleitung „Sync korrigieren und sperren“.</p>
 <h2 id="de0-metadaten-erg-nzen-optional">Metadaten ergänzen (optional)</h2>
-<p>Auf der Seite Match Results führt <strong class="ui">Import ALE / CSV</strong> einen Kamera- oder Tonbericht mit den gematchten Clips zusammen (ist eine Datei geladen, zeigt die Schaltfläche ihren Dateinamen), und <strong class="ui">Sync Lockit</strong> holt Szenen- und Take-Daten aus LockitNetwork. Beides ist optional; der Export funktioniert auch ohne.</p>
+<p>Auf der Seite Match Results bringt <strong class="ui">Import ALE / CSV</strong> einen Bericht der Kamera oder des Tons auf die gematchten Clips. Ist eine Datei geladen, zeigt die Schaltfläche ihren Dateinamen. <strong class="ui">Sync Lockit</strong> holt Daten zu Szene und Take aus LockitNetwork. Beides ist optional, der Export klappt auch ohne.</p>
 <h2 id="de0-nach-final-cut-pro-exportieren">Nach Final Cut Pro exportieren</h2>
-<p>Klicke in der Fußzeile auf <strong class="ui">Export FCPXML</strong>. Prüfe im Dialog <strong class="ui">Event Name</strong> und klicke dann auf <strong class="ui">Export &amp; Open in FCP</strong>, um die Datei zu speichern und in Final Cut Pro zu öffnen, oder auf <strong class="ui">Export FCPXML</strong>, um sie nur zu speichern. Alle Optionen stehen in der Anleitung „Nach Final Cut Pro exportieren“.</p>
+<p>Klicke in der Fußzeile auf <strong class="ui">Export FCPXML</strong>. Prüfe im Dialog <strong class="ui">Event Name</strong>. Mit <strong class="ui">Export &amp; Open in FCP</strong> speicherst du die Datei und öffnest sie in Final Cut Pro, mit <strong class="ui">Export FCPXML</strong> speicherst du sie nur. Alle Optionen stehen in der Anleitung „Nach Final Cut Pro exportieren“.</p>
 <h1 id="de1-vergessene-dateien-zu-einer-session-hinzuf-gen">Vergessene Dateien zu einer Session hinzufügen</h1>
-<p>Nutze das, wenn du einen Ordner vergessen oder den falschen gewählt hast und die bereits geleistete Arbeit nicht verlieren willst.</p>
+<p>Nutze das, wenn du einen Ordner vergessen oder den falschen gewählt hast und deine bisherige Arbeit nicht verlieren willst.</p>
 <h2 id="de1-ordner-hinzuf-gen">Ordner hinzufügen</h2>
 <ol>
-<li>Klicke auf der Import-Seite auf <strong class="ui">Add Raw Files</strong>…. Die Schaltfläche erscheint, sobald die Session Clips enthält. Du findest <strong class="ui">Add Raw Files</strong>… auch im Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) in der Titelzeile der Ergebnisse.</li>
+<li>Klicke auf der Importseite auf <strong class="ui">Add Raw Files</strong>…. Die Schaltfläche erscheint, sobald die Session Clips enthält. Du findest <strong class="ui">Add Raw Files</strong>… auch im Überlaufmenü in der Titelzeile der Ergebnisse. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session.</li>
 <li>Wähle einen oder mehrere Ordner.</li>
-<li>Lies die Zusammenfassung im Hinweisfenster <strong class="ui">Add Raw Files</strong>. Sie nennt, wie viele Dateien hinzugekommen sind; ein Durchlauf ohne Neues sagt das ebenfalls.</li>
+<li>Lies die Zusammenfassung im Hinweisfenster <strong class="ui">Add Raw Files</strong>. Sie nennt, wie viele Dateien hinzugekommen sind. Gab es nichts Neues, sagt sie das auch.</li>
 </ol>
 <h2 id="de1-was-mit-deiner-arbeit-passiert">Was mit deiner Arbeit passiert</h2>
 <p>Neue Tondateien werden den Clips zugeordnet, deren Timecode sie überlappen. Neue Bilddateien werden zusätzliche Clips. Ton, den kein Clip beansprucht, landet in den Wild Tracks. Dateien, die die Session schon kennt, werden übersprungen.</p>
-<p>Gesperrte Clips, als MOS markierte Clips und Duplicate-at-Project-Rate-Clips werden übersprungen; Ton, der sie überlappt, bleibt ein Wild Track. Bestehende Clips behalten ihre Sperren, Offsets, Anker, Freigaben, Ausschluss-Markierungen und Clip-Namen. Ein Clip, der neuen Ton erhält, verliert seine manuelle Kanalauswahl und sein Smart-Audio-Ergebnis, das neu analysiert wird.</p>
-<p>Der gesamte Durchlauf ist ein einziger Undo-Schritt, ⌘Z nimmt ihn zurück.</p>
+<p>Gesperrte Clips, Clips mit der Markierung MOS und Clips vom Typ Duplicate at Project Rate werden übersprungen. Ton, der sie überlappt, bleibt ein Wild Track. Bestehende Clips behalten ihre Sperren, Offsets, Anker, Freigaben, Markierungen zum Ausschluss und Clipnamen. Ein Clip, der neuen Ton erhält, verliert seine manuelle Kanalauswahl und sein Ergebnis aus Smart Audio. Das Ergebnis wird neu analysiert.</p>
+<p>Der ganze Durchlauf lässt sich in einem Schritt widerrufen. ⌘Z nimmt ihn zurück.</p>
 <h2 id="de1-wenn-die-schaltfl-che-ausgegraut-ist">Wenn die Schaltfläche ausgegraut ist</h2>
-<p><strong class="ui">Add Raw Files</strong>… ist nicht verfügbar, solange ein Scan, eine Smart-Audio-Analyse oder ein Lockit-Sync läuft. Warte, bis die Aufgabe fertig ist, und versuche es dann erneut.</p>
+<p><strong class="ui">Add Raw Files</strong>… ist nicht verfügbar, solange ein Scan, eine Analyse von Smart Audio oder ein Abgleich mit Lockit läuft. Warte, bis die Aufgabe fertig ist, und versuche es dann erneut.</p>
 <h2 id="de1-als-letztes-mittel-session-zur-cksetzen">Als letztes Mittel: Session zurücksetzen</h2>
-<p>Ist eine Session nicht mehr zu retten, klicke sie in der Session-Seitenleiste mit der rechten Maustaste an und wähle <strong class="ui">Reset Session</strong>…. Das verwirft alle Matches, manuelle Sync-Anpassungen, Sync-Anker, Sperren, Freigaben, Clip-Umbenennungen sowie importierte ALE- und Lockit-Metadaten und importiert dieselben Ordner neu. Das lässt sich nicht rückgängig machen.</p>
-<p>Ist keiner der Medienordner der Session erreichbar, etwa weil das Laufwerk nicht angeschlossen ist, wird das Zurücksetzen abgelehnt und nichts verändert. Ist mindestens ein Ordner erreichbar, läuft das Zurücksetzen durch und importiert nur, was vorhanden ist.</p>
+<p>Ist eine Session nicht mehr zu retten, klicke sie in der Seitenleiste der Sessions mit der rechten Maustaste an und wähle <strong class="ui">Reset Session</strong>…. Das verwirft alle Matches, manuellen Anpassungen am Sync, Anker für den Sync, Sperren, Freigaben, umbenannten Clips und importierten Metadaten aus ALE und Lockit. Danach importiert MalibuSync dieselben Ordner neu. Das lässt sich nicht rückgängig machen.</p>
+<p>Ist keiner der Medienordner der Session erreichbar, etwa weil das Laufwerk nicht angeschlossen ist, lehnt MalibuSync das Zurücksetzen ab und ändert nichts. Ist mindestens ein Ordner erreichbar, läuft das Zurücksetzen durch und importiert nur, was vorhanden ist.</p>
 <h1 id="de2-sync-korrigieren-und-sperren">Sync korrigieren und sperren</h1>
 <p>Nutze das in Sync Check, wenn der Ton eines Clips nicht zum Bild passt.</p>
 <h2 id="de2-clip-ffnen">Clip öffnen</h2>
 <ol>
 <li>Wechsle auf die Seite <strong class="ui">Sync Check</strong>.</li>
 <li>Wähle den Clip in der Liste links.</li>
-<li>Drücke die Leertaste zum Abspielen. Mit der rechten oder linken Pfeiltaste springst du bildweise.</li>
+<li>Drücke die Leertaste zum Abspielen. Mit den Pfeiltasten rechts und links gehst du Bild für Bild.</li>
 </ol>
 <h2 id="de2-klappenpunkt-setzen">Klappenpunkt setzen</h2>
 <ol>
@@ -355,104 +355,104 @@
 <li>Drücke Umschalt+C, um den Klappenpunkt an der Abspielposition zu setzen. Alternativ klickst du mit ⌘⌥ in die Waveform an der Klappe.</li>
 <li>Drücke Option+C, um später wieder zum Klappenpunkt zu springen.</li>
 </ol>
-<p>Ein einfacher Klick in die Waveform bewegt nur die Abspielposition. Er ändert den Klappenpunkt nicht.</p>
+<p>Ein einfacher Klick in die Waveform bewegt nur die Abspielposition. Den Klappenpunkt ändert er nicht.</p>
 <h2 id="de2-ton-verschieben">Ton verschieben</h2>
-<p>Mit der Punkt-Taste verschiebst du den Ton ein Bild später, mit der Komma-Taste ein Bild früher. Mit gehaltener Umschalttaste sind es zehn Bilder.</p>
+<p>Mit der Punkttaste verschiebst du den Ton ein Bild später, mit der Kommataste ein Bild früher. Hältst du Umschalt, sind es zehn Bilder.</p>
 <h2 id="de2-sperren-und-best-tigen">Sperren und bestätigen</h2>
-<p>Stimmt der Clip, sperrst du ihn mit ⌘L. Das Kontextmenü des Clips hat <strong class="ui">Lock Sync</strong> und <strong class="ui">Unlock Sync</strong>, und die Transport-Schaltfläche in Sync Check zeigt <strong class="ui">Lock Sync</strong> und, sobald gesperrt, <strong class="ui">Locked</strong>. Ein gesperrter Clip wird von einem späteren Re-Sync nicht neu berechnet und ignoriert den Versuch, einen neuen Klappenpunkt zu setzen, bis du ihn entsperrst. Mit Return, dem Kürzel für <strong class="ui">Mark Synced</strong>, bestätigst du den Clip. Return schaltet die Bestätigung um.</p>
-<h2 id="de2-per-loop-pr-fen">Per Loop prüfen</h2>
-<p>Drücke C, um plus und minus 12 Bilder um den Klappenpunkt zu loopen. Mit Escape beendest du den Loop.</p>
+<p>Stimmt der Clip, sperrst du ihn mit ⌘L. Das Kontextmenü des Clips hat <strong class="ui">Lock Sync</strong> und <strong class="ui">Unlock Sync</strong>. Bei einer Auswahl mehrerer Clips bietet das Kontextmenü, ebenso wie die Aktionsleiste der Auswahl, das Menü <strong class="ui">Lock Sync</strong> mit <strong class="ui">Lock Sync</strong> und <strong class="ui">Unlock Sync</strong> für alle gewählten Clips auf einmal. Die Schaltfläche im Transport von Sync Check zeigt <strong class="ui">Lock Sync</strong> und, sobald der Clip gesperrt ist, <strong class="ui">Locked</strong>. Ein gesperrter Clip wird bei einem späteren erneuten Sync nicht neu berechnet. Einen neuen Klappenpunkt nimmt er erst an, wenn du ihn entsperrst. Mit Return, dem Kürzel für <strong class="ui">Mark Synced</strong>, bestätigst du den Clip. Return schaltet die Bestätigung um.</p>
+<h2 id="de2-mit-einer-schleife-pr-fen">Mit einer Schleife prüfen</h2>
+<p>Drücke C, um 12 Bilder vor und 12 Bilder nach dem Klappenpunkt als Schleife abzuspielen. Mit Escape beendest du die Schleife.</p>
 <h2 id="de2-einen-fehler-r-ckg-ngig-machen">Einen Fehler rückgängig machen</h2>
-<p>⌘Z macht die letzte Änderung rückgängig. <strong class="ui">Reset all clips</strong> im Überlaufmenü löscht bei jedem Clip den manuellen Offset, die Sync-Anker, den Bild-Klappenanker, die manuelle Kanalauswahl, die Sperre und die Freigabe und analysiert Smart Audio für die bereits analysierten Clips neu. Automatische Timecode-Offsets bleiben. ⌘Z nimmt das zurück.</p>
-<h1 id="de3-einen-ale-oder-csv-report-importieren">Einen ALE- oder CSV-Report importieren</h1>
-<p>Nutze das, um Scene, Take, Tape und weitere Spalten aus einem Kamera- oder Tonbericht auf deine gematchten Clips zu übertragen.</p>
+<p>⌘Z macht die letzte Änderung rückgängig. <strong class="ui">Reset all clips</strong> im Überlaufmenü löscht bei jedem Clip den manuellen Offset, die Anker für den Sync, den Klappenanker im Bild, die manuelle Kanalauswahl, die Sperre und die Freigabe. Außerdem analysiert es Smart Audio für die bereits analysierten Clips neu. Automatische Offsets aus dem Timecode bleiben. ⌘Z nimmt das zurück.</p>
+<h1 id="de3-einen-bericht-im-format-ale-oder-csv-importieren">Einen Bericht im Format ALE oder CSV importieren</h1>
+<p>Nutze das, um Scene, Take, Tape und weitere Spalten aus einem Bericht der Kamera oder des Tons auf deine gematchten Clips zu übertragen.</p>
 <h2 id="de3-datei-importieren">Datei importieren</h2>
 <ol>
 <li>Scanne und matche zuerst deine Dateien.</li>
-<li>Wechsle auf die Seite <strong class="ui">Match Results</strong>, dort liegt die Schaltfläche.</li>
-<li>Klicke auf <strong class="ui">Import ALE / CSV</strong> und wähle eine ALE-, CSV- oder TSV-Datei.</li>
-<li>Lies das Hinweisfenster, das danach erscheint. MalibuSync meldet eine Datei, die es nicht lesen konnte, und es meldet, wie vielen Clips Zeilen der Datei zugeordnet wurden.</li>
+<li>Wechsle auf die Seite <strong class="ui">Match Results</strong>. Dort liegt die Schaltfläche.</li>
+<li>Klicke auf <strong class="ui">Import ALE / CSV</strong> und wähle eine Datei im Format ALE, CSV oder TSV.</li>
+<li>Lies das Hinweisfenster, das danach erscheint. MalibuSync meldet eine Datei, die es nicht lesen konnte. Es meldet auch, wie vielen Clips Zeilen der Datei zugeordnet wurden.</li>
 </ol>
 <p>Nach dem Import zeigt die Schaltfläche den Namen der geladenen Datei.</p>
 <h2 id="de3-festlegen-wie-zeilen-den-clips-zugeordnet-werden">Festlegen, wie Zeilen den Clips zugeordnet werden</h2>
 <p>Öffne die Einstellungen, dann den Tab Metadata, dann <strong class="ui">ALE Matching</strong>.</p>
-<p>Unter <strong class="ui">Match by</strong> ordnet <strong class="ui">Filename</strong> eine Zeile der Kameradatei zu, deren Name zur Zeile passt. <strong class="ui">Column value</strong> ordnet eine Zeile über eine Spalte zu, die du benennst, zum Beispiel <strong class="ui">Tape</strong>, <strong class="ui">Camroll</strong>, <strong class="ui">Soundroll</strong> oder <strong class="ui">Camera</strong>. MalibuSync vergleicht zuerst den Video-Dateinamen mit dem Spaltenwert und dann den Teil des Dateinamens vor dem ersten Unterstrich. Lässt du den Spaltennamen leer, wird über den Dateinamen zugeordnet.</p>
+<p>Unter <strong class="ui">Match by</strong> ordnet <strong class="ui">Filename</strong> eine Zeile der Kameradatei zu, deren Name zur Zeile passt. <strong class="ui">Column value</strong> ordnet eine Zeile über eine Spalte zu, die du benennst, zum Beispiel <strong class="ui">Tape</strong>, <strong class="ui">Camroll</strong>, <strong class="ui">Soundroll</strong> oder <strong class="ui">Camera</strong>. MalibuSync vergleicht zuerst den Dateinamen des Videos mit dem Wert der Spalte. Danach vergleicht es den Teil des Dateinamens vor dem ersten Unterstrich. Lässt du den Namen der Spalte leer, wird über den Dateinamen zugeordnet.</p>
 <p>Werden nur wenige Clips zugeordnet, ändere diese Einstellung und importiere die Datei erneut.</p>
 <h2 id="de3-festlegen-wohin-jede-spalte-geht">Festlegen, wohin jede Spalte geht</h2>
-<p>Jede Spalte einer importierten Datei wird als eigenes benanntes Metadatenfeld nach Final Cut Pro exportiert. Ausnahmen sind Scene, Take und Tape, die bereits eigene Felder haben. Die Spalte Camera geht standardmäßig in das Feld Camera Name von Final Cut Pro.</p>
-<p>Um eine Spalte woandershin zu schicken oder wegzulassen, öffne die Einstellungen, dann den Tab Metadata, dann <strong class="ui">ALE / CSV → FCP Field Mapping</strong>. Mit <strong class="ui">Find column</strong> filterst du die Liste, und eine Spalte auf Off wird weggelassen. Dieser Abschnitt listet Spalten erst, nachdem eine Datei importiert wurde.</p>
+<p>Jede Spalte einer importierten Datei geht als eigenes, benanntes Metadatenfeld nach Final Cut Pro. Ausnahmen sind Scene, Take und Tape, die schon eigene Felder haben. Die Spalte Camera geht standardmäßig in das Feld Camera Name von Final Cut Pro.</p>
+<p>Um eine Spalte woandershin zu schicken oder wegzulassen, öffne die Einstellungen, dann den Tab Metadata, dann <strong class="ui">ALE / CSV → FCP Field Mapping</strong>. Mit <strong class="ui">Find column</strong> filterst du die Liste. Eine Spalte, die du auf Off stellst, wird weggelassen. Dieser Abschnitt listet Spalten erst, nachdem du eine Datei importiert hast.</p>
 <h2 id="de3-importierte-daten-entfernen">Importierte Daten entfernen</h2>
-<p>Wähle <strong class="ui">Clear ALE Metadata</strong> im Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) in der Titelzeile der Ergebnisse. Der Eintrag ist verfügbar, wenn mindestens ein Clip ALE-Metadaten trägt, und fragt vorher nach. Er entfernt die Metadaten von den Clips; die geladene Datei bleibt geladen. ⌘Z macht es rückgängig.</p>
+<p>Wähle <strong class="ui">Clear ALE Metadata</strong> im Überlaufmenü in der Titelzeile der Ergebnisse. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session. Der Eintrag ist verfügbar, wenn mindestens ein Clip Metadaten aus ALE trägt, und fragt vorher nach. Er entfernt die Metadaten von den Clips. Die geladene Datei bleibt geladen. ⌘Z macht es rückgängig.</p>
 <h1 id="de4-metadaten-aus-lockitnetwork-abgleichen">Metadaten aus LockitNetwork abgleichen</h1>
-<p>Nutze das, um Scene-, Take- und Slate-Metadaten aus dem LockitNetwork-Projekt deines Drehs auf die gematchten Clips zu holen. Du brauchst ein LockitNetwork-Konto und eine Internetverbindung.</p>
+<p>Nutze das, um Metadaten zu Szene, Take und Slate aus dem Projekt deines Drehs in LockitNetwork auf die gematchten Clips zu holen. Du brauchst ein Konto bei LockitNetwork und eine Internetverbindung.</p>
 <h2 id="de4-anmelden">Anmelden</h2>
 <ol>
 <li>Öffne die Einstellungen, dann den Tab Metadata, dann <strong class="ui">LockitNetwork</strong>.</li>
 <li>Klicke neben <strong class="ui">Account</strong> auf <strong class="ui">Sign In with LockitNetwork</strong>. Für die Anmeldung öffnet sich ein Browserfenster.</li>
 <li>Zeigt der Abschnitt <strong class="ui">Signed in</strong>, ist das Konto verbunden.</li>
 </ol>
-<p>Das Zugriffstoken liegt im macOS-Schlüsselbund und wird automatisch erneuert. Zeigt Lockit einen Fehler oder kommen keine Daten mehr an, nutze <strong class="ui">Refresh Login</strong>. <strong class="ui">Sign Out</strong> entfernt die Anmeldung.</p>
-<h2 id="de4-lockit-projekt-dem-ordner-zuweisen">Lockit-Projekt dem Ordner zuweisen</h2>
-<p>Öffne die Einstellungen, dann den Tab Project, und weise dort dem Produktionsordner das Lockit-Projekt zu. Jede Session in diesem Ordner gleicht sich mit dem zugewiesenen Projekt ab.</p>
-<p>Bist du angemeldet und hat der Ordner der Session noch kein Projekt, zeigt ein Banner in den Ergebnissen ein Netzwerk-Symbol, über das du dieselbe Auswahl treffen kannst.</p>
-<h2 id="de4-sync-ausf-hren">Sync ausführen</h2>
-<p>Klicke auf der Seite <strong class="ui">Match Results</strong> auf <strong class="ui">Sync Lockit</strong>. Die Schaltfläche ist verfügbar, wenn du angemeldet bist, dem Ordner der Session ein Projekt zugewiesen ist und kein Sync läuft. Ein Hinweisfenster mit dem Titel <strong class="ui">LockitNetwork Sync</strong> meldet das Ergebnis.</p>
+<p>Das Zugriffstoken liegt im Schlüsselbund von macOS und wird automatisch erneuert. Zeigt Lockit einen Fehler oder kommen keine Daten mehr an, nutze <strong class="ui">Refresh Login</strong>. <strong class="ui">Sign Out</strong> entfernt die Anmeldung.</p>
+<h2 id="de4-projekt-aus-lockit-dem-ordner-zuweisen">Projekt aus Lockit dem Ordner zuweisen</h2>
+<p>Öffne die Einstellungen, dann den Tab Project. Weise dort dem Produktionsordner das Projekt aus Lockit zu. Jede Session in diesem Ordner gleicht sich mit dem zugewiesenen Projekt ab.</p>
+<p>Bist du angemeldet und hat der Ordner der Session noch kein Projekt, zeigt ein Banner in den Ergebnissen ein Netzwerksymbol. Darüber kannst du dieselbe Auswahl treffen.</p>
+<h2 id="de4-abgleich-ausf-hren">Abgleich ausführen</h2>
+<p>Klicke auf der Seite <strong class="ui">Match Results</strong> auf <strong class="ui">Sync Lockit</strong>. Die Schaltfläche ist verfügbar, wenn du angemeldet bist, dem Ordner der Session ein Projekt zugewiesen ist und gerade kein Abgleich läuft. Ein Hinweisfenster mit dem Titel <strong class="ui">LockitNetwork Sync</strong> meldet das Ergebnis.</p>
 <h2 id="de4-festlegen-welche-quelle-gewinnt">Festlegen, welche Quelle gewinnt</h2>
-<p>Wenn Lockit, eine ALE- oder CSV-Datei und die Mediendatei selbst bei Scene oder Take voneinander abweichen, entscheidet <strong class="ui">Metadata Source Priority</strong>. Die Standardreihenfolge ist LockitNetwork, dann CSV / ALE, dann File (iXML). Hast du die Reihenfolge geändert, erscheint <strong class="ui">Reset to default</strong> und stellt sie wieder her.</p>
-<h2 id="de4-lockit-daten-entfernen">Lockit-Daten entfernen</h2>
-<p>Wähle <strong class="ui">Clear Lockit Metadata</strong> im Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) in der Titelzeile der Ergebnisse.</p>
+<p>Weichen Lockit, eine Datei im Format ALE oder CSV und die Mediendatei selbst bei Scene oder Take voneinander ab, entscheidet <strong class="ui">Metadata Source Priority</strong>. Die Standardreihenfolge ist LockitNetwork, dann CSV / ALE, dann File (iXML). Hast du die Reihenfolge geändert, erscheint <strong class="ui">Reset to default (Lockit &gt; CSV/ALE &gt; File)</strong> und stellt sie wieder her.</p>
+<h2 id="de4-daten-aus-lockit-entfernen">Daten aus Lockit entfernen</h2>
+<p>Wähle <strong class="ui">Clear Lockit Metadata</strong> im Überlaufmenü in der Titelzeile der Ergebnisse. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session.</p>
 <h1 id="de5-nach-final-cut-pro-exportieren">Nach Final Cut Pro exportieren</h1>
-<p>Nutze das, um die gematchte Session in eine FCPXML-Datei für Final Cut Pro zu verwandeln.</p>
-<h2 id="de5-export-dialog-ffnen">Export-Dialog öffnen</h2>
-<p>Klicke in der Fußzeile auf <strong class="ui">Export FCPXML</strong>. Die Schaltfläche ist erst verfügbar, wenn mindestens ein Clip gematcht ist; sie öffnet den Export-Dialog.</p>
-<p>Das kleine Menü daneben enthält <strong class="ui">Export &amp; Open in FCP</strong>, das den Dialog öffnet und den Export sofort startet, <strong class="ui">Reveal last export</strong> und <strong class="ui">Export Settings</strong>, das auf die Seite Settings wechselt.</p>
+<p>Nutze das, um die gematchte Session in eine FCPXML für Final Cut Pro zu verwandeln.</p>
+<h2 id="de5-exportdialog-ffnen">Exportdialog öffnen</h2>
+<p>Klicke in der Fußzeile auf <strong class="ui">Export FCPXML</strong>. Die Schaltfläche ist erst verfügbar, wenn mindestens ein Clip gematcht ist. Sie öffnet den Exportdialog.</p>
+<p>Das kleine Menü daneben enthält <strong class="ui">Export &amp; Open in FCP</strong>, das den Dialog öffnet und den Export sofort startet. Dazu kommen <strong class="ui">Reveal last export</strong> und <strong class="ui">Export Settings</strong>, das auf die Seite Settings wechselt.</p>
 <h2 id="de5-event-benennen-und-umfang-w-hlen">Event benennen und Umfang wählen</h2>
 <ol>
-<li>Prüfe <strong class="ui">Event Name</strong>. Er startet bei jedem Öffnen des Dialogs mit dem Session-Namen, sofern die Session einen Namen hat. Tragen deine Clips Szenennummern aus einer ALE-Spalte Scene oder aus iXML, erscheint neben dem Feld eine Schaltfläche mit einem Namensvorschlag; klicke darauf, um ihn zu übernehmen. Die Schaltfläche ist ausgeblendet, solange <strong class="ui">Split into one Event per Scene</strong> an ist.</li>
-<li>Sieh dir <strong class="ui">Project</strong> an. Es zeigt die Framerate, die der Export verwendet. Hier kannst du sie nicht ändern; ändere sie in den Einstellungen im Tab Output.</li>
-<li>Unter <strong class="ui">Output</strong> ist <strong class="ui">Synchronized Clips</strong> immer enthalten. <strong class="ui">Multicam Clips</strong> ist standardmäßig an; klicke darauf, um es auszuschalten.</li>
+<li>Prüfe <strong class="ui">Event Name</strong>. Er startet bei jedem Öffnen des Dialogs mit dem Namen der Session, sofern sie einen hat. Tragen deine Clips Szenennummern aus der Spalte Scene einer ALE oder aus iXML, erscheint neben dem Feld eine Schaltfläche mit einem Namensvorschlag. Klicke darauf, um ihn zu übernehmen. Die Schaltfläche ist ausgeblendet, solange <strong class="ui">Split into one Event per Scene</strong> an ist.</li>
+<li>Sieh dir <strong class="ui">Project</strong> an. Es zeigt die Framerate, die der Export verwendet. Hier kannst du sie nicht ändern. Das geht in den Einstellungen im Tab Output.</li>
+<li>Unter <strong class="ui">Output</strong> ist <strong class="ui">Synchronized Clips</strong> immer enthalten. <strong class="ui">Multicam Clips</strong> ist standardmäßig an. Klicke darauf, um es auszuschalten.</li>
 </ol>
-<p>Ist <strong class="ui">Multicam Clips</strong> an, werden Kameras mit überlappendem Timecode, deren Drehtage höchstens einen Tag auseinanderliegen, zu Multicam-Clips zusammengefasst. Zwei Clips mit demselben Kamerabuchstaben werden nicht zusammengefasst, es sei denn, du hast sie erzwungen, und ein Clip, der als von Multicam ausgeschlossen markiert ist, wird nie zusammengefasst.</p>
+<p>Ist <strong class="ui">Multicam Clips</strong> an, fasst MalibuSync Kameras zu Clips für Multicam zusammen, wenn sich ihr Timecode überlappt und ihre Drehtage höchstens einen Tag auseinanderliegen. Zwei Clips mit demselben Kamerabuchstaben fasst es nicht zusammen, außer du hast sie erzwungen. Ein Clip, der als von Multicam ausgeschlossen markiert ist, wird nie zusammengefasst.</p>
 <h2 id="de5-nur-einen-teil-der-clips-exportieren">Nur einen Teil der Clips exportieren</h2>
 <ol>
 <li>Sperre die gewünschten Clips in Sync Check mit ⌘L.</li>
-<li>Öffne den Export-Dialog und klicke auf <strong class="ui">Locked clips only</strong>. Die Beschriftung zeigt, wie viele der exportierbaren Clips gesperrt sind, zum Beispiel 3 of 48, und die Option ist nicht verfügbar, solange kein Clip gesperrt ist.</li>
+<li>Öffne den Exportdialog und klicke auf <strong class="ui">Locked clips only</strong>. Die Beschriftung zeigt, wie viele der exportierbaren Clips gesperrt sind, zum Beispiel 3 of 48. Solange kein Clip gesperrt ist, ist die Option nicht verfügbar.</li>
 <li>Exportiere wie gewohnt.</li>
 </ol>
 <p>Exportiert werden nur die gesperrten Clips und ihre Quellmedien. Nicht gesperrte Clips, Wild Tracks und deren Medien werden nicht exportiert. Die Option ist bei jedem Öffnen des Dialogs aus.</p>
-<p>Um pro Szene ein eigenes Event statt eines einzigen Events zu exportieren, klicke auf <strong class="ui">Split into one Event per Scene</strong>. Das ist standardmäßig aus.</p>
+<p>Willst du pro Szene ein eigenes Event statt eines einzigen Events, klicke auf <strong class="ui">Split into one Event per Scene</strong>. Das ist standardmäßig aus.</p>
 <h2 id="de5-speichern-oder-senden">Speichern oder senden</h2>
 <p>Klicke auf <strong class="ui">Export FCPXML</strong>, um die Datei an einem Ort deiner Wahl zu speichern. Klicke auf <strong class="ui">Export &amp; Open in FCP</strong>, um sie zu speichern und in Final Cut Pro zu öffnen. Klicke auf <strong class="ui">Send to FCP</strong>, um die Datei an einen temporären Ort zu schreiben und ohne Ortswahl in Final Cut Pro zu öffnen.</p>
-<p>Die drei Schaltflächen im Dialog sind nicht verfügbar, solange ein Export läuft, kein Clip gematcht ist und die Smart-Audio-Analyse noch läuft. Sie sind wieder verfügbar, sobald die Analyse fertig ist.</p>
+<p>Die drei Schaltflächen im Dialog sind nicht verfügbar, solange ein Export läuft, kein Clip gematcht ist oder die Analyse von Smart Audio noch läuft. Sobald die Analyse fertig ist, sind sie wieder verfügbar.</p>
 <h2 id="de5-trimmen-festlegen">Trimmen festlegen</h2>
 <p>Öffne die Einstellungen, dann den Tab Output, dann <strong class="ui">Trim Mode</strong>. Der Standard ist <strong class="ui">Common</strong>.</p>
 <ul>
 <li><strong class="ui">Common</strong> macht den Clip so lang wie die Überlappung von Bild und Ton.</li>
-<li><strong class="ui">Video</strong> nimmt die Länge des Bildes; längerer Ton wird am Ende des Bildes abgeschnitten.</li>
+<li><strong class="ui">Video</strong> nimmt die Länge des Bildes. Längerer Ton wird am Ende des Bildes abgeschnitten.</li>
 <li><strong class="ui">No trim</strong> dehnt den Clip auf das Längste von Bild und Ton aus.</li>
 </ul>
-<p>Ton außerhalb des gesyncten Fensters wird mit der Final-Cut-Pro-Bewertung „Abgelehnt“ markiert, wenn <strong class="ui">Mark non-synced audio as Rejected</strong> an ist, was der Standard ist.</p>
+<p>Ton außerhalb des gesyncten Fensters bekommt in Final Cut Pro die Bewertung „Abgelehnt“, wenn <strong class="ui">Mark non-synced audio as Rejected</strong> an ist. Das ist der Standard.</p>
 <h2 id="de5-in-final-cut-pro-importieren">In Final Cut Pro importieren</h2>
-<p>Importiere die FCPXML-Datei in eine Mediathek in Final Cut Pro. Die gesyncten Clips und Multicam-Clips landen in dem Event, das du benannt hast, oder bei eingeschaltetem <strong class="ui">Split into one Event per Scene</strong> in einem Event pro Szene. In den Einstellungen im Tab Output legt <strong class="ui">Also generate a raw Source Media event</strong> ein zusätzliches Source-Media-Event an.</p>
+<p>Importiere die FCPXML in eine Mediathek in Final Cut Pro. Die gesyncten Clips und die Clips für Multicam landen in dem Event, das du benannt hast. Ist <strong class="ui">Split into one Event per Scene</strong> an, landen sie in einem Event pro Szene. In den Einstellungen im Tab Output legt <strong class="ui">Also generate a raw Source Media event</strong> ein zusätzliches Event für die Quellmedien an.</p>
 <h1 id="de6-smart-audio-einrichten">Smart Audio einrichten</h1>
-<p>Nutze das, um die Voice-Isolation- und Loudness-Werte zu wählen, die pro Clip in die FCPXML geschrieben werden.</p>
+<p>Nutze das, um die Werte für Voice Isolation und Loudness zu wählen, die pro Clip in die FCPXML geschrieben werden.</p>
 <h2 id="de6-modus-w-hlen">Modus wählen</h2>
 <p>Öffne die Einstellungen, dann den Tab Audio, dann <strong class="ui">Smart Audio</strong>. Wähle unter <strong class="ui">Mode</strong> einen von <strong class="ui">Off</strong>, <strong class="ui">Standard</strong>, <strong class="ui">Studio</strong>, <strong class="ui">Cinematic</strong> oder <strong class="ui">Custom</strong>. Der Standard ist <strong class="ui">Custom</strong>. Eine Zeile unter der Auswahl beschreibt den gewählten Modus.</p>
-<p>Wähle <strong class="ui">Off</strong>, damit keine Smart-Audio-Anpassungen geschrieben werden.</p>
+<p>Wähle <strong class="ui">Off</strong>, damit Smart Audio keine Anpassungen in die FCPXML schreibt.</p>
 <h2 id="de6-werte-einstellen">Werte einstellen</h2>
-<p>Die Regler <strong class="ui">Voice Isolation</strong>, <strong class="ui">Loudness</strong> und <strong class="ui">Loudness Uniformity</strong> lassen sich im Modus <strong class="ui">Custom</strong> ändern. Sie starten bei 50 %, 40 % und 30 %. Die anderen Modi setzen ihre eigenen Werte.</p>
+<p>Die Regler <strong class="ui">Voice Isolation</strong>, <strong class="ui">Loudness</strong> und <strong class="ui">Loudness Uniformity</strong> kannst du im Modus <strong class="ui">Custom</strong> ändern. Sie starten bei 50 %, 40 % und 30 %. Die anderen Modi setzen ihre eigenen Werte.</p>
 <h2 id="de6-analyse-laufen-lassen">Analyse laufen lassen</h2>
 <p>Die Analyse startet nach einem Scan von selbst im Hintergrund. Die Spalte <strong class="ui">Analyzed</strong> in Match Results zeigt, welche Clips fertig sind.</p>
-<p>Um sie erneut zu starten, etwa nach einem Moduswechsel, wähle <strong class="ui">Run Smart Audio Analysis</strong> im Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) in der Titelzeile der Ergebnisse. Vor dem Überschreiben von Kanalauswahlen, die du von Hand getroffen hast, wird nachgefragt.</p>
-<p>Die Schaltflächen im Export-Dialog bleiben nicht verfügbar, bis die Analyse fertig ist.</p>
+<p>Um sie erneut zu starten, etwa nach einem Moduswechsel, wähle <strong class="ui">Run Smart Audio Analysis</strong> im Überlaufmenü in der Titelzeile der Ergebnisse. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session. Bevor MalibuSync Kanalauswahlen überschreibt, die du von Hand getroffen hast, fragt es nach.</p>
+<p>Die Schaltflächen im Exportdialog bleiben nicht verfügbar, bis die Analyse fertig ist.</p>
 <h2 id="de6-was-in-final-cut-pro-ankommt">Was in Final Cut Pro ankommt</h2>
-<p>MalibuSync schreibt die Voice-Isolation- und Loudness-Werte samt Loudness Uniformity als Audio-Verbesserungen von Final Cut Pro auf die Audio-Rollen des Clips. Final Cut Pro wendet die Verarbeitung an, wenn es den Clip abspielt.</p>
+<p>MalibuSync schreibt die Werte für Voice Isolation und Loudness samt Loudness Uniformity als Audioverbesserungen von Final Cut Pro auf die Audiorollen des Clips. Final Cut Pro wendet die Verarbeitung an, wenn es den Clip abspielt.</p>
 <h2 id="de6-festlegen-welche-kan-le-die-anpassungen-tragen">Festlegen, welche Kanäle die Anpassungen tragen</h2>
 <p>Drei Schalter im selben Abschnitt bestimmen, welche Kanäle aktiv und angepasst sind. Alle drei sind standardmäßig aus.</p>
 <ul>
 <li><strong class="ui">Keep every audio track active in the export</strong>: Jeder gematchte Kanal wird als aktiv exportiert.</li>
 <li><strong class="ui">Automatically select the best channel per clip</strong>: Smart Audio beschränkt die aktiven Kanäle auf seine eigene Wahl. Dieser Schalter ändert die Lautstärke nicht.</li>
-<li><strong class="ui">Apply Voice Isolation + Loudness to every channel, not just active ones</strong>: Jeder Kanal, in dem Sprache erkannt wurde, trägt die Anpassung, auch inaktive. Die Einstellung kann in Final Cut Pro bei großen Mehrspur-Sessions Performance kosten.</li>
+<li><strong class="ui">Apply Voice Isolation + Loudness to every channel, not just active ones</strong>: Jeder Kanal, in dem Sprache erkannt wurde, trägt die Anpassung, auch die inaktiven. Bei großen Sessions mit vielen Spuren kann das Final Cut Pro ausbremsen.</li>
 </ul>
 <h1 id="de7-referenz">Referenz</h1>
 <h2 id="de7-voraussetzungen">Voraussetzungen</h2>
@@ -460,41 +460,41 @@
 <h2 id="de7-dateitypen-und-timecode">Dateitypen und Timecode</h2>
 <p>Gescannte Bilddateien: MOV, MXF, MP4, M4V und BRAW.</p>
 <p>Gescannte Tondateien: WAV, BWF, AIF und AIFF.</p>
-<p>Timecode wird aus MOV-, MP4- und M4V-Bilddateien sowie aus WAV- und BWF-Tondateien gelesen. MXF- und BRAW-Dateien werden gescannt, aber es gibt dafür keinen verifizierten Timecode-Leser. AIF- und AIFF-Dateien werden gescannt, aber es wird kein Timecode aus ihnen gelesen.</p>
+<p>Den Timecode liest MalibuSync aus Bilddateien in MOV, MP4 und M4V sowie aus Tondateien in WAV und BWF. MXF und BRAW werden gescannt, aber es gibt dafür keinen verifizierten Leser für Timecode. AIF und AIFF werden gescannt, aber aus ihnen wird kein Timecode gelesen.</p>
 <h2 id="de7-wie-clips-gesynct-werden">Wie Clips gesynct werden</h2>
-<p>Die Sync-Methode eines Clips ist Timecode, Clap-based oder Manual. Timecode ist der Standard. Clips, die als Zeitlupe erkannt werden, stehen standardmäßig auf Clap-based. MalibuSync matcht nicht durch Vergleich von Waveforms.</p>
+<p>Ein Clip wird über Timecode, Clap-based oder Manual gesynct. Timecode ist der Standard. Clips, die als Zeitlupe erkannt werden, stehen standardmäßig auf Clap-based. MalibuSync vergleicht keine Waveforms, um Clips zu matchen.</p>
 <h2 id="de7-timecode-aus-einem-tonkanal">Timecode aus einem Tonkanal</h2>
-<p>In den Einstellungen, im Tab Audio, lässt <strong class="ui">Read timecode from LTC audio channel</strong> MalibuSync linearen Timecode (LTC) aus einem Kanal einer WAV- oder BWF-Datei dekodieren. Der Wert wird nur verwendet, wenn die Datei im Header keinen Timecode hat. Der Schalter ist standardmäßig aus, und der Kanal steht standardmäßig auf Kanal 8. Ändere ihn mit dem Stepper.</p>
+<p>In den Einstellungen, im Tab Audio, lässt <strong class="ui">Read timecode from LTC audio channel</strong> MalibuSync linearen Timecode (LTC) aus einem Kanal einer Datei im Format WAV oder BWF dekodieren. MalibuSync nutzt das nur, wenn die Datei im Header keinen Timecode hat. Der Schalter ist standardmäßig aus, und der Kanal steht standardmäßig auf Kanal 8. Ändere ihn mit dem Stepper.</p>
 <h2 id="de7-die-zwei-ergebnisseiten">Die zwei Ergebnisseiten</h2>
-<p><strong class="ui">Match Results</strong> ist die Tabelle aller Clips, nach Cluster gruppiert. <strong class="ui">Sync Check</strong> ist die Clip-Liste mit Player, Timeline und Metadaten-Seitenleiste.</p>
-<p><strong class="ui">Import ALE / CSV</strong> und <strong class="ui">Sync Lockit</strong> erscheinen nur auf Match Results. Ist eine Datei geladen, zeigt die erste Schaltfläche statt ihrer Beschriftung den Dateinamen. Das Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) erscheint auf beiden Seiten.</p>
+<p><strong class="ui">Match Results</strong> ist die Tabelle aller Clips, nach Cluster gruppiert. <strong class="ui">Sync Check</strong> ist die Liste der Clips mit Player, Timeline und Seitenleiste für Metadaten.</p>
+<p><strong class="ui">Import ALE / CSV</strong> und <strong class="ui">Sync Lockit</strong> erscheinen nur auf Match Results. Ist eine Datei geladen, zeigt die erste Schaltfläche statt ihrer Beschriftung den Dateinamen. Das Überlaufmenü erscheint auf beiden Seiten. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session.</p>
 <h2 id="de7-berlaufmen">Überlaufmenü</h2>
 <ul>
 <li><strong class="ui">Clear Lockit Metadata</strong> und <strong class="ui">Clear ALE Metadata</strong> entfernen importierte Metadaten.</li>
 <li><strong class="ui">Add Raw Files</strong>… nimmt weitere Ordner in die Session auf.</li>
-<li><strong class="ui">Raw Files</strong>… schaltet die Seite Sync Check auf die Liste der Rohdateien um.</li>
+<li><strong class="ui">Raw Files</strong>… wechselt auf der Seite Sync Check zur Liste der Rohdateien.</li>
 <li><strong class="ui">Run Smart Audio Analysis</strong> startet die Analyse erneut.</li>
-<li><strong class="ui">Re-sync all</strong> berechnet die Ton-Matches jedes Clips neu, außer bei gesperrten Clips und Duplicate-at-Project-Rate-Clips, und behält manuelle Offsets, Sync-Anker, manuelle Clip-Namen, Pickup-Markierungen und Ausschluss-Markierungen. Es verwirft alle Smart-Audio-Ergebnisse; starte danach <strong class="ui">Run Smart Audio Analysis</strong>.</li>
-<li><strong class="ui">Reset all clips</strong> löscht manuelle Offsets, Sync-Anker, Sperren und Freigaben; automatische Timecode-Offsets bleiben.</li>
-<li><strong class="ui">Restart Matching</strong>… geht zurück zur Import-Seite. Klicke dort auf <strong class="ui">Scan &amp; Match</strong>, um den Matcher erneut über dieselben Ordner laufen zu lassen.</li>
+<li><strong class="ui">Re-sync all</strong> berechnet die Zuordnung des Tons für jeden Clip neu, außer für gesperrte Clips und Clips vom Typ Duplicate at Project Rate. Manuelle Offsets, Anker für den Sync, manuelle Clipnamen, Markierungen für Pickups und Markierungen zum Ausschluss bleiben. Alle Ergebnisse aus Smart Audio werden verworfen. Starte danach <strong class="ui">Run Smart Audio Analysis</strong>.</li>
+<li><strong class="ui">Reset all clips</strong> löscht manuelle Offsets, Anker für den Sync, Sperren und Freigaben. Automatische Offsets aus dem Timecode bleiben.</li>
+<li><strong class="ui">Restart Matching</strong>… geht zurück zur Importseite. Klicke dort auf <strong class="ui">Scan &amp; Match</strong>, um dieselben Ordner erneut zu matchen.</li>
 </ul>
 <h2 id="de7-tastenk-rzel-wiedergabe">Tastenkürzel: Wiedergabe</h2>
 <ul>
 <li>Leertaste: Wiedergabe oder Pause.</li>
 <li>J, K, L: Shuttle rückwärts, Stopp, vorwärts.</li>
-<li>K gehalten mit L oder J: Zeitlupen-Scrub vorwärts oder rückwärts.</li>
+<li>K gehalten mit L oder J: Scrub in Zeitlupe vorwärts oder rückwärts.</li>
 <li>Pfeil links und rechts: ein Bild. Mit Umschalt: fünf Bilder.</li>
 <li>Pfeil hoch und runter: vorheriger und nächster Schnittpunkt.</li>
 <li>Pos1 und Ende: Anfang und Ende des Videos.</li>
-<li>A: Audiospuren auf- oder zuklappen.</li>
+<li>A: Audiospuren aufklappen oder zuklappen.</li>
 <li>F: Videovorschau im Vollbild auf ein zweites Display schicken.</li>
 <li>Plus, Minus und 0: Timeline vergrößern, verkleinern und einpassen.</li>
 </ul>
 <h2 id="de7-tastenk-rzel-sync">Tastenkürzel: Sync</h2>
 <ul>
 <li>Komma und Punkt: Ton ein Bild früher oder später verschieben. Mit Umschalt: zehn Bilder.</li>
-<li>C: um den Klappenpunkt loopen. Escape beendet den Loop.</li>
-<li>Umschalt+C: Ton-Klappenpunkt an der Abspielposition setzen.</li>
+<li>C: den Bereich um den Klappenpunkt als Schleife abspielen. Escape beendet die Schleife.</li>
+<li>Umschalt+C: Klappenpunkt im Ton an der Abspielposition setzen.</li>
 <li>Option+C: zum Klappenpunkt springen.</li>
 <li>⌘L: aktuellen Clip sperren. ⌘⇧L: alle Kameras sperren, die dessen Szene und Take teilen.</li>
 <li>Return: <strong class="ui">Mark Synced</strong>.</li>
@@ -506,51 +506,51 @@
 <li><strong class="ui">Trim Mode</strong>: Common.</li>
 <li><strong class="ui">Multicam Clips</strong>: an.</li>
 <li><strong class="ui">Split into one Event per Scene</strong>: aus.</li>
-<li><strong class="ui">Locked clips only</strong>: aus, bei jedem Öffnen des Export-Dialogs.</li>
+<li><strong class="ui">Locked clips only</strong>: aus, bei jedem Öffnen des Exportdialogs.</li>
 <li><strong class="ui">Mark non-synced audio as Rejected</strong>: an.</li>
 <li>Smart Audio <strong class="ui">Mode</strong>: Custom, mit Voice Isolation 50 %, Loudness 40 % und Loudness Uniformity 30 %.</li>
 <li><strong class="ui">Automatically select the best channel per clip</strong>, <strong class="ui">Keep every audio track active in the export</strong> und <strong class="ui">Apply Voice Isolation + Loudness to every channel, not just active ones</strong>: aus.</li>
 <li><strong class="ui">Read timecode from LTC audio channel</strong>: aus.</li>
 </ul>
-<h2 id="de7-einstellungs-tabs">Einstellungs-Tabs</h2>
-<p>Die Einstellungen öffnest du über das App-Menü oder mit ⌘,; sie haben die Tabs Project, Output, Audio, Metadata, Keyboard, Models, License und Developer. Der Tab Developer bleibt verborgen, bis du bei geöffneten Einstellungen die Wahltaste (Option) hältst.</p>
+<h2 id="de7-tabs-der-einstellungen">Tabs der Einstellungen</h2>
+<p>Die Einstellungen öffnest du über das Menü der App oder mit ⌘,; sie haben die Tabs Project, Output, Audio, Metadata, Keyboard, Models, License und Developer. Der Tab Developer bleibt verborgen, bis du bei geöffneten Einstellungen die Wahltaste (Option) hältst.</p>
 <h2 id="de7-testphase-und-lizenz">Testphase und Lizenz</h2>
-<p>MalibuSync fragt vor der ersten Nutzung nach deiner E-Mail-Adresse und prüft Testphase oder Lizenz beim Studio-Malibu-Lizenzserver. Die Länge der Testphase legt der Lizenzserver fest. Danach zeigt die App einen Hinweis mit <strong class="ui">Quit MalibuSync</strong> und <strong class="ui">Enter License Key</strong>…, und das Fenster dahinter bietet <strong class="ui">Buy MalibuSync</strong> und <strong class="ui">I Already Have a License</strong>. Einen Lizenzschlüssel gibst du auch mit <strong class="ui">Enter License Key</strong>… in den Einstellungen im Tab License ein.</p>
+<p>MalibuSync fragt vor der ersten Nutzung nach deiner Mailadresse und prüft Testphase oder Lizenz beim Lizenzserver von Studio Malibu. Die Länge der Testphase legt der Lizenzserver fest. Nach ihrem Ende zeigt die App einen Hinweis mit <strong class="ui">Quit MalibuSync</strong> und <strong class="ui">Enter License Key</strong>…, und das Fenster dahinter bietet <strong class="ui">Buy MalibuSync</strong> und <strong class="ui">I Already Have a License</strong>. Einen Lizenzschlüssel gibst du auch mit <strong class="ui">Enter License Key</strong>… in den Einstellungen im Tab License ein.</p>
 <h2 id="de7-netzwerkverbindungen">Netzwerkverbindungen</h2>
-<p>MalibuSync verbindet sich mit dem Internet für die Lizenzprüfung, für Updates über Sparkle, für den LockitNetwork-Sync, wenn du ihn ausführst, und für In-App-Feedback, wenn du es sendest.</p>
-<p>Auf der Seite Diagnostics ist <strong class="ui">Automatically save export diagnostics</strong> standardmäßig aus. Schaltest du es ein, speichert jeder Export zusätzlich eine lokale Kopie mit Manifest, und <strong class="ui">Send to FCP</strong> lädt automatisch ein Diagnostics-Ticket hoch, ohne dass du Feedback sendest. Das Ticket enthält die FCPXML mit absoluten Medienpfaden, Session- und Clip-Namen sowie den macOS-Kontonamen.</p>
+<p>MalibuSync verbindet sich mit dem Internet für die Lizenzprüfung, für Updates über Sparkle, für den Abgleich mit LockitNetwork, wenn du ihn ausführst, und für Feedback aus der App, wenn du es sendest.</p>
+<p>Auf der Seite Diagnostics ist <strong class="ui">Automatically save export diagnostics</strong> standardmäßig aus. Schaltest du es ein, speichert jeder Export zusätzlich eine lokale Kopie mit Manifest, und <strong class="ui">Send to FCP</strong> lädt automatisch ein Ticket mit Diagnosedaten hoch, ohne dass du Feedback sendest. Das Ticket enthält die FCPXML mit absoluten Medienpfaden, die Namen von Session und Clips sowie den Namen deines Kontos in macOS.</p>
 <h1 id="de8-fehlerbehebung">Fehlerbehebung</h1>
-<h2 id="de8-die-export-schaltfl-chen-sind-nicht-verf-gbar">Die Export-Schaltflächen sind nicht verfügbar</h2>
-<p>Ursache: In der Fußzeile ist <strong class="ui">Export FCPXML</strong> nicht verfügbar, solange kein Clip gematcht ist. Im Export-Dialog sind die Schaltflächen zusätzlich nicht verfügbar, solange ein Export läuft und solange die Smart-Audio-Analyse noch läuft. Der Dialog sagt, wenn er auf die Analyse wartet.</p>
+<h2 id="de8-die-schaltfl-chen-zum-exportieren-sind-nicht-verf-gbar">Die Schaltflächen zum Exportieren sind nicht verfügbar</h2>
+<p>Ursache: In der Fußzeile ist <strong class="ui">Export FCPXML</strong> nicht verfügbar, solange kein Clip gematcht ist. Im Exportdialog sind die Schaltflächen zusätzlich nicht verfügbar, solange ein Export läuft und solange die Analyse von Smart Audio noch läuft. Der Dialog sagt, wenn er auf die Analyse wartet.</p>
 <p>Lösung: Matche zuerst deine Dateien, oder warte, bis die Analyse fertig ist. Die Schaltflächen sind danach von selbst wieder verfügbar.</p>
-<h2 id="de8-der-export-dialog-meldet-dass-clips-nicht-analysiert-wurden">Der Export-Dialog meldet, dass Clips nicht analysiert wurden</h2>
-<p>Ursache: Für einige Clips gibt es kein Smart-Audio-Ergebnis. Ein Clip, dessen Audio-Laufwerk nicht angeschlossen ist oder dessen Audiodatei nicht gelesen werden konnte, bleibt nicht analysiert. Steht der Smart-Audio-<strong class="ui">Mode</strong> auf <strong class="ui">Off</strong>, wird kein Clip analysiert. <strong class="ui">Re-sync all</strong> verwirft außerdem jedes Ergebnis. Diese Clips werden ohne Voice Isolation und Loudness exportiert.</p>
-<p>Lösung: Schließe das Laufwerk wieder an, stelle sicher, dass <strong class="ui">Mode</strong> nicht auf <strong class="ui">Off</strong> steht, und wähle dann <strong class="ui">Run Smart Audio Analysis</strong> im Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) in der Titelzeile der Ergebnisse.</p>
+<h2 id="de8-der-exportdialog-meldet-dass-clips-nicht-analysiert-wurden">Der Exportdialog meldet, dass Clips nicht analysiert wurden</h2>
+<p>Ursache: Für einige Clips gibt es kein Ergebnis aus Smart Audio. Ein Clip, dessen Laufwerk mit dem Ton nicht angeschlossen ist oder dessen Audiodatei nicht gelesen werden konnte, bleibt nicht analysiert. Steht <strong class="ui">Mode</strong> von Smart Audio auf <strong class="ui">Off</strong>, wird kein Clip analysiert. <strong class="ui">Re-sync all</strong> verwirft außerdem jedes Ergebnis. Diese Clips werden ohne Voice Isolation und Loudness exportiert.</p>
+<p>Lösung: Schließe das Laufwerk wieder an, stelle sicher, dass <strong class="ui">Mode</strong> nicht auf <strong class="ui">Off</strong> steht, und wähle dann <strong class="ui">Run Smart Audio Analysis</strong> im Überlaufmenü in der Titelzeile der Ergebnisse. Das ist die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session.</p>
 <h2 id="de8-ein-kanal-in-final-cut-pro-hat-weder-voice-isolation-noch-loudness">Ein Kanal in Final Cut Pro hat weder Voice Isolation noch Loudness</h2>
-<p>Ursache: Standardmäßig bekommen nur die aktiven Kanäle die Anpassung. Ein Kanal, der beim Export inaktiv ist, startet unbearbeitet, wenn du ihn in Final Cut Pro aktivierst. Ein Kanal, in dem keine Sprache erkannt wurde, bekommt nie eine Anpassung. In den Modi <strong class="ui">Standard</strong>, <strong class="ui">Studio</strong> und <strong class="ui">Cinematic</strong> wird Voice Isolation nur auf Kanäle angewendet, deren Signal-Rausch-Abstand unter der Schwelle des Modus liegt. Ein Clip, der nicht analysiert wurde, trägt gar keine Anpassung.</p>
+<p>Ursache: Standardmäßig bekommen nur die aktiven Kanäle die Anpassung. Ein Kanal, der beim Export inaktiv ist, startet unbearbeitet, wenn du ihn in Final Cut Pro aktivierst. Ein Kanal, in dem keine Sprache erkannt wurde, bekommt nie eine Anpassung. In den Modi <strong class="ui">Standard</strong>, <strong class="ui">Studio</strong> und <strong class="ui">Cinematic</strong> bekommt ein Kanal Voice Isolation nur dann, wenn der Abstand zwischen Signal und Rauschen unter der Schwelle des Modus liegt. Ein Clip, der nicht analysiert wurde, trägt gar keine Anpassung.</p>
 <p>Lösung: Schalte in den Einstellungen im Tab Audio <strong class="ui">Apply Voice Isolation + Loudness to every channel, not just active ones</strong> ein und exportiere erneut.</p>
 <h2 id="de8-sync-lockit-ist-nicht-verf-gbar">Sync Lockit ist nicht verfügbar</h2>
-<p>Ursache: Du bist nicht bei LockitNetwork angemeldet, dem Ordner der Session ist kein Lockit-Projekt zugewiesen, oder ein Lockit-Sync läuft bereits. Der Tooltip der Schaltfläche nennt den fehlenden Schritt.</p>
+<p>Ursache: Du bist nicht bei LockitNetwork angemeldet, dem Ordner der Session ist kein Projekt aus Lockit zugewiesen, oder ein Abgleich mit Lockit läuft bereits. Der Tooltip der Schaltfläche nennt den fehlenden Schritt.</p>
 <p>Lösung: Melde dich in den Einstellungen im Tab Metadata an. Weise dann dem Ordner in den Einstellungen im Tab Project ein Projekt zu.</p>
 <h2 id="de8-import-ale-csv-und-sync-lockit-sind-nicht-zu-sehen">Import ALE / CSV und Sync Lockit sind nicht zu sehen</h2>
-<p>Ursache: Beide Schaltflächen erscheinen nur auf der Seite <strong class="ui">Match Results</strong>. Ist eine ALE- oder CSV-Datei geladen, zeigt die erste Schaltfläche statt <strong class="ui">Import ALE / CSV</strong> den Dateinamen.</p>
+<p>Ursache: Beide Schaltflächen erscheinen nur auf der Seite <strong class="ui">Match Results</strong>. Ist eine Datei im Format ALE oder CSV geladen, zeigt die erste Schaltfläche statt <strong class="ui">Import ALE / CSV</strong> den Dateinamen.</p>
 <p>Lösung: Wechsle von <strong class="ui">Sync Check</strong> zu <strong class="ui">Match Results</strong>.</p>
-<h2 id="de8-bei-einer-ale-oder-csv-datei-werden-nur-wenige-oder-keine-clips-zugeordnet">Bei einer ALE- oder CSV-Datei werden nur wenige oder keine Clips zugeordnet</h2>
-<p>Ursache: Standardmäßig wird eine Zeile einem Clip über den Dateinamen zugeordnet. Benennt die Datei stattdessen Reels oder Tapes, wird keine Zeile einem Clip zugeordnet.</p>
+<h2 id="de8-bei-einer-datei-im-format-ale-oder-csv-werden-nur-wenige-oder-keine-clips-zugeordnet">Bei einer Datei im Format ALE oder CSV werden nur wenige oder keine Clips zugeordnet</h2>
+<p>Ursache: Standardmäßig ordnet MalibuSync eine Zeile einem Clip über den Dateinamen zu. Benennt die Datei stattdessen Reels oder Tapes, passt keine Zeile zu einem Clip.</p>
 <p>Lösung: Stelle in den Einstellungen im Tab Metadata unter <strong class="ui">ALE Matching</strong> <strong class="ui">Match by</strong> auf <strong class="ui">Column value</strong> und trage die Spalte ein, zum Beispiel <strong class="ui">Tape</strong>. Importiere die Datei dann erneut.</p>
 <h2 id="de8-add-raw-files-fehlt-oder-ist-nicht-verf-gbar">Add Raw Files… fehlt oder ist nicht verfügbar</h2>
-<p>Ursache: Auf der Import-Seite erscheint die Schaltfläche erst, wenn die Session Clips enthält. Sie ist nicht verfügbar, solange ein Scan, eine Smart-Audio-Analyse oder ein Lockit-Sync läuft.</p>
+<p>Ursache: Auf der Importseite erscheint die Schaltfläche erst, wenn die Session Clips enthält. Sie ist nicht verfügbar, solange ein Scan, eine Analyse von Smart Audio oder ein Abgleich mit Lockit läuft.</p>
 <p>Lösung: Führe bei einer neuen Session zuerst <strong class="ui">Scan &amp; Match</strong> aus, oder warte, bis die laufende Aufgabe fertig ist.</p>
 <h2 id="de8-reset-session-meldet-dass-nichts-ge-ndert-wurde">Reset Session… meldet, dass nichts geändert wurde</h2>
 <p>Ursache: Die Medienordner der Session sind nicht erreichbar, etwa weil ein Laufwerk nicht angeschlossen ist. Es gibt nichts neu zu importieren, deshalb bleibt die Session unverändert.</p>
 <p>Lösung: Schließe das Laufwerk wieder an, oder nutze <strong class="ui">Relink Media</strong>…, und versuche es erneut.</p>
-<h2 id="de8-clips-aus-mxf-braw-oder-aiff-dateien-werden-nicht-per-timecode-gematcht">Clips aus MXF-, BRAW- oder AIFF-Dateien werden nicht per Timecode gematcht</h2>
-<p>Ursache: Timecode wird nur aus MOV-, MP4- und M4V-Bilddateien sowie aus WAV- und BWF-Tondateien gelesen. Für MXF-, BRAW- und AIF- oder AIFF-Dateien hat MalibuSync keinen Timecode-Leser.</p>
-<p>Lösung: Dafür gibt es derzeit keine Einstellung. Bei WAV- und BWF-Dateien ohne Timecode im Header kann das Lesen des LTC-Kanals ihn liefern; siehe die Referenz.</p>
-<h2 id="de8-ein-zeitlupen-clip-hat-keinen-ton">Ein Zeitlupen-Clip hat keinen Ton</h2>
-<p>Ursache: Bei einem Clip, dessen Sensor-Framerate von der Projektrate abweicht, wird der per Timecode gefundene Ton standardmäßig nicht verwendet. Der Clip bleibt ohne Audio, weil dem Timecode über die Zeitverschiebung hinweg nicht zu trauen ist.</p>
-<p>Lösung: Wähle im Abschnitt Offspeed des Clips in der Seitenleiste für den Ton <strong class="ui">Clap</strong> oder <strong class="ui">Manual</strong>, oder synchronisiere den Ton von Hand. Ton, den du von Hand anlegst oder anpasst, wird immer abgespielt und exportiert.</p>
-<p class="ver">Geschrieben für Version 0.17.18.</p>
+<h2 id="de8-clips-aus-mxf-braw-oder-aiff-werden-nicht-per-timecode-gematcht">Clips aus MXF, BRAW oder AIFF werden nicht per Timecode gematcht</h2>
+<p>Ursache: Den Timecode liest MalibuSync nur aus Bilddateien in MOV, MP4 und M4V sowie aus Tondateien in WAV und BWF. Für MXF, BRAW und AIF oder AIFF hat MalibuSync keinen Leser für Timecode.</p>
+<p>Lösung: Dafür gibt es derzeit keine Einstellung. Bei WAV und BWF ohne Timecode im Header kann das Lesen des Kanals mit LTC ihn liefern. Siehe die Referenz.</p>
+<h2 id="de8-ein-zeitlupenclip-hat-keinen-ton">Ein Zeitlupenclip hat keinen Ton</h2>
+<p>Ursache: Weicht die Framerate des Sensors bei einem Clip von der Rate des Projekts ab, nutzt MalibuSync den per Timecode gefundenen Ton standardmäßig nicht. Der Clip bleibt ohne Ton, weil dem Timecode über die Zeitverschiebung hinweg nicht zu trauen ist.</p>
+<p>Lösung: Wähle im Abschnitt Offspeed des Clips in der Seitenleiste für den Ton <strong class="ui">Clap</strong> oder <strong class="ui">Manual</strong>. Oder lege den Sync des Tons von Hand an. Ton, den du von Hand anlegst oder anpasst, wird immer abgespielt und exportiert.</p>
+<p class="ver">Geschrieben für Version 0.17.20.</p>
     </article>
   </div>
   <footer>
