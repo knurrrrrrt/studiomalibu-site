@@ -71,14 +71,14 @@
 <p>Click into a text field in any app, for example a note. Hold the right Command key, speak, and release the key. While you hold it, an indicator shows that MalibuDictate is recording. No indicator appears if <strong class="ui">Visibility</strong> in the <strong class="ui">Indicator</strong> section of <strong class="ui">General</strong> is set to <strong class="ui">Never</strong>; dictation still works. After you release, the text is transcribed and pasted at the cursor with a simulated Cmd+V. By default MalibuDictate restores your previous clipboard content right after the paste; if the clipboard was empty before, there is nothing to restore and the dictated text stays on it.</p>
 <h1 id="en1-choose-a-speech-engine-and-language">Choose a speech engine and language</h1>
 <h2 id="en1-open-the-engine-settings">Open the engine settings</h2>
-<p>Click the microphone icon in the menu bar. The Settings window opens. Click <strong class="ui">General</strong> in the sidebar and find the <strong class="ui">Speech Engine</strong> section at the top.</p>
+<p>Click the microphone icon in the menu bar, then click <strong class="ui">Settings</strong> in the popover. The Settings window opens. Click <strong class="ui">General</strong> in the sidebar and find the <strong class="ui">Speech Engine</strong> section at the top.</p>
 <h2 id="en1-choose-an-engine">Choose an engine</h2>
 <p>Pick one in the <strong class="ui">Engine</strong> menu. MalibuDictate loads the engine right away; the <strong class="ui">Status</strong> row shows <em>Downloading...</em>, then <em>Loading...</em>, then <strong class="ui">Ready</strong>. If loading fails, the row shows the error text instead.</p>
 <ul>
-<li><strong class="ui">Parakeet TDT</strong> — the default.</li>
-<li><strong class="ui">WhisperKit (Large v3 Turbo)</strong> — runs the Whisper Large v3 Turbo model.</li>
-<li><strong class="ui">Apple SpeechAnalyzer</strong> — needs macOS 26 or later. On an earlier macOS the engine reports an error and asks you to choose Parakeet or WhisperKit.</li>
-<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — use it for English only. It is an English-only streaming model (FluidAudio lists it as an English Nemotron streaming model). It ignores the <strong class="ui">Language</strong> setting. While this engine is selected, Settings shows a note that it is English-only, ignores the language setting and recommends Parakeet for other languages.</li>
+<li><strong class="ui">Parakeet TDT</strong>: the default.</li>
+<li><strong class="ui">WhisperKit (Large v3 Turbo)</strong>: runs the Whisper Large v3 Turbo model.</li>
+<li><strong class="ui">Apple SpeechAnalyzer</strong>: needs macOS 26 or later. On an earlier macOS the engine reports an error and asks you to choose Parakeet or WhisperKit.</li>
+<li><strong class="ui">Nemotron 3.5 (Streaming)</strong>: use it for English only. It is an English-only streaming model (FluidAudio lists it as an English Nemotron streaming model). It ignores the <strong class="ui">Language</strong> setting. While this engine is selected, Settings shows a note that it is English-only, ignores the language setting and recommends Parakeet for other languages.</li>
 </ul>
 <h2 id="en1-set-the-language">Set the language</h2>
 <p>Pick <strong class="ui">Auto-Detect</strong> (the default) or one language in the <strong class="ui">Language</strong> menu. The menu offers these languages, shown by their own names: Deutsch, English, Français, Español, Italiano, Português, Română, Polski, Čeština, Slovenčina, Slovenščina, Hrvatski, Bosanski, Русский, Українська, Беларуская, Български, Српски.</p>
@@ -174,7 +174,9 @@
 <li>Press the key once more to finish. The text is processed and inserted as usual.</li>
 <li>To discard the recording instead, press Esc. Nothing is transcribed or inserted.</li>
 </ol>
-<p>Holding a key while you speak works as before. A key press that is part of a shortcut with another key, such as Command-C with a Command key as the dictation key, is not counted as a tap. Esc only does something in MalibuDictate while a hands-free recording is running. The key press is not blocked: the app in front still receives it and may react to it, for example by closing a dialog.</p>
+<p>Holding a key while you speak works as before. With this option on, a quick tap (under a quarter second) that ends a recording takes effect only after a wait of about a third of a second; a second tap in that time starts hands-free recording instead. A key press that is part of a shortcut with another key, such as Command-C with a Command key as the dictation key, is not counted as a tap. Esc only does something in MalibuDictate while a hands-free recording is running. The key press is not blocked: the app in front still receives it and may react to it, for example by closing a dialog.</p>
+<h2 id="en4-start-a-continuous-recording-from-the-popover">Start a continuous recording from the popover</h2>
+<p>Click the menu bar icon, then click <strong class="ui">Record</strong> in the icon bar of the popover. MalibuDictate records in raw mode, without a rewrite by Claude, until you finish it; you do not need to hold a key. To finish, click the menu bar icon and click <strong class="ui">Stop</strong>, or press and release one of your dictation keys once. With <strong class="ui">Double-Tap to Keep Recording</strong> on, a quick tap ends the recording only after a wait of about a third of a second, and a second tap in that time starts hands-free recording instead. The text is then processed and inserted as usual. Esc does not cancel a recording started this way. The <strong class="ui">Record</strong> button is disabled while dictation is blocked (for example by the license check or an email address that is still pending), while a previous dictation is being processed, and for about a second after it finishes or fails.</p>
 <h2 id="en4-keep-the-dictated-text-on-the-clipboard-after-pasting">Keep the dictated text on the clipboard after pasting</h2>
 <p>By default, MalibuDictate puts the dictated text on the clipboard, pastes it and restores your previous clipboard content right away. If the clipboard was empty before the paste, there is nothing to restore and the dictated text stays on it. To keep the dictation available for a second paste, open Settings, click <strong class="ui">General</strong> and set <strong class="ui">Keep Dictation on Clipboard</strong> under <strong class="ui">Pasting</strong>:</p>
 <ul>
@@ -190,13 +192,13 @@
 <h2 id="en5-know-the-limits-first">Know the limits first</h2>
 <p>Meeting mode is a beta and is off until you turn it on. The transcript has exactly two speakers: <strong class="ui">You</strong> is your microphone, <strong class="ui">Others</strong> is all the audio your Mac plays except MalibuDictate's own sound, mixed together: the call, but also music, other apps and notification sounds. The app does not tell individual participants apart and does not know their names. Transcription runs on this Mac; only the optional summary step can send text to Claude. Record only when all participants know and agree.</p>
 <h2 id="en5-turn-on-meeting-mode">Turn on Meeting mode</h2>
-<p>Click the MalibuDictate icon in the menu bar to open Settings, then open the <strong class="ui">Meetings</strong> tab. Under <strong class="ui">Meeting Mode</strong>, switch on <strong class="ui">Enable Meeting Mode</strong>. Until you do, the rest of the tab is hidden and no meeting can start.</p>
+<p>Click the MalibuDictate icon in the menu bar and click <strong class="ui">Settings</strong> in the popover, then open the <strong class="ui">Meetings</strong> tab. Under <strong class="ui">Meeting Mode</strong>, switch on <strong class="ui">Enable Meeting Mode</strong>. Until you do, the rest of the tab is hidden and no meeting can start.</p>
 <h2 id="en5-check-the-permissions">Check the permissions</h2>
 <p>Meeting mode needs the Microphone permission that dictation already uses; it never shows its own prompt for it. It records the input device you picked for dictation (Settings &gt; <strong class="ui">General</strong> &gt; <strong class="ui">Microphone</strong> &gt; <strong class="ui">Input Device</strong>). To capture <strong class="ui">Others</strong>, macOS asks for System Audio Recording access when the first meeting starts recording. Without it only <strong class="ui">You</strong> is transcribed.</p>
 <p>Settings &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Permissions</strong> lists the optional ones: <strong class="ui">System Audio Recording</strong>, <strong class="ui">Calendar</strong> (for calendar events with a meeting link), <strong class="ui">Notifications</strong> (asks before recording a detected meeting) and <strong class="ui">Automation (Notes &amp; Mail)</strong> (needed only for the Apple Notes and Mail exports). They are requested only when a feature needs them.</p>
 <p>Meeting detection is active as soon as Meeting mode is on. Under Settings &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Automatic Start</strong>, <strong class="ui">Calendar events</strong> and <strong class="ui">Meeting apps using the microphone</strong> are both set to <strong class="ui">Ask</strong> by default: the app shows a notification before it records and does not start by itself. Choose <strong class="ui">Automatic</strong> to start right away or <strong class="ui">Off</strong> to turn a source off. If you have not yet decided on Calendar access, macOS asks for it when you switch Meeting mode on while <strong class="ui">Calendar events</strong> is not <strong class="ui">Off</strong>.</p>
 <h2 id="en5-start-a-meeting">Start a meeting</h2>
-<p>Right-click the menu bar icon and choose <strong class="ui">Start Meeting …</strong>. The Meetings window opens with the <strong class="ui">New Meeting</strong> sheet. You can also choose <strong class="ui">Meetings …</strong> from the same menu, or click <strong class="ui">Open Meetings …</strong> at the top of Settings &gt; <strong class="ui">Meetings</strong>, and then click the plus button (<strong class="ui">New Meeting</strong>, Command-N).</p>
+<p>Click the menu bar icon, then click <strong class="ui">Meeting</strong> in the icon bar of the popover. The Meetings window opens with the <strong class="ui">New Meeting</strong> sheet, as long as no meeting is running or starting; otherwise it opens without the sheet. <strong class="ui">Meeting</strong> only appears while Meeting mode is on (see "Turn on Meeting mode"). You can also click the Meetings icon at the top of the popover, or click <strong class="ui">Open Meetings …</strong> at the top of Settings &gt; <strong class="ui">Meetings</strong>, and then click the plus button (<strong class="ui">New Meeting</strong>, Command-N).</p>
 <p>In the sheet, type a title (an empty title becomes "Meeting"), pick a <strong class="ui">Summary template</strong> or keep the default, and click <strong class="ui">Start Recording</strong>. The first meeting may have to download speech models; recording starts once they are ready.</p>
 <h2 id="en5-tell-the-participants">Tell the participants</h2>
 <p>Click <strong class="ui">Copy Recording Notice</strong> in the sheet or in the live view, then paste the text into the call chat. The notice is in English. It says that you are transcribing the call on your Mac for your own notes. With <strong class="ui">Claude</strong> as summary provider it adds that the written transcript may be sent to an AI service (Anthropic). With <strong class="ui">Basic format (no AI)</strong> it says that audio and transcript stay on your computer. The wording follows the <strong class="ui">Provider</strong> setting, not whether an API key is saved: with <strong class="ui">Claude</strong> selected and no key, the app writes the basic format on this Mac, but the notice still says the transcript may be sent. The button reads "Copied" for two seconds.</p>
@@ -209,13 +211,13 @@
 <p>You can also press the marker shortcut. The default is <strong class="ui">⌃⌥M</strong> (Control-Option-M). To change it, open Settings &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Transcript</strong> and pick another entry for <strong class="ui">Marker shortcut</strong>: <strong class="ui">⌃⌥⇧M</strong>, <strong class="ui">⌃⌥K</strong> or <strong class="ui">Off</strong>. The list is fixed; there is no free key recorder. The shortcut works while any app is in front and needs the Accessibility permission, like the dictation keys. Use the left Control key; with the right one alone the combination is ignored. The key press is also passed on to the app in front, so pick a combination that app does not use. Nothing happens while no meeting is recording.</p>
 <p>Markers appear in the notes and in the transcript, and the summary treats them as important.</p>
 <h2 id="en5-stop-the-meeting">Stop the meeting</h2>
-<p>Click <strong class="ui">Stop</strong> (Command-period), or right-click the menu bar icon and choose <strong class="ui">Stop Meeting</strong>. The app saves the transcript, then writes the summary. The finished meeting has three tabs: <strong class="ui">Summary</strong>, <strong class="ui">Transcript</strong> and <strong class="ui">Notes</strong>.</p>
+<p>Click <strong class="ui">Stop</strong> (Command-period), or click the menu bar icon and click <strong class="ui">End meeting</strong> in the popover. The app saves the transcript, then writes the summary. The finished meeting has three tabs: <strong class="ui">Summary</strong>, <strong class="ui">Transcript</strong> and <strong class="ui">Notes</strong>.</p>
 <p>In <strong class="ui">Transcript</strong> you can search and click <strong class="ui">Copy All</strong>. In <strong class="ui">Notes</strong> you can write free-form notes, which are saved automatically; the notes you typed during the meeting are listed with their times. Notes are used the next time you click <strong class="ui">Regenerate</strong>.</p>
 <h2 id="en5-choose-how-the-summary-is-written">Choose how the summary is written</h2>
 <p>Open Settings &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Summary</strong> and pick the <strong class="ui">Provider</strong>:</p>
 <ul>
-<li><strong class="ui">Claude</strong> — Default. Sends the transcript and your notes to Claude (Anthropic) over the internet. It uses your own API key from the <strong class="ui">Claude</strong> tab and the model chosen there. If no key is saved, the app writes the basic format instead.</li>
-<li><strong class="ui">Basic format (no AI)</strong> — Stays on this Mac. Lists your notes and the first transcript lines, without an AI summary.</li>
+<li><strong class="ui">Claude</strong>: Default. Sends the transcript and your notes to Claude (Anthropic) over the internet. It uses your own API key from the <strong class="ui">Claude</strong> tab and the model chosen there. If no key is saved, the app writes the basic format instead.</li>
+<li><strong class="ui">Basic format (no AI)</strong>: Stays on this Mac. Lists your notes and the first transcript lines, without an AI summary.</li>
 </ul>
 <p>The <strong class="ui">Summary</strong> tab shows which one wrote the text. The summary step is the only part of a meeting that sends text to Claude.</p>
 <h2 id="en5-use-summary-templates">Use summary templates</h2>
@@ -230,122 +232,133 @@
 <p>Under Settings &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Storage</strong>, <strong class="ui">Keep recorded audio</strong> sets how long the audio files are kept: 7, 14, 30 (default) or 90 days, 1 year, or <strong class="ui">Keep forever</strong>. Only the audio is deleted after that time; transcripts, notes and summaries are always kept. The cleanup only touches finished meetings (done or failed) and counts from the time the meeting ended (from its start if there is no end time). The audio of an interrupted meeting is never deleted by it; once you click <strong class="ui">Keep As Is</strong> on such a meeting, it counts as finished. Without audio a meeting cannot be re-transcribed. Expired audio is cleaned up once per app launch, when Meeting mode first becomes active: at app start with Meeting mode on, or when you switch it on during that session. The cleanup does not run again until the app is restarted. <strong class="ui">Show in Finder</strong> opens the storage location.</p>
 <p>To remove a whole meeting, use <strong class="ui">Delete Meeting…</strong> in the menu at the top right of the meeting. It deletes the transcript, notes, summary and audio permanently.</p>
 <h1 id="en6-reference">Reference</h1>
-<h2 id="en6-settings-window-and-menu-bar-menu">Settings window and menu bar menu</h2>
-<p>MalibuDictate runs from the menu bar, with no Dock icon by default. A left click on the microphone icon opens the Settings window. A right click opens a menu:</p>
+<h2 id="en6-menu-bar-icon-and-popover">Menu bar icon and popover</h2>
+<p>MalibuDictate runs from the menu bar, with no Dock icon by default. A click on the microphone icon opens a popover under the icon; a right click opens the same popover. There is no separate right-click menu. Click the icon again, click outside the popover, press Esc or switch to another app to close it. Clicking a command in the popover closes it, except <strong class="ui">Marker</strong>, the three switches and the choices below the icon bar.</p>
+<p>The top row shows the app icon and the name MalibuDictate. A dot on the icon shows the state: a working dot while a dictation records or is being processed or a meeting records, a problem dot when dictation is blocked (for example by the license check or an email address that is still pending) or dictation is in an error state. During the trial a badge with the number of trial days left appears at the left end of the top row, whether or not Meeting mode is on; it is not shown once a license is active.</p>
+<p>The icon bar under the top row has these buttons. Each shows its name as a tooltip:</p>
 <ul>
-<li><strong class="ui">Buy Now</strong> — shown as long as no license is active.</li>
-<li><strong class="ui">Start Meeting …</strong>, <strong class="ui">Stop Meeting</strong>, <strong class="ui">Meetings …</strong> — shown only with meeting mode enabled (or while a meeting records).</li>
-<li><strong class="ui">Settings …</strong></li>
-<li><strong class="ui">Check for Updates …</strong></li>
-<li><strong class="ui">Quit</strong></li>
+<li><strong class="ui">Record</strong>: starts a continuous raw dictation, without holding a key. While it runs, the button reads <strong class="ui">Stop</strong> and is highlighted; click it to finish. Pressing and releasing a dictation key also finishes it. The button is disabled while dictation is blocked (for example by the license check or an email address that is still pending), while a previous dictation is being processed, and for about a second after it finishes or fails.</li>
+<li><strong class="ui">Copy last</strong>: copies the last inserted text to the clipboard. It is disabled until there is a last text. The text is stored only when <strong class="ui">Show Last Dictation</strong> (Settings &gt; <strong class="ui">Vocabulary</strong> &gt; <strong class="ui">Auto-Vocabulary</strong>, default off) is on at the moment a dictation is inserted. Switching it off later does not clear it; it stays until you quit the app. The result of a clipboard rewrite is not stored.</li>
+<li><strong class="ui">Meeting</strong>: shown only while Meeting mode is on. Opens the Meetings window with the <strong class="ui">New Meeting</strong> sheet; recording does not start until you click <strong class="ui">Start Recording</strong> there. While a meeting is running or starting, the window opens without the sheet. While a meeting records, the button reads <strong class="ui">End meeting</strong> and stops it.</li>
+<li><strong class="ui">Marker</strong>: shown only while Meeting mode is on. Disabled unless a meeting records; adds a marker to the running meeting.</li>
+<li><strong class="ui">Updates</strong>: checks for a new version.</li>
+<li><strong class="ui">Sounds</strong>, <strong class="ui">Pause media</strong>, <strong class="ui">History</strong>: switches at the end of the bar; a tinted button is on. They set the same options as <strong class="ui">Sounds</strong> and <strong class="ui">Pause Media During Recording</strong> in Settings &gt; <strong class="ui">General</strong> and <strong class="ui">Enable History</strong> in Settings &gt; <strong class="ui">History</strong>.</li>
 </ul>
+<p>Below the icon bar:</p>
+<ul>
+<li><strong class="ui">Microphone</strong> (microphone icon, name as tooltip): the input device, the same choice as <strong class="ui">Input Device</strong> in Settings &gt; <strong class="ui">General</strong>.</li>
+<li><strong class="ui">Rewrite</strong>: chooses <strong class="ui">Claude</strong> or <strong class="ui">Local</strong> for rewriting. <strong class="ui">Local</strong> is disabled while the on-device model is not available on this Mac.</li>
+</ul>
+<p>When Meeting mode is on, a Meetings icon at the end of the top row (tooltip <strong class="ui">Meetings</strong>) opens the Meetings window. The two buttons at the bottom are <strong class="ui">Settings</strong> (⌘,), which opens the Settings window, and <strong class="ui">Quit</strong> (⌘Q), which quits the app.</p>
+<p>Buying is not in the popover: with no active license, Settings &gt; <strong class="ui">License</strong> &gt; <strong class="ui">License Key</strong> has a <strong class="ui">Buy …</strong> button that opens the purchase page in your browser.</p>
+<h2 id="en6-settings-window">Settings window</h2>
 <p>The Settings sidebar lists <strong class="ui">General</strong>, <strong class="ui">Keys</strong>, <strong class="ui">Claude</strong>, <strong class="ui">Vocabulary</strong>, <strong class="ui">Dictionary</strong>, <strong class="ui">Snippets</strong>, <strong class="ui">History</strong>, <strong class="ui">Meetings</strong> and <strong class="ui">License</strong>. The <strong class="ui">Meetings</strong> tab holds the meeting mode (beta) and is not covered here. The Help menu of the app menu bar contains <strong class="ui">Send Feedback …</strong>. The button at the top right of the Settings window (tooltip <strong class="ui">Status</strong>) opens a panel with the state of Microphone, Accessibility, License and the engine.</p>
 <h2 id="en6-hotkeys-and-defaults-keys">Hotkeys and defaults (Keys)</h2>
 <p>Each action has one or more keys; recording runs while you hold the key that started it.</p>
 <ul>
-<li><strong class="ui">Dictation Keys (Raw)</strong> — default: right Command. The text is inserted without a rewrite by Claude.</li>
-<li><strong class="ui">Dictation Keys (Claude)</strong> — default: right Option. The text is rewritten with the profile assigned to the active app.</li>
-<li><strong class="ui">Clipboard Rewrite Keys</strong> — default: right Control. Your spoken instruction rewrites the current clipboard content. Holding Control together with a key of <strong class="ui">Dictation Keys (Raw)</strong> does the same. Holding Control together with a key of <strong class="ui">Dictation Keys (Claude)</strong> does not change the mode: it stays a Claude dictation.</li>
-<li><strong class="ui">Add Another Hotkey</strong> — adds a further key to an action; the minus button next to a key removes it. An action without keys shows <strong class="ui">No Hotkey Assigned</strong> and is disabled.</li>
+<li><strong class="ui">Dictation Keys (Raw)</strong>. Default: right Command. The text is inserted without a rewrite by Claude.</li>
+<li><strong class="ui">Dictation Keys (Claude)</strong>. Default: right Option. The text is rewritten with the profile assigned to the active app.</li>
+<li><strong class="ui">Clipboard Rewrite Keys</strong>. Default: right Control. Your spoken instruction rewrites the current clipboard content. Holding Control together with a key of <strong class="ui">Dictation Keys (Raw)</strong> does the same. Holding Control together with a key of <strong class="ui">Dictation Keys (Claude)</strong> does not change the mode: it stays a Claude dictation.</li>
+<li><strong class="ui">Add Another Hotkey</strong>: adds a further key to an action; the minus button next to a key removes it. An action without keys shows <strong class="ui">No Hotkey Assigned</strong> and is disabled.</li>
 <li>A warning appears when the same key occurs more than once in the three key lists together, whether in two actions or twice in one action.</li>
-<li><strong class="ui">Double-Tap to Keep Recording</strong> (section <strong class="ui">Hands-Free Recording</strong>) — default: off. Double-tap a dictation key to keep recording without holding it. Tap the key once more to finish and insert the text; press Esc to discard the recording.</li>
+<li><strong class="ui">Double-Tap to Keep Recording</strong> (section <strong class="ui">Hands-Free Recording</strong>). Default: off. Double-tap a dictation key to keep recording without holding it. Tap the key once more to finish and insert the text; press Esc to discard the recording. With this option on, a quick tap that ends a recording takes effect only after a wait of about a third of a second, because a second tap in that time starts hands-free recording instead.</li>
 </ul>
 <p>Available keys: F1 to F16, F17, F18 and F20 (no physical key on standard Mac keyboards), the right Command, Option, Shift and Control keys, fn (Globe), and Caps Lock. When Caps Lock is assigned, MalibuDictate maps it to F19 with macOS's own tool <em>hidutil</em> (no extra permission). Caps Lock then no longer toggles uppercase while MalibuDictate runs; the mapping is reverted when you quit or unassign the key. fn (Globe) may only work if the macOS setting "Press fn key to" is set to "Do Nothing" in System Settings.</p>
 <h2 id="en6-general-speech-engine">General: Speech Engine</h2>
 <ul>
-<li><strong class="ui">Engine</strong> — default: Parakeet TDT. Choices: Parakeet TDT, WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer, Nemotron 3.5 (Streaming).</li>
-<li><strong class="ui">Language</strong> — default: <strong class="ui">Auto-Detect</strong>. Otherwise one of 18 languages. Nemotron 3.5 ignores it.</li>
-<li><strong class="ui">Status</strong> — shows <strong class="ui">Not loaded</strong>, <em>Downloading...</em>, <em>Loading...</em>, <strong class="ui">Ready</strong> or an error text.</li>
-<li><strong class="ui">Reset Model Cache</strong> — shown only with WhisperKit selected. Deletes the downloaded WhisperKit model and loads it again.</li>
+<li><strong class="ui">Engine</strong>. Default: Parakeet TDT. Choices: Parakeet TDT, WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer, Nemotron 3.5 (Streaming).</li>
+<li><strong class="ui">Language</strong>. Default: <strong class="ui">Auto-Detect</strong>. Otherwise one of 18 languages. Nemotron 3.5 ignores it.</li>
+<li><strong class="ui">Status</strong>: shows <strong class="ui">Not loaded</strong>, <em>Downloading...</em>, <em>Loading...</em>, <strong class="ui">Ready</strong> or an error text.</li>
+<li><strong class="ui">Reset Model Cache</strong>: shown only with WhisperKit selected. Deletes the downloaded WhisperKit model and loads it again.</li>
 </ul>
 <h2 id="en6-general-microphone">General: Microphone</h2>
 <ul>
-<li><strong class="ui">Input Device</strong> — default: the system default input. Choose one of the listed input devices to use it instead.</li>
+<li><strong class="ui">Input Device</strong>. Default: the system default input. Choose one of the listed input devices to use it instead.</li>
 </ul>
 <h2 id="en6-general-indicator">General: Indicator</h2>
 <ul>
-<li><strong class="ui">Style</strong> — default: Notch. Choices: Notch, Overlay, Minimal.</li>
-<li><strong class="ui">Visibility</strong> — default: During Activity. Choices: Always, During Activity, Never. Only Never has an effect (no indicator is shown); Always and During Activity behave the same.</li>
-<li><strong class="ui">Position</strong> — default: Top (Island). Choices include Top (Island) and Bottom (Dock). It applies to the Overlay and Minimal styles only; the Notch style ignores it.</li>
-<li><strong class="ui">Show Text Feedback</strong> — default: on.</li>
-<li><strong class="ui">Live Transcript Preview (Experimental)</strong> — default: off. It is experimental.</li>
+<li><strong class="ui">Style</strong>. Default: Notch. Choices: Notch, Overlay, Minimal.</li>
+<li><strong class="ui">Visibility</strong>. Default: During Activity. Choices: Always, During Activity, Never. Only Never has an effect (no indicator is shown); Always and During Activity behave the same.</li>
+<li><strong class="ui">Position</strong>. Default: Top (Island). Choices include Top (Island) and Bottom (Dock). It applies to the Overlay and Minimal styles only; the Notch style ignores it.</li>
+<li><strong class="ui">Show Text Feedback</strong>. Default: on.</li>
+<li><strong class="ui">Live Transcript Preview (Experimental)</strong>. Default: off. It is experimental.</li>
 </ul>
 <h2 id="en6-general-audio">General: Audio</h2>
 <ul>
-<li><strong class="ui">Sounds</strong> — default: on.</li>
-<li><strong class="ui">Pause Media During Recording</strong> — default: off.</li>
-<li><strong class="ui">Duck Audio During Recording</strong> — default: off.</li>
-<li><strong class="ui">Duck Level</strong> — shown while ducking is on. Default: 20%. Range: 5% to 50%.</li>
+<li><strong class="ui">Sounds</strong>. Default: on.</li>
+<li><strong class="ui">Pause Media During Recording</strong>. Default: off.</li>
+<li><strong class="ui">Duck Audio During Recording</strong>. Default: off.</li>
+<li><strong class="ui">Duck Level</strong>: shown while ducking is on. Default: 20%. Range: 5% to 50%.</li>
 </ul>
 <h2 id="en6-general-pasting">General: Pasting</h2>
 <ul>
-<li><strong class="ui">Keep Dictation on Clipboard</strong> — default: Off. Choices: Off, 3 seconds, 5 seconds, 10 seconds, 30 seconds, Forever (until I copy something else).</li>
+<li><strong class="ui">Keep Dictation on Clipboard</strong>. Default: Off. Choices: Off, 3 seconds, 5 seconds, 10 seconds, 30 seconds, Forever (until I copy something else).</li>
 </ul>
 <p>With Off, MalibuDictate restores your previous clipboard right after the paste. If the clipboard was empty before, nothing is restored and the dictated text stays on the clipboard, with Off as well. With a time, the dictated text stays on the clipboard that long and your previous clipboard is restored afterwards (unless you copied something else meanwhile). With Forever, your previous clipboard is never restored. The restore is also skipped, and the dictated text stays on the clipboard, if the frontmost app changed or secure input became active right after the paste.</p>
 <p>If macOS secure input is active (for example a password field has focus), MalibuDictate does not paste. The dictated text stays on the clipboard instead.</p>
 <h2 id="en6-general-smart-formatting">General: Smart Formatting</h2>
 <p>These run locally, without Claude or any cloud service.</p>
 <ul>
-<li><strong class="ui">Smart Capitalization</strong> — default: on. Capitalizes the first letter of each sentence.</li>
-<li><strong class="ui">Smart Paragraphs</strong> — default: on. Breaks long dictations into paragraphs at sentence boundaries.</li>
-<li><strong class="ui">Spoken Punctuation</strong> — default: on. Turns spoken words such as "comma", "period", "new line" into the character. German and English only. With <strong class="ui">Auto-Detect</strong> or any language other than Deutsch and English, both word lists apply.</li>
-<li><strong class="ui">Remove Filler Words</strong> — default: off. Removes the English fillers um, umm, uh, uhh and erm and the German fillers äh, ähm, hm, hmm, sozusagen and quasi. German and English only. With <strong class="ui">Auto-Detect</strong> or any language other than Deutsch and English, both lists apply, so the English "um" also removes the German preposition "um" from German text. Select Deutsch to avoid this: the German list does not contain "um".</li>
+<li><strong class="ui">Smart Capitalization</strong>. Default: on. Capitalizes the first letter of each sentence.</li>
+<li><strong class="ui">Smart Paragraphs</strong>. Default: on. Breaks long dictations into paragraphs at sentence boundaries.</li>
+<li><strong class="ui">Spoken Punctuation</strong>. Default: on. Turns spoken words such as "comma", "period", "new line" into the character. German and English only. With <strong class="ui">Auto-Detect</strong> or any language other than Deutsch and English, both word lists apply.</li>
+<li><strong class="ui">Remove Filler Words</strong>. Default: off. Removes the English fillers um, umm, uh, uhh and erm and the German fillers äh, ähm, hm, hmm, sozusagen and quasi. German and English only. With <strong class="ui">Auto-Detect</strong> or any language other than Deutsch and English, both lists apply, so the English "um" also removes the German preposition "um" from German text. Select Deutsch to avoid this: the German list does not contain "um".</li>
 </ul>
 <h2 id="en6-general-appearance">General: Appearance</h2>
 <ul>
-<li><strong class="ui">Preset</strong> — selects a color preset for the Settings window. The default is the <em>Claude Colors</em> preset.</li>
-<li><strong class="ui">Transparency</strong> — slider from 0% to 100%. Higher is darker and more opaque, lower is more transparent.</li>
+<li><strong class="ui">Preset</strong>: selects a color preset for the Settings window. The default is the <em>Claude Colors</em> preset.</li>
+<li><strong class="ui">Transparency</strong>: slider from 0% to 100%. Higher is darker and more opaque, lower is more transparent.</li>
 </ul>
 <h2 id="en6-general-system-and-diagnostics">General: System and Diagnostics</h2>
 <ul>
-<li><strong class="ui">Show Dock Icon</strong> — default: off.</li>
-<li><strong class="ui">Check for Updates …</strong> — checks for a new version.</li>
-<li><strong class="ui">Show Onboarding Again</strong> — opens the setup assistant again.</li>
-<li><strong class="ui">Send Feedback …</strong> — opens the feedback sheet.</li>
-<li><strong class="ui">Quit MalibuDictate</strong> — quits the app.</li>
+<li><strong class="ui">Show Dock Icon</strong>. Default: off.</li>
+<li><strong class="ui">Check for Updates …</strong>: checks for a new version.</li>
+<li><strong class="ui">Show Onboarding Again</strong>: opens the setup assistant again.</li>
+<li><strong class="ui">Send Feedback …</strong>: opens the feedback sheet.</li>
+<li><strong class="ui">Quit MalibuDictate</strong>: quits the app.</li>
 </ul>
 <p>The <strong class="ui">Diagnostics</strong> section shows <strong class="ui">Accessibility</strong> (Active, or Missing with a <strong class="ui">Request</strong> button), <strong class="ui">Event Tap</strong>, <strong class="ui">Last Key Event</strong>, <strong class="ui">Dictate Keys</strong>, <strong class="ui">Claude Keys</strong>, <strong class="ui">State</strong> and, after a failure, <strong class="ui">Last Error</strong>.</p>
 <h2 id="en6-claude">Claude</h2>
 <ul>
-<li><em>REWRITE PROVIDER</em> — default: Claude (Cloud). The other choice, Local (Apple Intelligence), runs on the Mac and needs macOS 26 or later with Apple Intelligence enabled; the menu is disabled otherwise.</li>
-<li>API key — your own Claude API key, saved with the check-mark button and stored in the Keychain. Claude (Cloud) needs it. With the provider Claude (Cloud) and no key saved, both the Claude key and the clipboard rewrite key show the error <em>API Key missing</em> instead of recording; it is visible only while the indicator and its text are shown (see General: Indicator). Exception: if you add Control to a raw dictation key after pressing it, the recording runs and fails with "No Claude API Key configured". Local (Apple Intelligence) needs no key. With Claude (Cloud) the dictated text is sent to the Claude API (api.anthropic.com).</li>
-<li>Model — default: Sonnet 5 (Recommended). Other choices: Sonnet 4.6, Sonnet 4.5, Haiku 4.5.</li>
-<li><strong class="ui">Backtrack (Self-Correction)</strong> — default: off. Phrases such as "actually" or "scratch that" discard the previous statement and keep only the correction.</li>
-<li>Profiles — the list on the left; the plus button adds one. The default profile applies to all apps not assigned to another profile. Per profile: <em>ASSIGNED APPS</em>, <em>SPEECH ENGINE</em>, <strong class="ui">Trigger Words</strong>, <strong class="ui">Clipboard as Context</strong>, <strong class="ui">Window Title as Context (Developer Mode)</strong> and the <em>DICTATION PROMPT</em>. If the Claude request of a dictation fails (for example a network or API error), the text is inserted without a rewrite, after the local processing steps (dictionary, filler words, spoken punctuation, snippets and smart formatting, as far as they are enabled). A failed clipboard rewrite shows an error instead.</li>
+<li><em>REWRITE PROVIDER</em>. Default: Claude (Cloud). The other choice, Local (Apple Intelligence), runs on the Mac and needs macOS 26 or later with Apple Intelligence enabled; the menu is disabled otherwise.</li>
+<li>API key: your own Claude API key, saved with the check-mark button and stored in the Keychain. Claude (Cloud) needs it. With the provider Claude (Cloud) and no key saved, both the Claude key and the clipboard rewrite key show the error <em>API Key missing</em> instead of recording; it is visible only while the indicator and its text are shown (see General: Indicator). Exception: if you add Control to a raw dictation key after pressing it, the recording runs and fails with "No Claude API Key configured". Local (Apple Intelligence) needs no key. With Claude (Cloud) the dictated text is sent to the Claude API (api.anthropic.com).</li>
+<li>Model. Default: Sonnet 5 (Recommended). Other choices: Sonnet 4.6, Sonnet 4.5, Haiku 4.5.</li>
+<li><strong class="ui">Backtrack (Self-Correction)</strong>. Default: off. Phrases such as "actually" or "scratch that" discard the previous statement and keep only the correction.</li>
+<li>Profiles: the list on the left; the plus button adds one. The default profile applies to all apps not assigned to another profile. Per profile: <em>ASSIGNED APPS</em>, <em>SPEECH ENGINE</em>, <strong class="ui">Trigger Words</strong>, <strong class="ui">Clipboard as Context</strong>, <strong class="ui">Window Title as Context (Developer Mode)</strong> and the <em>DICTATION PROMPT</em>. If the Claude request of a dictation fails (for example a network or API error), the text is inserted without a rewrite, after the local processing steps (dictionary, filler words, spoken punctuation, snippets and smart formatting, as far as they are enabled). A failed clipboard rewrite shows an error instead.</li>
 </ul>
 <h2 id="en6-vocabulary">Vocabulary</h2>
 <ul>
-<li><strong class="ui">Custom Vocabulary</strong> — a comma-separated list of terms. It is given to the rewrite (Claude or local) as correction context, so it has no effect on raw dictation. It is also added to the summary request of a meeting when Claude writes the meeting summary. The field starts with a built-in list of technical terms that you can edit.</li>
-<li><strong class="ui">Add New Term</strong> — type a term and click <strong class="ui">Add</strong>.</li>
-<li><strong class="ui">Show Last Dictation</strong> (section <strong class="ui">Auto-Vocabulary</strong>) — default: off. Shows the text that the last dictation inserted (after dictionary, snippets, formatting and rewrite) under <strong class="ui">LAST DICTATION</strong>, so you can add a misheard word as a term. The text is captured only while this switch is on and only for dictations that insert text, not for clipboard rewrites; it stays empty until your next dictation.</li>
+<li><strong class="ui">Custom Vocabulary</strong>: a comma-separated list of terms. It is given to the rewrite (Claude or local) as correction context, so it has no effect on raw dictation. It is also added to the summary request of a meeting when Claude writes the meeting summary. The field starts with a built-in list of technical terms that you can edit.</li>
+<li><strong class="ui">Add New Term</strong>: type a term and click <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Show Last Dictation</strong> (section <strong class="ui">Auto-Vocabulary</strong>). Default: off. Shows the text that the last dictation inserted (after dictionary, snippets, formatting and rewrite) under <strong class="ui">LAST DICTATION</strong>, so you can add a misheard word as a term. The text is captured only while this switch is on and only for dictations that insert text, not for clipboard rewrites; it stays empty until your next dictation.</li>
 </ul>
 <h2 id="en6-dictionary">Dictionary</h2>
 <ul>
 <li>Corrections replace a source phrase with a replacement in every transcription, locally and before any rewrite. Whole words only. Each correction is global or assigned to specific apps.</li>
-<li><strong class="ui">Add Correction</strong> — fields source and replacement, the toggle <strong class="ui">Case-sensitive match</strong>, and <strong class="ui">Add</strong>.</li>
-<li><strong class="ui">Learn Corrections Automatically</strong> — default: off. After a dictation, watches the focused text field for about 18 seconds and learns a single corrected word. It works only in apps that expose their text via Accessibility.</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> replaces all corrections, including auto-learned ones, with the built-in defaults after a confirmation.</li>
+<li><strong class="ui">Add Correction</strong>: fields source and replacement, the toggle <strong class="ui">Case-sensitive match</strong>, and <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Learn Corrections Automatically</strong>. Default: off. After a dictation, watches the focused text field for about 18 seconds and learns a single corrected word. It works only in apps that expose their text via Accessibility.</li>
+<li><strong class="ui">Defaults</strong>: <strong class="ui">Reset</strong> replaces all corrections, including auto-learned ones, with the built-in defaults after a confirmation.</li>
 </ul>
 <h2 id="en6-snippets">Snippets</h2>
 <ul>
 <li>A snippet expands a spoken trigger phrase into a replacement text. If the whole dictation equals a trigger, the whole text is replaced; otherwise the trigger is replaced inside the text.</li>
-<li><strong class="ui">Add Snippet</strong> — fields trigger and replacement (multi-line), the toggle <strong class="ui">Case-sensitive trigger</strong> (default: off), and <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Add Snippet</strong>: fields trigger and replacement (multi-line), the toggle <strong class="ui">Case-sensitive trigger</strong> (default: off), and <strong class="ui">Add</strong>.</li>
 <li>Placeholders in a replacement: {{DATE}}, {{DATE_ISO}}, {{TIME}}, {{DATETIME}}, {{CLIPBOARD}} (current clipboard content), {{APP}} (active app name), {{NL}} (line break).</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> replaces all snippets with the built-in defaults after a confirmation. The built-in list has three snippets: "todays date", "current time" and "timecode note". An installation from an earlier version keeps its stored list, which may still contain sample snippets for a signature or an address with another person's details; edit or delete those.</li>
+<li><strong class="ui">Defaults</strong>: <strong class="ui">Reset</strong> replaces all snippets with the built-in defaults after a confirmation. The built-in list has three snippets: "todays date", "current time" and "timecode note". An installation from an earlier version keeps its stored list, which may still contain sample snippets for a signature or an address with another person's details; edit or delete those.</li>
 </ul>
 <h2 id="en6-history">History</h2>
 <ul>
-<li><strong class="ui">Enable History</strong> — default: off. When on, each dictation is stored locally with its text, time and target app. It never leaves your Mac.</li>
-<li><strong class="ui">Search history</strong> — filters the entries by text or app name.</li>
-<li><strong class="ui">Delete All</strong> — removes all entries after a confirmation; the x button on an entry removes that entry.</li>
+<li><strong class="ui">Enable History</strong>. Default: off. When on, each dictation is stored locally with its text, time and target app. It never leaves your Mac.</li>
+<li><strong class="ui">Search history</strong>: filters the entries by text or app name.</li>
+<li><strong class="ui">Delete All</strong>: removes all entries after a confirmation; the x button on an entry removes that entry.</li>
 </ul>
 <h2 id="en6-license">License</h2>
 <ul>
 <li>A free trial starts when you submit your email address; after the trial a license key is required.</li>
-<li><strong class="ui">Check Again</strong> — checks the license status now. MalibuDictate also checks once a day.</li>
-<li><strong class="ui">Redeem License Key …</strong> — enter the license key from your purchase confirmation. This works before the trial ends, too.</li>
-<li><strong class="ui">Switch Device …</strong> — frees the activation of this Mac so you can redeem the same key on another Mac. Dictation is locked here afterwards until you redeem the key again.</li>
-<li><strong class="ui">Tester Email</strong> and <strong class="ui">Device ID</strong> — the stored email address and an ID you can give to support. <strong class="ui">Copy</strong> copies the ID.</li>
+<li><strong class="ui">Check Again</strong>: checks the license status now. MalibuDictate also checks once a day.</li>
+<li><strong class="ui">Redeem License Key …</strong>: enter the license key from your purchase confirmation. This works before the trial ends, too.</li>
+<li><strong class="ui">Switch Device …</strong>: frees the activation of this Mac so you can redeem the same key on another Mac. Dictation is locked here afterwards until you redeem the key again.</li>
+<li><strong class="ui">Tester Email</strong> and <strong class="ui">Device ID</strong>: the stored email address and an ID you can give to support. <strong class="ui">Copy</strong> copies the ID.</li>
 <li>When the trial or license has expired, dictation is locked and the Settings window shows a sheet that cannot be dismissed. <strong class="ui">Buy Now</strong> opens the purchase page.</li>
 </ul>
 <h2 id="en6-requirements-and-limits">Requirements and limits</h2>
@@ -366,9 +379,9 @@
 <h2 id="en7-copy-the-summary-or-send-it-to-apple-notes-or-mail">Copy the summary or send it to Apple Notes or Mail</h2>
 <p>The other buttons in the same bar need a finished summary:</p>
 <ul>
-<li><strong class="ui">Copy Markdown</strong> — Copies the summary as Markdown to the clipboard.</li>
-<li><strong class="ui">Apple Notes</strong> — Creates a note in the default Notes account with the title, the summary and the transcript.</li>
-<li><strong class="ui">Mail Draft</strong> — Opens a new, unaddressed message in Mail. The subject is "Follow-up: " followed by the meeting title, or just "Follow-up" if the title is empty. The body starts with "Hi all," and the line "Here are the key points from our meeting" with the title in quotation marks (without a title if it is empty), then the summary as plain text, and ends with "Best,". It is never sent automatically; you add recipients and send it yourself.</li>
+<li><strong class="ui">Copy Markdown</strong>: Copies the summary as Markdown to the clipboard.</li>
+<li><strong class="ui">Apple Notes</strong>: Creates a note in the default Notes account with the title, the summary and the transcript.</li>
+<li><strong class="ui">Mail Draft</strong>: Opens a new, unaddressed message in Mail. The subject is "Follow-up: " followed by the meeting title, or just "Follow-up" if the title is empty. The body starts with "Hi all," and the line "Here are the key points from our meeting" with the title in quotation marks (without a title if it is empty), then the summary as plain text, and ends with "Best,". It is never sent automatically; you add recipients and send it yourself.</li>
 </ul>
 <p>The first time you use <strong class="ui">Apple Notes</strong> or <strong class="ui">Mail Draft</strong>, macOS asks whether MalibuDictate may control that app. If access is denied, the app says so and shows <strong class="ui">Open Automation Settings</strong>. Turn the app on under MalibuDictate in System Settings &gt; Privacy &amp; Security &gt; Automation, then try again.</p>
 <h2 id="en7-export-finished-meetings-to-a-folder-automatically">Export finished meetings to a folder automatically</h2>
@@ -386,17 +399,17 @@
 <h2 id="en7-what-the-yaml-header-contains">What the YAML header contains</h2>
 <p>Files from the folder export start with a YAML header between two <code>---</code> lines, meant for a notes app such as Obsidian. The key names and the fixed values cannot be changed in the app. The body below the header is the same as in <strong class="ui">Save as .md</strong>.</p>
 <ul>
-<li><code>title</code> — The meeting title in quotes; "Meeting" if empty.</li>
-<li><code>art</code> — Always <code>notiz</code>.</li>
-<li><code>thema</code> — A list with the fixed entries <code>besprechung</code> and <code>meeting-notes</code>.</li>
-<li><code>quelle</code> — Always the fixed text "Malibu Diktat".</li>
-<li><code>datum</code> — The day the meeting started, as <code>YYYY-MM-DD</code>.</li>
-<li><code>uhrzeit</code> — The start time, as "HH:MM".</li>
-<li><code>dauer_min</code> — The duration in whole minutes, rounded up, as a number.</li>
-<li><code>app</code> — The app the meeting was recorded in. Only written when it is known.</li>
-<li><code>meeting_id</code> — The unique ID of the meeting.</li>
-<li><code>vertraulich</code> — Always <code>true</code>. A constant marker the app writes for note-app tooling; the app itself does not use it.</li>
-<li><code>blockwerk</code> — Always <code>true</code>. A constant marker the app writes for note-app tooling; the app itself does not use it.</li>
+<li><code>title</code>: The meeting title in quotes; "Meeting" if empty.</li>
+<li><code>art</code>: Always <code>notiz</code>.</li>
+<li><code>thema</code>: A list with the fixed entries <code>besprechung</code> and <code>meeting-notes</code>.</li>
+<li><code>quelle</code>: Always the fixed text "Malibu Diktat".</li>
+<li><code>datum</code>: The day the meeting started, as <code>YYYY-MM-DD</code>.</li>
+<li><code>uhrzeit</code>: The start time, as "HH:MM".</li>
+<li><code>dauer_min</code>: The duration in whole minutes, rounded up, as a number.</li>
+<li><code>app</code>: The app the meeting was recorded in. Only written when it is known.</li>
+<li><code>meeting_id</code>: The unique ID of the meeting.</li>
+<li><code>vertraulich</code>: Always <code>true</code>. A constant marker the app writes for note-app tooling; the app itself does not use it.</li>
+<li><code>blockwerk</code>: Always <code>true</code>. A constant marker the app writes for note-app tooling; the app itself does not use it.</li>
 </ul>
 <h2 id="en7-when-the-folder-is-not-available">When the folder is not available</h2>
 <p>If the folder is missing, is not a folder or sits on a volume that is not connected, the Export section shows "The export folder is not available" with the path. The app never creates the folder for you. The meeting is kept and written later: when the next meeting finishes, when you turn the export on or choose a folder, and when Meeting mode first becomes active in a session (at app start with Meeting mode on, or when you switch it on).</p>
@@ -427,7 +440,7 @@
 <p>The app labels the local provider "Experimental": on very short or question- or command-like dictations, such as "yes", "stop" or "can you...", the Apple model sometimes replies like a chatbot instead of just cleaning up the text. The settings text suggests using Claude if that happens.</p>
 <h2 id="en8-the-trial-has-ended-or-dictation-is-locked">The trial has ended or dictation is locked</h2>
 <p>When the license check blocks the app, a sheet that cannot be dismissed says so and "Dictation is locked". It offers <strong class="ui">Buy Now</strong>, <strong class="ui">Check Again</strong>, <strong class="ui">I already have a license</strong> and <strong class="ui">Lost your license key?</strong>. A recording start is refused and shows the same message.</p>
-<p>Settings &gt; <strong class="ui">License</strong> &gt; <strong class="ui">Status</strong> shows the state, for example "Trial — 12 days left" or "Trial/license expired — contact support for a renewal". If you bought a license, click <strong class="ui">Redeem License Key …</strong> and enter the key; this also works before the trial ends. If the key is already used on the maximum number of devices, click <strong class="ui">Switch Device …</strong> on the old Mac first: it frees the activation there, and dictation is locked on that Mac until you redeem the key again. The <strong class="ui">Device ID</strong> section shows the ID support asks for.</p>
+<p>Settings &gt; <strong class="ui">License</strong> &gt; <strong class="ui">Status</strong> shows the state, for example "Trial — 12 days left" or "Trial/license expired — contact support for a renewal". If you bought a license, click <strong class="ui">Redeem License Key …</strong> and enter the key; this also works before the trial ends. If the key is already used on the maximum number of devices, click <strong class="ui">Switch Device …</strong> on the old Mac first: it frees the activation there, and dictation is locked on that Mac until you redeem the key again. To buy before the trial ends, click <strong class="ui">Buy …</strong> under <strong class="ui">License Key</strong> in the same tab; it is shown while no license is active. The <strong class="ui">Device ID</strong> section shows the ID support asks for.</p>
 <p>The check itself can produce these messages:</p>
 <ul>
 <li>"Your system clock appears to have moved backward. Please correct it and try again."</li>
@@ -466,7 +479,7 @@
 </ul>
 <h2 id="en8-apple-notes-or-mail-refuses-the-export">Apple Notes or Mail refuses the export</h2>
 <p>The message says that MalibuDictate isn't allowed to control Notes or Mail. Click <strong class="ui">Open Automation Settings</strong> and turn the app on under MalibuDictate in Privacy &amp; Security &gt; Automation, then try again. If Notes or Mail cannot be launched, the message says that the app could not be reached.</p>
-<p class="ver">Written for version 0.10.7.</p>
+<p class="ver">Written for version 0.10.8.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-sprach-engine-und-sprache-w-hlen">Sprach-Engine und Sprache wählen</a><a class="l1" href="#de2-diktat-umschreiben-lassen">Diktat umschreiben lassen</a><a class="l1" href="#de3-dictionary-snippets-und-smart-formatting">Dictionary, Snippets und Smart Formatting</a><a class="l1" href="#de4-freih-ndig-aufnehmen-und-diktat-in-der-zwischenablage-behalten">Freihändig aufnehmen und Diktat in der Zwischenablage behalten</a><a class="l1" href="#de5-ein-meeting-aufnehmen">Ein Meeting aufnehmen</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-meetings-exportieren">Meetings exportieren</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -483,14 +496,14 @@
 <p>Klicke in ein Textfeld in einer beliebigen App, zum Beispiel in eine Notiz. Halte die rechte Command-Taste, sprich und lass die Taste los. Solange du sie hältst, zeigt ein Indikator, dass MalibuDictate aufnimmt. Es erscheint kein Indikator, wenn <strong class="ui">Visibility</strong> im Abschnitt <strong class="ui">Indicator</strong> unter <strong class="ui">General</strong> auf <strong class="ui">Never</strong> steht; das Diktieren funktioniert trotzdem. Nach dem Loslassen wird der Text transkribiert und per simuliertem Cmd+V an der Cursorposition eingefügt. Standardmäßig stellt MalibuDictate direkt danach den vorherigen Inhalt der Zwischenablage wieder her; war die Zwischenablage vorher leer, gibt es nichts wiederherzustellen, und der diktierte Text bleibt darin.</p>
 <h1 id="de1-sprach-engine-und-sprache-w-hlen">Sprach-Engine und Sprache wählen</h1>
 <h2 id="de1-engine-einstellungen-ffnen">Engine-Einstellungen öffnen</h2>
-<p>Klicke auf das Mikrofon-Symbol in der Menüleiste. Das Einstellungsfenster öffnet sich. Klicke in der Seitenleiste auf <strong class="ui">General</strong> und such oben den Abschnitt <strong class="ui">Speech Engine</strong>.</p>
+<p>Klicke auf das Mikrofon-Symbol in der Menüleiste und dann im Popover auf <strong class="ui">Settings</strong>. Das Einstellungsfenster öffnet sich. Klicke in der Seitenleiste auf <strong class="ui">General</strong> und such oben den Abschnitt <strong class="ui">Speech Engine</strong>.</p>
 <h2 id="de1-eine-engine-w-hlen">Eine Engine wählen</h2>
 <p>Wähle im Menü <strong class="ui">Engine</strong> eine aus. MalibuDictate lädt die Engine sofort; die Zeile <strong class="ui">Status</strong> zeigt <em>Downloading...</em>, dann <em>Loading...</em>, dann <strong class="ui">Ready</strong>. Schlägt das Laden fehl, steht stattdessen der Fehlertext in der Zeile.</p>
 <ul>
-<li><strong class="ui">Parakeet TDT</strong> — der Standard.</li>
-<li><strong class="ui">WhisperKit (Large v3 Turbo)</strong> — führt das Modell Whisper Large v3 Turbo aus.</li>
-<li><strong class="ui">Apple SpeechAnalyzer</strong> — braucht macOS 26 oder neuer. Unter einem älteren macOS meldet die Engine einen Fehler und bittet dich, Parakeet oder WhisperKit zu wählen.</li>
-<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — nur für Englisch nutzen. Es ist ein reines Englisch-Streaming-Modell (FluidAudio führt es als englisches Nemotron-Streaming-Modell). Es ignoriert die Einstellung <strong class="ui">Language</strong>. Solange diese Engine gewählt ist, zeigt Settings einen Hinweis, dass sie nur Englisch kann, die Spracheinstellung ignoriert und für andere Sprachen Parakeet empfiehlt.</li>
+<li><strong class="ui">Parakeet TDT</strong>: der Standard.</li>
+<li><strong class="ui">WhisperKit (Large v3 Turbo)</strong>: führt das Modell Whisper Large v3 Turbo aus.</li>
+<li><strong class="ui">Apple SpeechAnalyzer</strong>: braucht macOS 26 oder neuer. Unter einem älteren macOS meldet die Engine einen Fehler und bittet dich, Parakeet oder WhisperKit zu wählen.</li>
+<li><strong class="ui">Nemotron 3.5 (Streaming)</strong>: nur für Englisch nutzen. Es ist ein reines Englisch-Streaming-Modell (FluidAudio führt es als englisches Nemotron-Streaming-Modell). Es ignoriert die Einstellung <strong class="ui">Language</strong>. Solange diese Engine gewählt ist, zeigt Settings einen Hinweis, dass sie nur Englisch kann, die Spracheinstellung ignoriert und für andere Sprachen Parakeet empfiehlt.</li>
 </ul>
 <h2 id="de1-die-sprache-einstellen">Die Sprache einstellen</h2>
 <p>Wähle im Menü <strong class="ui">Language</strong> entweder <strong class="ui">Auto-Detect</strong> (der Standard) oder eine Sprache. Das Menü bietet diese Sprachen, angezeigt mit ihrem eigenen Namen: Deutsch, English, Français, Español, Italiano, Português, Română, Polski, Čeština, Slovenčina, Slovenščina, Hrvatski, Bosanski, Русский, Українська, Беларуская, Български, Српски.</p>
@@ -586,7 +599,9 @@
 <li>Drücke die Taste noch einmal, um zu beenden. Der Text wird wie gewohnt verarbeitet und eingefügt.</li>
 <li>Willst du die Aufnahme stattdessen verwerfen, drücke Esc. Nichts wird transkribiert oder eingefügt.</li>
 </ol>
-<p>Halten der Taste während des Sprechens funktioniert wie bisher. Ein Tastendruck, der Teil eines Kurzbefehls mit einer anderen Taste ist, etwa Command-C mit einer Command-Taste als Diktiertaste, zählt nicht als Tippen. Esc bewirkt in MalibuDictate nur etwas, solange eine freihändige Aufnahme läuft. Der Tastendruck wird nicht abgefangen: Die vordere App erhält ihn weiterhin und kann darauf reagieren, zum Beispiel einen Dialog schließen.</p>
+<p>Halten der Taste während des Sprechens funktioniert wie bisher. Ist die Option an, wirkt ein schnelles Tippen (unter einer Viertelsekunde), das eine Aufnahme beendet, erst nach einer Wartezeit von etwa einer Drittelsekunde; ein zweites Tippen in dieser Zeit startet stattdessen die freihändige Aufnahme. Ein Tastendruck, der Teil eines Kurzbefehls mit einer anderen Taste ist, etwa Command-C mit einer Command-Taste als Diktiertaste, zählt nicht als Tippen. Esc bewirkt in MalibuDictate nur etwas, solange eine freihändige Aufnahme läuft. Der Tastendruck wird nicht abgefangen: Die vordere App erhält ihn weiterhin und kann darauf reagieren, zum Beispiel einen Dialog schließen.</p>
+<h2 id="de4-eine-durchgehende-aufnahme-aus-dem-popover-starten">Eine durchgehende Aufnahme aus dem Popover starten</h2>
+<p>Klicke auf das Menüleisten-Symbol und dann in der Symbolleiste des Popovers auf <strong class="ui">Record</strong>. MalibuDictate nimmt im Raw-Modus ohne Umschreiben durch Claude auf, bis du es beendest; du musst keine Taste halten. Zum Beenden klickst du auf das Menüleisten-Symbol und auf <strong class="ui">Stop</strong> oder drückst eine Diktiertaste einmal und lässt sie los. Ist <strong class="ui">Double-Tap to Keep Recording</strong> an, beendet ein schnelles Tippen die Aufnahme erst nach einer Wartezeit von etwa einer Drittelsekunde, und ein zweites Tippen in dieser Zeit startet stattdessen die freihändige Aufnahme. Der Text wird dann wie gewohnt verarbeitet und eingefügt. Esc bricht eine so gestartete Aufnahme nicht ab. Der Knopf <strong class="ui">Record</strong> ist deaktiviert, solange das Diktieren blockiert ist (zum Beispiel durch die Lizenzprüfung oder eine noch ausstehende E-Mail-Adresse), solange ein vorheriges Diktat verarbeitet wird und für etwa eine Sekunde, nachdem es fertig oder fehlgeschlagen ist.</p>
 <h2 id="de4-diktierten-text-nach-dem-einf-gen-in-der-zwischenablage-behalten">Diktierten Text nach dem Einfügen in der Zwischenablage behalten</h2>
 <p>Standardmäßig legt MalibuDictate den diktierten Text in die Zwischenablage, fügt ihn ein und stellt den vorherigen Inhalt der Zwischenablage sofort wieder her. War die Zwischenablage vor dem Einfügen leer, gibt es nichts wiederherzustellen, und der diktierte Text bleibt darin. Damit das Diktat für ein zweites Einfügen verfügbar bleibt, öffne die Einstellungen, klicke auf <strong class="ui">General</strong> und stelle unter <strong class="ui">Pasting</strong> <strong class="ui">Keep Dictation on Clipboard</strong> ein:</p>
 <ul>
@@ -602,13 +617,13 @@
 <h2 id="de5-erst-die-grenzen-kennen">Erst die Grenzen kennen</h2>
 <p>Der Meeting-Modus ist eine Beta und bleibt aus, bis du ihn einschaltest. Das Transkript kennt genau zwei Sprecher: <strong class="ui">You</strong> ist dein Mikrofon, <strong class="ui">Others</strong> ist alles Audio, das dein Mac abspielt, außer dem Ton von MalibuDictate selbst, zusammengemischt: der Anruf, aber auch Musik, andere Apps und Benachrichtigungstöne. Die App unterscheidet einzelne Teilnehmer nicht und kennt ihre Namen nicht. Die Transkription läuft auf diesem Mac; nur der optionale Zusammenfassungsschritt kann Text an Claude senden. Nimm nur auf, wenn alle Teilnehmer Bescheid wissen und einverstanden sind.</p>
 <h2 id="de5-meeting-modus-einschalten">Meeting-Modus einschalten</h2>
-<p>Klicke in der Menüleiste auf das MalibuDictate-Symbol, um die Einstellungen zu öffnen, und öffne den Tab <strong class="ui">Meetings</strong>. Schalte unter <strong class="ui">Meeting Mode</strong> den Schalter <strong class="ui">Enable Meeting Mode</strong> ein. Solange er aus ist, bleibt der Rest des Tabs ausgeblendet und kein Meeting kann starten.</p>
+<p>Klicke in der Menüleiste auf das MalibuDictate-Symbol und im Popover auf <strong class="ui">Settings</strong>, und öffne den Tab <strong class="ui">Meetings</strong>. Schalte unter <strong class="ui">Meeting Mode</strong> den Schalter <strong class="ui">Enable Meeting Mode</strong> ein. Solange er aus ist, bleibt der Rest des Tabs ausgeblendet und kein Meeting kann starten.</p>
 <h2 id="de5-berechtigungen-pr-fen">Berechtigungen prüfen</h2>
 <p>Der Meeting-Modus braucht die Mikrofon-Berechtigung, die das Diktieren schon nutzt; er zeigt dafür keine eigene Abfrage. Er nimmt das Eingabegerät auf, das du fürs Diktieren gewählt hast (Einstellungen &gt; <strong class="ui">General</strong> &gt; <strong class="ui">Microphone</strong> &gt; <strong class="ui">Input Device</strong>). Für <strong class="ui">Others</strong> fragt macOS nach dem Zugriff auf die Systemaudio-Aufnahme, sobald das erste Meeting aufzunehmen beginnt. Ohne ihn wird nur <strong class="ui">You</strong> transkribiert.</p>
 <p>Einstellungen &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Permissions</strong> listet die optionalen Berechtigungen: <strong class="ui">System Audio Recording</strong>, <strong class="ui">Calendar</strong> (für Kalendertermine mit Meeting-Link), <strong class="ui">Notifications</strong> (fragt vor der Aufnahme eines erkannten Meetings) und <strong class="ui">Automation (Notes &amp; Mail)</strong> (nur für die Exporte nach Apple Notes und Mail nötig). Sie werden nur angefragt, wenn eine Funktion sie braucht.</p>
 <p>Die Meeting-Erkennung ist aktiv, sobald der Meeting-Modus an ist. Unter Einstellungen &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Automatic Start</strong> stehen <strong class="ui">Calendar events</strong> und <strong class="ui">Meeting apps using the microphone</strong> standardmäßig beide auf <strong class="ui">Ask</strong>: Die App zeigt eine Benachrichtigung, bevor sie aufnimmt, und startet nicht von selbst. Wähle <strong class="ui">Automatic</strong>, um sofort zu starten, oder <strong class="ui">Off</strong>, um eine Quelle auszuschalten. Hast du noch nicht über den Kalenderzugriff entschieden, fragt macOS danach, wenn du den Meeting-Modus einschaltest und <strong class="ui">Calendar events</strong> nicht auf <strong class="ui">Off</strong> steht.</p>
 <h2 id="de5-ein-meeting-starten">Ein Meeting starten</h2>
-<p>Klicke mit der rechten Maustaste auf das Menüleisten-Symbol und wähle <strong class="ui">Start Meeting …</strong>. Das Meetings-Fenster öffnet sich mit dem Blatt <strong class="ui">New Meeting</strong>. Du kannst auch im selben Menü <strong class="ui">Meetings …</strong> wählen oder oben in den Einstellungen unter <strong class="ui">Meetings</strong> auf <strong class="ui">Open Meetings …</strong> klicken und dann auf den Plus-Knopf (<strong class="ui">New Meeting</strong>, Befehl-N) klicken.</p>
+<p>Klicke auf das Menüleisten-Symbol und dann in der Symbolleiste des Popovers auf <strong class="ui">Meeting</strong>. Das Meetings-Fenster öffnet sich mit dem Blatt <strong class="ui">New Meeting</strong>, solange kein Meeting läuft oder startet; sonst öffnet es sich ohne das Blatt. <strong class="ui">Meeting</strong> erscheint nur, solange der Meeting-Modus an ist (siehe "Meeting-Modus einschalten"). Du kannst auch auf das Meetings-Symbol oben im Popover klicken oder oben in den Einstellungen unter <strong class="ui">Meetings</strong> auf <strong class="ui">Open Meetings …</strong> klicken und dann auf den Plus-Knopf (<strong class="ui">New Meeting</strong>, Befehl-N) klicken.</p>
 <p>Gib im Blatt einen Titel ein (ein leerer Titel wird zu "Meeting"), wähle ein <strong class="ui">Summary template</strong> oder lass die Vorgabe stehen und klicke auf <strong class="ui">Start Recording</strong>. Beim ersten Meeting müssen eventuell Sprachmodelle geladen werden; die Aufnahme beginnt, sobald sie bereit sind.</p>
 <h2 id="de5-die-teilnehmer-informieren">Die Teilnehmer informieren</h2>
 <p>Klicke im Blatt oder in der Live-Ansicht auf <strong class="ui">Copy Recording Notice</strong> und füge den Text in den Chat des Anrufs ein. Der Hinweis ist auf Englisch. Er sagt, dass du den Anruf auf deinem Mac für deine eigenen Notizen transkribierst. Ist <strong class="ui">Claude</strong> der Zusammenfassungs-Anbieter, nennt er zusätzlich, dass das geschriebene Transkript an einen KI-Dienst (Anthropic) gesendet werden kann. Bei <strong class="ui">Basic format (no AI)</strong> sagt er, dass Audio und Transkript auf deinem Computer bleiben. Der Wortlaut folgt der Einstellung <strong class="ui">Provider</strong>, nicht danach, ob ein API-Schlüssel gespeichert ist: Ist <strong class="ui">Claude</strong> gewählt und kein Schlüssel gespeichert, schreibt die App das Basisformat auf diesem Mac, der Hinweis sagt aber trotzdem, dass das Transkript gesendet werden kann. Der Knopf zeigt zwei Sekunden lang "Copied".</p>
@@ -621,13 +636,13 @@
 <p>Du kannst auch das Marker-Kürzel drücken. Standard ist <strong class="ui">⌃⌥M</strong> (Control-Option-M). Zum Ändern öffne Einstellungen &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Transcript</strong> und wähle bei <strong class="ui">Marker shortcut</strong> einen anderen Eintrag: <strong class="ui">⌃⌥⇧M</strong>, <strong class="ui">⌃⌥K</strong> oder <strong class="ui">Off</strong>. Die Liste ist fest; es gibt keine freie Tastenaufnahme. Das Kürzel funktioniert, egal welche App vorn ist, und braucht wie die Diktiertasten die Bedienungshilfen-Berechtigung. Nutze die linke Control-Taste; mit der rechten allein wird die Kombination ignoriert. Der Tastendruck wird auch an die vordere App weitergereicht, wähle also eine Kombination, die diese App nicht nutzt. Läuft kein Meeting, passiert nichts.</p>
 <p>Marker erscheinen in den Notizen und im Transkript, und die Zusammenfassung behandelt sie als wichtig.</p>
 <h2 id="de5-das-meeting-beenden">Das Meeting beenden</h2>
-<p>Klicke auf <strong class="ui">Stop</strong> (Befehl-Punkt) oder klicke mit der rechten Maustaste auf das Menüleisten-Symbol und wähle <strong class="ui">Stop Meeting</strong>. Die App speichert das Transkript und schreibt dann die Zusammenfassung. Das fertige Meeting hat drei Tabs: <strong class="ui">Summary</strong>, <strong class="ui">Transcript</strong> und <strong class="ui">Notes</strong>.</p>
+<p>Klicke auf <strong class="ui">Stop</strong> (Befehl-Punkt) oder klicke auf das Menüleisten-Symbol und im Popover auf <strong class="ui">End meeting</strong>. Die App speichert das Transkript und schreibt dann die Zusammenfassung. Das fertige Meeting hat drei Tabs: <strong class="ui">Summary</strong>, <strong class="ui">Transcript</strong> und <strong class="ui">Notes</strong>.</p>
 <p>In <strong class="ui">Transcript</strong> kannst du suchen und auf <strong class="ui">Copy All</strong> klicken. In <strong class="ui">Notes</strong> schreibst du freie Notizen, die automatisch gespeichert werden; die Notizen, die du während des Meetings getippt hast, stehen dort mit ihren Zeiten. Die Notizen fließen ein, wenn du das nächste Mal auf <strong class="ui">Regenerate</strong> klickst.</p>
 <h2 id="de5-festlegen-wie-die-zusammenfassung-entsteht">Festlegen, wie die Zusammenfassung entsteht</h2>
 <p>Öffne Einstellungen &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Summary</strong> und wähle den <strong class="ui">Provider</strong>:</p>
 <ul>
-<li><strong class="ui">Claude</strong> — Standard. Sendet das Transkript und deine Notizen über das Internet an Claude (Anthropic). Es nutzt deinen eigenen API-Schlüssel aus dem Tab <strong class="ui">Claude</strong> und das dort gewählte Modell. Ist kein Schlüssel gespeichert, schreibt die App stattdessen das Basisformat.</li>
-<li><strong class="ui">Basic format (no AI)</strong> — Bleibt auf diesem Mac. Listet deine Notizen und die ersten Transkriptzeilen, ohne KI-Zusammenfassung.</li>
+<li><strong class="ui">Claude</strong>: Standard. Sendet das Transkript und deine Notizen über das Internet an Claude (Anthropic). Es nutzt deinen eigenen API-Schlüssel aus dem Tab <strong class="ui">Claude</strong> und das dort gewählte Modell. Ist kein Schlüssel gespeichert, schreibt die App stattdessen das Basisformat.</li>
+<li><strong class="ui">Basic format (no AI)</strong>: Bleibt auf diesem Mac. Listet deine Notizen und die ersten Transkriptzeilen, ohne KI-Zusammenfassung.</li>
 </ul>
 <p>Der Tab <strong class="ui">Summary</strong> zeigt, welcher Anbieter den Text geschrieben hat. Der Zusammenfassungsschritt ist der einzige Teil eines Meetings, der Text an Claude sendet.</p>
 <h2 id="de5-zusammenfassungs-vorlagen-nutzen">Zusammenfassungs-Vorlagen nutzen</h2>
@@ -642,122 +657,133 @@
 <p>Unter Einstellungen &gt; <strong class="ui">Meetings</strong> &gt; <strong class="ui">Storage</strong> legt <strong class="ui">Keep recorded audio</strong> fest, wie lange die Audiodateien behalten werden: 7, 14, 30 (Standard) oder 90 Tage, 1 Jahr oder <strong class="ui">Keep forever</strong>. Nur das Audio wird nach dieser Zeit gelöscht; Transkripte, Notizen und Zusammenfassungen bleiben immer erhalten. Die Bereinigung betrifft nur beendete Meetings (done oder failed) und rechnet ab dem Ende des Meetings (ab dem Start, wenn es kein Ende gibt). Das Audio eines unterbrochenen Meetings wird dadurch nie gelöscht; sobald du bei einem solchen Meeting auf <strong class="ui">Keep As Is</strong> klickst, gilt es als beendet. Ohne Audio lässt sich ein Meeting nicht neu transkribieren. Abgelaufenes Audio wird einmal pro App-Start aufgeräumt, wenn der Meeting-Modus zum ersten Mal aktiv wird: beim Start der App mit eingeschaltetem Meeting-Modus oder wenn du ihn in dieser Sitzung einschaltest. Die Bereinigung läuft erst nach einem Neustart der App erneut. <strong class="ui">Show in Finder</strong> öffnet den Speicherort.</p>
 <p>Um ein ganzes Meeting zu entfernen, nutze <strong class="ui">Delete Meeting…</strong> im Menü oben rechts am Meeting. Es löscht Transkript, Notizen, Zusammenfassung und Audio endgültig.</p>
 <h1 id="de6-referenz">Referenz</h1>
-<h2 id="de6-einstellungsfenster-und-men-leisten-men">Einstellungsfenster und Menüleisten-Menü</h2>
-<p>MalibuDictate läuft aus der Menüleiste und hat standardmäßig kein Dock-Symbol. Ein Linksklick auf das Mikrofon-Symbol öffnet das Einstellungsfenster. Ein Rechtsklick öffnet ein Menü:</p>
+<h2 id="de6-men-leisten-symbol-und-popover">Menüleisten-Symbol und Popover</h2>
+<p>MalibuDictate läuft aus der Menüleiste und hat standardmäßig kein Dock-Symbol. Ein Klick auf das Mikrofon-Symbol öffnet ein Popover unter dem Symbol; ein Rechtsklick öffnet dasselbe Popover. Ein separates Rechtsklick-Menü gibt es nicht. Zum Schließen klickst du erneut auf das Symbol, klickst außerhalb des Popovers, drückst Esc oder wechselst in eine andere App. Ein Befehl im Popover schließt es, außer <strong class="ui">Marker</strong>, den drei Schaltern und den Auswahlen unter der Symbolleiste.</p>
+<p>Die oberste Zeile zeigt das App-Symbol und den Namen MalibuDictate. Ein Punkt auf dem Symbol zeigt den Zustand: ein Arbeitspunkt, solange ein Diktat aufnimmt oder verarbeitet wird oder ein Meeting aufnimmt, ein Problempunkt, wenn das Diktieren blockiert ist (zum Beispiel durch die Lizenzprüfung oder eine noch ausstehende E-Mail-Adresse) oder das Diktieren in einem Fehlerzustand ist. Während der Testphase steht am linken Ende der obersten Zeile ein Abzeichen mit der Zahl der verbleibenden Testtage, unabhängig davon, ob der Meeting-Modus an ist; sobald eine Lizenz aktiv ist, wird es nicht angezeigt.</p>
+<p>Die Symbolleiste unter der obersten Zeile hat diese Knöpfe. Jeder zeigt seinen Namen als Tooltip:</p>
 <ul>
-<li><strong class="ui">Buy Now</strong> — erscheint, solange keine Lizenz aktiv ist.</li>
-<li><strong class="ui">Start Meeting …</strong>, <strong class="ui">Stop Meeting</strong>, <strong class="ui">Meetings …</strong> — erscheinen nur bei aktivem Meeting-Modus (oder während ein Meeting aufnimmt).</li>
-<li><strong class="ui">Settings …</strong></li>
-<li><strong class="ui">Check for Updates …</strong></li>
-<li><strong class="ui">Quit</strong></li>
+<li><strong class="ui">Record</strong>: startet ein durchgehendes Raw-Diktat, ohne eine Taste zu halten. Solange es läuft, heißt der Knopf <strong class="ui">Stop</strong> und ist hervorgehoben; klicke darauf, um zu beenden. Auch Drücken und Loslassen einer Diktiertaste beendet es. Der Knopf ist deaktiviert, solange das Diktieren blockiert ist (zum Beispiel durch die Lizenzprüfung oder eine noch ausstehende E-Mail-Adresse), solange ein vorheriges Diktat verarbeitet wird und für etwa eine Sekunde, nachdem es fertig oder fehlgeschlagen ist.</li>
+<li><strong class="ui">Copy last</strong>: kopiert den zuletzt eingefügten Text in die Zwischenablage. Der Knopf ist deaktiviert, bis es einen letzten Text gibt. Der Text wird nur gespeichert, wenn <strong class="ui">Show Last Dictation</strong> (Einstellungen &gt; <strong class="ui">Vocabulary</strong> &gt; <strong class="ui">Auto-Vocabulary</strong>, standardmäßig aus) in dem Moment an ist, in dem ein Diktat eingefügt wird. Späteres Ausschalten löscht ihn nicht; er bleibt, bis du die App beendest. Das Ergebnis einer Zwischenablage-Umschreibung wird nicht gespeichert.</li>
+<li><strong class="ui">Meeting</strong>: nur sichtbar, solange der Meeting-Modus an ist. Öffnet das Meetings-Fenster mit dem Blatt <strong class="ui">New Meeting</strong>; die Aufnahme beginnt erst, wenn du dort auf <strong class="ui">Start Recording</strong> klickst. Läuft oder startet gerade ein Meeting, öffnet sich das Fenster ohne das Blatt. Während ein Meeting aufnimmt, heißt der Knopf <strong class="ui">End meeting</strong> und beendet es.</li>
+<li><strong class="ui">Marker</strong>: nur sichtbar, solange der Meeting-Modus an ist. Deaktiviert, solange kein Meeting aufnimmt; setzt einen Marker im laufenden Meeting.</li>
+<li><strong class="ui">Updates</strong>: sucht nach einer neuen Version.</li>
+<li><strong class="ui">Sounds</strong>, <strong class="ui">Pause media</strong>, <strong class="ui">History</strong>: Schalter am Ende der Leiste; ein getönter Knopf ist an. Sie setzen dieselben Optionen wie <strong class="ui">Sounds</strong> und <strong class="ui">Pause Media During Recording</strong> in den Einstellungen unter <strong class="ui">General</strong> und <strong class="ui">Enable History</strong> in den Einstellungen unter <strong class="ui">History</strong>.</li>
 </ul>
+<p>Unter der Symbolleiste:</p>
+<ul>
+<li><strong class="ui">Microphone</strong> (Mikrofon-Symbol, Name als Tooltip): das Eingabegerät, dieselbe Wahl wie <strong class="ui">Input Device</strong> in den Einstellungen unter <strong class="ui">General</strong>.</li>
+<li><strong class="ui">Rewrite</strong>: wählt <strong class="ui">Claude</strong> oder <strong class="ui">Local</strong> zum Umschreiben. <strong class="ui">Local</strong> ist deaktiviert, solange das On-Device-Modell auf diesem Mac nicht verfügbar ist.</li>
+</ul>
+<p>Ist der Meeting-Modus an, öffnet ein Meetings-Symbol am Ende der obersten Zeile (Tooltip <strong class="ui">Meetings</strong>) das Meetings-Fenster. Die beiden Knöpfe ganz unten sind <strong class="ui">Settings</strong> (⌘,), der das Einstellungsfenster öffnet, und <strong class="ui">Quit</strong> (⌘Q), der die App beendet.</p>
+<p>Kaufen ist nicht im Popover: Ohne aktive Lizenz hat Einstellungen &gt; <strong class="ui">License</strong> &gt; <strong class="ui">License Key</strong> einen Knopf <strong class="ui">Buy …</strong>, der die Kaufseite im Browser öffnet.</p>
+<h2 id="de6-einstellungsfenster">Einstellungsfenster</h2>
 <p>Die Seitenleiste der Einstellungen listet <strong class="ui">General</strong>, <strong class="ui">Keys</strong>, <strong class="ui">Claude</strong>, <strong class="ui">Vocabulary</strong>, <strong class="ui">Dictionary</strong>, <strong class="ui">Snippets</strong>, <strong class="ui">History</strong>, <strong class="ui">Meetings</strong> und <strong class="ui">License</strong>. Der Tab <strong class="ui">Meetings</strong> enthält den Meeting-Modus (Beta) und wird hier nicht behandelt. Das Hilfe-Menü der App-Menüleiste enthält <strong class="ui">Send Feedback …</strong>. Der Button oben rechts im Einstellungsfenster (Tooltip <strong class="ui">Status</strong>) öffnet ein Panel mit dem Zustand von Microphone, Accessibility, License und der Engine.</p>
 <h2 id="de6-tastenk-rzel-und-standardwerte-keys">Tastenkürzel und Standardwerte (Keys)</h2>
 <p>Jede Aktion hat eine oder mehrere Tasten; die Aufnahme läuft, solange du die Taste hältst, die sie gestartet hat.</p>
 <ul>
-<li><strong class="ui">Dictation Keys (Raw)</strong> — Standard: rechte Command-Taste. Der Text wird ohne Umformulierung durch Claude eingefügt.</li>
-<li><strong class="ui">Dictation Keys (Claude)</strong> — Standard: rechte Option-Taste. Der Text wird mit dem Profil umformuliert, das der aktiven App zugeordnet ist.</li>
-<li><strong class="ui">Clipboard Rewrite Keys</strong> — Standard: rechte Control-Taste. Deine gesprochene Anweisung formuliert den aktuellen Inhalt der Zwischenablage um. Control zusammen mit einer Taste aus <strong class="ui">Dictation Keys (Raw)</strong> gehalten tut dasselbe. Control zusammen mit einer Taste aus <strong class="ui">Dictation Keys (Claude)</strong> ändert den Modus nicht: Es bleibt ein Claude-Diktat.</li>
-<li><strong class="ui">Add Another Hotkey</strong> — fügt einer Aktion eine weitere Taste hinzu; der Minus-Button neben einer Taste entfernt sie. Eine Aktion ohne Tasten zeigt <strong class="ui">No Hotkey Assigned</strong> und ist deaktiviert.</li>
+<li><strong class="ui">Dictation Keys (Raw)</strong>. Standard: rechte Command-Taste. Der Text wird ohne Umformulierung durch Claude eingefügt.</li>
+<li><strong class="ui">Dictation Keys (Claude)</strong>. Standard: rechte Option-Taste. Der Text wird mit dem Profil umformuliert, das der aktiven App zugeordnet ist.</li>
+<li><strong class="ui">Clipboard Rewrite Keys</strong>. Standard: rechte Control-Taste. Deine gesprochene Anweisung formuliert den aktuellen Inhalt der Zwischenablage um. Control zusammen mit einer Taste aus <strong class="ui">Dictation Keys (Raw)</strong> gehalten tut dasselbe. Control zusammen mit einer Taste aus <strong class="ui">Dictation Keys (Claude)</strong> ändert den Modus nicht: Es bleibt ein Claude-Diktat.</li>
+<li><strong class="ui">Add Another Hotkey</strong>: fügt einer Aktion eine weitere Taste hinzu; der Minus-Button neben einer Taste entfernt sie. Eine Aktion ohne Tasten zeigt <strong class="ui">No Hotkey Assigned</strong> und ist deaktiviert.</li>
 <li>Eine Warnung erscheint, wenn dieselbe Taste in den drei Tastenlisten zusammen mehr als einmal vorkommt, sei es in zwei Aktionen oder doppelt in einer Aktion.</li>
-<li><strong class="ui">Double-Tap to Keep Recording</strong> (Abschnitt <strong class="ui">Hands-Free Recording</strong>) — Standard: aus. Tippe eine Diktiertaste doppelt, um ohne Halten weiter aufzunehmen. Tippe die Taste noch einmal, um zu beenden und den Text einzufügen; mit Esc verwirfst du die Aufnahme.</li>
+<li><strong class="ui">Double-Tap to Keep Recording</strong> (Abschnitt <strong class="ui">Hands-Free Recording</strong>). Standard: aus. Tippe eine Diktiertaste doppelt, um ohne Halten weiter aufzunehmen. Tippe die Taste noch einmal, um zu beenden und den Text einzufügen; mit Esc verwirfst du die Aufnahme. Ist die Option an, wirkt ein schnelles Tippen, das eine Aufnahme beendet, erst nach einer Wartezeit von etwa einer Drittelsekunde, denn ein zweites Tippen in dieser Zeit startet stattdessen die freihändige Aufnahme.</li>
 </ul>
 <p>Verfügbare Tasten: F1 bis F16, F17, F18 und F20 (auf Standard-Mac-Tastaturen ohne physische Taste), die rechten Tasten Command, Option, Shift und Control, fn (Globe) und Caps Lock. Ist Caps Lock zugewiesen, belegt MalibuDictate sie mit dem macOS-eigenen Werkzeug <em>hidutil</em> auf F19 um (keine zusätzliche Berechtigung). Caps Lock schaltet dann nicht mehr auf Großbuchstaben, solange MalibuDictate läuft; die Belegung wird beim Beenden oder beim Entfernen der Taste zurückgesetzt. fn (Globe) funktioniert eventuell nur, wenn die macOS-Einstellung "Press fn key to" in den Systemeinstellungen auf "Do Nothing" steht.</p>
 <h2 id="de6-general-speech-engine">General: Speech Engine</h2>
 <ul>
-<li><strong class="ui">Engine</strong> — Standard: Parakeet TDT. Auswahl: Parakeet TDT, WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer, Nemotron 3.5 (Streaming).</li>
-<li><strong class="ui">Language</strong> — Standard: <strong class="ui">Auto-Detect</strong>. Sonst eine von 18 Sprachen. Nemotron 3.5 ignoriert sie.</li>
-<li><strong class="ui">Status</strong> — zeigt <strong class="ui">Not loaded</strong>, <em>Downloading...</em>, <em>Loading...</em>, <strong class="ui">Ready</strong> oder einen Fehlertext.</li>
-<li><strong class="ui">Reset Model Cache</strong> — nur sichtbar, wenn WhisperKit gewählt ist. Löscht das heruntergeladene WhisperKit-Modell und lädt es neu.</li>
+<li><strong class="ui">Engine</strong>. Standard: Parakeet TDT. Auswahl: Parakeet TDT, WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer, Nemotron 3.5 (Streaming).</li>
+<li><strong class="ui">Language</strong>. Standard: <strong class="ui">Auto-Detect</strong>. Sonst eine von 18 Sprachen. Nemotron 3.5 ignoriert sie.</li>
+<li><strong class="ui">Status</strong>: zeigt <strong class="ui">Not loaded</strong>, <em>Downloading...</em>, <em>Loading...</em>, <strong class="ui">Ready</strong> oder einen Fehlertext.</li>
+<li><strong class="ui">Reset Model Cache</strong>: nur sichtbar, wenn WhisperKit gewählt ist. Löscht das heruntergeladene WhisperKit-Modell und lädt es neu.</li>
 </ul>
 <h2 id="de6-general-microphone">General: Microphone</h2>
 <ul>
-<li><strong class="ui">Input Device</strong> — Standard: der System-Standardeingang. Wähle eines der aufgelisteten Eingabegeräte, um es stattdessen zu nutzen.</li>
+<li><strong class="ui">Input Device</strong>. Standard: der System-Standardeingang. Wähle eines der aufgelisteten Eingabegeräte, um es stattdessen zu nutzen.</li>
 </ul>
 <h2 id="de6-general-indicator">General: Indicator</h2>
 <ul>
-<li><strong class="ui">Style</strong> — Standard: Notch. Auswahl: Notch, Overlay, Minimal.</li>
-<li><strong class="ui">Visibility</strong> — Standard: During Activity. Auswahl: Always, During Activity, Never. Nur Never hat eine Wirkung (es wird kein Indikator gezeigt); Always und During Activity verhalten sich gleich.</li>
-<li><strong class="ui">Position</strong> — Standard: Top (Island). Die Auswahl umfasst Top (Island) und Bottom (Dock). Sie gilt nur für die Stile Overlay und Minimal; der Stil Notch ignoriert sie.</li>
-<li><strong class="ui">Show Text Feedback</strong> — Standard: an.</li>
-<li><strong class="ui">Live Transcript Preview (Experimental)</strong> — Standard: aus. Sie ist experimentell.</li>
+<li><strong class="ui">Style</strong>. Standard: Notch. Auswahl: Notch, Overlay, Minimal.</li>
+<li><strong class="ui">Visibility</strong>. Standard: During Activity. Auswahl: Always, During Activity, Never. Nur Never hat eine Wirkung (es wird kein Indikator gezeigt); Always und During Activity verhalten sich gleich.</li>
+<li><strong class="ui">Position</strong>. Standard: Top (Island). Die Auswahl umfasst Top (Island) und Bottom (Dock). Sie gilt nur für die Stile Overlay und Minimal; der Stil Notch ignoriert sie.</li>
+<li><strong class="ui">Show Text Feedback</strong>. Standard: an.</li>
+<li><strong class="ui">Live Transcript Preview (Experimental)</strong>. Standard: aus. Sie ist experimentell.</li>
 </ul>
 <h2 id="de6-general-audio">General: Audio</h2>
 <ul>
-<li><strong class="ui">Sounds</strong> — Standard: an.</li>
-<li><strong class="ui">Pause Media During Recording</strong> — Standard: aus.</li>
-<li><strong class="ui">Duck Audio During Recording</strong> — Standard: aus.</li>
-<li><strong class="ui">Duck Level</strong> — sichtbar, solange das Absenken an ist. Standard: 20 %. Bereich: 5 % bis 50 %.</li>
+<li><strong class="ui">Sounds</strong>. Standard: an.</li>
+<li><strong class="ui">Pause Media During Recording</strong>. Standard: aus.</li>
+<li><strong class="ui">Duck Audio During Recording</strong>. Standard: aus.</li>
+<li><strong class="ui">Duck Level</strong>: sichtbar, solange das Absenken an ist. Standard: 20 %. Bereich: 5 % bis 50 %.</li>
 </ul>
 <h2 id="de6-general-pasting">General: Pasting</h2>
 <ul>
-<li><strong class="ui">Keep Dictation on Clipboard</strong> — Standard: Off. Auswahl: Off, 3 seconds, 5 seconds, 10 seconds, 30 seconds, Forever (until I copy something else).</li>
+<li><strong class="ui">Keep Dictation on Clipboard</strong>. Standard: Off. Auswahl: Off, 3 seconds, 5 seconds, 10 seconds, 30 seconds, Forever (until I copy something else).</li>
 </ul>
 <p>Bei Off stellt MalibuDictate direkt nach dem Einfügen deine vorherige Zwischenablage wieder her. War die Zwischenablage vorher leer, wird nichts wiederhergestellt, und der diktierte Text bleibt in der Zwischenablage, auch bei Off. Bei einer Zeitangabe bleibt der diktierte Text so lange in der Zwischenablage, danach wird deine vorherige Zwischenablage wiederhergestellt (außer du hast inzwischen etwas anderes kopiert). Bei Forever wird deine vorherige Zwischenablage nie wiederhergestellt. Die Wiederherstellung entfällt außerdem, und der diktierte Text bleibt in der Zwischenablage, wenn sich die vorderste App geändert hat oder die Secure-Input-Sperre kurz nach dem Einfügen aktiv wurde.</p>
 <p>Ist die macOS-Secure-Input-Sperre aktiv (zum Beispiel weil ein Passwortfeld den Fokus hat), fügt MalibuDictate nicht ein. Der diktierte Text bleibt stattdessen in der Zwischenablage.</p>
 <h2 id="de6-general-smart-formatting">General: Smart Formatting</h2>
 <p>Diese laufen lokal, ohne Claude und ohne Cloud-Dienst.</p>
 <ul>
-<li><strong class="ui">Smart Capitalization</strong> — Standard: an. Schreibt den ersten Buchstaben jedes Satzes groß.</li>
-<li><strong class="ui">Smart Paragraphs</strong> — Standard: an. Teilt lange Diktate an Satzgrenzen in Absätze.</li>
-<li><strong class="ui">Spoken Punctuation</strong> — Standard: an. Wandelt gesprochene Wörter wie "comma", "period", "new line" in das Zeichen um. Nur Deutsch und Englisch. Bei <strong class="ui">Auto-Detect</strong> oder jeder Sprache außer Deutsch und Englisch gelten beide Wortlisten.</li>
-<li><strong class="ui">Remove Filler Words</strong> — Standard: aus. Entfernt die englischen Füllwörter um, umm, uh, uhh und erm sowie die deutschen Füllwörter äh, ähm, hm, hmm, sozusagen und quasi. Nur Deutsch und Englisch. Bei <strong class="ui">Auto-Detect</strong> oder jeder Sprache außer Deutsch und Englisch gelten beide Listen, sodass das englische "um" auch die deutsche Präposition "um" aus deutschem Text entfernt. Wähle Deutsch, um das zu vermeiden: Die deutsche Liste enthält "um" nicht.</li>
+<li><strong class="ui">Smart Capitalization</strong>. Standard: an. Schreibt den ersten Buchstaben jedes Satzes groß.</li>
+<li><strong class="ui">Smart Paragraphs</strong>. Standard: an. Teilt lange Diktate an Satzgrenzen in Absätze.</li>
+<li><strong class="ui">Spoken Punctuation</strong>. Standard: an. Wandelt gesprochene Wörter wie "comma", "period", "new line" in das Zeichen um. Nur Deutsch und Englisch. Bei <strong class="ui">Auto-Detect</strong> oder jeder Sprache außer Deutsch und Englisch gelten beide Wortlisten.</li>
+<li><strong class="ui">Remove Filler Words</strong>. Standard: aus. Entfernt die englischen Füllwörter um, umm, uh, uhh und erm sowie die deutschen Füllwörter äh, ähm, hm, hmm, sozusagen und quasi. Nur Deutsch und Englisch. Bei <strong class="ui">Auto-Detect</strong> oder jeder Sprache außer Deutsch und Englisch gelten beide Listen, sodass das englische "um" auch die deutsche Präposition "um" aus deutschem Text entfernt. Wähle Deutsch, um das zu vermeiden: Die deutsche Liste enthält "um" nicht.</li>
 </ul>
 <h2 id="de6-general-appearance">General: Appearance</h2>
 <ul>
-<li><strong class="ui">Preset</strong> — wählt ein Farb-Preset für das Einstellungsfenster. Standard ist das Preset <em>Claude Colors</em>.</li>
-<li><strong class="ui">Transparency</strong> — Regler von 0 % bis 100 %. Höher ist dunkler und deckender, niedriger ist transparenter.</li>
+<li><strong class="ui">Preset</strong>: wählt ein Farb-Preset für das Einstellungsfenster. Standard ist das Preset <em>Claude Colors</em>.</li>
+<li><strong class="ui">Transparency</strong>: Regler von 0 % bis 100 %. Höher ist dunkler und deckender, niedriger ist transparenter.</li>
 </ul>
 <h2 id="de6-general-system-and-diagnostics">General: System and Diagnostics</h2>
 <ul>
-<li><strong class="ui">Show Dock Icon</strong> — Standard: aus.</li>
-<li><strong class="ui">Check for Updates …</strong> — sucht nach einer neuen Version.</li>
-<li><strong class="ui">Show Onboarding Again</strong> — öffnet den Einrichtungsassistenten erneut.</li>
-<li><strong class="ui">Send Feedback …</strong> — öffnet das Feedback-Blatt.</li>
-<li><strong class="ui">Quit MalibuDictate</strong> — beendet die App.</li>
+<li><strong class="ui">Show Dock Icon</strong>. Standard: aus.</li>
+<li><strong class="ui">Check for Updates …</strong>: sucht nach einer neuen Version.</li>
+<li><strong class="ui">Show Onboarding Again</strong>: öffnet den Einrichtungsassistenten erneut.</li>
+<li><strong class="ui">Send Feedback …</strong>: öffnet das Feedback-Blatt.</li>
+<li><strong class="ui">Quit MalibuDictate</strong>: beendet die App.</li>
 </ul>
 <p>Der Abschnitt <strong class="ui">Diagnostics</strong> zeigt <strong class="ui">Accessibility</strong> (Active, oder Missing mit einem Button <strong class="ui">Request</strong>), <strong class="ui">Event Tap</strong>, <strong class="ui">Last Key Event</strong>, <strong class="ui">Dictate Keys</strong>, <strong class="ui">Claude Keys</strong>, <strong class="ui">State</strong> und nach einem Fehler <strong class="ui">Last Error</strong>.</p>
 <h2 id="de6-claude">Claude</h2>
 <ul>
-<li><em>REWRITE PROVIDER</em> — Standard: Claude (Cloud). Die andere Auswahl, Local (Apple Intelligence), läuft auf dem Mac und braucht macOS 26 oder neuer mit aktivierter Apple Intelligence; sonst ist das Menü deaktiviert.</li>
-<li>API key — dein eigener Claude-API-Schlüssel, mit dem Häkchen-Button gespeichert und im Schlüsselbund abgelegt. Claude (Cloud) braucht ihn. Mit dem Anbieter Claude (Cloud) und ohne gespeicherten Schlüssel zeigen sowohl die Claude-Taste als auch die Zwischenablage-Taste den Fehler <em>API Key missing</em>, statt aufzunehmen; er ist nur sichtbar, solange der Indikator und sein Text angezeigt werden (siehe General: Indicator). Ausnahme: Fügst du einer Raw-Diktiertaste Control hinzu, nachdem du sie gedrückt hast, läuft die Aufnahme und scheitert mit "No Claude API Key configured". Local (Apple Intelligence) braucht keinen Schlüssel. Mit Claude (Cloud) wird der diktierte Text an die Claude-API (api.anthropic.com) gesendet.</li>
-<li>Model — Standard: Sonnet 5 (Recommended). Weitere Auswahl: Sonnet 4.6, Sonnet 4.5, Haiku 4.5.</li>
-<li><strong class="ui">Backtrack (Self-Correction)</strong> — Standard: aus. Wendungen wie "actually" oder "scratch that" verwerfen die vorherige Aussage und behalten nur die Korrektur.</li>
-<li>Profiles — die Liste links; der Plus-Button fügt eines hinzu. Das Standardprofil gilt für alle Apps, die keinem anderen Profil zugeordnet sind. Je Profil: <em>ASSIGNED APPS</em>, <em>SPEECH ENGINE</em>, <strong class="ui">Trigger Words</strong>, <strong class="ui">Clipboard as Context</strong>, <strong class="ui">Window Title as Context (Developer Mode)</strong> und der <em>DICTATION PROMPT</em>. Schlägt die Claude-Anfrage eines Diktats fehl (zum Beispiel durch einen Netzwerk- oder API-Fehler), wird der Text ohne Umformulierung eingefügt, und zwar nach den lokalen Verarbeitungsschritten (Wörterbuch, Füllwörter, gesprochene Satzzeichen, Snippets und Smart Formatting, soweit eingeschaltet). Eine fehlgeschlagene Zwischenablage-Umformulierung zeigt stattdessen einen Fehler.</li>
+<li><em>REWRITE PROVIDER</em>. Standard: Claude (Cloud). Die andere Auswahl, Local (Apple Intelligence), läuft auf dem Mac und braucht macOS 26 oder neuer mit aktivierter Apple Intelligence; sonst ist das Menü deaktiviert.</li>
+<li>API key: dein eigener Claude-API-Schlüssel, mit dem Häkchen-Button gespeichert und im Schlüsselbund abgelegt. Claude (Cloud) braucht ihn. Mit dem Anbieter Claude (Cloud) und ohne gespeicherten Schlüssel zeigen sowohl die Claude-Taste als auch die Zwischenablage-Taste den Fehler <em>API Key missing</em>, statt aufzunehmen; er ist nur sichtbar, solange der Indikator und sein Text angezeigt werden (siehe General: Indicator). Ausnahme: Fügst du einer Raw-Diktiertaste Control hinzu, nachdem du sie gedrückt hast, läuft die Aufnahme und scheitert mit "No Claude API Key configured". Local (Apple Intelligence) braucht keinen Schlüssel. Mit Claude (Cloud) wird der diktierte Text an die Claude-API (api.anthropic.com) gesendet.</li>
+<li>Model. Standard: Sonnet 5 (Recommended). Weitere Auswahl: Sonnet 4.6, Sonnet 4.5, Haiku 4.5.</li>
+<li><strong class="ui">Backtrack (Self-Correction)</strong>. Standard: aus. Wendungen wie "actually" oder "scratch that" verwerfen die vorherige Aussage und behalten nur die Korrektur.</li>
+<li>Profiles: die Liste links; der Plus-Button fügt eines hinzu. Das Standardprofil gilt für alle Apps, die keinem anderen Profil zugeordnet sind. Je Profil: <em>ASSIGNED APPS</em>, <em>SPEECH ENGINE</em>, <strong class="ui">Trigger Words</strong>, <strong class="ui">Clipboard as Context</strong>, <strong class="ui">Window Title as Context (Developer Mode)</strong> und der <em>DICTATION PROMPT</em>. Schlägt die Claude-Anfrage eines Diktats fehl (zum Beispiel durch einen Netzwerk- oder API-Fehler), wird der Text ohne Umformulierung eingefügt, und zwar nach den lokalen Verarbeitungsschritten (Wörterbuch, Füllwörter, gesprochene Satzzeichen, Snippets und Smart Formatting, soweit eingeschaltet). Eine fehlgeschlagene Zwischenablage-Umformulierung zeigt stattdessen einen Fehler.</li>
 </ul>
 <h2 id="de6-vocabulary">Vocabulary</h2>
 <ul>
-<li><strong class="ui">Custom Vocabulary</strong> — eine kommagetrennte Liste von Begriffen. Sie wird der Umformulierung (Claude oder lokal) als Korrekturkontext mitgegeben und wirkt daher nicht auf rohes Diktat. Außerdem wird sie der Zusammenfassungsanfrage eines Meetings hinzugefügt, wenn Claude die Meeting-Zusammenfassung schreibt. Das Feld startet mit einer eingebauten Liste technischer Begriffe, die du bearbeiten kannst.</li>
-<li><strong class="ui">Add New Term</strong> — tippe einen Begriff und klicke auf <strong class="ui">Add</strong>.</li>
-<li><strong class="ui">Show Last Dictation</strong> (Abschnitt <strong class="ui">Auto-Vocabulary</strong>) — Standard: aus. Zeigt unter <strong class="ui">LAST DICTATION</strong> den Text, den das letzte Diktat eingefügt hat (nach Dictionary, Snippets, Formatierung und Umformulierung), damit du ein falsch verstandenes Wort als Begriff hinzufügen kannst. Der Text wird nur erfasst, solange der Schalter an ist, und nur bei Diktaten, die Text einfügen, nicht bei Zwischenablage-Rewrites; bis zu deinem nächsten Diktat bleibt er leer.</li>
+<li><strong class="ui">Custom Vocabulary</strong>: eine kommagetrennte Liste von Begriffen. Sie wird der Umformulierung (Claude oder lokal) als Korrekturkontext mitgegeben und wirkt daher nicht auf rohes Diktat. Außerdem wird sie der Zusammenfassungsanfrage eines Meetings hinzugefügt, wenn Claude die Meeting-Zusammenfassung schreibt. Das Feld startet mit einer eingebauten Liste technischer Begriffe, die du bearbeiten kannst.</li>
+<li><strong class="ui">Add New Term</strong>: tippe einen Begriff und klicke auf <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Show Last Dictation</strong> (Abschnitt <strong class="ui">Auto-Vocabulary</strong>). Standard: aus. Zeigt unter <strong class="ui">LAST DICTATION</strong> den Text, den das letzte Diktat eingefügt hat (nach Dictionary, Snippets, Formatierung und Umformulierung), damit du ein falsch verstandenes Wort als Begriff hinzufügen kannst. Der Text wird nur erfasst, solange der Schalter an ist, und nur bei Diktaten, die Text einfügen, nicht bei Zwischenablage-Rewrites; bis zu deinem nächsten Diktat bleibt er leer.</li>
 </ul>
 <h2 id="de6-dictionary">Dictionary</h2>
 <ul>
 <li>Korrekturen ersetzen in jeder Transkription eine Quellphrase durch einen Ersatz, lokal und vor jeder Umformulierung. Nur ganze Wörter. Jede Korrektur gilt global oder für bestimmte Apps.</li>
-<li><strong class="ui">Add Correction</strong> — Felder Quelle und Ersatz, der Schalter <strong class="ui">Case-sensitive match</strong> und <strong class="ui">Add</strong>.</li>
-<li><strong class="ui">Learn Corrections Automatically</strong> — Standard: aus. Beobachtet nach einem Diktat etwa 18 Sekunden lang das fokussierte Textfeld und lernt ein einzelnes korrigiertes Wort. Funktioniert nur in Apps, die ihren Text über Bedienungshilfen bereitstellen.</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Korrekturen, auch automatisch gelernte, durch die eingebauten Standardwerte.</li>
+<li><strong class="ui">Add Correction</strong>: Felder Quelle und Ersatz, der Schalter <strong class="ui">Case-sensitive match</strong> und <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Learn Corrections Automatically</strong>. Standard: aus. Beobachtet nach einem Diktat etwa 18 Sekunden lang das fokussierte Textfeld und lernt ein einzelnes korrigiertes Wort. Funktioniert nur in Apps, die ihren Text über Bedienungshilfen bereitstellen.</li>
+<li><strong class="ui">Defaults</strong>: <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Korrekturen, auch automatisch gelernte, durch die eingebauten Standardwerte.</li>
 </ul>
 <h2 id="de6-snippets">Snippets</h2>
 <ul>
 <li>Ein Snippet erweitert eine gesprochene Auslösephrase zu einem Ersatztext. Entspricht das ganze Diktat einer Auslösephrase, wird der ganze Text ersetzt; sonst wird die Auslösephrase im Text ersetzt.</li>
-<li><strong class="ui">Add Snippet</strong> — Felder Auslösephrase und Ersatz (mehrzeilig), der Schalter <strong class="ui">Case-sensitive trigger</strong> (Standard: aus) und <strong class="ui">Add</strong>.</li>
+<li><strong class="ui">Add Snippet</strong>: Felder Auslösephrase und Ersatz (mehrzeilig), der Schalter <strong class="ui">Case-sensitive trigger</strong> (Standard: aus) und <strong class="ui">Add</strong>.</li>
 <li>Platzhalter in einem Ersatztext: {{DATE}}, {{DATE_ISO}}, {{TIME}}, {{DATETIME}}, {{CLIPBOARD}} (aktueller Inhalt der Zwischenablage), {{APP}} (Name der aktiven App), {{NL}} (Zeilenumbruch).</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Snippets durch die eingebauten Standardwerte. Die eingebaute Liste enthält drei Snippets: "todays date", "current time" und "timecode note". Eine Installation aus einer früheren Version behält ihre gespeicherte Liste, die noch Beispiel-Snippets für eine Signatur oder eine Adresse mit den Angaben einer anderen Person enthalten kann; bearbeite oder lösche diese.</li>
+<li><strong class="ui">Defaults</strong>: <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Snippets durch die eingebauten Standardwerte. Die eingebaute Liste enthält drei Snippets: "todays date", "current time" und "timecode note". Eine Installation aus einer früheren Version behält ihre gespeicherte Liste, die noch Beispiel-Snippets für eine Signatur oder eine Adresse mit den Angaben einer anderen Person enthalten kann; bearbeite oder lösche diese.</li>
 </ul>
 <h2 id="de6-history">History</h2>
 <ul>
-<li><strong class="ui">Enable History</strong> — Standard: aus. Wenn an, wird jedes Diktat lokal mit Text, Zeit und Ziel-App gespeichert. Es verlässt nie deinen Mac.</li>
-<li><strong class="ui">Search history</strong> — filtert die Einträge nach Text oder App-Name.</li>
-<li><strong class="ui">Delete All</strong> — entfernt nach einer Bestätigung alle Einträge; der x-Button an einem Eintrag entfernt nur diesen.</li>
+<li><strong class="ui">Enable History</strong>. Standard: aus. Wenn an, wird jedes Diktat lokal mit Text, Zeit und Ziel-App gespeichert. Es verlässt nie deinen Mac.</li>
+<li><strong class="ui">Search history</strong>: filtert die Einträge nach Text oder App-Name.</li>
+<li><strong class="ui">Delete All</strong>: entfernt nach einer Bestätigung alle Einträge; der x-Button an einem Eintrag entfernt nur diesen.</li>
 </ul>
 <h2 id="de6-license">License</h2>
 <ul>
 <li>Eine kostenlose Testphase beginnt, wenn du deine E-Mail-Adresse abschickst; danach ist ein Lizenzschlüssel nötig.</li>
-<li><strong class="ui">Check Again</strong> — prüft den Lizenzstatus sofort. MalibuDictate prüft außerdem einmal am Tag.</li>
-<li><strong class="ui">Redeem License Key …</strong> — gib den Lizenzschlüssel aus deiner Kaufbestätigung ein. Das geht auch vor Ablauf der Testphase.</li>
-<li><strong class="ui">Switch Device …</strong> — gibt die Aktivierung dieses Macs frei, damit du denselben Schlüssel auf einem anderen Mac einlösen kannst. Das Diktieren ist hier danach gesperrt, bis du den Schlüssel erneut einlöst.</li>
-<li><strong class="ui">Tester Email</strong> und <strong class="ui">Device ID</strong> — die gespeicherte E-Mail-Adresse und eine ID, die du dem Support nennen kannst. <strong class="ui">Copy</strong> kopiert die ID.</li>
+<li><strong class="ui">Check Again</strong>: prüft den Lizenzstatus sofort. MalibuDictate prüft außerdem einmal am Tag.</li>
+<li><strong class="ui">Redeem License Key …</strong>: gib den Lizenzschlüssel aus deiner Kaufbestätigung ein. Das geht auch vor Ablauf der Testphase.</li>
+<li><strong class="ui">Switch Device …</strong>: gibt die Aktivierung dieses Macs frei, damit du denselben Schlüssel auf einem anderen Mac einlösen kannst. Das Diktieren ist hier danach gesperrt, bis du den Schlüssel erneut einlöst.</li>
+<li><strong class="ui">Tester Email</strong> und <strong class="ui">Device ID</strong>: die gespeicherte E-Mail-Adresse und eine ID, die du dem Support nennen kannst. <strong class="ui">Copy</strong> kopiert die ID.</li>
 <li>Ist die Testphase oder Lizenz abgelaufen, ist das Diktieren gesperrt, und das Einstellungsfenster zeigt ein Blatt, das sich nicht schließen lässt. <strong class="ui">Buy Now</strong> öffnet die Kaufseite.</li>
 </ul>
 <h2 id="de6-voraussetzungen-und-grenzen">Voraussetzungen und Grenzen</h2>
@@ -778,9 +804,9 @@
 <h2 id="de7-die-zusammenfassung-kopieren-oder-an-apple-notes-oder-mail-senden">Die Zusammenfassung kopieren oder an Apple Notes oder Mail senden</h2>
 <p>Die anderen Knöpfe in derselben Leiste brauchen eine fertige Zusammenfassung:</p>
 <ul>
-<li><strong class="ui">Copy Markdown</strong> — Kopiert die Zusammenfassung als Markdown in die Zwischenablage.</li>
-<li><strong class="ui">Apple Notes</strong> — Legt im Standardkonto der Notizen-App eine Notiz mit Titel, Zusammenfassung und Transkript an.</li>
-<li><strong class="ui">Mail Draft</strong> — Öffnet in Mail eine neue Nachricht ohne Empfänger. Der Betreff ist "Follow-up: " gefolgt vom Meeting-Titel, oder nur "Follow-up", wenn der Titel leer ist. Der Text beginnt mit "Hi all," und der Zeile "Here are the key points from our meeting" mit dem Titel in Anführungszeichen (ohne Titel, wenn er leer ist), danach die Zusammenfassung als reiner Text, und endet mit "Best,". Sie wird nie automatisch gesendet; du trägst Empfänger ein und sendest sie selbst.</li>
+<li><strong class="ui">Copy Markdown</strong>: Kopiert die Zusammenfassung als Markdown in die Zwischenablage.</li>
+<li><strong class="ui">Apple Notes</strong>: Legt im Standardkonto der Notizen-App eine Notiz mit Titel, Zusammenfassung und Transkript an.</li>
+<li><strong class="ui">Mail Draft</strong>: Öffnet in Mail eine neue Nachricht ohne Empfänger. Der Betreff ist "Follow-up: " gefolgt vom Meeting-Titel, oder nur "Follow-up", wenn der Titel leer ist. Der Text beginnt mit "Hi all," und der Zeile "Here are the key points from our meeting" mit dem Titel in Anführungszeichen (ohne Titel, wenn er leer ist), danach die Zusammenfassung als reiner Text, und endet mit "Best,". Sie wird nie automatisch gesendet; du trägst Empfänger ein und sendest sie selbst.</li>
 </ul>
 <p>Beim ersten Mal mit <strong class="ui">Apple Notes</strong> oder <strong class="ui">Mail Draft</strong> fragt macOS, ob MalibuDictate diese App steuern darf. Wird der Zugriff verweigert, sagt die App das und zeigt <strong class="ui">Open Automation Settings</strong>. Schalte die App unter MalibuDictate in Systemeinstellungen &gt; Datenschutz &amp; Sicherheit &gt; Automation ein und versuche es erneut.</p>
 <h2 id="de7-fertige-meetings-automatisch-in-einen-ordner-exportieren">Fertige Meetings automatisch in einen Ordner exportieren</h2>
@@ -798,17 +824,17 @@
 <h2 id="de7-was-der-yaml-kopf-enth-lt">Was der YAML-Kopf enthält</h2>
 <p>Dateien aus dem Ordner-Export beginnen mit einem YAML-Kopf zwischen zwei <code>---</code>-Zeilen, gedacht für eine Notiz-App wie Obsidian. Die Schlüsselnamen und die festen Werte lassen sich in der App nicht ändern. Der Text unter dem Kopf ist derselbe wie bei <strong class="ui">Save as .md</strong>.</p>
 <ul>
-<li><code>title</code> — Der Meeting-Titel in Anführungszeichen; "Meeting", wenn leer.</li>
-<li><code>art</code> — Immer <code>notiz</code>.</li>
-<li><code>thema</code> — Eine Liste mit den festen Einträgen <code>besprechung</code> und <code>meeting-notes</code>.</li>
-<li><code>quelle</code> — Immer der feste Text "Malibu Diktat".</li>
-<li><code>datum</code> — Der Tag, an dem das Meeting begann, als <code>YYYY-MM-DD</code>.</li>
-<li><code>uhrzeit</code> — Die Startzeit, als "HH:MM".</li>
-<li><code>dauer_min</code> — Die Dauer in ganzen Minuten, aufgerundet, als Zahl.</li>
-<li><code>app</code> — Die App, in der das Meeting aufgenommen wurde. Wird nur geschrieben, wenn sie bekannt ist.</li>
-<li><code>meeting_id</code> — Die eindeutige ID des Meetings.</li>
-<li><code>vertraulich</code> — Immer <code>true</code>. Eine konstante Markierung, die die App für Notiz-App-Werkzeuge schreibt; die App selbst nutzt sie nicht.</li>
-<li><code>blockwerk</code> — Immer <code>true</code>. Eine konstante Markierung, die die App für Notiz-App-Werkzeuge schreibt; die App selbst nutzt sie nicht.</li>
+<li><code>title</code>: Der Meeting-Titel in Anführungszeichen; "Meeting", wenn leer.</li>
+<li><code>art</code>: Immer <code>notiz</code>.</li>
+<li><code>thema</code>: Eine Liste mit den festen Einträgen <code>besprechung</code> und <code>meeting-notes</code>.</li>
+<li><code>quelle</code>: Immer der feste Text "Malibu Diktat".</li>
+<li><code>datum</code>: Der Tag, an dem das Meeting begann, als <code>YYYY-MM-DD</code>.</li>
+<li><code>uhrzeit</code>: Die Startzeit, als "HH:MM".</li>
+<li><code>dauer_min</code>: Die Dauer in ganzen Minuten, aufgerundet, als Zahl.</li>
+<li><code>app</code>: Die App, in der das Meeting aufgenommen wurde. Wird nur geschrieben, wenn sie bekannt ist.</li>
+<li><code>meeting_id</code>: Die eindeutige ID des Meetings.</li>
+<li><code>vertraulich</code>: Immer <code>true</code>. Eine konstante Markierung, die die App für Notiz-App-Werkzeuge schreibt; die App selbst nutzt sie nicht.</li>
+<li><code>blockwerk</code>: Immer <code>true</code>. Eine konstante Markierung, die die App für Notiz-App-Werkzeuge schreibt; die App selbst nutzt sie nicht.</li>
 </ul>
 <h2 id="de7-wenn-der-ordner-nicht-verf-gbar-ist">Wenn der Ordner nicht verfügbar ist</h2>
 <p>Fehlt der Ordner, ist er kein Ordner oder liegt auf einem nicht verbundenen Volume, zeigt der Abschnitt Export "The export folder is not available" mit dem Pfad. Die App legt den Ordner nie für dich an. Das Meeting bleibt vorgemerkt und wird später geschrieben: wenn das nächste Meeting fertig wird, wenn du den Export einschaltest oder einen Ordner wählst und wenn der Meeting-Modus in einer Sitzung zum ersten Mal aktiv wird (beim Start der App mit eingeschaltetem Meeting-Modus oder wenn du ihn einschaltest).</p>
@@ -839,7 +865,7 @@
 <p>Die App kennzeichnet den lokalen Anbieter als "Experimental": Bei sehr kurzen oder frage- oder befehlsartigen Diktaten wie "yes", "stop" oder "can you..." antwortet das Apple-Modell manchmal wie ein Chatbot, statt den Text nur zu glätten. Der Einstellungstext rät dann zu Claude.</p>
 <h2 id="de8-die-testphase-ist-vorbei-oder-das-diktieren-ist-gesperrt">Die Testphase ist vorbei oder das Diktieren ist gesperrt</h2>
 <p>Blockiert die Lizenzprüfung die App, sagt das ein Blatt, das sich nicht wegklicken lässt, und "Dictation is locked". Es bietet <strong class="ui">Buy Now</strong>, <strong class="ui">Check Again</strong>, <strong class="ui">I already have a license</strong> und <strong class="ui">Lost your license key?</strong>. Ein Aufnahmestart wird abgelehnt und zeigt dieselbe Meldung.</p>
-<p>Einstellungen &gt; <strong class="ui">License</strong> &gt; <strong class="ui">Status</strong> zeigt den Zustand, zum Beispiel "Trial — 12 days left" oder "Trial/license expired — contact support for a renewal". Hast du eine Lizenz gekauft, klicke auf <strong class="ui">Redeem License Key …</strong> und gib den Schlüssel ein; das geht auch vor dem Ende der Testphase. Ist der Schlüssel schon auf der maximalen Zahl an Geräten in Benutzung, klicke zuerst auf dem alten Mac auf <strong class="ui">Switch Device …</strong>: Das gibt dort die Aktivierung frei, und das Diktieren ist auf diesem Mac gesperrt, bis du den Schlüssel erneut einlöst. Der Abschnitt <strong class="ui">Device ID</strong> zeigt die ID, nach der der Support fragt.</p>
+<p>Einstellungen &gt; <strong class="ui">License</strong> &gt; <strong class="ui">Status</strong> zeigt den Zustand, zum Beispiel "Trial — 12 days left" oder "Trial/license expired — contact support for a renewal". Hast du eine Lizenz gekauft, klicke auf <strong class="ui">Redeem License Key …</strong> und gib den Schlüssel ein; das geht auch vor dem Ende der Testphase. Ist der Schlüssel schon auf der maximalen Zahl an Geräten in Benutzung, klicke zuerst auf dem alten Mac auf <strong class="ui">Switch Device …</strong>: Das gibt dort die Aktivierung frei, und das Diktieren ist auf diesem Mac gesperrt, bis du den Schlüssel erneut einlöst. Um schon vor dem Ende der Testphase zu kaufen, klicke im selben Tab unter <strong class="ui">License Key</strong> auf <strong class="ui">Buy …</strong>; der Knopf erscheint, solange keine Lizenz aktiv ist. Der Abschnitt <strong class="ui">Device ID</strong> zeigt die ID, nach der der Support fragt.</p>
 <p>Die Prüfung selbst kann diese Meldungen erzeugen:</p>
 <ul>
 <li>"Your system clock appears to have moved backward. Please correct it and try again."</li>
@@ -878,7 +904,7 @@
 </ul>
 <h2 id="de8-apple-notes-oder-mail-verweigert-den-export">Apple Notes oder Mail verweigert den Export</h2>
 <p>Die Meldung sagt, dass MalibuDictate Notes oder Mail nicht steuern darf. Klicke auf <strong class="ui">Open Automation Settings</strong> und schalte die App unter MalibuDictate in Datenschutz &amp; Sicherheit &gt; Automation ein, dann versuche es erneut. Lässt sich Notes oder Mail nicht starten, sagt die Meldung, dass die App nicht erreicht werden konnte.</p>
-<p class="ver">Geschrieben für Version 0.10.7.</p>
+<p class="ver">Geschrieben für Version 0.10.8.</p>
     </article>
   </div>
   <footer>
