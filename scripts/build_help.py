@@ -214,6 +214,14 @@ def main():
     if len(a.en) != len(a.de):
         sys.exit("--en and --de must be given the same number of times")
 
+    def order_of(path):
+        fm, _ = parse(Path(path).read_text(encoding="utf-8"))
+        try:
+            return int(fm.get("order", 999))
+        except ValueError:
+            return 999
+    sorted_pairs = sorted(zip(a.en, a.de), key=lambda p: order_of(p[0]))
+    a.en, a.de = [p[0] for p in sorted_pairs], [p[1] for p in sorted_pairs]
     blocks = {"en": [], "de": []}
     versions = set()
     toc_by_lang = {"en": [], "de": []}
