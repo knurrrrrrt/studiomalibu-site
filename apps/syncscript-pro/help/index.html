@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SyncScript Pro · Help</title>
+<link rel="icon" type="image/png" href="/apps/syncscript-pro/icon.png">
+<meta name="description" content="How to use SyncScript Pro: getting started and step-by-step guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#FF8C42;--accent-ink:#1f0f02}
+.help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
+.toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
+.toc a{display:block;color:var(--dim);padding:5px 0}
+.toc a:hover{color:var(--text)}
+.toc a.l1{color:var(--text);font-weight:600;margin-top:12px}
+.toc a.l2{padding-left:12px;font-size:12.5px}
+.doc h1{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}
+.doc h1:first-child{margin-top:0;padding-top:0;border-top:0}
+.toc .t{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.help>*{min-width:0}
+.doc{max-width:72ch;overflow-wrap:anywhere}
+.doc h1{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}
+.doc h2{font-size:1.45rem;margin:44px 0 10px;padding-top:28px;border-top:1px solid var(--line)}
+.doc h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:28px 0 6px}
+.doc p,.doc li{color:#C9CCD3;font-size:15.5px}
+.doc li+li{margin-top:6px}
+.doc ol,.doc ul{padding-left:22px}
+.doc blockquote{margin:16px 0;padding:10px 16px;border-left:2px solid var(--accent);background:var(--surface);color:var(--dim);font-size:14px;border-radius:0 8px 8px 0}
+.doc code{font:400 13px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.doc pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+.doc pre code{background:none;border:0;padding:0}
+.doc strong.ui{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.doc img{border:1px solid var(--line);border-radius:10px;margin:14px 0}
+.doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.ver{font:400 11.5px var(--mono);color:var(--dim);margin-top:40px}
+@media(max-width:860px){.help{grid-template-columns:1fr;gap:20px}.toc{position:static}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/syncscript-pro/" data-i18n="nav.back">← SyncScript Pro</a>
+      <div class="brand"><img src="/apps/syncscript-pro/icon.png" alt="">SyncScript Pro <span style="color:var(--dim);font-weight:500" data-i18n="nav.help">Help</span></div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="help">
+    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-import-and-edit-the-screenplay">Import and edit the screenplay</a><a class="l1" href="#en2-import-an-event-and-transcribe-the-clips">Import an Event and transcribe the clips</a><a class="l1" href="#en3-match-the-script-and-check-the-result">Match the script and check the result</a><a class="l1" href="#en4-edit-keywords-on-the-timeline">Edit keywords on the timeline</a><a class="l1" href="#en5-export-keywords-to-final-cut-pro">Export keywords to Final Cut Pro</a><a class="l1" href="#en6-sessions-and-keyboard-shortcuts">Sessions and keyboard shortcuts</a><a class="l1" href="#en7-reference">Reference</a><a class="l1" href="#en8-troubleshooting">Troubleshooting</a></div>
+    <article class="doc" data-lang="en" lang="en">
+<h1 id="en0-getting-started">Getting started</h1>
+<h2 id="en0-what-syncscript-pro-does">What SyncScript Pro does</h2>
+<p>SyncScript Pro matches the dialogue of your screenplay to the spoken words of your Final Cut Pro clips. It transcribes every clip of an exported Event on your Mac, matches the transcripts against the script lines and prepares the result as keywords on the clips. You review and correct the result on a small timeline before you export. Nothing is changed in Final Cut Pro until you export and send the result.</p>
+<h2 id="en0-before-you-start">Before you start</h2>
+<p>You need an Apple Silicon Mac running macOS 15 or later, and Final Cut Pro. The released app is built for Apple Silicon only. Your script must be a PDF with a text layer. Your clips must be in a Final Cut Pro Event as sync clips and/or multicam clips.</p>
+<p>The app checks your license over the internet, and the first transcription downloads the speech model (about 1.5 GB). A short loss of connection does not block the app.</p>
+<h2 id="en0-first-launch">First launch</h2>
+<p>On the first launch the app asks for your email address. Enter it and click <strong class="ui">Continue</strong>; the button stays disabled until the address looks valid. You cannot skip this step. The address is sent with the license check, so support can find and renew your trial.</p>
+<h2 id="en0-step-1-import-the-event-and-transcribe">Step 1: import the Event and transcribe</h2>
+<p>Export a single Event from Final Cut Pro as FCPXML. On page <strong class="ui">1. Transcribe</strong>, drop the file on the <strong class="ui">Import</strong> tile. Click <strong class="ui">Transcribe Clips</strong>. The first run downloads the speech model. When all clips are done, the app moves on to page <strong class="ui">2. Script</strong> by itself after about a second. See <a href="howto-transcribe-event.en.md">Import an Event and transcribe the clips</a>.</p>
+<h2 id="en0-step-2-import-the-script">Step 2: import the script</h2>
+<p>If the app has not moved on, click <strong class="ui">Continue to Script</strong>. On page <strong class="ui">2. Script</strong>, drop your screenplay PDF on the <strong class="ui">Script Input</strong> tile and select the scenes that you shot. See <a href="howto-import-script.en.md">Import and edit the screenplay</a>.</p>
+<h2 id="en0-step-3-match">Step 3: match</h2>
+<p>Click <strong class="ui">Continue to Match Captions</strong>, then <strong class="ui">Start Matching</strong> on page <strong class="ui">3. Matching</strong>. Look at the results, and fix lines without a caption. See <a href="howto-match-and-check.en.md">Match the script and check the result</a>.</p>
+<h2 id="en0-step-4-review-and-export">Step 4: review and export</h2>
+<p>Click <strong class="ui">Continue to Keywords</strong>. On page <strong class="ui">4. Keywords</strong> you see one clip at a time and can move, trim, replace and add keywords. When you are done, choose <strong class="ui">Export to Final Cut Pro…</strong> in the File menu and click <strong class="ui">Send to FCP</strong>, or <strong class="ui">Export FCPXML…</strong> to save a file. See <a href="howto-edit-on-timeline.en.md">Edit keywords on the timeline</a> and <a href="howto-export-to-final-cut.en.md">Export keywords to Final Cut Pro</a>.</p>
+<h1 id="en1-import-and-edit-the-screenplay">Import and edit the screenplay</h1>
+<h2 id="en1-import-the-screenplay-pdf">Import the screenplay PDF</h2>
+<p>Open page <strong class="ui">2. Script</strong>. In the <strong class="ui">Script Input</strong> tile, drop your screenplay PDF on the drop zone, or click <strong class="ui">Choose...</strong> and pick the file. Only PDF files are accepted. No other screenplay format can be imported; the <strong class="ui">Transfer Script</strong> menu described below only reads files that SyncScript Pro itself wrote.</p>
+<p>The PDF needs a text layer. The app has no text recognition (OCR): a scanned PDF without text produces no script lines.</p>
+<h2 id="en1-choose-the-scenes-to-work-with">Choose the scenes to work with</h2>
+<p>If the PDF contains more than one scene, the app lists the scenes it found and waits for your selection. Scene chips (<strong class="ui">All</strong> and one per scene, labeled like "Sz 42") appear for scenes that were detected from the clips of the imported Event and are also in the script. The <strong class="ui">Add scene:</strong> picker lists the other scenes found in the PDF. <strong class="ui">Review Clips</strong> opens the <strong class="ui">Scene Check</strong> window, which lists every clip with its scene. Every change of the scene selection parses the PDF again; your own edits are carried over.</p>
+<p>If you already imported a Final Cut Pro Event that carries scene metadata, the matching scenes are selected and parsed automatically.</p>
+<h2 id="en1-what-the-parser-recognizes">What the parser recognizes</h2>
+<p>The parser reads the PDF text and builds one script line for every block of dialogue:</p>
+<ul>
+<li>Scene headings are recognized when a line starts with <code>INNEN</code>, <code>AUSSEN</code>, <code>INT.</code>, <code>EXT.</code>, <code>INT/</code> or <code>I/E</code>, in capital letters.</li>
+<li>Scene numbers are taken from the numbers printed in the margin of the screenplay. A number only counts when a scene heading of the kinds above follows it. Lines before the first numbered scene get no scene number.</li>
+<li>A character cue is a line in capital letters of 2 to 30 characters. Narrator cues such as <code>ERZÄHLER</code> or <code>NARRATOR</code> are not imported, and a line that contains " und " or " &amp; " is not treated as a cue.</li>
+<li>The separation of dialogue from stage directions is a heuristic tuned for German-language screenplays.</li>
+</ul>
+<h2 id="en1-edit-the-script-lines">Edit the script lines</h2>
+<p>Script lines appear in the <strong class="ui">Script Lines</strong> panel. Two views are available: <strong class="ui">Block Editor</strong> (the default) and <strong class="ui">Classic List</strong>. The choice is remembered.</p>
+<p>In the <strong class="ui">Block Editor</strong> you click straight into a character name or dialogue to edit it, drag a line to reorder it within its scene, and press Return in the middle of a line to split it. Your edits are staged: click <strong class="ui">Apply</strong> to commit them or <strong class="ui">Discard</strong> to drop them. Switching to <strong class="ui">Classic List</strong> applies staged edits automatically.</p>
+<p>In the <strong class="ui">Classic List</strong> you double-click a line to edit it. Tick two or more lines with the merge-select buttons, then click <strong class="ui">Merge</strong> to join them into one line.</p>
+<h2 id="en1-add-a-scene-the-pdf-import-missed">Add a scene the PDF import missed</h2>
+<p>The <strong class="ui">Scene Selection</strong> tile appears once the PDF yielded scenes. In it, click <strong class="ui">Add Scene Manually</strong>. Enter the scene number (for example <code>42</code> or <code>62A</code>) and, optionally, paste the scene text: character names in capital letters on their own line, dialogue below. The scene heading and stage directions are skipped. Click <strong class="ui">Add Scene</strong>.</p>
+<p>Add one scene at a time. A scene that is already in the script, or that the PDF import found, is refused with a message in the sheet; so is pasted text that contains more than one scene. Deselecting the scene later removes its lines again, and Cmd+Z brings them back.</p>
+<h2 id="en1-move-an-edited-script-to-another-session">Move an edited script to another session</h2>
+<p>Use the <strong class="ui">Transfer Script</strong> menu above the script lines. <strong class="ui">Copy Script</strong> and <strong class="ui">Paste Script…</strong> move the lines between sessions through the system clipboard, so copying something else in between replaces them. <strong class="ui">Export Script…</strong> and <strong class="ui">Import Script…</strong> write and read a <code>.syncscriptlines</code> file. After a paste or an import, a sheet lets you choose which scenes to take.</p>
+<h1 id="en2-import-an-event-and-transcribe-the-clips">Import an Event and transcribe the clips</h1>
+<h2 id="en2-before-you-start">Before you start</h2>
+<p>SyncScript Pro reads an exported Final Cut Pro Event file. It does not read a live Final Cut Pro library. Sync your clips in Final Cut Pro first, as sync clips and/or multicam clips, and export a single Event as FCPXML.</p>
+<p>The source media of the clips must be reachable on disk.</p>
+<h2 id="en2-import-the-event">Import the Event</h2>
+<p>Open page <strong class="ui">1. Transcribe</strong>. In the <strong class="ui">Import</strong> tile, drop the Event file on the drop zone or click <strong class="ui">Choose File...</strong>. The picker accepts <code>.fcpxml</code>, <code>.fcpxmld</code> bundles and packages. Dropping a Final Cut Pro library (<code>.fcpbundle</code>) does nothing; export a single Event instead.</p>
+<p>Only the first Event in the file is imported. The tile shows the file name and a clip count; the count can differ from the number of clips that are transcribed, because only the first Event is imported. If the app finds no usable clips, it tells you to load an Event with sync clips and/or multicam clips.</p>
+<p>Importing a new Event clears the transcription, captions and matches of the current session.</p>
+<h2 id="en2-choose-the-language">Choose the language</h2>
+<p>In the <strong class="ui">Transcribe</strong> tile, set <strong class="ui">Language:</strong>. The default is English, and the choice is remembered across launches and per session. The list contains 25 European languages.</p>
+<p>The speech model itself is not given the language setting. The language is part of the transcript cache key, so changing it means the clips are transcribed again, and it is used as a hint when matching. Chinese, Japanese and Korean are not available.</p>
+<h2 id="en2-transcribe-the-clips">Transcribe the clips</h2>
+<p>Click <strong class="ui">Transcribe Clips</strong>. The engine is Parakeet v3 and is chosen automatically. Each take is transcribed once from its own source audio on your Mac; the captions are shifted to every camera angle and the multicam clip of that take. Clips without an audio track are skipped, and so are picture-only conform variants of a clip.</p>
+<p>The first run downloads the speech model (about 1.5 GB) and needs an internet connection. The button reads <strong class="ui">Loading speech model…</strong> while it loads.</p>
+<p>While the run is active the button shows the progress, and <strong class="ui">Cancel</strong> stops it. Clips that are already transcribed stay in the cache, so a later run resumes quickly.</p>
+<h2 id="en2-missing-media">Missing media</h2>
+<p>Before transcribing, the app checks that the source files can be reached. If files are unreachable (for example a disk that is not mounted), the run stops with a message that starts with the number of unreachable files and lists up to five file names. Mount the volume and run <strong class="ui">Transcribe Clips</strong> again.</p>
+<h2 id="en2-transcribe-again-from-the-source">Transcribe again from the source</h2>
+<p>After a run, <strong class="ui">Re-Transcribe from Source</strong> transcribes all clips again instead of reusing the cached results. Use it after updating the app. It takes as long as the first run. A confirmation dialog asks first.</p>
+<h2 id="en2-when-the-run-is-done">When the run is done</h2>
+<p>A green badge reports "Transcription complete" with the number of captions. When all clips succeeded and you are still on page <strong class="ui">1. Transcribe</strong>, the app moves on to page <strong class="ui">2. Script</strong> by itself after about a second; if it does not, click <strong class="ui">Continue to Script</strong>.</p>
+<p>If some clips failed, the badge is orange, the failed clips are named in a red message, and the app does not advance on its own.</p>
+<h1 id="en3-match-the-script-and-check-the-result">Match the script and check the result</h1>
+<h2 id="en3-start-matching">Start matching</h2>
+<p>Open page <strong class="ui">3. Matching</strong> and click <strong class="ui">Start Matching</strong>. Matching does not start by itself. The page first shows whether script lines and captions are loaded.</p>
+<p>Each script line is matched against the captions of the clips. Scenes are respected: a line is matched against the clips of its own scene, and a clip without scene metadata can match any selected line. Only lines that are switched on and have no variant suffix are matched.</p>
+<h2 id="en3-read-the-results">Read the results</h2>
+<p>The list on the left shows one row per active script line (lines that are switched off, and lines with a variant suffix, have no row): a colored dot, the line number, the character, the dialogue and a similarity percentage. A line without a match shows two dashes instead of a percentage, and a line with several matches shows a count badge. The status labels are <strong class="ui">Exact Match</strong>, <strong class="ui">Close Match</strong>, <strong class="ui">Minor Difference</strong>, <strong class="ui">Major Difference</strong>, <strong class="ui">No Match</strong>, <strong class="ui">Non-Dialogue</strong> and <strong class="ui">LLM Filled</strong>. <strong class="ui">LLM Filled</strong> appears only with the optional local LLM check described below.</p>
+<p>Select a row to see the matching captions, the clip name with timecode and the best similarity score in the <strong class="ui">Details</strong> tile.</p>
+<h2 id="en3-fix-a-line-that-found-no-caption">Fix a line that found no caption</h2>
+<p>Select a line that has no match and click <strong class="ui">Assign Caption Manually</strong>, then pick one of the unmatched captions in the sheet <strong class="ui">Assign Caption to Keyword</strong>. A manual assignment counts as an exact match. To drop a wrong match, remove the caption with the red x in the details.</p>
+<h2 id="en3-check-which-clips-landed-in-which-scene">Check which clips landed in which scene</h2>
+<p>On page <strong class="ui">2. Script</strong>, click <strong class="ui">Review Clips</strong> in the <strong class="ui">Scene Selection</strong> tile. The floating window <strong class="ui">Scene Check</strong> lists every detected clip with its scene, and flags clips without scene metadata and scenes that are not in the script. From there you can add a missing scene manually.</p>
+<h2 id="en3-use-the-lines-of-one-scene-for-the-clips-of-another">Use the lines of one scene for the clips of another</h2>
+<p>Sometimes clips are labeled with a scene number that shares its setup with another scene. In the <strong class="ui">Block Editor</strong>, right-click the scene tab of the script scene and choose <strong class="ui">Also Use for Clips of Scene…</strong>. Enter the scene numbers of the clips, separated by commas. A number such as <code>62</code> covers all clips of that scene; with a letter such as <code>62A</code> only that scene's clips are covered.</p>
+<p>A plain number is used by the manual tools of the timeline. Only a lettered scene such as <code>62A</code> changes which script lines automatic matching uses for those clips.</p>
+<p>To undo this, right-click the tab and choose <strong class="ui">Stop Using for Clips of</strong> followed by the scene.</p>
+<p>Aliases are saved with the session. They are not part of an exported script file.</p>
+<h2 id="en3-match-again">Match again</h2>
+<p>When results exist, the header shows a <strong class="ui">Re-Match Clip</strong> button (it reads <strong class="ui">Re-Match</strong> when it is not limited to one clip). It matches again the clip that is open in the timeline editor. Its menu offers <strong class="ui">Re-Match All Clips</strong>. If you edited the timeline in that scope, the app asks first; manual keyword edits are discarded, additional titles and crew-talk regions are kept.</p>
+<h2 id="en3-optional-local-llm-check">Optional: local LLM check</h2>
+<p>In Settings, tab <strong class="ui">LLM</strong>, <strong class="ui">Enable LLM Matching</strong> lets a local Ollama model double-check matches and drop captions it rejects. It is off by default and is switched off again at every launch. You must install and start Ollama yourself and pull the model; the app does not do that. It runs only when matching the whole session, not for <strong class="ui">Re-Match Clip</strong>.</p>
+<h1 id="en4-edit-keywords-on-the-timeline">Edit keywords on the timeline</h1>
+<h2 id="en4-the-timeline-at-a-glance">The timeline at a glance</h2>
+<p>Page <strong class="ui">4. Keywords</strong> shows one clip at a time: the video, a transport bar and four lanes. From top to bottom the lanes are the ruler with the <strong class="ui">Action Cut</strong> range, the lane for additional titles, the main lane with the waveform, keyword blocks and <strong class="ui">DISCARD</strong> blocks, and the captions lane.</p>
+<p>Use the chevrons in the transport bar or Option+Left / Option+Right to move to the previous or next clip.</p>
+<h2 id="en4-move-and-trim-keywords">Move and trim keywords</h2>
+<p>Drag a keyword block to move it. Drag an edge to trim it. Hold Option while dragging to duplicate it. Hold Cmd when you start dragging on empty space or on a keyword block to create a new keyword region instead; hold Cmd and Option to create a <strong class="ui">DISCARD</strong> region.</p>
+<p>Magnetic snapping is on by default; toggle it with N. Pressing Cmd after you have started moving or trimming a block turns it off for the rest of that drag. Blocks snap to the playhead, to the edges of keyword, <strong class="ui">DISCARD</strong> and title blocks, to caption edges and to detected speech onsets. The onsets are not drawn on the timeline.</p>
+<h2 id="en4-shift-blocks-together-magnetic-ripple">Shift blocks together (magnetic ripple)</h2>
+<p>Hold Shift, and no other modifier, when you start the drag. When you move a block, it and everything after it in the same lane travel together. When you trim the end of a block, its end and everything after it travel; when you trim the start, the rest of the block and everything after it shift. This works separately for the keyword lane and the title lane.</p>
+<h2 id="en4-set-the-action-cut">Set the Action Cut</h2>
+<p>Drag on an empty part of the ruler to set the range, or drag the green In and red Out markers. Dragging only moves the range. To also cut away what lies outside, press I and O at the playhead, or choose <strong class="ui">Set In Point</strong> and <strong class="ui">Set Out Point</strong> in the context menu: everything left of In and right of Out becomes <strong class="ui">DISCARD</strong>, as long as the point is more than 0.3 seconds from the clip edge. Keyword blocks inside the new <strong class="ui">DISCARD</strong> region are removed or shortened. <strong class="ui">Clear In/Out</strong> in the context menu of an empty spot removes the two points but keeps the <strong class="ui">DISCARD</strong> blocks.</p>
+<h2 id="en4-add-additional-titles">Add additional titles</h2>
+<p>Drag horizontally on the empty title lane, then pick an existing title or a script keyword, or type a new title and click <strong class="ui">OK</strong>. Without text the label is <code>Additional Title</code>.</p>
+<p>To add a title at the playhead, press T and choose from the list. Double-click a title to rename it. The context menu offers <strong class="ui">Rename</strong>, <strong class="ui">Copy</strong>, <strong class="ui">Replace with Existing Title</strong>, <strong class="ui">Convert to Keyword...</strong> and <strong class="ui">Remove</strong>.</p>
+<p>Additional titles are exported as ordinary keyword markers, not as Final Cut Pro titles, as long as <strong class="ui">Include Additional-Title Keywords</strong> is on in the export sheet.</p>
+<h2 id="en4-replace-a-keyword">Replace a keyword</h2>
+<p>Right-click a keyword block, or place the playhead on it and press R. The dialog <strong class="ui">Replace with Existing Keyword</strong> lists the other keywords of all scenes, grouped by scene; filter by number, character or dialogue, move with the arrow keys and press Return.</p>
+<h2 id="en4-mark-a-clip-group-as-done">Mark a clip group as done</h2>
+<p>Click the checkmark in the transport bar, or press Cmd+D. In a group marked as done, edits on the timeline are refused with a message; uncheck it to change it again. Selecting and copying still work, and matching again can still overwrite a done group.</p>
+<h1 id="en5-export-keywords-to-final-cut-pro">Export keywords to Final Cut Pro</h1>
+<h2 id="en5-what-the-export-contains">What the export contains</h2>
+<p>The export writes keywords only. It re-saves your imported Event with keyword markers on the browser clips you worked on, and on clips that share a take with them: one marker per dialogue line, plus optional markers for additional titles and the Action Cut. Dialogue inside <strong class="ui">DISCARD</strong> regions is not exported. It does not create Final Cut Pro titles, captions or a timeline, and projects in the Event are left out. Additional titles are written as ordinary keyword markers.</p>
+<p>The result is a new Event named like the source Event with " - SyncScript Pro" appended, so it does not merge into your original Event.</p>
+<h2 id="en5-open-the-export-sheet">Open the export sheet</h2>
+<p>On page <strong class="ui">4. Keywords</strong>, choose <strong class="ui">Export to Final Cut Pro…</strong> in the File menu (Cmd+E) or click <strong class="ui">Export to FCP</strong> in the bar below. The command is available once matching results exist and the timeline editor is open.</p>
+<h2 id="en5-choose-what-to-export">Choose what to export</h2>
+<ul>
+<li><strong class="ui">All Clips</strong> exports every clip. <strong class="ui">Selected Clip Groups Only</strong> exports only the groups you pick with <strong class="ui">Choose Groups…</strong>; the other clips are not written to the file at all. By default the groups marked as done are selected. This choice is shown when your clips form groups.</li>
+<li><strong class="ui">Include Additional-Title Keywords</strong> adds one marker per additional title. It is on by default.</li>
+<li><strong class="ui">Include Action Cut Keyword</strong> adds a marker named Action Cut for each kept range. It is on by default.</li>
+<li><strong class="ui">Mark Outside Action Cut as Rejected</strong> sets a Rejected rating on every region outside the Action Cut. It is off by default.</li>
+<li><strong class="ui">Keyword Handles</strong> extend dialogue keywords, and the Action Cut and Rejected ranges, by the given number of frames at the start and end. The preset buttons are 0f, 12f, 24f and 48f and set both values. Additional-title keywords get no handles.</li>
+</ul>
+<p>Your choices of the toggles and handles can be saved with <strong class="ui">Presets</strong>. Defaults for new exports are in Settings, tab <strong class="ui">Export</strong>.</p>
+<h2 id="en5-send-to-final-cut-pro">Send to Final Cut Pro</h2>
+<p>Click <strong class="ui">Send to FCP</strong>. The app writes a temporary FCPXML file and opens it with Final Cut Pro. Final Cut Pro then asks which library to import into. Complete that dialog, then check the Keywords field in the Info Inspector.</p>
+<p>The app reports success when the handoff happened, not when the import in Final Cut Pro has finished. Final Cut Pro must be installed.</p>
+<h2 id="en5-save-the-fcpxml-as-a-file">Save the FCPXML as a file</h2>
+<p>Click <strong class="ui">Export FCPXML…</strong> instead to choose where the file is saved, for example to send it to someone. While a session is open, every export also writes a diagnostics copy into the session folder (or the diagnostics folder you chose), and a copy into the <strong class="ui">Default export location</strong> if you set one in Settings.</p>
+<h2 id="en5-how-keywords-are-written">How keywords are written</h2>
+<p>A dialogue keyword reads like <code>001 CHARACTER dialogue</code>. Commas are replaced by a look-alike character, because Final Cut Pro keywords cannot contain commas; this is the setting <strong class="ui">Replace commas with alternative character</strong>, which is on by default. The case of character names follows <strong class="ui">Character name format:</strong> (uppercase by default). Both settings are in Settings, tab <strong class="ui">Parsing</strong>.</p>
+<h1 id="en6-sessions-and-keyboard-shortcuts">Sessions and keyboard shortcuts</h1>
+<h2 id="en6-save-and-reopen-your-work">Save and reopen your work</h2>
+<p>Your work lives in sessions. Choose <strong class="ui">Save Session</strong> in the File menu (Cmd+S) to save. Once the session contains script lines, the app also saves it automatically every five seconds while it is active, and the most recent session is reopened at launch.</p>
+<p>To reopen another session, click it in the session list in the sidebar. There is no separate open command. The sidebar buttons create a new session, save the current one and import a session from a file. In the context menu of a session you can rename, export or delete it.</p>
+<h2 id="en6-move-a-session-to-another-mac">Move a session to another Mac</h2>
+<p>Choose <strong class="ui">Export Current Session…</strong> in the File menu. A session is a folder with the extension <code>.syncscript</code>. It does not contain your media; it stores the paths of the source files, so they must be reachable on the other Mac. Import it with the import button in the session sidebar; the import always creates a new session and opens it.</p>
+<h2 id="en6-start-a-new-session">Start a new session</h2>
+<p>The new-session dialog offers <strong class="ui">New (blank)</strong> and <strong class="ui">New (keep Script)</strong>. The second keeps the loaded screenplay PDF and its scene list, but the script lines are cleared; parse them again on page <strong class="ui">2. Script</strong>. Both start an empty session on page <strong class="ui">1. Transcribe</strong>.</p>
+<h2 id="en6-change-a-keyboard-shortcut">Change a keyboard shortcut</h2>
+<p>Open Settings and choose the <strong class="ui">Shortcuts</strong> tab. Click the key field of an action, press the new combination and the shortcut is set; Esc cancels. The trash button clears a shortcut. If a combination is already used, the app asks before rebinding it. <strong class="ui">Reset all to defaults</strong> restores the factory shortcuts after a confirmation.</p>
+<p><strong class="ui">Export…</strong> saves your shortcuts as a JSON file. <strong class="ui">Import…</strong> merges a file into your shortcuts; actions that the file does not mention go back to their default.</p>
+<p>Some gestures are fixed and cannot be rebound: J, K and L for shuttle, the number keys to assign keywords, Cmd+Z and Cmd+Shift+Z for undo and redo.</p>
+<h1 id="en7-reference">Reference</h1>
+<h2 id="en7-requirements-and-limits">Requirements and limits</h2>
+<ul>
+<li>macOS 15.0 or later. The released app is built for Apple Silicon only.</li>
+<li>Final Cut Pro is required to use the result. The app reads and writes FCPXML.</li>
+<li>The screenplay must be a PDF with a text layer. The app has no OCR and imports no other screenplay format.</li>
+<li>The Event must be an exported <code>.fcpxml</code> or <code>.fcpxmld</code> file (or an Event dragged from Final Cut Pro) with sync clips and/or multicam clips. Only the first Event of a file is imported.</li>
+<li>Transcription uses Parakeet v3 with 25 European languages. Chinese, Japanese and Korean are not available.</li>
+<li>The export contains keywords only: no Final Cut Pro titles, no captions, no timeline.</li>
+</ul>
+<h2 id="en7-pages">Pages</h2>
+<ul>
+<li><strong class="ui">1. Transcribe</strong> — import the Event and transcribe the clips.</li>
+<li><strong class="ui">2. Script</strong> — import the screenplay PDF, select scenes, edit script lines.</li>
+<li><strong class="ui">3. Matching</strong> — match script lines to captions and check the result.</li>
+<li><strong class="ui">4. Keywords</strong> — timeline editor and export.</li>
+</ul>
+<h2 id="en7-menus">Menus</h2>
+<ul>
+<li><strong class="ui">Check for Updates…</strong> in the app menu checks for a new version. The app also checks automatically once a day.</li>
+<li><strong class="ui">Buy SyncScript Pro</strong> in the app menu opens the product page in the browser. It is shown until a paid or complimentary license is active.</li>
+<li><strong class="ui">Reset Everything...</strong> in the File menu (Shift+Cmd+R) clears the transcription, the script and keywords, and the matches and titles after a confirmation. It cannot be undone.</li>
+<li><strong class="ui">Export to Final Cut Pro…</strong> in the File menu (Cmd+E) opens the export sheet. It is available on page <strong class="ui">4. Keywords</strong> once matching results exist.</li>
+<li><strong class="ui">Save Session</strong> in the File menu (Cmd+S) saves the current session.</li>
+<li><strong class="ui">Export Current Session…</strong> in the File menu writes the session as a <code>.syncscript</code> folder.</li>
+<li><strong class="ui">Send Feedback…</strong> in the Help menu opens the feedback sheet.</li>
+</ul>
+<h2 id="en7-settings">Settings</h2>
+<p>Open Settings with Cmd+comma. The tabs are Parsing, Display, Export, LLM, License, Shortcuts and About. A General tab (with <strong class="ui">Auto-advance to next phase</strong>) is shown only in Developer Mode, and an Advanced tab only while you hold Option; automatic advancing after transcription is on by default. The setting <strong class="ui">Auto-label FCPX rejects as Discard</strong> sits in the section FCP Import of the Parsing tab.</p>
+<ul>
+<li><strong class="ui">Replace commas with alternative character</strong> — Standard: on. Final Cut Pro keywords cannot contain commas; this replaces them with a look-alike character on export.</li>
+<li><strong class="ui">Character name format:</strong> — Standard: UPPERCASE. Options: UPPERCASE, Title Case, As-is. Applied on export.</li>
+<li><strong class="ui">Trim whitespace from dialogue</strong> — Standard: on. Applied when the script is parsed.</li>
+<li><strong class="ui">Auto-label FCPX rejects as Discard</strong> — Standard: off. Applies to clips that are matched afterwards.</li>
+<li><strong class="ui">Default export location:</strong> — Standard: empty. When set, every export also writes a copy to this folder.</li>
+<li><strong class="ui">Include timestamp in filename</strong> — Standard: on. Applies to that copy.</li>
+<li><strong class="ui">Include Additional-Title Keywords</strong> — Standard: on. Start value of the export sheet.</li>
+<li><strong class="ui">Include Action Cut Keyword</strong> — Standard: on. Start value of the export sheet.</li>
+<li><strong class="ui">Mark Outside Action Cut as Rejected</strong> — Standard: off. Start value of the export sheet.</li>
+<li><strong class="ui">Start Handle:</strong> and <strong class="ui">End Handle:</strong> — Standard: 0 frames. Start values of the export sheet.</li>
+<li><strong class="ui">Enable LLM Matching</strong> — Standard: off, and off again after every launch. See <a href="howto-match-and-check.en.md">Match the script and check the result</a>.</li>
+</ul>
+<h2 id="en7-keyboard-shortcuts-defaults">Keyboard shortcuts (defaults)</h2>
+<p>All of the following can be rebound in Settings, tab <strong class="ui">Shortcuts</strong>, except the fixed gestures in the last item.</p>
+<ul>
+<li>Playback: Space plays and pauses. Left and Right arrows step one frame; Shift with the arrows steps by 24 frames. Option with the arrows jumps to the previous or next clip. Up and Down jump to the previous or next edit point. Tab and Shift+Tab jump to the next or previous caption.</li>
+<li>Marking: I sets the in-point, O sets the out-point. Return opens the keyword popup. Delete removes the selected keyword. Esc deselects. T inserts an existing additional title at the playhead. R opens the picker to replace the keyword at the playhead. C toggles Discard at the playhead.</li>
+<li>Zoom and view: plus and minus zoom, Shift+Z zooms to fit, N toggles magnetic snapping, S toggles skimming.</li>
+<li>Session: Cmd+S saves, Cmd+D marks the current clip group as done, Cmd+B splits the block at the playhead, Cmd+C and Cmd+V copy and paste.</li>
+<li>Fixed gestures: J, K and L shuttle; the number keys assign keywords 1 to 10 (with Shift: 11 to 20), acting on the selected caption; Cmd+Z and Cmd+Shift+Z undo and redo. These cannot be rebound.</li>
+</ul>
+<h2 id="en7-files-the-app-creates">Files the app creates</h2>
+<ul>
+<li>Sessions: <code>~/Library/Application Support/SyncScript Pro/Sessions/&lt;id&gt;.syncscript</code>.</li>
+<li>Speech models: in the Application Support folder of your user Library.</li>
+<li>Transcript cache: <code>~/Library/Application Support/SyncScriptPro/TranscriptCache</code>.</li>
+<li>Export presets: <code>~/Library/Application Support/SyncScript Pro/export-presets.json</code>.</li>
+<li>Shortcuts: <code>~/Library/Application Support/SyncScript Pro/keyboard-bindings.json</code>.</li>
+<li>Script files you export: <code>.syncscriptlines</code>.</li>
+</ul>
+<h2 id="en7-network-use">Network use</h2>
+<p>Transcription, matching and editing run on your Mac. The app contacts these hosts:</p>
+<ul>
+<li><code>api.malibureview.app</code> for the license check (when the main window appears, then daily; it sends a device hash, the app version and your email address), for redeeming or deactivating a license key, for update checks and for feedback you send.</li>
+<li><code>huggingface.co</code>, to download the speech models on first use.</li>
+<li><code>localhost:11434</code> only if you enable the local LLM.</li>
+</ul>
+<p>Feedback and diagnostics are sent only when you click the send button; if sending fails, the report is kept and sent automatically later. Buying a license, the license portal and the legal pages open in your browser.</p>
+<h1 id="en8-troubleshooting">Troubleshooting</h1>
+<h2 id="en8-no-clips-are-found-after-importing-the-event">No clips are found after importing the Event</h2>
+<p>The app reports "No synced clips found in the Event" when it finds no clips it can import in the file. Sync your clips in Final Cut Pro first, as sync clips and/or multicam clips. Dropping a Final Cut Pro library (<code>.fcpbundle</code>) does nothing.</p>
+<p>Export a single Event as FCPXML and drop that file instead.</p>
+<h2 id="en8-the-run-stops-with-media-file-s-unreachable">The run stops with "media file(s) unreachable"</h2>
+<p>The source files of some clips cannot be reached, usually because a disk is not mounted. The message names the volumes and up to five file names. Mount the volume and click <strong class="ui">Transcribe Clips</strong> again; finished clips are not transcribed again.</p>
+<h2 id="en8-the-speech-model-does-not-load">The speech model does not load</h2>
+<p>The first run downloads the speech models (about 1.5 GB for the main model) and needs an internet connection and enough free disk space. A failure is shown in a red message that starts with "Failed to load transcription models" and gives the reason. Connect, free space and click <strong class="ui">Transcribe Clips</strong> again.</p>
+<h2 id="en8-some-clips-failed-to-transcribe">Some clips failed to transcribe</h2>
+<p>The result badge turns orange and reads "Transcription incomplete" with the number of failed clips. A red message names up to five of the failed clips and the reason, and the app does not move on to page <strong class="ui">2. Script</strong>. Click <strong class="ui">Transcribe Clips</strong> again to retry.</p>
+<h2 id="en8-the-script-shows-no-lines-after-importing-the-pdf">The script shows no lines after importing the PDF</h2>
+<p>First check the status text. If it reads "PDF loaded: N scenes found. Select scenes and click Parse.", no scene is selected yet: pick scenes with the chips or the <strong class="ui">Add scene:</strong> picker.</p>
+<p>If it reads "Parsed 0 script lines from PDF", the usual cause is a PDF without a text layer, such as a scan. The app has no text recognition. Use a PDF exported from your screenwriting software.</p>
+<p>Also check the scene headings: the parser recognizes headings that start with <code>INNEN</code>, <code>AUSSEN</code>, <code>INT.</code>, <code>EXT.</code>, <code>INT/</code> or <code>I/E</code> in capital letters. For a scene that was not found, use <strong class="ui">Add Scene Manually</strong>.</p>
+<h2 id="en8-a-character-s-lines-are-missing">A character's lines are missing</h2>
+<p>Narrator cues (<code>ERZÄHLER</code>, <code>NARRATOR</code>) and words such as <code>ENDE</code>, <code>FADE</code> or <code>CUT</code> are not recognized as characters, and neither are cues that contain " und " or " &amp; ". The text below such a cue is not imported under its own name and may end up in the dialogue of the previous speaker. Check these lines and fix them by hand in the <strong class="ui">Block Editor</strong> or the <strong class="ui">Classic List</strong>.</p>
+<h2 id="en8-keywords-would-land-in-the-wrong-place">Keywords would land in the wrong place</h2>
+<p>An orange warning says the captions come from an older version with a sound-sync bug. This appears for sessions that were saved with an older build. Click <strong class="ui">Transcribe Clips</strong> again, run matching again and then export.</p>
+<h2 id="en8-export-to-final-cut-pro-is-greyed-out">Export to Final Cut Pro is greyed out</h2>
+<p>The command is available only on page <strong class="ui">4. Keywords</strong>, after matching results exist and with the timeline editor open. In the export sheet both buttons are disabled while an export runs, when there is no result, or when <strong class="ui">Selected Clip Groups Only</strong> is chosen and no group is selected.</p>
+<h2 id="en8-send-to-fcp-shows-no-error-but-nothing-appears">Send to FCP shows no error but nothing appears</h2>
+<p>The app reports the handoff, not the import. Final Cut Pro asks which library to import into; complete that dialog. The keywords are on the clips of a new Event named like your source Event with " - SyncScript Pro" appended. If Final Cut Pro is not installed, the export fails with an error.</p>
+<h2 id="en8-the-export-reports-no-source-event">The export reports "No source event"</h2>
+<p>The message says to import your Event on the Transcribe page first. It appears when the session holds no imported Event. Import the Event again on page <strong class="ui">1. Transcribe</strong>, click <strong class="ui">Transcribe Clips</strong> (clips that are already transcribed come from the cache) and run matching again.</p>
+<h2 id="en8-the-app-is-blocked-after-the-trial-or-shows-a-license-message">The app is blocked after the trial or shows a license message</h2>
+<p>On first launch the app asks for your email address before anything else; see <a href="getting-started.en.md">Getting started</a>.</p>
+<p>The blocked screen shows the reason in plain words, for example that the trial period has ended, that the license has expired or has been revoked, that this version is no longer supported, or that the app has been offline too long. From there you can buy a license, check again, redeem a license key with <strong class="ui">I already have a license</strong>, or quit.</p>
+<p>If the message says the license could not be verified yet, connect to the internet once and click <strong class="ui">Check Again</strong>. A short loss of connection alone does not block the app.</p>
+<h2 id="en8-send-a-problem-report">Send a problem report</h2>
+<p>Choose <strong class="ui">Send Feedback…</strong> in the Help menu, describe the problem and click <strong class="ui">Send Feedback</strong>. The report includes your macOS account name, the app and macOS version, counts of keywords and captions, the engine, audio and video file names, the selected scenes and the session ID; the email field is prefilled with the address you entered at first launch and is sent unless you clear it, and a screenshot is added only if you switch it on. If you are offline, the report is saved and sent later.</p>
+<p>The <strong class="ui">Diagnostics</strong> button in the sidebar shows whether the script and match baselines were saved and which export is the latest. <strong class="ui">Send Diagnostics Ticket</strong> sends the two baselines and the latest export with its manifest. These files contain script dialogue, clip names and media references.</p>
+<p class="ver">Written for version 1.2.85.</p>
+    </article>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-drehbuch-importieren-und-bearbeiten">Drehbuch importieren und bearbeiten</a><a class="l1" href="#de2-event-importieren-und-die-clips-transkribieren">Event importieren und die Clips transkribieren</a><a class="l1" href="#de3-skript-abgleichen-und-das-ergebnis-pr-fen">Skript abgleichen und das Ergebnis prüfen</a><a class="l1" href="#de4-keywords-auf-der-timeline-bearbeiten">Keywords auf der Timeline bearbeiten</a><a class="l1" href="#de5-keywords-nach-final-cut-pro-exportieren">Keywords nach Final Cut Pro exportieren</a><a class="l1" href="#de6-sessions-und-tastenk-rzel">Sessions und Tastenkürzel</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
+    <article class="doc" data-lang="de" hidden lang="de">
+<h1 id="de0-erste-schritte">Erste Schritte</h1>
+<h2 id="de0-was-syncscript-pro-macht">Was SyncScript Pro macht</h2>
+<p>SyncScript Pro ordnet die Dialoge deines Drehbuchs den gesprochenen Worten deiner Final-Cut-Pro-Clips zu. Die App transkribiert auf deinem Mac jeden Clip eines exportierten Events, gleicht die Transkripte mit den Skriptzeilen ab und bereitet das Ergebnis als Keywords an den Clips vor. Das Ergebnis prüfst und korrigierst du vor dem Export auf einer kleinen Timeline. In Final Cut Pro wird nichts verändert, bevor du das Ergebnis exportierst und sendest.</p>
+<h2 id="de0-bevor-du-anf-ngst">Bevor du anfängst</h2>
+<p>Du brauchst einen Mac mit Apple Silicon und macOS 15 oder neuer sowie Final Cut Pro. Die veröffentlichte App wird nur für Apple Silicon gebaut. Dein Skript muss ein PDF mit Textebene sein. Deine Clips müssen als Sync-Clips und/oder Multicam-Clips in einem Final-Cut-Pro-Event liegen.</p>
+<p>Die App prüft deine Lizenz über das Internet, und die erste Transkription lädt das Sprachmodell herunter (etwa 1,5 GB). Ein kurzer Verbindungsabbruch blockiert die App nicht.</p>
+<h2 id="de0-erster-start">Erster Start</h2>
+<p>Beim ersten Start fragt die App nach deiner E-Mail-Adresse. Gib sie ein und klicke auf <strong class="ui">Continue</strong>; die Schaltfläche bleibt deaktiviert, bis die Adresse gültig aussieht. Du kannst diesen Schritt nicht überspringen. Die Adresse wird mit der Lizenzprüfung gesendet, damit der Support deine Testphase finden und verlängern kann.</p>
+<h2 id="de0-schritt-1-event-importieren-und-transkribieren">Schritt 1: Event importieren und transkribieren</h2>
+<p>Exportiere ein einzelnes Event aus Final Cut Pro als FCPXML. Ziehe die Datei auf Seite <strong class="ui">1. Transcribe</strong> auf die Kachel <strong class="ui">Import</strong>. Klicke auf <strong class="ui">Transcribe Clips</strong>. Beim ersten Durchlauf wird das Sprachmodell heruntergeladen. Sobald alle Clips fertig sind, wechselt die App nach etwa einer Sekunde von selbst zu Seite <strong class="ui">2. Script</strong>. Siehe <a href="howto-transcribe-event.de.md">Event importieren und die Clips transkribieren</a>.</p>
+<h2 id="de0-schritt-2-skript-importieren">Schritt 2: Skript importieren</h2>
+<p>Wenn die App nicht weitergewechselt ist, klicke auf <strong class="ui">Continue to Script</strong>. Ziehe auf Seite <strong class="ui">2. Script</strong> dein Drehbuch-PDF auf die Kachel <strong class="ui">Script Input</strong> und wähle die Szenen aus, die du gedreht hast. Siehe <a href="howto-import-script.de.md">Drehbuch importieren und bearbeiten</a>.</p>
+<h2 id="de0-schritt-3-abgleichen">Schritt 3: Abgleichen</h2>
+<p>Klicke auf <strong class="ui">Continue to Match Captions</strong> und danach auf Seite <strong class="ui">3. Matching</strong> auf <strong class="ui">Start Matching</strong>. Sieh dir die Ergebnisse an und korrigiere Zeilen ohne Caption. Siehe <a href="howto-match-and-check.de.md">Skript abgleichen und das Ergebnis prüfen</a>.</p>
+<h2 id="de0-schritt-4-pr-fen-und-exportieren">Schritt 4: Prüfen und exportieren</h2>
+<p>Klicke auf <strong class="ui">Continue to Keywords</strong>. Auf Seite <strong class="ui">4. Keywords</strong> siehst du jeweils einen Clip und kannst Keywords verschieben, kürzen, ersetzen und hinzufügen. Wenn du fertig bist, wähle im Menü „File“ den Befehl <strong class="ui">Export to Final Cut Pro…</strong> und klicke auf <strong class="ui">Send to FCP</strong>, oder wähle <strong class="ui">Export FCPXML…</strong>, um eine Datei zu speichern. Siehe <a href="howto-edit-on-timeline.de.md">Keywords auf der Timeline bearbeiten</a> und <a href="howto-export-to-final-cut.de.md">Keywords nach Final Cut Pro exportieren</a>.</p>
+<h1 id="de1-drehbuch-importieren-und-bearbeiten">Drehbuch importieren und bearbeiten</h1>
+<h2 id="de1-drehbuch-pdf-importieren">Drehbuch-PDF importieren</h2>
+<p>Öffne Seite <strong class="ui">2. Script</strong>. Ziehe in der Kachel <strong class="ui">Script Input</strong> dein Drehbuch-PDF auf die Ablagefläche oder klicke auf <strong class="ui">Choose...</strong> und wähle die Datei aus. Es werden nur PDF-Dateien akzeptiert. Kein anderes Drehbuchformat lässt sich importieren; das unten beschriebene Menü <strong class="ui">Transfer Script</strong> liest nur Dateien, die SyncScript Pro selbst geschrieben hat.</p>
+<p>Das PDF braucht eine Textebene. Die App hat keine Texterkennung (OCR): Ein gescanntes PDF ohne Text ergibt keine Skriptzeilen.</p>
+<h2 id="de1-szenen-zum-arbeiten-ausw-hlen">Szenen zum Arbeiten auswählen</h2>
+<p>Enthält das PDF mehr als eine Szene, listet die App die gefundenen Szenen auf und wartet auf deine Auswahl. Szenen-Chips (<strong class="ui">All</strong> und einer pro Szene, beschriftet wie „Sz 42“) erscheinen für Szenen, die aus den Clips des importierten Events erkannt wurden und auch im Skript stehen. Das Auswahlfeld <strong class="ui">Add scene:</strong> listet die übrigen im PDF gefundenen Szenen. <strong class="ui">Review Clips</strong> öffnet das Fenster <strong class="ui">Scene Check</strong>, das jeden Clip mit seiner Szene auflistet. Jede Änderung der Szenenauswahl liest das PDF erneut ein; deine eigenen Änderungen bleiben dabei erhalten.</p>
+<p>Hast du bereits ein Final-Cut-Pro-Event importiert, das Szenen-Metadaten enthält, werden die passenden Szenen automatisch ausgewählt und eingelesen.</p>
+<h2 id="de1-was-der-parser-erkennt">Was der Parser erkennt</h2>
+<p>Der Parser liest den PDF-Text und erzeugt für jeden Dialogblock eine Skriptzeile:</p>
+<ul>
+<li>Szenenüberschriften werden erkannt, wenn eine Zeile in Großbuchstaben mit <code>INNEN</code>, <code>AUSSEN</code>, <code>INT.</code>, <code>EXT.</code>, <code>INT/</code> oder <code>I/E</code> beginnt.</li>
+<li>Szenennummern stammen aus den Nummern, die am Rand des Drehbuchs stehen. Eine Nummer zählt nur, wenn danach eine Szenenüberschrift der genannten Art folgt. Zeilen vor der ersten nummerierten Szene bekommen keine Szenennummer.</li>
+<li>Eine Figurenzeile (Character Cue) ist eine Zeile in Großbuchstaben mit 2 bis 30 Zeichen. Erzähler-Zeilen wie <code>ERZÄHLER</code> oder <code>NARRATOR</code> werden nicht importiert, und eine Zeile, die " und " oder " &amp; " enthält, wird nicht als Figurenzeile behandelt.</li>
+<li>Die Trennung von Dialog und Regieanweisungen ist eine Heuristik, die auf deutschsprachige Drehbücher abgestimmt ist.</li>
+</ul>
+<h2 id="de1-skriptzeilen-bearbeiten">Skriptzeilen bearbeiten</h2>
+<p>Die Skriptzeilen erscheinen im Bereich <strong class="ui">Script Lines</strong>. Es gibt zwei Ansichten: <strong class="ui">Block Editor</strong> (Standard) und <strong class="ui">Classic List</strong>. Deine Wahl wird gespeichert.</p>
+<p>Im <strong class="ui">Block Editor</strong> klickst du direkt in einen Figurennamen oder Dialog, um ihn zu bearbeiten, ziehst eine Zeile, um sie innerhalb ihrer Szene umzusortieren, und drückst die Eingabetaste mitten in einer Zeile, um sie zu teilen. Deine Änderungen werden zunächst vorgemerkt: Klicke auf <strong class="ui">Apply</strong>, um sie zu übernehmen, oder auf <strong class="ui">Discard</strong>, um sie zu verwerfen. Beim Wechsel zu <strong class="ui">Classic List</strong> werden vorgemerkte Änderungen automatisch übernommen.</p>
+<p>In der <strong class="ui">Classic List</strong> bearbeitest du eine Zeile per Doppelklick. Hake zwei oder mehr Zeilen mit den Auswahlschaltflächen zum Zusammenführen an und klicke dann auf <strong class="ui">Merge</strong>, um sie zu einer Zeile zu verbinden.</p>
+<h2 id="de1-eine-szene-erg-nzen-die-der-pdf-import-bersehen-hat">Eine Szene ergänzen, die der PDF-Import übersehen hat</h2>
+<p>Die Kachel <strong class="ui">Scene Selection</strong> erscheint, sobald das PDF Szenen geliefert hat. Klicke darin auf <strong class="ui">Add Scene Manually</strong>. Gib die Szenennummer ein (zum Beispiel <code>42</code> oder <code>62A</code>) und füge optional den Szenentext ein: Figurennamen in Großbuchstaben in einer eigenen Zeile, darunter der Dialog. Die Szenenüberschrift und Regieanweisungen werden übersprungen. Klicke auf <strong class="ui">Add Scene</strong>.</p>
+<p>Ergänze jeweils eine Szene. Eine Szene, die schon im Skript steht oder die der PDF-Import gefunden hat, wird mit einer Meldung im Dialogfenster abgelehnt; das gilt auch für eingefügten Text, der mehr als eine Szene enthält. Wählst du die Szene später ab, werden ihre Zeilen wieder entfernt, und mit Cmd+Z kommen sie zurück.</p>
+<h2 id="de1-ein-bearbeitetes-skript-in-eine-andere-session-bertragen">Ein bearbeitetes Skript in eine andere Session übertragen</h2>
+<p>Nutze das Menü <strong class="ui">Transfer Script</strong> über den Skriptzeilen. <strong class="ui">Copy Script</strong> und <strong class="ui">Paste Script…</strong> übertragen die Zeilen über die Systemzwischenablage zwischen Sessions; wenn du dazwischen etwas anderes kopierst, werden sie ersetzt. <strong class="ui">Export Script…</strong> und <strong class="ui">Import Script…</strong> schreiben und lesen eine <code>.syncscriptlines</code>-Datei. Nach dem Einfügen oder Importieren kannst du in einem Dialogfenster wählen, welche Szenen übernommen werden.</p>
+<h1 id="de2-event-importieren-und-die-clips-transkribieren">Event importieren und die Clips transkribieren</h1>
+<h2 id="de2-bevor-du-anf-ngst">Bevor du anfängst</h2>
+<p>SyncScript Pro liest eine exportierte Final-Cut-Pro-Event-Datei. Eine laufende Final-Cut-Pro-Mediathek liest es nicht. Synchronisiere deine Clips zuerst in Final Cut Pro, als Sync-Clips und/oder Multicam-Clips, und exportiere ein einzelnes Event als FCPXML.</p>
+<p>Die Quellmedien der Clips müssen auf der Festplatte erreichbar sein.</p>
+<h2 id="de2-event-importieren">Event importieren</h2>
+<p>Öffne Seite <strong class="ui">1. Transcribe</strong>. Ziehe in der Kachel <strong class="ui">Import</strong> die Event-Datei auf die Ablagefläche oder klicke auf <strong class="ui">Choose File...</strong>. Die Dateiauswahl akzeptiert <code>.fcpxml</code>, <code>.fcpxmld</code>-Bundles und Pakete. Eine Final-Cut-Pro-Mediathek (<code>.fcpbundle</code>) auf die Fläche zu ziehen bewirkt nichts; exportiere stattdessen ein einzelnes Event.</p>
+<p>Es wird nur das erste Event der Datei importiert. Die Kachel zeigt den Dateinamen und eine Clip-Anzahl; die Anzahl kann von der Zahl der transkribierten Clips abweichen, weil nur das erste Event importiert wird. Findet die App keine verwendbaren Clips, fordert sie dich auf, ein Event mit Sync-Clips und/oder Multicam-Clips zu laden.</p>
+<p>Wenn du ein neues Event importierst, werden Transkription, Captions und Matches der aktuellen Session gelöscht.</p>
+<h2 id="de2-sprache-w-hlen">Sprache wählen</h2>
+<p>Stelle in der Kachel <strong class="ui">Transcribe</strong> den Wert <strong class="ui">Language:</strong> ein. Standard ist Englisch; die Wahl wird über Programmstarts hinweg und pro Session gespeichert. Die Liste enthält 25 europäische Sprachen.</p>
+<p>Das Sprachmodell selbst bekommt die Spracheinstellung nicht. Die Sprache ist Teil des Schlüssels für den Transkript-Cache, eine Änderung führt also dazu, dass die Clips erneut transkribiert werden, und sie dient beim Abgleich als Hinweis. Chinesisch, Japanisch und Koreanisch stehen nicht zur Verfügung.</p>
+<h2 id="de2-clips-transkribieren">Clips transkribieren</h2>
+<p>Klicke auf <strong class="ui">Transcribe Clips</strong>. Die Engine ist Parakeet v3 und wird automatisch gewählt. Jeder Take wird einmal aus seinem eigenen Quellaudio auf deinem Mac transkribiert; die Captions werden auf jeden Kamerawinkel und den Multicam-Clip dieses Takes übertragen. Clips ohne Audiospur werden übersprungen, ebenso reine Bild-Conform-Varianten eines Clips.</p>
+<p>Beim ersten Durchlauf wird das Sprachmodell heruntergeladen (etwa 1,5 GB); dafür brauchst du eine Internetverbindung. Während des Ladens steht auf der Schaltfläche <strong class="ui">Loading speech model…</strong>.</p>
+<p>Solange der Durchlauf aktiv ist, zeigt die Schaltfläche den Fortschritt, und <strong class="ui">Cancel</strong> bricht ihn ab. Bereits transkribierte Clips bleiben im Cache, ein späterer Durchlauf macht also schnell dort weiter.</p>
+<h2 id="de2-fehlende-medien">Fehlende Medien</h2>
+<p>Vor dem Transkribieren prüft die App, ob die Quelldateien erreichbar sind. Sind Dateien nicht erreichbar (zum Beispiel weil ein Laufwerk nicht eingebunden ist), bricht der Durchlauf mit einer Meldung ab, die mit der Anzahl der nicht erreichbaren Dateien beginnt und bis zu fünf Dateinamen auflistet. Binde das Volume ein und starte <strong class="ui">Transcribe Clips</strong> erneut.</p>
+<h2 id="de2-erneut-aus-der-quelle-transkribieren">Erneut aus der Quelle transkribieren</h2>
+<p>Nach einem Durchlauf transkribiert <strong class="ui">Re-Transcribe from Source</strong> alle Clips noch einmal, statt die zwischengespeicherten Ergebnisse wiederzuverwenden. Nutze das nach einem Update der App. Es dauert so lange wie der erste Durchlauf. Vorher fragt ein Bestätigungsdialog nach.</p>
+<h2 id="de2-wenn-der-durchlauf-fertig-ist">Wenn der Durchlauf fertig ist</h2>
+<p>Ein grünes Abzeichen meldet „Transcription complete“ mit der Anzahl der Captions. Waren alle Clips erfolgreich und bist du noch auf Seite <strong class="ui">1. Transcribe</strong>, wechselt die App nach etwa einer Sekunde von selbst zu Seite <strong class="ui">2. Script</strong>; tut sie das nicht, klicke auf <strong class="ui">Continue to Script</strong>.</p>
+<p>Sind einzelne Clips fehlgeschlagen, ist das Abzeichen orange, die fehlgeschlagenen Clips werden in einer roten Meldung genannt, und die App wechselt nicht von selbst weiter.</p>
+<h1 id="de3-skript-abgleichen-und-das-ergebnis-pr-fen">Skript abgleichen und das Ergebnis prüfen</h1>
+<h2 id="de3-abgleich-starten">Abgleich starten</h2>
+<p>Öffne Seite <strong class="ui">3. Matching</strong> und klicke auf <strong class="ui">Start Matching</strong>. Der Abgleich startet nicht von selbst. Die Seite zeigt zuerst, ob Skriptzeilen und Captions geladen sind.</p>
+<p>Jede Skriptzeile wird mit den Captions der Clips abgeglichen. Szenen werden berücksichtigt: Eine Zeile wird mit den Clips ihrer eigenen Szene abgeglichen, und ein Clip ohne Szenen-Metadaten kann zu jeder ausgewählten Zeile passen. Abgeglichen werden nur Zeilen, die eingeschaltet sind und kein Varianten-Suffix haben.</p>
+<h2 id="de3-ergebnisse-lesen">Ergebnisse lesen</h2>
+<p>Die Liste links zeigt eine Zeile pro aktiver Skriptzeile (ausgeschaltete Zeilen und Zeilen mit Varianten-Suffix haben keine Zeile): einen farbigen Punkt, die Zeilennummer, die Figur, den Dialog und einen Ähnlichkeitswert in Prozent. Eine Zeile ohne Treffer zeigt zwei Striche statt eines Prozentwerts, und eine Zeile mit mehreren Treffern zeigt ein Zähler-Abzeichen. Die Statusbezeichnungen sind <strong class="ui">Exact Match</strong>, <strong class="ui">Close Match</strong>, <strong class="ui">Minor Difference</strong>, <strong class="ui">Major Difference</strong>, <strong class="ui">No Match</strong>, <strong class="ui">Non-Dialogue</strong> und <strong class="ui">LLM Filled</strong>. <strong class="ui">LLM Filled</strong> erscheint nur bei der unten beschriebenen optionalen lokalen LLM-Prüfung.</p>
+<p>Wähle eine Zeile aus, um in der Kachel <strong class="ui">Details</strong> die passenden Captions, den Clip-Namen mit Timecode und den besten Ähnlichkeitswert zu sehen.</p>
+<h2 id="de3-eine-zeile-korrigieren-f-r-die-keine-caption-gefunden-wurde">Eine Zeile korrigieren, für die keine Caption gefunden wurde</h2>
+<p>Wähle eine Zeile ohne Treffer aus, klicke auf <strong class="ui">Assign Caption Manually</strong> und wähle im Fenster <strong class="ui">Assign Caption to Keyword</strong> eine der nicht zugeordneten Captions aus. Eine manuelle Zuordnung zählt als exakter Treffer. Um einen falschen Treffer zu entfernen, entferne die Caption in den Details mit dem roten x.</p>
+<h2 id="de3-pr-fen-welche-clips-in-welcher-szene-gelandet-sind">Prüfen, welche Clips in welcher Szene gelandet sind</h2>
+<p>Klicke auf Seite <strong class="ui">2. Script</strong> in der Kachel <strong class="ui">Scene Selection</strong> auf <strong class="ui">Review Clips</strong>. Das schwebende Fenster <strong class="ui">Scene Check</strong> listet jeden erkannten Clip mit seiner Szene auf und markiert Clips ohne Szenen-Metadaten sowie Szenen, die nicht im Skript stehen. Von dort aus kannst du eine fehlende Szene manuell ergänzen.</p>
+<h2 id="de3-die-zeilen-einer-szene-f-r-die-clips-einer-anderen-verwenden">Die Zeilen einer Szene für die Clips einer anderen verwenden</h2>
+<p>Manchmal sind Clips mit einer Szenennummer beschriftet, die sich ihr Setup mit einer anderen Szene teilt. Klicke im <strong class="ui">Block Editor</strong> mit der rechten Maustaste auf den Szenen-Tab der Skriptszene und wähle <strong class="ui">Also Use for Clips of Scene…</strong>. Gib die Szenennummern der Clips ein, durch Kommas getrennt. Eine Nummer wie <code>62</code> deckt alle Clips dieser Szene ab; mit einem Buchstaben wie <code>62A</code> werden nur die Clips genau dieser Szene abgedeckt.</p>
+<p>Eine reine Nummer wird von den manuellen Werkzeugen der Timeline verwendet. Nur eine Szene mit Buchstaben wie <code>62A</code> ändert, welche Skriptzeilen der automatische Abgleich für diese Clips verwendet.</p>
+<p>Um das rückgängig zu machen, klicke mit der rechten Maustaste auf den Tab und wähle <strong class="ui">Stop Using for Clips of</strong> gefolgt von der Szene.</p>
+<p>Aliase werden mit der Session gespeichert. Sie sind nicht Teil einer exportierten Skriptdatei.</p>
+<h2 id="de3-erneut-abgleichen">Erneut abgleichen</h2>
+<p>Sobald Ergebnisse vorliegen, zeigt die Kopfzeile eine Schaltfläche <strong class="ui">Re-Match Clip</strong> (sie heißt <strong class="ui">Re-Match</strong>, wenn sie nicht auf einen Clip beschränkt ist). Sie gleicht den Clip, der im Timeline-Editor geöffnet ist, erneut ab. Ihr Menü bietet <strong class="ui">Re-Match All Clips</strong>. Hast du die Timeline in diesem Bereich bearbeitet, fragt die App zuerst nach; manuelle Keyword-Änderungen werden verworfen, zusätzliche Titel und Crew-Talk-Bereiche bleiben erhalten.</p>
+<h2 id="de3-optional-lokale-llm-pr-fung">Optional: lokale LLM-Prüfung</h2>
+<p>In den Einstellungen, Tab <strong class="ui">LLM</strong>, lässt <strong class="ui">Enable LLM Matching</strong> ein lokales Ollama-Modell die Treffer gegenprüfen und Captions verwerfen, die es ablehnt. Die Funktion ist standardmäßig aus und wird bei jedem Start wieder ausgeschaltet. Ollama musst du selbst installieren und starten und das Modell selbst laden; die App tut das nicht. Sie läuft nur beim Abgleich der ganzen Session, nicht bei <strong class="ui">Re-Match Clip</strong>.</p>
+<h1 id="de4-keywords-auf-der-timeline-bearbeiten">Keywords auf der Timeline bearbeiten</h1>
+<h2 id="de4-die-timeline-im-berblick">Die Timeline im Überblick</h2>
+<p>Seite <strong class="ui">4. Keywords</strong> zeigt jeweils einen Clip: das Video, eine Transportleiste und vier Spuren. Von oben nach unten sind das: das Lineal mit dem Bereich <strong class="ui">Action Cut</strong>, die Spur für zusätzliche Titel, die Hauptspur mit Wellenform, Keyword-Blöcken und <strong class="ui">DISCARD</strong>-Blöcken sowie die Spur mit den Captions.</p>
+<p>Mit den Pfeilen in der Transportleiste oder mit Option+Left / Option+Right springst du zum vorherigen oder nächsten Clip.</p>
+<h2 id="de4-keywords-verschieben-und-k-rzen">Keywords verschieben und kürzen</h2>
+<p>Ziehe einen Keyword-Block, um ihn zu verschieben. Ziehe an einer Kante, um ihn zu kürzen oder zu verlängern. Halte beim Ziehen die Option-Taste gedrückt, um ihn zu duplizieren. Halte Cmd gedrückt, wenn du auf einer leeren Stelle oder auf einem Keyword-Block zu ziehen beginnst, um stattdessen einen neuen Keyword-Bereich anzulegen; mit Cmd und Option legst du einen <strong class="ui">DISCARD</strong>-Bereich an.</p>
+<p>Magnetisches Einrasten ist standardmäßig eingeschaltet; mit N schaltest du es um. Drückst du Cmd, nachdem du begonnen hast, einen Block zu verschieben oder zu kürzen, ist es für den Rest dieses Zugs ausgeschaltet. Blöcke rasten an der Abspielposition ein, an den Kanten von Keyword-, <strong class="ui">DISCARD</strong>- und Titelblöcken, an Caption-Kanten und an erkannten Sprechbeginnen. Die Sprechbeginne werden auf der Timeline nicht angezeigt.</p>
+<h2 id="de4-bl-cke-gemeinsam-verschieben-magnetic-ripple">Blöcke gemeinsam verschieben (Magnetic Ripple)</h2>
+<p>Halte zu Beginn des Ziehens die Shift-Taste gedrückt, aber keine andere Taste. Verschiebst du einen Block, wandern er und alles danach in derselben Spur gemeinsam. Kürzt du das Ende eines Blocks, wandern sein Ende und alles danach; kürzt du den Anfang, verschieben sich der Rest des Blocks und alles danach. Das gilt getrennt für die Keyword-Spur und die Titelspur.</p>
+<h2 id="de4-den-action-cut-setzen">Den Action Cut setzen</h2>
+<p>Ziehe auf einer leeren Stelle des Lineals, um den Bereich festzulegen, oder ziehe die grüne In- und die rote Out-Markierung. Beim Ziehen wird nur der Bereich verschoben. Um zusätzlich alles außerhalb wegzuschneiden, drücke I und O an der Abspielposition oder wähle im Kontextmenü <strong class="ui">Set In Point</strong> und <strong class="ui">Set Out Point</strong>: Alles links von In und rechts von Out wird zu <strong class="ui">DISCARD</strong>, sofern der Punkt mehr als 0,3 Sekunden vom Clip-Rand entfernt ist. <strong class="ui">Clear In/Out</strong> im Kontextmenü einer leeren Stelle entfernt die beiden Punkte, behält aber die <strong class="ui">DISCARD</strong>-Blöcke.</p>
+<h2 id="de4-zus-tzliche-titel-hinzuf-gen">Zusätzliche Titel hinzufügen</h2>
+<p>Ziehe horizontal auf der leeren Titelspur, wähle dann einen vorhandenen Titel oder ein Skript-Keyword oder tippe einen neuen Titel und klicke auf <strong class="ui">OK</strong>. Ohne Text lautet die Bezeichnung <code>Additional Title</code>.</p>
+<p>Um einen Titel an der Abspielposition hinzuzufügen, drücke T und wähle aus der Liste. Doppelklicke einen Titel, um ihn umzubenennen. Das Kontextmenü bietet <strong class="ui">Rename</strong>, <strong class="ui">Copy</strong>, <strong class="ui">Replace with Existing Title</strong>, <strong class="ui">Convert to Keyword...</strong> und <strong class="ui">Remove</strong>.</p>
+<p>Zusätzliche Titel werden als gewöhnliche Keyword-Marker exportiert, nicht als Final-Cut-Pro-Titel, solange <strong class="ui">Include Additional-Title Keywords</strong> im Export-Blatt eingeschaltet ist.</p>
+<h2 id="de4-ein-keyword-ersetzen">Ein Keyword ersetzen</h2>
+<p>Klicke mit der rechten Maustaste auf einen Keyword-Block oder setze die Abspielposition darauf und drücke R. Der Dialog <strong class="ui">Replace with Existing Keyword</strong> listet die übrigen Keywords aller Szenen, nach Szene gruppiert; filtere nach Nummer, Figur oder Dialog, bewege dich mit den Pfeiltasten und drücke Return.</p>
+<h2 id="de4-eine-clip-gruppe-als-erledigt-markieren">Eine Clip-Gruppe als erledigt markieren</h2>
+<p>Klicke in der Transportleiste auf den Haken oder drücke Cmd+D. In einer als erledigt markierten Gruppe werden Änderungen auf der Timeline mit einer Meldung abgelehnt; nimm den Haken wieder heraus, um sie erneut zu ändern. Auswählen und Kopieren funktionieren weiterhin, und erneutes Matching kann eine erledigte Gruppe weiterhin überschreiben.</p>
+<h1 id="de5-keywords-nach-final-cut-pro-exportieren">Keywords nach Final Cut Pro exportieren</h1>
+<h2 id="de5-was-der-export-enth-lt">Was der Export enthält</h2>
+<p>Der Export schreibt ausschließlich Keywords. Er speichert dein importiertes Event erneut, mit Keyword-Markern auf den Browser-Clips, die du bearbeitet hast, und auf Clips, die mit ihnen einen Take teilen: ein Marker pro Dialogzeile, dazu optionale Marker für zusätzliche Titel und den Action Cut. Dialog innerhalb von <strong class="ui">DISCARD</strong>-Bereichen wird nicht exportiert. Es werden keine Final-Cut-Pro-Titel, keine Captions und keine Timeline erzeugt, und Projekte im Event bleiben außen vor. Zusätzliche Titel werden als gewöhnliche Keyword-Marker geschrieben.</p>
+<p>Das Ergebnis ist ein neues Event mit dem Namen des Quell-Events plus angehängtem " - SyncScript Pro", sodass es nicht mit deinem ursprünglichen Event verschmilzt.</p>
+<h2 id="de5-das-export-blatt-ffnen">Das Export-Blatt öffnen</h2>
+<p>Wähle auf Seite <strong class="ui">4. Keywords</strong> im Menü „File“ den Befehl <strong class="ui">Export to Final Cut Pro…</strong> (Cmd+E) oder klicke in der Leiste darunter auf <strong class="ui">Export to FCP</strong>. Der Befehl ist verfügbar, sobald Matching-Ergebnisse vorliegen und der Timeline-Editor geöffnet ist.</p>
+<h2 id="de5-ausw-hlen-was-exportiert-wird">Auswählen, was exportiert wird</h2>
+<ul>
+<li><strong class="ui">All Clips</strong> exportiert jeden Clip. <strong class="ui">Selected Clip Groups Only</strong> exportiert nur die Gruppen, die du mit <strong class="ui">Choose Groups…</strong> auswählst; die übrigen Clips werden gar nicht in die Datei geschrieben. Standardmäßig sind die als erledigt markierten Gruppen ausgewählt. Diese Auswahl erscheint, wenn deine Clips Gruppen bilden.</li>
+<li><strong class="ui">Include Additional-Title Keywords</strong> fügt pro zusätzlichem Titel einen Marker hinzu. Standardmäßig ist es eingeschaltet.</li>
+<li><strong class="ui">Include Action Cut Keyword</strong> fügt für jeden behaltenen Bereich einen Marker namens Action Cut hinzu. Standardmäßig ist es eingeschaltet.</li>
+<li><strong class="ui">Mark Outside Action Cut as Rejected</strong> setzt für jeden Bereich außerhalb des Action Cut die Bewertung „Rejected“. Standardmäßig ist es ausgeschaltet.</li>
+<li><strong class="ui">Keyword Handles</strong> verlängern Dialog-Keywords sowie die Bereiche Action Cut und Rejected am Anfang und am Ende um die angegebene Anzahl Frames. Die Voreinstellungs-Schaltflächen sind 0f, 12f, 24f und 48f und setzen beide Werte. Keywords für zusätzliche Titel erhalten keine Handles.</li>
+</ul>
+<p>Deine Auswahl der Schalter und Handles kannst du mit <strong class="ui">Presets</strong> sichern. Die Standardwerte für neue Exporte findest du in den Einstellungen, Tab <strong class="ui">Export</strong>.</p>
+<h2 id="de5-an-final-cut-pro-senden">An Final Cut Pro senden</h2>
+<p>Klicke auf <strong class="ui">Send to FCP</strong>. Die App schreibt eine temporäre FCPXML-Datei und öffnet sie mit Final Cut Pro. Final Cut Pro fragt dann, in welche Mediathek importiert werden soll. Schließe diesen Dialog ab und prüfe danach das Feld „Keywords“ im Info-Inspektor.</p>
+<p>Die App meldet Erfolg, wenn die Übergabe stattgefunden hat, nicht wenn der Import in Final Cut Pro abgeschlossen ist. Final Cut Pro muss installiert sein.</p>
+<h2 id="de5-das-fcpxml-als-datei-sichern">Das FCPXML als Datei sichern</h2>
+<p>Klicke stattdessen auf <strong class="ui">Export FCPXML…</strong>, um den Speicherort der Datei selbst zu wählen, zum Beispiel um sie an jemanden zu schicken. Solange eine Session geöffnet ist, schreibt jeder Export außerdem eine Diagnosekopie in den Session-Ordner (oder in den Diagnoseordner, den du gewählt hast) und, falls du in den Einstellungen einen <strong class="ui">Default export location</strong> festgelegt hast, eine Kopie dorthin.</p>
+<h2 id="de5-so-werden-keywords-geschrieben">So werden Keywords geschrieben</h2>
+<p>Ein Dialog-Keyword sieht aus wie <code>001 CHARACTER dialogue</code>. Kommas werden durch ein ähnlich aussehendes Zeichen ersetzt, weil Final-Cut-Pro-Keywords keine Kommas enthalten dürfen; das ist die Einstellung <strong class="ui">Replace commas with alternative character</strong>, die standardmäßig eingeschaltet ist. Die Groß- und Kleinschreibung der Figurennamen richtet sich nach <strong class="ui">Character name format:</strong> (standardmäßig Großbuchstaben). Beide Einstellungen findest du in den Einstellungen, Tab <strong class="ui">Parsing</strong>.</p>
+<h1 id="de6-sessions-und-tastenk-rzel">Sessions und Tastenkürzel</h1>
+<h2 id="de6-arbeit-sichern-und-wieder-ffnen">Arbeit sichern und wieder öffnen</h2>
+<p>Deine Arbeit liegt in Sessions. Wähle im Menü „File“ den Befehl <strong class="ui">Save Session</strong> (Cmd+S), um zu sichern. Sobald die Session Skriptzeilen enthält, sichert die App sie außerdem automatisch alle fünf Sekunden, solange sie aktiv ist, und die zuletzt verwendete Session wird beim Start wieder geöffnet.</p>
+<p>Um eine andere Session zu öffnen, klicke sie in der Session-Liste in der Seitenleiste an. Einen eigenen Öffnen-Befehl gibt es nicht. Die Schaltflächen der Seitenleiste legen eine neue Session an, sichern die aktuelle und importieren eine Session aus einer Datei. Im Kontextmenü einer Session kannst du sie umbenennen, exportieren oder löschen.</p>
+<h2 id="de6-eine-session-auf-einen-anderen-mac-bertragen">Eine Session auf einen anderen Mac übertragen</h2>
+<p>Wähle im Menü „File“ den Befehl <strong class="ui">Export Current Session…</strong>. Eine Session ist ein Ordner mit der Endung <code>.syncscript</code>. Er enthält keine Medien, sondern speichert die Pfade der Quelldateien; diese müssen auf dem anderen Mac erreichbar sein. Importiere sie mit der Import-Schaltfläche in der Session-Seitenleiste; der Import legt immer eine neue Session an und öffnet sie.</p>
+<h2 id="de6-eine-neue-session-beginnen">Eine neue Session beginnen</h2>
+<p>Der Dialog für neue Sessions bietet <strong class="ui">New (blank)</strong> und <strong class="ui">New (keep Script)</strong>. Die zweite Variante behält das geladene Drehbuch-PDF und dessen Szenenliste, die Skriptzeilen werden aber gelöscht; parse sie auf Seite <strong class="ui">2. Script</strong> erneut. Beide starten eine leere Session auf Seite <strong class="ui">1. Transcribe</strong>.</p>
+<h2 id="de6-ein-tastenk-rzel-ndern">Ein Tastenkürzel ändern</h2>
+<p>Öffne die Einstellungen und wähle den Tab <strong class="ui">Shortcuts</strong>. Klicke auf das Tastenfeld einer Aktion und drücke die neue Kombination, dann ist das Kürzel gesetzt; mit Esc brichst du ab. Die Papierkorb-Schaltfläche löscht ein Kürzel. Wird eine Kombination bereits verwendet, fragt die App nach, bevor sie neu belegt wird. <strong class="ui">Reset all to defaults</strong> stellt nach einer Bestätigung die Werkseinstellungen der Kürzel wieder her.</p>
+<p><strong class="ui">Export…</strong> sichert deine Kürzel als JSON-Datei. <strong class="ui">Import…</strong> führt eine Datei mit deinen Kürzeln zusammen; Aktionen, die in der Datei nicht vorkommen, gehen auf ihren Standardwert zurück.</p>
+<p>Einige Gesten sind fest vorgegeben und lassen sich nicht umbelegen: J, K und L für Shuttle, die Zifferntasten zum Zuweisen von Keywords sowie Cmd+Z und Cmd+Shift+Z für Widerrufen und Wiederholen.</p>
+<h1 id="de7-referenz">Referenz</h1>
+<h2 id="de7-voraussetzungen-und-grenzen">Voraussetzungen und Grenzen</h2>
+<ul>
+<li>macOS 15.0 oder neuer. Die veröffentlichte App ist ausschließlich für Apple Silicon gebaut.</li>
+<li>Final Cut Pro ist nötig, um das Ergebnis zu verwenden. Die App liest und schreibt FCPXML.</li>
+<li>Das Drehbuch muss ein PDF mit Textebene sein. Die App hat keine OCR und importiert kein anderes Drehbuchformat.</li>
+<li>Das Event muss eine exportierte <code>.fcpxml</code>- oder <code>.fcpxmld</code>-Datei sein (oder ein aus Final Cut Pro gezogenes Event) mit Sync-Clips und/oder Multicam-Clips. Aus einer Datei wird nur das erste Event importiert.</li>
+<li>Die Transkription nutzt Parakeet v3 mit 25 europäischen Sprachen. Chinesisch, Japanisch und Koreanisch sind nicht verfügbar.</li>
+<li>Der Export enthält ausschließlich Keywords: keine Final-Cut-Pro-Titel, keine Captions, keine Timeline.</li>
+</ul>
+<h2 id="de7-seiten">Seiten</h2>
+<ul>
+<li><strong class="ui">1. Transcribe</strong> — das Event importieren und die Clips transkribieren.</li>
+<li><strong class="ui">2. Script</strong> — das Drehbuch-PDF importieren, Szenen auswählen, Skriptzeilen bearbeiten.</li>
+<li><strong class="ui">3. Matching</strong> — Skriptzeilen mit Captions abgleichen und das Ergebnis prüfen.</li>
+<li><strong class="ui">4. Keywords</strong> — Timeline-Editor und Export.</li>
+</ul>
+<h2 id="de7-men-s">Menüs</h2>
+<ul>
+<li><strong class="ui">Check for Updates…</strong> im App-Menü sucht nach einer neuen Version. Die App sucht außerdem einmal täglich automatisch.</li>
+<li><strong class="ui">Buy SyncScript Pro</strong> im App-Menü öffnet die Produktseite im Browser. Der Eintrag wird angezeigt, bis eine bezahlte oder kostenlose Lizenz aktiv ist.</li>
+<li><strong class="ui">Reset Everything...</strong> im Menü „File“ (Shift+Cmd+R) löscht nach einer Bestätigung die Transkription, das Skript und die Keywords sowie die Matches und Titel. Das lässt sich nicht widerrufen.</li>
+<li><strong class="ui">Export to Final Cut Pro…</strong> im Menü „File“ (Cmd+E) öffnet das Export-Blatt. Der Befehl ist auf Seite <strong class="ui">4. Keywords</strong> verfügbar, sobald Matching-Ergebnisse vorliegen.</li>
+<li><strong class="ui">Save Session</strong> im Menü „File“ (Cmd+S) sichert die aktuelle Session.</li>
+<li><strong class="ui">Export Current Session…</strong> im Menü „File“ schreibt die Session als <code>.syncscript</code>-Ordner.</li>
+<li><strong class="ui">Send Feedback…</strong> im Menü „Help“ öffnet das Feedback-Blatt.</li>
+</ul>
+<h2 id="de7-einstellungen">Einstellungen</h2>
+<p>Öffne die Einstellungen mit Cmd+Komma. Die Tabs sind Parsing, Display, Export, LLM, License, Shortcuts und About. Ein Tab General (mit <strong class="ui">Auto-advance to next phase</strong>) wird nur im Developer Mode angezeigt und ein Tab Advanced nur, solange du die Option-Taste gedrückt hältst; das automatische Weiterschalten nach der Transkription ist standardmäßig eingeschaltet. Die Einstellung <strong class="ui">Auto-label FCPX rejects as Discard</strong> befindet sich im Abschnitt FCP Import des Tabs Parsing.</p>
+<ul>
+<li><strong class="ui">Replace commas with alternative character</strong> — Standard: ein. Final-Cut-Pro-Keywords dürfen keine Kommas enthalten; diese Einstellung ersetzt sie beim Export durch ein ähnlich aussehendes Zeichen.</li>
+<li><strong class="ui">Character name format:</strong> — Standard: UPPERCASE. Optionen: UPPERCASE, Title Case, As-is. Wird beim Export angewendet.</li>
+<li><strong class="ui">Trim whitespace from dialogue</strong> — Standard: ein. Wird beim Parsen des Skripts angewendet.</li>
+<li><strong class="ui">Auto-label FCPX rejects as Discard</strong> — Standard: aus. Gilt für Clips, die danach gematcht werden.</li>
+<li><strong class="ui">Default export location:</strong> — Standard: leer. Ist ein Ordner gesetzt, schreibt jeder Export zusätzlich eine Kopie dorthin.</li>
+<li><strong class="ui">Include timestamp in filename</strong> — Standard: ein. Gilt für diese Kopie.</li>
+<li><strong class="ui">Include Additional-Title Keywords</strong> — Standard: ein. Startwert des Export-Blatts.</li>
+<li><strong class="ui">Include Action Cut Keyword</strong> — Standard: ein. Startwert des Export-Blatts.</li>
+<li><strong class="ui">Mark Outside Action Cut as Rejected</strong> — Standard: aus. Startwert des Export-Blatts.</li>
+<li><strong class="ui">Start Handle:</strong> und <strong class="ui">End Handle:</strong> — Standard: 0 Frames. Startwerte des Export-Blatts.</li>
+<li><strong class="ui">Enable LLM Matching</strong> — Standard: aus, und nach jedem Start wieder aus. Siehe <a href="howto-match-and-check.de.md">Skript abgleichen und das Ergebnis prüfen</a>.</li>
+</ul>
+<h2 id="de7-tastenk-rzel-standardbelegung">Tastenkürzel (Standardbelegung)</h2>
+<p>Alle folgenden Kürzel lassen sich in den Einstellungen, Tab <strong class="ui">Shortcuts</strong>, umbelegen, mit Ausnahme der festen Gesten im letzten Punkt.</p>
+<ul>
+<li>Wiedergabe: Space startet und pausiert. Die Pfeiltasten links und rechts gehen ein Frame weiter; Shift mit den Pfeiltasten geht 24 Frames weiter. Option mit den Pfeiltasten springt zum vorherigen oder nächsten Clip. Pfeil nach oben und nach unten springen zum vorherigen oder nächsten Schnittpunkt. Tab und Shift+Tab springen zur nächsten oder vorherigen Caption.</li>
+<li>Markieren: I setzt den In-Punkt, O setzt den Out-Punkt. Return öffnet das Keyword-Popup. Delete entfernt das ausgewählte Keyword. Esc hebt die Auswahl auf. T fügt einen vorhandenen zusätzlichen Titel an der Abspielposition ein. R öffnet die Auswahl zum Ersetzen des Keywords an der Abspielposition. C schaltet Discard an der Abspielposition um.</li>
+<li>Zoom und Ansicht: Plus und Minus zoomen, Shift+Z zoomt auf Fenstergröße, N schaltet das magnetische Einrasten um, S schaltet Skimming um.</li>
+<li>Session: Cmd+S sichert, Cmd+D markiert die aktuelle Clip-Gruppe als erledigt, Cmd+B teilt den Block an der Abspielposition, Cmd+C und Cmd+V kopieren und fügen ein.</li>
+<li>Feste Gesten: J, K und L für Shuttle; die Zifferntasten weisen die Keywords 1 bis 10 zu (mit Shift: 11 bis 20) und wirken auf die ausgewählte Caption; Cmd+Z und Cmd+Shift+Z für Widerrufen und Wiederholen. Diese lassen sich nicht umbelegen.</li>
+</ul>
+<h2 id="de7-dateien-die-die-app-anlegt">Dateien, die die App anlegt</h2>
+<ul>
+<li>Sessions: <code>~/Library/Application Support/SyncScript Pro/Sessions/&lt;id&gt;.syncscript</code>.</li>
+<li>Sprachmodelle: im Application-Support-Ordner der Benutzerbibliothek deines Benutzers.</li>
+<li>Transkript-Cache: <code>~/Library/Application Support/SyncScriptPro/TranscriptCache</code>.</li>
+<li>Export-Presets: <code>~/Library/Application Support/SyncScript Pro/export-presets.json</code>.</li>
+<li>Tastenkürzel: <code>~/Library/Application Support/SyncScript Pro/keyboard-bindings.json</code>.</li>
+<li>Skriptdateien, die du exportierst: <code>.syncscriptlines</code>.</li>
+</ul>
+<h2 id="de7-netzwerknutzung">Netzwerknutzung</h2>
+<p>Transkription, Matching und Bearbeitung laufen auf deinem Mac. Die App kontaktiert diese Hosts:</p>
+<ul>
+<li><code>api.malibureview.app</code> für die Lizenzprüfung (wenn das Hauptfenster erscheint, danach täglich; dabei werden ein Geräte-Hash, die App-Version und deine E-Mail-Adresse gesendet), für das Einlösen oder Deaktivieren eines Lizenzschlüssels, für die Update-Suche und für Feedback, das du sendest.</li>
+<li><code>huggingface.co</code>, um bei der ersten Verwendung die Sprachmodelle herunterzuladen.</li>
+<li><code>localhost:11434</code> nur, wenn du das lokale LLM aktivierst.</li>
+</ul>
+<p>Feedback und Diagnosedaten werden nur gesendet, wenn du auf die Senden-Schaltfläche klickst; schlägt das Senden fehl, wird der Bericht aufbewahrt und später automatisch gesendet. Der Lizenzkauf, das Lizenzportal und die rechtlichen Seiten öffnen sich in deinem Browser.</p>
+<h1 id="de8-fehlerbehebung">Fehlerbehebung</h1>
+<h2 id="de8-nach-dem-import-des-events-werden-keine-clips-gefunden">Nach dem Import des Events werden keine Clips gefunden</h2>
+<p>Die App meldet „No synced clips found in the Event“, wenn sie in der Datei keine Clips findet, die sie importieren kann. Synchronisiere deine Clips zuerst in Final Cut Pro, als Sync-Clips und/oder Multicam-Clips. Eine Final-Cut-Pro-Mediathek (<code>.fcpbundle</code>) auf die Fläche zu ziehen bewirkt nichts.</p>
+<p>Exportiere ein einzelnes Event als FCPXML und ziehe stattdessen diese Datei hinein.</p>
+<h2 id="de8-der-lauf-stoppt-mit-media-file-s-unreachable">Der Lauf stoppt mit „media file(s) unreachable“</h2>
+<p>Die Quelldateien einiger Clips sind nicht erreichbar, meist weil ein Volume nicht eingebunden ist. Die Meldung nennt die Volumes und bis zu fünf Dateinamen. Binde das Volume ein und klicke erneut auf <strong class="ui">Transcribe Clips</strong>; bereits fertige Clips werden nicht noch einmal transkribiert.</p>
+<h2 id="de8-das-sprachmodell-l-sst-sich-nicht-laden">Das Sprachmodell lässt sich nicht laden</h2>
+<p>Beim ersten Lauf werden die Sprachmodelle heruntergeladen (rund 1,5 GB für das Hauptmodell); dafür sind eine Internetverbindung und genug freier Speicherplatz nötig. Ein Fehler erscheint in einer roten Meldung, die mit „Failed to load transcription models“ beginnt und den Grund nennt. Stelle die Verbindung her, schaffe Platz und klicke erneut auf <strong class="ui">Transcribe Clips</strong>.</p>
+<h2 id="de8-einige-clips-konnten-nicht-transkribiert-werden">Einige Clips konnten nicht transkribiert werden</h2>
+<p>Das Ergebnis-Abzeichen wird orange und zeigt „Transcription incomplete“ mit der Anzahl der fehlgeschlagenen Clips. Eine rote Meldung nennt bis zu fünf der fehlgeschlagenen Clips samt Grund, und die App wechselt nicht zu Seite <strong class="ui">2. Script</strong>. Klicke erneut auf <strong class="ui">Transcribe Clips</strong>, um es noch einmal zu versuchen.</p>
+<h2 id="de8-nach-dem-pdf-import-zeigt-das-skript-keine-zeilen">Nach dem PDF-Import zeigt das Skript keine Zeilen</h2>
+<p>Prüfe zuerst den Statustext. Lautet er „PDF loaded: N scenes found. Select scenes and click Parse.“, ist noch keine Szene ausgewählt: Wähle Szenen über die Chips oder die Auswahl <strong class="ui">Add scene:</strong>.</p>
+<p>Lautet er „Parsed 0 script lines from PDF“, ist die übliche Ursache ein PDF ohne Textebene, etwa ein Scan. Die App hat keine Texterkennung. Verwende ein PDF, das aus deiner Drehbuchsoftware exportiert wurde.</p>
+<p>Prüfe außerdem die Szenenüberschriften: Der Parser erkennt Überschriften, die in Großbuchstaben mit <code>INNEN</code>, <code>AUSSEN</code>, <code>INT.</code>, <code>EXT.</code>, <code>INT/</code> oder <code>I/E</code> beginnen. Für eine Szene, die nicht gefunden wurde, nutze <strong class="ui">Add Scene Manually</strong>.</p>
+<h2 id="de8-die-zeilen-einer-figur-fehlen">Die Zeilen einer Figur fehlen</h2>
+<p>Erzähler-Hinweise (<code>ERZÄHLER</code>, <code>NARRATOR</code>) und Wörter wie <code>ENDE</code>, <code>FADE</code> oder <code>CUT</code> werden nicht als Figuren erkannt, ebenso wenig Hinweise, die " und " oder " &amp; " enthalten. Der Text unter einem solchen Hinweis wird nicht unter eigenem Namen importiert und kann im Dialog des vorherigen Sprechers landen. Prüfe diese Zeilen und korrigiere sie von Hand im <strong class="ui">Block Editor</strong> oder in der <strong class="ui">Classic List</strong>.</p>
+<h2 id="de8-keywords-w-rden-an-der-falschen-stelle-landen">Keywords würden an der falschen Stelle landen</h2>
+<p>Eine orange Warnung besagt, dass die Captions aus einer älteren Version mit einem Fehler bei der Ton-Synchronisation stammen. Sie erscheint bei Sessions, die mit einem älteren Build gesichert wurden. Klicke erneut auf <strong class="ui">Transcribe Clips</strong>, führe das Matching noch einmal aus und exportiere dann.</p>
+<h2 id="de8-export-to-final-cut-pro-ist-ausgegraut">Export to Final Cut Pro ist ausgegraut</h2>
+<p>Der Befehl ist nur auf Seite <strong class="ui">4. Keywords</strong> verfügbar, wenn Matching-Ergebnisse vorliegen und der Timeline-Editor geöffnet ist. Im Export-Blatt sind beide Schaltflächen deaktiviert, solange ein Export läuft, wenn es kein Ergebnis gibt oder wenn <strong class="ui">Selected Clip Groups Only</strong> gewählt und keine Gruppe ausgewählt ist.</p>
+<h2 id="de8-send-to-fcp-zeigt-keinen-fehler-aber-es-erscheint-nichts">Send to FCP zeigt keinen Fehler, aber es erscheint nichts</h2>
+<p>Die App meldet die Übergabe, nicht den Import. Final Cut Pro fragt, in welche Mediathek importiert werden soll; schließe diesen Dialog ab. Die Keywords liegen auf den Clips eines neuen Events, das wie dein Quell-Event heißt, mit angehängtem " - SyncScript Pro". Ist Final Cut Pro nicht installiert, schlägt der Export mit einer Fehlermeldung fehl.</p>
+<h2 id="de8-der-export-meldet-no-source-event">Der Export meldet „No source event“</h2>
+<p>Die Meldung fordert dazu auf, dein Event zuerst auf der Seite Transcribe zu importieren. Sie erscheint, wenn die Session kein importiertes Event enthält. Importiere das Event erneut auf Seite <strong class="ui">1. Transcribe</strong>, klicke auf <strong class="ui">Transcribe Clips</strong> (bereits transkribierte Clips stammen aus dem Cache) und führe das Matching noch einmal aus.</p>
+<h2 id="de8-die-app-ist-nach-der-testphase-gesperrt-oder-zeigt-eine-lizenzmeldung">Die App ist nach der Testphase gesperrt oder zeigt eine Lizenzmeldung</h2>
+<p>Beim ersten Start fragt die App vor allem anderen nach deiner E-Mail-Adresse; siehe <a href="getting-started.de.md">Erste Schritte</a>.</p>
+<p>Der Sperrbildschirm nennt den Grund, zum Beispiel dass die Testphase beendet ist, dass die Lizenz abgelaufen ist oder widerrufen wurde, dass diese Version nicht mehr unterstützt wird oder dass die App zu lange offline war. Von dort aus kannst du eine Lizenz kaufen, erneut prüfen, mit <strong class="ui">I already have a license</strong> einen Lizenzschlüssel einlösen oder die App beenden.</p>
+<p>Besagt die Meldung, dass die Lizenz noch nicht verifiziert werden konnte, verbinde dich einmal mit dem Internet und klicke auf <strong class="ui">Check Again</strong>. Ein kurzer Verbindungsabbruch allein sperrt die App nicht.</p>
+<h2 id="de8-einen-problembericht-senden">Einen Problembericht senden</h2>
+<p>Wähle im Menü „Help“ den Befehl <strong class="ui">Send Feedback…</strong>, beschreibe das Problem und klicke auf <strong class="ui">Send Feedback</strong>. Der Bericht enthält deinen macOS-Kontonamen, die App- und macOS-Version, die Anzahl der Keywords und Captions, die Engine, die Namen der Audio- und Videodateien, die ausgewählten Szenen und die Session-ID; das E-Mail-Feld ist mit der Adresse vorausgefüllt, die du beim ersten Start eingegeben hast, und sie wird gesendet, solange du das Feld nicht leerst, und ein Screenshot wird nur hinzugefügt, wenn du ihn einschaltest. Bist du offline, wird der Bericht gespeichert und später gesendet.</p>
+<p>Die Schaltfläche <strong class="ui">Diagnostics</strong> in der Seitenleiste zeigt, ob die Baselines für Skript und Matches gesichert wurden und welcher Export der letzte ist. <strong class="ui">Send Diagnostics Ticket</strong> sendet die beiden Baselines und den letzten Export mit seinem Manifest. Diese Dateien enthalten Skriptdialog, Clip-Namen und Medienverweise.</p>
+<p class="ver">Geschrieben für Version 1.2.85.</p>
+    </article>
+  </div>
+  <footer>
+    <div class="foot">
+      <span>SyncScript Pro · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</div>
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {"nav.back":"← SyncScript Pro","nav.help":"Help","foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy"},
+  de: {"nav.back":"← SyncScript Pro","nav.help":"Hilfe","foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz"}
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+(function () {
+  function show(l) {
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== l; });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); show(l); };
+  show(document.documentElement.lang === "de" ? "de" : "en");
+})();
+</script>
+</body>
+</html>
