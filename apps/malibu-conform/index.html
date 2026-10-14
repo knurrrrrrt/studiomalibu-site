@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Malibu Conform · FCP to DaVinci Resolve Conform</title>
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="description" content="Malibu Conform conforms Final Cut Pro timelines, exported as FCPXML, into DaVinci Resolve Studio, with spatial and pixel aspect ratio handling, multicam resolution and a Conform Report as PDF.">
+<meta name="description" content="Malibu Conform conforms Final Cut Pro timelines, exported as FCPXML, into DaVinci Resolve Studio, with spatial and pixel aspect ratio handling, multicam resolution and a Conform Report (Markdown).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
     <div>
       <div class="eyebrow"><span data-i18n="hero.eyebrow">Final Cut Pro · DaVinci Resolve Studio</span><span class="badge" data-i18n="badge">In the works</span></div>
       <h1 data-i18n="hero.h1">Cut in Final Cut Pro.<br><span class="soft">Conform into Resolve.</span></h1>
-      <p class="lead" data-i18n="hero.lead">Malibu Conform reads your Final Cut Pro timeline as FCPXML, resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.</p>
+      <p class="lead" data-i18n="hero.lead">Malibu Conform reads your Final Cut Pro timeline as FCPXML (1.10 to 1.14), resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.</p>
       <div class="lr-wrap">
         <form class="lr" data-launch-form>
           <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
@@ -71,12 +71,12 @@
           <div class="win-head"><i><b></b><b></b><b></b></i><span>Malibu Conform</span></div>
           <div class="row"><span class="k" data-i18n="w2.r1">Spatial and PAR</span><span class="tag">Resolved</span></div>
           <div class="row"><span class="k" data-i18n="w2.r2">Speed ramps</span><span class="tag">Resolved</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r3">Unsupported filters</span><span class="tag quiet" data-i18n="w2.t3">Marked</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Video filters</span><span class="tag quiet" data-i18n="w2.t3">Marked</span></div>
         </div>
         <div class="win w3">
           <div class="win-head"><i><b></b><b></b><b></b></i><span>DaVinci Resolve Studio</span></div>
           <div class="row"><span class="k" data-i18n="w3.r1">Timeline</span><span class="tag good" data-i18n="w3.t">Conformed</span></div>
-          <div class="row"><span class="k" data-i18n="w3.r2">Conform Report</span><span class="v">PDF</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">Conform Report</span><span class="v">Markdown</span></div>
         </div>
       </div>
       <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
@@ -90,8 +90,8 @@
     </div>
     <div class="steps">
       <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Export from Final Cut Pro</h3><p data-i18n="s1.p">Export the finished timeline as FCPXML. That file is what Malibu Conform works from.</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Conform reads and resolves</h3><p data-i18n="s2.p">Multicam angles, sync clips and compounds are resolved, speed ramps are snapped, and unsupported filters are flagged.</p></div>
-      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Timeline in Resolve Studio</h3><p data-i18n="s3.p">A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report as PDF documents the result.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Conform reads and resolves</h3><p data-i18n="s2.p">Multicam angles and sync clips are resolved, compound clips holding a single item are inlined, speed ramps are snapped, and Final Cut Pro video filters are removed and flagged.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Timeline in Resolve Studio</h3><p data-i18n="s3.p">A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report (Markdown) documents the result.</p></div>
     </div>
   </section>
 
@@ -104,15 +104,15 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Spatial</div>
         <h3 data-i18n="t1.h">Spatial conform, baked in</h3>
-        <p data-i18n="t1.p">Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio, so the framing you set in Final Cut Pro is the framing you get.</p>
+        <p data-i18n="t1.p">Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio. Verified on synthetic material with Resolve 21.1.0.17 (453 tests).</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Multicam, sync clips, compounds</h3>
-        <p data-i18n="t2.p">Multicam angles are resolved, sync clips are unwrapped and compound clips are inlined before the timeline is built.</p>
+        <p data-i18n="t2.p">Multicam angles are resolved, sync clips are unwrapped and compound clips holding a single item are inlined before the timeline is built. Compounds with several items stay compounds and get a warning.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Resolve Studio driver</h3>
-        <p data-i18n="t3.p">A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically.</p>
+        <p data-i18n="t3.p">A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically. With “Drive Resolve after export” off, the app shows how to import the result in Resolve.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Speed ramps</h3>
@@ -120,19 +120,19 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Burn-in bars</h3>
-        <p data-i18n="t5.p">Bars are derived automatically from the proxy and original size.</p>
+        <p data-i18n="t5.p">Bars are derived automatically from the proxy and original size. An optional reference movie can be exported with burned-in timecode.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Burn-in rebase</h3>
-        <p data-i18n="t6.p">Transforms are rebased for burn-ins, with Pan/Tilt unit handling.</p>
+        <p data-i18n="t6.p">Transforms are rebased for burn-ins, with Pan/Tilt unit handling. Keyframed clips only get a warning (yellow marker); retime and compound clips with rebase are unverified.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t7.h">Unsupported filters, flagged</h3>
-        <p data-i18n="t7.p">Final Cut Pro filters that are not supported are removed and listed as red markers, so nothing disappears silently.</p>
+        <h3 data-i18n="t7.h">Video filters, removed and flagged</h3>
+        <p data-i18n="t7.p">All Final Cut Pro video filters are removed and listed as red markers and in the report, so nothing disappears silently.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t8.h">Conform Report as PDF</h3>
-        <p data-i18n="t8.p">Every conform produces a report as PDF that you can check and hand on.</p>
+        <h3 data-i18n="t8.h">Conform Report (Markdown)</h3>
+        <p data-i18n="t8.p">Every conform writes ConformReport.md, which opens via “View Report”. Stage 1 (FCPXML, manifest and report) also runs without Resolve.</p>
       </div>
     </div>
   </section>
@@ -147,19 +147,23 @@
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
           <li data-i18n="k1.a">macOS 14.0 or later</li>
-          <li data-i18n="k1.b">DaVinci Resolve Studio is required</li>
-          <li data-i18n="k1.c">Final Cut Pro timelines exported as FCPXML</li>
+          <li data-i18n="k1.b">DaVinci Resolve Studio is required (Python 3.11 is bundled)</li>
+          <li data-i18n="k1.c">Final Cut Pro timelines exported as FCPXML (versions 1.10 to 1.14)</li>
+          <li data-i18n="k1.e">In Resolve: Preferences &gt; System &gt; External scripting set to Local (the setup assistant checks this)</li>
           <li data-i18n="k1.d">Currently in beta with testers (v0.1.10), not released yet</li>
         </ul>
       </div>
       <div class="fact">
         <h3 data-i18n="k2.h">Not there yet</h3>
         <ul>
-          <li data-i18n="k2.a">Video only; audio conform is deferred</li>
+          <li data-i18n="k2.a">Video only; audio is left out entirely (connected audio is dropped, Audition alternatives use only the active pick)</li>
           <li data-i18n="k2.b">Only track 1 is addressed; transforms on connected clips are not applied</li>
-          <li data-i18n="k2.c">Keyframed clips get a warning only</li>
-          <li data-i18n="k2.d">Verified against one Resolve version so far (21.1.0.17)</li>
+          <li data-i18n="k2.c">Keyframes are not written; keyframed clips get a warning only (yellow marker)</li>
+          <li data-i18n="k2.d">Tested with Resolve 21.1.0.17 only; older versions may not read newer FCPXML versions</li>
           <li data-i18n="k2.e">Pan/Tilt is measured only for Crop and Fit</li>
+          <li data-i18n="k2.f">Adjustment layers are only detected (marker and report entry); LUTs are detected, listed and removed</li>
+          <li data-i18n="k2.g">Open: a compound with a single title, a container with speed ramp plus connected video, nested connected clips (warning only)</li>
+          <li data-i18n="k2.h">No way back to Final Cut Pro and no Share Destination plug-in; only the malibuconform://open?path= URL scheme, and the reference movie is dropped in manually</li>
         </ul>
       </div>
     </div>
@@ -200,30 +204,30 @@ window.PAGE_T = {
     "nav.back":"← All apps","nav.cta":"Get notified",
     "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio","badge":"In the works",
     "hero.h1":'Cut in Final Cut Pro.<br><span class="soft">Conform into Resolve.</span>',
-    "hero.lead":"Malibu Conform reads your Final Cut Pro timeline as FCPXML, resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.",
+    "hero.lead":"Malibu Conform reads your Final Cut Pro timeline as FCPXML (1.10 to 1.14), resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.",
     "hero.meta":"Beta with testers · v0.1.10 · macOS 14.0+ · requires DaVinci Resolve Studio",
     "lr.ph":"you@email.com","lr.btn":"Notify me at launch",
     "lr.ok":"Thanks. We'll email you at launch.","lr.err":"That did not go through. Please try again in a moment.",
     "w1.r1":"Timeline","w1.r2":"Multicam, compounds","w1.t":"Exported",
-    "w2.r1":"Spatial and PAR","w2.r2":"Speed ramps","w2.r3":"Unsupported filters","w2.t3":"Marked",
+    "w2.r1":"Spatial and PAR","w2.r2":"Speed ramps","w2.r3":"Video filters","w2.t3":"Marked",
     "w3.r1":"Timeline","w3.t":"Conformed","w3.r2":"Conform Report",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Three steps","wf.sub":"From a finished cut to a conformed Resolve timeline.",
     "s1.h":"Export from Final Cut Pro","s1.p":"Export the finished timeline as FCPXML. That file is what Malibu Conform works from.",
-    "s2.h":"Conform reads and resolves","s2.p":"Multicam angles, sync clips and compounds are resolved, speed ramps are snapped, and unsupported filters are flagged.",
-    "s3.h":"Timeline in Resolve Studio","s3.p":"A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report as PDF documents the result.",
+    "s2.h":"Conform reads and resolves","s2.p":"Multicam angles and sync clips are resolved, compound clips holding a single item are inlined, speed ramps are snapped, and Final Cut Pro video filters are removed and flagged.",
+    "s3.h":"Timeline in Resolve Studio","s3.p":"A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report (Markdown) documents the result.",
     "f.title":"What's inside","f.sub":"What the current beta (0.1.10) does.",
-    "t1.l":"Spatial","t1.h":"Spatial conform, baked in","t1.p":"Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio, so the framing you set in Final Cut Pro is the framing you get.",
-    "t2.h":"Multicam, sync clips, compounds","t2.p":"Multicam angles are resolved, sync clips are unwrapped and compound clips are inlined before the timeline is built.",
-    "t3.h":"Resolve Studio driver","t3.p":"A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically.",
+    "t1.l":"Spatial","t1.h":"Spatial conform, baked in","t1.p":"Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio. Verified on synthetic material with Resolve 21.1.0.17 (453 tests).",
+    "t2.h":"Multicam, sync clips, compounds","t2.p":"Multicam angles are resolved, sync clips are unwrapped and compound clips holding a single item are inlined before the timeline is built. Compounds with several items stay compounds and get a warning.",
+    "t3.h":"Resolve Studio driver","t3.p":"A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically. With “Drive Resolve after export” off, the app shows how to import the result in Resolve.",
     "t4.h":"Speed ramps","t4.p":"Speed-ramp times are snapped to NTSC-rational frame rates.",
-    "t5.h":"Burn-in bars","t5.p":"Bars are derived automatically from the proxy and original size.",
-    "t6.h":"Burn-in rebase","t6.p":"Transforms are rebased for burn-ins, with Pan/Tilt unit handling.",
-    "t7.h":"Unsupported filters, flagged","t7.p":"Final Cut Pro filters that are not supported are removed and listed as red markers, so nothing disappears silently.",
-    "t8.h":"Conform Report as PDF","t8.p":"Every conform produces a report as PDF that you can check and hand on.",
+    "t5.h":"Burn-in bars","t5.p":"Bars are derived automatically from the proxy and original size. An optional reference movie can be exported with burned-in timecode.",
+    "t6.h":"Burn-in rebase","t6.p":"Transforms are rebased for burn-ins, with Pan/Tilt unit handling. Keyframed clips only get a warning (yellow marker); retime and compound clips with rebase are unverified.",
+    "t7.h":"Video filters, removed and flagged","t7.p":"All Final Cut Pro video filters are removed and listed as red markers and in the report, so nothing disappears silently.",
+    "t8.h":"Conform Report (Markdown)","t8.p":"Every conform writes ConformReport.md, which opens via “View Report”. Stage 1 (FCPXML, manifest and report) also runs without Resolve.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 14.0 or later","k1.b":"DaVinci Resolve Studio is required","k1.c":"Final Cut Pro timelines exported as FCPXML","k1.d":"Currently in beta with testers (v0.1.10), not released yet",
-    "k2.h":"Not there yet","k2.a":"Video only; audio conform is deferred","k2.b":"Only track 1 is addressed; transforms on connected clips are not applied","k2.c":"Keyframed clips get a warning only","k2.d":"Verified against one Resolve version so far (21.1.0.17)","k2.e":"Pan/Tilt is measured only for Crop and Fit",
+    "k1.h":"Requirements","k1.a":"macOS 14.0 or later","k1.b":"DaVinci Resolve Studio is required (Python 3.11 is bundled)","k1.c":"Final Cut Pro timelines exported as FCPXML (versions 1.10 to 1.14)","k1.d":"Currently in beta with testers (v0.1.10), not released yet","k1.e":"In Resolve: Preferences > System > External scripting set to Local (the setup assistant checks this)",
+    "k2.h":"Not there yet","k2.a":"Video only; audio is left out entirely (connected audio is dropped, Audition alternatives use only the active pick)","k2.b":"Only track 1 is addressed; transforms on connected clips are not applied","k2.c":"Keyframes are not written; keyframed clips get a warning only (yellow marker)","k2.d":"Tested with Resolve 21.1.0.17 only; older versions may not read newer FCPXML versions","k2.e":"Pan/Tilt is measured only for Crop and Fit","k2.f":"Adjustment layers are only detected (marker and report entry); LUTs are detected, listed and removed","k2.g":"Open: a compound with a single title, a container with speed ramp plus connected video, nested connected clips (warning only)","k2.h":"No way back to Final Cut Pro and no Share Destination plug-in; only the malibuconform://open?path= URL scheme, and the reference movie is dropped in manually",
     "dl.title":"In the works","dl.sub":"Malibu Conform is not released yet. Leave your email and we'll write to you at launch.",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
     "foot.legal":"Malibu Conform is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. DaVinci Resolve is a trademark of Blackmagic Design Pty Ltd. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
@@ -232,30 +236,30 @@ window.PAGE_T = {
     "nav.back":"← Alle Apps","nav.cta":"Benachrichtigen",
     "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio","badge":"In Arbeit",
     "hero.h1":'In Final Cut Pro geschnitten.<br><span class="soft">Nach Resolve konformiert.</span>',
-    "hero.lead":"Malibu Conform liest deine Final-Cut-Pro-Timeline als FCPXML, löst auf, was Resolve nicht so übernehmen kann, und baut die Timeline in DaVinci Resolve Studio.",
+    "hero.lead":"Malibu Conform liest deine Final-Cut-Pro-Timeline als FCPXML (1.10 bis 1.14), löst auf, was Resolve nicht so übernehmen kann, und baut die Timeline in DaVinci Resolve Studio.",
     "hero.meta":"Beta mit Testern · v0.1.10 · macOS 14.0+ · braucht DaVinci Resolve Studio",
     "lr.ph":"deine@email.de","lr.btn":"Zum Launch benachrichtigen",
     "lr.ok":"Danke. Wir melden uns beim Launch.","lr.err":"Das hat nicht geklappt. Bitte versuch es gleich noch einmal.",
     "w1.r1":"Timeline","w1.r2":"Multicam, Compounds","w1.t":"Exportiert",
-    "w2.r1":"Spatial und PAR","w2.r2":"Speed Ramps","w2.r3":"Nicht unterstützte Filter","w2.t3":"Markiert",
+    "w2.r1":"Spatial und PAR","w2.r2":"Speed Ramps","w2.r3":"Videofilter","w2.t3":"Markiert",
     "w3.r1":"Timeline","w3.t":"Konformiert","w3.r2":"Conform Report",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Drei Schritte","wf.sub":"Vom fertigen Schnitt zur konformierten Resolve-Timeline.",
     "s1.h":"Aus Final Cut Pro exportieren","s1.p":"Exportiere die fertige Timeline als FCPXML. Mit dieser Datei arbeitet Malibu Conform.",
-    "s2.h":"Conform liest und löst auf","s2.p":"Multicam-Winkel, Sync-Clips und Compounds werden aufgelöst, Speed Ramps eingerastet und nicht unterstützte Filter markiert.",
-    "s3.h":"Timeline in Resolve Studio","s3.p":"Ein mitgelieferter Treiber wendet die Transformationen in DaVinci Resolve Studio an und liest die Werte zurück. Ein Conform Report als PDF dokumentiert das Ergebnis.",
+    "s2.h":"Conform liest und löst auf","s2.p":"Multicam-Winkel und Sync-Clips werden aufgelöst, Compound-Clips mit genau einem Inhalt eingebettet, Speed Ramps eingerastet und Final-Cut-Pro-Videofilter entfernt und markiert.",
+    "s3.h":"Timeline in Resolve Studio","s3.p":"Ein mitgelieferter Treiber wendet die Transformationen in DaVinci Resolve Studio an und liest die Werte zurück. Ein Conform Report (Markdown) dokumentiert das Ergebnis.",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Beta (0.1.10) kann.",
-    "t1.l":"Spatial","t1.h":"Spatial-Conform, fest eingebaut","t1.p":"Position, Skalierung und Crop werden in die Resolve-Timeline konformiert, inklusive Pixel Aspect Ratio. Der Bildausschnitt aus Final Cut Pro bleibt, wie du ihn gesetzt hast.",
-    "t2.h":"Multicam, Sync-Clips, Compounds","t2.p":"Multicam-Winkel werden aufgelöst, Sync-Clips entpackt und Compound-Clips eingebettet, bevor die Timeline entsteht.",
-    "t3.h":"Resolve-Studio-Treiber","t3.p":"Ein mitgelieferter Treiber (Python 3.11) wendet die Transformationen in Resolve Studio an und liest die Werte zurück. Resolve kann automatisch gestartet werden.",
+    "t1.l":"Spatial","t1.h":"Spatial-Conform, fest eingebaut","t1.p":"Position, Skalierung und Crop werden in die Resolve-Timeline konformiert, inklusive Pixel Aspect Ratio. Verifiziert an synthetischem Material mit Resolve 21.1.0.17 (453 Tests).",
+    "t2.h":"Multicam, Sync-Clips, Compounds","t2.p":"Multicam-Winkel werden aufgelöst, Sync-Clips entpackt und Compound-Clips mit genau einem Inhalt eingebettet, bevor die Timeline entsteht. Compounds mit mehreren Elementen bleiben Compounds und erhalten eine Warnung.",
+    "t3.h":"Resolve-Studio-Treiber","t3.p":"Ein mitgelieferter Treiber (Python 3.11) wendet die Transformationen in Resolve Studio an und liest die Werte zurück. Resolve kann automatisch gestartet werden. Ist „Drive Resolve after export“ aus, zeigt die App, wie du das Ergebnis in Resolve importierst.",
     "t4.h":"Speed Ramps","t4.p":"Zeitpunkte von Speed Ramps rasten auf NTSC-rationale Framerates ein.",
-    "t5.h":"Burn-in-Balken","t5.p":"Balken werden automatisch aus Proxy- und Originalgröße abgeleitet.",
-    "t6.h":"Burn-in-Rebase","t6.p":"Transformationen werden für Burn-ins umgerechnet, inklusive Pan/Tilt-Einheiten.",
-    "t7.h":"Nicht unterstützte Filter, markiert","t7.p":"Nicht unterstützte Final-Cut-Pro-Filter werden entfernt und als rote Marker aufgelistet, damit nichts still verschwindet.",
-    "t8.h":"Conform Report als PDF","t8.p":"Jedes Conform erzeugt einen Report als PDF zum Prüfen und Weitergeben.",
+    "t5.h":"Burn-in-Balken","t5.p":"Balken werden automatisch aus Proxy- und Originalgröße abgeleitet. Optional lässt sich ein Referenzfilm mit eingebranntem Timecode exportieren.",
+    "t6.h":"Burn-in-Rebase","t6.p":"Transformationen werden für Burn-ins umgerechnet, inklusive Pan/Tilt-Einheiten. Clips mit Keyframes erhalten nur eine Warnung (gelber Marker); Retime und Compounds mit Rebase sind nicht verifiziert.",
+    "t7.h":"Videofilter, entfernt und markiert","t7.p":"Alle Final-Cut-Pro-Videofilter werden entfernt und als rote Marker sowie im Report aufgelistet, damit nichts still verschwindet.",
+    "t8.h":"Conform Report (Markdown)","t8.p":"Jedes Conform schreibt eine ConformReport.md, die sich über „View Report“ öffnet. Stufe 1 (FCPXML, Manifest und Report) läuft auch ohne Resolve.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer","k1.b":"DaVinci Resolve Studio ist erforderlich","k1.c":"Final-Cut-Pro-Timelines, exportiert als FCPXML","k1.d":"Derzeit Beta mit Testern (v0.1.10), noch nicht veröffentlicht",
-    "k2.h":"Noch nicht da","k2.a":"Nur Video; das Audio-Conform ist zurückgestellt","k2.b":"Nur Spur 1 wird angesprochen; Transformationen auf Connected Clips werden nicht angewendet","k2.c":"Clips mit Keyframes erhalten nur eine Warnung","k2.d":"Bisher gegen eine Resolve-Version verifiziert (21.1.0.17)","k2.e":"Pan/Tilt ist nur für Crop und Fit vermessen",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer","k1.b":"DaVinci Resolve Studio ist erforderlich (Python 3.11 ist mitgeliefert)","k1.c":"Final-Cut-Pro-Timelines, exportiert als FCPXML (Versionen 1.10 bis 1.14)","k1.d":"Derzeit Beta mit Testern (v0.1.10), noch nicht veröffentlicht","k1.e":"In Resolve: Preferences > System > External scripting auf Local gestellt (der Setup-Assistent prüft das)",
+    "k2.h":"Noch nicht da","k2.a":"Nur Video; Audio fällt komplett weg (Connected Audio entfällt, bei Audition-Alternativen zählt nur die aktive Wahl)","k2.b":"Nur Spur 1 wird angesprochen; Transformationen auf Connected Clips werden nicht angewendet","k2.c":"Keyframes werden nicht geschrieben; Clips mit Keyframes erhalten nur eine Warnung (gelber Marker)","k2.d":"Nur mit Resolve 21.1.0.17 getestet; ältere Versionen lesen neuere FCPXML-Versionen evtl. nicht","k2.e":"Pan/Tilt ist nur für Crop und Fit vermessen","k2.f":"Adjustment Layer werden nur erkannt (Marker und Report-Eintrag); LUTs werden erkannt, aufgelistet und entfernt","k2.g":"Offen: Compound mit einzelnem Titel, Container mit Speed Ramp plus Connected Video, verschachtelte Connected Clips (nur Warnung)","k2.h":"Kein Rückweg nach Final Cut Pro und kein Share-Destination-Plug-in; nur das URL-Schema malibuconform://open?path=, den Referenzfilm legst du per Hand hinein",
     "dl.title":"In Arbeit","dl.sub":"Malibu Conform ist noch nicht veröffentlicht. Trag deine E-Mail ein, dann melden wir uns zum Launch.",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
     "foot.legal":"Malibu Conform ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. DaVinci Resolve ist eine Marke von Blackmagic Design Pty Ltd. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."

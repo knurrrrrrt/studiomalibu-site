@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MalibuDictate · Push-to-Talk Dictation for macOS</title>
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="description" content="MalibuDictate turns speech into text in any app: hold a hotkey, speak, and the text is pasted. Optional Claude rewrite, per-app profiles, a personal dictionary and an opt-in meeting mode.">
+<meta name="description" content="MalibuDictate turns speech into text in any app: hold a hotkey, speak, and the text is pasted. Optional rewrite via Claude or on-device with Apple Intelligence, per-app profiles, a personal dictionary and an opt-in meeting mode. Rewrite via Claude or on-device with Apple Intelligence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,12 +34,12 @@
     <div>
       <div class="eyebrow" data-i18n="hero.eyebrow">Push-to-talk dictation · macOS</div>
       <h1 data-i18n="hero.h1">Hold a key.<br><span class="soft">Speak.</span> Text appears.</h1>
-      <p class="lead" data-i18n="hero.lead">MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude if you want.</p>
+      <p class="lead" data-i18n="hero.lead">MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude or an on-device rewrite if you want.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
         <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
       </div>
-      <div class="cta-meta" data-i18n="hero.meta">macOS 15+ · Free trial · Version 0.10.6</div>
+      <div class="cta-meta" data-i18n="hero.meta">macOS 15+ · 30-day free trial · Version 0.10.6</div>
     </div>
 
     <div>
@@ -69,7 +69,7 @@
       <p data-i18n="wf.sub">From a thought to text, without leaving the app you are in.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Hold the hotkey</h3><p data-i18n="s1.p">Press and hold in any app. An indicator shows that it is listening. Double-tap instead for hands-free recording.</p></div>
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Hold the hotkey</h3><p data-i18n="s1.p">Press and hold in any app. Caps Lock and fn work as hotkeys. An indicator shows that it is listening. Double-tap instead for hands-free recording (opt-in).</p></div>
       <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Speak</h3><p data-i18n="s2.p">Transcription runs with the engine you chose. Dictionary entries, snippets and spoken punctuation are applied.</p></div>
       <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Text appears</h3><p data-i18n="s3.p">The result is inserted by paste (Cmd+V) at your cursor. Your previous clipboard is restored after a time you set.</p></div>
     </div>
@@ -84,35 +84,35 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Dictate</div>
         <h3 data-i18n="t1.h">Three dictation modes</h3>
-        <p data-i18n="t1.p">Raw transcript as spoken, a Claude rewrite that cleans up the text, or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.</p>
+        <p data-i18n="t1.p">Raw transcript as spoken, a rewrite that cleans up the text (Claude in the cloud, or local with Apple Intelligence), or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Four speech engines</h3>
-        <p data-i18n="t2.p">Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron and Apple SpeechAnalyzer on macOS 26 and later. Parakeet Ultra lowers the German word error rate from 5.6 to 4.6 percent; it is about a 630 MB download and falls back to v3.</p>
+        <p data-i18n="t2.p">Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron (English only) and Apple SpeechAnalyzer on macOS 26 and later. In our own FLEURS benchmark (German only), Parakeet Ultra lowers the word error rate from 5.6 to 4.6 percent; it is about a 600 MB download and falls back to v3.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Meeting mode (beta)</h3>
-        <p data-i18n="t3.p">Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates, a glossary and Markdown export with an Obsidian-style header.</p>
+        <p data-i18n="t3.p">Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates and a glossary. Export as Markdown with “Save as .md”, or to a folder (opt-in) with an Obsidian-style header.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Per-app profiles</h3>
-        <p data-i18n="t4.p">Different behavior for different apps, set once.</p>
+        <p data-i18n="t4.p">Different rewrite behavior for different apps, set once. Profiles apply to the rewrite modes, not to Raw.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Dictionary and snippets</h3>
-        <p data-i18n="t5.p">A personal dictionary, snippets and spoken punctuation.</p>
+        <p data-i18n="t5.p">A personal dictionary, snippets, trigger words and spoken punctuation.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t6.h">Hands-free</h3>
-        <p data-i18n="t6.p">Double-tap the hotkey to keep recording without holding it.</p>
+        <h3 data-i18n="t6.h">Hands-free (opt-in)</h3>
+        <p data-i18n="t6.p">Off by default. Once enabled, double-tap the hotkey to keep recording without holding it.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Clipboard, handled</h3>
         <p data-i18n="t7.p">Text goes in by paste. Timed clipboard retention and restore bring back what you had copied, so dictating does not eat your clipboard.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t8.h">Indicators and history</h3>
-        <p data-i18n="t8.p">Show the recording state as a Notch, Overlay or Minimal indicator, and look back at past dictations in the history.</p>
+        <h3 data-i18n="t8.h">Indicators and history (opt-in)</h3>
+        <p data-i18n="t8.p">Show the recording state as a Notch, Overlay or Minimal indicator. The history of past dictations is off by default and opt-in.</p>
       </div>
     </div>
   </section>
@@ -126,9 +126,11 @@
       <div class="fact">
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
-          <li data-i18n="k1.a">macOS 15.0 or later; the Apple Speech engine needs macOS 26 or later</li>
-          <li data-i18n="k1.b">Audio stays on your Mac; rewrite and summaries need your own Claude API key</li>
-          <li data-i18n="k1.c">Free trial, then a one-time license</li>
+          <li data-i18n="k1.a">macOS 15.0 or later; the Apple Speech engine and the local rewrite (Apple Intelligence) need macOS 26 or later</li>
+          <li data-i18n="k1.b">Audio stays on your Mac. The “Claude (Cloud)” rewrite and Claude meeting summaries need your own Claude API key; the local rewrite (Apple Intelligence) needs none</li>
+          <li data-i18n="k1.c">30-day free trial; an email address is required at first launch</li>
+          <li data-i18n="k1.d">Needs Microphone and Accessibility permission</li>
+          <li data-i18n="k1.d">Needs Microphone and Accessibility permission</li>
         </ul>
       </div>
       <div class="fact">
@@ -136,7 +138,17 @@
         <ul>
           <li data-i18n="k2.a">Meeting mode is beta and off until you opt in</li>
           <li data-i18n="k2.b">Double-tap timing and the marker shortcut (Ctrl+Opt+M) are still being tested in daily use</li>
-          <li data-i18n="k2.c">Nemotron's German is untested</li>
+          <li data-i18n="k2.c">Nemotron: English only</li>
+          <li data-i18n="k2.d">Meeting mode labels speakers only as “You” and “Others”, no speaker names</li>
+          <li data-i18n="k2.e">The Claude meeting summary sends the transcript text to Anthropic</li>
+          <li data-i18n="k2.f">In password fields nothing is pasted automatically; the text stays on the clipboard</li>
+          <li data-i18n="k2.g">Live Transcript Preview is experimental</li>
+          <li data-i18n="k2.h">The local rewrite (Apple Intelligence) can lose its role on short dictations</li>
+          <li data-i18n="k2.d">Meeting mode labels speakers only as “You” and “Others”, no speaker names</li>
+          <li data-i18n="k2.e">The Claude meeting summary sends the transcript text to Anthropic</li>
+          <li data-i18n="k2.f">In password fields nothing is pasted automatically; the text stays on the clipboard</li>
+          <li data-i18n="k2.g">Live Transcript Preview is experimental</li>
+          <li data-i18n="k2.h">The local rewrite (Apple Intelligence) can lose its role on short dictations</li>
         </ul>
       </div>
     </div>
@@ -146,7 +158,7 @@
     <div class="dl">
       <div>
         <h2 data-i18n="dl.title">Download MalibuDictate</h2>
-        <p data-i18n="dl.sub">Version 0.10.6 for macOS 15 or later. Free trial, then a one-time license.</p>
+        <p data-i18n="dl.sub">Version 0.10.6 for macOS 15 or later. 30-day free trial. Updates arrive automatically; feedback can be sent from inside the app.</p>
       </div>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg" data-i18n="dl.btn">Download for Mac</a>
@@ -162,7 +174,7 @@
         <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
-    <p class="legal" data-i18n="foot.legal">Claude is a trademark of Anthropic. Obsidian is a trademark of its owner. Apple, macOS and Apple Speech are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+    <p class="legal" data-i18n="foot.legal">Claude is a trademark of Anthropic. Obsidian is a trademark of its owner. Apple, macOS, Apple Speech and Apple Intelligence are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
   </footer>
 </div>
 
@@ -173,61 +185,61 @@ window.PAGE_T = {
     "nav.back":"← All apps","nav.cta":"Download",
     "hero.eyebrow":"Push-to-talk dictation · macOS",
     "hero.h1":'Hold a key.<br><span class="soft">Speak.</span> Text appears.',
-    "hero.lead":"MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude if you want.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"macOS 15+ · Free trial · Version 0.10.6",
+    "hero.lead":"MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude or an on-device rewrite if you want.",
+    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"macOS 15+ · 30-day free trial · Version 0.10.6",
     "w1.head":"Record","w1.r1":"Hotkey","w1.v1":"held","w1.r2":"Mode","w1.v2":"Raw",
     "w2.head":"Transcribe","w2.r1":"Speech engine","w2.r2":"Dictionary","w2.t2":"applied",
     "w3.head":"Any app","w3.r1":"Text at the cursor","w3.tag":"Pasted",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Three steps","wf.sub":"From a thought to text, without leaving the app you are in.",
-    "s1.h":"Hold the hotkey","s1.p":"Press and hold in any app. An indicator shows that it is listening. Double-tap instead for hands-free recording.",
+    "s1.h":"Hold the hotkey","s1.p":"Press and hold in any app. Caps Lock and fn work as hotkeys. An indicator shows that it is listening. Double-tap instead for hands-free recording (opt-in).",
     "s2.h":"Speak","s2.p":"Transcription runs with the engine you chose. Dictionary entries, snippets and spoken punctuation are applied.",
     "s3.h":"Text appears","s3.p":"The result is inserted by paste (Cmd+V) at your cursor. Your previous clipboard is restored after a time you set.",
     "f.title":"What's inside","f.sub":"What the current version (0.10.6) actually does.",
-    "t1.l":"Dictate","t1.h":"Three dictation modes","t1.p":"Raw transcript as spoken, a Claude rewrite that cleans up the text, or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.",
-    "t2.h":"Four speech engines","t2.p":"Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron and Apple SpeechAnalyzer on macOS 26 and later. Parakeet Ultra lowers the German word error rate from 5.6 to 4.6 percent; it is about a 630 MB download and falls back to v3.",
-    "t3.h":"Meeting mode (beta)","t3.p":"Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates, a glossary and Markdown export with an Obsidian-style header.",
-    "t4.h":"Per-app profiles","t4.p":"Different behavior for different apps, set once.",
-    "t5.h":"Dictionary and snippets","t5.p":"A personal dictionary, snippets and spoken punctuation.",
-    "t6.h":"Hands-free","t6.p":"Double-tap the hotkey to keep recording without holding it.",
+    "t1.l":"Dictate","t1.h":"Three dictation modes","t1.p":"Raw transcript as spoken, a rewrite that cleans up the text (Claude in the cloud, or local with Apple Intelligence), or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.",
+    "t2.h":"Four speech engines","t2.p":"Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron (English only) and Apple SpeechAnalyzer on macOS 26 and later. In our own FLEURS benchmark (German only), Parakeet Ultra lowers the word error rate from 5.6 to 4.6 percent; it is about a 600 MB download and falls back to v3.",
+    "t3.h":"Meeting mode (beta)","t3.p":"Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates and a glossary. Export as Markdown with “Save as .md”, or to a folder (opt-in) with an Obsidian-style header.",
+    "t4.h":"Per-app profiles","t4.p":"Different rewrite behavior for different apps, set once. Profiles apply to the rewrite modes, not to Raw.",
+    "t5.h":"Dictionary and snippets","t5.p":"A personal dictionary, snippets, trigger words and spoken punctuation.",
+    "t6.h":"Hands-free (opt-in)","t6.p":"Off by default. Once enabled, double-tap the hotkey to keep recording without holding it.",
     "t7.h":"Clipboard, handled","t7.p":"Text goes in by paste. Timed clipboard retention and restore bring back what you had copied, so dictating does not eat your clipboard.",
-    "t8.h":"Indicators and history","t8.p":"Show the recording state as a Notch, Overlay or Minimal indicator, and look back at past dictations in the history.",
+    "t8.h":"Indicators and history (opt-in)","t8.p":"Show the recording state as a Notch, Overlay or Minimal indicator. The history of past dictations is off by default and opt-in.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 15.0 or later; the Apple Speech engine needs macOS 26 or later","k1.b":"Audio stays on your Mac; rewrite and summaries need your own Claude API key","k1.c":"Free trial, then a one-time license",
-    "k2.h":"Not there yet","k2.a":"Meeting mode is beta and off until you opt in","k2.b":"Double-tap timing and the marker shortcut (Ctrl+Opt+M) are still being tested in daily use","k2.c":"Nemotron's German is untested",
-    "dl.title":"Download MalibuDictate","dl.sub":"Version 0.10.6 for macOS 15 or later. Free trial, then a one-time license.","dl.btn":"Download for Mac",
+    "k1.h":"Requirements","k1.a":"macOS 15.0 or later; the Apple Speech engine and the local rewrite (Apple Intelligence) need macOS 26 or later","k1.b":"Audio stays on your Mac. The “Claude (Cloud)” rewrite and Claude meeting summaries need your own Claude API key; the local rewrite (Apple Intelligence) needs none","k1.c":"30-day free trial; an email address is required at first launch","k1.d":"Needs Microphone and Accessibility permission","k1.d":"Needs Microphone and Accessibility permission",
+    "k2.h":"Not there yet","k2.a":"Meeting mode is beta and off until you opt in","k2.b":"Double-tap timing and the marker shortcut (Ctrl+Opt+M) are still being tested in daily use","k2.c":"Nemotron: English only","k2.d":"Meeting mode labels speakers only as “You” and “Others”, no speaker names","k2.e":"The Claude meeting summary sends the transcript text to Anthropic","k2.f":"In password fields nothing is pasted automatically; the text stays on the clipboard","k2.g":"Live Transcript Preview is experimental","k2.h":"The local rewrite (Apple Intelligence) can lose its role on short dictations","k2.d":"Meeting mode labels speakers only as “You” and “Others”, no speaker names","k2.e":"The Claude meeting summary sends the transcript text to Anthropic","k2.f":"In password fields nothing is pasted automatically; the text stays on the clipboard","k2.g":"Live Transcript Preview is experimental","k2.h":"The local rewrite (Apple Intelligence) can lose its role on short dictations",
+    "dl.title":"Download MalibuDictate","dl.sub":"Version 0.10.6 for macOS 15 or later. 30-day free trial. Updates arrive automatically; feedback can be sent from inside the app.","dl.btn":"Download for Mac",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
-    "foot.legal":"Claude is a trademark of Anthropic. Obsidian is a trademark of its owner. Apple, macOS and Apple Speech are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"Claude is a trademark of Anthropic. Obsidian is a trademark of its owner. Apple, macOS, Apple Speech and Apple Intelligence are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
     "nav.back":"← Alle Apps","nav.cta":"Laden",
     "hero.eyebrow":"Push-to-Talk-Diktat · macOS",
     "hero.h1":'Taste halten.<br><span class="soft">Sprechen.</span> Text erscheint.',
-    "hero.lead":"MalibuDictate macht aus Sprache Text, in jeder App. Hotkey halten, sprechen, und der Text wird dort eingefügt, wo dein Cursor steht. Roh oder auf Wunsch von Claude geglättet.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"macOS 15+ · Kostenlos testen · Version 0.10.6",
+    "hero.lead":"MalibuDictate macht aus Sprache Text, in jeder App. Hotkey halten, sprechen, und der Text wird dort eingefügt, wo dein Cursor steht. Roh oder auf Wunsch von Claude oder per lokalem Rewrite geglättet.",
+    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"macOS 15+ · 30 Tage kostenlos testen · Version 0.10.6",
     "w1.head":"Aufnahme","w1.r1":"Hotkey","w1.v1":"gehalten","w1.r2":"Modus","w1.v2":"Roh",
     "w2.head":"Transkription","w2.r1":"Sprach-Engine","w2.r2":"Wörterbuch","w2.t2":"angewendet",
     "w3.head":"Jede App","w3.r1":"Text am Cursor","w3.tag":"Eingefügt",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Drei Schritte","wf.sub":"Vom Gedanken zum Text, ohne die App zu verlassen.",
-    "s1.h":"Hotkey halten","s1.p":"In jeder App gedrückt halten. Ein Indikator zeigt, dass zugehört wird. Alternativ doppelt tippen für freihändige Aufnahme.",
+    "s1.h":"Hotkey halten","s1.p":"In jeder App gedrückt halten. Caps Lock und fn funktionieren als Hotkey. Ein Indikator zeigt, dass zugehört wird. Alternativ doppelt tippen für freihändige Aufnahme (opt-in).",
     "s2.h":"Sprechen","s2.p":"Die Transkription läuft mit der Engine, die du gewählt hast. Wörterbuch-Einträge, Snippets und gesprochene Satzzeichen werden angewendet.",
     "s3.h":"Text erscheint","s3.p":"Das Ergebnis wird per Einfügen (Cmd+V) am Cursor eingesetzt. Deine vorherige Zwischenablage wird nach einer von dir gewählten Zeit wiederhergestellt.",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (0.10.6) wirklich kann.",
-    "t1.l":"Diktieren","t1.h":"Drei Diktiermodi","t1.p":"Rohtext wie gesprochen, ein Claude-Rewrite, der den Text aufräumt, oder ein Zwischenablage-Rewrite, der überarbeitet, was du kopiert hast. Du wählst den Modus, der gerade passt.",
-    "t2.h":"Vier Sprach-Engines","t2.p":"Parakeet (v3 und Parakeet Ultra), WhisperKit, Nemotron und Apple SpeechAnalyzer ab macOS 26. Parakeet Ultra senkt die deutsche Wortfehlerrate von 5,6 auf 4,6 Prozent; der Download ist rund 630 MB groß, als Fallback dient v3.",
-    "t3.h":"Meeting-Modus (Beta)","t3.p":"Opt-in. Nimmt Mikrofon und Systemton als getrennte Streams auf, transkribiert auf deinem Mac und fasst per Claude oder als Offline-Basic-Zusammenfassung zusammen. Marker, Vorlagen, Glossar und Markdown-Export mit Obsidian-Header.",
-    "t4.h":"Profile pro App","t4.p":"Unterschiedliches Verhalten für unterschiedliche Apps, einmal eingestellt.",
-    "t5.h":"Wörterbuch und Snippets","t5.p":"Ein persönliches Wörterbuch, Snippets und gesprochene Satzzeichen.",
-    "t6.h":"Freihändig","t6.p":"Hotkey doppelt tippen, um weiter aufzunehmen, ohne die Taste zu halten.",
+    "t1.l":"Diktieren","t1.h":"Drei Diktiermodi","t1.p":"Rohtext wie gesprochen, ein Rewrite, der den Text aufräumt (Claude in der Cloud oder lokal mit Apple Intelligence), oder ein Zwischenablage-Rewrite, der überarbeitet, was du kopiert hast. Du wählst den Modus, der gerade passt.",
+    "t2.h":"Vier Sprach-Engines","t2.p":"Parakeet (v3 und Parakeet Ultra), WhisperKit, Nemotron (nur Englisch) und Apple SpeechAnalyzer ab macOS 26. In unserem eigenen FLEURS-Benchmark (nur Deutsch) senkt Parakeet Ultra die Wortfehlerrate von 5,6 auf 4,6 Prozent; der Download ist rund 600 MB groß, als Fallback dient v3.",
+    "t3.h":"Meeting-Modus (Beta)","t3.p":"Opt-in. Nimmt Mikrofon und Systemton als getrennte Streams auf, transkribiert auf deinem Mac und fasst per Claude oder als Offline-Basic-Zusammenfassung zusammen. Marker, Vorlagen und Glossar. Markdown-Export per „Als .md sichern“ oder (opt-in) in einen Ordner mit Obsidian-Header.",
+    "t4.h":"Profile pro App","t4.p":"Unterschiedliches Rewrite-Verhalten für unterschiedliche Apps, einmal eingestellt. Profile wirken auf die Rewrite-Modi, nicht auf Raw.",
+    "t5.h":"Wörterbuch und Snippets","t5.p":"Ein persönliches Wörterbuch, Snippets, Trigger-Wörter und gesprochene Satzzeichen.",
+    "t6.h":"Freihändig (opt-in)","t6.p":"Standardmäßig aus. Einmal aktiviert, den Hotkey doppelt tippen, um weiter aufzunehmen, ohne die Taste zu halten.",
     "t7.h":"Zwischenablage im Griff","t7.p":"Text kommt per Einfügen. Zeitgesteuertes Behalten und Wiederherstellen bringt zurück, was du kopiert hattest, damit Diktieren deine Zwischenablage nicht auffrisst.",
-    "t8.h":"Indikatoren und Verlauf","t8.p":"Zeig den Aufnahmestatus als Notch-, Overlay- oder Minimal-Indikator und sieh im Verlauf frühere Diktate nach.",
+    "t8.h":"Indikatoren und Verlauf (opt-in)","t8.p":"Zeig den Aufnahmestatus als Notch-, Overlay- oder Minimal-Indikator. Der Verlauf früherer Diktate ist standardmäßig aus und opt-in.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 15.0 oder neuer; die Apple-Speech-Engine braucht macOS 26 oder neuer","k1.b":"Audio bleibt auf deinem Mac; Rewrite und Zusammenfassungen brauchen deinen eigenen Claude-API-Key","k1.c":"Kostenlos testen, danach einmalige Lizenz",
-    "k2.h":"Noch nicht da","k2.a":"Der Meeting-Modus ist Beta und bleibt aus, bis du ihn aktivierst","k2.b":"Double-Tap-Timing und das Marker-Kürzel (Ctrl+Opt+M) werden noch im Alltag getestet","k2.c":"Deutsch mit Nemotron ist ungetestet",
-    "dl.title":"MalibuDictate laden","dl.sub":"Version 0.10.6 für macOS 15 oder neuer. Kostenlos testen, danach einmalige Lizenz.","dl.btn":"Für Mac laden",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 15.0 oder neuer; die Apple-Speech-Engine und der lokale Rewrite (Apple Intelligence) brauchen macOS 26 oder neuer","k1.b":"Audio bleibt auf deinem Mac. Der Rewrite „Claude (Cloud)“ und Claude-Meeting-Zusammenfassungen brauchen deinen eigenen Claude-API-Key; der lokale Rewrite (Apple Intelligence) braucht keinen","k1.c":"30 Tage kostenlos testen; beim ersten Start ist eine E-Mail-Adresse nötig","k1.d":"Braucht die Berechtigung für Mikrofon und Bedienungshilfen","k1.d":"Braucht die Berechtigung für Mikrofon und Bedienungshilfen",
+    "k2.h":"Noch nicht da","k2.a":"Der Meeting-Modus ist Beta und bleibt aus, bis du ihn aktivierst","k2.b":"Double-Tap-Timing und das Marker-Kürzel (Ctrl+Opt+M) werden noch im Alltag getestet","k2.c":"Nemotron: nur Englisch","k2.d":"Der Meeting-Modus unterscheidet nur „You“ und „Others“, keine Sprechernamen","k2.e":"Die Claude-Meeting-Zusammenfassung sendet den Transkripttext an Anthropic","k2.f":"In Passwortfeldern wird nie automatisch eingefügt; der Text bleibt in der Zwischenablage","k2.g":"Die Live-Transkript-Vorschau ist experimentell","k2.h":"Der lokale Rewrite (Apple Intelligence) verliert bei kurzen Diktaten teils seine Rolle","k2.d":"Der Meeting-Modus unterscheidet nur „You“ und „Others“, keine Sprechernamen","k2.e":"Die Claude-Meeting-Zusammenfassung sendet den Transkripttext an Anthropic","k2.f":"In Passwortfeldern wird nie automatisch eingefügt; der Text bleibt in der Zwischenablage","k2.g":"Die Live-Transkript-Vorschau ist experimentell","k2.h":"Der lokale Rewrite (Apple Intelligence) verliert bei kurzen Diktaten teils seine Rolle",
+    "dl.title":"MalibuDictate laden","dl.sub":"Version 0.10.6 für macOS 15 oder neuer. 30 Tage kostenlos testen. Updates kommen automatisch; Feedback lässt sich direkt in der App senden.","dl.btn":"Für Mac laden",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
-    "foot.legal":"Claude ist eine Marke von Anthropic. Obsidian ist eine Marke ihres Inhabers. Apple, macOS und Apple Speech sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"Claude ist eine Marke von Anthropic. Obsidian ist eine Marke ihres Inhabers. Apple, macOS, Apple Speech und Apple Intelligence sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
   }
 };
 </script>

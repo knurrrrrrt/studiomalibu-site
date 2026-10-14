@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SyncScript Pro · Screenplay Sync for Final Cut Pro</title>
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="description" content="SyncScript Pro transcribes each camera clip locally, matches it against your screenplay, and writes Keywords and Titles straight into Final Cut Pro.">
+<meta name="description" content="SyncScript Pro transcribes each camera clip locally, matches it against your screenplay, and sends Keywords and Titles to Final Cut Pro as FCPXML.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,12 +34,12 @@
     <div>
       <div class="eyebrow" data-i18n="hero.eyebrow">Screenplay sync · Final Cut Pro</div>
       <h1 data-i18n="hero.h1">Screenplay in.<br><span class="soft">Keywords and titles</span> out.</h1>
-      <p class="lead" data-i18n="hero.lead">SyncScript Pro transcribes each camera clip on your Mac, matches it against the screenplay, and writes Keywords and Titles straight into Final Cut Pro.</p>
+      <p class="lead" data-i18n="hero.lead">SyncScript Pro transcribes each camera clip on your Mac, matches it against the screenplay, and sends Keywords and Titles to Final Cut Pro as FCPXML.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
         <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy · €99</a>
       </div>
-      <div class="cta-meta" data-i18n="hero.meta">macOS 15+ · Version 1.2.85</div>
+      <div class="cta-meta" data-i18n="hero.meta">macOS 15+ · Apple Silicon · Version 1.2.85</div>
     </div>
 
     <div>
@@ -71,10 +71,10 @@
       <p data-i18n="wf.sub">From script and clips to scenes in Final Cut Pro.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Import script and clips</h3><p data-i18n="s1.p">Load the screenplay PDF and the camera clips from your Final Cut Pro Event.</p></div>
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Import script and clips</h3><p data-i18n="s1.p">Load the screenplay PDF and the camera clips from an exported .fcpxml or .fcpxmld.</p></div>
       <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Transcribe</h3><p data-i18n="s2.p">Each clip is transcribed individually, locally on your Mac.</p></div>
       <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Match and check</h3><p data-i18n="s3.p">Every transcript is matched against the screenplay. Scene Check shows you where it needs a second look.</p></div>
-      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Export to Final Cut Pro</h3><p data-i18n="s4.p">Keywords and Titles (and captions) are written to Final Cut Pro.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Export to Final Cut Pro</h3><p data-i18n="s4.p">Keywords and Titles (and captions) go into Final Cut Pro via FCPXML import (Send to FCP).</p></div>
     </div>
   </section>
 
@@ -87,19 +87,19 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Match</div>
         <h3 data-i18n="t1.h">Per-clip transcription, matched to the script</h3>
-        <p data-i18n="t1.p">Each camera clip is transcribed on its own with Parakeet v3 in 25 European languages. Chinese, Japanese and Korean run through Apple SpeechAnalyzer on macOS 26 or later. The result is matched against the screenplay.</p>
+        <p data-i18n="t1.p">Each camera clip is transcribed on its own with Parakeet v3 in 25 European languages. The result is matched against the screenplay.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Scene Check and scene aliases</h3>
-        <p data-i18n="t2.p">Review how every clip landed. Tell the app "Scene X uses Scene Y" when scenes share a setup, and use Add Scene Manually for scenes the PDF parser misses.</p>
+        <p data-i18n="t2.p">Review how every clip landed. Tell the app "Scene X uses Scene Y" when scenes share a setup, and use Add Scene Manually to add scenes yourself.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Keywords, Titles and captions</h3>
-        <p data-i18n="t3.p">Results land in Final Cut Pro as Keywords and Titles, plus captions. Additional Titles and an FCP Share Destination are included.</p>
+        <p data-i18n="t3.p">Results go into Final Cut Pro via FCPXML import as Keywords and Titles, plus captions. Additional Titles, export presets and keyword handles are included.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Block Editor</h3>
-        <p data-i18n="t4.p">A Block Editor sits next to the Classic List, so you can work the way you prefer.</p>
+        <p data-i18n="t4.p">A Block Editor sits next to the Classic List, so you can work the way you prefer. A mini timeline snaps to sentence starts.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Action Cut</h3>
@@ -107,11 +107,11 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Your shortcuts</h3>
-        <p data-i18n="t6.p">Freely rebindable shortcuts, a ripple-trim shortcut, and next/previous clip that skips collapsed multicam rows.</p>
+        <p data-i18n="t6.p">Freely rebindable shortcuts, a ripple-trim shortcut, Magnetic Ripple, and next/previous clip that skips collapsed multicam rows.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t7.h">Local by design</h3>
-        <p data-i18n="t7.p">The LLM clients only talk to localhost, so nothing from your script or dialog leaves the Mac. An optional local Ollama verifier can double-check matches.</p>
+        <h3 data-i18n="t7.h">Your script stays local</h3>
+        <p data-i18n="t7.p">Script and dialog never leave the Mac: the LLM options are Ollama on localhost or Apple Foundation Models. The Ollama verifier is optional, off by default, and only runs when Ollama is running with a model.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Sessions and diagnostics</h3>
@@ -129,17 +129,18 @@
       <div class="fact">
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
-          <li data-i18n="k1.a">macOS 15.0 or later, Final Cut Pro</li>
-          <li data-i18n="k1.b">macOS 26 or later for Apple SpeechAnalyzer (Chinese, Japanese, Korean)</li>
-          <li data-i18n="k1.c">Runs entirely on your Mac; the in-app feedback button only sends when you press it</li>
+          <li data-i18n="k1.a">macOS 15.0 or later on Apple Silicon (arm64), Final Cut Pro</li>
+          <li data-i18n="k1.c">Transcription and matching run locally and script and dialog stay on your Mac; the license/trial check and the update check connect online</li>
+          <li data-i18n="k1.d">30-day trial; an email address is required at first launch. The in-app feedback button only sends when you press it</li>
         </ul>
       </div>
       <div class="fact">
         <h3 data-i18n="k2.h">Not there yet</h3>
         <ul>
-          <li data-i18n="k2.a">The screenplay PDF parser has gaps on some INT/EXT heading variants; Add Scene Manually covers them</li>
-          <li data-i18n="k2.b">Keyword timing can land about one second late in some cases</li>
+          <li data-i18n="k2.a">Screenplay import is PDF only (no Fountain or FDX)</li>
+          <li data-i18n="k2.b">Final Cut Pro only (no Premiere or Resolve)</li>
           <li data-i18n="k2.c">The newest parts of the interface are still being checked in daily use</li>
+          <li data-i18n="k2.d">The first transcription needs internet to download the speech model</li>
         </ul>
       </div>
     </div>
@@ -149,7 +150,7 @@
     <div class="dl">
       <div>
         <h2 data-i18n="dl.title">Download SyncScript Pro</h2>
-        <p data-i18n="dl.sub">Version 1.2.85 · macOS 15 or later.</p>
+        <p data-i18n="dl.sub">Version 1.2.85 · macOS 15 or later · Apple Silicon.</p>
       </div>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg" data-i18n="dl.btn">Download for Mac</a>
@@ -176,29 +177,29 @@ window.PAGE_T = {
     "nav.back":"← All apps","nav.cta":"Download",
     "hero.eyebrow":"Screenplay sync · Final Cut Pro",
     "hero.h1":'Screenplay in.<br><span class="soft">Keywords and titles</span> out.',
-    "hero.lead":"SyncScript Pro transcribes each camera clip on your Mac, matches it against the screenplay, and writes Keywords and Titles straight into Final Cut Pro.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy · €99","hero.meta":"macOS 15+ · Version 1.2.85",
+    "hero.lead":"SyncScript Pro transcribes each camera clip on your Mac, matches it against the screenplay, and sends Keywords and Titles to Final Cut Pro as FCPXML.",
+    "hero.dl":"Download for Mac","hero.buy":"Buy · €99","hero.meta":"macOS 15+ · Apple Silicon · Version 1.2.85",
     "w1.head":"Import","w1.r1":"Screenplay","w1.r2":"Camera clips","w2.head":"Match","w2.t1":"MATCHED","w2.t2":"CHECK",
     "w3.r1":"Keywords · Titles","w3.tag":"Written","w3.r2":"Scene per clip",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Four steps","wf.sub":"From script and clips to scenes in Final Cut Pro.",
-    "s1.h":"Import script and clips","s1.p":"Load the screenplay PDF and the camera clips from your Final Cut Pro Event.",
+    "s1.h":"Import script and clips","s1.p":"Load the screenplay PDF and the camera clips from an exported .fcpxml or .fcpxmld.",
     "s2.h":"Transcribe","s2.p":"Each clip is transcribed individually, locally on your Mac.",
     "s3.h":"Match and check","s3.p":"Every transcript is matched against the screenplay. Scene Check shows you where it needs a second look.",
-    "s4.h":"Export to Final Cut Pro","s4.p":"Keywords and Titles (and captions) are written to Final Cut Pro.",
+    "s4.h":"Export to Final Cut Pro","s4.p":"Keywords and Titles (and captions) go into Final Cut Pro via FCPXML import (Send to FCP).",
     "f.title":"What's inside","f.sub":"What the current version (1.2.85) actually does.",
-    "t1.l":"Match","t1.h":"Per-clip transcription, matched to the script","t1.p":"Each camera clip is transcribed on its own with Parakeet v3 in 25 European languages. Chinese, Japanese and Korean run through Apple SpeechAnalyzer on macOS 26 or later. The result is matched against the screenplay.",
-    "t2.h":"Scene Check and scene aliases","t2.p":"Review how every clip landed. Tell the app \"Scene X uses Scene Y\" when scenes share a setup, and use Add Scene Manually for scenes the PDF parser misses.",
-    "t3.h":"Keywords, Titles and captions","t3.p":"Results land in Final Cut Pro as Keywords and Titles, plus captions. Additional Titles and an FCP Share Destination are included.",
-    "t4.h":"Block Editor","t4.p":"A Block Editor sits next to the Classic List, so you can work the way you prefer.",
+    "t1.l":"Match","t1.h":"Per-clip transcription, matched to the script","t1.p":"Each camera clip is transcribed on its own with Parakeet v3 in 25 European languages. The result is matched against the screenplay.",
+    "t2.h":"Scene Check and scene aliases","t2.p":"Review how every clip landed. Tell the app \"Scene X uses Scene Y\" when scenes share a setup, and use Add Scene Manually to add scenes yourself.",
+    "t3.h":"Keywords, Titles and captions","t3.p":"Results go into Final Cut Pro via FCPXML import as Keywords and Titles, plus captions. Additional Titles, export presets and keyword handles are included.",
+    "t4.h":"Block Editor","t4.p":"A Block Editor sits next to the Classic List, so you can work the way you prefer. A mini timeline snaps to sentence starts.",
     "t5.h":"Action Cut","t5.p":"Drag out the Action Cut range and reject everything outside it.",
-    "t6.h":"Your shortcuts","t6.p":"Freely rebindable shortcuts, a ripple-trim shortcut, and next/previous clip that skips collapsed multicam rows.",
-    "t7.h":"Local by design","t7.p":"The LLM clients only talk to localhost, so nothing from your script or dialog leaves the Mac. An optional local Ollama verifier can double-check matches.",
+    "t6.h":"Your shortcuts","t6.p":"Freely rebindable shortcuts, a ripple-trim shortcut, Magnetic Ripple, and next/previous clip that skips collapsed multicam rows.",
+    "t7.h":"Your script stays local","t7.p":"Script and dialog never leave the Mac: the LLM options are Ollama on localhost or Apple Foundation Models. The Ollama verifier is optional, off by default, and only runs when Ollama is running with a model.",
     "t8.h":"Sessions and diagnostics","t8.p":"Save and reopen your work as sessions. When something looks off, export diagnostics to send along with your feedback.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 15.0 or later, Final Cut Pro","k1.b":"macOS 26 or later for Apple SpeechAnalyzer (Chinese, Japanese, Korean)","k1.c":"Runs entirely on your Mac; the in-app feedback button only sends when you press it",
-    "k2.h":"Not there yet","k2.a":"The screenplay PDF parser has gaps on some INT/EXT heading variants; Add Scene Manually covers them","k2.b":"Keyword timing can land about one second late in some cases","k2.c":"The newest parts of the interface are still being checked in daily use",
-    "dl.title":"Download SyncScript Pro","dl.sub":"Version 1.2.85 · macOS 15 or later.","dl.btn":"Download for Mac",
+    "k1.h":"Requirements","k1.a":"macOS 15.0 or later on Apple Silicon (arm64), Final Cut Pro","k1.c":"Transcription and matching run locally and script and dialog stay on your Mac; the license/trial check and the update check connect online","k1.d":"30-day trial; an email address is required at first launch. The in-app feedback button only sends when you press it",
+    "k2.h":"Not there yet","k2.a":"Screenplay import is PDF only (no Fountain or FDX)","k2.b":"Final Cut Pro only (no Premiere or Resolve)","k2.c":"The newest parts of the interface are still being checked in daily use","k2.d":"The first transcription needs internet to download the speech model",
+    "dl.title":"Download SyncScript Pro","dl.sub":"Version 1.2.85 · macOS 15 or later · Apple Silicon.","dl.btn":"Download for Mac",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
     "foot.legal":"SyncScript Pro is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple Inc. © 2026 Studio Malibu / Knut Hake."
   },
@@ -206,29 +207,29 @@ window.PAGE_T = {
     "nav.back":"← Alle Apps","nav.cta":"Laden",
     "hero.eyebrow":"Drehbuch-Sync · Final Cut Pro",
     "hero.h1":'Drehbuch rein.<br><span class="soft">Keywords und Titel</span> raus.',
-    "hero.lead":"SyncScript Pro transkribiert jeden Kameraclip auf deinem Mac, gleicht ihn mit dem Drehbuch ab und schreibt Keywords und Titel direkt in Final Cut Pro.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen · 99 €","hero.meta":"macOS 15+ · Version 1.2.85",
+    "hero.lead":"SyncScript Pro transkribiert jeden Kameraclip auf deinem Mac, gleicht ihn mit dem Drehbuch ab und schickt Keywords und Titel als FCPXML an Final Cut Pro.",
+    "hero.dl":"Für Mac laden","hero.buy":"Kaufen · 99 €","hero.meta":"macOS 15+ · Apple Silicon · Version 1.2.85",
     "w1.head":"Import","w1.r1":"Drehbuch","w1.r2":"Kameraclips","w2.head":"Match","w2.t1":"ZUGEORDNET","w2.t2":"PRÜFEN",
     "w3.r1":"Keywords · Titel","w3.tag":"Geschrieben","w3.r2":"Szene pro Clip",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Vier Schritte","wf.sub":"Von Drehbuch und Clips zu Szenen in Final Cut Pro.",
-    "s1.h":"Drehbuch und Clips importieren","s1.p":"Das Drehbuch-PDF und die Kameraclips aus deinem Final-Cut-Pro-Event laden.",
+    "s1.h":"Drehbuch und Clips importieren","s1.p":"Das Drehbuch-PDF und die Kameraclips aus einem exportierten .fcpxml oder .fcpxmld laden.",
     "s2.h":"Transkribieren","s2.p":"Jeder Clip wird einzeln transkribiert, lokal auf deinem Mac.",
     "s3.h":"Matchen und prüfen","s3.p":"Jedes Transkript wird mit dem Drehbuch abgeglichen. Scene Check zeigt dir, wo ein zweiter Blick nötig ist.",
-    "s4.h":"Export nach Final Cut Pro","s4.p":"Keywords und Titel (und Untertitel) werden in Final Cut Pro geschrieben.",
+    "s4.h":"Export nach Final Cut Pro","s4.p":"Keywords und Titel (und Untertitel) gehen per FCPXML-Import in Final Cut Pro (Send to FCP).",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (1.2.85) wirklich kann.",
-    "t1.l":"Match","t1.h":"Transkription pro Clip, abgeglichen mit dem Drehbuch","t1.p":"Jeder Kameraclip wird einzeln mit Parakeet v3 in 25 europäischen Sprachen transkribiert. Chinesisch, Japanisch und Koreanisch laufen über Apple SpeechAnalyzer ab macOS 26. Das Ergebnis wird mit dem Drehbuch abgeglichen.",
-    "t2.h":"Scene Check und Szenen-Aliase","t2.p":"Prüfe, wie jeder Clip zugeordnet wurde. Sag der App \"Scene X uses Scene Y\", wenn Szenen dasselbe Setup teilen, und nutze Add Scene Manually für Szenen, die der PDF-Parser übersieht.",
-    "t3.h":"Keywords, Titel und Untertitel","t3.p":"Die Ergebnisse landen in Final Cut Pro als Keywords und Titel, dazu Untertitel. Additional Titles und ein FCP Share Destination sind dabei.",
-    "t4.h":"Block Editor","t4.p":"Ein Block Editor steht neben der Classic List, damit du so arbeitest, wie du es magst.",
+    "t1.l":"Match","t1.h":"Transkription pro Clip, abgeglichen mit dem Drehbuch","t1.p":"Jeder Kameraclip wird einzeln mit Parakeet v3 in 25 europäischen Sprachen transkribiert. Das Ergebnis wird mit dem Drehbuch abgeglichen.",
+    "t2.h":"Scene Check und Szenen-Aliase","t2.p":"Prüfe, wie jeder Clip zugeordnet wurde. Sag der App \"Scene X uses Scene Y\", wenn Szenen dasselbe Setup teilen, und nutze Add Scene Manually, um Szenen selbst hinzuzufügen.",
+    "t3.h":"Keywords, Titel und Untertitel","t3.p":"Die Ergebnisse gehen per FCPXML-Import als Keywords und Titel in Final Cut Pro, dazu Untertitel. Additional Titles, Export-Presets und Keyword-Handles sind dabei.",
+    "t4.h":"Block Editor","t4.p":"Ein Block Editor steht neben der Classic List, damit du so arbeitest, wie du es magst. Eine Mini-Timeline rastet auf Satzanfängen ein.",
     "t5.h":"Action Cut","t5.p":"Zieh den Action-Cut-Bereich auf und verwirf alles außerhalb davon.",
-    "t6.h":"Deine Shortcuts","t6.p":"Frei belegbare Shortcuts, ein Ripple-Trim-Shortcut und Nächster/Vorheriger Clip, der eingeklappte Multicam-Zeilen überspringt.",
-    "t7.h":"Lokal gedacht","t7.p":"Die LLM-Clients sprechen nur mit localhost, deshalb verlässt nichts von Drehbuch oder Dialog den Mac. Ein optionaler lokaler Ollama-Verifier kann Zuordnungen gegenprüfen.",
+    "t6.h":"Deine Shortcuts","t6.p":"Frei belegbare Shortcuts, ein Ripple-Trim-Shortcut, Magnetic Ripple und Nächster/Vorheriger Clip, der eingeklappte Multicam-Zeilen überspringt.",
+    "t7.h":"Dein Drehbuch bleibt lokal","t7.p":"Drehbuch und Dialog verlassen den Mac nicht: Als LLM dienen Ollama auf localhost oder Apple Foundation Models. Der Ollama-Verifier ist optional, standardmäßig aus und läuft nur, wenn Ollama mit einem Modell läuft.",
     "t8.h":"Sessions und Diagnose","t8.p":"Speichere und öffne deine Arbeit als Sessions. Wenn etwas komisch aussieht, exportiere die Diagnose und schick sie mit deinem Feedback mit.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 15.0 oder neuer, Final Cut Pro","k1.b":"macOS 26 oder neuer für Apple SpeechAnalyzer (Chinesisch, Japanisch, Koreanisch)","k1.c":"Läuft komplett auf deinem Mac; der In-App-Feedback-Button sendet nur, wenn du ihn drückst",
-    "k2.h":"Noch nicht da","k2.a":"Der Drehbuch-PDF-Parser hat Lücken bei manchen INT/EXT-Szenenüberschriften; Add Scene Manually fängt sie auf","k2.b":"Das Keyword-Timing kann in manchen Fällen etwa eine Sekunde zu spät liegen","k2.c":"Die neuesten Teile der Oberfläche werden noch im täglichen Einsatz geprüft",
-    "dl.title":"SyncScript Pro laden","dl.sub":"Version 1.2.85 · macOS 15 oder neuer.","dl.btn":"Für Mac laden",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 15.0 oder neuer auf Apple Silicon (arm64), Final Cut Pro","k1.c":"Transkription und Matching laufen lokal, Drehbuch und Dialog bleiben auf deinem Mac; Lizenz-/Trial-Check und Update-Check verbinden sich online","k1.d":"30 Tage Trial; beim ersten Start ist eine E-Mail-Adresse Pflicht. Der In-App-Feedback-Button sendet nur, wenn du ihn drückst",
+    "k2.h":"Noch nicht da","k2.a":"Drehbuch-Import nur als PDF (kein Fountain oder FDX)","k2.b":"Nur Final Cut Pro (kein Premiere oder Resolve)","k2.c":"Die neuesten Teile der Oberfläche werden noch im täglichen Einsatz geprüft","k2.d":"Die erste Transkription braucht Internet, um das Sprachmodell zu laden",
+    "dl.title":"SyncScript Pro laden","dl.sub":"Version 1.2.85 · macOS 15 oder neuer · Apple Silicon.","dl.btn":"Für Mac laden",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
     "foot.legal":"SyncScript Pro ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple Inc. © 2026 Studio Malibu / Knut Hake."
   }

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MalibuSync · Dual-System Audio Sync for Final Cut Pro</title>
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="description" content="MalibuSync matches camera and sound by timecode, picks the best audio channel, lets you check every sync by eye, and delivers a finished FCPXML into Final Cut Pro.">
+<meta name="description" content="MalibuSync matches camera and sound by timecode, can pick the best audio channel, lets you check every sync by eye, and delivers a finished FCPXML into Final Cut Pro.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,12 +34,12 @@
     <div>
       <div class="eyebrow" data-i18n="hero.eyebrow">Dual-system audio · Final Cut Pro</div>
       <h1 data-i18n="hero.h1">Two folders in.<br><span class="soft">Finished FCPXML</span> out.</h1>
-      <p class="lead" data-i18n="hero.lead">MalibuSync matches camera and sound by timecode, picks the best audio channel, lets you check every sync by eye, and delivers an FCPXML straight into Final Cut Pro.</p>
+      <p class="lead" data-i18n="hero.lead">MalibuSync matches camera and sound by timecode, can pick the best audio channel, lets you check every sync by eye, and delivers an FCPXML straight into Final Cut Pro.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
         <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
       </div>
-      <div class="cta-meta" data-i18n="hero.meta">Notarized · macOS 14+ · 10-day trial</div>
+      <div class="cta-meta" data-i18n="hero.meta">Notarized · macOS 14+ · 30-day trial</div>
     </div>
 
     <div>
@@ -72,7 +72,7 @@
     </div>
     <div class="steps">
       <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Add your folders</h3><p data-i18n="s1.p">Drop the video folder and the audio folder. Subfolders are read recursively, Add Raw Files covers loose material.</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Match and check</h3><p data-i18n="s2.p">Timecode overlap first, clap detection as fallback. Sync Check plays any clip with a frame-accurate timecode HUD, so you can nudge a sync by eye.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Match and check</h3><p data-i18n="s2.p">Timecode overlap first. Offspeed clips switch to clap automatically; otherwise you set Clap or Manual yourself, also by click. Sync Check plays any clip with a frame-accurate timecode HUD, so you can nudge a sync by eye.</p></div>
       <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Export to Final Cut Pro</h3><p data-i18n="s3.p">A finished FCPXML with synced clips, multicam, metadata and audio roles. Your media is never modified.</p></div>
     </div>
   </section>
@@ -86,7 +86,7 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Match</div>
         <h3 data-i18n="t1.h">Timecode matching</h3>
-        <p data-i18n="t1.p">Reads timecode from the MOV container and from BWF files. Drop-frame and non-drop-frame, common frame rates, and offspeed material with native slow-motion and real-time handling.</p>
+        <p data-i18n="t1.p">Reads timecode from MOV, MP4 and M4V video and from WAV and BWF audio. Optionally decodes LTC from an audio channel. Drop-frame and non-drop-frame, common frame rates, and offspeed material with native slow-motion and real-time handling.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Sync Check</h3>
@@ -94,11 +94,11 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Automatic channel selection</h3>
-        <p data-i18n="t3.p">Analyzes every channel of the recorder file and picks the best one per clip, with per-channel role names read from iXML.</p>
+        <p data-i18n="t3.p">Optional, opt-in in Settings: analyzes every channel of the recorder file and picks the best one per clip, with per-channel role names read from iXML.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Smart Audio</h3>
-        <p data-i18n="t4.p">Background analysis sets Voice Isolation, Loudness and Uniformity per clip.</p>
+        <p data-i18n="t4.p">Writes Voice Isolation and Loudness (incl. Uniformity) settings per audio role into the FCPXML; Final Cut Pro does the processing.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Wild tracks</h3>
@@ -110,11 +110,11 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Camera reports and Lockit</h3>
-        <p data-i18n="t7.p">ALE and CSV reports plus Lockit metadata write Scene, Take, Reel and notes straight into Final Cut Pro's fields.</p>
+        <p data-i18n="t7.p">ALE and CSV reports write Scene, Take, Reel and notes straight into Final Cut Pro's fields. Lockit metadata is fetched live from the Lockit Network cloud API (account and token required).</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Trim modes and locked-only export</h3>
-        <p data-i18n="t8.p">Trim to common, to video, or not at all, with audio pull-out. Export only the clips you locked.</p>
+        <p data-i18n="t8.p">Trim to common, to video, or not at all. Export only the clips you locked.</p>
       </div>
     </div>
   </section>
@@ -129,15 +129,17 @@
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
           <li data-i18n="k1.a">macOS 14 or later, Final Cut Pro</li>
-          <li data-i18n="k1.b">Runs entirely on your Mac, nothing is uploaded</li>
-          <li data-i18n="k1.c">10-day trial, then a one-time license</li>
+          <li data-i18n="k1.b">Your media never leaves your Mac.</li>
+          <li data-i18n="k1.c">30-day trial, then a one-time license</li>
+          <li data-i18n="k1.d">An email address is requested on first launch</li>
         </ul>
       </div>
       <div class="fact">
         <h3 data-i18n="k2.h">Not there yet</h3>
         <ul>
-          <li data-i18n="k2.a">MOV, MP4, WAV and BWF are what we test with daily; MXF, R3D and BRAW material is not verified yet</li>
+          <li data-i18n="k2.a">Timecode is read from MOV, MP4, M4V, WAV and BWF only. MXF and BRAW files are found but have no timecode path; AIFF carries no timecode</li>
           <li data-i18n="k2.b">Sync is timecode plus audio clap; waveform matching is planned, not built</li>
+          <li data-i18n="k2.c">Output is FCPXML for Final Cut Pro only; no Premiere, Resolve or Avid</li>
         </ul>
       </div>
     </div>
@@ -163,7 +165,7 @@
         <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
-    <p class="legal" data-i18n="foot.legal">MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit Network is a product of Lockit Sound. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+    <p class="legal" data-i18n="foot.legal">MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit is a trademark of its respective owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
   </footer>
 </div>
 
@@ -174,57 +176,57 @@ window.PAGE_T = {
     "nav.back":"← All apps","nav.cta":"Download",
     "hero.eyebrow":"Dual-system audio · Final Cut Pro",
     "hero.h1":'Two folders in.<br><span class="soft">Finished FCPXML</span> out.',
-    "hero.lead":"MalibuSync matches camera and sound by timecode, picks the best audio channel, lets you check every sync by eye, and delivers an FCPXML straight into Final Cut Pro.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"Notarized · macOS 14+ · 10-day trial",
+    "hero.lead":"MalibuSync matches camera and sound by timecode, can pick the best audio channel, lets you check every sync by eye, and delivers an FCPXML straight into Final Cut Pro.",
+    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"Notarized · macOS 14+ · 30-day trial",
     "w1.head":"Import","w1.r1":"Video folder","w1.r2":"Audio folder","w2.head":"Match","w3.tag":"Synced","w3.r2":"Audio roles assigned",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Three steps","wf.sub":"From a card dump to a timeline-ready import.",
     "s1.h":"Add your folders","s1.p":"Drop the video folder and the audio folder. Subfolders are read recursively, Add Raw Files covers loose material.",
-    "s2.h":"Match and check","s2.p":"Timecode overlap first, clap detection as fallback. Sync Check plays any clip with a frame-accurate timecode HUD, so you can nudge a sync by eye.",
+    "s2.h":"Match and check","s2.p":"Timecode overlap first. Offspeed clips switch to clap automatically; otherwise you set Clap or Manual yourself, also by click. Sync Check plays any clip with a frame-accurate timecode HUD, so you can nudge a sync by eye.",
     "s3.h":"Export to Final Cut Pro","s3.p":"A finished FCPXML with synced clips, multicam, metadata and audio roles. Your media is never modified.",
     "f.title":"What's inside","f.sub":"What the current version (0.17) actually does.",
-    "t1.l":"Match","t1.h":"Timecode matching","t1.p":"Reads timecode from the MOV container and from BWF files. Drop-frame and non-drop-frame, common frame rates, and offspeed material with native slow-motion and real-time handling.",
+    "t1.l":"Match","t1.h":"Timecode matching","t1.p":"Reads timecode from MOV, MP4 and M4V video and from WAV and BWF audio. Optionally decodes LTC from an audio channel. Drop-frame and non-drop-frame, common frame rates, and offspeed material with native slow-motion and real-time handling.",
     "t2.h":"Sync Check","t2.p":"Built-in player with a frame-accurate timecode HUD, a jump to the clap point and slip nudging, so a sync is verified before it leaves the app.",
-    "t3.h":"Automatic channel selection","t3.p":"Analyzes every channel of the recorder file and picks the best one per clip, with per-channel role names read from iXML.",
-    "t4.h":"Smart Audio","t4.p":"Background analysis sets Voice Isolation, Loudness and Uniformity per clip.",
+    "t3.h":"Automatic channel selection","t3.p":"Optional, opt-in in Settings: analyzes every channel of the recorder file and picks the best one per clip, with per-channel role names read from iXML.",
+    "t4.h":"Smart Audio","t4.p":"Writes Voice Isolation and Loudness (incl. Uniformity) settings per audio role into the FCPXML; Final Cut Pro does the processing.",
     "t5.h":"Wild tracks","t5.p":"Wild tracks incl. an Atmos category, sorted the way you read them.",
     "t6.h":"Multicam","t6.p":"Cameras with timecode overlap become multicam clips, or force them together.",
-    "t7.h":"Camera reports and Lockit","t7.p":"ALE and CSV reports plus Lockit metadata write Scene, Take, Reel and notes straight into Final Cut Pro's fields.",
-    "t8.h":"Trim modes and locked-only export","t8.p":"Trim to common, to video, or not at all, with audio pull-out. Export only the clips you locked.",
+    "t7.h":"Camera reports and Lockit","t7.p":"ALE and CSV reports write Scene, Take, Reel and notes straight into Final Cut Pro's fields. Lockit metadata is fetched live from the Lockit Network cloud API (account and token required).",
+    "t8.h":"Trim modes and locked-only export","t8.p":"Trim to common, to video, or not at all. Export only the clips you locked.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 14 or later, Final Cut Pro","k1.b":"Runs entirely on your Mac, nothing is uploaded","k1.c":"10-day trial, then a one-time license",
-    "k2.h":"Not there yet","k2.a":"MOV, MP4, WAV and BWF are what we test with daily; MXF, R3D and BRAW material is not verified yet","k2.b":"Sync is timecode plus audio clap; waveform matching is planned, not built",
+    "k1.h":"Requirements","k1.a":"macOS 14 or later, Final Cut Pro","k1.b":"Your media never leaves your Mac.","k1.c":"30-day trial, then a one-time license","k1.d":"An email address is requested on first launch",
+    "k2.h":"Not there yet","k2.a":"Timecode is read from MOV, MP4, M4V, WAV and BWF only. MXF and BRAW files are found but have no timecode path; AIFF carries no timecode","k2.b":"Sync is timecode plus audio clap; waveform matching is planned, not built","k2.c":"Output is FCPXML for Final Cut Pro only; no Premiere, Resolve or Avid",
     "dl.title":"Download MalibuSync","dl.sub":"Notarized and signed. Updates arrive automatically.","dl.btn":"Download for Mac",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
-    "foot.legal":"MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit Network is a product of Lockit Sound. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"MalibuSync is a professional post-production tool. Final Cut Pro is a trademark of Apple Inc. Lockit is a trademark of its respective owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
     "nav.back":"← Alle Apps","nav.cta":"Laden",
     "hero.eyebrow":"Dual-System-Ton · Final Cut Pro",
     "hero.h1":'Zwei Ordner rein.<br><span class="soft">Fertige FCPXML</span> raus.',
-    "hero.lead":"MalibuSync matcht Kamera und Ton per Timecode, wählt den besten Audiokanal, lässt dich jeden Sync von Hand prüfen und liefert eine FCPXML direkt in Final Cut Pro.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"Notarisiert · macOS 14+ · 10 Tage testen",
+    "hero.lead":"MalibuSync matcht Kamera und Ton per Timecode, kann den besten Audiokanal wählen, lässt dich jeden Sync von Hand prüfen und liefert eine FCPXML direkt in Final Cut Pro.",
+    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"Notarisiert · macOS 14+ · 30 Tage testen",
     "w1.head":"Import","w1.r1":"Video-Ordner","w1.r2":"Ton-Ordner","w2.head":"Match","w3.tag":"Synchron","w3.r2":"Audiorollen zugewiesen",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Drei Schritte","wf.sub":"Vom Kartendump zum importfertigen Projekt.",
     "s1.h":"Ordner hinzufügen","s1.p":"Video-Ordner und Ton-Ordner reinziehen. Unterordner werden rekursiv gelesen, Add Raw Files deckt lose Dateien ab.",
-    "s2.h":"Matchen und prüfen","s2.p":"Erst Timecode-Überlappung, als Fallback die Klappenerkennung. Sync Check spielt jeden Clip mit bildgenauem Timecode-HUD ab, damit du einen Sync nach Augenmaß nachziehen kannst.",
+    "s2.h":"Matchen und prüfen","s2.p":"Erst Timecode-Überlappung. Offspeed-Clips wechseln automatisch auf Klappe; sonst setzt du Clap oder Manual selbst, auch per Klick. Sync Check spielt jeden Clip mit bildgenauem Timecode-HUD ab, damit du einen Sync nach Augenmaß nachziehen kannst.",
     "s3.h":"Export nach Final Cut Pro","s3.p":"Eine fertige FCPXML mit synchronisierten Clips, Multicam, Metadaten und Audiorollen. Deine Medien werden nie verändert.",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (0.17) wirklich kann.",
-    "t1.l":"Match","t1.h":"Timecode-Matching","t1.p":"Liest Timecode aus dem MOV-Container und aus BWF-Dateien. Drop-Frame und Non-Drop-Frame, gängige Framerates und Offspeed-Material mit nativer Zeitlupen- und Echtzeit-Behandlung.",
+    "t1.l":"Match","t1.h":"Timecode-Matching","t1.p":"Liest Timecode aus MOV-, MP4- und M4V-Video sowie aus WAV- und BWF-Audio. Dekodiert optional LTC aus einem Audiokanal. Drop-Frame und Non-Drop-Frame, gängige Framerates und Offspeed-Material mit nativer Zeitlupen- und Echtzeit-Behandlung.",
     "t2.h":"Sync Check","t2.p":"Eingebauter Player mit bildgenauem Timecode-HUD, Sprung zur Klappe und Slip-Nudge, damit ein Sync geprüft ist, bevor er die App verlässt.",
-    "t3.h":"Automatische Kanalauswahl","t3.p":"Analysiert jeden Kanal der Recorder-Datei und wählt pro Clip den besten, mit Rollennamen pro Kanal aus iXML.",
-    "t4.h":"Smart Audio","t4.p":"Hintergrundanalyse setzt Voice Isolation, Loudness und Uniformity pro Clip.",
+    "t3.h":"Automatische Kanalauswahl","t3.p":"Optional, in den Einstellungen aktivierbar: analysiert jeden Kanal der Recorder-Datei und wählt pro Clip den besten, mit Rollennamen pro Kanal aus iXML.",
+    "t4.h":"Smart Audio","t4.p":"Schreibt Voice-Isolation- und Loudness-Einstellungen (inkl. Uniformity) pro Audiorolle in die FCPXML; Final Cut Pro rechnet.",
     "t5.h":"Wild Tracks","t5.p":"Wild Tracks inkl. Atmos-Kategorie, so sortiert, wie du sie liest.",
     "t6.h":"Multicam","t6.p":"Kameras mit Timecode-Überlappung werden zu Multicam-Clips, oder du erzwingst es.",
-    "t7.h":"Kamera-Reports und Lockit","t7.p":"ALE- und CSV-Reports sowie Lockit-Metadaten schreiben Scene, Take, Reel und Notizen direkt in die Felder von Final Cut Pro.",
-    "t8.h":"Trim-Modi und Export nur Gelockter","t8.p":"Auf Gemeinsames, auf Video oder gar nicht trimmen, mit Audio-Pull-out. Exportiere nur die Clips, die du gelockt hast.",
+    "t7.h":"Kamera-Reports und Lockit","t7.p":"ALE- und CSV-Reports schreiben Scene, Take, Reel und Notizen direkt in die Felder von Final Cut Pro. Lockit-Metadaten werden live aus der Lockit-Network-Cloud-API abgerufen (Account und Token nötig).",
+    "t8.h":"Trim-Modi und Export nur Gelockter","t8.p":"Auf Gemeinsames, auf Video oder gar nicht trimmen. Exportiere nur die Clips, die du gelockt hast.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 14 oder neuer, Final Cut Pro","k1.b":"Läuft komplett auf deinem Mac, nichts wird hochgeladen","k1.c":"10 Tage testen, danach einmalige Lizenz",
-    "k2.h":"Noch nicht da","k2.a":"MOV, MP4, WAV und BWF testen wir täglich; MXF-, R3D- und BRAW-Material ist noch nicht verifiziert","k2.b":"Sync läuft über Timecode und Audio-Klappe; Waveform-Matching ist geplant, nicht gebaut",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 14 oder neuer, Final Cut Pro","k1.b":"Deine Medien verlassen deinen Mac nie.","k1.c":"30 Tage testen, danach einmalige Lizenz","k1.d":"Beim ersten Start wird eine E-Mail-Adresse abgefragt",
+    "k2.h":"Noch nicht da","k2.a":"Timecode wird nur aus MOV, MP4, M4V, WAV und BWF gelesen. MXF- und BRAW-Dateien werden gefunden, haben aber keinen Timecode-Pfad; AIFF hat keinen Timecode","k2.b":"Sync läuft über Timecode und Audio-Klappe; Waveform-Matching ist geplant, nicht gebaut","k2.c":"Ausgabe nur als FCPXML für Final Cut Pro; kein Premiere, Resolve oder Avid",
     "dl.title":"MalibuSync laden","dl.sub":"Notarisiert und signiert. Updates kommen automatisch.","dl.btn":"Für Mac laden",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
-    "foot.legal":"MalibuSync ist ein professionelles Werkzeug für die Postproduktion. Final Cut Pro ist eine Marke von Apple Inc. Lockit Network ist ein Produkt von Lockit Sound. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"MalibuSync ist ein professionelles Werkzeug für die Postproduktion. Final Cut Pro ist eine Marke von Apple Inc. Lockit ist eine Marke des jeweiligen Inhabers. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
   }
 };
 </script>

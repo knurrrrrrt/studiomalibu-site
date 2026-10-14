@@ -47,7 +47,7 @@
         <div class="win w1">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w1.head">Host app</span></div>
           <div class="row"><span class="k" data-i18n="w1.r1">Fields</span><span class="v">TC · Clip · Reel</span></div>
-          <div class="row"><span class="k" data-i18n="w1.r2">Preset</span><span class="v">Playout 1920x1080</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Preset</span><span class="v">Custom</span></div>
         </div>
         <div class="win w2">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.head">Layout</span></div>
@@ -68,11 +68,11 @@
   <section>
     <div class="sec-head">
       <h2 data-i18n="wf.title">Three steps</h2>
-      <p data-i18n="wf.sub">From installer to burn-in on the timeline.</p>
+      <p data-i18n="wf.sub">From your library to burn-in on the timeline.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Install both parts</h3><p data-i18n="s1.p">The installer package puts the Malibu Burn host app and the Final Cut Pro effect on your Mac in one go.</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Pick fields in the host</h3><p data-i18n="s2.p">Choose which metadata to show and where it sits. The host reads your Final Cut Pro project through a snapshot file.</p></div>
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Add your library</h3><p data-i18n="s1.p">Add your Final Cut Pro library to the host app by dragging it in, with "+" or with "Detect from Final Cut Pro", then choose the timeline. The host reads the library files itself. Or open the workflow extension inside Final Cut Pro.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Pick fields in the host</h3><p data-i18n="s2.p">Choose which metadata to show and where it sits. A position preview window with drag layout shows the placement.</p></div>
       <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Apply on an adjustment layer</h3><p data-i18n="s3.p">Put the Malibu Burn effect on an adjustment layer in Final Cut Pro. The burn-in appears over the picture beneath it.</p></div>
     </div>
   </section>
@@ -85,36 +85,36 @@
     <div class="bento">
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Fields</div>
-        <h3 data-i18n="t1.h">Fifteen kinds of metadata</h3>
-        <p data-i18n="t1.p">Source timecode, project timecode, clip name, source file, reel, scene and shot, speed, notes, angle, resolution, markers (name, note or both), role text, stabilization, position and your own custom text.</p>
+        <h3 data-i18n="t1.h">23 metadata fields</h3>
+        <p data-i18n="t1.p">Source timecode, project timecode, clip name, source file, reel, scene and shot, speed, notes, angle, resolution, markers (name, note or both), role text, stabilization, position, resize/transform, source frame, a stacked-layers reel block, a stacked-layers slate block and your own custom text.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Nine anchor points</h3>
         <p data-i18n="t2.p">Every element sits on one of nine anchors, so timecode, clip name and reel each go exactly where you want them.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t3.h">Stacked layers, one per line</h3>
-        <p data-i18n="t3.p">Stacked video layers are listed one per line with [V1] tags and in stack order. A gap with a connected clip still renders a burn-in.</p>
+        <h3 data-i18n="t3.h">Stacked layers</h3>
+        <p data-i18n="t3.p">Reel and slate blocks for stacked layers are available as metadata fields.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Frame counts</h3>
         <p data-i18n="t4.p">Source frames count from the file's first frame, starting at 0.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t5.h">Mixed frame rates</h3>
-        <p data-i18n="t5.p">24p media in a 25p project is conformed correctly.</p>
+        <h3 data-i18n="t5.h">Position preview</h3>
+        <p data-i18n="t5.p">A preview window with drag layout shows where each element sits.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Role picker</h3>
-        <p data-i18n="t6.p">Video and audio roles are split, with sub-roles shown.</p>
+        <p data-i18n="t6.p">Pick Video, Audio and Caption roles.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t7.h">Presets</h3>
-        <p data-i18n="t7.p">Bundled "Netflix Playout 1920x1080" and "Conform Playout 1920x1080" presets, plus preset import and export. A visible-picture aspect constraint keeps the layout inside the picture.</p>
+        <h3 data-i18n="t7.h">Presets and tools</h3>
+        <p data-i18n="t7.p">Preset import and export, Bulk Style, and Validate against FCPXML. A visible-picture aspect constraint keeps the layout inside the picture.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Plugin updates</h3>
-        <p data-i18n="t8.p">A banner tells you when a new effect version is available, and the installer applies it. Plugin updates need admin or App Management rights.</p>
+        <p data-i18n="t8.p">A banner tells you when a new effect version is available. The host fetches and installs the effect itself: choose "Update Plugin…" in the app and enter your Mac password once.</p>
       </div>
     </div>
   </section>
@@ -128,18 +128,23 @@
       <div class="fact">
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
-          <li data-i18n="k1.a">macOS 14.0 or later, Final Cut Pro</li>
+          <li data-i18n="k1.a">macOS 14.0 or later, Final Cut Pro (Final Cut Pro only)</li>
           <li data-i18n="k1.b">Two parts: the Malibu Burn host app and a Final Cut Pro effect, both installed by the PKG</li>
-          <li data-i18n="k1.c">Effect updates need admin or App Management rights</li>
+          <li data-i18n="k1.c">Effect updates: "Update Plugin…" in the app, Mac password once</li>
+          <li data-i18n="k1.d">The effect sits on an adjustment layer</li>
+          <li data-i18n="k1.e">Trial: an email address is required at first launch</li>
         </ul>
       </div>
       <div class="fact">
-        <h3 data-i18n="k2.h">Not there yet</h3>
+        <h3 data-i18n="k2.h">Limits and known issues</h3>
         <ul>
           <li data-i18n="k2.a">Camera name is not available, there is no reliable source for it</li>
-          <li data-i18n="k2.b">Live update after a trim is not confirmed yet</li>
+          <li data-i18n="k2.b">Known bug: Final Cut Pro render cache after a trim</li>
           <li data-i18n="k2.d">Open bugs with Y position in a 2:1 timeline</li>
-          <li data-i18n="k2.e">The latest changes are not yet verified in every Final Cut Pro setup</li>
+          <li data-i18n="k2.e">24p media in a 25p project, [V1] tags and a gap with a connected clip are tested in the core but not yet seen live in Final Cut Pro</li>
+          <li data-i18n="k2.f">Preview positions are an approximation, Final Cut Pro renders the real text layout</li>
+          <li data-i18n="k2.g">Resize, position, stabilization and speed show nothing at default values, an empty field is not an error</li>
+          <li data-i18n="k2.i">Source Frame only works for file clips, not for generators, titles or compounds</li>
         </ul>
       </div>
     </div>
@@ -182,22 +187,22 @@ window.PAGE_T = {
     "w2.head":"Layout","w2.r1":"Source timecode","w2.r2":"Clip name","w2.r3":"Reel",
     "w3.r1":"Adjustment layer","w3.tag":"Burn-in on","w3.r2":"Picture with metadata",
     "illu":"Illustration of the workflow, not a screenshot.",
-    "wf.title":"Three steps","wf.sub":"From installer to burn-in on the timeline.",
-    "s1.h":"Install both parts","s1.p":"The installer package puts the Malibu Burn host app and the Final Cut Pro effect on your Mac in one go.",
-    "s2.h":"Pick fields in the host","s2.p":"Choose which metadata to show and where it sits. The host reads your Final Cut Pro project through a snapshot file.",
+    "wf.title":"Three steps","wf.sub":"From your library to burn-in on the timeline.",
+    "s1.h":"Add your library","s1.p":"Add your Final Cut Pro library to the host app by dragging it in, with \"+\" or with \"Detect from Final Cut Pro\", then choose the timeline. The host reads the library files itself. Or open the workflow extension inside Final Cut Pro.",
+    "s2.h":"Pick fields in the host","s2.p":"Choose which metadata to show and where it sits. A position preview window with drag layout shows the placement.",
     "s3.h":"Apply on an adjustment layer","s3.p":"Put the Malibu Burn effect on an adjustment layer in Final Cut Pro. The burn-in appears over the picture beneath it.",
     "f.title":"What's inside","f.sub":"What the current version (0.3.62, beta) actually does.",
-    "t1.l":"Fields","t1.h":"Fifteen kinds of metadata","t1.p":"Source timecode, project timecode, clip name, source file, reel, scene and shot, speed, notes, angle, resolution, markers (name, note or both), role text, stabilization, position and your own custom text.",
+    "t1.l":"Fields","t1.h":"23 metadata fields","t1.p":"Source timecode, project timecode, clip name, source file, reel, scene and shot, speed, notes, angle, resolution, markers (name, note or both), role text, stabilization, position, resize/transform, source frame, a stacked-layers reel block, a stacked-layers slate block and your own custom text.",
     "t2.h":"Nine anchor points","t2.p":"Every element sits on one of nine anchors, so timecode, clip name and reel each go exactly where you want them.",
-    "t3.h":"Stacked layers, one per line","t3.p":"Stacked video layers are listed one per line with [V1] tags and in stack order. A gap with a connected clip still renders a burn-in.",
+    "t3.h":"Stacked layers","t3.p":"Reel and slate blocks for stacked layers are available as metadata fields.",
     "t4.h":"Frame counts","t4.p":"Source frames count from the file's first frame, starting at 0.",
-    "t5.h":"Mixed frame rates","t5.p":"24p media in a 25p project is conformed correctly.",
-    "t6.h":"Role picker","t6.p":"Video and audio roles are split, with sub-roles shown.",
-    "t7.h":"Presets","t7.p":"Bundled \"Netflix Playout 1920x1080\" and \"Conform Playout 1920x1080\" presets, plus preset import and export. A visible-picture aspect constraint keeps the layout inside the picture.",
-    "t8.h":"Plugin updates","t8.p":"A banner tells you when a new effect version is available, and the installer applies it. Plugin updates need admin or App Management rights.",
+    "t5.h":"Position preview","t5.p":"A preview window with drag layout shows where each element sits.",
+    "t6.h":"Role picker","t6.p":"Pick Video, Audio and Caption roles.",
+    "t7.h":"Presets and tools","t7.p":"Preset import and export, Bulk Style, and Validate against FCPXML. A visible-picture aspect constraint keeps the layout inside the picture.",
+    "t8.h":"Plugin updates","t8.p":"A banner tells you when a new effect version is available. The host fetches and installs the effect itself: choose \"Update Plugin…\" in the app and enter your Mac password once.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 14.0 or later, Final Cut Pro","k1.b":"Two parts: the Malibu Burn host app and a Final Cut Pro effect, both installed by the PKG","k1.c":"Effect updates need admin or App Management rights",
-    "k2.h":"Not there yet","k2.a":"Camera name is not available, there is no reliable source for it","k2.b":"Live update after a trim is not confirmed yet","k2.d":"Open bugs with Y position in a 2:1 timeline","k2.e":"The latest changes are not yet verified in every Final Cut Pro setup",
+    "k1.h":"Requirements","k1.a":"macOS 14.0 or later, Final Cut Pro (Final Cut Pro only)","k1.b":"Two parts: the Malibu Burn host app and a Final Cut Pro effect, both installed by the PKG","k1.c":"Effect updates: \"Update Plugin…\" in the app, Mac password once","k1.d":"The effect sits on an adjustment layer","k1.e":"Trial: an email address is required at first launch",
+    "k2.h":"Limits and known issues","k2.a":"Camera name is not available, there is no reliable source for it","k2.b":"Known bug: Final Cut Pro render cache after a trim","k2.d":"Open bugs with Y position in a 2:1 timeline","k2.e":"24p media in a 25p project, [V1] tags and a gap with a connected clip are tested in the core but not yet seen live in Final Cut Pro","k2.f":"Preview positions are an approximation, Final Cut Pro renders the real text layout","k2.g":"Resize, position, stabilization and speed show nothing at default values, an empty field is not an error","k2.i":"Source Frame only works for file clips, not for generators, titles or compounds",
     "dl.title":"Download Malibu Burn","dl.sub":"Beta. One PKG installs the host app and the Final Cut Pro effect.","dl.btn":"Download for Mac",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
     "foot.legal":"Malibu Burn is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
@@ -212,22 +217,22 @@ window.PAGE_T = {
     "w2.head":"Layout","w2.r1":"Source-Timecode","w2.r2":"Clip-Name","w2.r3":"Reel",
     "w3.r1":"Einstellungsebene","w3.tag":"Burn-in an","w3.r2":"Bild mit Metadaten",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
-    "wf.title":"Drei Schritte","wf.sub":"Vom Installer zum Burn-in auf der Timeline.",
-    "s1.h":"Beide Teile installieren","s1.p":"Das Installer-Paket bringt die Malibu-Burn-Host-App und den Final-Cut-Pro-Effekt in einem Rutsch auf deinen Mac.",
-    "s2.h":"Felder im Host wählen","s2.p":"Wähle, welche Metadaten angezeigt werden und wo sie sitzen. Der Host liest dein Final-Cut-Pro-Projekt über eine Snapshot-Datei.",
+    "wf.title":"Drei Schritte","wf.sub":"Von der Library zum Burn-in auf der Timeline.",
+    "s1.h":"Library hinzufügen","s1.p":"Füge deine Final-Cut-Pro-Library der Host-App hinzu: per Drag, mit \"+\" oder mit \"Detect from Final Cut Pro\", und wähle dann die Timeline. Der Host liest die Library-Dateien selbst. Oder öffne die Workflow-Extension in Final Cut Pro.",
+    "s2.h":"Felder im Host wählen","s2.p":"Wähle, welche Metadaten angezeigt werden und wo sie sitzen. Ein Positions-Vorschaufenster mit Drag-Layout zeigt die Platzierung.",
     "s3.h":"Auf Einstellungsebene anwenden","s3.p":"Lege den Malibu-Burn-Effekt in Final Cut Pro auf eine Einstellungsebene. Das Burn-in erscheint über dem Bild darunter.",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (0.3.62, Beta) wirklich kann.",
-    "t1.l":"Felder","t1.h":"Fünfzehn Arten von Metadaten","t1.p":"Source-Timecode, Projekt-Timecode, Clip-Name, Quelldatei, Reel, Scene und Shot, Speed, Notizen, Angle, Auflösung, Marker (Name, Notiz oder beides), Rollentext, Stabilisierung, Position und eigener Freitext.",
+    "t1.l":"Felder","t1.h":"23 Metadatenfelder","t1.p":"Source-Timecode, Projekt-Timecode, Clip-Name, Quelldatei, Reel, Scene und Shot, Speed, Notizen, Angle, Auflösung, Marker (Name, Notiz oder beides), Rollentext, Stabilisierung, Position, Resize/Transform, Source Frame, ein Stacked-Layers-Reel-Block, ein Stacked-Layers-Slate-Block und eigener Freitext.",
     "t2.h":"Neun Ankerpunkte","t2.p":"Jedes Element sitzt auf einem von neun Ankern, sodass Timecode, Clip-Name und Reel genau dort landen, wo du sie willst.",
-    "t3.h":"Gestapelte Ebenen, eine pro Zeile","t3.p":"Gestapelte Videoebenen stehen einzeln pro Zeile, mit [V1]-Tags und in Stapelreihenfolge. Auch eine Lücke mit einem verbundenen Clip rendert ein Burn-in.",
+    "t3.h":"Gestapelte Ebenen","t3.p":"Reel- und Slate-Blöcke für gestapelte Ebenen gibt es als Metadatenfelder.",
     "t4.h":"Framezählung","t4.p":"Source-Frames zählen ab dem ersten Frame der Datei, beginnend bei 0.",
-    "t5.h":"Gemischte Framerates","t5.p":"24p-Material in einem 25p-Projekt wird korrekt gerechnet.",
-    "t6.h":"Rollenauswahl","t6.p":"Video- und Audiorollen sind getrennt, Sub-Rollen werden angezeigt.",
-    "t7.h":"Presets","t7.p":"Mitgelieferte Presets \"Netflix Playout 1920x1080\" und \"Conform Playout 1920x1080\", dazu Preset-Import und -Export. Eine Seitenverhältnis-Begrenzung auf das sichtbare Bild hält das Layout im Bild.",
-    "t8.h":"Plugin-Updates","t8.p":"Ein Banner meldet, wenn eine neue Effekt-Version bereitsteht, und der Installer spielt sie ein. Plugin-Updates brauchen Admin- oder App-Verwaltungs-Rechte.",
+    "t5.h":"Positions-Vorschau","t5.p":"Ein Vorschaufenster mit Drag-Layout zeigt, wo jedes Element sitzt.",
+    "t6.h":"Rollenauswahl","t6.p":"Video-, Audio- und Caption-Rollen sind wählbar.",
+    "t7.h":"Presets und Werkzeuge","t7.p":"Preset-Import und -Export, Bulk Style und Validate gegen FCPXML. Eine Seitenverhältnis-Begrenzung auf das sichtbare Bild hält das Layout im Bild.",
+    "t8.h":"Plugin-Updates","t8.p":"Ein Banner meldet, wenn eine neue Effekt-Version bereitsteht. Der Host holt und installiert den Effekt selbst: In der App \"Update Plugin…\" wählen und einmal das Mac-Passwort eingeben.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer, Final Cut Pro","k1.b":"Zwei Teile: die Malibu-Burn-Host-App und ein Final-Cut-Pro-Effekt, beide vom PKG installiert","k1.c":"Effekt-Updates brauchen Admin- oder App-Verwaltungs-Rechte",
-    "k2.h":"Noch nicht da","k2.a":"Der Kameraname ist nicht verfügbar, es gibt keine verlässliche Quelle dafür","k2.b":"Live-Aktualisierung nach einem Trim ist noch nicht bestätigt","k2.d":"Offene Fehler bei der Y-Position in einer 2:1-Timeline","k2.e":"Die neuesten Änderungen sind noch nicht in jedem Final-Cut-Pro-Setup verifiziert",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer, Final Cut Pro (nur Final Cut Pro)","k1.b":"Zwei Teile: die Malibu-Burn-Host-App und ein Final-Cut-Pro-Effekt, beide vom PKG installiert","k1.c":"Effekt-Updates: \"Update Plugin…\" in der App, einmal Mac-Passwort","k1.d":"Der Effekt sitzt auf einer Einstellungsebene","k1.e":"Trial: Beim ersten Start ist eine E-Mail-Adresse Pflicht",
+    "k2.h":"Grenzen und bekannte Fehler","k2.a":"Der Kameraname ist nicht verfügbar, es gibt keine verlässliche Quelle dafür","k2.b":"Bekannter Fehler: Final-Cut-Pro-Render-Cache nach einem Trim","k2.d":"Offene Fehler bei der Y-Position in einer 2:1-Timeline","k2.e":"24p-Material in einem 25p-Projekt, [V1]-Tags und eine Lücke mit verbundenem Clip sind im Core getestet, aber live in Final Cut Pro noch nicht gesehen","k2.f":"Vorschau-Positionen sind eine Näherung, das echte Textlayout rendert Final Cut Pro","k2.g":"Resize, Position, Stabilisierung und Speed zeigen bei Standardwerten nichts, ein leeres Feld ist kein Fehler","k2.i":"Source Frame gibt es nur bei Dateiclips, nicht bei Generatoren, Titeln oder Compounds",
     "dl.title":"Malibu Burn laden","dl.sub":"Beta. Ein PKG installiert die Host-App und den Final-Cut-Pro-Effekt.","dl.btn":"Für Mac laden",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
     "foot.legal":"Malibu Burn ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
