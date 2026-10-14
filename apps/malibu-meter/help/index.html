@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/apps/_shared/app-page.css">
 <style>
-:root{--accent:#34C759;--accent-ink:#04170a}
+:root{--accent:#34C759;--accent-ink:#031a0a}
 .help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
 .toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
 .toc a{display:block;color:var(--dim);padding:5px 0}
@@ -130,9 +130,9 @@
 <h2 id="en6-how-the-trial-works">How the trial works</h2>
 <p>The first start asks for your email address and starts a free trial; the license server decides how long it lasts. The meter keeps measuring while a license message is shown; the message is a sheet over the meter window.</p>
 <h2 id="en6-enter-a-license-key">Enter a license key</h2>
-<p>Open the settings from the app menu (Command-comma), click <strong class="ui">License</strong> in the bottom bar and choose <strong class="ui">Enter License Key…</strong>. Paste the key from your purchase confirmation email and click <strong class="ui">Activate</strong>. When the trial has ended, the blocking sheet offers <strong class="ui">I Already Have a License</strong> for the same step.</p>
+<p>Open the settings (<strong class="ui">Settings...</strong> in the right-click menu, or the app menu with Command-comma; before version 1.30 the License menu worked only from the app menu), click <strong class="ui">License</strong> in the bottom bar and choose <strong class="ui">Enter License Key…</strong>. Paste the key from your purchase confirmation email and click <strong class="ui">Activate</strong>. When the trial has ended, the blocking sheet offers <strong class="ui">I Already Have a License</strong> for the same step.</p>
 <h2 id="en6-move-the-license-to-another-mac">Move the license to another Mac</h2>
-<p>A key can be active on a limited number of devices. On the Mac that should give up the key, open the settings from the app menu, open <strong class="ui">License</strong> and choose <strong class="ui">Deactivate This Device</strong>; the key can then be entered on the other Mac. If the limit is reached while entering a key, the sheet says so and offers <strong class="ui">Switch Devices (Deactivate Old Device)</strong>. That button acts on the Mac you are using; if in doubt, deactivate on the old Mac or contact support.</p>
+<p>A key can be active on a limited number of devices. On the Mac that should give up the key, open the settings, open <strong class="ui">License</strong> and choose <strong class="ui">Deactivate This Device</strong>; the key can then be entered on the other Mac. If the limit is reached while entering a key, the sheet says so and offers <strong class="ui">Switch Devices (Deactivate Old Device)</strong>. That button acts on the Mac you are using; if in doubt, deactivate on the old Mac or contact support.</p>
 <h2 id="en6-lost-key-or-blocked-sheet">Lost key or blocked sheet</h2>
 <p>In the blocking sheet <strong class="ui">Check Again</strong> checks the license once more, and <strong class="ui">Lost your license key?</strong> opens the customer portal of the payment provider. When available, the sheet also shows an ID you can send to support for a renewal.</p>
 <h2 id="en6-buy">Buy</h2>
@@ -157,6 +157,7 @@
 <li><strong class="ui">Check for Updates…</strong> and <strong class="ui">Send Feedback…</strong> (Command-?) in the app menu.</li>
 <li>View menu: <strong class="ui">Title Bar</strong> (Command-Shift-W), <strong class="ui">Show Scale</strong> (Command-Shift-S), <strong class="ui">Show Value</strong> (Command-Shift-V), <strong class="ui">Peak Hold</strong> (Command-Shift-P), <strong class="ui">Spectrum</strong> (Command-Shift-F), <strong class="ui">LUFS Meter</strong> (Command-Shift-L), <strong class="ui">Level Meter</strong> (Command-Shift-M), <strong class="ui">Always on Top</strong>, <strong class="ui">Auto-Reset on Silence</strong>, <strong class="ui">Reset Peaks</strong> (Command-R).</li>
 <li>File menu: <strong class="ui">Import Settings...</strong> (Command-Shift-I), <strong class="ui">Export Settings...</strong> (Command-Shift-E), <strong class="ui">Import Gradients...</strong>, <strong class="ui">Export All Custom Gradients...</strong>.</li>
+<li>Help menu (from version 1.30): <strong class="ui">Malibu Meter Help</strong> opens the online help in the browser.</li>
 <li>Right-click menu of the meter: the view toggles above plus <strong class="ui">Lissajous</strong> and <strong class="ui">Settings...</strong>.</li>
 <li>Double-click on the meter: reset peak hold.</li>
 </ul>
@@ -216,7 +217,7 @@
 <p>Open the <strong class="ui">Applications</strong> menu and tick at least one app after enabling <strong class="ui">Screen Audio</strong>; the tab shows "Select at least one app to monitor" while none is selected.</p>
 <h2 id="en8-license-messages">License messages</h2>
 <p>In the key-entry sheet: "This key is already active on the maximum number of devices" means deactivate a device (see the license guide); "This key is invalid or has been revoked" means check the key; "Couldn't reach the license server" means try again later. In the key-entry sheet and in the blocking sheet: "Your system clock appears to have moved backward" means correct the clock; "Couldn't verify your license yet" means connect to the internet once.</p>
-<p class="ver">Written for version 1.29.</p>
+<p class="ver">Written for version 1.30.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-das-audio-einer-app-messen">Das Audio einer App messen</a><a class="l1" href="#de2-ein-eingabeger-t-messen">Ein Eingabegerät messen</a><a class="l1" href="#de3-lautheitsmesser-anzeigen-und-gegen-ein-ziel-pr-fen">Lautheitsmesser anzeigen und gegen ein Ziel prüfen</a><a class="l1" href="#de4-den-pegel-im-app-modus-kalibrieren">Den Pegel im App-Modus kalibrieren</a><a class="l1" href="#de5-testt-ne-exportieren">Testtöne exportieren</a><a class="l1" href="#de6-testphase-lizenzschl-ssel-und-ger-te-wechsel">Testphase, Lizenzschlüssel und Geräte-Wechsel</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlersuche">Fehlersuche</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -292,9 +293,9 @@
 <h2 id="de6-so-funktioniert-die-testphase">So funktioniert die Testphase</h2>
 <p>Der erste Start fragt nach deiner E-Mail-Adresse und beginnt eine kostenlose Testphase; der Lizenzserver bestimmt, wie lange sie dauert. Das Meter misst weiter, während ein Lizenzhinweis angezeigt wird; der Hinweis liegt als Dialog über dem Meter-Fenster.</p>
 <h2 id="de6-lizenzschl-ssel-eingeben">Lizenzschlüssel eingeben</h2>
-<p>Öffne die Einstellungen über das App-Menü (Befehl-Komma), klicke in der unteren Leiste auf <strong class="ui">License</strong> und wähle <strong class="ui">Enter License Key…</strong>. Füge den Schlüssel aus deiner Kaufbestätigung ein und klicke auf <strong class="ui">Activate</strong>. Ist die Testphase abgelaufen, bietet der Sperr-Dialog denselben Schritt über <strong class="ui">I Already Have a License</strong> an.</p>
+<p>Öffne die Einstellungen (<strong class="ui">Settings...</strong> im Rechtsklick-Menü oder über das App-Menü mit Befehl-Komma; vor Version 1.30 funktionierte das License-Menü nur über das App-Menü), klicke in der unteren Leiste auf <strong class="ui">License</strong> und wähle <strong class="ui">Enter License Key…</strong>. Füge den Schlüssel aus deiner Kaufbestätigung ein und klicke auf <strong class="ui">Activate</strong>. Ist die Testphase abgelaufen, bietet der Sperr-Dialog denselben Schritt über <strong class="ui">I Already Have a License</strong> an.</p>
 <h2 id="de6-lizenz-auf-einen-anderen-mac-bertragen">Lizenz auf einen anderen Mac übertragen</h2>
-<p>Ein Schlüssel kann auf einer begrenzten Zahl von Geräten aktiv sein. Öffne auf dem Mac, der den Schlüssel abgeben soll, die Einstellungen über das App-Menü, öffne <strong class="ui">License</strong> und wähle <strong class="ui">Deactivate This Device</strong>; danach lässt sich der Schlüssel auf dem anderen Mac eingeben. Ist beim Eingeben das Limit erreicht, nennt der Dialog das und bietet <strong class="ui">Switch Devices (Deactivate Old Device)</strong> an. Diese Schaltfläche wirkt auf den Mac, an dem du gerade arbeitest; im Zweifel deaktiviere am alten Mac oder wende dich an den Support.</p>
+<p>Ein Schlüssel kann auf einer begrenzten Zahl von Geräten aktiv sein. Öffne auf dem Mac, der den Schlüssel abgeben soll, die Einstellungen, öffne <strong class="ui">License</strong> und wähle <strong class="ui">Deactivate This Device</strong>; danach lässt sich der Schlüssel auf dem anderen Mac eingeben. Ist beim Eingeben das Limit erreicht, nennt der Dialog das und bietet <strong class="ui">Switch Devices (Deactivate Old Device)</strong> an. Diese Schaltfläche wirkt auf den Mac, an dem du gerade arbeitest; im Zweifel deaktiviere am alten Mac oder wende dich an den Support.</p>
 <h2 id="de6-schl-ssel-verloren-oder-sperr-dialog">Schlüssel verloren oder Sperr-Dialog</h2>
 <p>Im Sperr-Dialog prüft <strong class="ui">Check Again</strong> die Lizenz noch einmal, und <strong class="ui">Lost your license key?</strong> öffnet das Kundenportal des Zahlungsanbieters. Sofern vorhanden, zeigt der Dialog außerdem eine ID, die du dem Support für eine Verlängerung schicken kannst.</p>
 <h2 id="de6-kaufen">Kaufen</h2>
@@ -319,6 +320,7 @@
 <li><strong class="ui">Check for Updates…</strong> und <strong class="ui">Send Feedback…</strong> (Befehl-?) im App-Menü.</li>
 <li>Menü View: <strong class="ui">Title Bar</strong> (Befehl-Umschalt-W), <strong class="ui">Show Scale</strong> (Befehl-Umschalt-S), <strong class="ui">Show Value</strong> (Befehl-Umschalt-V), <strong class="ui">Peak Hold</strong> (Befehl-Umschalt-P), <strong class="ui">Spectrum</strong> (Befehl-Umschalt-F), <strong class="ui">LUFS Meter</strong> (Befehl-Umschalt-L), <strong class="ui">Level Meter</strong> (Befehl-Umschalt-M), <strong class="ui">Always on Top</strong>, <strong class="ui">Auto-Reset on Silence</strong>, <strong class="ui">Reset Peaks</strong> (Befehl-R).</li>
 <li>Menü File: <strong class="ui">Import Settings...</strong> (Befehl-Umschalt-I), <strong class="ui">Export Settings...</strong> (Befehl-Umschalt-E), <strong class="ui">Import Gradients...</strong>, <strong class="ui">Export All Custom Gradients...</strong>.</li>
+<li>Menü Help (ab Version 1.30): <strong class="ui">Malibu Meter Help</strong> öffnet die Online-Hilfe im Browser.</li>
 <li>Rechtsklick-Menü des Meters: die obigen Anzeige-Schalter plus <strong class="ui">Lissajous</strong> und <strong class="ui">Settings...</strong>.</li>
 <li>Doppelklick auf das Meter: Peak Hold zurücksetzen.</li>
 </ul>
@@ -378,7 +380,7 @@
 <p>Öffne nach dem Einschalten von <strong class="ui">Screen Audio</strong> das Menü unter <strong class="ui">Applications</strong> und hake mindestens eine App an; solange keine gewählt ist, zeigt der Tab „Select at least one app to monitor“.</p>
 <h2 id="de8-lizenzmeldungen">Lizenzmeldungen</h2>
 <p>Im Dialog zur Schlüsseleingabe: „This key is already active on the maximum number of devices“ heißt, ein Gerät zu deaktivieren (siehe Lizenz-Anleitung); „This key is invalid or has been revoked“ heißt, den Schlüssel zu prüfen; „Couldn't reach the license server“ heißt, es später erneut zu versuchen. Im Dialog zur Schlüsseleingabe und im Sperr-Dialog: „Your system clock appears to have moved backward“ heißt, die Uhr zu korrigieren; „Couldn't verify your license yet“ heißt, sich einmal mit dem Internet zu verbinden.</p>
-<p class="ver">Geschrieben für Version 1.29.</p>
+<p class="ver">Geschrieben für Version 1.30.</p>
     </article>
   </div>
   <footer>

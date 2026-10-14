@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MalibuDictate · Push-to-Talk Dictation for macOS</title>
 <link rel="icon" type="image/png" href="/apps/malibudictate/icon.png">
-<meta name="description" content="MalibuDictate turns speech into text in any app: hold a hotkey, speak, and the text is pasted. Optional rewrite via Claude or on-device with Apple Intelligence, per-app profiles, a personal dictionary and an opt-in meeting mode. Rewrite via Claude or on-device with Apple Intelligence.">
+<meta name="description" content="MalibuDictate turns speech into text in any Mac app: hold a key, speak, and the text is pasted at your cursor. Optional rewrite with Claude (your own API key) or on-device with Apple Intelligence, writing profiles per app, a dictionary and snippets, and an opt-in meeting mode in beta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
     <div>
       <div class="eyebrow" data-i18n="hero.eyebrow">Push-to-talk dictation · macOS</div>
       <h1 data-i18n="hero.h1">Hold a key.<br><span class="soft">Speak.</span> Text appears.</h1>
-      <p class="lead" data-i18n="hero.lead">MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude or an on-device rewrite if you want.</p>
+      <p class="lead" data-i18n="hero.lead">MalibuDictate turns speech into text in any app. Hold a key, speak, and the text is pasted where your cursor is. As transcribed, or rewritten by Claude or on-device with Apple Intelligence.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
         <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
@@ -46,12 +46,12 @@
       <div class="stack" aria-hidden="true">
         <div class="win w1">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w1.head">Record</span></div>
-          <div class="row"><span class="k" data-i18n="w1.r1">Hotkey</span><span class="v" data-i18n="w1.v1">held</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">Dictation key</span><span class="v" data-i18n="w1.v1">held</span></div>
           <div class="row"><span class="k" data-i18n="w1.r2">Mode</span><span class="v" data-i18n="w1.v2">Raw</span></div>
         </div>
         <div class="win w2">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.head">Transcribe</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r1">Speech engine</span><span class="tag">Parakeet</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Speech engine</span><span class="tag">Parakeet TDT</span></div>
           <div class="row"><span class="k" data-i18n="w2.r2">Dictionary</span><span class="tag quiet" data-i18n="w2.t2">applied</span></div>
         </div>
         <div class="win w3">
@@ -65,13 +65,14 @@
 
   <section>
     <div class="sec-head">
-      <h2 data-i18n="wf.title">Three steps</h2>
-      <p data-i18n="wf.sub">From a thought to text, without leaving the app you are in.</p>
+      <h2 data-i18n="wf.title">Four steps</h2>
+      <p data-i18n="wf.sub">From first launch to text at your cursor.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Hold the hotkey</h3><p data-i18n="s1.p">Press and hold in any app. Caps Lock and fn work as hotkeys. An indicator shows that it is listening. Double-tap instead for hands-free recording (opt-in).</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Speak</h3><p data-i18n="s2.p">Transcription runs with the engine you chose. Dictionary entries, snippets and spoken punctuation are applied.</p></div>
-      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Text appears</h3><p data-i18n="s3.p">The result is inserted by paste (Cmd+V) at your cursor. Your previous clipboard is restored after a time you set.</p></div>
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Set up once</h3><p data-i18n="s1.p">On first launch, enter your email address and click Start Trial, then allow Microphone and Accessibility. Keep the default engine, Parakeet TDT, and wait until Status shows Ready.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Hold a key and speak</h3><p data-i18n="s2.p">By default right Command inserts the transcript, right Option rewrites it with the profile of the active app, and right Control rewrites what is on your clipboard by your spoken instruction. An indicator shows that it is recording.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Release the key</h3><p data-i18n="s3.p">The text is transcribed, then cleaned on your Mac in a fixed order: dictionary, filler words, spoken punctuation, snippets, smart formatting. The Claude key hands the result to the rewrite after that.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Text lands at the cursor</h3><p data-i18n="s4.p">It is pasted with a simulated Cmd+V into the focused field, and by default your previous clipboard is restored right after. In a password field nothing is pasted; the text stays on the clipboard.</p></div>
     </div>
   </section>
 
@@ -83,36 +84,57 @@
     <div class="bento">
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Dictate</div>
-        <h3 data-i18n="t1.h">Three dictation modes</h3>
-        <p data-i18n="t1.p">Raw transcript as spoken, a rewrite that cleans up the text (Claude in the cloud, or local with Apple Intelligence), or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.</p>
+        <h3 data-i18n="t1.h">Three keys, three modes</h3>
+        <p data-i18n="t1.p">Dictation Keys (Raw) insert the transcript without a rewrite. Dictation Keys (Claude) rewrite it with the profile assigned to the active app. Clipboard Rewrite Keys rewrite the text on your clipboard by what you say, for example “make this more formal”. You can change or add keys under Keys: function keys, the right Command, Option, Shift and Control keys, fn (Globe) and Caps Lock.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Four speech engines</h3>
-        <p data-i18n="t2.p">Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron (English only) and Apple SpeechAnalyzer on macOS 26 and later. In our own FLEURS benchmark (German only), Parakeet Ultra lowers the word error rate from 5.6 to 4.6 percent; it is about a 600 MB download and falls back to v3.</p>
+        <p data-i18n="t2.p">Parakeet TDT (the default), WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer (macOS 26 or later) and Nemotron 3.5 (Streaming), which is for English only. The Language menu offers Auto-Detect or one of 18 languages. A profile can use a different engine for its apps.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t3.h">Meeting mode (beta)</h3>
-        <p data-i18n="t3.p">Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates and a glossary. Export as Markdown with “Save as .md”, or to a folder (opt-in) with an Obsidian-style header.</p>
+        <h3 data-i18n="t3.h">Claude or on-device rewrite</h3>
+        <p data-i18n="t3.p">Claude (Cloud) uses your own API key and a model you pick; Sonnet 5 is the default. Local (Apple Intelligence) runs on your Mac and needs no key. Local is marked experimental in the app.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t4.h">Per-app profiles</h3>
-        <p data-i18n="t4.p">Different rewrite behavior for different apps, set once. Profiles apply to the rewrite modes, not to Raw.</p>
+        <h3 data-i18n="t4.h">Writing profiles</h3>
+        <p data-i18n="t4.p">A profile holds a rewrite prompt and the apps assigned to it. Optional: trigger words to switch profile by voice, and clipboard or window title as context. Profiles apply to the Claude key, not to the clipboard rewrite.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Dictionary and snippets</h3>
-        <p data-i18n="t5.p">A personal dictionary, snippets, trigger words and spoken punctuation.</p>
+        <p data-i18n="t5.p">Corrections replace misheard words, whole words only, in every app or only in assigned apps. Snippets expand a spoken trigger into text, with placeholders such as {{DATE}}. Both also apply to raw dictation.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t6.h">Hands-free (opt-in)</h3>
-        <p data-i18n="t6.p">Off by default. Once enabled, double-tap the hotkey to keep recording without holding it.</p>
+        <h3 data-i18n="t6.h">Vocabulary</h3>
+        <p data-i18n="t6.p">Terms the rewrite is told to spell exactly as written. No effect on raw dictation; use a dictionary correction there. Claude meeting summaries get the terms too.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t7.h">Clipboard, handled</h3>
-        <p data-i18n="t7.p">Text goes in by paste. Timed clipboard retention and restore bring back what you had copied, so dictating does not eat your clipboard.</p>
+        <h3 data-i18n="t7.h">Hands-free recording (opt-in)</h3>
+        <p data-i18n="t7.p">Off by default. Switch on Double-Tap to Keep Recording under Keys, then double-tap a dictation key to record without holding it. Tap once more to finish, or press Esc to discard.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t8.h">Indicators and history (opt-in)</h3>
-        <p data-i18n="t8.p">Show the recording state as a Notch, Overlay or Minimal indicator. The history of past dictations is off by default and opt-in.</p>
+        <h3 data-i18n="t8.h">Clipboard, handled</h3>
+        <p data-i18n="t8.p">With Keep Dictation on Clipboard under General, the dictated text stays on the clipboard for 3, 5, 10 or 30 seconds, or forever, before your previous clipboard comes back. The default is Off: restored right after pasting.</p>
+      </div>
+      <div class="tile mid">
+        <div class="label" data-i18n="t9.l">Beta</div>
+        <h3 data-i18n="t9.h">Meeting mode</h3>
+        <p data-i18n="t9.p">Off until you enable it. Records your microphone as You and all system audio as Others, transcribes on your Mac, and writes a summary with Claude or in a Basic format (no AI). Notes, markers, summary templates and time references that link into the transcript. Capturing Others needs System Audio Recording access.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t10.h">Meeting export</h3>
+        <p data-i18n="t10.p">Save as .md writes one meeting as a Markdown file. Copy Markdown, Apple Notes and Mail Draft work from the Summary tab; the mail is never sent automatically. Optionally, finished meetings go to a folder as Markdown with a YAML header meant for notes apps such as Obsidian.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t11.h">Smart formatting</h3>
+        <p data-i18n="t11.p">Smart Capitalization, Smart Paragraphs and Spoken Punctuation are on by default; Remove Filler Words is off. All run locally, also for raw dictation.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t12.h">Audio while recording</h3>
+        <p data-i18n="t12.p">Optional: Pause Media During Recording, or Duck Audio During Recording to a level from 5% to 50%. Both are off by default.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t13.h">Indicator and history</h3>
+        <p data-i18n="t13.p">The recording indicator comes as Notch, Overlay or Minimal. History is off by default; if you enable it, entries with text, time and target app stay on your Mac.</p>
       </div>
     </div>
   </section>
@@ -120,35 +142,53 @@
   <section>
     <div class="sec-head">
       <h2 data-i18n="k.title">Good to know</h2>
-      <p data-i18n="k.sub">What you need, and what it does not do yet.</p>
+      <p data-i18n="k.sub">What you need, what to watch for, and what it does not do yet.</p>
     </div>
     <div class="facts">
       <div class="fact">
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
-          <li data-i18n="k1.a">macOS 15.0 or later; the Apple Speech engine and the local rewrite (Apple Intelligence) need macOS 26 or later</li>
-          <li data-i18n="k1.b">Audio stays on your Mac. The “Claude (Cloud)” rewrite and Claude meeting summaries need your own Claude API key; the local rewrite (Apple Intelligence) needs none</li>
-          <li data-i18n="k1.c">Free trial; an email address is required at first launch</li>
-          <li data-i18n="k1.d">Needs Microphone and Accessibility permission</li>
-          <li data-i18n="k1.d">Needs Microphone and Accessibility permission</li>
+          <li data-i18n="k1.a">macOS 15 or later. The Apple SpeechAnalyzer engine needs macOS 26 or later, and so does the Local (Apple Intelligence) rewrite, with Apple Intelligence enabled</li>
+          <li data-i18n="k1.b">Microphone and Accessibility permission, both required: without Accessibility the app cannot see the key press or insert text</li>
+          <li data-i18n="k1.c">Internet for model downloads, Claude (Cloud) rewrites and the license check, which repeats every 24 hours</li>
+          <li data-i18n="k1.d">Claude (Cloud) rewrites and Claude meeting summaries need your own Claude API key</li>
+          <li data-i18n="k1.e">Free trial, started by submitting your email address at first launch; after the trial a license key is required</li>
         </ul>
       </div>
       <div class="fact">
-        <h3 data-i18n="k2.h">Not there yet</h3>
+        <h3 data-i18n="k2.h">The key names and fixed values of the YAML header in folder exports cannot be changed</h3>
         <ul>
-          <li data-i18n="k2.a">Meeting mode is beta and off until you opt in</li>
-          <li data-i18n="k2.b">Double-tap timing and the marker shortcut (Ctrl+Opt+M) are still being tested in daily use</li>
-          <li data-i18n="k2.c">Nemotron: English only</li>
-          <li data-i18n="k2.d">Meeting mode labels speakers only as “You” and “Others”, no speaker names</li>
-          <li data-i18n="k2.e">The Claude meeting summary sends the transcript text to Anthropic</li>
-          <li data-i18n="k2.f">In password fields nothing is pasted automatically; the text stays on the clipboard</li>
-          <li data-i18n="k2.g">Live Transcript Preview is experimental</li>
-          <li data-i18n="k2.h">The local rewrite (Apple Intelligence) can lose its role on short dictations</li>
-          <li data-i18n="k2.d">Meeting mode labels speakers only as “You” and “Others”, no speaker names</li>
-          <li data-i18n="k2.e">The Claude meeting summary sends the transcript text to Anthropic</li>
-          <li data-i18n="k2.f">In password fields nothing is pasted automatically; the text stays on the clipboard</li>
-          <li data-i18n="k2.g">Live Transcript Preview is experimental</li>
-          <li data-i18n="k2.h">The local rewrite (Apple Intelligence) can lose its role on short dictations</li>
+          <li data-i18n="k2.a">Meeting mode is beta and off until you turn it on</li>
+          <li data-i18n="k2.b">Meeting transcripts have two speakers only: You and Others. Others is all system audio mixed, including music and notification sounds; there are no participant names</li>
+          <li data-i18n="k2.c">Nemotron 3.5 (Streaming) is English only and ignores the Language setting</li>
+          <li data-i18n="k2.d">Spoken Punctuation and Remove Filler Words know German and English only</li>
+          <li data-i18n="k2.e">The Local (Apple Intelligence) rewrite is experimental: on very short or question-like dictations the model can answer like a chatbot instead of cleaning up your text</li>
+          <li data-i18n="k2.f">Live Transcript Preview is experimental</li>
+          <li data-i18n="k2.g">The Basic format (no AI) only lists your notes and the first transcript lines; it is not a written summary</li>
+          <li data-i18n="k2.h">The key names and fixed values of the YAML header in folder exports cannot be changed</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k3.h">Copy Recording Notice gives you an English text to paste into the call chat. Record only when all participants know and agree.</h3>
+        <ul>
+          <li data-i18n="k3.a">If a Claude request fails, the text is inserted without a rewrite, after the local steps. A failed clipboard rewrite shows an error instead.</li>
+          <li data-i18n="k3.b">A clipboard rewrite puts its result on the clipboard; your previous clipboard is not restored.</li>
+          <li data-i18n="k3.c">In a password field, or if another app comes to the front while pasting, nothing is pasted: the text stays on the clipboard for you to paste with Command-V.</li>
+          <li data-i18n="k3.d">Assigning Caps Lock remaps it to F19 while the app runs, so it no longer toggles uppercase. After a crash or force-quit it stays remapped until you restart the app or the Mac.</li>
+          <li data-i18n="k3.e">The built-in snippets are samples. Some contain a personal signature or an address that is not yours; edit or delete them before you use them.</li>
+          <li data-i18n="k3.f">With Auto-Detect and Remove Filler Words on, the English “um” also removes the German “um” from “um 3 Uhr”. Select Deutsch if you dictate German.</li>
+          <li data-i18n="k3.g">Without headphones, the meeting echo filter removes your lines that repeat what Others just said. With headphones, switch it off under Meetings, Transcript.</li>
+          <li data-i18n="k3.h">Copy Recording Notice gives you an English text to paste into the call chat. Record only when all participants know and agree.</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k4.h">What leaves your Mac</h3>
+        <ul>
+          <li data-i18n="k4.a">Raw dictation sends no text to Claude.</li>
+          <li data-i18n="k4.b">A Claude (Cloud) rewrite sends text to Anthropic’s API with your own key: the dictated text, the profile prompt, the app name, your vocabulary and, if you enabled them in the profile, clipboard or window title. Text only, no audio.</li>
+          <li data-i18n="k4.c">Local (Apple Intelligence) rewrites run on your Mac and need no key or network.</li>
+          <li data-i18n="k4.d">Meeting transcription runs on your Mac. Only the summary step sends the transcript and your notes to Claude, and only with the provider Claude and a saved key.</li>
+          <li data-i18n="k4.e">History is stored locally and never leaves your Mac. Exported meeting files are ordinary files: in a synced folder, such as a cloud drive or a notes vault, they leave your Mac with it.</li>
         </ul>
       </div>
     </div>
@@ -158,7 +198,7 @@
     <div class="dl">
       <div>
         <h2 data-i18n="dl.title">Download MalibuDictate</h2>
-        <p data-i18n="dl.sub">Version 0.10.6 for macOS 15 or later. Free trial. Updates arrive automatically; feedback can be sent from inside the app.</p>
+        <p data-i18n="dl.sub">Version 0.10.6 for macOS 15 or later. Free trial. Check for Updates … and Send Feedback … are inside the app.</p>
       </div>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg" data-i18n="dl.btn">Download for Mac</a>
@@ -182,63 +222,205 @@
 window.PAGE_CONFIG = { buyUrl: null };
 window.PAGE_T = {
   en: {
-    "nav.back":"← All apps","nav.cta":"Download",
+    "nav.back":"← All apps",
+    "nav.cta":"Download",
     "hero.eyebrow":"Push-to-talk dictation · macOS",
-    "hero.h1":'Hold a key.<br><span class="soft">Speak.</span> Text appears.',
-    "hero.lead":"MalibuDictate turns speech into text in any app. Hold the hotkey, say it, and the text is pasted where your cursor is. Raw, or polished by Claude or an on-device rewrite if you want.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"macOS 15+ · free trial · Version 0.10.6",
-    "w1.head":"Record","w1.r1":"Hotkey","w1.v1":"held","w1.r2":"Mode","w1.v2":"Raw",
-    "w2.head":"Transcribe","w2.r1":"Speech engine","w2.r2":"Dictionary","w2.t2":"applied",
-    "w3.head":"Any app","w3.r1":"Text at the cursor","w3.tag":"Pasted",
+    "hero.h1":"Hold a key.<br><span class=\"soft\">Speak.</span> Text appears.",
+    "hero.lead":"MalibuDictate turns speech into text in any app. Hold a key, speak, and the text is pasted where your cursor is. As transcribed, or rewritten by Claude or on-device with Apple Intelligence.",
+    "hero.dl":"Download for Mac",
+    "hero.buy":"Buy",
+    "hero.meta":"macOS 15+ · free trial · Version 0.10.6",
+    "w1.head":"Record",
+    "w1.r1":"Dictation key",
+    "w1.v1":"held",
+    "w1.r2":"Mode",
+    "w1.v2":"Raw",
+    "w2.head":"Transcribe",
+    "w2.r1":"Speech engine",
+    "w2.r2":"Dictionary",
+    "w2.t2":"applied",
+    "w3.head":"Any app",
+    "w3.r1":"Text at the cursor",
+    "w3.tag":"Pasted",
     "illu":"Illustration of the workflow, not a screenshot.",
-    "wf.title":"Three steps","wf.sub":"From a thought to text, without leaving the app you are in.",
-    "s1.h":"Hold the hotkey","s1.p":"Press and hold in any app. Caps Lock and fn work as hotkeys. An indicator shows that it is listening. Double-tap instead for hands-free recording (opt-in).",
-    "s2.h":"Speak","s2.p":"Transcription runs with the engine you chose. Dictionary entries, snippets and spoken punctuation are applied.",
-    "s3.h":"Text appears","s3.p":"The result is inserted by paste (Cmd+V) at your cursor. Your previous clipboard is restored after a time you set.",
-    "f.title":"What's inside","f.sub":"What the current version (0.10.6) actually does.",
-    "t1.l":"Dictate","t1.h":"Three dictation modes","t1.p":"Raw transcript as spoken, a rewrite that cleans up the text (Claude in the cloud, or local with Apple Intelligence), or a clipboard rewrite that reworks what you have copied. Pick the mode that fits the moment.",
-    "t2.h":"Four speech engines","t2.p":"Parakeet (v3 and Parakeet Ultra), WhisperKit, Nemotron (English only) and Apple SpeechAnalyzer on macOS 26 and later. In our own FLEURS benchmark (German only), Parakeet Ultra lowers the word error rate from 5.6 to 4.6 percent; it is about a 600 MB download and falls back to v3.",
-    "t3.h":"Meeting mode (beta)","t3.p":"Opt-in. Records microphone and system audio as separate streams, transcribes on your Mac, and summarizes via Claude or an offline Basic summary. Markers, templates and a glossary. Export as Markdown with “Save as .md”, or to a folder (opt-in) with an Obsidian-style header.",
-    "t4.h":"Per-app profiles","t4.p":"Different rewrite behavior for different apps, set once. Profiles apply to the rewrite modes, not to Raw.",
-    "t5.h":"Dictionary and snippets","t5.p":"A personal dictionary, snippets, trigger words and spoken punctuation.",
-    "t6.h":"Hands-free (opt-in)","t6.p":"Off by default. Once enabled, double-tap the hotkey to keep recording without holding it.",
-    "t7.h":"Clipboard, handled","t7.p":"Text goes in by paste. Timed clipboard retention and restore bring back what you had copied, so dictating does not eat your clipboard.",
-    "t8.h":"Indicators and history (opt-in)","t8.p":"Show the recording state as a Notch, Overlay or Minimal indicator. The history of past dictations is off by default and opt-in.",
-    "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 15.0 or later; the Apple Speech engine and the local rewrite (Apple Intelligence) need macOS 26 or later","k1.b":"Audio stays on your Mac. The “Claude (Cloud)” rewrite and Claude meeting summaries need your own Claude API key; the local rewrite (Apple Intelligence) needs none","k1.c":"Free trial; an email address is required at first launch","k1.d":"Needs Microphone and Accessibility permission","k1.d":"Needs Microphone and Accessibility permission",
-    "k2.h":"Not there yet","k2.a":"Meeting mode is beta and off until you opt in","k2.b":"Double-tap timing and the marker shortcut (Ctrl+Opt+M) are still being tested in daily use","k2.c":"Nemotron: English only","k2.d":"Meeting mode labels speakers only as “You” and “Others”, no speaker names","k2.e":"The Claude meeting summary sends the transcript text to Anthropic","k2.f":"In password fields nothing is pasted automatically; the text stays on the clipboard","k2.g":"Live Transcript Preview is experimental","k2.h":"The local rewrite (Apple Intelligence) can lose its role on short dictations","k2.d":"Meeting mode labels speakers only as “You” and “Others”, no speaker names","k2.e":"The Claude meeting summary sends the transcript text to Anthropic","k2.f":"In password fields nothing is pasted automatically; the text stays on the clipboard","k2.g":"Live Transcript Preview is experimental","k2.h":"The local rewrite (Apple Intelligence) can lose its role on short dictations",
-    "dl.title":"Download MalibuDictate","dl.sub":"Version 0.10.6 for macOS 15 or later. Free trial. Updates arrive automatically; feedback can be sent from inside the app.","dl.btn":"Download for Mac",
-    "foot.help":"Help","foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "wf.title":"Four steps",
+    "wf.sub":"From first launch to text at your cursor.",
+    "s1.h":"Set up once",
+    "s1.p":"On first launch, enter your email address and click Start Trial, then allow Microphone and Accessibility. Keep the default engine, Parakeet TDT, and wait until Status shows Ready.",
+    "s2.h":"Hold a key and speak",
+    "s2.p":"By default right Command inserts the transcript, right Option rewrites it with the profile of the active app, and right Control rewrites what is on your clipboard by your spoken instruction. An indicator shows that it is recording.",
+    "s3.h":"Release the key",
+    "s3.p":"The text is transcribed, then cleaned on your Mac in a fixed order: dictionary, filler words, spoken punctuation, snippets, smart formatting. The Claude key hands the result to the rewrite after that.",
+    "s4.h":"Text lands at the cursor",
+    "s4.p":"It is pasted with a simulated Cmd+V into the focused field, and by default your previous clipboard is restored right after. In a password field nothing is pasted; the text stays on the clipboard.",
+    "f.title":"What's inside",
+    "f.sub":"What the current version (0.10.6) actually does.",
+    "t1.l":"Dictate",
+    "t1.h":"Three keys, three modes",
+    "t1.p":"Dictation Keys (Raw) insert the transcript without a rewrite. Dictation Keys (Claude) rewrite it with the profile assigned to the active app. Clipboard Rewrite Keys rewrite the text on your clipboard by what you say, for example “make this more formal”. You can change or add keys under Keys: function keys, the right Command, Option, Shift and Control keys, fn (Globe) and Caps Lock.",
+    "t2.h":"Four speech engines",
+    "t2.p":"Parakeet TDT (the default), WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer (macOS 26 or later) and Nemotron 3.5 (Streaming), which is for English only. The Language menu offers Auto-Detect or one of 18 languages. A profile can use a different engine for its apps.",
+    "t3.h":"Claude or on-device rewrite",
+    "t3.p":"Claude (Cloud) uses your own API key and a model you pick; Sonnet 5 is the default. Local (Apple Intelligence) runs on your Mac and needs no key. Local is marked experimental in the app.",
+    "t4.h":"Writing profiles",
+    "t4.p":"A profile holds a rewrite prompt and the apps assigned to it. Optional: trigger words to switch profile by voice, and clipboard or window title as context. Profiles apply to the Claude key, not to the clipboard rewrite.",
+    "t5.h":"Dictionary and snippets",
+    "t5.p":"Corrections replace misheard words, whole words only, in every app or only in assigned apps. Snippets expand a spoken trigger into text, with placeholders such as {{DATE}}. Both also apply to raw dictation.",
+    "t6.h":"Vocabulary",
+    "t6.p":"Terms the rewrite is told to spell exactly as written. No effect on raw dictation; use a dictionary correction there. Claude meeting summaries get the terms too.",
+    "t7.h":"Hands-free recording (opt-in)",
+    "t7.p":"Off by default. Switch on Double-Tap to Keep Recording under Keys, then double-tap a dictation key to record without holding it. Tap once more to finish, or press Esc to discard.",
+    "t8.h":"Clipboard, handled",
+    "t8.p":"With Keep Dictation on Clipboard under General, the dictated text stays on the clipboard for 3, 5, 10 or 30 seconds, or forever, before your previous clipboard comes back. The default is Off: restored right after pasting.",
+    "t9.l":"Beta",
+    "t9.h":"Meeting mode",
+    "t9.p":"Off until you enable it. Records your microphone as You and all system audio as Others, transcribes on your Mac, and writes a summary with Claude or in a Basic format (no AI). Notes, markers, summary templates and time references that link into the transcript. Capturing Others needs System Audio Recording access.",
+    "t10.h":"Meeting export",
+    "t10.p":"Save as .md writes one meeting as a Markdown file. Copy Markdown, Apple Notes and Mail Draft work from the Summary tab; the mail is never sent automatically. Optionally, finished meetings go to a folder as Markdown with a YAML header meant for notes apps such as Obsidian.",
+    "t11.h":"Smart formatting",
+    "t11.p":"Smart Capitalization, Smart Paragraphs and Spoken Punctuation are on by default; Remove Filler Words is off. All run locally, also for raw dictation.",
+    "t12.h":"Audio while recording",
+    "t12.p":"Optional: Pause Media During Recording, or Duck Audio During Recording to a level from 5% to 50%. Both are off by default.",
+    "t13.h":"Indicator and history",
+    "t13.p":"The recording indicator comes as Notch, Overlay or Minimal. History is off by default; if you enable it, entries with text, time and target app stay on your Mac.",
+    "k.title":"Good to know",
+    "k.sub":"What you need, what to watch for, and what it does not do yet.",
+    "k1.h":"Requirements",
+    "k1.a":"macOS 15 or later. The Apple SpeechAnalyzer engine needs macOS 26 or later, and so does the Local (Apple Intelligence) rewrite, with Apple Intelligence enabled",
+    "k1.b":"Microphone and Accessibility permission, both required: without Accessibility the app cannot see the key press or insert text",
+    "k1.c":"Internet for model downloads, Claude (Cloud) rewrites and the license check, which repeats every 24 hours",
+    "k1.d":"Claude (Cloud) rewrites and Claude meeting summaries need your own Claude API key",
+    "k1.e":"Free trial, started by submitting your email address at first launch; after the trial a license key is required",
+    "k2.h":"The key names and fixed values of the YAML header in folder exports cannot be changed",
+    "k2.a":"Meeting mode is beta and off until you turn it on",
+    "k2.b":"Meeting transcripts have two speakers only: You and Others. Others is all system audio mixed, including music and notification sounds; there are no participant names",
+    "k2.c":"Nemotron 3.5 (Streaming) is English only and ignores the Language setting",
+    "k2.d":"Spoken Punctuation and Remove Filler Words know German and English only",
+    "k2.e":"The Local (Apple Intelligence) rewrite is experimental: on very short or question-like dictations the model can answer like a chatbot instead of cleaning up your text",
+    "k2.f":"Live Transcript Preview is experimental",
+    "k2.g":"The Basic format (no AI) only lists your notes and the first transcript lines; it is not a written summary",
+    "k3.h":"Copy Recording Notice gives you an English text to paste into the call chat. Record only when all participants know and agree.",
+    "k3.a":"If a Claude request fails, the text is inserted without a rewrite, after the local steps. A failed clipboard rewrite shows an error instead.",
+    "k3.b":"A clipboard rewrite puts its result on the clipboard; your previous clipboard is not restored.",
+    "k3.c":"In a password field, or if another app comes to the front while pasting, nothing is pasted: the text stays on the clipboard for you to paste with Command-V.",
+    "k3.d":"Assigning Caps Lock remaps it to F19 while the app runs, so it no longer toggles uppercase. After a crash or force-quit it stays remapped until you restart the app or the Mac.",
+    "k3.e":"The built-in snippets are samples. Some contain a personal signature or an address that is not yours; edit or delete them before you use them.",
+    "k3.f":"With Auto-Detect and Remove Filler Words on, the English “um” also removes the German “um” from “um 3 Uhr”. Select Deutsch if you dictate German.",
+    "k3.g":"Without headphones, the meeting echo filter removes your lines that repeat what Others just said. With headphones, switch it off under Meetings, Transcript.",
+    "k4.h":"What leaves your Mac",
+    "k4.a":"Raw dictation sends no text to Claude.",
+    "k4.b":"A Claude (Cloud) rewrite sends text to Anthropic’s API with your own key: the dictated text, the profile prompt, the app name, your vocabulary and, if you enabled them in the profile, clipboard or window title. Text only, no audio.",
+    "k4.c":"Local (Apple Intelligence) rewrites run on your Mac and need no key or network.",
+    "k4.d":"Meeting transcription runs on your Mac. Only the summary step sends the transcript and your notes to Claude, and only with the provider Claude and a saved key.",
+    "k4.e":"History is stored locally and never leaves your Mac. Exported meeting files are ordinary files: in a synced folder, such as a cloud drive or a notes vault, they leave your Mac with it.",
+    "dl.title":"Download MalibuDictate",
+    "dl.sub":"Version 0.10.6 for macOS 15 or later. Free trial. Check for Updates … and Send Feedback … are inside the app.",
+    "dl.btn":"Download for Mac",
+    "foot.help":"Help",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice",
+    "foot.privacy":"Privacy Policy",
     "foot.legal":"Claude is a trademark of Anthropic. Obsidian is a trademark of its owner. Apple, macOS, Apple Speech and Apple Intelligence are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
-    "nav.back":"← Alle Apps","nav.cta":"Laden",
+    "nav.back":"← Alle Apps",
+    "nav.cta":"Laden",
     "hero.eyebrow":"Push-to-Talk-Diktat · macOS",
-    "hero.h1":'Taste halten.<br><span class="soft">Sprechen.</span> Text erscheint.',
-    "hero.lead":"MalibuDictate macht aus Sprache Text, in jeder App. Hotkey halten, sprechen, und der Text wird dort eingefügt, wo dein Cursor steht. Roh oder auf Wunsch von Claude oder per lokalem Rewrite geglättet.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"macOS 15+ · kostenlos testen · Version 0.10.6",
-    "w1.head":"Aufnahme","w1.r1":"Hotkey","w1.v1":"gehalten","w1.r2":"Modus","w1.v2":"Roh",
-    "w2.head":"Transkription","w2.r1":"Sprach-Engine","w2.r2":"Wörterbuch","w2.t2":"angewendet",
-    "w3.head":"Jede App","w3.r1":"Text am Cursor","w3.tag":"Eingefügt",
+    "hero.h1":"Taste halten.<br><span class=\"soft\">Sprechen.</span> Text erscheint.",
+    "hero.lead":"MalibuDictate macht aus Sprache Text, in jeder App. Taste halten, sprechen, und der Text wird dort eingefügt, wo dein Cursor steht. Wie transkribiert, oder umgeschrieben von Claude oder lokal mit Apple Intelligence.",
+    "hero.dl":"Für Mac laden",
+    "hero.buy":"Kaufen",
+    "hero.meta":"macOS 15+ · kostenlos testen · Version 0.10.6",
+    "w1.head":"Aufnahme",
+    "w1.r1":"Diktiertaste",
+    "w1.v1":"gehalten",
+    "w1.r2":"Modus",
+    "w1.v2":"Raw",
+    "w2.head":"Transkription",
+    "w2.r1":"Sprach-Engine",
+    "w2.r2":"Wörterbuch",
+    "w2.t2":"angewendet",
+    "w3.head":"Jede App",
+    "w3.r1":"Text am Cursor",
+    "w3.tag":"Eingefügt",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
-    "wf.title":"Drei Schritte","wf.sub":"Vom Gedanken zum Text, ohne die App zu verlassen.",
-    "s1.h":"Hotkey halten","s1.p":"In jeder App gedrückt halten. Caps Lock und fn funktionieren als Hotkey. Ein Indikator zeigt, dass zugehört wird. Alternativ doppelt tippen für freihändige Aufnahme (opt-in).",
-    "s2.h":"Sprechen","s2.p":"Die Transkription läuft mit der Engine, die du gewählt hast. Wörterbuch-Einträge, Snippets und gesprochene Satzzeichen werden angewendet.",
-    "s3.h":"Text erscheint","s3.p":"Das Ergebnis wird per Einfügen (Cmd+V) am Cursor eingesetzt. Deine vorherige Zwischenablage wird nach einer von dir gewählten Zeit wiederhergestellt.",
-    "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (0.10.6) wirklich kann.",
-    "t1.l":"Diktieren","t1.h":"Drei Diktiermodi","t1.p":"Rohtext wie gesprochen, ein Rewrite, der den Text aufräumt (Claude in der Cloud oder lokal mit Apple Intelligence), oder ein Zwischenablage-Rewrite, der überarbeitet, was du kopiert hast. Du wählst den Modus, der gerade passt.",
-    "t2.h":"Vier Sprach-Engines","t2.p":"Parakeet (v3 und Parakeet Ultra), WhisperKit, Nemotron (nur Englisch) und Apple SpeechAnalyzer ab macOS 26. In unserem eigenen FLEURS-Benchmark (nur Deutsch) senkt Parakeet Ultra die Wortfehlerrate von 5,6 auf 4,6 Prozent; der Download ist rund 600 MB groß, als Fallback dient v3.",
-    "t3.h":"Meeting-Modus (Beta)","t3.p":"Opt-in. Nimmt Mikrofon und Systemton als getrennte Streams auf, transkribiert auf deinem Mac und fasst per Claude oder als Offline-Basic-Zusammenfassung zusammen. Marker, Vorlagen und Glossar. Markdown-Export per „Als .md sichern“ oder (opt-in) in einen Ordner mit Obsidian-Header.",
-    "t4.h":"Profile pro App","t4.p":"Unterschiedliches Rewrite-Verhalten für unterschiedliche Apps, einmal eingestellt. Profile wirken auf die Rewrite-Modi, nicht auf Raw.",
-    "t5.h":"Wörterbuch und Snippets","t5.p":"Ein persönliches Wörterbuch, Snippets, Trigger-Wörter und gesprochene Satzzeichen.",
-    "t6.h":"Freihändig (opt-in)","t6.p":"Standardmäßig aus. Einmal aktiviert, den Hotkey doppelt tippen, um weiter aufzunehmen, ohne die Taste zu halten.",
-    "t7.h":"Zwischenablage im Griff","t7.p":"Text kommt per Einfügen. Zeitgesteuertes Behalten und Wiederherstellen bringt zurück, was du kopiert hattest, damit Diktieren deine Zwischenablage nicht auffrisst.",
-    "t8.h":"Indikatoren und Verlauf (opt-in)","t8.p":"Zeig den Aufnahmestatus als Notch-, Overlay- oder Minimal-Indikator. Der Verlauf früherer Diktate ist standardmäßig aus und opt-in.",
-    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 15.0 oder neuer; die Apple-Speech-Engine und der lokale Rewrite (Apple Intelligence) brauchen macOS 26 oder neuer","k1.b":"Audio bleibt auf deinem Mac. Der Rewrite „Claude (Cloud)“ und Claude-Meeting-Zusammenfassungen brauchen deinen eigenen Claude-API-Key; der lokale Rewrite (Apple Intelligence) braucht keinen","k1.c":"kostenlos testen; beim ersten Start ist eine E-Mail-Adresse nötig","k1.d":"Braucht die Berechtigung für Mikrofon und Bedienungshilfen","k1.d":"Braucht die Berechtigung für Mikrofon und Bedienungshilfen",
-    "k2.h":"Noch nicht da","k2.a":"Der Meeting-Modus ist Beta und bleibt aus, bis du ihn aktivierst","k2.b":"Double-Tap-Timing und das Marker-Kürzel (Ctrl+Opt+M) werden noch im Alltag getestet","k2.c":"Nemotron: nur Englisch","k2.d":"Der Meeting-Modus unterscheidet nur „You“ und „Others“, keine Sprechernamen","k2.e":"Die Claude-Meeting-Zusammenfassung sendet den Transkripttext an Anthropic","k2.f":"In Passwortfeldern wird nie automatisch eingefügt; der Text bleibt in der Zwischenablage","k2.g":"Die Live-Transkript-Vorschau ist experimentell","k2.h":"Der lokale Rewrite (Apple Intelligence) verliert bei kurzen Diktaten teils seine Rolle","k2.d":"Der Meeting-Modus unterscheidet nur „You“ und „Others“, keine Sprechernamen","k2.e":"Die Claude-Meeting-Zusammenfassung sendet den Transkripttext an Anthropic","k2.f":"In Passwortfeldern wird nie automatisch eingefügt; der Text bleibt in der Zwischenablage","k2.g":"Die Live-Transkript-Vorschau ist experimentell","k2.h":"Der lokale Rewrite (Apple Intelligence) verliert bei kurzen Diktaten teils seine Rolle",
-    "dl.title":"MalibuDictate laden","dl.sub":"Version 0.10.6 für macOS 15 oder neuer. kostenlos testen. Updates kommen automatisch; Feedback lässt sich direkt in der App senden.","dl.btn":"Für Mac laden",
-    "foot.help":"Hilfe","foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "wf.title":"Vier Schritte",
+    "wf.sub":"Vom ersten Start bis zum Text am Cursor.",
+    "s1.h":"Einmal einrichten",
+    "s1.p":"Gib beim ersten Start deine E-Mail-Adresse ein und klicke auf Start Trial, erlaube dann Mikrofon und Bedienungshilfen. Behalte die Standard-Engine Parakeet TDT und warte, bis Status Ready zeigt.",
+    "s2.h":"Taste halten und sprechen",
+    "s2.p":"Standardmäßig fügt die rechte Command-Taste das Transkript ein, die rechte Option-Taste schreibt es mit dem Profil der aktiven App um, und die rechte Control-Taste schreibt den Inhalt deiner Zwischenablage nach deiner gesprochenen Anweisung um. Ein Indikator zeigt, dass aufgenommen wird.",
+    "s3.h":"Taste loslassen",
+    "s3.p":"Der Text wird transkribiert und dann in fester Reihenfolge auf deinem Mac aufbereitet: Wörterbuch, Füllwörter, gesprochene Satzzeichen, Snippets, Smart Formatting. Danach übergibt die Claude-Taste das Ergebnis an den Rewrite.",
+    "s4.h":"Text landet am Cursor",
+    "s4.p":"Er wird per simuliertem Cmd+V in das fokussierte Feld eingefügt, und standardmäßig wird direkt danach deine vorherige Zwischenablage wiederhergestellt. In einem Passwortfeld wird nichts eingefügt; der Text bleibt in der Zwischenablage.",
+    "f.title":"Was drinsteckt",
+    "f.sub":"Was die aktuelle Version (0.10.6) wirklich kann.",
+    "t1.l":"Diktieren",
+    "t1.h":"Drei Tasten, drei Modi",
+    "t1.p":"Dictation Keys (Raw) fügen das Transkript ohne Rewrite ein. Dictation Keys (Claude) schreiben es mit dem Profil um, das der aktiven App zugewiesen ist. Clipboard Rewrite Keys schreiben den Text in deiner Zwischenablage nach dem um, was du sagst, zum Beispiel „make this more formal“. Tasten änderst oder ergänzt du unter Keys: Funktionstasten, die rechten Tasten Command, Option, Shift und Control, fn (Globe) und Caps Lock.",
+    "t2.h":"Vier Sprach-Engines",
+    "t2.p":"Parakeet TDT (Standard), WhisperKit (Large v3 Turbo), Apple SpeechAnalyzer (ab macOS 26) und Nemotron 3.5 (Streaming), das nur für Englisch gedacht ist. Das Language-Menü bietet Auto-Detect oder eine von 18 Sprachen. Ein Profil kann für seine Apps eine andere Engine nutzen.",
+    "t3.h":"Rewrite per Claude oder lokal",
+    "t3.p":"Claude (Cloud) nutzt deinen eigenen API-Key und ein Modell deiner Wahl; Standard ist Sonnet 5. Local (Apple Intelligence) läuft auf deinem Mac und braucht keinen Key. Local ist in der App als experimentell markiert.",
+    "t4.h":"Schreibprofile",
+    "t4.p":"Ein Profil enthält einen Rewrite-Prompt und die ihm zugewiesenen Apps. Optional: Trigger-Wörter, um das Profil per Stimme zu wechseln, sowie Zwischenablage oder Fenstertitel als Kontext. Profile gelten für die Claude-Taste, nicht für den Zwischenablage-Rewrite.",
+    "t5.h":"Wörterbuch und Snippets",
+    "t5.p":"Korrekturen ersetzen falsch verstandene Wörter, nur ganze Wörter, in jeder App oder nur in zugewiesenen Apps. Snippets erweitern einen gesprochenen Trigger zu Text, mit Platzhaltern wie {{DATE}}. Beides gilt auch für Raw-Diktate.",
+    "t6.h":"Vokabular",
+    "t6.p":"Begriffe, die der Rewrite genau so schreiben soll. Keine Wirkung auf Raw-Diktate; dafür nimmst du eine Wörterbuch-Korrektur. Auch Meeting-Zusammenfassungen von Claude bekommen die Begriffe.",
+    "t7.h":"Freihändig aufnehmen (opt-in)",
+    "t7.p":"Standardmäßig aus. Schalte unter Keys Double-Tap to Keep Recording ein und tippe dann eine Diktiertaste doppelt, um ohne Halten aufzunehmen. Einmal tippen beendet, Esc verwirft.",
+    "t8.h":"Zwischenablage im Griff",
+    "t8.p":"Mit Keep Dictation on Clipboard unter General bleibt der diktierte Text 3, 5, 10 oder 30 Sekunden oder für immer in der Zwischenablage, bevor deine vorherige zurückkommt. Standard ist Off: direkt nach dem Einfügen wiederhergestellt.",
+    "t9.l":"Beta",
+    "t9.h":"Meeting-Modus",
+    "t9.p":"Aus, bis du ihn aktivierst. Nimmt dein Mikrofon als You und den gesamten Systemton als Others auf, transkribiert auf deinem Mac und schreibt die Zusammenfassung mit Claude oder im Basic-Format (ohne KI). Notizen, Marker, Zusammenfassungs-Vorlagen und Zeitangaben, die ins Transkript verlinken. Für Others ist die Berechtigung System Audio Recording nötig.",
+    "t10.h":"Meeting-Export",
+    "t10.p":"Save as .md schreibt ein Meeting als Markdown-Datei. Copy Markdown, Apple Notes und Mail Draft gehen vom Tab Summary aus; die Mail wird nie automatisch gesendet. Optional landen fertige Meetings als Markdown mit YAML-Header, gedacht für Notiz-Apps wie Obsidian, in einem Ordner.",
+    "t11.h":"Smart Formatting",
+    "t11.p":"Smart Capitalization, Smart Paragraphs und Spoken Punctuation sind standardmäßig an; Remove Filler Words ist aus. Alles läuft lokal, auch bei Raw-Diktaten.",
+    "t12.h":"Ton während der Aufnahme",
+    "t12.p":"Optional: Pause Media During Recording oder Duck Audio During Recording auf einen Pegel von 5 % bis 50 %. Beides ist standardmäßig aus.",
+    "t13.h":"Indikator und Verlauf",
+    "t13.p":"Der Aufnahme-Indikator ist als Notch, Overlay oder Minimal wählbar. Der Verlauf ist standardmäßig aus; schaltest du ihn ein, bleiben Einträge mit Text, Zeit und Ziel-App auf deinem Mac.",
+    "k.title":"Gut zu wissen",
+    "k.sub":"Was du brauchst, worauf du achten solltest und was noch nicht geht.",
+    "k1.h":"Voraussetzungen",
+    "k1.a":"macOS 15 oder neuer. Die Engine Apple SpeechAnalyzer braucht macOS 26 oder neuer, ebenso der Rewrite Local (Apple Intelligence), mit aktivierter Apple Intelligence",
+    "k1.b":"Berechtigung für Mikrofon und Bedienungshilfen, beide nötig: Ohne Bedienungshilfen erkennt die App den Tastendruck nicht und kann keinen Text einfügen",
+    "k1.c":"Internet für Modell-Downloads, Claude-(Cloud)-Rewrites und die Lizenzprüfung, die alle 24 Stunden wiederholt wird",
+    "k1.d":"Claude-(Cloud)-Rewrites und Claude-Meeting-Zusammenfassungen brauchen deinen eigenen Claude-API-Key",
+    "k1.e":"Kostenlos testen, gestartet mit deiner E-Mail-Adresse beim ersten Start; nach der Testphase ist ein Lizenzschlüssel nötig",
+    "k2.h":"Die Schlüsselnamen und festen Werte des YAML-Headers beim Ordner-Export lassen sich nicht ändern",
+    "k2.a":"Der Meeting-Modus ist Beta und bleibt aus, bis du ihn einschaltest",
+    "k2.b":"Meeting-Transkripte kennen nur zwei Sprecher: You und Others. Others ist der gesamte Systemton gemischt, auch Musik und Benachrichtigungstöne; Teilnehmernamen gibt es nicht",
+    "k2.c":"Nemotron 3.5 (Streaming) ist nur für Englisch und ignoriert die Einstellung Language",
+    "k2.d":"Spoken Punctuation und Remove Filler Words kennen nur Deutsch und Englisch",
+    "k2.e":"Der Rewrite Local (Apple Intelligence) ist experimentell: Bei sehr kurzen oder fragenähnlichen Diktaten kann das Modell wie ein Chatbot antworten, statt deinen Text aufzuräumen",
+    "k2.f":"Live Transcript Preview ist experimentell",
+    "k2.g":"Das Basic-Format (no AI) listet nur deine Notizen und die ersten Transkriptzeilen auf; es ist keine geschriebene Zusammenfassung",
+    "k3.h":"Copy Recording Notice liefert dir einen englischen Text für den Anruf-Chat. Nimm nur auf, wenn alle Teilnehmer Bescheid wissen und einverstanden sind.",
+    "k3.a":"Schlägt eine Claude-Anfrage fehl, wird der Text nach den lokalen Schritten ohne Rewrite eingefügt. Ein fehlgeschlagener Zwischenablage-Rewrite zeigt stattdessen einen Fehler.",
+    "k3.b":"Ein Zwischenablage-Rewrite legt sein Ergebnis in die Zwischenablage; deine vorherige Zwischenablage wird nicht wiederhergestellt.",
+    "k3.c":"In einem Passwortfeld, oder wenn beim Einfügen eine andere App in den Vordergrund kommt, wird nichts eingefügt: Der Text bleibt in der Zwischenablage, damit du ihn mit Command-V einfügen kannst.",
+    "k3.d":"Wird Caps Lock zugewiesen, legt die App es solange sie läuft auf F19, es schaltet dann keine Großschreibung mehr um. Nach einem Absturz oder Force-Quit bleibt es so, bis du die App oder den Mac neu startest.",
+    "k3.e":"Die eingebauten Snippets sind Beispiele. Einige enthalten eine persönliche Signatur oder eine Adresse, die nicht deine ist; bearbeite oder lösche sie, bevor du sie benutzt.",
+    "k3.f":"Mit Auto-Detect und aktiviertem Remove Filler Words entfernt das englische „um“ auch das deutsche „um“ aus „um 3 Uhr“. Wähle Deutsch, wenn du Deutsch diktierst.",
+    "k3.g":"Ohne Kopfhörer entfernt der Echo-Filter im Meeting deine Zeilen, die wiederholen, was Others gerade gesagt hat. Mit Kopfhörern schaltest du ihn unter Meetings, Transcript aus.",
+    "k4.h":"Was deinen Mac verlässt",
+    "k4.a":"Raw-Diktate senden keinen Text an Claude.",
+    "k4.b":"Ein Claude-(Cloud)-Rewrite sendet Text mit deinem eigenen Key an Anthropics API: den diktierten Text, den Profil-Prompt, den App-Namen, dein Vokabular und, falls im Profil aktiviert, Zwischenablage oder Fenstertitel. Nur Text, kein Audio.",
+    "k4.c":"Local-(Apple-Intelligence)-Rewrites laufen auf deinem Mac und brauchen weder Key noch Netzwerk.",
+    "k4.d":"Die Meeting-Transkription läuft auf deinem Mac. Nur der Zusammenfassungs-Schritt sendet Transkript und Notizen an Claude, und nur mit dem Provider Claude und gespeichertem Key.",
+    "k4.e":"Der Verlauf wird lokal gespeichert und verlässt deinen Mac nie. Exportierte Meeting-Dateien sind gewöhnliche Dateien: In einem synchronisierten Ordner, etwa einer Cloud-Ablage oder einem Notiz-Vault, verlassen sie deinen Mac mit diesem.",
+    "dl.title":"MalibuDictate laden",
+    "dl.sub":"Version 0.10.6 für macOS 15 oder neuer. Kostenlos testen. Check for Updates … und Send Feedback … sind in der App.",
+    "dl.btn":"Für Mac laden",
+    "foot.help":"Hilfe",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum",
+    "foot.privacy":"Datenschutz",
     "foot.legal":"Claude ist eine Marke von Anthropic. Obsidian ist eine Marke ihres Inhabers. Apple, macOS, Apple Speech und Apple Intelligence sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
   }
 };
