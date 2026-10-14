@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Malibu Conform · FCP to DaVinci Resolve Conform</title>
 <link rel="icon" type="image/png" href="/apps/malibu-conform/icon.png">
-<meta name="description" content="Malibu Conform conforms Final Cut Pro timelines, exported as FCPXML, into DaVinci Resolve Studio, with spatial and pixel aspect ratio handling, multicam resolution and a Conform Report (Markdown).">
+<meta name="description" content="Malibu Conform takes a Final Cut Pro project exported as FCPXML and prepares it for DaVinci Resolve Studio: a Resolve-ready FCPXML, a manifest and a conform report, with an optional automatic import into Resolve.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,16 +14,6 @@
 :root{--accent:#BF5AF2;--accent-ink:#16051f}
 .tag{background:rgba(191,90,242,.14)}
 .tag.quiet{background:rgba(255,255,255,.08)}
-.lr{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin:0}
-.lr input[type=email]{flex:1 1 220px;min-width:0;max-width:300px;font:400 14px 'Inter',sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
-.lr input[type=email]::placeholder{color:var(--dim)}
-.lr input[type=email]:focus{border-color:var(--accent)}
-.lr button.btn{cursor:pointer;font-family:'Inter',sans-serif}
-.lr button.btn:disabled{opacity:.55;cursor:default;filter:none}
-.lr-msg{margin:12px 0 0;font-size:13.5px;color:var(--dim)}
-.lr-msg.ok{color:var(--good)}
-.lr-msg.err{color:#FF8A80}
-.dl .lr-wrap{min-width:min(100%,420px)}
 </style>
 </head>
 <body>
@@ -40,43 +30,38 @@
         <button id="btn-de" onclick="setLang('de')">DE</button>
         <button id="btn-en" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#notify" class="pill-cta" data-i18n="nav.cta">Get notified</a>
+      <a href="#download" class="pill-cta" data-i18n="nav.cta">Download</a>
     </div>
   </div>
 
   <header class="hero">
     <div>
-      <div class="eyebrow"><span data-i18n="hero.eyebrow">Final Cut Pro · DaVinci Resolve Studio</span><span class="badge" data-i18n="badge">In the works</span></div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Final Cut Pro · DaVinci Resolve Studio</span><span class="badge">Beta</span></div>
       <h1 data-i18n="hero.h1">Cut in Final Cut Pro.<br><span class="soft">Conform into Resolve.</span></h1>
-      <p class="lead" data-i18n="hero.lead">Malibu Conform reads your Final Cut Pro timeline as FCPXML (1.10 to 1.14), resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.</p>
-      <div class="lr-wrap">
-        <form class="lr" data-launch-form>
-          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
-          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
-        </form>
-        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
-        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      <p class="lead" data-i18n="hero.lead">Malibu Conform takes a Final Cut Pro project exported as FCPXML (1.10 to 1.14) and prepares it for DaVinci Resolve Studio: a Resolve-ready FCPXML, a manifest and a conform report. Optionally it imports the timeline into Resolve and applies the transforms there. Picture only.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/conform-updates/MalibuConform-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
       </div>
-      <div class="cta-meta" data-i18n="hero.meta">Beta with testers · v0.1.10 · macOS 14.0+ · requires DaVinci Resolve Studio</div>
+      <div class="cta-meta" data-i18n="hero.meta">Notarized · macOS 14+ · Beta 0.1.11 · will be €19</div>
     </div>
 
     <div>
       <div class="stack" aria-hidden="true">
         <div class="win w1">
           <div class="win-head"><i><b></b><b></b><b></b></i><span>Final Cut Pro</span></div>
-          <div class="row"><span class="k" data-i18n="w1.r1">Timeline</span><span class="v">FCPXML</span></div>
-          <div class="row"><span class="k" data-i18n="w1.r2">Multicam, compounds</span><span class="tag quiet" data-i18n="w1.t">Exported</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">Project</span><span class="v">FCPXML</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Version</span><span class="v" data-i18n="w1.v2">1.10 to 1.14</span></div>
         </div>
         <div class="win w2">
           <div class="win-head"><i><b></b><b></b><b></b></i><span>Malibu Conform</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r1">Spatial and PAR</span><span class="tag">Resolved</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r2">Speed ramps</span><span class="tag">Resolved</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r3">Video filters</span><span class="tag quiet" data-i18n="w2.t3">Marked</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Multicam, sync clips</span><span class="tag" data-i18n="w2.t1">Resolved</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Video filters</span><span class="tag quiet" data-i18n="w2.t2">Removed</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Conform report</span><span class="v" data-i18n="w2.v3">PDF · Markdown</span></div>
         </div>
         <div class="win w3">
           <div class="win-head"><i><b></b><b></b><b></b></i><span>DaVinci Resolve Studio</span></div>
-          <div class="row"><span class="k" data-i18n="w3.r1">Timeline</span><span class="tag good" data-i18n="w3.t">Conformed</span></div>
-          <div class="row"><span class="k" data-i18n="w3.r2">Conform Report</span><span class="v">Markdown</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r1">Timeline</span><span class="tag good" data-i18n="w3.t1">Imported</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">Transform values</span><span class="tag good" data-i18n="w3.t2">Read back</span></div>
         </div>
       </div>
       <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
@@ -85,54 +70,67 @@
 
   <section>
     <div class="sec-head">
-      <h2 data-i18n="wf.title">Three steps</h2>
-      <p data-i18n="wf.sub">From a finished cut to a conformed Resolve timeline.</p>
+      <h2 data-i18n="wf.title">Four steps</h2>
+      <p data-i18n="wf.sub">From a Final Cut Pro project to a timeline in Resolve.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Export from Final Cut Pro</h3><p data-i18n="s1.p">Export the finished timeline as FCPXML. That file is what Malibu Conform works from.</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Conform reads and resolves</h3><p data-i18n="s2.p">Multicam angles and sync clips are resolved, compound clips holding a single item are inlined, speed ramps are snapped, and Final Cut Pro video filters are removed and flagged.</p></div>
-      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Timeline in Resolve Studio</h3><p data-i18n="s3.p">A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report (Markdown) documents the result.</p></div>
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Export the project</h3><p data-i18n="s1.p">In Final Cut Pro, select the project (the assembled timeline, not an event or the library) and choose File ▸ Export XML. FCPXML 1.10 to 1.14 is read, as a .fcpxml file or a .fcpxmld bundle.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Conform the file</h3><p data-i18n="s2.p">Drag the file onto Drop FCPXML or .fcpxmld here and click Conform for Resolve. If the preflight check has findings, a sheet lists them first; Conform Anyway continues.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Resolve imports and checks</h3><p data-i18n="s3.p">With Drive Resolve after export on, Malibu Conform starts Resolve if it is not running, imports the timeline into the project that is open, applies the transforms and reads the values back.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Read the report</h3><p data-i18n="s4.p">View Report opens ConformReport.pdf from the output folder; the same report is also written as Markdown. By default the files land in Movies/MalibuConform in your home folder.</p></div>
     </div>
   </section>
 
   <section>
     <div class="sec-head">
       <h2 data-i18n="f.title">What's inside</h2>
-      <p data-i18n="f.sub">What the current beta (0.1.10) does.</p>
+      <p data-i18n="f.sub">What the current beta (0.1.11) actually does.</p>
     </div>
     <div class="bento">
       <div class="tile big">
-        <div class="label" data-i18n="t1.l">Spatial</div>
-        <h3 data-i18n="t1.h">Spatial conform, baked in</h3>
-        <p data-i18n="t1.p">Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio. Verified on synthetic material with Resolve 21.1.0.17 (453 tests).</p>
+        <div class="label" data-i18n="t1.l">Output</div>
+        <h3 data-i18n="t1.h">Resolve-ready files</h3>
+        <p data-i18n="t1.p">Each run writes &lt;input name&gt;_Conform.fcpxml, which keeps the version of the input, manifest.json with the transforms and removed filters, and the conform report as ConformReport.md and as an A4 ConformReport.pdf. If the PDF cannot be written, the Markdown report is still there.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Multicam, sync clips, compounds</h3>
-        <p data-i18n="t2.p">Multicam angles are resolved, sync clips are unwrapped and compound clips holding a single item are inlined before the timeline is built. Compounds with several items stay compounds and get a warning.</p>
+        <p data-i18n="t2.p">Multicam clips are replaced by their active angle and sync clips are unwrapped to their primary video clip. A compound clip is flattened when it reduces to a single clip; a compound with several clips stays a compound and is recorded as information. A few cases, such as a retimed wrapper that carries connected video, stay as they are and get a warning.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t3.h">Resolve Studio driver</h3>
-        <p data-i18n="t3.p">A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically. With “Drive Resolve after export” off, the app shows how to import the result in Resolve.</p>
+        <h3 data-i18n="t3.h">Aggressive compound inlining</h3>
+        <p data-i18n="t3.p">Off by default. Switch it on to flatten compounds with several clips: the first inner clip is kept if it is an asset clip and the rest is dropped. Nested clip arrangements can be lost, so use it only when your compounds are plain wrappers.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t4.h">Speed ramps</h3>
-        <p data-i18n="t4.p">Speed-ramp times are snapped to NTSC-rational frame rates.</p>
+        <h3 data-i18n="t4.h">Resolve step</h3>
+        <p data-i18n="t4.p">Starts Resolve if it is not running and waits up to 180 seconds for it to answer. The timeline arrives in the project that is open in Resolve, named after your file with the suffix _Conform; a project is never created. Drive Resolve after export is on by default.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t5.h">Burn-in bars</h3>
-        <p data-i18n="t5.p">Bars are derived automatically from the proxy and original size. An optional reference movie can be exported with burned-in timecode.</p>
+        <h3 data-i18n="t5.h">Filters removed and reported</h3>
+        <p data-i18n="t5.p">Video filters on clips are removed, color filters included; none is translated to Resolve. Removed filters are reported, and custom LUT filters are also listed under Custom LUTs Detected.</p>
       </div>
       <div class="tile small">
-        <h3 data-i18n="t6.h">Burn-in rebase</h3>
-        <p data-i18n="t6.p">Transforms are rebased for burn-ins, with Pan/Tilt unit handling. Keyframed clips only get a warning (yellow marker); retime and compound clips with rebase are unverified.</p>
+        <h3 data-i18n="t6.h">Conform report</h3>
+        <p data-i18n="t6.p">View Report opens the PDF. It holds a summary and sections such as Warnings, Removed Effects, Multicam Resolutions, Transforms Applied and Source Media Rasters, and closes with notes for the colorist.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t7.h">Video filters, removed and flagged</h3>
-        <p data-i18n="t7.p">All Final Cut Pro video filters are removed and listed as red markers and in the report, so nothing disappears silently.</p>
+        <h3 data-i18n="t7.h">Markers in Resolve</h3>
+        <p data-i18n="t7.p">A red marker Effect Removed with the filter name shows a removed filter. A red marker Malibu Conform: Transform Check lists transform values that did not arrive as intended; each value is read back after it is set. A yellow marker Keyframed Transform means the clip has more than one transform keyframe and was left as Resolve imported it. Adjustment Layer: &lt;name&gt; marks the first clip an adjustment layer covers.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t8.h">Conform Report (Markdown)</h3>
-        <p data-i18n="t8.p">Every conform writes ConformReport.md, which opens via “View Report”. Stage 1 (FCPXML, manifest and report) also runs without Resolve.</p>
+        <h3 data-i18n="t8.h">Proxies with burn-in bars</h3>
+        <p data-i18n="t8.p">For edits cut on dailies proxies with extra burn-in rows: under Proxies in Settings, click Add Proxy Raster and enter the Proxy size and Original size. The bars are worked out from the two sizes, or set by hand under Bars (px). Relink to the camera originals in Resolve before you check the picture.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t9.h">Reference movie</h3>
+        <p data-i18n="t9.p">Include reference movie takes a movie with a video track into the output folder and lists it in the report. Burn in timecode if missing adds the timeline start timecode as a text overlay unless the file name suggests it already has timecode.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t10.h">Manual import</h3>
+        <p data-i18n="t10.p">With Drive Resolve after export off, or after a Resolve error, import the file yourself with File → Import → Timeline…. Enable Use color information, Mixed frame rate format: Final Cut Pro X and Automatically import source clips into media pool.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t11.h">Preflight check</h3>
+        <p data-i18n="t11.p">A sheet lists the findings before the run. A hard block means the file cannot be conformed; export the project again and retry. Errors and warnings continue with Conform Anyway, information only with Conform.</p>
       </div>
     </div>
   </section>
@@ -140,48 +138,57 @@
   <section>
     <div class="sec-head">
       <h2 data-i18n="k.title">Good to know</h2>
-      <p data-i18n="k.sub">What you need, and what it does not do yet.</p>
+      <p data-i18n="k.sub">What you need, what it does not do, and what to watch for.</p>
     </div>
     <div class="facts">
       <div class="fact">
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
           <li data-i18n="k1.a">macOS 14.0 or later</li>
-          <li data-i18n="k1.b">DaVinci Resolve Studio is required (Python 3.11 is bundled)</li>
-          <li data-i18n="k1.c">Final Cut Pro timelines exported as FCPXML (versions 1.10 to 1.14)</li>
-          <li data-i18n="k1.e">In Resolve: Preferences &gt; System &gt; External scripting set to Local (the setup assistant checks this)</li>
-          <li data-i18n="k1.d">Currently in beta with testers (v0.1.10), not released yet</li>
+          <li data-i18n="k1.b">A Final Cut Pro project exported as FCPXML 1.10 to 1.14, as a .fcpxml file or a .fcpxmld bundle</li>
+          <li data-i18n="k1.c">DaVinci Resolve Studio for the automatic Resolve step; the free edition does not include the Python scripting API. Without Resolve you still get the conformed files and can import them yourself</li>
+          <li data-i18n="k1.d">In Resolve, External scripting using set to Local</li>
+          <li data-i18n="k1.e">Python 3.10 or 3.11 for the Resolve step: a Python 3.11 bundled with the build when it contains one, otherwise an installed 3.10 or 3.11</li>
+          <li data-i18n="k1.f">A project open in Resolve; Malibu Conform imports into it and never creates one</li>
+          <li data-i18n="k1.g">Verified against DaVinci Resolve Studio 21.1.0.17 only; other Resolve versions are untested</li>
         </ul>
       </div>
       <div class="fact">
-        <h3 data-i18n="k2.h">Not there yet</h3>
+        <h3 data-i18n="k2.h">What it does not do</h3>
         <ul>
-          <li data-i18n="k2.a">Video only; audio is left out entirely (connected audio is dropped, Audition alternatives use only the active pick)</li>
-          <li data-i18n="k2.b">Only track 1 is addressed; transforms on connected clips are not applied</li>
-          <li data-i18n="k2.c">Keyframes are not written; keyframed clips get a warning only (yellow marker)</li>
-          <li data-i18n="k2.d">Tested with Resolve 21.1.0.17 only; older versions may not read newer FCPXML versions</li>
-          <li data-i18n="k2.e">Pan/Tilt is measured only for Crop and Fit</li>
-          <li data-i18n="k2.f">Adjustment layers are only detected (marker and report entry); LUTs are detected, listed and removed</li>
-          <li data-i18n="k2.g">Open: a compound with a single title, a container with speed ramp plus connected video, nested connected clips (warning only)</li>
-          <li data-i18n="k2.h">No way back to Final Cut Pro and no Share Destination plug-in; only the malibuconform://open?path= URL scheme, and the reference movie is dropped in manually</li>
+          <li data-i18n="k2.a">Picture only. Audio is out of scope; connected audio of a flattened wrapper is dropped, and for audition clips only the active pick reaches Resolve.</li>
+          <li data-i18n="k2.b">Transforms are applied to clips on video track 1 only. Connected clips are conformed in the FCPXML but not touched in Resolve.</li>
+          <li data-i18n="k2.c">Video filters are not translated to Resolve. On connected clips they are reported as a warning only and get no marker in Resolve.</li>
+          <li data-i18n="k2.d">It cannot write keyframes: a clip with more than one transform keyframe keeps what Resolve imported and gets a yellow marker; connected keyframed clips get no marker.</li>
+          <li data-i18n="k2.e">Adjustment layers are not applied to the clips they cover. Only a title that is an adjustment layer with a transform, on the main storyline, is removed, marked on the first clip it covers and listed in the report; adjustment layers elsewhere are not detected.</li>
+          <li data-i18n="k2.f">A compound whose only content is a title is not flattened.</li>
+          <li data-i18n="k2.g">Pan and Tilt units were measured only for Resolve's Crop and Fit scaling modes.</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k3.h">Worth knowing</h3>
+        <ul>
+          <li data-i18n="k3.a">Select the project in Final Cut Pro, not an event or the library. An event export is blocked by the preflight check or reported as nothing conformed.</li>
+          <li data-i18n="k3.b">If you conformed dailies proxies with burn-in bars, relink to the camera originals in Resolve; until then the proxies look too small.</li>
+          <li data-i18n="k3.c">The Studio check looks for Resolve and its scripting library in the default location in the Applications folder, not for a license; a copy installed elsewhere is reported as not installed.</li>
+          <li data-i18n="k3.d">A Resolve that is already running but does not answer is not restarted. Set External scripting using to Local and run the conform again.</li>
+          <li data-i18n="k3.e">The result window shows the first ten warnings; the rest are in the report.</li>
+          <li data-i18n="k3.f">A manual import has none of the Resolve markers (Effect Removed, Transform Check, Keyframed Transform). Without the three import options the conform looks correct in the Inspector but drifts visually.</li>
+          <li data-i18n="k3.g">The preflight check warns about assets with Sony-style names that start at 0: Final Cut Pro may have failed to read the camera timecode, and cuts may land on the wrong source frame in Resolve. Relink the media in Final Cut Pro before you export.</li>
+          <li data-i18n="k3.h2">On first launch a screen asks for your email address before you can continue. A license key can be entered under License in Settings with Redeem License Key....</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="notify">
+  <section id="download">
     <div class="dl">
       <div>
-        <h2 data-i18n="dl.title">In the works</h2>
-        <p data-i18n="dl.sub">Malibu Conform is not released yet. Leave your email and we'll write to you at launch.</p>
+        <h2 data-i18n="dl.title">Download Malibu Conform</h2>
+        <p data-i18n="dl.sub">Beta 0.1.11 for macOS 14 or later, as a notarized DMG (48 MB, Developer ID). The Resolve step needs DaVinci Resolve Studio. Choose Check for Updates… in the Malibu Conform menu to look for a newer version.</p>
       </div>
-      <div class="lr-wrap">
-        <form class="lr" data-launch-form>
-          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
-          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
-        </form>
-        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
-        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/conform-updates/MalibuConform-latest.dmg" data-i18n="dl.btn">Download for Mac</a>
       </div>
     </div>
   </section>
@@ -190,7 +197,7 @@
     <div class="foot">
       <span>Malibu Conform · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
       <span>
-        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="/apps/malibu-conform/help/" data-i18n="foot.help">Help</a><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
     <p class="legal" data-i18n="foot.legal">Malibu Conform is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. DaVinci Resolve is a trademark of Blackmagic Design Pty Ltd. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
@@ -198,127 +205,195 @@
 </div>
 
 <script>
-window.PAGE_CONFIG = { buyUrl: null };
 window.PAGE_T = {
   en: {
-    "nav.back":"← All apps","nav.cta":"Get notified",
-    "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio","badge":"In the works",
-    "hero.h1":'Cut in Final Cut Pro.<br><span class="soft">Conform into Resolve.</span>',
-    "hero.lead":"Malibu Conform reads your Final Cut Pro timeline as FCPXML (1.10 to 1.14), resolves what Resolve cannot take as it is, and builds the timeline in DaVinci Resolve Studio.",
-    "hero.meta":"Beta with testers · v0.1.10 · macOS 14.0+ · requires DaVinci Resolve Studio",
-    "lr.ph":"you@email.com","lr.btn":"Notify me at launch",
-    "lr.ok":"Thanks. We'll email you at launch.","lr.err":"That did not go through. Please try again in a moment.",
-    "w1.r1":"Timeline","w1.r2":"Multicam, compounds","w1.t":"Exported",
-    "w2.r1":"Spatial and PAR","w2.r2":"Speed ramps","w2.r3":"Video filters","w2.t3":"Marked",
-    "w3.r1":"Timeline","w3.t":"Conformed","w3.r2":"Conform Report",
+    "nav.back":"← All apps",
+    "nav.cta":"Download",
+    "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio",
+    "hero.h1":"Cut in Final Cut Pro.<br><span class=\"soft\">Conform into Resolve.</span>",
+    "hero.lead":"Malibu Conform takes a Final Cut Pro project exported as FCPXML (1.10 to 1.14) and prepares it for DaVinci Resolve Studio: a Resolve-ready FCPXML, a manifest and a conform report. Optionally it imports the timeline into Resolve and applies the transforms there. Picture only.",
+    "hero.dl":"Download for Mac",
+    "hero.meta":"Notarized · macOS 14+ · Beta 0.1.11 · will be €19",
+    "w1.r1":"Project",
+    "w1.r2":"Version",
+    "w1.v2":"1.10 to 1.14",
+    "w2.r1":"Multicam, sync clips",
+    "w2.t1":"Resolved",
+    "w2.r2":"Video filters",
+    "w2.t2":"Removed",
+    "w2.r3":"Conform report",
+    "w2.v3":"PDF · Markdown",
+    "w3.r1":"Timeline",
+    "w3.t1":"Imported",
+    "w3.r2":"Transform values",
+    "w3.t2":"Read back",
     "illu":"Illustration of the workflow, not a screenshot.",
-    "wf.title":"Three steps","wf.sub":"From a finished cut to a conformed Resolve timeline.",
-    "s1.h":"Export from Final Cut Pro","s1.p":"Export the finished timeline as FCPXML. That file is what Malibu Conform works from.",
-    "s2.h":"Conform reads and resolves","s2.p":"Multicam angles and sync clips are resolved, compound clips holding a single item are inlined, speed ramps are snapped, and Final Cut Pro video filters are removed and flagged.",
-    "s3.h":"Timeline in Resolve Studio","s3.p":"A bundled driver applies the transforms in DaVinci Resolve Studio and reads the values back. A Conform Report (Markdown) documents the result.",
-    "f.title":"What's inside","f.sub":"What the current beta (0.1.10) does.",
-    "t1.l":"Spatial","t1.h":"Spatial conform, baked in","t1.p":"Position, scale and crop are conformed into the Resolve timeline, including the pixel aspect ratio. Verified on synthetic material with Resolve 21.1.0.17 (453 tests).",
-    "t2.h":"Multicam, sync clips, compounds","t2.p":"Multicam angles are resolved, sync clips are unwrapped and compound clips holding a single item are inlined before the timeline is built. Compounds with several items stay compounds and get a warning.",
-    "t3.h":"Resolve Studio driver","t3.p":"A bundled driver (Python 3.11) applies the transforms in Resolve Studio and reads the values back. Resolve can be started automatically. With “Drive Resolve after export” off, the app shows how to import the result in Resolve.",
-    "t4.h":"Speed ramps","t4.p":"Speed-ramp times are snapped to NTSC-rational frame rates.",
-    "t5.h":"Burn-in bars","t5.p":"Bars are derived automatically from the proxy and original size. An optional reference movie can be exported with burned-in timecode.",
-    "t6.h":"Burn-in rebase","t6.p":"Transforms are rebased for burn-ins, with Pan/Tilt unit handling. Keyframed clips only get a warning (yellow marker); retime and compound clips with rebase are unverified.",
-    "t7.h":"Video filters, removed and flagged","t7.p":"All Final Cut Pro video filters are removed and listed as red markers and in the report, so nothing disappears silently.",
-    "t8.h":"Conform Report (Markdown)","t8.p":"Every conform writes ConformReport.md, which opens via “View Report”. Stage 1 (FCPXML, manifest and report) also runs without Resolve.",
-    "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 14.0 or later","k1.b":"DaVinci Resolve Studio is required (Python 3.11 is bundled)","k1.c":"Final Cut Pro timelines exported as FCPXML (versions 1.10 to 1.14)","k1.d":"Currently in beta with testers (v0.1.10), not released yet","k1.e":"In Resolve: Preferences > System > External scripting set to Local (the setup assistant checks this)",
-    "k2.h":"Not there yet","k2.a":"Video only; audio is left out entirely (connected audio is dropped, Audition alternatives use only the active pick)","k2.b":"Only track 1 is addressed; transforms on connected clips are not applied","k2.c":"Keyframes are not written; keyframed clips get a warning only (yellow marker)","k2.d":"Tested with Resolve 21.1.0.17 only; older versions may not read newer FCPXML versions","k2.e":"Pan/Tilt is measured only for Crop and Fit","k2.f":"Adjustment layers are only detected (marker and report entry); LUTs are detected, listed and removed","k2.g":"Open: a compound with a single title, a container with speed ramp plus connected video, nested connected clips (warning only)","k2.h":"No way back to Final Cut Pro and no Share Destination plug-in; only the malibuconform://open?path= URL scheme, and the reference movie is dropped in manually",
-    "dl.title":"In the works","dl.sub":"Malibu Conform is not released yet. Leave your email and we'll write to you at launch.",
-    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "wf.title":"Four steps",
+    "wf.sub":"From a Final Cut Pro project to a timeline in Resolve.",
+    "s1.h":"Export the project",
+    "s1.p":"In Final Cut Pro, select the project (the assembled timeline, not an event or the library) and choose File ▸ Export XML. FCPXML 1.10 to 1.14 is read, as a .fcpxml file or a .fcpxmld bundle.",
+    "s2.h":"Conform the file",
+    "s2.p":"Drag the file onto Drop FCPXML or .fcpxmld here and click Conform for Resolve. If the preflight check has findings, a sheet lists them first; Conform Anyway continues.",
+    "s3.h":"Resolve imports and checks",
+    "s3.p":"With Drive Resolve after export on, Malibu Conform starts Resolve if it is not running, imports the timeline into the project that is open, applies the transforms and reads the values back.",
+    "s4.h":"Read the report",
+    "s4.p":"View Report opens ConformReport.pdf from the output folder; the same report is also written as Markdown. By default the files land in Movies/MalibuConform in your home folder.",
+    "f.title":"What's inside",
+    "f.sub":"What the current beta (0.1.11) actually does.",
+    "t1.l":"Output",
+    "t1.h":"Resolve-ready files",
+    "t1.p":"Each run writes &lt;input name&gt;_Conform.fcpxml, which keeps the version of the input, manifest.json with the transforms and removed filters, and the conform report as ConformReport.md and as an A4 ConformReport.pdf. If the PDF cannot be written, the Markdown report is still there.",
+    "t2.h":"Multicam, sync clips, compounds",
+    "t2.p":"Multicam clips are replaced by their active angle and sync clips are unwrapped to their primary video clip. A compound clip is flattened when it reduces to a single clip; a compound with several clips stays a compound and is recorded as information. A few cases, such as a retimed wrapper that carries connected video, stay as they are and get a warning.",
+    "t3.h":"Aggressive compound inlining",
+    "t3.p":"Off by default. Switch it on to flatten compounds with several clips: the first inner clip is kept if it is an asset clip and the rest is dropped. Nested clip arrangements can be lost, so use it only when your compounds are plain wrappers.",
+    "t4.h":"Resolve step",
+    "t4.p":"Starts Resolve if it is not running and waits up to 180 seconds for it to answer. The timeline arrives in the project that is open in Resolve, named after your file with the suffix _Conform; a project is never created. Drive Resolve after export is on by default.",
+    "t5.h":"Filters removed and reported",
+    "t5.p":"Video filters on clips are removed, color filters included; none is translated to Resolve. Removed filters are reported, and custom LUT filters are also listed under Custom LUTs Detected.",
+    "t6.h":"Conform report",
+    "t6.p":"View Report opens the PDF. It holds a summary and sections such as Warnings, Removed Effects, Multicam Resolutions, Transforms Applied and Source Media Rasters, and closes with notes for the colorist.",
+    "t7.h":"Markers in Resolve",
+    "t7.p":"A red marker Effect Removed with the filter name shows a removed filter. A red marker Malibu Conform: Transform Check lists transform values that did not arrive as intended; each value is read back after it is set. A yellow marker Keyframed Transform means the clip has more than one transform keyframe and was left as Resolve imported it. Adjustment Layer: &lt;name&gt; marks the first clip an adjustment layer covers.",
+    "t8.h":"Proxies with burn-in bars",
+    "t8.p":"For edits cut on dailies proxies with extra burn-in rows: under Proxies in Settings, click Add Proxy Raster and enter the Proxy size and Original size. The bars are worked out from the two sizes, or set by hand under Bars (px). Relink to the camera originals in Resolve before you check the picture.",
+    "t9.h":"Reference movie",
+    "t9.p":"Include reference movie takes a movie with a video track into the output folder and lists it in the report. Burn in timecode if missing adds the timeline start timecode as a text overlay unless the file name suggests it already has timecode.",
+    "t10.h":"Manual import",
+    "t10.p":"With Drive Resolve after export off, or after a Resolve error, import the file yourself with File → Import → Timeline…. Enable Use color information, Mixed frame rate format: Final Cut Pro X and Automatically import source clips into media pool.",
+    "t11.h":"Preflight check",
+    "t11.p":"A sheet lists the findings before the run. A hard block means the file cannot be conformed; export the project again and retry. Errors and warnings continue with Conform Anyway, information only with Conform.",
+    "k.title":"Good to know",
+    "k.sub":"What you need, what it does not do, and what to watch for.",
+    "k1.h":"Requirements",
+    "k1.a":"macOS 14.0 or later",
+    "k1.b":"A Final Cut Pro project exported as FCPXML 1.10 to 1.14, as a .fcpxml file or a .fcpxmld bundle",
+    "k1.c":"DaVinci Resolve Studio for the automatic Resolve step; the free edition does not include the Python scripting API. Without Resolve you still get the conformed files and can import them yourself",
+    "k1.d":"In Resolve, External scripting using set to Local",
+    "k1.e":"Python 3.10 or 3.11 for the Resolve step: a Python 3.11 bundled with the build when it contains one, otherwise an installed 3.10 or 3.11",
+    "k1.f":"A project open in Resolve; Malibu Conform imports into it and never creates one",
+    "k1.g":"Verified against DaVinci Resolve Studio 21.1.0.17 only; other Resolve versions are untested",
+    "k2.h":"What it does not do",
+    "k2.a":"Picture only. Audio is out of scope; connected audio of a flattened wrapper is dropped, and for audition clips only the active pick reaches Resolve.",
+    "k2.b":"Transforms are applied to clips on video track 1 only. Connected clips are conformed in the FCPXML but not touched in Resolve.",
+    "k2.c":"Video filters are not translated to Resolve. On connected clips they are reported as a warning only and get no marker in Resolve.",
+    "k2.d":"It cannot write keyframes: a clip with more than one transform keyframe keeps what Resolve imported and gets a yellow marker; connected keyframed clips get no marker.",
+    "k2.e":"Adjustment layers are not applied to the clips they cover. Only a title that is an adjustment layer with a transform, on the main storyline, is removed, marked on the first clip it covers and listed in the report; adjustment layers elsewhere are not detected.",
+    "k2.f":"A compound whose only content is a title is not flattened.",
+    "k2.g":"Pan and Tilt units were measured only for Resolve's Crop and Fit scaling modes.",
+    "k3.h":"Worth knowing",
+    "k3.a":"Select the project in Final Cut Pro, not an event or the library. An event export is blocked by the preflight check or reported as nothing conformed.",
+    "k3.b":"If you conformed dailies proxies with burn-in bars, relink to the camera originals in Resolve; until then the proxies look too small.",
+    "k3.c":"The Studio check looks for Resolve and its scripting library in the default location in the Applications folder, not for a license; a copy installed elsewhere is reported as not installed.",
+    "k3.d":"A Resolve that is already running but does not answer is not restarted. Set External scripting using to Local and run the conform again.",
+    "k3.e":"The result window shows the first ten warnings; the rest are in the report.",
+    "k3.f":"A manual import has none of the Resolve markers (Effect Removed, Transform Check, Keyframed Transform). Without the three import options the conform looks correct in the Inspector but drifts visually.",
+    "k3.g":"The preflight check warns about assets with Sony-style names that start at 0: Final Cut Pro may have failed to read the camera timecode, and cuts may land on the wrong source frame in Resolve. Relink the media in Final Cut Pro before you export.",
+    "k3.h2":"On first launch a screen asks for your email address before you can continue. A license key can be entered under License in Settings with Redeem License Key....",
+    "dl.title":"Download Malibu Conform",
+    "dl.sub":"Beta 0.1.11 for macOS 14 or later, as a notarized DMG (48 MB, Developer ID). The Resolve step needs DaVinci Resolve Studio. Choose Check for Updates… in the Malibu Conform menu to look for a newer version.",
+    "dl.btn":"Download for Mac",
+    "foot.help":"Help",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice",
+    "foot.privacy":"Privacy Policy",
     "foot.legal":"Malibu Conform is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. DaVinci Resolve is a trademark of Blackmagic Design Pty Ltd. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
-    "nav.back":"← Alle Apps","nav.cta":"Benachrichtigen",
-    "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio","badge":"In Arbeit",
-    "hero.h1":'In Final Cut Pro geschnitten.<br><span class="soft">Nach Resolve konformiert.</span>',
-    "hero.lead":"Malibu Conform liest deine Final-Cut-Pro-Timeline als FCPXML (1.10 bis 1.14), löst auf, was Resolve nicht so übernehmen kann, und baut die Timeline in DaVinci Resolve Studio.",
-    "hero.meta":"Beta mit Testern · v0.1.10 · macOS 14.0+ · braucht DaVinci Resolve Studio",
-    "lr.ph":"deine@email.de","lr.btn":"Zum Launch benachrichtigen",
-    "lr.ok":"Danke. Wir melden uns beim Launch.","lr.err":"Das hat nicht geklappt. Bitte versuch es gleich noch einmal.",
-    "w1.r1":"Timeline","w1.r2":"Multicam, Compounds","w1.t":"Exportiert",
-    "w2.r1":"Spatial und PAR","w2.r2":"Speed Ramps","w2.r3":"Videofilter","w2.t3":"Markiert",
-    "w3.r1":"Timeline","w3.t":"Konformiert","w3.r2":"Conform Report",
+    "nav.back":"← Alle Apps",
+    "nav.cta":"Laden",
+    "hero.eyebrow":"Final Cut Pro · DaVinci Resolve Studio",
+    "hero.h1":"In Final Cut Pro geschnitten.<br><span class=\"soft\">Nach Resolve konformiert.</span>",
+    "hero.lead":"Malibu Conform nimmt ein als FCPXML (1.10 bis 1.14) exportiertes Final-Cut-Pro-Projekt und bereitet es für DaVinci Resolve Studio vor: eine Resolve-taugliche FCPXML, ein Manifest und ein Conform-Report. Optional importiert es die Timeline in Resolve und wendet dort die Transformationen an. Nur Bild.",
+    "hero.dl":"Für Mac laden",
+    "hero.meta":"Notarisiert · macOS 14+ · Beta 0.1.11 · wird €19 kosten",
+    "w1.r1":"Projekt",
+    "w1.r2":"Version",
+    "w1.v2":"1.10 bis 1.14",
+    "w2.r1":"Multicam, Sync-Clips",
+    "w2.t1":"Aufgelöst",
+    "w2.r2":"Videofilter",
+    "w2.t2":"Entfernt",
+    "w2.r3":"Conform-Report",
+    "w2.v3":"PDF · Markdown",
+    "w3.r1":"Timeline",
+    "w3.t1":"Importiert",
+    "w3.r2":"Transformationswerte",
+    "w3.t2":"Zurückgelesen",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
-    "wf.title":"Drei Schritte","wf.sub":"Vom fertigen Schnitt zur konformierten Resolve-Timeline.",
-    "s1.h":"Aus Final Cut Pro exportieren","s1.p":"Exportiere die fertige Timeline als FCPXML. Mit dieser Datei arbeitet Malibu Conform.",
-    "s2.h":"Conform liest und löst auf","s2.p":"Multicam-Winkel und Sync-Clips werden aufgelöst, Compound-Clips mit genau einem Inhalt eingebettet, Speed Ramps eingerastet und Final-Cut-Pro-Videofilter entfernt und markiert.",
-    "s3.h":"Timeline in Resolve Studio","s3.p":"Ein mitgelieferter Treiber wendet die Transformationen in DaVinci Resolve Studio an und liest die Werte zurück. Ein Conform Report (Markdown) dokumentiert das Ergebnis.",
-    "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Beta (0.1.10) kann.",
-    "t1.l":"Spatial","t1.h":"Spatial-Conform, fest eingebaut","t1.p":"Position, Skalierung und Crop werden in die Resolve-Timeline konformiert, inklusive Pixel Aspect Ratio. Verifiziert an synthetischem Material mit Resolve 21.1.0.17 (453 Tests).",
-    "t2.h":"Multicam, Sync-Clips, Compounds","t2.p":"Multicam-Winkel werden aufgelöst, Sync-Clips entpackt und Compound-Clips mit genau einem Inhalt eingebettet, bevor die Timeline entsteht. Compounds mit mehreren Elementen bleiben Compounds und erhalten eine Warnung.",
-    "t3.h":"Resolve-Studio-Treiber","t3.p":"Ein mitgelieferter Treiber (Python 3.11) wendet die Transformationen in Resolve Studio an und liest die Werte zurück. Resolve kann automatisch gestartet werden. Ist „Drive Resolve after export“ aus, zeigt die App, wie du das Ergebnis in Resolve importierst.",
-    "t4.h":"Speed Ramps","t4.p":"Zeitpunkte von Speed Ramps rasten auf NTSC-rationale Framerates ein.",
-    "t5.h":"Burn-in-Balken","t5.p":"Balken werden automatisch aus Proxy- und Originalgröße abgeleitet. Optional lässt sich ein Referenzfilm mit eingebranntem Timecode exportieren.",
-    "t6.h":"Burn-in-Rebase","t6.p":"Transformationen werden für Burn-ins umgerechnet, inklusive Pan/Tilt-Einheiten. Clips mit Keyframes erhalten nur eine Warnung (gelber Marker); Retime und Compounds mit Rebase sind nicht verifiziert.",
-    "t7.h":"Videofilter, entfernt und markiert","t7.p":"Alle Final-Cut-Pro-Videofilter werden entfernt und als rote Marker sowie im Report aufgelistet, damit nichts still verschwindet.",
-    "t8.h":"Conform Report (Markdown)","t8.p":"Jedes Conform schreibt eine ConformReport.md, die sich über „View Report“ öffnet. Stufe 1 (FCPXML, Manifest und Report) läuft auch ohne Resolve.",
-    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer","k1.b":"DaVinci Resolve Studio ist erforderlich (Python 3.11 ist mitgeliefert)","k1.c":"Final-Cut-Pro-Timelines, exportiert als FCPXML (Versionen 1.10 bis 1.14)","k1.d":"Derzeit Beta mit Testern (v0.1.10), noch nicht veröffentlicht","k1.e":"In Resolve: Preferences > System > External scripting auf Local gestellt (der Setup-Assistent prüft das)",
-    "k2.h":"Noch nicht da","k2.a":"Nur Video; Audio fällt komplett weg (Connected Audio entfällt, bei Audition-Alternativen zählt nur die aktive Wahl)","k2.b":"Nur Spur 1 wird angesprochen; Transformationen auf Connected Clips werden nicht angewendet","k2.c":"Keyframes werden nicht geschrieben; Clips mit Keyframes erhalten nur eine Warnung (gelber Marker)","k2.d":"Nur mit Resolve 21.1.0.17 getestet; ältere Versionen lesen neuere FCPXML-Versionen evtl. nicht","k2.e":"Pan/Tilt ist nur für Crop und Fit vermessen","k2.f":"Adjustment Layer werden nur erkannt (Marker und Report-Eintrag); LUTs werden erkannt, aufgelistet und entfernt","k2.g":"Offen: Compound mit einzelnem Titel, Container mit Speed Ramp plus Connected Video, verschachtelte Connected Clips (nur Warnung)","k2.h":"Kein Rückweg nach Final Cut Pro und kein Share-Destination-Plug-in; nur das URL-Schema malibuconform://open?path=, den Referenzfilm legst du per Hand hinein",
-    "dl.title":"In Arbeit","dl.sub":"Malibu Conform ist noch nicht veröffentlicht. Trag deine E-Mail ein, dann melden wir uns zum Launch.",
-    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "wf.title":"Vier Schritte",
+    "wf.sub":"Vom Final-Cut-Pro-Projekt zur Timeline in Resolve.",
+    "s1.h":"Projekt exportieren",
+    "s1.p":"Wähle in Final Cut Pro das Projekt (die fertige Timeline, nicht ein Event oder die Mediathek) und exportiere es mit Ablage ▸ XML exportieren (englisch: File ▸ Export XML). FCPXML 1.10 bis 1.14 wird gelesen, als .fcpxml-Datei oder .fcpxmld-Bundle.",
+    "s2.h":"Datei conformen",
+    "s2.p":"Ziehe die Datei auf Drop FCPXML or .fcpxmld here und klicke auf Conform for Resolve. Hat der Preflight-Check etwas zu melden, listet ein Fenster das zuerst auf; Conform Anyway macht weiter.",
+    "s3.h":"Resolve importiert und prüft",
+    "s3.p":"Ist Drive Resolve after export an, startet Malibu Conform Resolve, falls es nicht läuft, importiert die Timeline in das offene Projekt, wendet die Transformationen an und liest die Werte zurück.",
+    "s4.h":"Report lesen",
+    "s4.p":"View Report öffnet ConformReport.pdf aus dem Ausgabeordner; derselbe Report wird auch als Markdown geschrieben. Standardmäßig liegen die Dateien in Movies/MalibuConform in deinem Benutzerordner.",
+    "f.title":"Was drinsteckt",
+    "f.sub":"Was die aktuelle Beta (0.1.11) wirklich kann.",
+    "t1.l":"Ausgabe",
+    "t1.h":"Resolve-taugliche Dateien",
+    "t1.p":"Jeder Lauf schreibt &lt;Eingabename&gt;_Conform.fcpxml, die die Version der Eingabe behält, manifest.json mit den Transformationen und entfernten Filtern sowie den Conform-Report als ConformReport.md und als A4-PDF ConformReport.pdf. Lässt sich das PDF nicht schreiben, ist der Markdown-Report trotzdem da.",
+    "t2.h":"Multicam, Sync-Clips, Compounds",
+    "t2.p":"Multicam-Clips werden durch ihren aktiven Winkel ersetzt und Sync-Clips auf ihren primären Videoclip entpackt. Ein Compound-Clip wird aufgelöst, wenn er sich auf einen einzigen Clip reduziert; ein Compound mit mehreren Clips bleibt ein Compound und wird als Information vermerkt. Einige Fälle, etwa ein retimter Wrapper mit Connected Video, bleiben unverändert und bekommen eine Warnung.",
+    "t3.h":"Aggressive compound inlining",
+    "t3.p":"Standardmäßig aus. Schalte die Option ein, um Compounds mit mehreren Clips aufzulösen: Der erste innere Clip bleibt, wenn es ein Asset-Clip ist, der Rest wird verworfen. Verschachtelte Anordnungen können verloren gehen; nutze die Option nur, wenn deine Compounds reine Hüllen sind.",
+    "t4.h":"Resolve-Schritt",
+    "t4.p":"Startet Resolve, falls es nicht läuft, und wartet bis zu 180 Sekunden auf eine Antwort. Die Timeline landet in dem Projekt, das in Resolve offen ist, benannt nach deiner Datei mit dem Zusatz _Conform; ein Projekt wird nie angelegt. Drive Resolve after export ist standardmäßig an.",
+    "t5.h":"Filter entfernt und gemeldet",
+    "t5.p":"Videofilter auf Clips werden entfernt, auch Farbfilter; keiner wird nach Resolve übersetzt. Entfernte Filter werden gemeldet, Custom-LUT-Filter zusätzlich unter Custom LUTs Detected aufgeführt.",
+    "t6.h":"Conform-Report",
+    "t6.p":"View Report öffnet das PDF. Es enthält eine Zusammenfassung und Abschnitte wie Warnings, Removed Effects, Multicam Resolutions, Transforms Applied und Source Media Rasters und endet mit Hinweisen für die Colorist:in.",
+    "t7.h":"Marker in Resolve",
+    "t7.p":"Ein roter Marker Effect Removed mit dem Filternamen zeigt einen entfernten Filter. Ein roter Marker Malibu Conform: Transform Check listet Transformationswerte, die nicht wie vorgesehen angekommen sind; jeder Wert wird nach dem Setzen zurückgelesen. Ein gelber Marker Keyframed Transform heißt, der Clip hat mehr als einen Transform-Keyframe und blieb so, wie Resolve ihn importiert hat. Adjustment Layer: &lt;Name&gt; markiert den ersten Clip, den ein Adjustment Layer überdeckt.",
+    "t8.h":"Proxies mit Burn-in-Balken",
+    "t8.p":"Für Schnitte auf Dailies-Proxies mit zusätzlichen Burn-in-Zeilen: Klicke in den Settings unter Proxies auf Add Proxy Raster und trage Proxy size und Original size ein. Die Balken werden aus den beiden Größen berechnet oder unter Bars (px) von Hand gesetzt. Verknüpfe in Resolve neu auf die Kameraoriginale, bevor du das Bild prüfst.",
+    "t9.h":"Referenzfilm",
+    "t9.p":"Include reference movie übernimmt einen Film mit Videospur in den Ausgabeordner und führt ihn im Report auf. Burn in timecode if missing legt den Start-Timecode der Timeline als Text darüber, sofern der Dateiname nicht schon auf Timecode hindeutet.",
+    "t10.h":"Manueller Import",
+    "t10.p":"Ist Drive Resolve after export aus oder meldete der Resolve-Schritt einen Fehler, importierst du die Datei selbst mit File → Import → Timeline…. Schalte Use color information, Mixed frame rate format: Final Cut Pro X und Automatically import source clips into media pool ein.",
+    "t11.h":"Preflight-Check",
+    "t11.p":"Ein Fenster listet die Funde vor dem Lauf auf. Ein Hard Block heißt, dass die Datei nicht konformiert werden kann; exportiere das Projekt neu und versuche es erneut. Bei Fehlern und Warnungen geht es mit Conform Anyway weiter, bei reinen Informationen mit Conform.",
+    "k.title":"Gut zu wissen",
+    "k.sub":"Was du brauchst, was es nicht tut und worauf du achten solltest.",
+    "k1.h":"Voraussetzungen",
+    "k1.a":"macOS 14.0 oder neuer",
+    "k1.b":"Ein aus Final Cut Pro exportiertes Projekt als FCPXML 1.10 bis 1.14, als .fcpxml-Datei oder .fcpxmld-Bundle",
+    "k1.c":"DaVinci Resolve Studio für den automatischen Resolve-Schritt; die kostenlose Edition enthält die Python-Scripting-API nicht. Ohne Resolve bekommst du trotzdem die konformierten Dateien und kannst sie selbst importieren",
+    "k1.d":"In Resolve External scripting using auf Local gestellt",
+    "k1.e":"Python 3.10 oder 3.11 für den Resolve-Schritt: ein mit dem Build gebündeltes Python 3.11, wenn er eines enthält, sonst ein installiertes 3.10 oder 3.11",
+    "k1.f":"Ein in Resolve geöffnetes Projekt; Malibu Conform importiert dorthin und legt nie eines an",
+    "k1.g":"Nur gegen DaVinci Resolve Studio 21.1.0.17 verifiziert; andere Resolve-Versionen sind ungetestet",
+    "k2.h":"Was es nicht tut",
+    "k2.a":"Nur Bild. Audio ist nicht Teil des Umfangs; Connected Audio eines aufgelösten Wrappers fällt weg, und bei Audition-Clips kommt nur die aktive Auswahl in Resolve an.",
+    "k2.b":"Transformationen werden nur auf Clips der Videospur 1 angewendet. Connected Clips werden in der FCPXML konformiert, in Resolve aber nicht angefasst.",
+    "k2.c":"Videofilter werden nicht nach Resolve übersetzt. Bei Connected Clips werden sie nur als Warnung gemeldet und bekommen keinen Marker in Resolve.",
+    "k2.d":"Keyframes kann es nicht schreiben: Ein Clip mit mehr als einem Transform-Keyframe behält, was Resolve importiert hat, und bekommt einen gelben Marker; Connected Clips mit Keyframes bekommen keinen Marker.",
+    "k2.e":"Adjustment Layer werden nicht auf die Clips angewendet, die sie überdecken. Nur ein Titel, der ein Adjustment Layer mit Transformation ist und auf der Hauptstoryline liegt, wird entfernt, auf dem ersten überdeckten Clip markiert und im Report aufgeführt; Adjustment Layer an anderer Stelle werden nicht erkannt.",
+    "k2.f":"Ein Compound, dessen einziger Inhalt ein Titel ist, wird nicht aufgelöst.",
+    "k2.g":"Pan- und Tilt-Einheiten sind nur für Resolves Skalierungsmodi Crop und Fit gemessen.",
+    "k3.h":"Worauf du achten solltest",
+    "k3.a":"Wähle in Final Cut Pro das Projekt, nicht ein Event oder die Mediathek. Ein Event-Export wird vom Preflight-Check blockiert oder als nothing conformed gemeldet.",
+    "k3.b":"Wenn du Dailies-Proxies mit Burn-in-Balken konformiert hast, verknüpfe in Resolve neu auf die Kameraoriginale; bis dahin wirken die Proxies zu klein.",
+    "k3.c":"Die Studio-Prüfung sucht Resolve und seine Scripting-Bibliothek am Standardort im Programme-Ordner, nicht nach einer Lizenz; eine woanders installierte Kopie wird als nicht installiert gemeldet.",
+    "k3.d":"Ein Resolve, das schon läuft, aber nicht antwortet, wird nicht neu gestartet. Stelle External scripting using auf Local und führe das Conform erneut aus.",
+    "k3.e":"Das Ergebnisfenster zeigt die ersten zehn Warnungen; der Rest steht im Report.",
+    "k3.f":"Ein manueller Import hat keinen der Resolve-Marker (Effect Removed, Transform Check, Keyframed Transform). Ohne die drei Import-Optionen sieht das Conform im Inspector richtig aus, driftet aber visuell.",
+    "k3.g":"Der Preflight-Check warnt vor Assets mit Sony-typischen Namen, die bei 0 beginnen: Final Cut Pro hat womöglich den Kamera-Timecode nicht gelesen, und Schnitte können in Resolve auf dem falschen Quellframe landen. Verknüpfe die Medien vor dem Export in Final Cut Pro neu.",
+    "k3.h2":"Beim ersten Start fragt ein Bildschirm nach deiner E-Mail-Adresse, bevor du fortfahren kannst. Einen Lizenzschlüssel gibst du unter License in den Settings mit Redeem License Key... ein.",
+    "dl.title":"Malibu Conform laden",
+    "dl.sub":"Beta 0.1.11 für macOS 14 oder neuer, als notarisiertes DMG (48 MB, Developer ID). Der Resolve-Schritt braucht DaVinci Resolve Studio. Wähle Check for Updates… im Menü Malibu Conform, um nach einer neueren Version zu suchen.",
+    "dl.btn":"Für Mac laden",
+    "foot.help":"Hilfe",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum",
+    "foot.privacy":"Datenschutz",
     "foot.legal":"Malibu Conform ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. DaVinci Resolve ist eine Marke von Blackmagic Design Pty Ltd. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
   }
 };
 </script>
 <script src="/apps/_shared/app-page.js"></script>
-<script>
-// Launch-request form: same endpoint, app_module and source as the earlier coming-soon page.
-(function () {
-  var ENDPOINT = "https://api.malibureview.app/api/collections/launch_requests/records";
-  var APP_MODULE = "Malibu Conform";
-
-  function lang() { return document.documentElement.lang === "de" ? "de" : "en"; }
-
-  // Placeholder and aria-label are attributes, so the shared i18n pass does not reach them.
-  function localizeInputs() {
-    var t = (window.PAGE_T || {})[lang()] || {};
-    document.querySelectorAll("[data-launch-form] input[type=email]").forEach(function (input) {
-      var v = t[input.getAttribute("data-ph")];
-      if (v !== undefined) { input.placeholder = v; input.setAttribute("aria-label", v); }
-    });
-  }
-  var shared = window.setLang;
-  window.setLang = function (l) { shared(l); localizeInputs(); };
-  localizeInputs();
-
-  document.querySelectorAll("[data-launch-form]").forEach(function (form) {
-    var box = form.parentNode;
-    var ok = box.querySelector("[data-lr-ok]");
-    var err = box.querySelector("[data-lr-err]");
-    var input = form.querySelector("input[type=email]");
-    var btn = form.querySelector("button");
-    var busy = false;
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (busy) return;
-      var email = input.value.trim();
-      if (!email || !input.checkValidity()) { input.reportValidity(); return; }
-      busy = true;
-      btn.disabled = true;
-      err.hidden = true;
-      fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ app_module: APP_MODULE, email: email, source: "coming-soon-website" })
-      }).then(function (r) {
-        if (!r.ok) throw new Error("http " + r.status);
-        form.hidden = true;
-        ok.hidden = false;
-      }).catch(function () {
-        err.hidden = false;
-        busy = false;
-        btn.disabled = false;
-      });
-    });
-  });
-})();
-</script>
 </body>
 </html>
