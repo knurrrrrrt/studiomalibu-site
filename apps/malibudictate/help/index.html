@@ -78,7 +78,7 @@
 <li><strong class="ui">Parakeet TDT</strong> — the default.</li>
 <li><strong class="ui">WhisperKit (Large v3 Turbo)</strong> — runs the Whisper Large v3 Turbo model.</li>
 <li><strong class="ui">Apple SpeechAnalyzer</strong> — needs macOS 26 or later. On an earlier macOS the engine reports an error and asks you to choose Parakeet or WhisperKit.</li>
-<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — use it for English only. It is an English-only streaming model (FluidAudio lists it as an English Nemotron streaming model). It ignores the <strong class="ui">Language</strong> setting; if you select a language while this engine is active, the app shows a note that recommends Parakeet when you see mixed-language output.</li>
+<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — use it for English only. It is an English-only streaming model (FluidAudio lists it as an English Nemotron streaming model). It ignores the <strong class="ui">Language</strong> setting. While this engine is selected, Settings shows a note that it is English-only, ignores the language setting and recommends Parakeet for other languages.</li>
 </ul>
 <h2 id="en1-set-the-language">Set the language</h2>
 <p>Pick <strong class="ui">Auto-Detect</strong> (the default) or one language in the <strong class="ui">Language</strong> menu. The menu offers these languages, shown by their own names: Deutsch, English, Français, Español, Italiano, Português, Română, Polski, Čeština, Slovenčina, Slovenščina, Hrvatski, Bosanski, Русский, Українська, Беларуская, Български, Српски.</p>
@@ -149,7 +149,7 @@
 <li>Under <strong class="ui">Add Snippet</strong>, enter the phrase you will say under <strong class="ui">Trigger (what you say)</strong> and the text under <strong class="ui">Replacement (multi-line, supports placeholders)</strong>.</li>
 <li>Click <strong class="ui">Add</strong>.</li>
 </ol>
-<p>Use the switch on a row to disable a snippet without deleting it. Use the pencil to edit it. The list starts with built-in sample snippets. Some of them contain a personal signature or an address that is not yours; edit or delete those before you use them, otherwise their trigger phrases insert those details into your text. Others insert the date, the time or a timecode note. <strong class="ui">Reset</strong> under <strong class="ui">Defaults</strong> brings the built-in list back.</p>
+<p>Use the switch on a row to disable a snippet without deleting it. Use the pencil to edit it. A new installation starts with three built-in snippets: "todays date" inserts the date, "current time" inserts the time and "timecode note" inserts a timecode note. <strong class="ui">Reset</strong> under <strong class="ui">Defaults</strong> brings these three back. If you installed an earlier version, your snippet list is kept as it was stored and may still contain sample snippets for a signature or an address with another person's details; edit or delete those, otherwise their trigger phrases insert those details into your text.</p>
 <p>The following placeholders are replaced when the snippet fires: <code>{{DATE}}</code>, <code>{{DATE_ISO}}</code>, <code>{{TIME}}</code>, <code>{{DATETIME}}</code>, <code>{{CLIPBOARD}}</code> (the current clipboard content), <code>{{APP}}</code> and <code>{{NL}}</code> (line break). <code>{{DATE}}</code> and <code>{{DATETIME}}</code> use the day.month.year order.</p>
 <p>If the whole dictation is exactly a trigger, the whole text is replaced. Otherwise a trigger is replaced wherever it appears as a whole word. Because snippets run before the rewrite, the Claude key rewrites the expanded text too; with <strong class="ui">Claude (Cloud)</strong> that expanded text, including clipboard content from <code>{{CLIPBOARD}}</code>, is sent to Anthropic's API.</p>
 <h2 id="en3-teach-claude-your-terms-in-vocabulary">Teach Claude your terms in Vocabulary</h2>
@@ -331,7 +331,7 @@
 <li>A snippet expands a spoken trigger phrase into a replacement text. If the whole dictation equals a trigger, the whole text is replaced; otherwise the trigger is replaced inside the text.</li>
 <li><strong class="ui">Add Snippet</strong> — fields trigger and replacement (multi-line), the toggle <strong class="ui">Case-sensitive trigger</strong> (default: off), and <strong class="ui">Add</strong>.</li>
 <li>Placeholders in a replacement: {{DATE}}, {{DATE_ISO}}, {{TIME}}, {{DATETIME}}, {{CLIPBOARD}} (current clipboard content), {{APP}} (active app name), {{NL}} (line break).</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> replaces all snippets with the built-in defaults after a confirmation. The built-in snippets are samples: some contain a personal signature or an address that is not yours and should be edited or deleted before you use them; others insert the date, the time or a timecode note.</li>
+<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> replaces all snippets with the built-in defaults after a confirmation. The built-in list has three snippets: "todays date", "current time" and "timecode note". An installation from an earlier version keeps its stored list, which may still contain sample snippets for a signature or an address with another person's details; edit or delete those.</li>
 </ul>
 <h2 id="en6-history">History</h2>
 <ul>
@@ -356,7 +356,7 @@
 <li>An internet connection is needed for model downloads and for Claude (Cloud) rewrites. The license check also uses it and repeats every 24 hours; offline, a first check with nothing cached yet blocks you (for other blocking messages see Troubleshooting).</li>
 <li>Claude (Cloud) needs your own Claude API key.</li>
 <li>Text is inserted with Cmd+V into the focused field. While macOS secure input is active, the text stays on the clipboard.</li>
-<li>The Language menu offers 18 languages. Nemotron 3.5 (Streaming) ignores it and is an English-only model; use it for English only.</li>
+<li>The Language menu offers 18 languages. Nemotron 3.5 (Streaming) ignores it and is an English-only model; use it for English only. While Nemotron is the selected engine, Settings shows a note that recommends Parakeet for other languages.</li>
 <li>On macOS 15.4 or later, clipboard rewrite fails with an error when macOS is set to always deny this app's clipboard access; the error points to System Settings, Privacy &amp; Security, Paste from Other Apps. Earlier macOS versions do not have this error.</li>
 </ul>
 <h1 id="en7-how-to-export-meetings">How to export meetings</h1>
@@ -466,7 +466,7 @@
 </ul>
 <h2 id="en8-apple-notes-or-mail-refuses-the-export">Apple Notes or Mail refuses the export</h2>
 <p>The message says that MalibuDictate isn't allowed to control Notes or Mail. Click <strong class="ui">Open Automation Settings</strong> and turn the app on under MalibuDictate in Privacy &amp; Security &gt; Automation, then try again. If Notes or Mail cannot be launched, the message says that the app could not be reached.</p>
-<p class="ver">Written for version 0.10.6.</p>
+<p class="ver">Written for version 0.10.7.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-sprach-engine-und-sprache-w-hlen">Sprach-Engine und Sprache wählen</a><a class="l1" href="#de2-diktat-umschreiben-lassen">Diktat umschreiben lassen</a><a class="l1" href="#de3-dictionary-snippets-und-smart-formatting">Dictionary, Snippets und Smart Formatting</a><a class="l1" href="#de4-freih-ndig-aufnehmen-und-diktat-in-der-zwischenablage-behalten">Freihändig aufnehmen und Diktat in der Zwischenablage behalten</a><a class="l1" href="#de5-ein-meeting-aufnehmen">Ein Meeting aufnehmen</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-meetings-exportieren">Meetings exportieren</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -490,7 +490,7 @@
 <li><strong class="ui">Parakeet TDT</strong> — der Standard.</li>
 <li><strong class="ui">WhisperKit (Large v3 Turbo)</strong> — führt das Modell Whisper Large v3 Turbo aus.</li>
 <li><strong class="ui">Apple SpeechAnalyzer</strong> — braucht macOS 26 oder neuer. Unter einem älteren macOS meldet die Engine einen Fehler und bittet dich, Parakeet oder WhisperKit zu wählen.</li>
-<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — nur für Englisch nutzen. Es ist ein reines Englisch-Streaming-Modell (FluidAudio führt es als englisches Nemotron-Streaming-Modell). Sie ignoriert die Einstellung <strong class="ui">Language</strong>; wählst du bei aktiver Engine eine Sprache, zeigt die App einen Hinweis, der Parakeet empfiehlt, wenn du Ausgaben mit gemischten Sprachen siehst.</li>
+<li><strong class="ui">Nemotron 3.5 (Streaming)</strong> — nur für Englisch nutzen. Es ist ein reines Englisch-Streaming-Modell (FluidAudio führt es als englisches Nemotron-Streaming-Modell). Es ignoriert die Einstellung <strong class="ui">Language</strong>. Solange diese Engine gewählt ist, zeigt Settings einen Hinweis, dass sie nur Englisch kann, die Spracheinstellung ignoriert und für andere Sprachen Parakeet empfiehlt.</li>
 </ul>
 <h2 id="de1-die-sprache-einstellen">Die Sprache einstellen</h2>
 <p>Wähle im Menü <strong class="ui">Language</strong> entweder <strong class="ui">Auto-Detect</strong> (der Standard) oder eine Sprache. Das Menü bietet diese Sprachen, angezeigt mit ihrem eigenen Namen: Deutsch, English, Français, Español, Italiano, Português, Română, Polski, Čeština, Slovenčina, Slovenščina, Hrvatski, Bosanski, Русский, Українська, Беларуская, Български, Српски.</p>
@@ -561,7 +561,7 @@
 <li>Trage unter <strong class="ui">Add Snippet</strong> die Wendung, die du sprechen willst, bei <strong class="ui">Trigger (what you say)</strong> ein und den Text bei <strong class="ui">Replacement (multi-line, supports placeholders)</strong>.</li>
 <li>Klicke auf <strong class="ui">Add</strong>.</li>
 </ol>
-<p>Mit dem Schalter in einer Zeile deaktivierst du ein Snippet, ohne es zu löschen. Mit dem Stift bearbeitest du es. Die Liste beginnt mit mitgelieferten Beispiel-Snippets. Manche davon enthalten eine persönliche Signatur oder eine Adresse, die nicht deine ist; bearbeite oder lösche diese, bevor du sie benutzt, sonst fügen ihre Auslöser-Wendungen diese Angaben in deinen Text ein. Andere fügen das Datum, die Uhrzeit oder eine Timecode-Notiz ein. <strong class="ui">Reset</strong> unter <strong class="ui">Defaults</strong> stellt die mitgelieferte Liste wieder her.</p>
+<p>Mit dem Schalter in einer Zeile deaktivierst du ein Snippet, ohne es zu löschen. Mit dem Stift bearbeitest du es. Eine neue Installation beginnt mit drei mitgelieferten Snippets: "todays date" fügt das Datum ein, "current time" die Uhrzeit und "timecode note" eine Timecode-Notiz. <strong class="ui">Reset</strong> unter <strong class="ui">Defaults</strong> stellt diese drei wieder her. Hast du eine frühere Version installiert, bleibt deine Snippet-Liste so erhalten, wie sie gespeichert wurde, und kann noch Beispiel-Snippets für eine Signatur oder eine Adresse mit den Angaben einer anderen Person enthalten; bearbeite oder lösche diese, sonst fügen ihre Auslöser-Wendungen diese Angaben in deinen Text ein.</p>
 <p>Diese Platzhalter werden ersetzt, wenn das Snippet auslöst: <code>{{DATE}}</code>, <code>{{DATE_ISO}}</code>, <code>{{TIME}}</code>, <code>{{DATETIME}}</code>, <code>{{CLIPBOARD}}</code> (der aktuelle Inhalt der Zwischenablage), <code>{{APP}}</code> und <code>{{NL}}</code> (Zeilenumbruch). <code>{{DATE}}</code> und <code>{{DATETIME}}</code> verwenden die Reihenfolge Tag.Monat.Jahr.</p>
 <p>Besteht das ganze Diktat genau aus einem Auslöser, wird der gesamte Text ersetzt. Sonst wird ein Auslöser überall ersetzt, wo er als ganzes Wort vorkommt. Weil Snippets vor dem Umschreiben laufen, schreibt die Claude-Taste auch den ausgeschriebenen Text um; mit <strong class="ui">Claude (Cloud)</strong> wird dieser ausgeschriebene Text, einschließlich des Zwischenablageinhalts aus <code>{{CLIPBOARD}}</code>, an die API von Anthropic gesendet.</p>
 <h2 id="de3-claude-deine-begriffe-im-vocabulary-beibringen">Claude deine Begriffe im Vocabulary beibringen</h2>
@@ -743,7 +743,7 @@
 <li>Ein Snippet erweitert eine gesprochene Auslösephrase zu einem Ersatztext. Entspricht das ganze Diktat einer Auslösephrase, wird der ganze Text ersetzt; sonst wird die Auslösephrase im Text ersetzt.</li>
 <li><strong class="ui">Add Snippet</strong> — Felder Auslösephrase und Ersatz (mehrzeilig), der Schalter <strong class="ui">Case-sensitive trigger</strong> (Standard: aus) und <strong class="ui">Add</strong>.</li>
 <li>Platzhalter in einem Ersatztext: {{DATE}}, {{DATE_ISO}}, {{TIME}}, {{DATETIME}}, {{CLIPBOARD}} (aktueller Inhalt der Zwischenablage), {{APP}} (Name der aktiven App), {{NL}} (Zeilenumbruch).</li>
-<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Snippets durch die eingebauten Standardwerte. Die eingebauten Snippets sind Beispiele: Manche enthalten eine persönliche Signatur oder eine Adresse, die nicht deine ist, und sollten bearbeitet oder gelöscht werden, bevor du sie benutzt; andere fügen das Datum, die Uhrzeit oder eine Timecode-Notiz ein.</li>
+<li><strong class="ui">Defaults</strong> — <strong class="ui">Reset</strong> ersetzt nach einer Bestätigung alle Snippets durch die eingebauten Standardwerte. Die eingebaute Liste enthält drei Snippets: "todays date", "current time" und "timecode note". Eine Installation aus einer früheren Version behält ihre gespeicherte Liste, die noch Beispiel-Snippets für eine Signatur oder eine Adresse mit den Angaben einer anderen Person enthalten kann; bearbeite oder lösche diese.</li>
 </ul>
 <h2 id="de6-history">History</h2>
 <ul>
@@ -768,7 +768,7 @@
 <li>Eine Internetverbindung ist nötig für Modell-Downloads und für Umformulierungen mit Claude (Cloud). Auch die Lizenzprüfung nutzt sie und wird alle 24 Stunden wiederholt; offline sperrt eine erste Prüfung, für die noch nichts zwischengespeichert ist (andere sperrende Meldungen siehe Fehlerbehebung).</li>
 <li>Claude (Cloud) braucht deinen eigenen Claude-API-Schlüssel.</li>
 <li>Text wird per Cmd+V in das fokussierte Feld eingefügt. Solange die macOS-Secure-Input-Sperre aktiv ist, bleibt der Text in der Zwischenablage.</li>
-<li>Das Menü Language bietet 18 Sprachen. Nemotron 3.5 (Streaming) ignoriert es und ist ein reines Englisch-Modell; nutze es nur für Englisch.</li>
+<li>Das Menü Language bietet 18 Sprachen. Nemotron 3.5 (Streaming) ignoriert es und ist ein reines Englisch-Modell; nutze es nur für Englisch. Solange Nemotron die gewählte Engine ist, zeigt Settings einen Hinweis, der für andere Sprachen Parakeet empfiehlt.</li>
 <li>Ab macOS 15.4 scheitert das Umformulieren der Zwischenablage mit einem Fehler, wenn macOS den Zugriff dieser App auf die Zwischenablage dauerhaft verweigert; der Fehler verweist auf Systemeinstellungen, Datenschutz &amp; Sicherheit, Einfügen aus anderen Apps. Frühere macOS-Versionen haben diesen Fehler nicht.</li>
 </ul>
 <h1 id="de7-meetings-exportieren">Meetings exportieren</h1>
@@ -878,7 +878,7 @@
 </ul>
 <h2 id="de8-apple-notes-oder-mail-verweigert-den-export">Apple Notes oder Mail verweigert den Export</h2>
 <p>Die Meldung sagt, dass MalibuDictate Notes oder Mail nicht steuern darf. Klicke auf <strong class="ui">Open Automation Settings</strong> und schalte die App unter MalibuDictate in Datenschutz &amp; Sicherheit &gt; Automation ein, dann versuche es erneut. Lässt sich Notes oder Mail nicht starten, sagt die Meldung, dass die App nicht erreicht werden konnte.</p>
-<p class="ver">Geschrieben für Version 0.10.6.</p>
+<p class="ver">Geschrieben für Version 0.10.7.</p>
     </article>
   </div>
   <footer>
