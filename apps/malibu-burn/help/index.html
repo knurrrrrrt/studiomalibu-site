@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Burn · Help</title>
+<link rel="icon" type="image/png" href="/apps/malibu-burn/icon.png">
+<meta name="description" content="How to use Malibu Burn: getting started and step-by-step guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#FF453A;--accent-ink:#1f0402}
+.help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
+.toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
+.toc a{display:block;color:var(--dim);padding:5px 0}
+.toc a:hover{color:var(--text)}
+.toc a.l1{color:var(--text);font-weight:600;margin-top:12px}
+.toc a.l2{padding-left:12px;font-size:12.5px}
+.doc h1{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}
+.doc h1:first-child{margin-top:0;padding-top:0;border-top:0}
+.toc .t{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.help>*{min-width:0}
+.doc{max-width:72ch;overflow-wrap:anywhere}
+.doc h1{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}
+.doc h2{font-size:1.45rem;margin:44px 0 10px;padding-top:28px;border-top:1px solid var(--line)}
+.doc h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:28px 0 6px}
+.doc p,.doc li{color:#C9CCD3;font-size:15.5px}
+.doc li+li{margin-top:6px}
+.doc ol,.doc ul{padding-left:22px}
+.doc blockquote{margin:16px 0;padding:10px 16px;border-left:2px solid var(--accent);background:var(--surface);color:var(--dim);font-size:14px;border-radius:0 8px 8px 0}
+.doc code{font:400 13px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.doc pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+.doc pre code{background:none;border:0;padding:0}
+.doc strong.ui{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.doc img{border:1px solid var(--line);border-radius:10px;margin:14px 0}
+.doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.ver{font:400 11.5px var(--mono);color:var(--dim);margin-top:40px}
+@media(max-width:860px){.help{grid-template-columns:1fr;gap:20px}.toc{position:static}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/malibu-burn/" data-i18n="nav.back">← Malibu Burn</a>
+      <div class="brand"><img src="/apps/malibu-burn/icon.png" alt="">Malibu Burn <span style="color:var(--dim);font-weight:500" data-i18n="nav.help">Help</span></div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="help">
+    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-add-a-library-and-choose-a-timeline">Add a library and choose a timeline</a><a class="l1" href="#en2-build-your-layout">Build your layout</a><a class="l1" href="#en3-show-clip-roles">Show clip roles</a><a class="l1" href="#en4-manage-presets">Manage presets</a><a class="l1" href="#en5-validate-a-timeline-against-fcpxml">Validate a timeline against FCPXML</a><a class="l1" href="#en6-update-the-final-cut-pro-plugin">Update the Final Cut Pro plugin</a><a class="l1" href="#en7-reference">Reference</a><a class="l1" href="#en8-troubleshooting">Troubleshooting</a></div>
+    <article class="doc" data-lang="en" lang="en">
+<h1 id="en0-getting-started">Getting started</h1>
+<h2 id="en0-what-malibuburn-does">What MalibuBurn does</h2>
+<p>MalibuBurn burns clip metadata into the Final Cut Pro viewer and into your exports: source timecode, clip and file names, reel, scene and shot, markers, roles and more. It has two parts. The MalibuBurn Host app decides what is shown and where. The MalibuBurn effect inside Final Cut Pro draws it.</p>
+<h2 id="en0-before-you-start">Before you start</h2>
+<p>You need macOS 14 or later, Final Cut Pro, and the MalibuBurn plugin installed with the MalibuBurn installer. The plugin provides the effect that you add in Final Cut Pro.</p>
+<p>The first launch asks for your email address. It is required: the Host shows only this screen until you enter one. The address identifies your trial.</p>
+<h2 id="en0-start-the-trial">Start the trial</h2>
+<p>Enter your email address and click <strong class="ui">Start Trial</strong>. The button stays disabled until the address looks like an email address. A short guide opens afterwards; you can reopen it at any time with <strong class="ui">How MalibuBurn Works</strong> in the Help menu.</p>
+<h2 id="en0-add-your-library-and-pick-a-timeline">Add your library and pick a timeline</h2>
+<p>Drag your Final Cut Pro library (the <code>.fcpbundle</code>) into the MalibuBurn Host window. Then click the timeline you are working on in the sidebar. The guide on adding libraries lists the other ways to add a library and explains how the timeline is chosen automatically.</p>
+<h2 id="en0-choose-what-to-show">Choose what to show</h2>
+<p>Pick a preset in the preset list at the top of the main column, or build your own by adding elements with <strong class="ui">Add element</strong>…. Changes reach Final Cut Pro within a moment; there is nothing to export or save.</p>
+<h2 id="en0-add-the-effect-in-final-cut-pro">Add the effect in Final Cut Pro</h2>
+<p>In Final Cut Pro, connect an adjustment layer above your timeline and stretch it over the full length. Open the Effects browser, go to <strong class="ui">Studio Malibu</strong> and drop the MalibuBurn effect onto that adjustment layer.</p>
+<h2 id="en0-check-the-result">Check the result</h2>
+<p>The burn-in follows the playhead in the viewer and in every export. If the viewer shows a status line instead of metadata, the line names what is missing; the troubleshooting page lists the common lines. The <strong class="ui">Diagnostics</strong> section in the settings has everything support needs.</p>
+<h1 id="en1-add-a-library-and-choose-a-timeline">Add a library and choose a timeline</h1>
+<h2 id="en1-drag-the-library-into-the-window">Drag the library into the window</h2>
+<p>Drag a Final Cut Pro library (a <code>.fcpbundle</code>) onto the MalibuBurn Host window. Anything that is not a <code>.fcpbundle</code> is ignored without a message.</p>
+<h2 id="en1-use-the-plus-button">Use the plus button</h2>
+<p>Click the plus button at the top left of the window (tooltip <strong class="ui">Add Library...</strong>), or click <strong class="ui">Add Library...</strong> in the empty sidebar. In the file panel, select the <code>.fcpbundle</code>. To look inside a folder, double-click it; a single click on the bundle and the panel's Open button choose it.</p>
+<h2 id="en1-detect-the-open-libraries">Detect the open libraries</h2>
+<p>With Final Cut Pro running and the library open, click <strong class="ui">Detect from Final Cut Pro</strong>. The button is in the empty sidebar and, as a wand icon, in the top row. One new library is added directly. If several are open, a list titled <strong class="ui">Multiple libraries are open in Final Cut Pro</strong> offers each library and <strong class="ui">Add All</strong>.</p>
+<p>The first time, macOS asks whether MalibuBurn Host may control Final Cut Pro. Allow it. Libraries that are already added are skipped. If nothing new is open, nothing happens.</p>
+<h2 id="en1-fix-a-failed-detection">Fix a failed detection</h2>
+<p>If detection fails, the reason appears under the button in the empty sidebar (in the top row it is the tooltip). When macOS blocks the permission, the button in the empty sidebar is joined by two actions: <strong class="ui">Open Automation Settings</strong> opens the Automation pane in System Settings, where MalibuBurn Host must be allowed to control Final Cut Pro. <strong class="ui">Copy Reset Command</strong> copies a Terminal command that resets the stuck permission; run it, make sure Final Cut Pro is open, then click <strong class="ui">Detect from Final Cut Pro</strong> again.</p>
+<h2 id="en1-choose-the-timeline">Choose the timeline</h2>
+<p>Once a library is read, its Events appear in the sidebar as collapsible cards. Click a timeline to make it active; it then shows <strong class="ui">burning in</strong>. Click the active timeline again to deselect it. Events that contain no project or compound clip are not listed.</p>
+<p>When the MalibuBurn workflow extension is open in Final Cut Pro, the Host follows the sequence that is active there. A timeline you pick in the Host replaces the extension's earlier choice.</p>
+<h2 id="en1-switch-between-the-compact-and-the-full-list">Switch between the compact and the full list</h2>
+<p>While a timeline is active, the sidebar shows a compact card with the sequence name, library and event. Click <strong class="ui">Show All Libraries</strong> to see the full list again and <strong class="ui">Hide Library List</strong> to go back to the card.</p>
+<h2 id="en1-remove-a-library">Remove a library</h2>
+<p>Hover over a library row in the full list and click the circled x. The library is only removed from MalibuBurn; the file is not touched. There is no confirmation.</p>
+<h2 id="en1-set-the-project-start-timecode">Set the project start timecode</h2>
+<p>If the burn-in shows a timecode that does not fit your timeline, type the project's start timecode into <strong class="ui">Project start TC (optional)</strong> at the bottom of the sidebar; it is shown while a timeline is active. Use HH:MM:SS:FF, or HH:MM:SS;FF for drop frame. Clear the field to go back to the value Final Cut Pro reports. An invalid entry is ignored and the hint under the field says which value is used instead.</p>
+<h1 id="en2-build-your-layout">Build your layout</h1>
+<h2 id="en2-add-an-element">Add an element</h2>
+<p>Click <strong class="ui">Add element</strong>… below the preset list and choose a field. The element is added to the active preset and selected. If an element was copied before, <strong class="ui">Paste element</strong> is listed first.</p>
+<h2 id="en2-select-hide-and-remove-elements">Select, hide and remove elements</h2>
+<p>Each element is a chip. Click the check mark to show or hide it, click the name to select it for editing (click the only selected chip again to deselect it), and click the x to remove it. Shift-click adds to the selection. The Delete key removes the selected elements. There is no confirmation and no undo.</p>
+<h2 id="en2-copy-an-element">Copy an element</h2>
+<p>Right-click a chip and choose <strong class="ui">Copy</strong>. Then choose <strong class="ui">Paste</strong> from the chip menu or <strong class="ui">Paste element</strong> from <strong class="ui">Add element</strong>…. The pasted element is added at the end of the active preset, also across presets.</p>
+<h2 id="en2-change-the-field-and-the-label">Change the field and the label</h2>
+<p>Select an element. In the <strong class="ui">Editor</strong> tile, choose another <strong class="ui">Field</strong> or type a <strong class="ui">Label</strong>. For most fields the label is a prefix in front of the value; with stacked layers it appears in a tag such as [label V1]. For <strong class="ui">Custom Text</strong> the label is the text itself.</p>
+<h2 id="en2-place-an-element">Place an element</h2>
+<p>In the <strong class="ui">Editor</strong> tile, choose an <strong class="ui">Anchor</strong> in the 3×3 grid, then set <strong class="ui">X</strong> and <strong class="ui">Y</strong> with the sliders or by typing a number. For a left, right, top or bottom anchor the value is the distance from that edge of the visible picture (0 to 1). For a centre anchor it is the offset from the centre (−0.5 to 0.5). Changing the anchor keeps the element where it is on screen.</p>
+<p>You can also drag the element in the Position Preview. It snaps to the frame's edges and centre and to other elements. After a drag, on each axis you moved the anchor becomes the nearest edge or centre and X and Y are updated to match. Hold Shift to lock to one axis (pressing Shift at the start of a drag also toggles the element in the selection) and Option to move without snapping.</p>
+<h2 id="en2-style-the-text-and-background">Style the text and background</h2>
+<p>Under <strong class="ui">Text</strong> set <strong class="ui">Text size</strong> (12 to 72), <strong class="ui">Text color</strong>, <strong class="ui">Text opacity</strong> and <strong class="ui">Alignment</strong>. Alignment only matters for multi-line content. Under <strong class="ui">Background</strong> switch <strong class="ui">Show background</strong> and set <strong class="ui">Background color</strong> and <strong class="ui">Background opacity</strong>.</p>
+<h2 id="en2-restyle-all-elements-at-once">Restyle all elements at once</h2>
+<p>Open the <strong class="ui">Bulk Style</strong> tile with the header icons above the preset list. Set the text, background or anchor draft and click <strong class="ui">Apply to all</strong>. The text and background drafts overwrite every element of the preset immediately; duplicate the preset first to keep the old state. The anchor draft re-expresses the positions in the new anchor, so elements stay where they are on screen. New elements take size, colors, opacity, background and anchor from the draft, but not alignment.</p>
+<h2 id="en2-open-the-position-preview-in-its-own-window">Open the Position Preview in its own window</h2>
+<p>Click the icon at the top right of the preview to open <strong class="ui">Position Preview</strong> as a separate window. Selection is shared with the main window. The separate window has the preview with its toolbar (<strong class="ui">Grid</strong>, <strong class="ui">Snap</strong>, <strong class="ui">Crop</strong>); the <strong class="ui">Editor</strong>, <strong class="ui">Settings</strong> and <strong class="ui">Bulk Style</strong> tiles stay in the main window.</p>
+<h1 id="en3-show-clip-roles">Show clip roles</h1>
+<h2 id="en3-add-a-role-text-element">Add a Role Text element</h2>
+<p>Click <strong class="ui">Add element</strong>… and choose <strong class="ui">Role Text</strong>. The element starts in <strong class="ui">Role Name</strong> mode. It shows nothing until at least one role is picked; the Editor says so with the message "None selected yet — this element won't show anything until you pick one below."</p>
+<h2 id="en3-pick-the-roles">Pick the roles</h2>
+<p>Select the element and open its <strong class="ui">Roles</strong> list in the <strong class="ui">Editor</strong> tile. Roles are grouped under <strong class="ui">Video Roles</strong>, <strong class="ui">Audio Roles</strong> and <strong class="ui">Caption Roles</strong>. Tick every role that should trigger the element. A main role covers all of its sub-roles and the clips assigned to the main role itself; open its arrow only to pick individual sub-roles. <strong class="ui">All sub-roles</strong> ticks just the named sub-roles of that main role.</p>
+<p>The list is filled from the libraries you have added. When no roles are available it says "No roles found — pick a library/timeline first."</p>
+<h2 id="en3-choose-what-the-element-shows">Choose what the element shows</h2>
+<p>Set <strong class="ui">Show</strong> to one of three modes. <strong class="ui">Custom Text</strong> shows the <strong class="ui">Label</strong> while a clip with a picked role is active. <strong class="ui">Media Filename</strong> shows the active clip's name, which the app uses in place of a file name. <strong class="ui">Role Name</strong> shows the role's own name. In the last two modes the Label is a prefix when it is not empty.</p>
+<h2 id="en3-check-roles-after-importing-a-preset">Check roles after importing a preset</h2>
+<p>The role selection of a preset belongs to the project it was made for, so a preset you import or share may not match the roles of your project. Check the picked roles after importing a preset.</p>
+<h1 id="en4-manage-presets">Manage presets</h1>
+<h2 id="en4-choose-a-preset">Choose a preset</h2>
+<p>Use the list at the top of the main column. MalibuBurn comes with built-in presets, among them <strong class="ui">Netflix QC Layout</strong>, <strong class="ui">Conform</strong> and <strong class="ui">Colorist</strong>. Built-in presets can be edited in place, but they cannot be renamed or deleted.</p>
+<h2 id="en4-make-your-own-preset">Make your own preset</h2>
+<p>Click the plus button next to the list. It duplicates the current preset under the name <code>&lt;name&gt; Copy</code> and opens the <strong class="ui">Settings</strong> tile so you can rename it. Click the pencil to rename a preset of your own later.</p>
+<h2 id="en4-export-and-import">Export and import</h2>
+<p>In the <strong class="ui">Settings</strong> tile, open <strong class="ui">Preset actions</strong> and choose <strong class="ui">Export preset</strong>… to write the preset as a JSON file, or <strong class="ui">Import preset</strong>… to read one. An import always becomes a regular preset and is activated. If the name exists, " (Imported)" is appended; nothing is overwritten.</p>
+<h2 id="en4-reset-or-delete">Reset or delete</h2>
+<p>For a built-in preset, <strong class="ui">Preset actions</strong> offers <strong class="ui">Reset to factory default</strong>…, which discards your changes after a confirmation. For your own presets it offers <strong class="ui">Delete preset</strong>, which acts immediately; the last remaining preset cannot be deleted.</p>
+<h2 id="en4-set-the-visible-picture">Set the visible picture</h2>
+<p>Under <strong class="ui">Canvas</strong>, <strong class="ui">Visible picture</strong> sets the picture area that element positions refer to: <strong class="ui">Full Frame</strong>, <strong class="ui">2.39:1</strong>, <strong class="ui">2.35:1</strong>, <strong class="ui">1.85:1</strong>, <strong class="ui">4:3</strong> or <strong class="ui">Custom</strong>. Changing it moves elements, because X and Y are fractions of that area. The Position Preview shows it as a slightly lighter rectangle. Custom takes a width and a height, for example 1920 and 1080; a comma or a dot works as the decimal separator. You can still place elements in the bars around it unless <strong class="ui">Keep inside visible picture</strong> is on, which is off by default; elements never leave the frame itself.</p>
+<h2 id="en4-changes-save-themselves">Changes save themselves</h2>
+<p>Presets are saved automatically on every change. There is no save button.</p>
+<h1 id="en5-validate-a-timeline-against-fcpxml">Validate a timeline against FCPXML</h1>
+<h2 id="en5-export-the-timeline">Export the timeline</h2>
+<p>In Final Cut Pro, export the same timeline you selected in MalibuBurn as FCPXML.</p>
+<h2 id="en5-run-the-check">Run the check</h2>
+<p>Select the timeline in the sidebar and open the <strong class="ui">Validate</strong> tile with the header icons, or the expanded <strong class="ui">Validate Against FCPXML</strong> window. Drop the <code>.fcpxml</code> or <code>.fcpxmld</code> file onto the zone, or click <strong class="ui">Choose FCPXML...</strong>. Without a selected timeline the tile asks you to pick one in the sidebar first.</p>
+<h2 id="en5-read-the-result">Read the result</h2>
+<p>The check compares the clip list that MalibuBurn resolved with the FCPXML. <strong class="ui">PASS</strong> means every compared clip matched on timeline position, duration and name (and, for plain clips, on the source start), with no dropped or extra entries. <strong class="ui">FAIL</strong> means there are differences. The tile shows PASS or FAIL, a summary line and two counts; the window lists the differences, grouped as clips only in the FCPXML, clips only in MalibuBurn's list, and field mismatches on matched clips, up to 200 rows per group.</p>
+<h2 id="en5-use-the-right-timeline">Use the right timeline</h2>
+<p>If the FCPXML contains no timeline with the selected name, MalibuBurn compares a fallback timeline from the file, and the window warns that it is not the timeline selected here. The tile shows no such warning. Export the FCPXML for the selected timeline for a valid comparison.</p>
+<h1 id="en6-update-the-final-cut-pro-plugin">Update the Final Cut Pro plugin</h1>
+<h2 id="en6-know-what-updates-what">Know what updates what</h2>
+<p>The Host app checks for its own updates with Sparkle; <strong class="ui">Check for Updates…</strong> in the app menu checks on demand. The Final Cut Pro plugin is updated by the Host: when the installed plugin is older than the Host, a banner at the top of the window reports it and installs the matching plugin.</p>
+<h2 id="en6-restart-final-cut-pro-afterwards">Restart Final Cut Pro afterwards</h2>
+<p>After the banner reports "Final Cut Pro plugin updated to build", restart Final Cut Pro. It keeps the old version loaded until then.</p>
+<h2 id="en6-enter-your-password-when-asked">Enter your password when asked</h2>
+<p>If the plugin was installed by the installer, click <strong class="ui">Update Plugin…</strong> in the banner. macOS asks for your password once; later updates install by themselves.</p>
+<h2 id="en6-allow-app-management">Allow App Management</h2>
+<p>If the banner says macOS won't let MalibuBurn Host replace the plugin, click <strong class="ui">Open App Management Settings</strong>, turn the permission on for MalibuBurn Host, then relaunch the Host. If it is already on, use the full installer.</p>
+<h2 id="en6-install-or-repair-with-the-installer">Install or repair with the installer</h2>
+<p><strong class="ui">Download Installer</strong> or <strong class="ui">Download Full Installer</strong> downloads the current MalibuBurn installer in your browser; run it afterwards. Use it when the plugin is not installed at all or an automatic update failed.</p>
+<h2 id="en6-restore-a-missing-effect">Restore a missing effect</h2>
+<p>If the banner says the effect is missing from the Motion Templates folder, click <strong class="ui">Open MalibuBurn</strong> once to reinstall it, then restart Final Cut Pro.</p>
+<h1 id="en7-reference">Reference</h1>
+<h2 id="en7-requirements">Requirements</h2>
+<ul>
+<li>macOS 14 or later.</li>
+<li>Final Cut Pro with the MalibuBurn plugin installed. The effect is called MalibuBurn and sits in the category <strong class="ui">Studio Malibu</strong>.</li>
+</ul>
+<h2 id="en7-window-and-tiles">Window and tiles</h2>
+<ul>
+<li>The Host window opens at 1200 × 760 and cannot be made smaller than 840 × 640.</li>
+<li><strong class="ui">Editor</strong> — the selected element: Element, Position, Text and Background, plus one more section for some fields. Open by default.</li>
+<li><strong class="ui">Settings</strong> — the preset's own settings: Preset, Canvas, Stacked layers, Visibility. Open by default.</li>
+<li><strong class="ui">Bulk Style</strong> — text, background and anchor drafts with <strong class="ui">Apply to all</strong>. Closed by default.</li>
+<li><strong class="ui">Validate</strong> — compares the timeline with an exported FCPXML. Closed by default.</li>
+<li>Tiles open and close with the icons in the header above the preset list. When the content area becomes narrower than 860 points, open tiles are closed; tiles you open while it is narrow float over the main column.</li>
+</ul>
+<h2 id="en7-menus-and-shortcuts">Menus and shortcuts</h2>
+<ul>
+<li><strong class="ui">How MalibuBurn Works</strong> (Help menu) — reopens the guide.</li>
+<li><strong class="ui">Send Feedback…</strong> (Help menu, ⌘?) — opens the feedback dialog.</li>
+<li><strong class="ui">Check for Updates…</strong> (app menu, not in Mac App Store builds) — checks for a new Host version.</li>
+<li><strong class="ui">Buy MalibuBurn</strong> (app menu) — opens the purchase page; shown until a license is confirmed.</li>
+<li>The menu bar icon — a menu with the status, the active timeline and the libraries, <strong class="ui">Open MalibuBurn Host</strong> and <strong class="ui">Quit MalibuBurn</strong>.</li>
+<li>Delete — removes the selected elements.</li>
+</ul>
+<h2 id="en7-settings">Settings</h2>
+<ul>
+<li><strong class="ui">Appearance</strong> — <strong class="ui">Preset</strong>: color presets for the window. Default: Claude Colors.</li>
+<li><strong class="ui">Window</strong> — <strong class="ui">Window Transparency</strong>: 0 to 100 percent in 5 percent steps; higher values make the window darker and more opaque. The default comes from the selected appearance preset.</li>
+<li><strong class="ui">Beta</strong> — license state, device ID, <strong class="ui">Enter License Key…</strong> and <strong class="ui">Deactivate This Device…</strong>.</li>
+<li><strong class="ui">Feedback</strong> — <strong class="ui">Send Feedback…</strong>.</li>
+<li><strong class="ui">Diagnostics</strong> — <strong class="ui">Show Diagnostics…</strong> and <strong class="ui">Copy Diagnostics</strong>.</li>
+<li><strong class="ui">Credits &amp; Legal</strong> — a note on the components used (Sparkle and swift-timecode) and a link to the privacy policy.</li>
+<li>The settings open from the gear at the bottom of the sidebar.</li>
+</ul>
+<h2 id="en7-field-types">Field types</h2>
+<p>There are 23 field types. They are listed in this order in <strong class="ui">Field</strong> and in <strong class="ui">Add element</strong>…:</p>
+<ul>
+<li><strong class="ui">Source TC</strong> — source timecode at the playhead.</li>
+<li><strong class="ui">Project TC</strong> — timeline timecode at the playhead.</li>
+<li><strong class="ui">Clip Name</strong>.</li>
+<li><strong class="ui">Source File</strong> — media file name.</li>
+<li><strong class="ui">Reel</strong>.</li>
+<li><strong class="ui">Scene / Shot</strong> — scene and shot, joined with a dash.</li>
+<li><strong class="ui">Speed / Retime</strong> — FREEZE, a percentage (with REV when reversed) or RAMP; nothing at 100 percent, also when reversed.</li>
+<li><strong class="ui">Notes</strong>.</li>
+<li><strong class="ui">Angle</strong> — multicam angle name.</li>
+<li><strong class="ui">Resolution</strong> — width and height, written like 1920x1080.</li>
+<li><strong class="ui">Marker (Note or Name)</strong> — the first marker of a ticked type on the clip.</li>
+<li><strong class="ui">Resize / Transform</strong> — the average of horizontal and vertical scale in percent, only when a scale is not 100 percent.</li>
+<li><strong class="ui">Stacked Video Clips</strong> — one line per video layer.</li>
+<li><strong class="ui">Role Text</strong> — see the roles guide.</li>
+<li><strong class="ui">Custom Text</strong> — the Label itself.</li>
+<li><strong class="ui">Marker Name</strong>, <strong class="ui">Marker Note</strong>, <strong class="ui">Marker Name + Note</strong> — name, note, or both of the first matching marker. The marker types follow the element's setting; the <strong class="ui">Marker types</strong> list is shown for <strong class="ui">Marker (Note or Name)</strong>, <strong class="ui">Marker Name</strong> and <strong class="ui">Marker Note</strong>. <strong class="ui">Marker Name + Note</strong> has no such list and uses the default, <strong class="ui">Chapter</strong>.</li>
+<li><strong class="ui">Source Frame</strong> — frame number counted from the first frame of the media file, starting at 0.</li>
+<li><strong class="ui">Stacked Layers — Reel/File + Frame # Block</strong> and <strong class="ui">Stacked Layers — Slate/Timecode Block</strong> — two-column blocks with one row per layer.</li>
+<li><strong class="ui">Stabilization</strong> — shows the text Stabilized only when stabilization is on.</li>
+<li><strong class="ui">Position / Rotation</strong> — position and rotation of the clip, only when not zero.</li>
+</ul>
+<p>An element draws nothing when its value is empty. Resize, position and stabilization are only displayed. The speed of a retimed clip is also used to compute <strong class="ui">Source TC</strong> and <strong class="ui">Source Frame</strong>.</p>
+<h2 id="en7-element-defaults">Element defaults</h2>
+<ul>
+<li>A new element takes size, text color and opacity, background and anchor from the <strong class="ui">Bulk Style</strong> draft. The draft starts at: <strong class="ui">Text size</strong> 24 (range 12 to 72), <strong class="ui">Text color</strong> white, <strong class="ui">Text opacity</strong> 1, <strong class="ui">Alignment</strong> left, <strong class="ui">Show background</strong> on, <strong class="ui">Background color</strong> black, <strong class="ui">Background opacity</strong> 0.7, <strong class="ui">Anchor</strong> bottom left.</li>
+<li><strong class="ui">X</strong> is 0.05 and <strong class="ui">Y</strong> is 0.05 plus 0.05 for each element already in the preset (step 0.01); with a centre or middle anchor the respective value starts at 0.</li>
+<li><strong class="ui">Marker types</strong>: <strong class="ui">Chapter</strong> is on; <strong class="ui">To-Do</strong> and <strong class="ui">Standard</strong> are off.</li>
+</ul>
+<h2 id="en7-preset-settings">Preset settings</h2>
+<p>Defaults of a new preset; individual built-in presets can differ.</p>
+<ul>
+<li><strong class="ui">Visible picture</strong> — Default: <strong class="ui">Full Frame</strong>. <strong class="ui">Keep inside visible picture</strong> — off.</li>
+<li><strong class="ui">Show stacked layers</strong> — off. When on, Source TC, Source Frame, Reel, Scene / Shot and Source File get one extra line per stacked layer.</li>
+<li><strong class="ui">Stack order</strong> — <strong class="ui">Default</strong>, <strong class="ui">V1 on top</strong>, <strong class="ui">V1 on bottom</strong>.</li>
+<li><strong class="ui">Layer tag</strong> — <strong class="ui">Name</strong> and <strong class="ui">Number</strong>.</li>
+<li><strong class="ui">Hide on generator clips</strong> — off. When on, all elements are hidden while the playhead is over a title or generator with no real source clip.</li>
+</ul>
+<h2 id="en7-position-preview">Position Preview</h2>
+<ul>
+<li>Black canvas in the timeline's own aspect ratio; 16:9 if unknown.</li>
+<li><strong class="ui">Grid</strong> — off by default; shows an N×N grid (2 to 8, default 3). <strong class="ui">Snap</strong> appears while the grid is on.</li>
+<li><strong class="ui">Crop</strong> — the same picker as <strong class="ui">Visible picture</strong>.</li>
+<li>Shift locks a drag to one axis, Option moves without snapping. A dragged chip stays inside the canvas.</li>
+<li>Blocks of stacked layers show placeholder sample data, so their size and position are only illustrative.</li>
+</ul>
+<h2 id="en7-limits">Limits</h2>
+<ul>
+<li>Live updates are not instant: Final Cut Pro can hold an edit back for a while before it writes it to disk. The refresh button in the status bar (tooltip "Re-scan now") re-scans.</li>
+<li>The Position Preview is approximate; the real text layout happens in Final Cut Pro.</li>
+<li>Single-value fields come from the primary clip of the storyline. Clips stacked above appear through the stacked-layer options, and <strong class="ui">Role Text</strong> also reacts to roles of connected clips.</li>
+</ul>
+<h1 id="en8-troubleshooting">Troubleshooting</h1>
+<h2 id="en8-the-viewer-shows-start-host-app-select-a-timeline">The viewer shows "start Host app + select a timeline"</h2>
+<p>The effect has no data from the Host. Start MalibuBurn Host, add your library and click a timeline. If the Host is running and a timeline is active, click the refresh button in the status bar (tooltip "Re-scan now").</p>
+<h2 id="en8-the-viewer-shows-doesn-t-fit-this-timeline">The viewer shows "doesn't fit this timeline"</h2>
+<p>The playhead could not be matched to the clip list, usually because the project start timecode is wrong. Type the project's start timecode into <strong class="ui">Project start TC (optional)</strong> in the sidebar. The message can also appear when the playhead is parked after the last clip.</p>
+<h2 id="en8-the-viewer-shows-isn-t-a-valid-timecode">The viewer shows "isn't a valid timecode"</h2>
+<p>The Host's start timecode is well-formed but does not exist at the timeline's frame rate, for example a frames value at or above the frame rate, or drop frame at a rate without drop frame. Correct <strong class="ui">Project start TC (optional)</strong> in the Host.</p>
+<h2 id="en8-the-viewer-shows-gap-no-clip-at-playhead">The viewer shows "gap (no clip at playhead)"</h2>
+<p>No clip covers the playhead position. This also happens when <strong class="ui">Hide on generator clips</strong> is on and the playhead is over a title or generator without a real source clip.</p>
+<h2 id="en8-the-viewer-shows-no-clips-found">The viewer shows "no clips found"</h2>
+<p>The selected timeline has no clips in the data the Host wrote. Re-select the timeline in the Host.</p>
+<h2 id="en8-the-viewer-shows-reinstall-the-malibuburn-plugin">The viewer shows "reinstall the MalibuBurn plugin"</h2>
+<p>The plugin is older than the Host. See the guide on updating the plugin.</p>
+<h2 id="en8-the-viewer-shows-unsupported-timeline-frame-rate">The viewer shows "unsupported timeline frame rate"</h2>
+<p>The timeline uses a frame rate MalibuBurn does not support, so no burn-in is drawn. The message names the rate.</p>
+<h2 id="en8-the-viewer-shows-a-message-about-the-host-s-data">The viewer shows a message about the Host's data</h2>
+<p>Messages such as "the Host's data file is missing or too large", "can't read the Host's data file" or "can't read the Host's data — update both the Host app and the plugin" mean the effect cannot read what the Host wrote. Re-select the timeline in the Host. If the message says to update or reinstall, update the Host and the plugin.</p>
+<h2 id="en8-an-element-shows-nothing">An element shows nothing</h2>
+<p>An element draws nothing when its value is empty, for example <strong class="ui">Reel</strong> on a clip without a reel name. <strong class="ui">Role Text</strong> also draws nothing until a role is picked; the chip shows a warning. <strong class="ui">Custom Text</strong> needs a Label.</p>
+<h2 id="en8-resize-position-stabilization-or-speed-show-nothing">Resize, position, stabilization or speed show nothing</h2>
+<p>These elements only draw something when the clip has a non-default value: <strong class="ui">Resize / Transform</strong> when a scale is not 100 percent, <strong class="ui">Position / Rotation</strong> when position or rotation is not zero, <strong class="ui">Stabilization</strong> when stabilization is on, <strong class="ui">Speed / Retime</strong> for a freeze frame, a speed ramp, or a speed other than 100 percent (a reversed clip at 100 percent shows nothing).</p>
+<h2 id="en8-source-frame-is-empty">Source Frame is empty</h2>
+<p>Source Frame is blank when the clip's source frame rate cannot be resolved, for example offline media, and on a gap in the primary storyline.</p>
+<h2 id="en8-detect-from-final-cut-pro-does-nothing">Detect from Final Cut Pro does nothing</h2>
+<p>Final Cut Pro must be running with the library open. If an error is shown, follow it; for a permission error see the guide on adding libraries. If the open libraries are already added, nothing happens.</p>
+<h2 id="en8-the-host-says-the-license-is-expired-or-blocked">The Host says the license is expired or blocked</h2>
+<p>A dialog names the reason and offers five buttons: <strong class="ui">Buy MalibuBurn</strong> (purchase page), <strong class="ui">I Already Have a License</strong> (key entry), <strong class="ui">Download Update</strong> (starts the installer download and quits the app), <strong class="ui">Lost Your License Key?</strong> and <strong class="ui">Quit</strong>. While blocked, the viewer shows only the message instead of the burn-in. If the app has been offline too long to verify your license, or has no saved license check yet, it asks you to connect to the internet.</p>
+<h2 id="en8-the-burn-in-looks-out-of-date-after-an-edit">The burn-in looks out of date after an edit</h2>
+<p>Final Cut Pro can hold an edit back for a while before it writes it to disk. Click the refresh button in the status bar (tooltip "Re-scan now") to re-scan the library.</p>
+<h2 id="en8-send-diagnostics-to-support">Send diagnostics to support</h2>
+<p>Click the gear at the bottom of the sidebar and click <strong class="ui">Copy Diagnostics</strong>, then paste the report into your message. <strong class="ui">Send Feedback…</strong> attaches a diagnostics block automatically.</p>
+<p class="ver">Written for version 0.3.62.</p>
+    </article>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-library-hinzuf-gen-und-timeline-w-hlen">Library hinzufügen und Timeline wählen</a><a class="l1" href="#de2-layout-aufbauen">Layout aufbauen</a><a class="l1" href="#de3-clip-rollen-anzeigen">Clip-Rollen anzeigen</a><a class="l1" href="#de4-presets-verwalten">Presets verwalten</a><a class="l1" href="#de5-timeline-gegen-fcpxml-pr-fen">Timeline gegen FCPXML prüfen</a><a class="l1" href="#de6-final-cut-pro-plugin-aktualisieren">Final-Cut-Pro-Plugin aktualisieren</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlersuche">Fehlersuche</a></div>
+    <article class="doc" data-lang="de" hidden lang="de">
+<h1 id="de0-erste-schritte">Erste Schritte</h1>
+<h2 id="de0-was-malibuburn-macht">Was MalibuBurn macht</h2>
+<p>MalibuBurn brennt Clip-Metadaten in den Final-Cut-Pro-Viewer und in deine Exporte: Source-Timecode, Clip- und Dateinamen, Reel, Scene und Shot, Marker, Rollen und mehr. Es besteht aus zwei Teilen. Die App MalibuBurn Host bestimmt, was angezeigt wird und wo. Der MalibuBurn-Effekt in Final Cut Pro zeichnet es.</p>
+<h2 id="de0-bevor-du-anf-ngst">Bevor du anfängst</h2>
+<p>Du brauchst macOS 14 oder neuer, Final Cut Pro und das MalibuBurn-Plugin, installiert mit dem MalibuBurn-Installer. Das Plugin liefert den Effekt, den du in Final Cut Pro hinzufügst.</p>
+<p>Beim ersten Start fragt die App nach deiner E-Mail-Adresse. Sie ist Pflicht: Der Host zeigt nur diesen Bildschirm, bis du eine eingibst. Die Adresse ordnet deine Testphase dir zu.</p>
+<h2 id="de0-testphase-starten">Testphase starten</h2>
+<p>Gib deine E-Mail-Adresse ein und klicke auf <strong class="ui">Start Trial</strong>. Die Taste bleibt deaktiviert, bis die Adresse wie eine E-Mail-Adresse aussieht. Danach öffnet sich eine kurze Anleitung; du kannst sie jederzeit über <strong class="ui">How MalibuBurn Works</strong> im Hilfe-Menü wieder öffnen.</p>
+<h2 id="de0-library-hinzuf-gen-und-timeline-w-hlen">Library hinzufügen und Timeline wählen</h2>
+<p>Ziehe deine Final-Cut-Pro-Library (die <code>.fcpbundle</code>) in das Fenster von MalibuBurn Host. Klicke dann in der Seitenleiste auf die Timeline, an der du arbeitest. Die Anleitung zum Hinzufügen von Libraries nennt die anderen Wege und erklärt, wie die Timeline automatisch gewählt wird.</p>
+<h2 id="de0-festlegen-was-angezeigt-wird">Festlegen, was angezeigt wird</h2>
+<p>Wähle ein Preset in der Preset-Liste oben in der Hauptspalte oder baue ein eigenes, indem du mit <strong class="ui">Add element</strong>… Elemente hinzufügst. Änderungen erreichen Final Cut Pro nach einem Moment; es gibt nichts zu exportieren oder zu speichern.</p>
+<h2 id="de0-effekt-in-final-cut-pro-hinzuf-gen">Effekt in Final Cut Pro hinzufügen</h2>
+<p>Verbinde in Final Cut Pro eine Adjustment Layer über deiner Timeline und ziehe sie über die volle Länge. Öffne den Effekte-Browser, gehe zu <strong class="ui">Studio Malibu</strong> und ziehe den MalibuBurn-Effekt auf diese Adjustment Layer.</p>
+<h2 id="de0-ergebnis-pr-fen">Ergebnis prüfen</h2>
+<p>Das Einbrennen folgt dem Playhead im Viewer und in jedem Export. Zeigt der Viewer statt Metadaten eine Statuszeile, nennt sie, was fehlt; die Seite zur Fehlersuche listet die häufigen Zeilen. Der Abschnitt <strong class="ui">Diagnostics</strong> in den Einstellungen enthält alles, was der Support braucht.</p>
+<h1 id="de1-library-hinzuf-gen-und-timeline-w-hlen">Library hinzufügen und Timeline wählen</h1>
+<h2 id="de1-library-ins-fenster-ziehen">Library ins Fenster ziehen</h2>
+<p>Ziehe eine Final-Cut-Pro-Library (eine <code>.fcpbundle</code>) auf das Fenster von MalibuBurn Host. Alles, was keine <code>.fcpbundle</code> ist, wird ohne Meldung ignoriert.</p>
+<h2 id="de1-plus-taste-benutzen">Plus-Taste benutzen</h2>
+<p>Klicke oben links im Fenster auf die Plus-Taste (Tooltip <strong class="ui">Add Library...</strong>) oder in der leeren Seitenleiste auf <strong class="ui">Add Library...</strong>. Wähle im Dateidialog die <code>.fcpbundle</code>. Um in einen Ordner hineinzuschauen, doppelklicke ihn; ein einfacher Klick auf das Bundle und die Open-Taste des Dialogs wählen es.</p>
+<h2 id="de1-ge-ffnete-libraries-erkennen">Geöffnete Libraries erkennen</h2>
+<p>Klicke bei laufendem Final Cut Pro und geöffneter Library auf <strong class="ui">Detect from Final Cut Pro</strong>. Die Taste ist in der leeren Seitenleiste und als Zauberstab-Symbol in der oberen Zeile. Eine neue Library wird direkt hinzugefügt. Sind mehrere geöffnet, bietet eine Liste mit dem Titel <strong class="ui">Multiple libraries are open in Final Cut Pro</strong> jede Library und <strong class="ui">Add All</strong> an.</p>
+<p>Beim ersten Mal fragt macOS, ob MalibuBurn Host Final Cut Pro steuern darf. Erlaube es. Bereits hinzugefügte Libraries werden übersprungen. Ist nichts Neues geöffnet, passiert nichts.</p>
+<h2 id="de1-fehlgeschlagene-erkennung-beheben">Fehlgeschlagene Erkennung beheben</h2>
+<p>Schlägt die Erkennung fehl, steht der Grund unter der Taste in der leeren Seitenleiste (in der oberen Zeile ist es der Tooltip). Blockiert macOS die Berechtigung, kommen zur Taste in der leeren Seitenleiste zwei Aktionen hinzu: <strong class="ui">Open Automation Settings</strong> öffnet den Bereich Automation in den Systemeinstellungen, wo MalibuBurn Host Final Cut Pro steuern dürfen muss. <strong class="ui">Copy Reset Command</strong> kopiert einen Terminal-Befehl, der die festgefahrene Berechtigung zurücksetzt; führe ihn aus, stelle sicher, dass Final Cut Pro geöffnet ist, und klicke dann erneut auf <strong class="ui">Detect from Final Cut Pro</strong>.</p>
+<h2 id="de1-timeline-w-hlen">Timeline wählen</h2>
+<p>Sobald eine Library gelesen ist, erscheinen ihre Events als einklappbare Karten in der Seitenleiste. Klicke auf eine Timeline, um sie aktiv zu machen; sie zeigt dann <strong class="ui">burning in</strong>. Klicke die aktive Timeline erneut, um die Auswahl aufzuheben. Events ohne Projekt oder Compound Clip werden nicht aufgelistet.</p>
+<p>Ist die MalibuBurn-Workflow-Extension in Final Cut Pro geöffnet, folgt der Host der dort aktiven Sequenz. Eine Timeline, die du im Host wählst, ersetzt die frühere Wahl der Extension.</p>
+<h2 id="de1-zwischen-kompakter-und-voller-liste-wechseln">Zwischen kompakter und voller Liste wechseln</h2>
+<p>Solange eine Timeline aktiv ist, zeigt die Seitenleiste eine kompakte Karte mit Sequenzname, Library und Event. Klicke auf <strong class="ui">Show All Libraries</strong>, um wieder die volle Liste zu sehen, und auf <strong class="ui">Hide Library List</strong>, um zur Karte zurückzukehren.</p>
+<h2 id="de1-library-entfernen">Library entfernen</h2>
+<p>Fahre in der vollen Liste über eine Library-Zeile und klicke auf das eingekreiste x. Die Library wird nur aus MalibuBurn entfernt; die Datei bleibt unberührt. Es gibt keine Rückfrage.</p>
+<h2 id="de1-start-timecode-des-projekts-setzen">Start-Timecode des Projekts setzen</h2>
+<p>Zeigt das Einbrennen einen Timecode, der nicht zu deiner Timeline passt, trage den Start-Timecode des Projekts unten in der Seitenleiste in <strong class="ui">Project start TC (optional)</strong> ein; das Feld erscheint, solange eine Timeline aktiv ist. Verwende HH:MM:SS:FF oder HH:MM:SS;FF für Drop Frame. Leere das Feld, um zum Wert von Final Cut Pro zurückzukehren. Eine ungültige Eingabe wird ignoriert; der Hinweis unter dem Feld nennt, welcher Wert stattdessen gilt.</p>
+<h1 id="de2-layout-aufbauen">Layout aufbauen</h1>
+<h2 id="de2-element-hinzuf-gen">Element hinzufügen</h2>
+<p>Klicke unter der Preset-Liste auf <strong class="ui">Add element</strong>… und wähle ein Feld. Das Element wird dem aktiven Preset hinzugefügt und ausgewählt. Wurde zuvor ein Element kopiert, steht <strong class="ui">Paste element</strong> an erster Stelle.</p>
+<h2 id="de2-elemente-ausw-hlen-ausblenden-und-entfernen">Elemente auswählen, ausblenden und entfernen</h2>
+<p>Jedes Element ist ein Chip. Klicke auf den Haken, um es ein- oder auszublenden, auf den Namen, um es zum Bearbeiten auszuwählen (klicke den einzigen gewählten Chip erneut, um die Auswahl aufzuheben), und auf das x, um es zu entfernen. Shift-Klick erweitert die Auswahl. Die Löschen-Taste (⌫) löscht die ausgewählten Elemente. Es gibt keine Rückfrage und kein Rückgängig.</p>
+<h2 id="de2-element-kopieren">Element kopieren</h2>
+<p>Klicke einen Chip mit der rechten Maustaste und wähle <strong class="ui">Copy</strong>. Wähle dann <strong class="ui">Paste</strong> aus dem Chip-Menü oder <strong class="ui">Paste element</strong> unter <strong class="ui">Add element</strong>…. Das eingefügte Element landet am Ende des aktiven Presets, auch über Presets hinweg.</p>
+<h2 id="de2-feld-und-label-ndern">Feld und Label ändern</h2>
+<p>Wähle ein Element. Wähle im Tile <strong class="ui">Editor</strong> ein anderes <strong class="ui">Field</strong> oder tippe ein <strong class="ui">Label</strong>. Bei den meisten Feldern ist das Label ein Präfix vor dem Wert; bei gestapelten Layern erscheint es in einem Tag wie [label V1]. Bei <strong class="ui">Custom Text</strong> ist das Label der Text selbst.</p>
+<h2 id="de2-element-positionieren">Element positionieren</h2>
+<p>Wähle im Tile <strong class="ui">Editor</strong> einen <strong class="ui">Anchor</strong> im 3×3-Raster und stelle dann <strong class="ui">X</strong> und <strong class="ui">Y</strong> mit den Reglern oder per Zahleneingabe ein. Bei einem linken, rechten, oberen oder unteren Anker ist der Wert der Abstand von dieser Kante des sichtbaren Bildes (0 bis 1). Bei einem mittigen Anker ist es der Versatz von der Mitte (−0,5 bis 0,5). Beim Wechsel des Ankers bleibt das Element an seiner Stelle auf dem Bildschirm.</p>
+<p>Du kannst das Element auch in der Position Preview ziehen. Es rastet an den Kanten und der Mitte des Bildes sowie an anderen Elementen ein. Nach dem Ziehen wird der Anker auf jeder bewegten Achse die nächste Kante oder Mitte, und X und Y werden angepasst. Halte Shift, um auf eine Achse zu sperren (Shift zu Beginn des Ziehens schaltet das Element auch in der Auswahl um), und Option, um ohne Einrasten zu bewegen.</p>
+<h2 id="de2-text-und-hintergrund-gestalten">Text und Hintergrund gestalten</h2>
+<p>Stelle unter <strong class="ui">Text</strong> <strong class="ui">Text size</strong> (12 bis 72), <strong class="ui">Text color</strong>, <strong class="ui">Text opacity</strong> und <strong class="ui">Alignment</strong> ein. Alignment wirkt nur bei mehrzeiligem Inhalt. Schalte unter <strong class="ui">Background</strong> <strong class="ui">Show background</strong> ein oder aus und stelle <strong class="ui">Background color</strong> und <strong class="ui">Background opacity</strong> ein.</p>
+<h2 id="de2-alle-elemente-auf-einmal-umgestalten">Alle Elemente auf einmal umgestalten</h2>
+<p>Öffne das Tile <strong class="ui">Bulk Style</strong> mit den Symbolen in der Kopfzeile über der Preset-Liste. Stelle den Entwurf für Text, Hintergrund oder Anker ein und klicke auf <strong class="ui">Apply to all</strong>. Die Entwürfe für Text und Hintergrund überschreiben sofort jedes Element des Presets; dupliziere das Preset zuerst, wenn du den alten Stand behalten willst. Der Anker-Entwurf rechnet die Positionen auf den neuen Anker um, die Elemente bleiben also auf dem Bildschirm an ihrer Stelle. Neue Elemente übernehmen Größe, Farben, Deckkraft, Hintergrund und Anker aus dem Entwurf, nicht aber die Ausrichtung.</p>
+<h2 id="de2-position-preview-im-eigenen-fenster-ffnen">Position Preview im eigenen Fenster öffnen</h2>
+<p>Klicke auf das Symbol oben rechts in der Vorschau, um <strong class="ui">Position Preview</strong> als eigenes Fenster zu öffnen. Die Auswahl wird mit dem Hauptfenster geteilt. Das eigene Fenster enthält die Vorschau mit ihrer Werkzeugleiste (<strong class="ui">Grid</strong>, <strong class="ui">Snap</strong>, <strong class="ui">Crop</strong>); die Tiles <strong class="ui">Editor</strong>, <strong class="ui">Settings</strong> und <strong class="ui">Bulk Style</strong> bleiben im Hauptfenster.</p>
+<h1 id="de3-clip-rollen-anzeigen">Clip-Rollen anzeigen</h1>
+<h2 id="de3-role-text-element-hinzuf-gen">Role-Text-Element hinzufügen</h2>
+<p>Klicke auf <strong class="ui">Add element</strong>… und wähle <strong class="ui">Role Text</strong>. Das Element startet im Modus <strong class="ui">Role Name</strong>. Es zeigt nichts, bis mindestens eine Rolle gewählt ist; der Editor weist mit der Meldung „None selected yet — this element won't show anything until you pick one below.“ darauf hin.</p>
+<h2 id="de3-rollen-w-hlen">Rollen wählen</h2>
+<p>Wähle das Element und öffne seine Liste <strong class="ui">Roles</strong> im Tile <strong class="ui">Editor</strong>. Die Rollen sind unter <strong class="ui">Video Roles</strong>, <strong class="ui">Audio Roles</strong> und <strong class="ui">Caption Roles</strong> gruppiert. Hake jede Rolle an, die das Element auslösen soll. Eine Hauptrolle deckt alle ihre Unterrollen und die der Hauptrolle selbst zugewiesenen Clips ab; öffne ihren Pfeil nur, um einzelne Unterrollen zu wählen. <strong class="ui">All sub-roles</strong> hakt nur die benannten Unterrollen dieser Hauptrolle an.</p>
+<p>Die Liste wird aus den hinzugefügten Libraries gefüllt. Sind keine Rollen verfügbar, steht dort „No roles found — pick a library/timeline first.“</p>
+<h2 id="de3-festlegen-was-das-element-zeigt">Festlegen, was das Element zeigt</h2>
+<p>Stelle <strong class="ui">Show</strong> auf einen von drei Modi. <strong class="ui">Custom Text</strong> zeigt das <strong class="ui">Label</strong>, solange ein Clip mit einer gewählten Rolle aktiv ist. <strong class="ui">Media Filename</strong> zeigt den Namen des aktiven Clips, den die App anstelle eines Dateinamens verwendet. <strong class="ui">Role Name</strong> zeigt den Namen der Rolle selbst. In den letzten beiden Modi ist das Label ein Präfix, wenn es nicht leer ist.</p>
+<h2 id="de3-rollen-nach-dem-import-eines-presets-pr-fen">Rollen nach dem Import eines Presets prüfen</h2>
+<p>Die Rollenauswahl eines Presets gehört zu dem Projekt, für das es erstellt wurde; ein importiertes oder geteiltes Preset passt daher womöglich nicht zu den Rollen deines Projekts. Prüfe die gewählten Rollen nach dem Import eines Presets.</p>
+<h1 id="de4-presets-verwalten">Presets verwalten</h1>
+<h2 id="de4-preset-w-hlen">Preset wählen</h2>
+<p>Benutze die Liste oben in der Hauptspalte. MalibuBurn bringt eingebaute Presets mit, darunter <strong class="ui">Netflix QC Layout</strong>, <strong class="ui">Conform</strong> und <strong class="ui">Colorist</strong>. Eingebaute Presets lassen sich direkt bearbeiten, aber nicht umbenennen oder löschen.</p>
+<h2 id="de4-eigenes-preset-anlegen">Eigenes Preset anlegen</h2>
+<p>Klicke neben der Liste auf die Plus-Taste. Sie dupliziert das aktuelle Preset unter dem Namen <code>&lt;Name&gt; Copy</code> und öffnet das Tile <strong class="ui">Settings</strong>, damit du es umbenennen kannst. Klicke später auf den Stift, um ein eigenes Preset umzubenennen.</p>
+<h2 id="de4-exportieren-und-importieren">Exportieren und importieren</h2>
+<p>Öffne im Tile <strong class="ui">Settings</strong> <strong class="ui">Preset actions</strong> und wähle <strong class="ui">Export preset</strong>…, um das Preset als JSON-Datei zu schreiben, oder <strong class="ui">Import preset</strong>…, um eine zu lesen. Ein Import wird immer zu einem normalen Preset und wird aktiviert. Existiert der Name bereits, wird „ (Imported)“ angehängt; nichts wird überschrieben.</p>
+<h2 id="de4-zur-cksetzen-oder-l-schen">Zurücksetzen oder löschen</h2>
+<p>Bei einem eingebauten Preset bietet <strong class="ui">Preset actions</strong> <strong class="ui">Reset to factory default</strong>…, das deine Änderungen nach einer Rückfrage verwirft. Bei eigenen Presets gibt es <strong class="ui">Delete preset</strong>, das sofort wirkt; das letzte verbleibende Preset lässt sich nicht löschen.</p>
+<h2 id="de4-sichtbares-bild-festlegen">Sichtbares Bild festlegen</h2>
+<p>Unter <strong class="ui">Canvas</strong> legt <strong class="ui">Visible picture</strong> die Bildfläche fest, auf die sich die Positionen der Elemente beziehen: <strong class="ui">Full Frame</strong>, <strong class="ui">2.39:1</strong>, <strong class="ui">2.35:1</strong>, <strong class="ui">1.85:1</strong>, <strong class="ui">4:3</strong> oder <strong class="ui">Custom</strong>. Eine Änderung verschiebt Elemente, weil X und Y Anteile dieser Fläche sind. Die Position Preview zeigt sie als etwas hellere Fläche. Custom nimmt Breite und Höhe, zum Beispiel 1920 und 1080; Komma oder Punkt gelten als Dezimaltrenner. Du kannst Elemente weiterhin in die Balken um das Bild setzen, solange <strong class="ui">Keep inside visible picture</strong> aus ist, was standardmäßig der Fall ist; aus dem Bildfeld selbst verlassen sie nie.</p>
+<h2 id="de4-nderungen-werden-automatisch-gespeichert">Änderungen werden automatisch gespeichert</h2>
+<p>Presets werden bei jeder Änderung automatisch gespeichert. Es gibt keine Speichern-Taste.</p>
+<h1 id="de5-timeline-gegen-fcpxml-pr-fen">Timeline gegen FCPXML prüfen</h1>
+<h2 id="de5-timeline-exportieren">Timeline exportieren</h2>
+<p>Exportiere in Final Cut Pro dieselbe Timeline, die du in MalibuBurn gewählt hast, als FCPXML.</p>
+<h2 id="de5-pr-fung-starten">Prüfung starten</h2>
+<p>Wähle die Timeline in der Seitenleiste und öffne das Tile <strong class="ui">Validate</strong> mit den Symbolen in der Kopfzeile oder das erweiterte Fenster <strong class="ui">Validate Against FCPXML</strong>. Ziehe die <code>.fcpxml</code>- oder <code>.fcpxmld</code>-Datei auf die Ablagefläche oder klicke auf <strong class="ui">Choose FCPXML...</strong>. Ohne gewählte Timeline fordert das Tile dich auf, zuerst in der Seitenleiste eine zu wählen.</p>
+<h2 id="de5-ergebnis-lesen">Ergebnis lesen</h2>
+<p>Die Prüfung vergleicht die von MalibuBurn aufgelöste Clip-Liste mit der FCPXML. <strong class="ui">PASS</strong> bedeutet, dass jeder verglichene Clip in Position auf der Timeline, Dauer und Name (bei einfachen Clips auch im Source-Start) übereinstimmt und es keine fehlenden oder zusätzlichen Einträge gibt. <strong class="ui">FAIL</strong> bedeutet, dass es Abweichungen gibt. Das Tile zeigt PASS oder FAIL, eine Zusammenfassung und zwei Zahlen; das Fenster listet die Abweichungen, gruppiert in Clips nur in der FCPXML, Clips nur in der Liste von MalibuBurn und Feldabweichungen bei zugeordneten Clips, bis zu 200 Zeilen je Gruppe.</p>
+<h2 id="de5-die-richtige-timeline-verwenden">Die richtige Timeline verwenden</h2>
+<p>Enthält die FCPXML keine Timeline mit dem gewählten Namen, vergleicht MalibuBurn eine Ersatz-Timeline aus der Datei, und das Fenster warnt, dass es nicht die hier gewählte Timeline ist. Das Tile zeigt diese Warnung nicht. Exportiere die FCPXML für die gewählte Timeline, damit der Vergleich gültig ist.</p>
+<h1 id="de6-final-cut-pro-plugin-aktualisieren">Final-Cut-Pro-Plugin aktualisieren</h1>
+<h2 id="de6-wissen-was-was-aktualisiert">Wissen, was was aktualisiert</h2>
+<p>Die Host-App sucht mit Sparkle selbst nach Updates; <strong class="ui">Check for Updates…</strong> im App-Menü prüft auf Abruf. Das Final-Cut-Pro-Plugin aktualisiert der Host: Ist das installierte Plugin älter als der Host, meldet das ein Banner oben im Fenster und installiert das passende Plugin.</p>
+<h2 id="de6-danach-final-cut-pro-neu-starten">Danach Final Cut Pro neu starten</h2>
+<p>Meldet das Banner „Final Cut Pro plugin updated to build“, starte Final Cut Pro neu. Es behält bis dahin die alte Version geladen.</p>
+<h2 id="de6-passwort-eingeben-wenn-danach-gefragt-wird">Passwort eingeben, wenn danach gefragt wird</h2>
+<p>Wurde das Plugin vom Installer installiert, klicke im Banner auf <strong class="ui">Update Plugin…</strong>. macOS fragt einmal nach deinem Passwort; spätere Updates installieren sich selbst.</p>
+<h2 id="de6-app-verwaltung-erlauben">App-Verwaltung erlauben</h2>
+<p>Sagt das Banner, dass macOS dem MalibuBurn Host das Ersetzen des Plugins nicht erlaubt, klicke auf <strong class="ui">Open App Management Settings</strong>, schalte die Berechtigung für MalibuBurn Host ein und starte den Host neu. Ist sie schon an, nimm den vollständigen Installer.</p>
+<h2 id="de6-mit-dem-installer-installieren-oder-reparieren">Mit dem Installer installieren oder reparieren</h2>
+<p><strong class="ui">Download Installer</strong> oder <strong class="ui">Download Full Installer</strong> lädt den aktuellen MalibuBurn-Installer in deinem Browser herunter; führe ihn danach aus. Nutze ihn, wenn das Plugin gar nicht installiert ist oder ein automatisches Update fehlgeschlagen ist.</p>
+<h2 id="de6-fehlenden-effekt-wiederherstellen">Fehlenden Effekt wiederherstellen</h2>
+<p>Sagt das Banner, dass der Effekt im Ordner Motion Templates fehlt, klicke einmal auf <strong class="ui">Open MalibuBurn</strong>, um ihn neu zu installieren, und starte dann Final Cut Pro neu.</p>
+<h1 id="de7-referenz">Referenz</h1>
+<h2 id="de7-voraussetzungen">Voraussetzungen</h2>
+<ul>
+<li>macOS 14 oder neuer.</li>
+<li>Final Cut Pro mit installiertem MalibuBurn-Plugin. Der Effekt heißt MalibuBurn und liegt in der Kategorie <strong class="ui">Studio Malibu</strong>.</li>
+</ul>
+<h2 id="de7-fenster-und-tiles">Fenster und Tiles</h2>
+<ul>
+<li>Das Host-Fenster öffnet mit 1200 × 760 und lässt sich nicht kleiner als 840 × 640 ziehen.</li>
+<li><strong class="ui">Editor</strong> — das gewählte Element: Element, Position, Text und Background, bei manchen Feldern ein weiterer Abschnitt. Standardmäßig offen.</li>
+<li><strong class="ui">Settings</strong> — die eigenen Einstellungen des Presets: Preset, Canvas, Stacked layers, Visibility. Standardmäßig offen.</li>
+<li><strong class="ui">Bulk Style</strong> — Entwürfe für Text, Hintergrund und Anker mit <strong class="ui">Apply to all</strong>. Standardmäßig geschlossen.</li>
+<li><strong class="ui">Validate</strong> — vergleicht die Timeline mit einer exportierten FCPXML. Standardmäßig geschlossen.</li>
+<li>Tiles öffnen und schließen mit den Symbolen in der Kopfzeile über der Preset-Liste. Wird der Inhaltsbereich schmaler als 860 Punkte, werden offene Tiles geschlossen; Tiles, die du bei schmalem Bereich öffnest, schweben über der Hauptspalte.</li>
+</ul>
+<h2 id="de7-men-s-und-kurzbefehle">Menüs und Kurzbefehle</h2>
+<ul>
+<li><strong class="ui">How MalibuBurn Works</strong> (Hilfe-Menü) — öffnet die Anleitung erneut.</li>
+<li><strong class="ui">Send Feedback…</strong> (Hilfe-Menü, ⌘?) — öffnet den Feedback-Dialog.</li>
+<li><strong class="ui">Check for Updates…</strong> (App-Menü, nicht in Mac-App-Store-Builds) — sucht nach einer neuen Host-Version.</li>
+<li><strong class="ui">Buy MalibuBurn</strong> (App-Menü) — öffnet die Kaufseite; sichtbar, bis eine Lizenz bestätigt ist.</li>
+<li>Das Menüleistensymbol — ein Menü mit Status, aktiver Timeline und Libraries, <strong class="ui">Open MalibuBurn Host</strong> und <strong class="ui">Quit MalibuBurn</strong>.</li>
+<li>Löschen-Taste (⌫) — löscht die ausgewählten Elemente.</li>
+</ul>
+<h2 id="de7-einstellungen">Einstellungen</h2>
+<ul>
+<li><strong class="ui">Appearance</strong> — <strong class="ui">Preset</strong>: Farbvorgaben für das Fenster. Standard: Claude Colors.</li>
+<li><strong class="ui">Window</strong> — <strong class="ui">Window Transparency</strong>: 0 bis 100 Prozent in 5-Prozent-Schritten; höhere Werte machen das Fenster dunkler und undurchsichtiger. Der Standardwert kommt aus der gewählten Farbvorgabe.</li>
+<li><strong class="ui">Beta</strong> — Lizenzstatus, Geräte-ID, <strong class="ui">Enter License Key…</strong> und <strong class="ui">Deactivate This Device…</strong>.</li>
+<li><strong class="ui">Feedback</strong> — <strong class="ui">Send Feedback…</strong>.</li>
+<li><strong class="ui">Diagnostics</strong> — <strong class="ui">Show Diagnostics…</strong> und <strong class="ui">Copy Diagnostics</strong>.</li>
+<li><strong class="ui">Credits &amp; Legal</strong> — ein Hinweis auf die verwendeten Komponenten (Sparkle und swift-timecode) und ein Link zur Datenschutzerklärung.</li>
+<li>Die Einstellungen öffnen sich über das Zahnrad unten in der Seitenleiste.</li>
+</ul>
+<h2 id="de7-feldtypen">Feldtypen</h2>
+<p>Es gibt 23 Feldtypen. Sie stehen in dieser Reihenfolge in <strong class="ui">Field</strong> und in <strong class="ui">Add element</strong>…:</p>
+<ul>
+<li><strong class="ui">Source TC</strong> — Source-Timecode am Playhead.</li>
+<li><strong class="ui">Project TC</strong> — Timeline-Timecode am Playhead.</li>
+<li><strong class="ui">Clip Name</strong>.</li>
+<li><strong class="ui">Source File</strong> — Name der Mediendatei.</li>
+<li><strong class="ui">Reel</strong>.</li>
+<li><strong class="ui">Scene / Shot</strong> — Scene und Shot, mit Bindestrich verbunden.</li>
+<li><strong class="ui">Speed / Retime</strong> — FREEZE, ein Prozentwert (mit REV bei Rückwärtswiedergabe) oder RAMP; bei 100 Prozent nichts, auch rückwärts.</li>
+<li><strong class="ui">Notes</strong>.</li>
+<li><strong class="ui">Angle</strong> — Name des Multicam-Angles.</li>
+<li><strong class="ui">Resolution</strong> — Breite und Höhe, geschrieben wie 1920x1080.</li>
+<li><strong class="ui">Marker (Note or Name)</strong> — der erste Marker eines angehakten Typs am Clip.</li>
+<li><strong class="ui">Resize / Transform</strong> — Mittelwert aus horizontaler und vertikaler Skalierung in Prozent, nur wenn eine Skalierung nicht 100 Prozent ist.</li>
+<li><strong class="ui">Stacked Video Clips</strong> — eine Zeile je Video-Layer.</li>
+<li><strong class="ui">Role Text</strong> — siehe die Anleitung zu Rollen.</li>
+<li><strong class="ui">Custom Text</strong> — das Label selbst.</li>
+<li><strong class="ui">Marker Name</strong>, <strong class="ui">Marker Note</strong>, <strong class="ui">Marker Name + Note</strong> — Name, Notiz oder beides des ersten passenden Markers. Die Markertypen folgen der Einstellung des Elements; die Liste <strong class="ui">Marker types</strong> wird für <strong class="ui">Marker (Note or Name)</strong>, <strong class="ui">Marker Name</strong> und <strong class="ui">Marker Note</strong> angezeigt. <strong class="ui">Marker Name + Note</strong> hat keine solche Liste und verwendet den Standard <strong class="ui">Chapter</strong>.</li>
+<li><strong class="ui">Source Frame</strong> — Bildnummer ab dem ersten Bild der Mediendatei, beginnend bei 0.</li>
+<li><strong class="ui">Stacked Layers — Reel/File + Frame # Block</strong> und <strong class="ui">Stacked Layers — Slate/Timecode Block</strong> — zweispaltige Blöcke mit einer Zeile je Layer.</li>
+<li><strong class="ui">Stabilization</strong> — zeigt den Text Stabilized nur, wenn die Stabilisierung an ist.</li>
+<li><strong class="ui">Position / Rotation</strong> — Position und Rotation des Clips, nur wenn nicht null.</li>
+</ul>
+<p>Ein Element zeichnet nichts, wenn sein Wert leer ist. Resize, Position und Stabilisierung werden nur angezeigt. Die Geschwindigkeit eines retimten Clips fließt auch in die Berechnung von <strong class="ui">Source TC</strong> und <strong class="ui">Source Frame</strong> ein.</p>
+<h2 id="de7-element-standardwerte">Element-Standardwerte</h2>
+<ul>
+<li>Ein neues Element übernimmt Größe, Textfarbe und Deckkraft, Hintergrund und Anker aus dem Entwurf in <strong class="ui">Bulk Style</strong>. Der Entwurf beginnt mit: <strong class="ui">Text size</strong> 24 (Bereich 12 bis 72), <strong class="ui">Text color</strong> weiß, <strong class="ui">Text opacity</strong> 1, <strong class="ui">Alignment</strong> links, <strong class="ui">Show background</strong> an, <strong class="ui">Background color</strong> schwarz, <strong class="ui">Background opacity</strong> 0,7, <strong class="ui">Anchor</strong> unten links.</li>
+<li><strong class="ui">X</strong> ist 0,05 und <strong class="ui">Y</strong> ist 0,05 plus 0,05 für jedes bereits im Preset vorhandene Element (Schritt 0,01); bei einem mittigen Anker beginnt der jeweilige Wert bei 0.</li>
+<li><strong class="ui">Marker types</strong>: <strong class="ui">Chapter</strong> ist an; <strong class="ui">To-Do</strong> und <strong class="ui">Standard</strong> sind aus.</li>
+</ul>
+<h2 id="de7-preset-einstellungen">Preset-Einstellungen</h2>
+<p>Standardwerte eines neuen Presets; einzelne eingebaute Presets können abweichen.</p>
+<ul>
+<li><strong class="ui">Visible picture</strong> — Standard: <strong class="ui">Full Frame</strong>. <strong class="ui">Keep inside visible picture</strong> — aus.</li>
+<li><strong class="ui">Show stacked layers</strong> — aus. Wenn an, bekommen Source TC, Source Frame, Reel, Scene / Shot und Source File eine zusätzliche Zeile je gestapeltem Layer.</li>
+<li><strong class="ui">Stack order</strong> — <strong class="ui">Default</strong>, <strong class="ui">V1 on top</strong>, <strong class="ui">V1 on bottom</strong>.</li>
+<li><strong class="ui">Layer tag</strong> — <strong class="ui">Name</strong> und <strong class="ui">Number</strong>.</li>
+<li><strong class="ui">Hide on generator clips</strong> — aus. Wenn an, werden alle Elemente ausgeblendet, solange der Playhead über einem Titel oder Generator ohne echten Quell-Clip steht.</li>
+</ul>
+<h2 id="de7-position-preview">Position Preview</h2>
+<ul>
+<li>Schwarze Fläche im Seitenverhältnis der Timeline; 16:9, wenn unbekannt.</li>
+<li><strong class="ui">Grid</strong> — standardmäßig aus; zeigt ein N×N-Raster (2 bis 8, Standard 3). <strong class="ui">Snap</strong> erscheint, solange das Raster an ist.</li>
+<li><strong class="ui">Crop</strong> — dieselbe Auswahl wie <strong class="ui">Visible picture</strong>.</li>
+<li>Shift sperrt das Ziehen auf eine Achse, Option bewegt ohne Einrasten. Ein gezogener Chip bleibt innerhalb der Fläche.</li>
+<li>Blöcke gestapelter Layer zeigen Platzhalterdaten; ihre Größe und Position sind daher nur Anhaltspunkte.</li>
+</ul>
+<h2 id="de7-grenzen">Grenzen</h2>
+<ul>
+<li>Live-Updates sind nicht sofort: Final Cut Pro kann eine Änderung eine Weile zurückhalten, bevor es sie auf die Platte schreibt. Die Aktualisieren-Taste in der Statusleiste (Tooltip „Re-scan now“) liest neu ein.</li>
+<li>Die Position Preview ist nur eine Näherung; das echte Textlayout passiert in Final Cut Pro.</li>
+<li>Einzelwert-Felder stammen vom Primärclip der Storyline. Darüber gestapelte Clips erscheinen über die Stacked-Layer-Optionen, und <strong class="ui">Role Text</strong> reagiert auch auf Rollen verbundener Clips.</li>
+</ul>
+<h1 id="de8-fehlersuche">Fehlersuche</h1>
+<h2 id="de8-der-viewer-zeigt-start-host-app-select-a-timeline">Der Viewer zeigt „start Host app + select a timeline“</h2>
+<p>Der Effekt hat keine Daten vom Host. Starte MalibuBurn Host, füge deine Library hinzu und klicke auf eine Timeline. Läuft der Host und ist eine Timeline aktiv, klicke in der Statusleiste auf die Aktualisieren-Taste (Tooltip „Re-scan now“).</p>
+<h2 id="de8-der-viewer-zeigt-doesn-t-fit-this-timeline">Der Viewer zeigt „doesn't fit this timeline“</h2>
+<p>Der Playhead konnte der Clip-Liste nicht zugeordnet werden, meist weil der Start-Timecode des Projekts nicht stimmt. Trage den Start-Timecode des Projekts in der Seitenleiste in <strong class="ui">Project start TC (optional)</strong> ein. Die Meldung kann auch erscheinen, wenn der Playhead hinter dem letzten Clip steht.</p>
+<h2 id="de8-der-viewer-zeigt-isn-t-a-valid-timecode">Der Viewer zeigt „isn't a valid timecode“</h2>
+<p>Der Start-Timecode im Host ist wohlgeformt, existiert aber bei der Bildrate der Timeline nicht, zum Beispiel ein Bildwert ab der Bildrate oder Drop Frame bei einer Rate ohne Drop Frame. Korrigiere <strong class="ui">Project start TC (optional)</strong> im Host.</p>
+<h2 id="de8-der-viewer-zeigt-gap-no-clip-at-playhead">Der Viewer zeigt „gap (no clip at playhead)“</h2>
+<p>Kein Clip deckt die Position des Playheads ab. Das passiert auch, wenn <strong class="ui">Hide on generator clips</strong> an ist und der Playhead über einem Titel oder Generator ohne echten Quell-Clip steht.</p>
+<h2 id="de8-der-viewer-zeigt-no-clips-found">Der Viewer zeigt „no clips found“</h2>
+<p>Die gewählte Timeline hat in den vom Host geschriebenen Daten keine Clips. Wähle die Timeline im Host erneut.</p>
+<h2 id="de8-der-viewer-zeigt-reinstall-the-malibuburn-plugin">Der Viewer zeigt „reinstall the MalibuBurn plugin“</h2>
+<p>Das Plugin ist älter als der Host. Siehe die Anleitung zum Aktualisieren des Plugins.</p>
+<h2 id="de8-der-viewer-zeigt-unsupported-timeline-frame-rate">Der Viewer zeigt „unsupported timeline frame rate“</h2>
+<p>Die Timeline hat eine Bildrate, die MalibuBurn nicht unterstützt, deshalb wird nichts eingebrannt. Die Meldung nennt die Rate.</p>
+<h2 id="de8-der-viewer-zeigt-eine-meldung-zu-den-daten-des-hosts">Der Viewer zeigt eine Meldung zu den Daten des Hosts</h2>
+<p>Meldungen wie „the Host's data file is missing or too large“, „can't read the Host's data file“ oder „can't read the Host's data — update both the Host app and the plugin“ bedeuten, dass der Effekt nicht lesen kann, was der Host geschrieben hat. Wähle die Timeline im Host erneut. Fordert die Meldung zu einem Update oder einer Neuinstallation auf, aktualisiere Host und Plugin.</p>
+<h2 id="de8-ein-element-zeigt-nichts">Ein Element zeigt nichts</h2>
+<p>Ein Element zeichnet nichts, wenn sein Wert leer ist, zum Beispiel <strong class="ui">Reel</strong> bei einem Clip ohne Reel-Namen. <strong class="ui">Role Text</strong> zeichnet ebenfalls nichts, bis eine Rolle gewählt ist; der Chip zeigt eine Warnung. <strong class="ui">Custom Text</strong> braucht ein Label.</p>
+<h2 id="de8-resize-position-stabilization-oder-speed-zeigen-nichts">Resize, Position, Stabilization oder Speed zeigen nichts</h2>
+<p>Diese Elemente zeichnen nur etwas, wenn der Clip einen vom Standard abweichenden Wert hat: <strong class="ui">Resize / Transform</strong>, wenn eine Skalierung nicht 100 Prozent ist, <strong class="ui">Position / Rotation</strong>, wenn Position oder Rotation nicht null sind, <strong class="ui">Stabilization</strong>, wenn die Stabilisierung an ist, <strong class="ui">Speed / Retime</strong> bei einem Standbild, einer Geschwindigkeitsrampe oder einer Geschwindigkeit ungleich 100 Prozent (ein rückwärts laufender Clip bei 100 Prozent zeigt nichts).</p>
+<h2 id="de8-source-frame-ist-leer">Source Frame ist leer</h2>
+<p>Source Frame bleibt leer, wenn die Quell-Bildrate des Clips nicht ermittelt werden kann, zum Beispiel bei Offline-Medien, und auf einer Lücke in der Primär-Storyline.</p>
+<h2 id="de8-detect-from-final-cut-pro-tut-nichts">Detect from Final Cut Pro tut nichts</h2>
+<p>Final Cut Pro muss laufen und die Library geöffnet sein. Wird ein Fehler angezeigt, folge ihm; bei einem Berechtigungsfehler siehe die Anleitung zum Hinzufügen von Libraries. Sind die geöffneten Libraries schon hinzugefügt, passiert nichts.</p>
+<h2 id="de8-der-host-meldet-die-lizenz-sei-abgelaufen-oder-gesperrt">Der Host meldet, die Lizenz sei abgelaufen oder gesperrt</h2>
+<p>Ein Dialog nennt den Grund und bietet fünf Tasten: <strong class="ui">Buy MalibuBurn</strong> (Kaufseite), <strong class="ui">I Already Have a License</strong> (Schlüsseleingabe), <strong class="ui">Download Update</strong> (startet den Installer-Download und beendet die App), <strong class="ui">Lost Your License Key?</strong> und <strong class="ui">Quit</strong>. Solange gesperrt ist, zeigt der Viewer statt des Einbrennens nur die Meldung. War die App zu lange offline, um deine Lizenz zu prüfen, oder gibt es noch keine gespeicherte Lizenzprüfung, bittet sie dich, eine Internetverbindung herzustellen.</p>
+<h2 id="de8-das-einbrennen-wirkt-nach-einer-nderung-veraltet">Das Einbrennen wirkt nach einer Änderung veraltet</h2>
+<p>Final Cut Pro kann eine Änderung eine Weile zurückhalten, bevor es sie auf die Platte schreibt. Klicke in der Statusleiste auf die Aktualisieren-Taste (Tooltip „Re-scan now“), um die Library neu einzulesen.</p>
+<h2 id="de8-diagnose-an-den-support-schicken">Diagnose an den Support schicken</h2>
+<p>Klicke auf das Zahnrad unten in der Seitenleiste und dann auf <strong class="ui">Copy Diagnostics</strong>; füge den Bericht in deine Nachricht ein. <strong class="ui">Send Feedback…</strong> hängt automatisch einen Diagnoseblock an.</p>
+<p class="ver">Geschrieben für Version 0.3.62.</p>
+    </article>
+  </div>
+  <footer>
+    <div class="foot">
+      <span>Malibu Burn · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</div>
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {"nav.back":"← Malibu Burn","nav.help":"Help","foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy"},
+  de: {"nav.back":"← Malibu Burn","nav.help":"Hilfe","foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz"}
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+(function () {
+  function show(l) {
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== l; });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); show(l); };
+  show(document.documentElement.lang === "de" ? "de" : "en");
+})();
+</script>
+</body>
+</html>
