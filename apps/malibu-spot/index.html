@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Spot · Audition Songs Against Your Cut</title>
+<meta name="description" content="Malibu Spot lets you audition song candidates against your actual cut: drop in a picture, try different songs on a cue, compare them side by side, and export the winner to Final Cut Pro. In the works, not released yet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#F25CB0;--accent-ink:#1f0514}
+.tag{background:rgba(242,92,176,.14)}
+.tag.quiet{background:rgba(255,255,255,.08)}
+.lr{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin:0}
+.lr input[type=email]{flex:1 1 220px;min-width:0;max-width:300px;font:400 14px 'Inter',sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.lr input[type=email]::placeholder{color:var(--dim)}
+.lr input[type=email]:focus{border-color:var(--accent)}
+.lr button.btn{cursor:pointer;font-family:'Inter',sans-serif}
+.lr button.btn:disabled{opacity:.55;cursor:default;filter:none}
+.lr-msg{margin:12px 0 0;font-size:13.5px;color:var(--dim)}
+.lr-msg.ok{color:var(--good)}
+.lr-msg.err{color:#FF8A80}
+.dl .lr-wrap{min-width:min(100%,420px)}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/" data-i18n="nav.back">← All apps</a>
+      <div class="brand">Malibu Spot</div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#notify" class="pill-cta" data-i18n="nav.cta">Get notified</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Final Cut Pro · Music audition</span><span class="badge" data-i18n="badge">In the works</span></div>
+      <h1 data-i18n="hero.h1">Hear the song<br><span class="soft">against your actual cut.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Malibu Spot lets you audition song candidates against your actual cut: drop in a picture, try different songs on a cue, compare them side by side, and export the winner to Final Cut Pro.</p>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+      <div class="cta-meta" data-i18n="hero.meta">In the works · Mac only · macOS 14 or later</div>
+    </div>
+
+    <div>
+      <div class="stack" aria-hidden="true">
+        <div class="win w1">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w1.h">Cue</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">Q-point</span><span class="v" data-i18n="w1.v1">editable</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Fades</span><span class="v" data-i18n="w1.v2">in and out</span></div>
+        </div>
+        <div class="win w2">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.h">A/B comparison</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Candidate A</span><span class="tag" data-i18n="w2.t">Same Q-point</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Candidate B</span><span class="tag" data-i18n="w2.t">Same Q-point</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Loudness</span><span class="tag quiet" data-i18n="w2.t3">BS.1770 matched</span></div>
+        </div>
+        <div class="win w3">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w3.h">Export</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r1">Music cues</span><span class="v">FCPXML</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">For</span><span class="tag good">Final Cut Pro</span></div>
+        </div>
+      </div>
+      <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="wf.title">Four steps</h2>
+      <p data-i18n="wf.sub">From a cue in your cut to the song you export.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Drop in the picture</h3><p data-i18n="s1.p">Put your cut's picture into Malibu Spot and set up a cue where music should come in.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Try songs on the cue</h3><p data-i18n="s2.p">Drop local audio files onto the cue, or paste a Music or Spotify link, and hear each one against the picture.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Compare side by side</h3><p data-i18n="s3.p">Play two candidates at the same Q-point, loudness-matched, and decide by ear.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Export the winner</h3><p data-i18n="s4.p">Export the music cues as FCPXML for Final Cut Pro.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="f.title">What's inside</h2>
+      <p data-i18n="f.sub">What Malibu Spot does today, as tested internally.</p>
+    </div>
+    <div class="bento">
+      <div class="tile big">
+        <div class="label" data-i18n="t1.l">Audition</div>
+        <h3 data-i18n="t1.h">Local audio, against your picture</h3>
+        <p data-i18n="t1.p">Audition audio files from your disk against the picture. Set an editable Q-point, the place in the song where the music enters, and add fades. Standard transport is built in: JKL, skim, snap and markers.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t2.h">A/B at the same Q-point</h3>
+        <p data-i18n="t2.p">Compare two candidates at the same Q-point, with BS.1770 loudness matching, so the louder song does not win by default.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t3.h">Beat-based Q-points</h3>
+        <p data-i18n="t3.p">Get Q-point suggestions based on the beat, and snap your Q-point to the beat.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t4.h">Fast song intake</h3>
+        <p data-i18n="t4.p">Drop a file on the picture, a cue or a song. Paste a Music or Spotify link. Attach a promo file.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t5.h">Recognition aids</h3>
+        <p data-i18n="t5.p">Sync-frame thumbnails, colour labels per cue, and a “heard” history with an “unheard only” filter.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t6.h">Cut versioning</h3>
+        <p data-i18n="t6.p">Carry your cues over to a new cut by same timecode, by offset, or by audio match.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t7.h">FCPXML export</h3>
+        <p data-i18n="t7.p">Export the music cues as FCPXML for Final Cut Pro.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t8.h">Streaming candidates, as a preview</h3>
+        <p data-i18n="t8.p">Apple Music and Spotify links give a best-effort preview against the picture. This is not working end to end yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="k.title">Good to know</h2>
+      <p data-i18n="k.sub">What you need, and what it does not do.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3 data-i18n="k1.h">Status and requirements</h3>
+        <ul>
+          <li data-i18n="k1.a">Mac only, one window. macOS 14 or later</li>
+          <li data-i18n="k1.b">Works offline. No account or server needed; cues are stored locally, and syncing to a project server is optional</li>
+          <li data-i18n="k1.c">Tested internally only, not yet proven in production</li>
+          <li data-i18n="k1.d">Planned price: €19. No release date yet</li>
+          <li data-i18n="k1.e">The name “Malibu Spot” may still change</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k2.h">What it does not do</h3>
+        <ul>
+          <li data-i18n="k2.a">No web review link, no mobile version, no guest voting</li>
+          <li data-i18n="k2.b">The FCPXML export does not handle start timecode yet</li>
+          <li data-i18n="k2.c">No Premiere or Avid export</li>
+          <li data-i18n="k2.d">Streaming audio has no real waveform and no exact beat grid</li>
+          <li data-i18n="k2.e">Apple Music and Spotify search is not available; streaming candidates are a preview that does not work end to end yet</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="notify">
+    <div class="dl">
+      <div>
+        <h2 data-i18n="dl.title">In the works</h2>
+        <p data-i18n="dl.sub">Malibu Spot is not released yet. Leave your email and we'll write to you at launch.</p>
+      </div>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <span>Malibu Spot · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span>
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+      </span>
+    </div>
+    <p class="legal" data-i18n="foot.legal">Malibu Spot is a professional post-production tool. Apple, Final Cut Pro, Apple Music and Mac are trademarks of Apple Inc. Spotify is a trademark of Spotify AB. Adobe Premiere Pro is a trademark of Adobe Inc. Avid is a trademark of Avid Technology, Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+  </footer>
+</div>
+
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {
+    "nav.back":"← All apps","nav.cta":"Get notified",
+    "hero.eyebrow":"Final Cut Pro · Music audition","badge":"In the works",
+    "hero.h1":'Hear the song<br><span class="soft">against your actual cut.</span>',
+    "hero.lead":"Malibu Spot lets you audition song candidates against your actual cut: drop in a picture, try different songs on a cue, compare them side by side, and export the winner to Final Cut Pro.",
+    "hero.meta":"In the works · Mac only · macOS 14 or later",
+    "lr.ph":"you@email.com","lr.btn":"Notify me at launch",
+    "lr.ok":"Thanks. We'll email you at launch.","lr.err":"That did not go through. Please try again in a moment.",
+    "w1.h":"Cue","w1.r1":"Q-point","w1.v1":"editable","w1.r2":"Fades","w1.v2":"in and out",
+    "w2.h":"A/B comparison","w2.r1":"Candidate A","w2.r2":"Candidate B","w2.t":"Same Q-point","w2.r3":"Loudness","w2.t3":"BS.1770 matched",
+    "w3.h":"Export","w3.r1":"Music cues","w3.r2":"For",
+    "illu":"Illustration of the workflow, not a screenshot.",
+    "wf.title":"Four steps","wf.sub":"From a cue in your cut to the song you export.",
+    "s1.h":"Drop in the picture","s1.p":"Put your cut's picture into Malibu Spot and set up a cue where music should come in.",
+    "s2.h":"Try songs on the cue","s2.p":"Drop local audio files onto the cue, or paste a Music or Spotify link, and hear each one against the picture.",
+    "s3.h":"Compare side by side","s3.p":"Play two candidates at the same Q-point, loudness-matched, and decide by ear.",
+    "s4.h":"Export the winner","s4.p":"Export the music cues as FCPXML for Final Cut Pro.",
+    "f.title":"What's inside","f.sub":"What Malibu Spot does today, as tested internally.",
+    "t1.l":"Audition","t1.h":"Local audio, against your picture","t1.p":"Audition audio files from your disk against the picture. Set an editable Q-point, the place in the song where the music enters, and add fades. Standard transport is built in: JKL, skim, snap and markers.",
+    "t2.h":"A/B at the same Q-point","t2.p":"Compare two candidates at the same Q-point, with BS.1770 loudness matching, so the louder song does not win by default.",
+    "t3.h":"Beat-based Q-points","t3.p":"Get Q-point suggestions based on the beat, and snap your Q-point to the beat.",
+    "t4.h":"Fast song intake","t4.p":"Drop a file on the picture, a cue or a song. Paste a Music or Spotify link. Attach a promo file.",
+    "t5.h":"Recognition aids","t5.p":"Sync-frame thumbnails, colour labels per cue, and a “heard” history with an “unheard only” filter.",
+    "t6.h":"Cut versioning","t6.p":"Carry your cues over to a new cut by same timecode, by offset, or by audio match.",
+    "t7.h":"FCPXML export","t7.p":"Export the music cues as FCPXML for Final Cut Pro.",
+    "t8.h":"Streaming candidates, as a preview","t8.p":"Apple Music and Spotify links give a best-effort preview against the picture. This is not working end to end yet.",
+    "k.title":"Good to know","k.sub":"What you need, and what it does not do.",
+    "k1.h":"Status and requirements","k1.a":"Mac only, one window. macOS 14 or later","k1.b":"Works offline. No account or server needed; cues are stored locally, and syncing to a project server is optional","k1.c":"Tested internally only, not yet proven in production","k1.d":"Planned price: €19. No release date yet","k1.e":"The name “Malibu Spot” may still change",
+    "k2.h":"What it does not do","k2.a":"No web review link, no mobile version, no guest voting","k2.b":"The FCPXML export does not handle start timecode yet","k2.c":"No Premiere or Avid export","k2.d":"Streaming audio has no real waveform and no exact beat grid","k2.e":"Apple Music and Spotify search is not available; streaming candidates are a preview that does not work end to end yet",
+    "dl.title":"In the works","dl.sub":"Malibu Spot is not released yet. Leave your email and we'll write to you at launch.",
+    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu Spot is a professional post-production tool. Apple, Final Cut Pro, Apple Music and Mac are trademarks of Apple Inc. Spotify is a trademark of Spotify AB. Adobe Premiere Pro is a trademark of Adobe Inc. Avid is a trademark of Avid Technology, Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+  },
+  de: {
+    "nav.back":"← Alle Apps","nav.cta":"Benachrichtigen",
+    "hero.eyebrow":"Final Cut Pro · Musik-Vorhören","badge":"In Arbeit",
+    "hero.h1":'Hör den Song<br><span class="soft">gegen deinen echten Schnitt.</span>',
+    "hero.lead":"Mit Malibu Spot hörst du Song-Kandidaten gegen deinen echten Schnitt vor: Bild reinziehen, verschiedene Songs auf einem Cue ausprobieren, nebeneinander vergleichen und den Gewinner nach Final Cut Pro exportieren.",
+    "hero.meta":"In Arbeit · nur Mac · macOS 14 oder neuer",
+    "lr.ph":"deine@email.de","lr.btn":"Zum Launch benachrichtigen",
+    "lr.ok":"Danke. Wir melden uns beim Launch.","lr.err":"Das hat nicht geklappt. Bitte versuch es gleich noch einmal.",
+    "w1.h":"Cue","w1.r1":"Q-Punkt","w1.v1":"editierbar","w1.r2":"Fades","w1.v2":"ein und aus",
+    "w2.h":"A/B-Vergleich","w2.r1":"Kandidat A","w2.r2":"Kandidat B","w2.t":"Gleicher Q-Punkt","w2.r3":"Lautheit","w2.t3":"BS.1770 angeglichen",
+    "w3.h":"Export","w3.r1":"Musik-Cues","w3.r2":"Für",
+    "illu":"Illustration des Ablaufs, kein Screenshot.",
+    "wf.title":"Vier Schritte","wf.sub":"Vom Cue in deinem Schnitt zum Song, den du exportierst.",
+    "s1.h":"Bild reinziehen","s1.p":"Zieh das Bild deines Schnitts in Malibu Spot und lege einen Cue dort an, wo Musik einsetzen soll.",
+    "s2.h":"Songs auf dem Cue ausprobieren","s2.p":"Zieh lokale Audiodateien auf den Cue oder füge einen Music- oder Spotify-Link ein und hör jeden Song gegen das Bild.",
+    "s3.h":"Nebeneinander vergleichen","s3.p":"Spiel zwei Kandidaten am gleichen Q-Punkt ab, lautheitsangeglichen, und entscheide nach Gehör.",
+    "s4.h":"Gewinner exportieren","s4.p":"Exportiere die Musik-Cues als FCPXML für Final Cut Pro.",
+    "f.title":"Was drinsteckt","f.sub":"Was Malibu Spot heute kann, intern getestet.",
+    "t1.l":"Vorhören","t1.h":"Lokales Audio, gegen dein Bild","t1.p":"Hör Audiodateien von deiner Festplatte gegen das Bild vor. Setze einen editierbaren Q-Punkt, die Stelle im Song, an der die Musik einsetzt, und füge Fades hinzu. Standard-Transport ist eingebaut: JKL, Skim, Snap und Marker.",
+    "t2.h":"A/B am gleichen Q-Punkt","t2.p":"Vergleiche zwei Kandidaten am gleichen Q-Punkt, mit Lautheitsangleich nach BS.1770, damit nicht der lautere Song automatisch gewinnt.",
+    "t3.h":"Beat-basierte Q-Punkte","t3.p":"Bekomme Q-Punkt-Vorschläge auf Basis des Beats und lass deinen Q-Punkt auf den Beat einrasten.",
+    "t4.h":"Schnelle Song-Aufnahme","t4.p":"Zieh eine Datei auf das Bild, einen Cue oder einen Song. Füge einen Music- oder Spotify-Link ein. Hänge eine Promo-Datei an.",
+    "t5.h":"Wiedererkennungs-Hilfen","t5.p":"Sync-Frame-Vorschaubilder, Farbmarkierungen pro Cue und ein „Gehört“-Verlauf mit Filter „nur Ungehörte“.",
+    "t6.h":"Schnitt-Versionen","t6.p":"Übertrage deine Cues auf einen neuen Schnitt per gleichem Timecode, per Offset oder per Audio-Abgleich.",
+    "t7.h":"FCPXML-Export","t7.p":"Exportiere die Musik-Cues als FCPXML für Final Cut Pro.",
+    "t8.h":"Streaming-Kandidaten, als Vorschau","t8.p":"Apple-Music- und Spotify-Links liefern eine Vorschau nach bestem Bemühen gegen das Bild. Das funktioniert noch nicht durchgängig.",
+    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was es nicht macht.",
+    "k1.h":"Stand und Voraussetzungen","k1.a":"Nur Mac, ein Fenster. macOS 14 oder neuer","k1.b":"Funktioniert offline. Kein Konto und kein Server nötig; Cues werden lokal gespeichert, der Abgleich mit einem Projektserver ist optional","k1.c":"Nur intern getestet, noch nicht im Produktiveinsatz bewährt","k1.d":"Geplanter Preis: €19. Noch kein Veröffentlichungstermin","k1.e":"Der Name „Malibu Spot“ kann sich noch ändern",
+    "k2.h":"Was es nicht macht","k2.a":"Kein Web-Review-Link, keine mobile Version, kein Gäste-Voting","k2.b":"Der FCPXML-Export berücksichtigt den Start-Timecode noch nicht","k2.c":"Kein Premiere- oder Avid-Export","k2.d":"Streaming-Audio hat keine echte Wellenform und kein exaktes Beat-Raster","k2.e":"Eine Suche in Apple Music oder Spotify gibt es nicht; Streaming-Kandidaten sind eine Vorschau, die noch nicht durchgängig funktioniert",
+    "dl.title":"In Arbeit","dl.sub":"Malibu Spot ist noch nicht veröffentlicht. Trag deine E-Mail ein, dann melden wir uns zum Launch.",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu Spot ist ein professionelles Werkzeug für die Postproduktion. Apple, Final Cut Pro, Apple Music und Mac sind Marken von Apple Inc. Spotify ist eine Marke von Spotify AB. Adobe Premiere Pro ist eine Marke von Adobe Inc. Avid ist eine Marke von Avid Technology, Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+// Launch-request form: same endpoint, app_module and source as the Malibu Conform page.
+(function () {
+  var ENDPOINT = "https://api.malibureview.app/api/collections/launch_requests/records";
+  var APP_MODULE = "Malibu Spot";
+
+  function lang() { return document.documentElement.lang === "de" ? "de" : "en"; }
+
+  // Placeholder and aria-label are attributes, so the shared i18n pass does not reach them.
+  function localizeInputs() {
+    var t = (window.PAGE_T || {})[lang()] || {};
+    document.querySelectorAll("[data-launch-form] input[type=email]").forEach(function (input) {
+      var v = t[input.getAttribute("data-ph")];
+      if (v !== undefined) { input.placeholder = v; input.setAttribute("aria-label", v); }
+    });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); localizeInputs(); };
+  localizeInputs();
+
+  document.querySelectorAll("[data-launch-form]").forEach(function (form) {
+    var box = form.parentNode;
+    var ok = box.querySelector("[data-lr-ok]");
+    var err = box.querySelector("[data-lr-err]");
+    var input = form.querySelector("input[type=email]");
+    var btn = form.querySelector("button");
+    var busy = false;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (busy) return;
+      var email = input.value.trim();
+      if (!email || !input.checkValidity()) { input.reportValidity(); return; }
+      busy = true;
+      btn.disabled = true;
+      err.hidden = true;
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ app_module: APP_MODULE, email: email, source: "coming-soon-website" })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("http " + r.status);
+        form.hidden = true;
+        ok.hidden = false;
+      }).catch(function () {
+        err.hidden = false;
+        busy = false;
+        btn.disabled = false;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
