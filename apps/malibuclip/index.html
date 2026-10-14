@@ -3,336 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MalibuClip · Clipboard Manager for macOS</title>
+<title>MalibuClip · Clipboard and Screen Capture for macOS</title>
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="description" content="MalibuClip keeps everything you copy in your menu bar — pin what matters, capture your screen, annotate, done.">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#08080C;--bg-soft:#0E0E14;--card:#111118;--line:#1c1c26;--brand:#B968FF;--teal:#D48CFF;--text:#E8E6E3;--muted:#9A988F;--dim:#67655e}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,12,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .nav-left{display:flex;align-items:center;gap:16px}
-  .nav-back{font-size:13px;color:var(--muted)}.nav-back:hover{color:var(--text)}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-  .brand .mark{width:30px;height:30px;border-radius:8px;object-fit:cover}
-  .nav-right{display:flex;align-items:center;gap:12px}
-  .lang-sw{display:flex;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:3px}
-  .lang-sw button{background:none;border:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);padding:4px 10px;border-radius:6px;transition:.15s;font-family:inherit}
-  .lang-sw button.active{background:var(--brand);color:#fff}
-  .nav-cta{font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;background:var(--brand);color:#fff}
-  .hero{text-align:center;padding:90px 0 70px;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(185,104,255,.12),transparent 70%);pointer-events:none}
-  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--brand);background:rgba(185,104,255,.08);border:1px solid rgba(185,104,255,.22);padding:6px 14px;border-radius:100px;margin-bottom:24px}
-  .hero h1{font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;color:#fff}
-  .grad{background:linear-gradient(120deg,var(--brand),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:linear-gradient(135deg,var(--brand),#8A2BE2);color:#fff;box-shadow:0 8px 30px rgba(185,104,255,.25)}
-  .btn .ico{font-size:20px}
-  .btn small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
-  .hero .micro{margin-top:18px;font-size:12px;color:var(--dim)}
-  .workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:50px 0;position:relative}
-  .workflow::before{content:"";position:absolute;top:32px;left:calc(12.5% + 8px);right:calc(12.5% + 8px);height:2px;background:linear-gradient(90deg,var(--brand),var(--teal));opacity:.3}
-  .wstep{text-align:center;padding:0 12px}
-  .wstep .wnum{width:64px;height:64px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;position:relative;z-index:1}
-  .wstep h3{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
-  .wstep p{font-size:12.5px;color:var(--muted)}
-  section.block{padding:70px 0;border-top:1px solid var(--line)}
-  .eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
-  h2.section-title{font-size:32px;font-weight:700;letter-spacing:-.6px;color:#fff;margin-bottom:14px}
-  .section-intro{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:40px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
-  .feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .2s}
-  .feature:hover{border-color:rgba(185,104,255,.35)}
-  .feature .fico{font-size:24px;margin-bottom:14px;display:block}
-  .feature h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px}
-  .feature p{font-size:14px;color:var(--muted)}
-  .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .trust .t{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
-  .trust .t .k{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
-  .trust .t p{font-size:13.5px;color:var(--muted)}
-  .download{background:linear-gradient(135deg,rgba(185,104,255,.10),rgba(212,140,255,.07));border:1px solid rgba(185,104,255,.2);border-radius:20px;padding:48px 40px;text-align:center}
-  .download h2{font-size:28px;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
-  .download p{color:var(--muted);margin-bottom:28px}
-  footer{border-top:1px solid var(--line);padding:44px 0 60px}
-  .foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  .foot-links a{font-size:13px;color:var(--muted);margin-right:18px}
-  .foot-links a:hover{color:var(--text)}
-  .disclaimer{margin-top:24px;font-size:11.5px;color:var(--dim);line-height:1.6;max-width:760px}
-  .coming-soon-badge{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 26px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);cursor:default}
-  .coming-soon-badge small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:1px}
-  .coming-soon-badge a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-  @media(max-width:700px){.workflow{grid-template-columns:1fr 1fr;gap:28px}.workflow::before{display:none}.hero h1{font-size:36px}.hero p.lead{font-size:17px}h2.section-title{font-size:26px}.foot-inner{flex-direction:column}}
-
-  .lr-form{display:inline-flex;gap:6px;margin-top:6px;align-items:center}
-  .lr-form input[type=email]{font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;width:170px}
-  .lr-form input[type=email]::placeholder{color:rgba(255,255,255,.4)}
-  .lr-form button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:none;background:rgba(255,255,255,.16);color:inherit;cursor:pointer}
-  .lr-form button:hover{background:rgba(255,255,255,.24)}
-  .lr-form button:disabled{opacity:.5;cursor:default}
-  .lr-success{font-size:13px;color:inherit;opacity:.85}
-</style>
+<meta name="description" content="MalibuClip lives in your menu bar: clipboard history that keeps Final Cut Pro formats intact, screenshots with annotation, and screen recordings with cursor-tracked Auto-Zoom and Final Cut Pro export.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>:root{--accent:#B968FF;--accent-ink:#13061f}</style>
 </head>
 <body>
 <script src="/nav.js" defer></script>
-<nav>
-  <div class="wrap nav-inner">
-    <div class="nav-left">
-      <a class="nav-back" href="/apps/">← All apps</a>
-      <div class="brand"><img class="mark" src="icon.png" alt="MalibuClip"> MalibuClip</div>
+
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/" data-i18n="nav.back">← All apps</a>
+      <div class="brand"><img src="icon.png" alt="">MalibuClip</div>
     </div>
-    <div class="nav-right">
-      <div class="lang-sw">
+    <div class="pagebar-right">
+      <div class="lang">
         <button id="btn-de" onclick="setLang('de')">DE</button>
         <button id="btn-en" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#download" class="nav-cta" data-i18n="nav.cta">Download</a>
+      <a href="#download" class="pill-cta" data-i18n="nav.cta">Download</a>
     </div>
   </div>
-</nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="pill" data-i18n="hero.pill">📋 Clipboard Manager · Screen Capture · macOS</span>
-    <h1 data-i18n="hero.h1">Everything you copy.<br><span class="grad">Every screenshot, done right.</span></h1>
-    <p class="lead" data-i18n="hero.lead">MalibuClip keeps a running history of everything you copy — and pairs it with a full screenshot toolkit: window capture, scrolling capture that stitches a whole page into one image, and a proper annotation editor with arrows, shapes, redaction, and callouts.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg">
-        <span class="ico">🖥️</span><span data-i18n="hero.btn">Download for Mac<small>Notarized · macOS 26+ (Apple Silicon)</small></span>
-      </a>
-    </div>
-    <p class="micro" data-i18n="hero.micro">Menu bar clipboard history · Scrolling screenshot capture · Full annotation toolkit</p>
-  </div>
-</header>
-
-<section class="block">
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="wf.eyebrow">The Workflow</div>
-    <h2 class="section-title" data-i18n="wf.title">Copy, pin, capture, annotate.</h2>
-    <div class="workflow">
-      <div class="wstep">
-        <div class="wnum">📋</div>
-        <h3 data-i18n="w1.h">Copy anything</h3>
-        <p data-i18n="w1.p">Text, images, or files — MalibuClip catches it automatically and keeps a running history in the menu bar.</p>
-      </div>
-      <div class="wstep">
-        <div class="wnum">📌</div>
-        <h3 data-i18n="w2.h">Pin what matters</h3>
-        <p data-i18n="w2.p">Keep frequently-used snippets pinned at the top of the list, always one click away.</p>
-      </div>
-      <div class="wstep">
-        <div class="wnum">🖼️</div>
-        <h3 data-i18n="w3.h">Capture anything</h3>
-        <p data-i18n="w3.p">A window, a region, or a long scrolling page — MalibuClip stitches scrolling captures into one tall image automatically.</p>
-      </div>
-      <div class="wstep">
-        <div class="wnum">✏️</div>
-        <h3 data-i18n="w4.h">Annotate &amp; share</h3>
-        <p data-i18n="w4.p">Arrows, shapes, text, numbered callouts, and blur/mosaic redaction — mark it up, then copy or export.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="feat.eyebrow">What's inside</div>
-    <h2 class="section-title" data-i18n="feat.title">A clipboard manager that stays out of the way.</h2>
-    <p class="section-intro" data-i18n="feat.intro">Lives in your menu bar, opens with a shortcut, and gets out of your way the moment you're done.</p>
-    <div class="grid">
-      <div class="feature">
-        <span class="fico">📋</span>
-        <h3 data-i18n="f1.t">Clipboard history</h3>
-        <p data-i18n="f1.p">Every copy is kept in order, searchable, right in the menu bar — no more losing something you copied two steps ago.</p>
-      </div>
-      <div class="feature">
-        <span class="fico">📌</span>
-        <h3 data-i18n="f2.t">Pin favorites</h3>
-        <p data-i18n="f2.p">Snippets you reuse constantly — signatures, boilerplate, links — stay pinned at the top instead of scrolling away.</p>
-      </div>
-      <div class="feature">
-        <span class="fico">🖼️</span>
-        <h3 data-i18n="f3.t">Scrolling capture</h3>
-        <p data-i18n="f3.p">Capture a window or webpage that's taller than your screen — MalibuClip scrolls it automatically and stitches every frame into one seamless image.</p>
-      </div>
-      <div class="feature">
-        <span class="fico">✏️</span>
-        <h3 data-i18n="f4.t">Full annotation toolkit</h3>
-        <p data-i18n="f4.p">Arrows, shapes, highlighter, text labels, numbered callouts, and blur/mosaic redaction — a real markup editor, not a single pen tool.</p>
-      </div>
-      <div class="feature">
-        <span class="fico">🎬</span>
-        <h3 data-i18n="f5.t">Screen recording</h3>
-        <p data-i18n="f5.p">Capture your screen with optional system audio, straight from the menu bar — no need to open QuickTime.</p>
-      </div>
-      <div class="feature">
-        <span class="fico">🔒</span>
-        <h3 data-i18n="f6.t">Local &amp; private</h3>
-        <p data-i18n="f6.p">Your clipboard history and screenshots stay on your Mac. No cloud sync, no account required.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="why.eyebrow">Why MalibuClip</div>
-    <h2 class="section-title" data-i18n="why.title">More than macOS gives you by default.</h2>
-    <div class="trust">
-      <div class="t"><div class="k" data-i18n="t1.k">📋 Actual history</div><p data-i18n="t1.p">macOS only remembers your last copy. MalibuClip remembers everything, pinned or not, until you clear it.</p></div>
-      <div class="t"><div class="k" data-i18n="t2.k">🎬 Capture built in</div><p data-i18n="t2.p">No need to juggle a separate screen recorder — capture, annotate, and copy the result in the same place.</p></div>
-      <div class="t"><div class="k" data-i18n="t3.k">⌨️ Fast by design</div><p data-i18n="t3.p">Menu bar and global hotkey — always one shortcut away, never a hunt through open windows.</p></div>
-      <div class="t"><div class="k" data-i18n="t4.k">🔒 Private</div><p data-i18n="t4.p">Everything stays local. No account, no cloud, no tracking.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="download">
-  <div class="wrap">
-    <div class="download">
-      <h2 data-i18n="dl.title">Download now.</h2>
-      <p data-i18n="dl.sub">Notarized, signed, ready for macOS 26+ (Apple Silicon).</p>
+  <header class="hero">
+    <div>
+      <div class="eyebrow" data-i18n="hero.eyebrow">Clipboard · Screen capture · Final Cut Pro</div>
+      <h1 data-i18n="hero.h1">Copy it. Capture it.<br><span class="soft">Record it</span> for Final Cut Pro.</h1>
+      <p class="lead" data-i18n="hero.lead">MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with cursor-tracked Auto-Zoom, ready to export to Final Cut Pro.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg">
-          <span class="ico">🖥️</span><span data-i18n="dl.btn">Download for Mac<small>DMG · macOS 26+ (Apple Silicon)</small></span>
-        </a>
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
+        <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
       </div>
+      <div class="cta-meta" data-i18n="hero.meta">Version 2.4.0 · macOS 26.0+ · Apple Silicon · free trial</div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-inner">
-      <div>
-        <div style="font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="icon.png" alt="" style="width:24px;height:24px;border-radius:6px;object-fit:cover"> MalibuClip</div>
-        <div style="font-size:13px;color:var(--dim)" data-i18n="foot.sub">A Studio Malibu Berlin product</div>
+    <div>
+      <div class="stack" aria-hidden="true">
+        <div class="win w1">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w1.head">Clipboard</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">Item 1</span><span class="v" data-i18n="w1.v1">Text</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Item 2</span><span class="v" data-i18n="w1.v2">Image</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r3">Item 3</span><span class="v">Final Cut Pro</span></div>
+        </div>
+        <div class="win w2">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.head">Record</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Screen</span><span class="tag">REC</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Microphone</span><span class="tag quiet" data-i18n="w2.t2">ON</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Auto-Zoom</span><span class="tag" data-i18n="w2.t3">ON</span></div>
+        </div>
+        <div class="win w3">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w3.head">Export</span></div>
+          <div class="row"><span class="k">FCPXML</span><span class="tag good" data-i18n="w3.tag">Ready</span></div>
+          <div class="row"><span class="k">GIF</span><span class="v" data-i18n="w3.v2">Beta</span></div>
+        </div>
       </div>
-      <div class="foot-links">
-        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a>
-        <a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+      <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="f.title">What's inside</h2>
+      <p data-i18n="f.sub">What the current version (2.4.0) actually does.</p>
+    </div>
+    <div class="bento">
+      <div class="tile big">
+        <div class="label" data-i18n="t1.l">Clipboard</div>
+        <h3 data-i18n="t1.h">History that respects Final Cut Pro</h3>
+        <p data-i18n="t1.p">MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. The history is encrypted at rest with AES-GCM.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t2.h">Screenshots</h3>
+        <p data-i18n="t2.p">Capture, annotate, and polish with Beautify. Scrolling capture and OCR are built in.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t3.h">Screen recording</h3>
+        <p data-i18n="t3.p">Record your screen with system audio, microphone and camera, then refine it in the recording editor with its zoom timeline.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t4.h">Auto-Zoom</h3>
+        <p data-i18n="t4.p">Zoom follows your cursor during the recording, and you adjust it afterwards on the timeline.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t5.h">Look and feel</h3>
+        <p data-i18n="t5.p">Set a recording background (colour, gradient or image), padding, corners and shadow, plus a click highlight.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t6.h">GIF export</h3>
+        <p data-i18n="t6.p">Export a recording as a GIF, up to 72 seconds. Beta.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t7.h">Final Cut Pro export</h3>
+        <p data-i18n="t7.p">Export an FCPXML with zoom keyframes, the camera as picture-in-picture, and optional captions.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t8.h">FCP Buffer</h3>
+        <p data-i18n="t8.p">10 to 20 numbered clipboard slots, each with its own hotkey and a malibuclip://buffer/... URL you can call from elsewhere.</p>
       </div>
     </div>
-    <p class="disclaimer" data-i18n="foot.legal">MalibuClip is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake.</p>
-  </div>
-</footer>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="k.title">Good to know</h2>
+      <p data-i18n="k.sub">What you need, and what it does not do yet.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3 data-i18n="k1.h">Requirements</h3>
+        <ul>
+          <li data-i18n="k1.a">macOS 26.0 or later</li>
+          <li data-i18n="k1.b">Apple Silicon Mac</li>
+          <li data-i18n="k1.c">Free trial, then a one-time license</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k2.h">Not there yet</h3>
+        <ul>
+          <li data-i18n="k2.a">GIF export and Studio Mode are still in beta</li>
+          <li data-i18n="k2.b">Studio Mode records without the cursor and draws it smoothed at export. The cursor is always an arrow there, and it is absent in the Final Cut Pro export</li>
+          <li data-i18n="k2.c">FCP Buffer slots are stored unencrypted</li>
+          <li data-i18n="k2.d">The newest recording features are checked with pixel tests and are still being proven in daily use</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="dl">
+      <div>
+        <h2 data-i18n="dl.title">Download MalibuClip</h2>
+        <p data-i18n="dl.sub">Version 2.4.0 for macOS 26.0 or later on Apple Silicon.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg" data-i18n="dl.btn">Download for Mac</a>
+        <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <span>MalibuClip · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span>
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+      </span>
+    </div>
+    <p class="legal" data-i18n="foot.legal">MalibuClip is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake.</p>
+  </footer>
+</div>
 
 <script>
-const T={
-  de:{
-    "nav.cta":"Download",
-    "hero.pill":"📋 Zwischenablage-Manager · Bildschirmaufnahme · macOS",
-    "hero.h1":'Alles was du kopierst.<br><span class="grad">Jeder Screenshot, richtig gemacht.</span>',
-    "hero.lead":"MalibuClip merkt sich alles, was du kopierst — und kombiniert das mit einem vollwertigen Screenshot-Toolkit: Fenster-Aufnahme, Scrolling Capture, das eine ganze Seite zu einem Bild zusammenfügt, und ein echter Annotations-Editor mit Pfeilen, Formen, Schwärzung und Beschriftungen.",
-    "hero.btn":"Für Mac laden<small>Notarisiert · macOS 26+ (Apple Silicon)</small>",
-    "hero.micro":"Zwischenablage-Verlauf in der Menüleiste · Scrolling-Screenshot-Aufnahme · Volles Annotations-Toolkit",
-    "wf.eyebrow":"Der Workflow","wf.title":"Kopieren, anpinnen, aufnehmen, annotieren.",
-    "w1.h":"Alles kopieren","w1.p":"Text, Bilder oder Dateien — MalibuClip erfasst automatisch alles und führt einen laufenden Verlauf in der Menüleiste.",
-    "w2.h":"Wichtiges anpinnen","w2.p":"Häufig genutzte Snippets bleiben oben angepinnt, immer einen Klick entfernt.",
-    "w3.h":"Alles aufnehmen","w3.p":"Ein Fenster, ein Ausschnitt oder eine lange scrollende Seite — MalibuClip fügt Scrolling Captures automatisch zu einem durchgehenden Bild zusammen.",
-    "w4.h":"Annotieren & teilen","w4.p":"Pfeile, Formen, Text, nummerierte Marker und Blur/Mosaik-Schwärzung — markieren, dann kopieren oder exportieren.",
-    "feat.eyebrow":"Was drin steckt","feat.title":"Ein Zwischenablage-Manager, der nicht im Weg steht.",
-    "feat.intro":"Lebt in der Menüleiste, öffnet sich per Shortcut, und ist wieder weg, sobald du fertig bist.",
-    "f1.t":"Zwischenablage-Verlauf","f1.p":"Jede Kopie bleibt in Reihenfolge, durchsuchbar, direkt in der Menüleiste — nie wieder etwas verlieren, das zwei Schritte zurückliegt.",
-    "f2.t":"Favoriten anpinnen","f2.p":"Signaturen, Textbausteine, Links — was du ständig brauchst, bleibt oben angepinnt statt wegzuscrollen.",
-    "f3.t":"Scrolling Capture","f3.p":"Ein Fenster oder eine Webseite aufnehmen, die höher ist als dein Bildschirm — MalibuClip scrollt automatisch mit und fügt jedes Frame zu einem nahtlosen Bild zusammen.",
-    "f4.t":"Volles Annotations-Toolkit","f4.p":"Pfeile, Formen, Textmarker, nummerierte Beschriftungen und Blur/Mosaik-Schwärzung — ein echter Markup-Editor, kein einzelnes Stift-Werkzeug.",
-    "f5.t":"Bildschirmaufnahme","f5.p":"Bildschirm mit optionalem System-Audio aufnehmen, direkt aus der Menüleiste — kein QuickTime nötig.",
-    "f6.t":"Lokal & privat","f6.p":"Dein Zwischenablage-Verlauf und deine Screenshots bleiben auf deinem Mac. Kein Cloud-Sync, kein Account nötig.",
-    "why.eyebrow":"Warum MalibuClip","why.title":"Mehr als macOS von Haus aus bietet.",
-    "t1.k":"📋 Echter Verlauf","t1.p":"macOS merkt sich nur die letzte Kopie. MalibuClip merkt sich alles, angepinnt oder nicht, bis du es löschst.",
-    "t2.k":"🎬 Aufnahme eingebaut","t2.p":"Kein separater Bildschirmrecorder nötig — aufnehmen, annotieren und das Ergebnis am selben Ort kopieren.",
-    "t3.k":"⌨️ Schnell by Design","t3.p":"Menüleiste und globaler Hotkey — immer einen Shortcut entfernt, nie eine Suche durch offene Fenster.",
-    "t4.k":"🔒 Privat","t4.p":"Alles bleibt lokal. Kein Account, keine Cloud, kein Tracking.",
-    "dl.title":"Jetzt herunterladen.","dl.sub":"Notarisiert, signiert, sofort startklar für macOS 26+ (Apple Silicon).",
-    "dl.btn":"Mac-App laden<small>DMG · macOS 26+ (Apple Silicon)</small>",
-    "foot.sub":"Ein Studio Malibu Berlin Produkt",
-    "foot.imprint":"Impressum","foot.privacy":"Datenschutz",
-    "foot.legal":"MalibuClip ist ein Produktivitäts-Tool für macOS. Feedback? Bitte den In-App-Feedback-Button nutzen — das ist der einzige Kanal, den wir überwachen und beantworten; E-Mails zur App werden nicht verfolgt. © 2026 Studio Malibu / Knut Hake."
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {
+    "nav.back":"← All apps","nav.cta":"Download",
+    "hero.eyebrow":"Clipboard · Screen capture · Final Cut Pro",
+    "hero.h1":'Copy it. Capture it.<br><span class="soft">Record it</span> for Final Cut Pro.',
+    "hero.lead":"MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with cursor-tracked Auto-Zoom, ready to export to Final Cut Pro.",
+    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · free trial",
+    "w1.head":"Clipboard","w1.r1":"Item 1","w1.v1":"Text","w1.r2":"Item 2","w1.v2":"Image","w1.r3":"Item 3",
+    "w2.head":"Record","w2.r1":"Screen","w2.r2":"Microphone","w2.t2":"ON","w2.r3":"Auto-Zoom","w2.t3":"ON",
+    "w3.head":"Export","w3.tag":"Ready","w3.v2":"Beta",
+    "illu":"Illustration of the workflow, not a screenshot.",
+    "f.title":"What's inside","f.sub":"What the current version (2.4.0) actually does.",
+    "t1.l":"Clipboard","t1.h":"History that respects Final Cut Pro","t1.p":"MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. The history is encrypted at rest with AES-GCM.",
+    "t2.h":"Screenshots","t2.p":"Capture, annotate, and polish with Beautify. Scrolling capture and OCR are built in.",
+    "t3.h":"Screen recording","t3.p":"Record your screen with system audio, microphone and camera, then refine it in the recording editor with its zoom timeline.",
+    "t4.h":"Auto-Zoom","t4.p":"Zoom follows your cursor during the recording, and you adjust it afterwards on the timeline.",
+    "t5.h":"Look and feel","t5.p":"Set a recording background (colour, gradient or image), padding, corners and shadow, plus a click highlight.",
+    "t6.h":"GIF export","t6.p":"Export a recording as a GIF, up to 72 seconds. Beta.",
+    "t7.h":"Final Cut Pro export","t7.p":"Export an FCPXML with zoom keyframes, the camera as picture-in-picture, and optional captions.",
+    "t8.h":"FCP Buffer","t8.p":"10 to 20 numbered clipboard slots, each with its own hotkey and a malibuclip://buffer/... URL you can call from elsewhere.",
+    "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
+    "k1.h":"Requirements","k1.a":"macOS 26.0 or later","k1.b":"Apple Silicon Mac","k1.c":"Free trial, then a one-time license",
+    "k2.h":"Not there yet","k2.a":"GIF export and Studio Mode are still in beta","k2.b":"Studio Mode records without the cursor and draws it smoothed at export. The cursor is always an arrow there, and it is absent in the Final Cut Pro export","k2.c":"FCP Buffer slots are stored unencrypted","k2.d":"The newest recording features are checked with pixel tests and are still being proven in daily use",
+    "dl.title":"Download MalibuClip","dl.sub":"Version 2.4.0 for macOS 26.0 or later on Apple Silicon.","dl.btn":"Download for Mac",
+    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"MalibuClip is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
   },
-  en:{
-    "nav.cta":"Download",
-    "hero.pill":"📋 Clipboard Manager · Screen Capture · macOS",
-    "hero.h1":'Everything you copy.<br><span class="grad">Every screenshot, done right.</span>',
-    "hero.lead":"MalibuClip keeps a running history of everything you copy — and pairs it with a full screenshot toolkit: window capture, scrolling capture that stitches a whole page into one image, and a proper annotation editor with arrows, shapes, redaction, and callouts.",
-    "hero.btn":"Download for Mac<small>Notarized · macOS 26+ (Apple Silicon)</small>",
-    "hero.micro":"Menu bar clipboard history · Scrolling screenshot capture · Full annotation toolkit",
-    "wf.eyebrow":"The Workflow","wf.title":"Copy, pin, capture, annotate.",
-    "w1.h":"Copy anything","w1.p":"Text, images, or files — MalibuClip catches it automatically and keeps a running history in the menu bar.",
-    "w2.h":"Pin what matters","w2.p":"Keep frequently-used snippets pinned at the top of the list, always one click away.",
-    "w3.h":"Capture anything","w3.p":"A window, a region, or a long scrolling page — MalibuClip stitches scrolling captures into one tall image automatically.",
-    "w4.h":"Annotate & share","w4.p":"Arrows, shapes, text, numbered callouts, and blur/mosaic redaction — mark it up, then copy or export.",
-    "feat.eyebrow":"What's inside","feat.title":"A clipboard manager that stays out of the way.",
-    "feat.intro":"Lives in your menu bar, opens with a shortcut, and gets out of your way the moment you're done.",
-    "f1.t":"Clipboard history","f1.p":"Every copy is kept in order, searchable, right in the menu bar — no more losing something you copied two steps ago.",
-    "f2.t":"Pin favorites","f2.p":"Snippets you reuse constantly — signatures, boilerplate, links — stay pinned at the top instead of scrolling away.",
-    "f3.t":"Scrolling capture","f3.p":"Capture a window or webpage that's taller than your screen — MalibuClip scrolls it automatically and stitches every frame into one seamless image.",
-    "f4.t":"Full annotation toolkit","f4.p":"Arrows, shapes, highlighter, text labels, numbered callouts, and blur/mosaic redaction — a real markup editor, not a single pen tool.",
-    "f5.t":"Screen recording","f5.p":"Capture your screen with optional system audio, straight from the menu bar — no need to open QuickTime.",
-    "f6.t":"Local & private","f6.p":"Your clipboard history and screenshots stay on your Mac. No cloud sync, no account required.",
-    "why.eyebrow":"Why MalibuClip","why.title":"More than macOS gives you by default.",
-    "t1.k":"📋 Actual history","t1.p":"macOS only remembers your last copy. MalibuClip remembers everything, pinned or not, until you clear it.",
-    "t2.k":"🎬 Capture built in","t2.p":"No need to juggle a separate screen recorder — capture, annotate, and copy the result in the same place.",
-    "t3.k":"⌨️ Fast by design","t3.p":"Menu bar and global hotkey — always one shortcut away, never a hunt through open windows.",
-    "t4.k":"🔒 Private","t4.p":"Everything stays local. No account, no cloud, no tracking.",
-    "dl.title":"Download now.","dl.sub":"Notarized, signed, ready for macOS 26+ (Apple Silicon).",
-    "dl.btn":"Download for Mac<small>DMG · macOS 26+ (Apple Silicon)</small>",
-    "foot.sub":"A Studio Malibu Berlin product",
-    "foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
-    "foot.legal":"MalibuClip is a productivity tool for macOS. Have feedback? Please use the in-app Feedback button — that's the only channel we monitor and respond to; emails about the app are not tracked. © 2026 Studio Malibu / Knut Hake."
+  de: {
+    "nav.back":"← Alle Apps","nav.cta":"Laden",
+    "hero.eyebrow":"Zwischenablage · Bildschirmaufnahme · Final Cut Pro",
+    "hero.h1":'Kopieren. Aufnehmen.<br><span class="soft">Aufzeichnen</span> für Final Cut Pro.',
+    "hero.lead":"MalibuClip lebt in deiner Menüleiste. Es führt deinen Zwischenablage-Verlauf mit erhaltenen Final-Cut-Pro-Formaten, macht Screenshots mit Anmerkungen und zeichnet deinen Bildschirm mit cursorgeführtem Auto-Zoom auf, bereit für den Export nach Final Cut Pro.",
+    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · kostenlos testen",
+    "w1.head":"Zwischenablage","w1.r1":"Eintrag 1","w1.v1":"Text","w1.r2":"Eintrag 2","w1.v2":"Bild","w1.r3":"Eintrag 3",
+    "w2.head":"Aufnahme","w2.r1":"Bildschirm","w2.r2":"Mikrofon","w2.t2":"AN","w2.r3":"Auto-Zoom","w2.t3":"AN",
+    "w3.head":"Export","w3.tag":"Bereit","w3.v2":"Beta",
+    "illu":"Illustration des Ablaufs, kein Screenshot.",
+    "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (2.4.0) wirklich kann.",
+    "t1.l":"Zwischenablage","t1.h":"Verlauf, der Final Cut Pro respektiert","t1.p":"MalibuClip hält fest, was du kopierst, in der Menüleiste, auch Inhalte aus der Final-Cut-Pro-Zwischenablage mit erhaltenem Format. Der Verlauf ist im Ruhezustand mit AES-GCM verschlüsselt.",
+    "t2.h":"Screenshots","t2.p":"Aufnehmen, annotieren und mit Beautify aufpolieren. Scrolling-Aufnahme und OCR sind eingebaut.",
+    "t3.h":"Bildschirmaufnahme","t3.p":"Nimm deinen Bildschirm mit Systemton, Mikrofon und Kamera auf und verfeinere ihn im Aufnahme-Editor mit seiner Zoom-Timeline.",
+    "t4.h":"Auto-Zoom","t4.p":"Der Zoom folgt während der Aufnahme deinem Cursor, und du passt ihn danach auf der Timeline an.",
+    "t5.h":"Look","t5.p":"Wähle einen Aufnahme-Hintergrund (Farbe, Verlauf oder Bild), Abstand, Ecken und Schatten, dazu eine Klick-Hervorhebung.",
+    "t6.h":"GIF-Export","t6.p":"Exportiere eine Aufnahme als GIF, bis zu 72 Sekunden. Beta.",
+    "t7.h":"Export nach Final Cut Pro","t7.p":"Exportiere eine FCPXML mit Zoom-Keyframes, der Kamera als Bild-in-Bild und optionalen Untertiteln.",
+    "t8.h":"FCP Buffer","t8.p":"10 bis 20 nummerierte Zwischenablage-Slots, jeder mit eigenem Hotkey und einer malibuclip://buffer/...-URL, die du von anderswo aufrufen kannst.",
+    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 26.0 oder neuer","k1.b":"Mac mit Apple Silicon","k1.c":"Kostenlos testen, danach einmalige Lizenz",
+    "k2.h":"Noch nicht da","k2.a":"GIF-Export und Studio Mode sind noch in der Beta","k2.b":"Der Studio Mode zeichnet ohne Cursor auf und zeichnet ihn beim Export geglättet. Der Cursor ist dort immer ein Pfeil und fehlt im Final-Cut-Pro-Export","k2.c":"FCP-Buffer-Slots werden unverschlüsselt gespeichert","k2.d":"Die neuesten Aufnahme-Funktionen werden mit Pixeltests geprüft und müssen sich im täglichen Einsatz noch bewähren",
+    "dl.title":"MalibuClip laden","dl.sub":"Version 2.4.0 für macOS 26.0 oder neuer auf Apple Silicon.","dl.btn":"Für Mac laden",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"MalibuClip ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
   }
 };
-function applyLang(l){
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const v=T[l][el.getAttribute('data-i18n')];
-    if(v!==undefined)el.innerHTML=v;
-  });
-  document.getElementById('btn-de').classList.toggle('active',l==='de');
-  document.getElementById('btn-en').classList.toggle('active',l==='en');
-  document.documentElement.lang=l;
-  localStorage.setItem('malibu-lang',l);
-}
-function setLang(l){applyLang(l);}
-(function(){
-  const s=localStorage.getItem('malibu-lang');
-  const b=(navigator.language||'').toLowerCase().startsWith('de')?'de':'en';
-  applyLang(s||b);
-})();
-
-// --- Launch-request submit handler (shared across coming-soon pages) ---
-window.submitLaunchRequest = function(form, appName){
-  var input = form.querySelector('input[type=email]');
-  var btn = form.querySelector('button');
-  var email = input.value.trim();
-  if(!email) return false;
-  btn.disabled = true;
-  var origLabel = btn.textContent;
-  btn.textContent = '...';
-  fetch('https://api.malibureview.app/api/collections/launch_requests/records', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({app_module: appName, email: email, source: 'coming-soon-website'})
-  }).then(function(r){
-    if(r.ok){
-      form.style.display = 'none';
-      if(form.nextElementSibling) form.nextElementSibling.style.display = 'block';
-    } else {
-      btn.disabled = false;
-      btn.textContent = origLabel;
-    }
-  }).catch(function(){
-    btn.disabled = false;
-    btn.textContent = origLabel;
-  });
-  return false;
-};
 </script>
+<script src="/apps/_shared/app-page.js"></script>
 </body>
 </html>
