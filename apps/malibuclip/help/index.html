@@ -133,12 +133,12 @@
 <h2 id="en2-choose-a-capture-mode">Choose a capture mode</h2>
 <p>Click the MalibuClip icon in the menu bar and then the screenshot icon in the popover (tooltip <strong class="ui">Screenshot</strong>); it starts <strong class="ui">Screenshot (Area)</strong>. All other modes start with a global shortcut. None of the capture shortcuts is assigned by default; assign each one in <strong class="ui">Settings</strong> under the <strong class="ui">Screenshots</strong> tab, in the <strong class="ui">Shortcuts</strong> section. An assigned shortcut also appears in the tooltip of the screenshot icon.</p>
 <ul>
-<li><strong class="ui">Screenshot (Area)</strong> — drag a rectangle. With the toolbar off (the default), the capture fires when you release the mouse button; a very small rectangle cancels instead.</li>
-<li><strong class="ui">Screenshot (Area, with Toolbar)</strong> — the rectangle stays on screen so you can move or resize it. A toolbar lets you switch the mode or arm a <strong class="ui">Timer</strong> (3, 5 or 10 seconds). Click inside the selection or the confirm button (it reads <strong class="ui">Capture</strong>) to capture. If <strong class="ui">All-in-One Starts With the Last Area</strong> is on (the default) and you made a selection before, the overlay opens with that selection already in place.</li>
-<li><strong class="ui">Screenshot (Window)</strong> — click a window. Not selectable are MalibuClip's own windows, windows that are not on screen or not on the normal window layer, windows 100 points or less in width or height, and windows that match the size of a display (within 2 points of its size). Use <strong class="ui">Screenshot (Full Screen)</strong> for the last kind.</li>
-<li><strong class="ui">Screenshot (Full Screen)</strong> — no overlay; it captures at once with one display, and with several displays a small menu asks which one.</li>
-<li><strong class="ui">Capture Last Area Again</strong> — no overlay; it grabs the area of your most recent area screenshot at once, without drawing it again. If there is none since MalibuClip started, it opens a normal area selection.</li>
-<li><strong class="ui">Capture Text</strong> and <strong class="ui">Capture Scrolling Page</strong> — see the next two sections.</li>
+<li><strong class="ui">Screenshot (Area)</strong>: drag a rectangle. With the toolbar off (the default), the capture fires when you release the mouse button; a very small rectangle cancels instead.</li>
+<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: the rectangle stays on screen so you can move or resize it. A toolbar lets you switch the mode or arm a <strong class="ui">Timer</strong> (3, 5 or 10 seconds). Click inside the selection or the confirm button (it reads <strong class="ui">Capture</strong>) to capture. If <strong class="ui">All-in-One Starts With the Last Area</strong> is on (the default) and you made a selection before, the overlay opens with that selection already in place.</li>
+<li><strong class="ui">Screenshot (Window)</strong>: click a window. Not selectable are MalibuClip's own windows, windows that are not on screen or not on the normal window layer, windows 100 points or less in width or height, and windows that match the size of a display (within 2 points of its size). Use <strong class="ui">Screenshot (Full Screen)</strong> for the last kind.</li>
+<li><strong class="ui">Screenshot (Full Screen)</strong>: no overlay; it captures at once with one display, and with several displays a small menu asks which one.</li>
+<li><strong class="ui">Capture Last Area Again</strong>: no overlay; it grabs the area of your most recent area screenshot at once, without drawing it again. If there is none since MalibuClip started, it opens a normal area selection.</li>
+<li><strong class="ui">Capture Text</strong> and <strong class="ui">Capture Scrolling Page</strong>: see the next two sections.</li>
 </ul>
 <p><strong class="ui">Show All-in-One Toolbar After Dragging</strong> in the <strong class="ui">Selection Tool</strong> section is off by default. When it is on, every selection waits for confirmation: after dragging a rectangle the selection stays and the toolbar appears, and for a window the first click selects it and a second click on the same window captures.</p>
 <p>Press Esc to cancel a capture before it fires. While a <strong class="ui">Timer</strong> countdown runs, the first Esc only stops the countdown and returns to the selection; a second Esc closes the overlay.</p>
@@ -205,9 +205,9 @@
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <p>The <strong class="ui">Recording (Beta)</strong> tab in <strong class="ui">Settings</strong> is marked Beta in the app. Its audio and camera switches are read when a recording starts, so they apply to the next recording.</p>
 <ul>
-<li><strong class="ui">Record System Audio</strong> — off by default.</li>
-<li><strong class="ui">Record Microphone</strong> — off by default. When you turn it on, macOS asks for the Microphone permission. Choose the device under <strong class="ui">Microphone</strong>; the default is <strong class="ui">System Default</strong>.</li>
-<li><strong class="ui">Record Camera</strong> — off by default. When you turn it on, macOS asks for the Camera permission. Choose the device under <strong class="ui">Camera</strong>. The camera is saved as a separate movie.</li>
+<li><strong class="ui">Record System Audio</strong>: off by default.</li>
+<li><strong class="ui">Record Microphone</strong>: off by default. When you turn it on, macOS asks for the Microphone permission. Choose the device under <strong class="ui">Microphone</strong>; the default is <strong class="ui">System Default</strong>.</li>
+<li><strong class="ui">Record Camera</strong>: off by default. When you turn it on, macOS asks for the Camera permission. Choose the device under <strong class="ui">Camera</strong>. The camera is saved as a separate movie.</li>
 </ul>
 <p>If you turn a switch on while macOS has the permission turned off, the switch stays off and a hint with <strong class="ui">Open System Settings</strong> appears; the button opens System Settings at the matching Privacy &amp; Security section. If the permission is withdrawn after you turned the switch on, the switch stays on and the hint appears.</p>
 <p>When a recording starts, a missing source does not stop it. If the chosen device is not connected, the system default device is used instead and a notice says so. If no device is available, or the permission is off, that source is left out. The screen is still recorded, and the recording panel shows a warning symbol with the reason. If starting fails for another reason, nothing is recorded. If the recording stream fails while a recording runs, the recording is stopped.</p>
@@ -234,9 +234,9 @@
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <p>The <strong class="ui">Look</strong> section in the editor's right-hand panel styles the exported picture:</p>
 <ul>
-<li><strong class="ui">Background</strong> — choose <strong class="ui">None</strong>, <strong class="ui">Color</strong>, <strong class="ui">Gradient</strong> or <strong class="ui">Image</strong>. With <strong class="ui">Image</strong>, click <strong class="ui">Choose…</strong> and pick a picture; MalibuClip copies it next to the recording's data.</li>
-<li><strong class="ui">Padding</strong>, <strong class="ui">Corner Radius</strong> and <strong class="ui">Shadow</strong> — shown once a background other than <strong class="ui">None</strong> is selected.</li>
-<li><strong class="ui">Highlight clicks</strong> — shows a ripple where you clicked. It is off by default and needs a recording with cursor data.</li>
+<li><strong class="ui">Background</strong>: choose <strong class="ui">None</strong>, <strong class="ui">Color</strong>, <strong class="ui">Gradient</strong> or <strong class="ui">Image</strong>. With <strong class="ui">Image</strong>, click <strong class="ui">Choose…</strong> and pick a picture; MalibuClip copies it next to the recording's data.</li>
+<li><strong class="ui">Padding</strong>, <strong class="ui">Corner Radius</strong> and <strong class="ui">Shadow</strong>: shown once a background other than <strong class="ui">None</strong> is selected.</li>
+<li><strong class="ui">Highlight clicks</strong>: shows a ripple where you clicked. It is off by default and needs a recording with cursor data.</li>
 </ul>
 <p>The look applies to Export Video and Export GIF. It is not applied to Export to Final Cut Pro.</p>
 <p>Switches and pickers in <strong class="ui">Look</strong> are saved to the recording at once, and sliders when you release them. Look changes are not part of undo: ⌘Z does not take them back, so set them back by hand.</p>
@@ -247,7 +247,7 @@
 <li>In the <strong class="ui">Recordings</strong> window, right-click the recording and choose <strong class="ui">Quick Export</strong>. In the recording editor, click <strong class="ui">Export Video</strong> instead; it first saves the zooms the editor shows and then exports like <strong class="ui">Quick Export</strong>.</li>
 <li>Wait for the progress to finish. The finished <code>.mp4</code> is shown in Finder.</li>
 </ol>
-<p>The file is named <code>&lt;recording&gt; Quick Export.mp4</code> and sits next to the recording; exporting again replaces it. The export uses the zooms stored for the recording. Auto-Zoom runs first only when no zooms have been stored yet (nothing planned or edited) and the recording has cursor data. A stored empty list (all zooms deleted, or Auto-Zoom found no clicks) stays empty: the export has no zoom and, for a recording with cursor data, warns <em>Exported without zoom — this recording has no zooms</em>. It also contains the look from the editor and the camera as picture-in-picture when you recorded one. When the recording has more than one audio track (system audio and microphone), they are mixed into one track; if the mix fails, both tracks are kept and a warning says so.</p>
+<p>The file is named <code>&lt;recording&gt; Quick Export.mp4</code> and sits next to the recording; exporting again replaces it. The export uses the zooms stored for the recording. Auto-Zoom runs first only when no zooms have been stored yet (nothing planned or edited) and the recording has cursor data. A stored empty list (all zooms deleted, or Auto-Zoom found no clicks) stays empty: the export has no zoom and, for a recording with cursor data, warns <em>Exported without zoom: this recording has no zooms</em>. It also contains the look from the editor and the camera as picture-in-picture when you recorded one. When the recording has more than one audio track (system audio and microphone), they are mixed into one track; if the mix fails, both tracks are kept and a warning says so.</p>
 <p>With <strong class="ui">Quick Export</strong>, a recording that has no stored zooms and no cursor data exports without zoom and warns that it has no cursor data. <strong class="ui">Export Video</strong> in the editor saves the editor's current zooms first (an empty list if there are none), so it exports without zoom and without that warning. Zooms you added by hand are used even without cursor data. A line under the recording says <code>Exported &lt;file name&gt;</code>; hover over it to read warnings.</p>
 <p>The exported file is yours: deleting the recording does not delete it.</p>
 <h2 id="en4-export-a-gif">Export a GIF</h2>
@@ -268,9 +268,9 @@
 </ol>
 <p>The export writes a folder <code>&lt;recording&gt; Final Cut Pro</code> next to the recording. A new export replaces it, and it stays when you delete the recording. It holds:</p>
 <ul>
-<li><code>&lt;recording&gt;.fcpxml</code> — the timeline, in the recording's pixel size at 29.97 fps.</li>
-<li><code>&lt;recording&gt;.mov</code> — a copy of the recording that the timeline links to.</li>
-<li><code>&lt;recording&gt; Camera.mov</code> — the camera movie, only if the recording has one. It is placed on the timeline as picture-in-picture.</li>
+<li><code>&lt;recording&gt;.fcpxml</code>: the timeline, in the recording's pixel size at 29.97 fps.</li>
+<li><code>&lt;recording&gt;.mov</code>: a copy of the recording that the timeline links to.</li>
+<li><code>&lt;recording&gt; Camera.mov</code>: the camera movie, only if the recording has one. It is placed on the timeline as picture-in-picture.</li>
 </ul>
 <p>The zooms are written as keyframes. The timeline gets a zoom clip whenever zooms are stored for the recording, including zooms you added by hand. Auto-Zoom runs first only when no zooms have been stored yet and the recording has cursor data; a stored empty list gives no zoom clip. From the editor, the zooms it shows are saved first.</p>
 <p>Two limits:</p>
@@ -379,8 +379,8 @@
 <h2 id="en6-let-old-items-expire">Let old items expire</h2>
 <p>Both settings are in <strong class="ui">Settings</strong> › <strong class="ui">General</strong>, section Clipboard.</p>
 <ul>
-<li><strong class="ui">Auto-Delete After</strong> — default <strong class="ui">Never</strong>. Choices are 30, 60, 90, 180 and 365 Days. Clips older than the chosen age are deleted; pinned clips are kept. Items in the <strong class="ui">Screenshots</strong> tab older than that are deleted as well. The setting takes effect immediately when you change it. Otherwise a pass runs at launch, once a day and after the Mac wakes, but only if the last pass was at least 24 hours ago. Files you saved to a folder on disk and recordings in <code>~/Movies/MalibuClip</code> are not deleted by it.</li>
-<li><strong class="ui">Storage Limit</strong> — default <strong class="ui">Up to 10 GB</strong>; other choices are 250 MB, 500 MB, 1 GB, 2 GB and 5 GB. When the store is over the limit, the oldest clips that contain an image or have a preview thumbnail are deleted first (this includes Final Cut Pro clips with a thumbnail), then the oldest clips of any kind. Pinned clips are kept. The check runs after about every 11th clip that is saved, not when you change the setting, and each pass deletes a limited number of clips, so a large reduction settles over several passes. <strong class="ui">Current Size</strong> shows the size of the clip store on disk (the database and its support folder), including <strong class="ui">Screenshots</strong> items, which this limit never deletes. FCP Buffer slots and recordings are not counted.</li>
+<li><strong class="ui">Auto-Delete After</strong>: default <strong class="ui">Never</strong>. Choices are 30, 60, 90, 180 and 365 Days. Clips older than the chosen age are deleted; pinned clips are kept. Items in the <strong class="ui">Screenshots</strong> tab older than that are deleted as well. The setting takes effect immediately when you change it. Otherwise a pass runs at launch, once a day and after the Mac wakes, but only if the last pass was at least 24 hours ago. Files you saved to a folder on disk and recordings in <code>~/Movies/MalibuClip</code> are not deleted by it.</li>
+<li><strong class="ui">Storage Limit</strong>: default <strong class="ui">Up to 10 GB</strong>; other choices are 250 MB, 500 MB, 1 GB, 2 GB and 5 GB. When the store is over the limit, the oldest clips that contain an image or have a preview thumbnail are deleted first (this includes Final Cut Pro clips with a thumbnail), then the oldest clips of any kind. Pinned clips are kept. The check runs after about every 11th clip that is saved, not when you change the setting, and each pass deletes a limited number of clips, so a large reduction settles over several passes. <strong class="ui">Current Size</strong> shows the size of the clip store on disk (the database and its support folder), including <strong class="ui">Screenshots</strong> items, which this limit never deletes. FCP Buffer slots and recordings are not counted.</li>
 </ul>
 <p>There is no limit by number of clips.</p>
 <h2 id="en6-what-is-stored-and-what-is-encrypted">What is stored, and what is encrypted</h2>
@@ -409,15 +409,15 @@
 <p>On first launch it asks for an email address (<strong class="ui">Email Required</strong>) before anything else works. After that the app runs as a trial; it is configured for 30 days. When MalibuClip may no longer be used, for example because the trial has ended, the license was revoked or could not be verified, a locked screen (<strong class="ui">MalibuClip Is Locked</strong>) replaces the popover content, and a global shortcut shows that screen instead of running its action. <strong class="ui">Buy MalibuClip</strong> opens a web page where you can buy MalibuClip.</p>
 <h2 id="en7-permissions">Permissions</h2>
 <ul>
-<li>Screen Recording — needed for every screenshot mode and for <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong> and <strong class="ui">Record Screen</strong>. Without it no capture starts and an alert offers <strong class="ui">Open System Settings</strong>.</li>
-<li>Accessibility — requested at the first launch. Used to paste into other apps (the clipboard panel shows a banner when it is missing), for the auto-scroll of <strong class="ui">Capture Scrolling Page</strong>, and for the <code>save</code> and <code>restore</code> actions of the FCP Buffer.</li>
-<li>Microphone and Camera — requested when you turn on <strong class="ui">Record Microphone</strong> or <strong class="ui">Record Camera</strong>, not at launch; if the answer is still open when a recording starts, macOS is asked then. If macOS denies the access when you turn the switch on, it goes back to off.</li>
-<li>Speech Recognition — requested when you turn on <strong class="ui">Captions</strong>, not at an export.</li>
+<li>Screen Recording: needed for every screenshot mode and for <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong> and <strong class="ui">Record Screen</strong>. Without it no capture starts and an alert offers <strong class="ui">Open System Settings</strong>.</li>
+<li>Accessibility: requested at the first launch. Used to paste into other apps (the clipboard panel shows a banner when it is missing), for the auto-scroll of <strong class="ui">Capture Scrolling Page</strong>, and for the <code>save</code> and <code>restore</code> actions of the FCP Buffer.</li>
+<li>Microphone and Camera: requested when you turn on <strong class="ui">Record Microphone</strong> or <strong class="ui">Record Camera</strong>, not at launch; if the answer is still open when a recording starts, macOS is asked then. If macOS denies the access when you turn the switch on, it goes back to off.</li>
+<li>Speech Recognition: requested when you turn on <strong class="ui">Captions</strong>, not at an export.</li>
 </ul>
 <h2 id="en7-menu-bar-popover">Menu bar popover</h2>
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <p>Click the MalibuClip icon in the menu bar. The popover has an icon bar at the top, four tabs with switches, and <strong class="ui">Settings</strong> and a quit button in the footer.</p>
-<p>The icon bar holds <strong class="ui">Screenshot</strong> (an area capture), <strong class="ui">Record Area</strong> (while a recording runs, <strong class="ui">Stop Recording</strong> replaces it), <strong class="ui">Screenshots</strong> and <strong class="ui">Recordings</strong>, which open the two galleries. While the Paste Stack holds items, <strong class="ui">Paste Next</strong> is added and the header shows how many there are. An assigned global shortcut appears in the tooltip of the matching icon. The open button in the header shows the clipboard history (tooltip <strong class="ui">Show Clipboard</strong>).</p>
+<p>The icon bar holds <strong class="ui">Screenshot</strong> (an area capture), <strong class="ui">Record Area</strong> (while a recording runs, <strong class="ui">Stop Recording</strong> replaces it), <strong class="ui">Screenshots</strong> and <strong class="ui">Recordings</strong>, which open the two galleries. While the Paste Stack holds items, <strong class="ui">Paste Next</strong> is added, with the number of entries on its icon. An assigned global shortcut appears in the tooltip of the matching icon. The open button in the header shows the clipboard history (tooltip <strong class="ui">Show Clipboard</strong>).</p>
 <p>The four tabs hold quick switches that change the same settings as <strong class="ui">Settings</strong>:</p>
 <ul>
 <li><strong class="ui">Record</strong>: <strong class="ui">System Audio</strong>, <strong class="ui">Microphone</strong>, <strong class="ui">Camera</strong>, <strong class="ui">Studio Mode</strong>.</li>
@@ -438,52 +438,52 @@
 <h2 id="en7-settings-general">Settings: General</h2>
 <p>The tabs of the <strong class="ui">Settings</strong> window are <strong class="ui">General</strong>, <strong class="ui">Filters</strong>, <strong class="ui">Blocklist</strong>, <strong class="ui">Notch Shelf</strong>, <strong class="ui">Screenshots</strong>, <strong class="ui">FCP Buffer</strong>, <strong class="ui">Recording (Beta)</strong> and <strong class="ui">About</strong>. <strong class="ui">General</strong> holds:</p>
 <ul>
-<li><strong class="ui">Storage Limit</strong> — Standard: <strong class="ui">Up to 10 GB</strong>. Choices: 250 MB, 500 MB, 1 GB, 2 GB, 5 GB, <strong class="ui">Up to 10 GB</strong>. <strong class="ui">Current Size</strong> shows what the store uses now.</li>
-<li><strong class="ui">Image Size</strong> — Standard: L. Choices: S, M, L, XL.</li>
-<li><strong class="ui">Auto-Delete After</strong> — Standard: <strong class="ui">Never</strong>. Choices: 30, 60, 90, 180 or 365 Days. Removes history clips and <strong class="ui">Screenshots</strong> list entries that are older; pinned clips are skipped. Files in a screenshot save folder and recordings are not deleted.</li>
-<li><strong class="ui">Reject duplicates</strong> — Standard: on.</li>
-<li><strong class="ui">Download link previews</strong> — Standard: on. Addresses that point to the local machine or a private network (as IP addresses or known internal host names) are not fetched.</li>
-<li><strong class="ui">Show full text (selectable)</strong> — Standard: on.</li>
-<li><strong class="ui">Double-click to paste</strong> — Standard: off.</li>
-<li><strong class="ui">Close after pasting</strong> — Standard: on.</li>
-<li><strong class="ui">Close when clicking outside</strong> — Standard: on.</li>
-<li><strong class="ui">Hide title bar</strong> — Standard: on.</li>
-<li><strong class="ui">Show as right-side panel</strong> — Standard: on.</li>
-<li><strong class="ui">Auto-reveal on right edge hover</strong> — Standard: off. Turning it on also switches to the right-side panel.</li>
-<li><strong class="ui">Glass Darkness</strong> — Standard: 45%, range 0% to 70%.</li>
-<li><strong class="ui">Launch at Login</strong> — Standard: on. The app registers itself as a login item at launch while this is on.</li>
+<li><strong class="ui">Storage Limit</strong>: Default: <strong class="ui">Up to 10 GB</strong>. Choices: 250 MB, 500 MB, 1 GB, 2 GB, 5 GB, <strong class="ui">Up to 10 GB</strong>. <strong class="ui">Current Size</strong> shows what the store uses now.</li>
+<li><strong class="ui">Image Size</strong>: Default: L. Choices: S, M, L, XL.</li>
+<li><strong class="ui">Auto-Delete After</strong>: Default: <strong class="ui">Never</strong>. Choices: 30, 60, 90, 180 or 365 Days. Removes history clips and <strong class="ui">Screenshots</strong> list entries that are older; pinned clips are skipped. Files in a screenshot save folder and recordings are not deleted.</li>
+<li><strong class="ui">Reject duplicates</strong>: Default: on.</li>
+<li><strong class="ui">Download link previews</strong>: Default: on. Addresses that point to the local machine or a private network (as IP addresses or known internal host names) are not fetched.</li>
+<li><strong class="ui">Show full text (selectable)</strong>: Default: on.</li>
+<li><strong class="ui">Double-click to paste</strong>: Default: off.</li>
+<li><strong class="ui">Close after pasting</strong>: Default: on.</li>
+<li><strong class="ui">Close when clicking outside</strong>: Default: on.</li>
+<li><strong class="ui">Hide title bar</strong>: Default: on.</li>
+<li><strong class="ui">Show as right-side panel</strong>: Default: on.</li>
+<li><strong class="ui">Auto-reveal on right edge hover</strong>: Default: off. Turning it on also switches to the right-side panel.</li>
+<li><strong class="ui">Glass Darkness</strong>: Default: 45%, range 0% to 70%.</li>
+<li><strong class="ui">Launch at Login</strong>: Default: on. The app registers itself as a login item at launch while this is on.</li>
 </ul>
 <h2 id="en7-settings-filters-blocklist-and-notch-shelf">Settings: Filters, Blocklist and Notch Shelf</h2>
 <ul>
-<li><strong class="ui">Filters</strong> — <strong class="ui">Show Images filter</strong>, <strong class="ui">Show Links filter</strong>, <strong class="ui">Show Final Cut Pro filter</strong> and <strong class="ui">Show recent apps in filter bar</strong>, all on by default; plus the list of saved app filters.</li>
-<li><strong class="ui">Blocklist</strong> — <strong class="ui">Blocked Applications</strong> lists apps; a copy made while one of them is the frontmost app is not recorded. <strong class="ui">Add Application</strong> adds one. A built-in list of password managers and Keychain Access, and the pasteboard types for concealed content, are always ignored; see the guide on keeping apps out of the history.</li>
-<li><strong class="ui">Notch Shelf</strong> — <strong class="ui">Enable Notch Shelf</strong>, off by default. When on, it replaces the clipboard panel; <strong class="ui">Show on Display</strong> chooses the display. The shelf has no FCP Buffer tab.</li>
+<li><strong class="ui">Filters</strong>: <strong class="ui">Show Images filter</strong>, <strong class="ui">Show Links filter</strong>, <strong class="ui">Show Final Cut Pro filter</strong> and <strong class="ui">Show recent apps in filter bar</strong>, all on by default; plus the list of saved app filters.</li>
+<li><strong class="ui">Blocklist</strong>: <strong class="ui">Blocked Applications</strong> lists apps; a copy made while one of them is the frontmost app is not recorded. <strong class="ui">Add Application</strong> adds one. A built-in list of password managers and Keychain Access, and the pasteboard types for concealed content, are always ignored; see the guide on keeping apps out of the history.</li>
+<li><strong class="ui">Notch Shelf</strong>: <strong class="ui">Enable Notch Shelf</strong>, off by default. When on, it replaces the clipboard panel; <strong class="ui">Show on Display</strong> chooses the display. The shelf has no FCP Buffer tab.</li>
 </ul>
 <h2 id="en7-settings-screenshots">Settings: Screenshots</h2>
 <ul>
-<li><strong class="ui">Shortcuts</strong> — the eight screenshot and capture actions listed above.</li>
-<li><strong class="ui">Replace macOS Screenshot Shortcuts</strong> — the button <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> assigns ⇧⌘3 to Full Screen, ⇧⌘4 to Area and ⇧⌘5 to Area with Toolbar, replacing any assignment those actions had. Turn off the macOS shortcuts in System Settings yourself.</li>
-<li><strong class="ui">Selection Tool</strong> — <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, off by default; <strong class="ui">All-in-One Starts With the Last Area</strong>, on by default; <strong class="ui">Aspect Ratio</strong> snaps a new selection to a ratio or a pixel size.</li>
-<li><strong class="ui">Scrolling Page</strong> — <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, on by default; it applies to <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, including the scrolling-window mode of the All-in-One toolbar.</li>
-<li><strong class="ui">Save Location</strong> — <strong class="ui">Also Save Screenshots to a Folder</strong>, off by default. When on, new screenshots are also written as PNG files to the folder shown in <strong class="ui">Folder</strong>; until you choose another one with <strong class="ui">Choose Folder…</strong>, that is <code>~/Pictures/MalibuClip Screenshots</code>.</li>
+<li><strong class="ui">Shortcuts</strong>: the eight screenshot and capture actions listed above.</li>
+<li><strong class="ui">Replace macOS Screenshot Shortcuts</strong>: the button <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> assigns ⇧⌘3 to Full Screen, ⇧⌘4 to Area and ⇧⌘5 to Area with Toolbar, replacing any assignment those actions had. Turn off the macOS shortcuts in System Settings yourself.</li>
+<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, off by default; <strong class="ui">All-in-One Starts With the Last Area</strong>, on by default; <strong class="ui">Aspect Ratio</strong> snaps a new selection to a ratio or a pixel size.</li>
+<li><strong class="ui">Scrolling Page</strong>: <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, on by default; it applies to <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, including the scrolling-window mode of the All-in-One toolbar.</li>
+<li><strong class="ui">Save Location</strong>: <strong class="ui">Also Save Screenshots to a Folder</strong>, off by default. When on, new screenshots are also written as PNG files to the folder shown in <strong class="ui">Folder</strong>; until you choose another one with <strong class="ui">Choose Folder…</strong>, that is <code>~/Pictures/MalibuClip Screenshots</code>.</li>
 </ul>
 <h2 id="en7-settings-fcp-buffer">Settings: FCP Buffer</h2>
 <ul>
-<li><strong class="ui">Slots</strong> — the number of slots, default 10, range 1 to 20. Lowering the number hides slots but keeps their content.</li>
-<li><strong class="ui">Shortcuts</strong> — <strong class="ui">Use ⌃⌥ Number Preset</strong> assigns ⌃⌥ plus a number key to slots 1 to 10 (key 0 is slot 10); <strong class="ui">Clear All</strong> removes every slot shortcut. Each slot has one shortcut that pastes the slot. There is no shortcut that fills a slot.</li>
-<li><strong class="ui">Remote Control</strong> — the <code>malibuclip://buffer/</code> URL scheme with the actions <code>save</code>, <code>restore</code> and <code>clear</code>.</li>
+<li><strong class="ui">Slots</strong>: the number of slots, default 10, range 1 to 20. Lowering the number hides slots but keeps their content.</li>
+<li><strong class="ui">Shortcuts</strong>: <strong class="ui">Use ⌃⌥ Number Preset</strong> assigns ⌃⌥ plus a number key to slots 1 to 10 (key 0 is slot 10); <strong class="ui">Clear All</strong> removes every slot shortcut. Each slot has one shortcut that pastes the slot. There is no shortcut that fills a slot.</li>
+<li><strong class="ui">Remote Control</strong>: the <code>malibuclip://buffer/</code> URL scheme with the actions <code>save</code>, <code>restore</code> and <code>clear</code>.</li>
 </ul>
 <p>See the guide on the FCP Buffer for the steps.</p>
 <h2 id="en7-settings-recording-beta">Settings: Recording (Beta)</h2>
 <p>The tab shows a <strong class="ui">BETA</strong> badge: Auto-Zoom, the editor, microphone and camera recording and the Final Cut Pro export are new.</p>
 <ul>
-<li><strong class="ui">Shortcuts</strong> — <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong>, <strong class="ui">Record Screen</strong>, <strong class="ui">Stop Recording</strong>.</li>
-<li><strong class="ui">Studio Mode</strong> — off by default. Records without the cursor in the picture; the recording editor draws it in the video and GIF export. The Final Cut Pro export has no cursor then.</li>
-<li><strong class="ui">Record System Audio</strong> — off by default.</li>
-<li><strong class="ui">Record Microphone</strong> and <strong class="ui">Record Camera</strong> — off by default, each with a device picker (<strong class="ui">System Default</strong> or a named device) that appears while the switch is on.</li>
-<li><strong class="ui">Captions</strong> — off by default; with a language choice. Applies to the Final Cut Pro export.</li>
-<li><strong class="ui">GIF Export</strong> — <strong class="ui">Frame Rate</strong>: 8, 12 or 15 fps, default 12. <strong class="ui">Width</strong>: 480, 720 or 960 px, default 720.</li>
-<li><strong class="ui">Storage</strong> — <strong class="ui">Open Folder</strong> opens the recordings folder.</li>
+<li><strong class="ui">Shortcuts</strong>: <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong>, <strong class="ui">Record Screen</strong>, <strong class="ui">Stop Recording</strong>.</li>
+<li><strong class="ui">Studio Mode</strong>: off by default. Records without the cursor in the picture; the recording editor draws it in the video and GIF export. The Final Cut Pro export has no cursor then.</li>
+<li><strong class="ui">Record System Audio</strong>: off by default.</li>
+<li><strong class="ui">Record Microphone</strong> and <strong class="ui">Record Camera</strong>: off by default, each with a device picker (<strong class="ui">System Default</strong> or a named device) that appears while the switch is on.</li>
+<li><strong class="ui">Captions</strong>: off by default; with a language choice. Applies to the Final Cut Pro export.</li>
+<li><strong class="ui">GIF Export</strong>: <strong class="ui">Frame Rate</strong>: 8, 12 or 15 fps, default 12. <strong class="ui">Width</strong>: 480, 720 or 960 px, default 720.</li>
+<li><strong class="ui">Storage</strong>: <strong class="ui">Open Folder</strong> opens the recordings folder.</li>
 </ul>
 <h2 id="en7-settings-about">Settings: About</h2>
 <p><strong class="ui">About</strong> shows the version and has <strong class="ui">Privacy</strong> and <strong class="ui">Terms of Use</strong> buttons, <strong class="ui">Redeem License…</strong> to enter a license key, and <strong class="ui">Switch Devices…</strong> to free this Mac's license activation so the key can be used on another Mac. Updates are delivered with Sparkle: MalibuClip checks automatically once a day, and <strong class="ui">Check for Updates</strong> in the <strong class="ui">App</strong> tab of the popover starts a check by hand.</p>
@@ -542,7 +542,7 @@
 <p>An unknown action, a missing or invalid slot number, or a slot above the configured slot count is answered with an error banner in the <strong class="ui">FCP Buffer</strong> tab and a beep; if that tab is not open you only hear the beep. The <code>save</code> action needs the Accessibility permission. Without it, <code>restore</code> only puts the slot on the clipboard (press <code>⌘V</code> yourself) and shows a banner and a beep. While the license check blocks the app, valid buffer URLs are ignored without a message.</p>
 <h2 id="en8-launch-at-login-does-not-take-effect">Launch at Login does not take effect</h2>
 <p>macOS may need your approval before MalibuClip can start at login. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> then shows a note with an <strong class="ui">Open Login Items</strong> button.</p>
-<p class="ver">Written for version 2.5.0.</p>
+<p class="ver">Written for version 2.5.1.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-etwas-einf-gen-das-du-fr-her-kopiert-hast">Etwas einfügen, das du früher kopiert hast</a><a class="l1" href="#de2-bildschirmfoto-aufnehmen-und-beschriften">Bildschirmfoto aufnehmen und beschriften</a><a class="l1" href="#de3-den-bildschirm-aufnehmen">Den Bildschirm aufnehmen</a><a class="l1" href="#de4-eine-aufnahme-exportieren">Eine Aufnahme exportieren</a><a class="l1" href="#de5-nummerierte-zwischenablage-slots-anlegen-und-bei-bedarf-einf-gen">Nummerierte Zwischenablage-Slots anlegen und bei Bedarf einfügen</a><a class="l1" href="#de6-verhindern-dass-sensible-inhalte-aufgezeichnet-werden">Verhindern, dass sensible Inhalte aufgezeichnet werden</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -621,12 +621,12 @@
 <h2 id="de2-aufnahmemodus-w-hlen">Aufnahmemodus wählen</h2>
 <p>Klicke in der Menüleiste auf das MalibuClip-Symbol und dann im Popover auf das Screenshot-Symbol (Tooltip <strong class="ui">Screenshot</strong>); es startet <strong class="ui">Screenshot (Area)</strong>. Alle anderen Arten starten mit einem globalen Tastenkürzel. Kein Aufnahme-Kürzel ist standardmäßig belegt; weise jedes in <strong class="ui">Settings</strong> auf dem Tab <strong class="ui">Screenshots</strong> im Abschnitt <strong class="ui">Shortcuts</strong> zu. Ein belegtes Kürzel steht auch im Tooltip des Screenshot-Symbols.</p>
 <ul>
-<li><strong class="ui">Screenshot (Area)</strong> — ziehe ein Rechteck auf. Bei ausgeschalteter Symbolleiste (Standard) löst die Aufnahme aus, sobald du die Maustaste loslässt; ein sehr kleines Rechteck bricht stattdessen ab.</li>
-<li><strong class="ui">Screenshot (Area, with Toolbar)</strong> — das Rechteck bleibt stehen, sodass du es verschieben oder in der Größe ändern kannst. Eine Symbolleiste wechselt den Modus oder aktiviert einen <strong class="ui">Timer</strong> (3, 5 oder 10 Sekunden). Klicke in die Auswahl oder auf die Bestätigungsschaltfläche (sie heißt <strong class="ui">Capture</strong>), um aufzunehmen. Ist <strong class="ui">All-in-One Starts With the Last Area</strong> an (Standard) und du hattest schon einmal eine Auswahl, öffnet sich die Überlagerung mit dieser Auswahl bereits an ihrem Platz.</li>
-<li><strong class="ui">Screenshot (Window)</strong> — klicke auf ein Fenster. Nicht auswählbar sind die eigenen Fenster von MalibuClip, Fenster, die nicht auf dem Bildschirm oder nicht auf der normalen Fensterebene liegen, Fenster mit 100 Punkt oder weniger Breite oder Höhe sowie Fenster, die (auf 2 Punkt genau) so groß sind wie ein Bildschirm. Nutze für Letztere <strong class="ui">Screenshot (Full Screen)</strong>.</li>
-<li><strong class="ui">Screenshot (Full Screen)</strong> — keine Überlagerung; nimmt bei einem Bildschirm sofort auf, bei mehreren Bildschirmen fragt ein kleines Menü nach dem gewünschten.</li>
-<li><strong class="ui">Capture Last Area Again</strong> — keine Überlagerung; nimmt den Bereich deines letzten Bereichs-Bildschirmfotos sofort erneut auf, ohne ihn neu aufzuziehen. Gab es seit dem Start von MalibuClip keinen, öffnet sich eine normale Bereichsauswahl.</li>
-<li><strong class="ui">Capture Text</strong> und <strong class="ui">Capture Scrolling Page</strong> — siehe die nächsten beiden Abschnitte.</li>
+<li><strong class="ui">Screenshot (Area)</strong>: ziehe ein Rechteck auf. Bei ausgeschalteter Symbolleiste (Standard) löst die Aufnahme aus, sobald du die Maustaste loslässt; ein sehr kleines Rechteck bricht stattdessen ab.</li>
+<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: das Rechteck bleibt stehen, sodass du es verschieben oder in der Größe ändern kannst. Eine Symbolleiste wechselt den Modus oder aktiviert einen <strong class="ui">Timer</strong> (3, 5 oder 10 Sekunden). Klicke in die Auswahl oder auf die Bestätigungsschaltfläche (sie heißt <strong class="ui">Capture</strong>), um aufzunehmen. Ist <strong class="ui">All-in-One Starts With the Last Area</strong> an (Standard) und du hattest schon einmal eine Auswahl, öffnet sich die Überlagerung mit dieser Auswahl bereits an ihrem Platz.</li>
+<li><strong class="ui">Screenshot (Window)</strong>: klicke auf ein Fenster. Nicht auswählbar sind die eigenen Fenster von MalibuClip, Fenster, die nicht auf dem Bildschirm oder nicht auf der normalen Fensterebene liegen, Fenster mit 100 Punkt oder weniger Breite oder Höhe sowie Fenster, die (auf 2 Punkt genau) so groß sind wie ein Bildschirm. Nutze für Letztere <strong class="ui">Screenshot (Full Screen)</strong>.</li>
+<li><strong class="ui">Screenshot (Full Screen)</strong>: keine Überlagerung; nimmt bei einem Bildschirm sofort auf, bei mehreren Bildschirmen fragt ein kleines Menü nach dem gewünschten.</li>
+<li><strong class="ui">Capture Last Area Again</strong>: keine Überlagerung; nimmt den Bereich deines letzten Bereichs-Bildschirmfotos sofort erneut auf, ohne ihn neu aufzuziehen. Gab es seit dem Start von MalibuClip keinen, öffnet sich eine normale Bereichsauswahl.</li>
+<li><strong class="ui">Capture Text</strong> und <strong class="ui">Capture Scrolling Page</strong>: siehe die nächsten beiden Abschnitte.</li>
 </ul>
 <p><strong class="ui">Show All-in-One Toolbar After Dragging</strong> im Abschnitt <strong class="ui">Selection Tool</strong> ist standardmäßig aus. Ist sie an, wartet jede Auswahl auf eine Bestätigung: Nach dem Aufziehen eines Rechtecks bleibt die Auswahl stehen und die Symbolleiste erscheint; bei einem Fenster wählt der erste Klick es aus und ein zweiter Klick auf dasselbe Fenster nimmt auf.</p>
 <p>Drücke Esc, um eine Aufnahme abzubrechen, bevor sie auslöst. Läuft ein <strong class="ui">Timer</strong>-Countdown, stoppt das erste Esc nur den Countdown und kehrt zur Auswahl zurück; ein zweites Esc schließt die Überlagerung.</p>
@@ -693,9 +693,9 @@
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <p>Der Tab <strong class="ui">Recording (Beta)</strong> in <strong class="ui">Settings</strong> ist in der App als Beta gekennzeichnet. Seine Schalter für Ton und Kamera werden beim Start einer Aufnahme gelesen und gelten daher für die nächste Aufnahme.</p>
 <ul>
-<li><strong class="ui">Record System Audio</strong> — standardmäßig aus.</li>
-<li><strong class="ui">Record Microphone</strong> — standardmäßig aus. Beim Einschalten fragt macOS nach der Mikrofon-Berechtigung. Das Gerät wählst du unter <strong class="ui">Microphone</strong>; vorgegeben ist <strong class="ui">System Default</strong>.</li>
-<li><strong class="ui">Record Camera</strong> — standardmäßig aus. Beim Einschalten fragt macOS nach der Kamera-Berechtigung. Das Gerät wählst du unter <strong class="ui">Camera</strong>. Die Kamera wird als eigener Film gespeichert.</li>
+<li><strong class="ui">Record System Audio</strong>: standardmäßig aus.</li>
+<li><strong class="ui">Record Microphone</strong>: standardmäßig aus. Beim Einschalten fragt macOS nach der Mikrofon-Berechtigung. Das Gerät wählst du unter <strong class="ui">Microphone</strong>; vorgegeben ist <strong class="ui">System Default</strong>.</li>
+<li><strong class="ui">Record Camera</strong>: standardmäßig aus. Beim Einschalten fragt macOS nach der Kamera-Berechtigung. Das Gerät wählst du unter <strong class="ui">Camera</strong>. Die Kamera wird als eigener Film gespeichert.</li>
 </ul>
 <p>Schaltest du einen Schalter ein, während die Berechtigung in macOS ausgeschaltet ist, bleibt er aus und ein Hinweis mit <strong class="ui">Open System Settings</strong> erscheint; die Taste öffnet die Systemeinstellungen im passenden Bereich unter Datenschutz &amp; Sicherheit. Wird die Berechtigung entzogen, nachdem du den Schalter eingeschaltet hast, bleibt er an und der Hinweis erscheint.</p>
 <p>Beim Start einer Aufnahme stoppt eine fehlende Quelle sie nicht. Ist das gewählte Gerät nicht angeschlossen, wird stattdessen das Standardgerät des Systems verwendet, und ein Hinweis sagt das. Ist kein Gerät verfügbar oder die Berechtigung aus, bleibt diese Quelle weg. Der Bildschirm wird trotzdem aufgenommen, und das Aufnahme-Fenster zeigt ein Warnsymbol mit dem Grund. Scheitert der Start aus einem anderen Grund, wird nichts aufgenommen. Fällt der Aufnahme-Stream während einer laufenden Aufnahme aus, wird die Aufnahme gestoppt.</p>
@@ -722,9 +722,9 @@
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <p>Der Bereich <strong class="ui">Look</strong> im rechten Bereich des Editors gestaltet das exportierte Bild:</p>
 <ul>
-<li><strong class="ui">Background</strong> — wähle <strong class="ui">None</strong>, <strong class="ui">Color</strong>, <strong class="ui">Gradient</strong> oder <strong class="ui">Image</strong>. Bei <strong class="ui">Image</strong> klickst du auf <strong class="ui">Choose…</strong> und wählst ein Bild; MalibuClip kopiert es neben die Daten der Aufnahme.</li>
-<li><strong class="ui">Padding</strong>, <strong class="ui">Corner Radius</strong> und <strong class="ui">Shadow</strong> — erscheinen, sobald ein anderer Hintergrund als <strong class="ui">None</strong> gewählt ist.</li>
-<li><strong class="ui">Highlight clicks</strong> — zeigt eine Welle dort, wo du geklickt hast. Standardmäßig aus; braucht eine Aufnahme mit Cursor-Daten.</li>
+<li><strong class="ui">Background</strong>: wähle <strong class="ui">None</strong>, <strong class="ui">Color</strong>, <strong class="ui">Gradient</strong> oder <strong class="ui">Image</strong>. Bei <strong class="ui">Image</strong> klickst du auf <strong class="ui">Choose…</strong> und wählst ein Bild; MalibuClip kopiert es neben die Daten der Aufnahme.</li>
+<li><strong class="ui">Padding</strong>, <strong class="ui">Corner Radius</strong> und <strong class="ui">Shadow</strong>: erscheinen, sobald ein anderer Hintergrund als <strong class="ui">None</strong> gewählt ist.</li>
+<li><strong class="ui">Highlight clicks</strong>: zeigt eine Welle dort, wo du geklickt hast. Standardmäßig aus; braucht eine Aufnahme mit Cursor-Daten.</li>
 </ul>
 <p>Der Look gilt für Export Video und Export GIF. Beim Export to Final Cut Pro wird er nicht angewendet.</p>
 <p>Schalter und Auswahlmenüs im Bereich <strong class="ui">Look</strong> werden sofort in der Aufnahme gespeichert, Regler beim Loslassen. Änderungen am Look gehören nicht zum Rückgängig-Verlauf: ⌘Z nimmt sie nicht zurück, du stellst sie von Hand wieder um.</p>
@@ -735,7 +735,7 @@
 <li>Klicke im Fenster <strong class="ui">Recordings</strong> mit der rechten Maustaste auf die Aufnahme und wähle <strong class="ui">Quick Export</strong>. Im Aufnahme-Editor klickst du stattdessen auf <strong class="ui">Export Video</strong>; das speichert zuerst die Zooms, die der Editor zeigt, und exportiert dann wie <strong class="ui">Quick Export</strong>.</li>
 <li>Warte, bis der Fortschritt durch ist. Die fertige <code>.mp4</code> wird im Finder angezeigt.</li>
 </ol>
-<p>Die Datei heißt <code>&lt;Aufnahme&gt; Quick Export.mp4</code> und liegt neben der Aufnahme; ein erneuter Export ersetzt sie. Der Export verwendet die für die Aufnahme gespeicherten Zooms. Auto-Zoom läuft nur dann zuerst, wenn noch keine Zooms gespeichert wurden (nichts geplant oder bearbeitet) und die Aufnahme Cursor-Daten hat. Eine gespeicherte leere Liste (alle Zooms gelöscht oder Auto-Zoom fand keine Klicks) bleibt leer: Der Export hat keinen Zoom und warnt bei einer Aufnahme mit Cursor-Daten <em>Exported without zoom — this recording has no zooms</em>. Er enthält außerdem den Look aus dem Editor und die Kamera als Bild-im-Bild, wenn du eine aufgenommen hast. Hat die Aufnahme mehr als eine Tonspur (Systemton und Mikrofon), werden sie zu einer Spur gemischt; scheitert das Mischen, bleiben beide Spuren erhalten und eine Warnung sagt das.</p>
+<p>Die Datei heißt <code>&lt;Aufnahme&gt; Quick Export.mp4</code> und liegt neben der Aufnahme; ein erneuter Export ersetzt sie. Der Export verwendet die für die Aufnahme gespeicherten Zooms. Auto-Zoom läuft nur dann zuerst, wenn noch keine Zooms gespeichert wurden (nichts geplant oder bearbeitet) und die Aufnahme Cursor-Daten hat. Eine gespeicherte leere Liste (alle Zooms gelöscht oder Auto-Zoom fand keine Klicks) bleibt leer: Der Export hat keinen Zoom und warnt bei einer Aufnahme mit Cursor-Daten <em>Exported without zoom: this recording has no zooms</em>. Er enthält außerdem den Look aus dem Editor und die Kamera als Bild-im-Bild, wenn du eine aufgenommen hast. Hat die Aufnahme mehr als eine Tonspur (Systemton und Mikrofon), werden sie zu einer Spur gemischt; scheitert das Mischen, bleiben beide Spuren erhalten und eine Warnung sagt das.</p>
 <p>Bei <strong class="ui">Quick Export</strong> wird eine Aufnahme ohne gespeicherte Zooms und ohne Cursor-Daten ohne Zoom exportiert und warnt, dass sie keine Cursor-Daten hat. <strong class="ui">Export Video</strong> im Editor speichert zuerst die aktuellen Zooms des Editors (eine leere Liste, wenn es keine gibt), exportiert also ohne Zoom und ohne diese Warnung. Von Hand hinzugefügte Zooms werden auch ohne Cursor-Daten verwendet. Eine Zeile unter der Aufnahme zeigt <code>Exported &lt;Dateiname&gt;</code>; fahre mit der Maus darüber, um Warnungen zu lesen.</p>
 <p>Die exportierte Datei gehört dir: Löschst du die Aufnahme, bleibt sie erhalten.</p>
 <h2 id="de4-ein-gif-exportieren">Ein GIF exportieren</h2>
@@ -756,9 +756,9 @@
 </ol>
 <p>Der Export schreibt einen Ordner <code>&lt;Aufnahme&gt; Final Cut Pro</code> neben die Aufnahme. Ein neuer Export ersetzt ihn, und er bleibt erhalten, wenn du die Aufnahme löschst. Er enthält:</p>
 <ul>
-<li><code>&lt;Aufnahme&gt;.fcpxml</code> — die Timeline, in der Pixelgröße der Aufnahme mit 29,97 fps.</li>
-<li><code>&lt;Aufnahme&gt;.mov</code> — eine Kopie der Aufnahme, auf die die Timeline verweist.</li>
-<li><code>&lt;Aufnahme&gt; Camera.mov</code> — der Kamera-Film, nur wenn die Aufnahme einen hat. Er liegt als Bild-im-Bild auf der Timeline.</li>
+<li><code>&lt;Aufnahme&gt;.fcpxml</code>: die Timeline, in der Pixelgröße der Aufnahme mit 29,97 fps.</li>
+<li><code>&lt;Aufnahme&gt;.mov</code>: eine Kopie der Aufnahme, auf die die Timeline verweist.</li>
+<li><code>&lt;Aufnahme&gt; Camera.mov</code>: der Kamera-Film, nur wenn die Aufnahme einen hat. Er liegt als Bild-im-Bild auf der Timeline.</li>
 </ul>
 <p>Die Zooms werden als Keyframes geschrieben. Die Timeline bekommt einen Zoom-Clip, sobald für die Aufnahme Zooms gespeichert sind, auch von Hand hinzugefügte. Auto-Zoom läuft nur dann zuerst, wenn noch keine Zooms gespeichert wurden und die Aufnahme Cursor-Daten hat; eine gespeicherte leere Liste ergibt keinen Zoom-Clip. Aus dem Editor werden zuerst die Zooms gespeichert, die er zeigt.</p>
 <p>Zwei Grenzen:</p>
@@ -867,8 +867,8 @@
 <h2 id="de6-alte-eintr-ge-ablaufen-lassen">Alte Einträge ablaufen lassen</h2>
 <p>Beide Einstellungen stehen in <strong class="ui">Settings</strong> › <strong class="ui">General</strong>, Abschnitt Clipboard.</p>
 <ul>
-<li><strong class="ui">Auto-Delete After</strong> — Standard <strong class="ui">Never</strong>. Zur Wahl stehen 30, 60, 90, 180 und 365 Days. Clips, die älter als das gewählte Alter sind, werden gelöscht; angepinnte Clips bleiben. Ebenso werden Einträge im Tab <strong class="ui">Screenshots</strong>, die älter sind, gelöscht. Die Einstellung greift sofort, wenn du sie änderst. Sonst läuft ein Durchgang beim Start, einmal täglich und nach dem Aufwachen des Macs, aber nur, wenn der letzte Durchgang mindestens 24 Stunden zurückliegt. Dateien, die du in einen Ordner auf der Festplatte gespeichert hast, und Aufnahmen in <code>~/Movies/MalibuClip</code> löscht sie nicht.</li>
-<li><strong class="ui">Storage Limit</strong> — Standard <strong class="ui">Up to 10 GB</strong>; weitere Auswahl sind 250 MB, 500 MB, 1 GB, 2 GB und 5 GB. Liegt der Speicher über dem Limit, werden zuerst die ältesten Clips gelöscht, die ein Bild enthalten oder ein Vorschaubild haben (dazu zählen Final-Cut-Pro-Clips mit Vorschaubild), dann die ältesten Clips jeder Art. Angepinnte Clips bleiben. Die Prüfung läuft nach etwa jedem 11. gespeicherten Clip, nicht in dem Moment, in dem du die Einstellung änderst, und jeder Durchgang löscht nur eine begrenzte Zahl von Clips; eine starke Verkleinerung wirkt sich also über mehrere Durchgänge aus. <strong class="ui">Current Size</strong> zeigt die Größe des Clip-Speichers auf der Festplatte (Datenbank und zugehöriger Ordner), einschließlich der Einträge unter <strong class="ui">Screenshots</strong>, die dieses Limit nie löscht. FCP-Buffer-Slots und Aufnahmen zählen nicht mit.</li>
+<li><strong class="ui">Auto-Delete After</strong>: Standard <strong class="ui">Never</strong>. Zur Wahl stehen 30, 60, 90, 180 und 365 Days. Clips, die älter als das gewählte Alter sind, werden gelöscht; angepinnte Clips bleiben. Ebenso werden Einträge im Tab <strong class="ui">Screenshots</strong>, die älter sind, gelöscht. Die Einstellung greift sofort, wenn du sie änderst. Sonst läuft ein Durchgang beim Start, einmal täglich und nach dem Aufwachen des Macs, aber nur, wenn der letzte Durchgang mindestens 24 Stunden zurückliegt. Dateien, die du in einen Ordner auf der Festplatte gespeichert hast, und Aufnahmen in <code>~/Movies/MalibuClip</code> löscht sie nicht.</li>
+<li><strong class="ui">Storage Limit</strong>: Standard <strong class="ui">Up to 10 GB</strong>; weitere Auswahl sind 250 MB, 500 MB, 1 GB, 2 GB und 5 GB. Liegt der Speicher über dem Limit, werden zuerst die ältesten Clips gelöscht, die ein Bild enthalten oder ein Vorschaubild haben (dazu zählen Final-Cut-Pro-Clips mit Vorschaubild), dann die ältesten Clips jeder Art. Angepinnte Clips bleiben. Die Prüfung läuft nach etwa jedem 11. gespeicherten Clip, nicht in dem Moment, in dem du die Einstellung änderst, und jeder Durchgang löscht nur eine begrenzte Zahl von Clips; eine starke Verkleinerung wirkt sich also über mehrere Durchgänge aus. <strong class="ui">Current Size</strong> zeigt die Größe des Clip-Speichers auf der Festplatte (Datenbank und zugehöriger Ordner), einschließlich der Einträge unter <strong class="ui">Screenshots</strong>, die dieses Limit nie löscht. FCP-Buffer-Slots und Aufnahmen zählen nicht mit.</li>
 </ul>
 <p>Es gibt keine Begrenzung nach Anzahl der Clips.</p>
 <h2 id="de6-was-gespeichert-wird-und-was-verschl-sselt-ist">Was gespeichert wird und was verschlüsselt ist</h2>
@@ -897,15 +897,15 @@
 <p>Beim ersten Start fragt sie nach einer E-Mail-Adresse (<strong class="ui">Email Required</strong>), bevor irgendetwas anderes funktioniert. Danach läuft die App als Testversion; vorgesehen sind 30 Tage. Darf MalibuClip nicht mehr benutzt werden, etwa weil die Testphase abgelaufen ist oder die Lizenz widerrufen wurde oder sich nicht prüfen lässt, ersetzt ein Sperrbildschirm (<strong class="ui">MalibuClip Is Locked</strong>) den Inhalt des Menüleisten-Popovers, und ein globales Tastenkürzel zeigt diesen Bildschirm, statt seine Aktion auszuführen. <strong class="ui">Buy MalibuClip</strong> öffnet eine Webseite, auf der du MalibuClip kaufen kannst.</p>
 <h2 id="de7-berechtigungen">Berechtigungen</h2>
 <ul>
-<li>Bildschirmaufnahme (Screen Recording) — nötig für jeden Screenshot-Modus und für <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong> und <strong class="ui">Record Screen</strong>. Ohne sie startet keine Aufnahme, und ein Hinweis bietet <strong class="ui">Open System Settings</strong> an.</li>
-<li>Bedienungshilfen (Accessibility) — wird beim ersten Start angefragt. Dient dem Einfügen in andere Apps (das Clipboard-Panel zeigt einen Hinweis, wenn sie fehlt), dem Auto-Scroll von <strong class="ui">Capture Scrolling Page</strong> und den Aktionen <code>save</code> und <code>restore</code> des FCP Buffers.</li>
-<li>Mikrofon und Kamera — werden angefragt, wenn du <strong class="ui">Record Microphone</strong> oder <strong class="ui">Record Camera</strong> einschaltest, nicht beim Start; ist die Antwort beim Aufnahmestart noch offen, fragt macOS dann. Verweigert macOS den Zugriff, wenn du den Schalter einschaltest, springt er auf aus zurück.</li>
-<li>Spracherkennung (Speech Recognition) — wird angefragt, wenn du <strong class="ui">Captions</strong> einschaltest, nicht erst beim Export.</li>
+<li>Bildschirmaufnahme (Screen Recording): nötig für jeden Screenshot-Modus und für <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong> und <strong class="ui">Record Screen</strong>. Ohne sie startet keine Aufnahme, und ein Hinweis bietet <strong class="ui">Open System Settings</strong> an.</li>
+<li>Bedienungshilfen (Accessibility): wird beim ersten Start angefragt. Dient dem Einfügen in andere Apps (das Clipboard-Panel zeigt einen Hinweis, wenn sie fehlt), dem Auto-Scroll von <strong class="ui">Capture Scrolling Page</strong> und den Aktionen <code>save</code> und <code>restore</code> des FCP Buffers.</li>
+<li>Mikrofon und Kamera: werden angefragt, wenn du <strong class="ui">Record Microphone</strong> oder <strong class="ui">Record Camera</strong> einschaltest, nicht beim Start; ist die Antwort beim Aufnahmestart noch offen, fragt macOS dann. Verweigert macOS den Zugriff, wenn du den Schalter einschaltest, springt er auf aus zurück.</li>
+<li>Spracherkennung (Speech Recognition): wird angefragt, wenn du <strong class="ui">Captions</strong> einschaltest, nicht erst beim Export.</li>
 </ul>
 <h2 id="de7-popover-in-der-men-leiste">Popover in der Menüleiste</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <p>Klicke auf das MalibuClip-Symbol in der Menüleiste. Das Popover hat oben eine Symbolleiste, vier Reiter mit Schaltern und in der Fußzeile <strong class="ui">Settings</strong> und einen Beenden-Knopf.</p>
-<p>Die Symbolleiste enthält <strong class="ui">Screenshot</strong> (eine Bereichsaufnahme), <strong class="ui">Record Area</strong> (während einer Aufnahme ersetzt <strong class="ui">Stop Recording</strong> sie), <strong class="ui">Screenshots</strong> und <strong class="ui">Recordings</strong>, die die beiden Galerien öffnen. Solange der Paste Stack Einträge enthält, kommt <strong class="ui">Paste Next</strong> dazu, und der Kopf zeigt die Anzahl. Ein vergebenes globales Tastenkürzel steht im Tooltip des passenden Symbols. Der Öffnen-Knopf im Kopf zeigt den Zwischenablage-Verlauf (Tooltip <strong class="ui">Show Clipboard</strong>).</p>
+<p>Die Symbolleiste enthält <strong class="ui">Screenshot</strong> (eine Bereichsaufnahme), <strong class="ui">Record Area</strong> (während einer Aufnahme ersetzt <strong class="ui">Stop Recording</strong> sie), <strong class="ui">Screenshots</strong> und <strong class="ui">Recordings</strong>, die die beiden Galerien öffnen. Solange der Paste Stack Einträge enthält, kommt <strong class="ui">Paste Next</strong> dazu, mit der Anzahl der Einträge auf dem Symbol. Ein vergebenes globales Tastenkürzel steht im Tooltip des passenden Symbols. Der Öffnen-Knopf im Kopf zeigt den Zwischenablage-Verlauf (Tooltip <strong class="ui">Show Clipboard</strong>).</p>
 <p>Die vier Reiter enthalten Schnellschalter, die dieselben Einstellungen ändern wie <strong class="ui">Settings</strong>:</p>
 <ul>
 <li><strong class="ui">Record</strong>: <strong class="ui">System Audio</strong>, <strong class="ui">Microphone</strong>, <strong class="ui">Camera</strong>, <strong class="ui">Studio Mode</strong>.</li>
@@ -926,52 +926,52 @@
 <h2 id="de7-einstellungen-general">Einstellungen: General</h2>
 <p>Die Tabs des Fensters <strong class="ui">Settings</strong> sind <strong class="ui">General</strong>, <strong class="ui">Filters</strong>, <strong class="ui">Blocklist</strong>, <strong class="ui">Notch Shelf</strong>, <strong class="ui">Screenshots</strong>, <strong class="ui">FCP Buffer</strong>, <strong class="ui">Recording (Beta)</strong> und <strong class="ui">About</strong>. <strong class="ui">General</strong> enthält:</p>
 <ul>
-<li><strong class="ui">Storage Limit</strong> — Standard: <strong class="ui">Up to 10 GB</strong>. Auswahl: 250 MB, 500 MB, 1 GB, 2 GB, 5 GB, <strong class="ui">Up to 10 GB</strong>. <strong class="ui">Current Size</strong> zeigt, was der Speicher jetzt belegt.</li>
-<li><strong class="ui">Image Size</strong> — Standard: L. Auswahl: S, M, L, XL.</li>
-<li><strong class="ui">Auto-Delete After</strong> — Standard: <strong class="ui">Never</strong>. Auswahl: 30, 60, 90, 180 oder 365 Days. Entfernt ältere Verlaufs-Clips und Einträge der Liste <strong class="ui">Screenshots</strong>; angeheftete Clips bleiben unberührt. Dateien in einem Screenshot-Ordner und Aufnahmen werden nicht gelöscht.</li>
-<li><strong class="ui">Reject duplicates</strong> — Standard: an.</li>
-<li><strong class="ui">Download link previews</strong> — Standard: an. Adressen, die auf den eigenen Rechner oder ein privates Netz zeigen (als IP-Adresse oder bekannter interner Hostname), werden nicht abgerufen.</li>
-<li><strong class="ui">Show full text (selectable)</strong> — Standard: an.</li>
-<li><strong class="ui">Double-click to paste</strong> — Standard: aus.</li>
-<li><strong class="ui">Close after pasting</strong> — Standard: an.</li>
-<li><strong class="ui">Close when clicking outside</strong> — Standard: an.</li>
-<li><strong class="ui">Hide title bar</strong> — Standard: an.</li>
-<li><strong class="ui">Show as right-side panel</strong> — Standard: an.</li>
-<li><strong class="ui">Auto-reveal on right edge hover</strong> — Standard: aus. Einschalten schaltet auch auf das Seitenpanel rechts um.</li>
-<li><strong class="ui">Glass Darkness</strong> — Standard: 45 %, Bereich 0 % bis 70 %.</li>
-<li><strong class="ui">Launch at Login</strong> — Standard: an. Solange das an ist, trägt sich die App beim Start als Anmeldeobjekt ein.</li>
+<li><strong class="ui">Storage Limit</strong>: Standard: <strong class="ui">Up to 10 GB</strong>. Auswahl: 250 MB, 500 MB, 1 GB, 2 GB, 5 GB, <strong class="ui">Up to 10 GB</strong>. <strong class="ui">Current Size</strong> zeigt, was der Speicher jetzt belegt.</li>
+<li><strong class="ui">Image Size</strong>: Standard: L. Auswahl: S, M, L, XL.</li>
+<li><strong class="ui">Auto-Delete After</strong>: Standard: <strong class="ui">Never</strong>. Auswahl: 30, 60, 90, 180 oder 365 Days. Entfernt ältere Verlaufs-Clips und Einträge der Liste <strong class="ui">Screenshots</strong>; angeheftete Clips bleiben unberührt. Dateien in einem Screenshot-Ordner und Aufnahmen werden nicht gelöscht.</li>
+<li><strong class="ui">Reject duplicates</strong>: Standard: an.</li>
+<li><strong class="ui">Download link previews</strong>: Standard: an. Adressen, die auf den eigenen Rechner oder ein privates Netz zeigen (als IP-Adresse oder bekannter interner Hostname), werden nicht abgerufen.</li>
+<li><strong class="ui">Show full text (selectable)</strong>: Standard: an.</li>
+<li><strong class="ui">Double-click to paste</strong>: Standard: aus.</li>
+<li><strong class="ui">Close after pasting</strong>: Standard: an.</li>
+<li><strong class="ui">Close when clicking outside</strong>: Standard: an.</li>
+<li><strong class="ui">Hide title bar</strong>: Standard: an.</li>
+<li><strong class="ui">Show as right-side panel</strong>: Standard: an.</li>
+<li><strong class="ui">Auto-reveal on right edge hover</strong>: Standard: aus. Einschalten schaltet auch auf das Seitenpanel rechts um.</li>
+<li><strong class="ui">Glass Darkness</strong>: Standard: 45 %, Bereich 0 % bis 70 %.</li>
+<li><strong class="ui">Launch at Login</strong>: Standard: an. Solange das an ist, trägt sich die App beim Start als Anmeldeobjekt ein.</li>
 </ul>
 <h2 id="de7-einstellungen-filters-blocklist-und-notch-shelf">Einstellungen: Filters, Blocklist und Notch Shelf</h2>
 <ul>
-<li><strong class="ui">Filters</strong> — <strong class="ui">Show Images filter</strong>, <strong class="ui">Show Links filter</strong>, <strong class="ui">Show Final Cut Pro filter</strong> und <strong class="ui">Show recent apps in filter bar</strong>, alle standardmäßig an; dazu die Liste der gespeicherten App-Filter.</li>
-<li><strong class="ui">Blocklist</strong> — <strong class="ui">Blocked Applications</strong> listet Apps; eine Kopie, während eine davon die vorderste App ist, wird nicht aufgezeichnet. <strong class="ui">Add Application</strong> fügt eine hinzu. Eine eingebaute Liste von Passwortmanagern und Keychain Access sowie die Pasteboard-Typen für verborgene Inhalte werden immer ignoriert; siehe die Anleitung zum Heraushalten von Apps aus dem Verlauf.</li>
-<li><strong class="ui">Notch Shelf</strong> — <strong class="ui">Enable Notch Shelf</strong>, standardmäßig aus. Eingeschaltet ersetzt es das Clipboard-Panel; <strong class="ui">Show on Display</strong> wählt das Display. Das Shelf hat keinen Tab für den FCP Buffer.</li>
+<li><strong class="ui">Filters</strong>: <strong class="ui">Show Images filter</strong>, <strong class="ui">Show Links filter</strong>, <strong class="ui">Show Final Cut Pro filter</strong> und <strong class="ui">Show recent apps in filter bar</strong>, alle standardmäßig an; dazu die Liste der gespeicherten App-Filter.</li>
+<li><strong class="ui">Blocklist</strong>: <strong class="ui">Blocked Applications</strong> listet Apps; eine Kopie, während eine davon die vorderste App ist, wird nicht aufgezeichnet. <strong class="ui">Add Application</strong> fügt eine hinzu. Eine eingebaute Liste von Passwortmanagern und Keychain Access sowie die Pasteboard-Typen für verborgene Inhalte werden immer ignoriert; siehe die Anleitung zum Heraushalten von Apps aus dem Verlauf.</li>
+<li><strong class="ui">Notch Shelf</strong>: <strong class="ui">Enable Notch Shelf</strong>, standardmäßig aus. Eingeschaltet ersetzt es das Clipboard-Panel; <strong class="ui">Show on Display</strong> wählt das Display. Das Shelf hat keinen Tab für den FCP Buffer.</li>
 </ul>
 <h2 id="de7-einstellungen-screenshots">Einstellungen: Screenshots</h2>
 <ul>
-<li><strong class="ui">Shortcuts</strong> — die oben aufgeführten acht Screenshot- und Capture-Aktionen.</li>
-<li><strong class="ui">Replace macOS Screenshot Shortcuts</strong> — der Knopf <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> belegt ⇧⌘3 mit Full Screen, ⇧⌘4 mit Area und ⇧⌘5 mit Area with Toolbar und ersetzt dabei die bisherige Belegung dieser Aktionen. Die macOS-Kürzel schaltest du selbst in den Systemeinstellungen ab.</li>
-<li><strong class="ui">Selection Tool</strong> — <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, standardmäßig aus; <strong class="ui">All-in-One Starts With the Last Area</strong>, standardmäßig an; <strong class="ui">Aspect Ratio</strong> rastet eine neue Auswahl auf ein Seitenverhältnis oder eine Pixelgröße ein.</li>
-<li><strong class="ui">Scrolling Page</strong> — <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, standardmäßig an; gilt für <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, auch im Scrolling-Fenster-Modus der All-in-One-Toolbar.</li>
-<li><strong class="ui">Save Location</strong> — <strong class="ui">Also Save Screenshots to a Folder</strong>, standardmäßig aus. Eingeschaltet werden neue Screenshots zusätzlich als PNG-Dateien in den Ordner geschrieben, der bei <strong class="ui">Folder</strong> steht; solange du mit <strong class="ui">Choose Folder…</strong> keinen anderen wählst, ist das <code>~/Pictures/MalibuClip Screenshots</code>.</li>
+<li><strong class="ui">Shortcuts</strong>: die oben aufgeführten acht Screenshot- und Capture-Aktionen.</li>
+<li><strong class="ui">Replace macOS Screenshot Shortcuts</strong>: der Knopf <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> belegt ⇧⌘3 mit Full Screen, ⇧⌘4 mit Area und ⇧⌘5 mit Area with Toolbar und ersetzt dabei die bisherige Belegung dieser Aktionen. Die macOS-Kürzel schaltest du selbst in den Systemeinstellungen ab.</li>
+<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, standardmäßig aus; <strong class="ui">All-in-One Starts With the Last Area</strong>, standardmäßig an; <strong class="ui">Aspect Ratio</strong> rastet eine neue Auswahl auf ein Seitenverhältnis oder eine Pixelgröße ein.</li>
+<li><strong class="ui">Scrolling Page</strong>: <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, standardmäßig an; gilt für <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, auch im Scrolling-Fenster-Modus der All-in-One-Toolbar.</li>
+<li><strong class="ui">Save Location</strong>: <strong class="ui">Also Save Screenshots to a Folder</strong>, standardmäßig aus. Eingeschaltet werden neue Screenshots zusätzlich als PNG-Dateien in den Ordner geschrieben, der bei <strong class="ui">Folder</strong> steht; solange du mit <strong class="ui">Choose Folder…</strong> keinen anderen wählst, ist das <code>~/Pictures/MalibuClip Screenshots</code>.</li>
 </ul>
 <h2 id="de7-einstellungen-fcp-buffer">Einstellungen: FCP Buffer</h2>
 <ul>
-<li><strong class="ui">Slots</strong> — die Anzahl der Slots, Standard 10, Bereich 1 bis 20. Wird die Zahl verkleinert, werden Slots ausgeblendet, ihr Inhalt bleibt.</li>
-<li><strong class="ui">Shortcuts</strong> — <strong class="ui">Use ⌃⌥ Number Preset</strong> belegt die Slots 1 bis 10 mit ⌃⌥ plus Zifferntaste (Taste 0 ist Slot 10); <strong class="ui">Clear All</strong> entfernt jedes Slot-Kürzel. Jeder Slot hat ein Kürzel, das den Slot einfügt. Ein Kürzel, das einen Slot füllt, gibt es nicht.</li>
-<li><strong class="ui">Remote Control</strong> — das URL-Schema <code>malibuclip://buffer/</code> mit den Aktionen <code>save</code>, <code>restore</code> und <code>clear</code>.</li>
+<li><strong class="ui">Slots</strong>: die Anzahl der Slots, Standard 10, Bereich 1 bis 20. Wird die Zahl verkleinert, werden Slots ausgeblendet, ihr Inhalt bleibt.</li>
+<li><strong class="ui">Shortcuts</strong>: <strong class="ui">Use ⌃⌥ Number Preset</strong> belegt die Slots 1 bis 10 mit ⌃⌥ plus Zifferntaste (Taste 0 ist Slot 10); <strong class="ui">Clear All</strong> entfernt jedes Slot-Kürzel. Jeder Slot hat ein Kürzel, das den Slot einfügt. Ein Kürzel, das einen Slot füllt, gibt es nicht.</li>
+<li><strong class="ui">Remote Control</strong>: das URL-Schema <code>malibuclip://buffer/</code> mit den Aktionen <code>save</code>, <code>restore</code> und <code>clear</code>.</li>
 </ul>
 <p>Die Schritte stehen in der Anleitung zum FCP Buffer.</p>
 <h2 id="de7-einstellungen-recording-beta">Einstellungen: Recording (Beta)</h2>
 <p>Der Tab zeigt ein <strong class="ui">BETA</strong>-Abzeichen: Auto-Zoom, der Editor, Mikrofon- und Kameraaufnahme und der Final-Cut-Pro-Export sind neu.</p>
 <ul>
-<li><strong class="ui">Shortcuts</strong> — <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong>, <strong class="ui">Record Screen</strong>, <strong class="ui">Stop Recording</strong>.</li>
-<li><strong class="ui">Studio Mode</strong> — standardmäßig aus. Nimmt ohne Cursor im Bild auf; der Aufnahme-Editor zeichnet ihn im Video- und GIF-Export. Der Final-Cut-Pro-Export hat dann keinen Cursor.</li>
-<li><strong class="ui">Record System Audio</strong> — standardmäßig aus.</li>
-<li><strong class="ui">Record Microphone</strong> und <strong class="ui">Record Camera</strong> — standardmäßig aus, jeweils mit Geräteauswahl (<strong class="ui">System Default</strong> oder ein benanntes Gerät), die erscheint, solange der Schalter an ist.</li>
-<li><strong class="ui">Captions</strong> — standardmäßig aus; mit Sprachauswahl. Gilt für den Final-Cut-Pro-Export.</li>
-<li><strong class="ui">GIF Export</strong> — <strong class="ui">Frame Rate</strong>: 8, 12 oder 15 fps, Standard 12. <strong class="ui">Width</strong>: 480, 720 oder 960 px, Standard 720.</li>
-<li><strong class="ui">Storage</strong> — <strong class="ui">Open Folder</strong> öffnet den Aufnahmen-Ordner.</li>
+<li><strong class="ui">Shortcuts</strong>: <strong class="ui">Record Area</strong>, <strong class="ui">Record Window</strong>, <strong class="ui">Record Screen</strong>, <strong class="ui">Stop Recording</strong>.</li>
+<li><strong class="ui">Studio Mode</strong>: standardmäßig aus. Nimmt ohne Cursor im Bild auf; der Aufnahme-Editor zeichnet ihn im Video- und GIF-Export. Der Final-Cut-Pro-Export hat dann keinen Cursor.</li>
+<li><strong class="ui">Record System Audio</strong>: standardmäßig aus.</li>
+<li><strong class="ui">Record Microphone</strong> und <strong class="ui">Record Camera</strong>: standardmäßig aus, jeweils mit Geräteauswahl (<strong class="ui">System Default</strong> oder ein benanntes Gerät), die erscheint, solange der Schalter an ist.</li>
+<li><strong class="ui">Captions</strong>: standardmäßig aus; mit Sprachauswahl. Gilt für den Final-Cut-Pro-Export.</li>
+<li><strong class="ui">GIF Export</strong>: <strong class="ui">Frame Rate</strong>: 8, 12 oder 15 fps, Standard 12. <strong class="ui">Width</strong>: 480, 720 oder 960 px, Standard 720.</li>
+<li><strong class="ui">Storage</strong>: <strong class="ui">Open Folder</strong> öffnet den Aufnahmen-Ordner.</li>
 </ul>
 <h2 id="de7-einstellungen-about">Einstellungen: About</h2>
 <p><strong class="ui">About</strong> zeigt die Version und hat die Knöpfe <strong class="ui">Privacy</strong> und <strong class="ui">Terms of Use</strong>, <strong class="ui">Redeem License…</strong> zum Eingeben eines Lizenzschlüssels und <strong class="ui">Switch Devices…</strong>, um die Lizenzaktivierung dieses Macs freizugeben, damit der Schlüssel auf einem anderen Mac genutzt werden kann. Updates kommen über Sparkle: MalibuClip prüft automatisch einmal am Tag, und <strong class="ui">Check for Updates</strong> im Reiter <strong class="ui">App</strong> des Popovers startet eine Prüfung von Hand.</p>
@@ -1030,7 +1030,7 @@
 <p>Eine unbekannte Aktion, eine fehlende oder ungültige Slotnummer oder ein Slot über der eingestellten Slotzahl wird mit einer Fehlermeldung als Banner im Tab <strong class="ui">FCP Buffer</strong> und einem Signalton beantwortet; ist der Tab nicht offen, hörst du nur den Ton. Die Aktion <code>save</code> braucht die Bedienungshilfen-Berechtigung. Ohne sie legt <code>restore</code> den Slot nur in die Zwischenablage (drücke <code>⌘V</code> selbst) und zeigt ein Banner und einen Signalton. Solange die Lizenzprüfung die App sperrt, werden gültige Buffer-URLs ohne Meldung ignoriert.</p>
 <h2 id="de8-launch-at-login-greift-nicht">Launch at Login greift nicht</h2>
 <p>Möglicherweise braucht macOS deine Zustimmung, bevor MalibuClip bei der Anmeldung starten kann. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> zeigt dann einen Hinweis mit dem Knopf <strong class="ui">Open Login Items</strong>.</p>
-<p class="ver">Geschrieben für Version 2.5.0.</p>
+<p class="ver">Geschrieben für Version 2.5.1.</p>
     </article>
   </div>
   <footer>
