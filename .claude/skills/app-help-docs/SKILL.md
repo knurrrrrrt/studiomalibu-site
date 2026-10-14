@@ -114,6 +114,12 @@ Systemlokalisierte Menues (View/Darstellung) nur nennen, wenn die App sie selbst
 2. EN schreiben, Pruefskript laufen lassen und fixen:
    `python3 -I "<studiomalibu-site>/.claude/skills/app-help-docs/check_help_docs.py" <App-Repo-Root> <App-Repo-Root>/docs/help`
 3. DE als Uebersetzung (gleiche Struktur), Pruefskript erneut. Gruen = Exit 0.
+**Stilregel (Knut, 2026-10-14): keine Gedankenstriche, keine Bindestriche in Fliesstext.**
+   Weder Em-/En-Dash noch Bindestrich-Komposita ("Drag-and-drop", "Menüleisten-Popover" ->
+   "Ziehen und Ablegen", "Popover in der Menüleiste"). Schreib wie ein Mensch: konkret, kurze
+   Saetze, keine Werbewoerter, keine Dreier-Aufzaehlungen aus Rhythmusgruenden. Ausgenommen:
+   Code, Pfade, URLs, woertliche UI-Beschriftungen (fett oder in Anfuehrungszeichen), Zahlen mit
+   Minus. Das Pruefskript meldet Gedanken-/Halbgeviertstriche und " - " als FAIL.
 4. **Gegenlesen (verpflichtend):** Einen Review-Agenten ohne Schreibrechte jede Funktionsaussage
    gegen den Code pruefen lassen ("zu welcher Aussage gibt es keinen Beleg?"). Findings
    einarbeiten und im Frontmatter unter `reviewed:` nachweisen (Datum, was, wie viele Funde).

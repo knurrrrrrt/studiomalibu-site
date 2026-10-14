@@ -171,6 +171,16 @@ def main():
             text = f.read_text(encoding="utf-8")
             fm, body = frontmatter(text)
             tag = f.name
+            # Style rule (Knut, 2026-10-14): no dashes in prose. Evidence comments, code spans,
+            # bold UI labels and quoted UI strings are exempt.
+            prose = re.sub(r"<!--.*?-->", "", body, flags=re.S)
+            prose = re.sub(r"`[^`]*`", "", prose)
+            prose = re.sub(r"\*\*[^*]+\*\*", "", prose)
+            prose = re.sub(r"\"[^\"]*\"", "", prose)
+            for ln_no, ln in enumerate(prose.splitlines(), 1):
+                if re.search(r"[\u2014\u2013]| - ", ln):
+                    problems.append(f"{tag}: style: dash in prose, rephrase (line text: {ln.strip()[:70]!r})")
+                    break
             if fm is None:
                 problems.append(f"{tag}: frontmatter missing")
                 continue
