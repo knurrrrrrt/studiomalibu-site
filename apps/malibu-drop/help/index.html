@@ -84,7 +84,7 @@
 <h2 id="en2-drag-onto-a-tile">Drag onto a tile</h2>
 <p>Drag files or folders from Finder, Mail or a browser onto a tile in the drop panel. The tiles are not in the menu bar menu. Folders are expanded; each file is checked against the tile's <strong class="ui">Accept</strong> setting.</p>
 <h2 id="en2-show-the-drop-panel-while-dragging">Show the drop panel while dragging</h2>
-<p>Hold Shift while you drag. The panel appears next to the cursor. You can also keep it on screen: choose <strong class="ui">Show tiles</strong> in the menu, or press the shortcut set under <strong class="ui">Appearance</strong>.</p>
+<p>Hold Shift while you drag; Shift is the default, and you can choose other keys under <strong class="ui">Appearance</strong>. The panel appears next to the cursor. You can also keep it on screen: choose <strong class="ui">Show tiles</strong> in the menu, or press the shortcut set under <strong class="ui">Appearance</strong>.</p>
 <h2 id="en2-import-without-dragging">Import without dragging</h2>
 <p>Choose <strong class="ui">Import files to…</strong> in the menu, pick a tile and select files or folders in the panel. They go through the same path as a drop.</p>
 <h2 id="en2-folder-names-become-keywords">Folder names become keywords</h2>
@@ -122,7 +122,7 @@
 <h2 id="en6-default-tiles">Default tiles</h2>
 <p>The default tiles (Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout and ADR Recorded) are a starting point. Their media folders are placeholders: set your own <strong class="ui">Media folder</strong> on each tile you use.</p>
 <h2 id="en6-shortcut-and-drop-panel">Shortcut and drop panel</h2>
-<p>Under <strong class="ui">Appearance</strong> (the gear in the settings sidebar) you set the shortcut that shows or hides the tiles; it needs Control, Option or Command. <strong class="ui">Icons only</strong> shrinks the tiles. Hold Shift while dragging to show the panel at the cursor; the trigger key is fixed.</p>
+<p>Under <strong class="ui">Appearance</strong> (the gear in the settings sidebar) you set the shortcut that shows or hides the tiles; it needs Control, Option or Command. <strong class="ui">Icons only</strong> shrinks the tiles. Hold the keys set under <strong class="ui">Keys that show the panel while dragging</strong> to show the panel at the cursor. The default is Shift. Click the field, hold the keys you want and let go; <strong class="ui">Reset</strong> brings Shift back.</p>
 <h2 id="en6-limits-and-requirements">Limits and requirements</h2>
 <p>macOS 14.0 or later. Final Cut Pro only, with a library open. Packages and Final Cut library files are not accepted. In move mode, files inside a Final Cut library are refused. Folders are read up to 100,000 entries. Clips are imported only through a generated FCPXML; nothing is written into the library package. Not sandboxed.</p>
 <h1 id="en7-troubleshooting">Troubleshooting</h1>
@@ -138,7 +138,7 @@
 <p>The menu line says not placed. Allow Accessibility for Malibu Drop, make sure Final Cut is running, and check that Edit &gt; Connect to Primary Storyline exists in your Final Cut language. If the line says not confirmed, look at the timeline.</p>
 <h2 id="en7-a-tile-settings-file-was-kept-aside">A tile settings file was kept aside</h2>
 <p>If tiles.json cannot be read, Malibu Drop shows a notice, renames the file to tiles.json.corrupt- followed by the time, and shows the default tiles. If the file cannot be renamed, the default tiles are shown without a notice and your next change overwrites the unreadable file.</p>
-<p class="ver">Written for version 0.2.6.</p>
+<p class="ver">Written for version 0.2.8.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-eine-kachel-einrichten">Eine Kachel einrichten</a><a class="l1" href="#de2-dateien-und-ordner-droppen">Dateien und Ordner droppen</a><a class="l1" href="#de3-wenn-postlab-das-event-sperrt">Wenn PostLab das Event sperrt</a><a class="l1" href="#de4-fehlgeschlagene-und-wartende-drops-behandeln">Fehlgeschlagene und wartende Drops behandeln</a><a class="l1" href="#de5-clips-am-playhead-anh-ngen">Clips am Playhead anhängen</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -168,7 +168,7 @@
 <h2 id="de2-auf-eine-kachel-ziehen">Auf eine Kachel ziehen</h2>
 <p>Ziehe Dateien oder Ordner aus Finder, Mail oder Browser auf eine Kachel im Drop Panel. Die Kacheln sind nicht im Menü in der Menüleiste. Ordner werden aufgelöst; jede Datei wird gegen die Einstellung <strong class="ui">Accept</strong> der Kachel geprüft.</p>
 <h2 id="de2-drop-panel-beim-ziehen-zeigen">Drop Panel beim Ziehen zeigen</h2>
-<p>Halte beim Ziehen die Umschalttaste gedrückt. Das Panel erscheint neben dem Cursor. Du kannst es auch dauerhaft anzeigen: wähle <strong class="ui">Show tiles</strong> im Menü oder nutze das Kürzel aus <strong class="ui">Appearance</strong>.</p>
+<p>Halte beim Ziehen die Umschalttaste gedrückt; Umschalt ist der Standard, andere Tasten wählst du unter <strong class="ui">Appearance</strong>. Das Panel erscheint neben dem Cursor. Du kannst es auch dauerhaft anzeigen: wähle <strong class="ui">Show tiles</strong> im Menü oder nutze das Kürzel aus <strong class="ui">Appearance</strong>.</p>
 <h2 id="de2-ohne-ziehen-importieren">Ohne Ziehen importieren</h2>
 <p>Wähle <strong class="ui">Import files to…</strong> im Menü, dann eine Kachel und Dateien oder Ordner im Dialog. Sie laufen über denselben Weg wie ein Drop.</p>
 <h2 id="de2-ordnernamen-werden-keywords">Ordnernamen werden Keywords</h2>
@@ -206,7 +206,7 @@
 <h2 id="de6-standardkacheln">Standardkacheln</h2>
 <p>Die Standardkacheln (Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout und ADR Recorded) sind ein Ausgangspunkt. Ihre Medienordner sind Platzhalter: setze auf jeder Kachel, die du nutzt, deinen eigenen <strong class="ui">Media folder</strong>.</p>
 <h2 id="de6-k-rzel-und-drop-panel">Kürzel und Drop Panel</h2>
-<p>Unter <strong class="ui">Appearance</strong> (das Zahnrad in der Seitenleiste der Einstellungen) legst du das Kürzel fest, das die Kacheln zeigt oder verbirgt; es braucht Control, Option oder Command. <strong class="ui">Icons only</strong> verkleinert die Kacheln. Halte beim Ziehen die Umschalttaste, um das Panel am Cursor zu zeigen; die Taste ist fest.</p>
+<p>Unter <strong class="ui">Appearance</strong> (das Zahnrad in der Seitenleiste der Einstellungen) legst du das Kürzel fest, das die Kacheln zeigt oder verbirgt; es braucht Control, Option oder Command. <strong class="ui">Icons only</strong> verkleinert die Kacheln. Halte die Tasten aus <strong class="ui">Keys that show the panel while dragging</strong>, um das Panel am Cursor zu zeigen. Standard ist Umschalt. Klicke das Feld, halte die gewünschten Tasten und lasse los; mit <strong class="ui">Reset</strong> kommt Umschalt zurück.</p>
 <h2 id="de6-grenzen-und-voraussetzungen">Grenzen und Voraussetzungen</h2>
 <p>macOS 14.0 oder neuer. Nur Final Cut Pro, mit geöffneter Library. Pakete und Library-Dateien von Final Cut werden nicht angenommen. Im Modus Verschieben werden Dateien innerhalb einer Library in Final Cut abgelehnt. Ordner werden bis 100.000 Einträge gelesen. Clips werden nur über eine generierte FCPXML importiert; nichts wird in das Paket der Library geschrieben. Nicht sandboxed.</p>
 <h1 id="de7-fehlerbehebung">Fehlerbehebung</h1>
@@ -222,7 +222,7 @@
 <p>Die Menüzeile sagt not placed. Erlaube Bedienungshilfen für Malibu Drop, stelle sicher, dass Final Cut läuft, und prüfe, ob Edit &gt; Connect to Primary Storyline in deiner Sprache von Final Cut existiert. Sagt die Zeile not confirmed, schau in die Timeline.</p>
 <h2 id="de7-eine-einstellungsdatei-der-kachel-wurde-beiseitegelegt">Eine Einstellungsdatei der Kachel wurde beiseitegelegt</h2>
 <p>Lässt sich tiles.json nicht lesen, zeigt Malibu Drop einen Hinweis, benennt die Datei in tiles.json.corrupt- mit der Uhrzeit um und zeigt die Standardkacheln. Lässt sich die Datei nicht umbenennen, werden die Standardkacheln ohne Hinweis gezeigt und deine nächste Änderung überschreibt die unlesbare Datei.</p>
-<p class="ver">Geschrieben für Version 0.2.6.</p>
+<p class="ver">Geschrieben für Version 0.2.8.</p>
     </article>
   </div>
   <footer>
