@@ -28,7 +28,8 @@
         { name: "Malibu Drop", href: "/apps/malibu-drop", beta: true },
         { name: "Malibu Conform", href: "/apps/malibu-conform", soon: true },
         { name: "Malibu Live", href: "/apps/malibu-live", soon: true },
-        { name: "Malibu Spot", href: "/apps/malibu-spot", soon: true }
+        { name: "Malibu Spot", href: "/apps/malibu-spot", soon: true },
+        { name: "MalibuReview", href: "/apps/malibureview", soon: true }
       ]
     },
     {

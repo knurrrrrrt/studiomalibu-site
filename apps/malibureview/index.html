@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MalibuReview · Local Video Review for the Mac</title>
+<link rel="icon" type="image/png" href="/apps/malibureview/icon.png">
+<meta name="description" content="MalibuReview is a local video review tool for the Mac: play a cut with frame-accurate timecode, drop timecoded markers and notes, and export them as FCPXML, EDL, CSV or PDF, with live playhead sync to Final Cut Pro. In the works, not released yet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#2DD4BF;--accent-ink:#04201c}
+.tag{background:rgba(45,212,191,.14)}
+.tag.quiet{background:rgba(255,255,255,.08)}
+.lr{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin:0}
+.lr input[type=email]{flex:1 1 220px;min-width:0;max-width:300px;font:400 14px 'Inter',sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.lr input[type=email]::placeholder{color:var(--dim)}
+.lr input[type=email]:focus{border-color:var(--accent)}
+.lr button.btn{cursor:pointer;font-family:'Inter',sans-serif}
+.lr button.btn:disabled{opacity:.55;cursor:default;filter:none}
+.lr-msg{margin:12px 0 0;font-size:13.5px;color:var(--dim)}
+.lr-msg.ok{color:var(--good)}
+.lr-msg.err{color:#FF8A80}
+.dl .lr-wrap{min-width:min(100%,420px)}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/" data-i18n="nav.back">← All apps</a>
+      <div class="brand"><img src="/apps/malibureview/icon.png" alt="">MalibuReview</div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#notify" class="pill-cta" data-i18n="nav.cta">Get notified</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Video review · Final Cut Pro sync</span><span class="badge" data-i18n="badge">In the works</span></div>
+      <h1 data-i18n="hero.h1">Review the cut,<br><span class="soft">frame by frame, on your Mac.</span></h1>
+      <p class="lead" data-i18n="hero.lead">MalibuReview is a local video review tool for the Mac: play a cut with frame-accurate timecode, drop timecoded markers and notes, and export them as FCPXML, EDL, CSV or PDF, with live playhead sync to Final Cut Pro.</p>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+      <div class="cta-meta" data-i18n="hero.meta">In the works · Mac · macOS 14 or later</div>
+    </div>
+
+    <div>
+      <div class="stack" aria-hidden="true">
+        <div class="win w1">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w1.h">Playback</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">Timecode</span><span class="v" data-i18n="w1.v1">frame-accurate</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Transport</span><span class="v" data-i18n="w1.v2">JKL, A-B loop</span></div>
+        </div>
+        <div class="win w2">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.h">Markers</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Types</span><span class="tag" data-i18n="w2.t1">Built-in and custom</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Ranges</span><span class="tag quiet" data-i18n="w2.t2">In and out</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Status</span><span class="tag quiet" data-i18n="w2.t3">Done flag</span></div>
+        </div>
+        <div class="win w3">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w3.h">Export</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r1">Formats</span><span class="v">FCPXML, EDL, CSV, PDF</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">Playhead sync</span><span class="tag good">Final Cut Pro</span></div>
+        </div>
+      </div>
+      <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="wf.title">Four steps</h2>
+      <p data-i18n="wf.sub">From a cut on disk to notes in your edit.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Play the cut</h3><p data-i18n="s1.p">Open the video. The start timecode comes from the file, drop-frame is supported, and you move with JKL, frame steps and an A-B loop.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Drop markers and notes</h3><p data-i18n="s2.p">Mark a frame or a range, pick a type, write the note. Reply to markers and tick them off when they are done.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Export what you found</h3><p data-i18n="s3.p">Send the markers out as FCPXML, EDL, Premiere CSV or PDF, or drag them straight to Final Cut Pro.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Follow along in Final Cut Pro</h3><p data-i18n="s4.p">With Final Cut Pro installed, the playhead stays in sync with the review window.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="f.title">What's inside</h2>
+      <p data-i18n="f.sub">What MalibuReview does today, as tested internally.</p>
+    </div>
+    <div class="bento">
+      <div class="tile big">
+        <div class="label" data-i18n="t1.l">Playback</div>
+        <h3 data-i18n="t1.h">Frame-accurate, with the timecode you expect</h3>
+        <p data-i18n="t1.p">Playback with JKL shuttle, frame steps and an A-B loop. The start timecode is read from the file, and drop-frame is supported.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t2.h">Markers with substance</h3>
+        <p data-i18n="t2.p">8 built-in marker types plus custom types, range markers with in and out, replies and a done flag, and filters. Everything is stored locally in a sidecar file.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t3.h">Export to where the notes go</h3>
+        <p data-i18n="t3.p">FCPXML (as markers or as titles), EDL, Premiere CSV, PDF and Frame.io comments. Plus “Drag to FCP” and a single-frame PNG.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t4.h">Final Cut Pro integration</h3>
+        <p data-i18n="t4.p">Import .fcpxml, .fcpxmld and media. A share destination installer and a workflow extension for playhead sync. Needs Final Cut Pro installed.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t5.h">Compare mode “Gang”</h3>
+        <p data-i18n="t5.p">Up to 4 videos in a grid, played in sync on one Mac.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t6.h">Audio tools</h3>
+        <p data-i18n="t6.p">Meters for up to 8 channels, peak and RMS. Choose the audio track, and set an audio offset.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t7.h">Burned-in watermark export</h3>
+        <p data-i18n="t7.p">Export a video with name, IP address and timestamp burned in, via the File menu. Export only: there is no live overlay.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t8.h">iPhone remote, tested internally</h3>
+        <p data-i18n="t8.p">Set markers and control transport from an iPhone (iOS 17+) over the local network. Only tested internally. An iPad version is on TestFlight only, and there is no Apple TV version.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="k.title">Good to know</h2>
+      <p data-i18n="k.sub">What you need, and what it does not do.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3 data-i18n="k1.h">Status and requirements</h3>
+        <ul>
+          <li data-i18n="k1.a">Mac, macOS 14 or later; the app is sandboxed</li>
+          <li data-i18n="k1.b">The actual work needs no account; everything runs locally</li>
+          <li data-i18n="k1.c">An email address at first start and an occasional internet connection for the licence check, about every 24 hours. With a cached licence it keeps working offline for around a week</li>
+          <li data-i18n="k1.d">Final Cut Pro functions need Final Cut Pro installed</li>
+          <li data-i18n="k1.e">Tested internally and by code review only; there is no automated test target for the Mac app yet</li>
+          <li data-i18n="k1.f">Planned price: €19. No release date yet</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k2.h">What it does not do</h3>
+        <ul>
+          <li data-i18n="k2.a">No protected screener or DRM mode, no encryption, no anti-recording and no expiry</li>
+          <li data-i18n="k2.b">No SharePlay, no roles or multi-user, no project or cloud sync</li>
+          <li data-i18n="k2.c">No live bridge or video chat</li>
+          <li data-i18n="k2.d">No drawing on the picture and no music cues</li>
+          <li data-i18n="k2.e">No Resolve or Avid export; Premiere CSV is the only such format</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="notify">
+    <div class="dl">
+      <div>
+        <h2 data-i18n="dl.title">In the works</h2>
+        <p data-i18n="dl.sub">MalibuReview is not released yet. Leave your email and we'll write to you at launch.</p>
+      </div>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <span>MalibuReview · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span>
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+      </span>
+    </div>
+    <p class="legal" data-i18n="foot.legal">MalibuReview is a professional post-production tool. Apple, Final Cut Pro, Mac, iPhone, iPad, Apple TV and TestFlight are trademarks of Apple Inc. Adobe Premiere Pro and Frame.io are trademarks of Adobe Inc. DaVinci Resolve is a trademark of Blackmagic Design Pty Ltd. Avid is a trademark of Avid Technology, Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+  </footer>
+</div>
+
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {
+    "nav.back":"← All apps","nav.cta":"Get notified",
+    "hero.eyebrow":"Video review · Final Cut Pro sync","badge":"In the works",
+    "hero.h1":'Review the cut,<br><span class="soft">frame by frame, on your Mac.</span>',
+    "hero.lead":"MalibuReview is a local video review tool for the Mac: play a cut with frame-accurate timecode, drop timecoded markers and notes, and export them as FCPXML, EDL, CSV or PDF, with live playhead sync to Final Cut Pro.",
+    "hero.meta":"In the works · Mac · macOS 14 or later",
+    "lr.ph":"you@email.com","lr.btn":"Notify me at launch",
+    "lr.ok":"Thanks. We'll email you at launch.","lr.err":"That did not go through. Please try again in a moment.",
+    "w1.h":"Playback","w1.r1":"Timecode","w1.v1":"frame-accurate","w1.r2":"Transport","w1.v2":"JKL, A-B loop",
+    "w2.h":"Markers","w2.r1":"Types","w2.t1":"Built-in and custom","w2.r2":"Ranges","w2.t2":"In and out","w2.r3":"Status","w2.t3":"Done flag",
+    "w3.h":"Export","w3.r1":"Formats","w3.r2":"Playhead sync",
+    "illu":"Illustration of the workflow, not a screenshot.",
+    "wf.title":"Four steps","wf.sub":"From a cut on disk to notes in your edit.",
+    "s1.h":"Play the cut","s1.p":"Open the video. The start timecode comes from the file, drop-frame is supported, and you move with JKL, frame steps and an A-B loop.",
+    "s2.h":"Drop markers and notes","s2.p":"Mark a frame or a range, pick a type, write the note. Reply to markers and tick them off when they are done.",
+    "s3.h":"Export what you found","s3.p":"Send the markers out as FCPXML, EDL, Premiere CSV or PDF, or drag them straight to Final Cut Pro.",
+    "s4.h":"Follow along in Final Cut Pro","s4.p":"With Final Cut Pro installed, the playhead stays in sync with the review window.",
+    "f.title":"What's inside","f.sub":"What MalibuReview does today, as tested internally.",
+    "t1.l":"Playback","t1.h":"Frame-accurate, with the timecode you expect","t1.p":"Playback with JKL shuttle, frame steps and an A-B loop. The start timecode is read from the file, and drop-frame is supported.",
+    "t2.h":"Markers with substance","t2.p":"8 built-in marker types plus custom types, range markers with in and out, replies and a done flag, and filters. Everything is stored locally in a sidecar file.",
+    "t3.h":"Export to where the notes go","t3.p":"FCPXML (as markers or as titles), EDL, Premiere CSV, PDF and Frame.io comments. Plus “Drag to FCP” and a single-frame PNG.",
+    "t4.h":"Final Cut Pro integration","t4.p":"Import .fcpxml, .fcpxmld and media. A share destination installer and a workflow extension for playhead sync. Needs Final Cut Pro installed.",
+    "t5.h":"Compare mode “Gang”","t5.p":"Up to 4 videos in a grid, played in sync on one Mac.",
+    "t6.h":"Audio tools","t6.p":"Meters for up to 8 channels, peak and RMS. Choose the audio track, and set an audio offset.",
+    "t7.h":"Burned-in watermark export","t7.p":"Export a video with name, IP address and timestamp burned in, via the File menu. Export only: there is no live overlay.",
+    "t8.h":"iPhone remote, tested internally","t8.p":"Set markers and control transport from an iPhone (iOS 17+) over the local network. Only tested internally. An iPad version is on TestFlight only, and there is no Apple TV version.",
+    "k.title":"Good to know","k.sub":"What you need, and what it does not do.",
+    "k1.h":"Status and requirements","k1.a":"Mac, macOS 14 or later; the app is sandboxed","k1.b":"The actual work needs no account; everything runs locally","k1.c":"An email address at first start and an occasional internet connection for the licence check, about every 24 hours. With a cached licence it keeps working offline for around a week","k1.d":"Final Cut Pro functions need Final Cut Pro installed","k1.e":"Tested internally and by code review only; there is no automated test target for the Mac app yet","k1.f":"Planned price: €19. No release date yet",
+    "k2.h":"What it does not do","k2.a":"No protected screener or DRM mode, no encryption, no anti-recording and no expiry","k2.b":"No SharePlay, no roles or multi-user, no project or cloud sync","k2.c":"No live bridge or video chat","k2.d":"No drawing on the picture and no music cues","k2.e":"No Resolve or Avid export; Premiere CSV is the only such format",
+    "dl.title":"In the works","dl.sub":"MalibuReview is not released yet. Leave your email and we'll write to you at launch.",
+    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"MalibuReview is a professional post-production tool. Apple, Final Cut Pro, Mac, iPhone, iPad, Apple TV and TestFlight are trademarks of Apple Inc. Adobe Premiere Pro and Frame.io are trademarks of Adobe Inc. DaVinci Resolve is a trademark of Blackmagic Design Pty Ltd. Avid is a trademark of Avid Technology, Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+  },
+  de: {
+    "nav.back":"← Alle Apps","nav.cta":"Benachrichtigen",
+    "hero.eyebrow":"Video-Review · Final-Cut-Pro-Sync","badge":"In Arbeit",
+    "hero.h1":'Den Schnitt prüfen,<br><span class="soft">Bild für Bild auf deinem Mac.</span>',
+    "hero.lead":"MalibuReview ist ein lokales Video-Review-Werkzeug für den Mac: Spiel einen Schnitt mit bildgenauem Timecode ab, setze Marker und Notizen mit Timecode und exportiere sie als FCPXML, EDL, CSV oder PDF, mit Live-Playhead-Sync zu Final Cut Pro.",
+    "hero.meta":"In Arbeit · Mac · macOS 14 oder neuer",
+    "lr.ph":"deine@email.de","lr.btn":"Zum Launch benachrichtigen",
+    "lr.ok":"Danke. Wir melden uns beim Launch.","lr.err":"Das hat nicht geklappt. Bitte versuch es gleich noch einmal.",
+    "w1.h":"Wiedergabe","w1.r1":"Timecode","w1.v1":"bildgenau","w1.r2":"Transport","w1.v2":"JKL, A-B-Loop",
+    "w2.h":"Marker","w2.r1":"Typen","w2.t1":"Eingebaut und eigene","w2.r2":"Bereiche","w2.t2":"Ein und Aus","w2.r3":"Status","w2.t3":"Erledigt-Flag",
+    "w3.h":"Export","w3.r1":"Formate","w3.r2":"Playhead-Sync",
+    "illu":"Illustration des Ablaufs, kein Screenshot.",
+    "wf.title":"Vier Schritte","wf.sub":"Von einem Schnitt auf der Platte zu Notizen in deinem Edit.",
+    "s1.h":"Den Schnitt abspielen","s1.p":"Öffne das Video. Der Start-Timecode kommt aus der Datei, Drop-Frame wird unterstützt, und du bewegst dich mit JKL, Einzelbildschritten und einem A-B-Loop.",
+    "s2.h":"Marker und Notizen setzen","s2.p":"Markiere ein Bild oder einen Bereich, wähle einen Typ, schreib die Notiz. Antworte auf Marker und hak sie ab, wenn sie erledigt sind.",
+    "s3.h":"Exportieren, was du gefunden hast","s3.p":"Schick die Marker als FCPXML, EDL, Premiere-CSV oder PDF raus, oder zieh sie direkt nach Final Cut Pro.",
+    "s4.h":"In Final Cut Pro mitlaufen","s4.p":"Mit installiertem Final Cut Pro läuft der Playhead synchron mit dem Review-Fenster.",
+    "f.title":"Was drinsteckt","f.sub":"Was MalibuReview heute kann, intern getestet.",
+    "t1.l":"Wiedergabe","t1.h":"Bildgenau, mit dem Timecode, den du erwartest","t1.p":"Wiedergabe mit JKL-Shuttle, Einzelbildschritten und A-B-Loop. Der Start-Timecode wird aus der Datei gelesen, Drop-Frame wird unterstützt.",
+    "t2.h":"Marker mit Substanz","t2.p":"8 eingebaute Markertypen plus eigene Typen, Bereichsmarker mit Ein- und Ausstieg, Antworten und ein Erledigt-Flag, dazu Filter. Alles liegt lokal in einer Sidecar-Datei.",
+    "t3.h":"Export dorthin, wo die Notizen hinsollen","t3.p":"FCPXML (als Marker oder als Titel), EDL, Premiere-CSV, PDF und Frame.io-Kommentare. Dazu „Drag to FCP“ und ein Einzelbild als PNG.",
+    "t4.h":"Final-Cut-Pro-Integration","t4.p":"Import von .fcpxml, .fcpxmld und Medien. Ein Installer für das Share-Ziel und eine Workflow-Erweiterung für den Playhead-Sync. Final Cut Pro muss installiert sein.",
+    "t5.h":"Vergleichsmodus „Gang“","t5.p":"Bis zu 4 Videos im Raster, synchron abgespielt auf einem Mac.",
+    "t6.h":"Audio-Werkzeuge","t6.p":"Pegelanzeigen für bis zu 8 Kanäle, Peak und RMS. Audiospur wählen und einen Audio-Offset setzen.",
+    "t7.h":"Export mit eingebranntem Wasserzeichen","t7.p":"Exportiere ein Video mit eingebranntem Namen, IP-Adresse und Zeitstempel, über das Ablage-Menü. Nur als Export: Es gibt kein Live-Overlay.",
+    "t8.h":"iPhone-Fernbedienung, intern getestet","t8.p":"Marker setzen und den Transport steuern vom iPhone (iOS 17+) über das lokale Netzwerk. Nur intern getestet. Eine iPad-Version gibt es nur über TestFlight, eine Apple-TV-Version gibt es nicht.",
+    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was es nicht macht.",
+    "k1.h":"Stand und Voraussetzungen","k1.a":"Mac, macOS 14 oder neuer; die App läuft in der Sandbox","k1.b":"Für die eigentliche Arbeit ist kein Konto nötig; alles läuft lokal","k1.c":"Eine E-Mail-Adresse beim ersten Start und gelegentlich eine Internetverbindung für die Lizenzprüfung, etwa alle 24 Stunden. Mit zwischengespeicherter Lizenz läuft es etwa eine Woche offline weiter","k1.d":"Final-Cut-Pro-Funktionen brauchen ein installiertes Final Cut Pro","k1.e":"Nur intern und per Code-Review getestet; für die Mac-App gibt es noch kein automatisiertes Test-Target","k1.f":"Geplanter Preis: €19. Noch kein Veröffentlichungstermin",
+    "k2.h":"Was es nicht macht","k2.a":"Kein geschützter Screener- oder DRM-Modus, keine Verschlüsselung, kein Aufnahmeschutz und kein Ablaufdatum","k2.b":"Kein SharePlay, keine Rollen oder Mehrbenutzer, kein Projekt- oder Cloud-Sync","k2.c":"Keine Live-Bridge und kein Video-Chat","k2.d":"Kein Zeichnen auf dem Bild und keine Musik-Cues","k2.e":"Kein Resolve- oder Avid-Export; Premiere-CSV ist das einzige solche Format",
+    "dl.title":"In Arbeit","dl.sub":"MalibuReview ist noch nicht veröffentlicht. Trag deine E-Mail ein, dann melden wir uns zum Launch.",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"MalibuReview ist ein professionelles Werkzeug für die Postproduktion. Apple, Final Cut Pro, Mac, iPhone, iPad, Apple TV und TestFlight sind Marken von Apple Inc. Adobe Premiere Pro und Frame.io sind Marken von Adobe Inc. DaVinci Resolve ist eine Marke von Blackmagic Design Pty Ltd. Avid ist eine Marke von Avid Technology, Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+// Launch-request form: same endpoint and source as the other coming-soon pages.
+(function () {
+  var ENDPOINT = "https://api.malibureview.app/api/collections/launch_requests/records";
+  var APP_MODULE = "MalibuReview";
+
+  function lang() { return document.documentElement.lang === "de" ? "de" : "en"; }
+
+  // Placeholder and aria-label are attributes, so the shared i18n pass does not reach them.
+  function localizeInputs() {
+    var t = (window.PAGE_T || {})[lang()] || {};
+    document.querySelectorAll("[data-launch-form] input[type=email]").forEach(function (input) {
+      var v = t[input.getAttribute("data-ph")];
+      if (v !== undefined) { input.placeholder = v; input.setAttribute("aria-label", v); }
+    });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); localizeInputs(); };
+  localizeInputs();
+
+  document.querySelectorAll("[data-launch-form]").forEach(function (form) {
+    var box = form.parentNode;
+    var ok = box.querySelector("[data-lr-ok]");
+    var err = box.querySelector("[data-lr-err]");
+    var input = form.querySelector("input[type=email]");
+    var btn = form.querySelector("button");
+    var busy = false;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (busy) return;
+      var email = input.value.trim();
+      if (!email || !input.checkValidity()) { input.reportValidity(); return; }
+      busy = true;
+      btn.disabled = true;
+      err.hidden = true;
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ app_module: APP_MODULE, email: email, source: "coming-soon-website" })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("http " + r.status);
+        form.hidden = true;
+        ok.hidden = false;
+      }).catch(function () {
+        err.hidden = false;
+        busy = false;
+        btn.disabled = false;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
