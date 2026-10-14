@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studio Malibu Berlin</title>
-<meta name="description" content="macOS tools built by a working film editor — for film post-production, and for everyday work beyond it.">
+<meta name="description" content="macOS tools built by a working film editor, for film postproduction and for everyday work beyond it.">
 <style>
   :root {
     color-scheme: dark;
@@ -79,11 +79,11 @@
 <script src="/nav.js" defer></script>
 <div class="wrap">
   <h1>Studio Malibu Berlin</h1>
-  <p class="lede">macOS tools built by a working film editor — some for film post-production, some for everyday work. Every app is notarized, signed, and auto-updates.</p>
-  <p class="lede small">Give real feedback during your 10-day trial (or after buying) — every 5 issues we act on earns another 5% off (5, 10, 15, 20, 25, up to 30% at 30), on the app you're testing or any other. Use the in-app Feedback button to get started.</p>
-  <p class="lede smaller">Prices are one-time purchases and include two years of free macOS updates. After that, the app keeps working as-is — a paid update to support a newer macOS costs 50% of the original price. Every app below can be downloaded right here.</p>
+  <p class="lede">macOS tools built by a working film editor. Some are for film postproduction, some for everyday work. Every app is notarized and signed, and updates itself.</p>
+  <p class="lede small">Give real feedback during the 10 days of your trial, or after buying. Every 5 issues we act on earn you another 5% off (5, 10, 15, 20, 25, up to 30% at 30), on the app you're testing or on any other. To get started, use the Feedback button inside the app.</p>
+  <p class="lede smaller">Each price is paid once and includes two years of free macOS updates. After that, the app keeps working as it is. An update for a newer macOS is paid and costs 50% of the original price. You can download every app below right here.</p>
 
-  <h2 class="section">For film post-production</h2>
+  <h2 class="section">For film postproduction</h2>
   <div class="grid" id="grid-post"></div>
 
   <h2 class="section">For everyday work</h2>
@@ -93,7 +93,7 @@
   <div class="grid" id="grid-personal"></div>
 
   <footer>
-    Have feedback on one of these apps? Please use the in-app Feedback button — that's the only channel we monitor and respond to.
+    For feedback on one of these apps, please use the Feedback button inside the app. It's the only channel we read and answer.
     See our <a href="https://www.knuthake.de/datenschutz">Privacy Policy</a> for details on what each app sends and why.
   </footer>
 </div>
@@ -104,23 +104,23 @@
 
   // `download` URLs must match the buttons on apps/<slug>/index.html (kept in sync by hand).
   var postProductionApps = [
-    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", download: { url: "https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg", meta: "DMG · macOS 14+" }, price: "€99" },
-    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29" },
-    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, price: "€99" },
-    { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and more, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", download: { url: "https://api.malibureview.app/metalink-updates/MalibuBurn-Installer-latest.pkg", meta: "PKG · macOS 14+" }, beta: true, price: "€49", priceNote: "Planned price once the beta ends" },
-    { name: "Malibu Drop", tagline: "Menu-bar drag-and-drop import for Final Cut Pro and PostLab — files land in the right media folder and event, with role, level and channel layout.", href: "/apps/malibu-drop", icon: "/apps/malibu-drop/icon.png", download: { url: "https://api.malibureview.app/malibudrop-updates/MalibuDrop-latest.dmg", meta: "DMG · macOS 14+" }, price: "€19", priceNote: "Planned price once the beta ends", beta: true },
+    { name: "MalibuSync", tagline: "Dual system audio sync for Final Cut Pro. It matches by timecode, picks the best channel and writes a ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", download: { url: "https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg", meta: "DMG · macOS 14+" }, price: "€99" },
+    { name: "Malibu Meter", tagline: "Live EBU R128 loudness metering for macOS. It needs no DAW and taps the audio of any app.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29" },
+    { name: "SyncScript Pro", tagline: "Puts a keyword on every line of dialogue in Final Cut Pro. It transcribes each clip and matches it against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, price: "€99" },
+    { name: "Malibu Burn", tagline: "Burns metadata into the picture in Final Cut Pro, accurate to the frame: timecode, clip name, reel and more, shown live as an overlay.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", download: { url: "https://api.malibureview.app/metalink-updates/MalibuBurn-Installer-latest.pkg", meta: "PKG · macOS 14+" }, beta: true, price: "€49", priceNote: "Planned price once the beta ends" },
+    { name: "Malibu Drop", tagline: "Import for Final Cut Pro and PostLab from the menu bar. Drop files on it and they land in the right media folder and event, with role, level and channel layout.", href: "/apps/malibu-drop", icon: "/apps/malibu-drop/icon.png", download: { url: "https://api.malibureview.app/malibudrop-updates/MalibuDrop-latest.dmg", meta: "DMG · macOS 14+" }, price: "€19", priceNote: "Planned price once the beta ends", beta: true },
     // MalibuToDo, MalibuMesh and MalibuReview pulled 2026-09-14/15 (Knut: still
     // internal-only tools, not ready to be publicly discoverable yet). Pages
     // themselves moved out of the served tree too — re-add once ready.
-    { name: "Malibu Conform", tagline: "Prepares a Final Cut Pro project exported as FCPXML for DaVinci Resolve Studio — a Resolve-ready FCPXML, a manifest and a conform report, picture only.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", download: { url: "https://api.malibureview.app/conform-updates/MalibuConform-latest.dmg", meta: "DMG · macOS 14+" }, beta: true, price: "€19", priceNote: "Planned price once the beta ends" },
-    { name: "Malibu Live", tagline: "Send Final Cut Pro's picture and sound to a director or client on a Mac, iPad or iPhone — they watch and talk, without any control over your timeline.", href: "/apps/malibu-live", icon: "/apps/malibu-live/icon.png", comingSoon: true, price: "€49", priceNote: "Planned price, no release date yet" },
-    { name: "Malibu Spot", tagline: "Audition song candidates against your actual cut — try different songs on a cue, compare them side by side, and export the winner to Final Cut Pro.", href: "/apps/malibu-spot", iconFallback: "S", comingSoon: true, price: "€19", priceNote: "Planned price, no release date yet" },
-    { name: "MalibuReview", tagline: "A local video review tool for the Mac: frame-accurate timecode, timecoded markers and notes, export to FCPXML, EDL, CSV or PDF, with playhead sync to Final Cut Pro.", href: "/apps/malibureview", icon: "/apps/malibureview/icon.png", comingSoon: true, price: "€19", priceNote: "Planned price, no release date yet" }
+    { name: "Malibu Conform", tagline: "Prepares a Final Cut Pro project exported as FCPXML for DaVinci Resolve Studio. You get an FCPXML ready for Resolve, a manifest and a conform report, picture only.", href: "/apps/malibu-conform", icon: "/apps/malibu-conform/icon.png", download: { url: "https://api.malibureview.app/conform-updates/MalibuConform-latest.dmg", meta: "DMG · macOS 14+" }, beta: true, price: "€19", priceNote: "Planned price once the beta ends" },
+    { name: "Malibu Live", tagline: "Send picture and sound from Final Cut Pro to a director or client on a Mac, iPad or iPhone. They watch and talk, but have no control over your timeline.", href: "/apps/malibu-live", icon: "/apps/malibu-live/icon.png", comingSoon: true, price: "€49", priceNote: "Planned price, no release date yet" },
+    { name: "Malibu Spot", tagline: "Audition song candidates against your actual cut. Try different songs on a cue, compare them side by side and export the winner to Final Cut Pro.", href: "/apps/malibu-spot", iconFallback: "S", comingSoon: true, price: "€19", priceNote: "Planned price, no release date yet" },
+    { name: "MalibuReview", tagline: "A local video review tool for the Mac: timecode accurate to the frame, markers and notes with timecode, export to FCPXML, EDL, CSV or PDF, and playhead sync with Final Cut Pro.", href: "/apps/malibureview", icon: "/apps/malibureview/icon.png", comingSoon: true, price: "€19", priceNote: "Planned price, no release date yet" }
   ];
 
   var everydayApps = [
-    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS with a Final Cut Pro pasteboard buffer, a full screen recorder (beta) and a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", download: { url: "https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg", meta: "DMG · macOS 26+, Apple Silicon" }, price: "€19" },
-    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go — and meeting notes with transcript and summary (beta).", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", download: { url: "https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg", meta: "DMG · macOS 15+" }, price: "€19" }
+    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS with a pasteboard buffer for Final Cut Pro, a full screen recorder (beta) and a full screenshot toolkit with scrolling capture, annotation and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", download: { url: "https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg", meta: "DMG · macOS 26+, Apple Silicon" }, price: "€19" },
+    { name: "MalibuDictate", tagline: "Dictation while you hold a key, with optional AI rewriting that cleans up quick notes as you go. Also meeting notes with transcript and summary (beta).", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", download: { url: "https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg", meta: "DMG · macOS 15+" }, price: "€19" }
     // Malibu Calc, Malibu Screen Capture, Malibu Meeting Notes and Malibu
     // NotesBar pulled 2026-09-15 (Knut: internal-only tools for now).
   ];
@@ -129,8 +129,8 @@
     // MalibuPlay, Malibu Occhio, Malibu Marantz and TaxLotse pulled 2026-09-15
     // (Knut: internal-only tools for now; TaxLotse has no local page here, it
     // only ever linked out to taxlotse.de).
-    { name: "LifeLotse", tagline: "An independent insurance and finance assistant for iOS/macOS — not an affiliate, your data stays local. Germany-focused. Tested internally — feedback is welcome, but we don't always get back to it quickly.", externalHref: "https://lifelotse.de", icon: "/apps/lifelotse/icon.png", beta: true },
-    { name: "FundusKit", tagline: "Costume/prop inventory management for film and theater productions — offline-first, multi-user, on-device photo search. Actively tested in a real costume department.", icon: "/apps/funduskit/icon.png" }
+    { name: "LifeLotse", tagline: "An independent insurance and finance assistant for iOS/macOS. It is not an affiliate, and your data stays local. Focused on Germany. Tested internally. Feedback is welcome, but we don't always get back to it quickly.", externalHref: "https://lifelotse.de", icon: "/apps/lifelotse/icon.png", beta: true },
+    { name: "FundusKit", tagline: "Inventory for costumes and props in film and theater productions. Built to work offline first, for several users, with photo search on the device. Actively tested in a real costume department.", icon: "/apps/funduskit/icon.png" }
   ];
 
   function escapeHtml(s) {

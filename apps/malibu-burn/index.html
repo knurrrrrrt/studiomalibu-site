@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malibu Burn · Metadata Burn-In for Final Cut Pro</title>
+<title>Malibu Burn · Burn Metadata into the Picture in Final Cut Pro</title>
 <link rel="icon" type="image/png" href="/apps/malibu-burn/icon.png">
 <meta name="description" content="Malibu Burn burns source timecode, clip and file names, reel, scene and shot, markers and roles into the Final Cut Pro viewer and your exports, using an effect on an adjustment layer. Currently in beta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
 
   <header class="hero">
     <div>
-      <div class="eyebrow"><span data-i18n="hero.eyebrow">Metadata burn-in · Final Cut Pro</span><span class="badge" data-i18n="hero.badge">Beta</span></div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Metadata in the picture · Final Cut Pro</span><span class="badge" data-i18n="hero.badge">Beta</span></div>
       <h1 data-i18n="hero.h1">Timecode and clip data<br><span class="soft">burned into the picture.</span></h1>
       <p class="lead" data-i18n="hero.lead">Malibu Burn burns clip metadata into the Final Cut Pro viewer and into your exports: source timecode, clip and file names, reel, scene and shot, markers, roles and more. The Host app decides what is shown and where; an effect on an adjustment layer draws it.</p>
       <div class="cta-row">
@@ -68,7 +68,7 @@
   <section>
     <div class="sec-head">
       <h2 data-i18n="wf.title">Four steps</h2>
-      <p data-i18n="wf.sub">From your library to burn-in in the viewer.</p>
+      <p data-i18n="wf.sub">From your library to the data burned into the viewer.</p>
     </div>
     <div class="steps">
       <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Add a library, pick a timeline</h3><p data-i18n="s1.p">Drag your Final Cut Pro library (the .fcpbundle) into the Host window, use the plus button, or click Detect from Final Cut Pro while the library is open. Then click the timeline in the sidebar; it shows burning in.</p></div>
@@ -87,7 +87,7 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Fields</div>
         <h3 data-i18n="t1.h">23 field types</h3>
-        <p data-i18n="t1.p">Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, four marker fields (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips and two stacked-layer blocks. An element with no value draws nothing.</p>
+        <p data-i18n="t1.p">Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, four marker fields (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips and two blocks for stacked layers. An element with no value draws nothing.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Nine anchors</h3>
@@ -111,7 +111,7 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Presets</h3>
-        <p data-i18n="t7.p">Built-in presets such as Netflix QC Layout, Conform and Colorist can be edited in place but not renamed or deleted. The plus button duplicates one as your own. Export and import as JSON; every change is saved automatically.</p>
+        <p data-i18n="t7.p">The presets that come with the app, such as Netflix QC Layout, Conform and Colorist, can be edited in place but not renamed or deleted. The plus button duplicates one as your own. Export and import as JSON; every change is saved automatically.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Visible picture</h3>
@@ -151,11 +151,11 @@
       <div class="fact">
         <h3 data-i18n="k2.h">Limits</h3>
         <ul>
-          <li data-i18n="k2.a">Live updates are not instant: Final Cut Pro can hold an edit back before it writes it to disk. The refresh button in the status bar re-scans</li>
-          <li data-i18n="k2.b">Single-value fields come from the primary clip of the storyline. Clips stacked above appear through the stacked-layer options; Role Text also reacts to roles of connected clips</li>
-          <li data-i18n="k2.c">The Position Preview is approximate, Final Cut Pro does the real text layout. Stacked-layer blocks show placeholder data there</li>
+          <li data-i18n="k2.a">Live updates are not instant: Final Cut Pro can hold an edit back before it writes it to disk. The refresh button in the status bar scans again</li>
+          <li data-i18n="k2.b">Fields that show a single value come from the primary clip of the storyline. Clips stacked above appear through the options for stacked layers; Role Text also reacts to roles of connected clips</li>
+          <li data-i18n="k2.c">The Position Preview is approximate, Final Cut Pro does the real text layout. The blocks for stacked layers show placeholder data there</li>
           <li data-i18n="k2.d">Resize / Transform, Position / Rotation, Stabilization and Speed / Retime draw nothing at default values. They only display the clip's values</li>
-          <li data-i18n="k2.e">A timeline frame rate that Malibu Burn does not support gets no burn-in; the viewer names the rate</li>
+          <li data-i18n="k2.e">A timeline frame rate that Malibu Burn does not support gets nothing burned in; the viewer names the rate</li>
           <li data-i18n="k2.f">Source Frame is blank when the clip's source frame rate cannot be resolved, for example offline media, and on a gap in the primary storyline</li>
         </ul>
       </div>
@@ -163,10 +163,10 @@
         <h3 data-i18n="k3.h">Worth knowing</h3>
         <ul>
           <li data-i18n="k3.a">Removing an element has no confirmation and no undo. Bulk Style overwrites every element at once, so duplicate the preset first to keep the old state. Delete preset acts immediately</li>
-          <li data-i18n="k3.b">If the burn-in timecode does not fit your timeline, type the start timecode into Project start TC (optional) in the sidebar: HH:MM:SS:FF, or HH:MM:SS;FF for drop frame</li>
+          <li data-i18n="k3.b">If the timecode that is burned in does not fit your timeline, type the start timecode into Project start TC (optional) in the sidebar: HH:MM:SS:FF, or HH:MM:SS;FF for drop frame</li>
           <li data-i18n="k3.c">The role selection of a preset belongs to the project it was made for. Check the picked roles after importing a preset</li>
           <li data-i18n="k3.d">Removing a library only removes it from Malibu Burn; the file is not touched. Dropping anything that is not a .fcpbundle is ignored without a message</li>
-          <li data-i18n="k3.e">If the license is expired or blocked, the viewer shows only the message instead of the burn-in. If the app has been offline too long to verify the license, it asks you to connect to the internet</li>
+          <li data-i18n="k3.e">If the license is expired or blocked, the viewer shows only the message and none of the metadata. If the app has been offline too long to verify the license, it asks you to connect to the internet</li>
         </ul>
       </div>
     </div>
@@ -192,7 +192,7 @@
         <a href="/apps/malibu-burn/help/" data-i18n="foot.help">Help</a><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
-    <p class="legal" data-i18n="foot.legal">Malibu Burn is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake.</p>
+    <p class="legal" data-i18n="foot.legal">Malibu Burn is a professional tool for post production. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake.</p>
   </footer>
 </div>
 
@@ -202,7 +202,7 @@ window.PAGE_T = {
   en: {
     "nav.back":"← All apps",
     "nav.cta":"Download",
-    "hero.eyebrow":"Metadata burn-in · Final Cut Pro",
+    "hero.eyebrow":"Metadata in the picture · Final Cut Pro",
     "hero.badge":"Beta",
     "hero.h1":"Timecode and clip data<br><span class=\"soft\">burned into the picture.</span>",
     "hero.lead":"Malibu Burn burns clip metadata into the Final Cut Pro viewer and into your exports: source timecode, clip and file names, reel, scene and shot, markers, roles and more. The Host app decides what is shown and where; an effect on an adjustment layer draws it.",
@@ -220,7 +220,7 @@ window.PAGE_T = {
     "w3.r2":"Effects browser",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Four steps",
-    "wf.sub":"From your library to burn-in in the viewer.",
+    "wf.sub":"From your library to the data burned into the viewer.",
     "s1.h":"Add a library, pick a timeline",
     "s1.p":"Drag your Final Cut Pro library (the .fcpbundle) into the Host window, use the plus button, or click Detect from Final Cut Pro while the library is open. Then click the timeline in the sidebar; it shows burning in.",
     "s2.h":"Choose what to show",
@@ -233,7 +233,7 @@ window.PAGE_T = {
     "f.sub":"What the current version (0.3.63, beta) does.",
     "t1.l":"Fields",
     "t1.h":"23 field types",
-    "t1.p":"Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, four marker fields (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips and two stacked-layer blocks. An element with no value draws nothing.",
+    "t1.p":"Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, four marker fields (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips and two blocks for stacked layers. An element with no value draws nothing.",
     "t2.h":"Nine anchors",
     "t2.p":"Choose an Anchor in a 3×3 grid, then set X and Y: the distance from that edge of the visible picture, or from the centre. Dragging in the Position Preview snaps to the frame's edges, the centre and other elements.",
     "t3.h":"Style and Bulk Style",
@@ -245,7 +245,7 @@ window.PAGE_T = {
     "t6.h":"Source Frame",
     "t6.p":"Counted from the first frame of the media file, starting at 0. The speed of a retimed clip is taken into account for Source TC and Source Frame.",
     "t7.h":"Presets",
-    "t7.p":"Built-in presets such as Netflix QC Layout, Conform and Colorist can be edited in place but not renamed or deleted. The plus button duplicates one as your own. Export and import as JSON; every change is saved automatically.",
+    "t7.p":"The presets that come with the app, such as Netflix QC Layout, Conform and Colorist, can be edited in place but not renamed or deleted. The plus button duplicates one as your own. Export and import as JSON; every change is saved automatically.",
     "t8.h":"Visible picture",
     "t8.p":"Set Visible picture to Full Frame, 2.39:1, 2.35:1, 1.85:1, 4:3 or Custom. X and Y are fractions of that area. Keep inside visible picture is off by default.",
     "t9.h":"Library detection",
@@ -263,18 +263,18 @@ window.PAGE_T = {
     "k1.d":"The first launch asks for your email address, which is required. Click Start Trial; the address identifies your free trial",
     "k1.e":"The Host has to be running with a timeline selected, otherwise the viewer shows a status line",
     "k2.h":"Limits",
-    "k2.a":"Live updates are not instant: Final Cut Pro can hold an edit back before it writes it to disk. The refresh button in the status bar re-scans",
-    "k2.b":"Single-value fields come from the primary clip of the storyline. Clips stacked above appear through the stacked-layer options; Role Text also reacts to roles of connected clips",
-    "k2.c":"The Position Preview is approximate, Final Cut Pro does the real text layout. Stacked-layer blocks show placeholder data there",
+    "k2.a":"Live updates are not instant: Final Cut Pro can hold an edit back before it writes it to disk. The refresh button in the status bar scans again",
+    "k2.b":"Fields that show a single value come from the primary clip of the storyline. Clips stacked above appear through the options for stacked layers; Role Text also reacts to roles of connected clips",
+    "k2.c":"The Position Preview is approximate, Final Cut Pro does the real text layout. The blocks for stacked layers show placeholder data there",
     "k2.d":"Resize / Transform, Position / Rotation, Stabilization and Speed / Retime draw nothing at default values. They only display the clip's values",
-    "k2.e":"A timeline frame rate that Malibu Burn does not support gets no burn-in; the viewer names the rate",
+    "k2.e":"A timeline frame rate that Malibu Burn does not support gets nothing burned in; the viewer names the rate",
     "k2.f":"Source Frame is blank when the clip's source frame rate cannot be resolved, for example offline media, and on a gap in the primary storyline",
     "k3.h":"Worth knowing",
     "k3.a":"Removing an element has no confirmation and no undo. Bulk Style overwrites every element at once, so duplicate the preset first to keep the old state. Delete preset acts immediately",
-    "k3.b":"If the burn-in timecode does not fit your timeline, type the start timecode into Project start TC (optional) in the sidebar: HH:MM:SS:FF, or HH:MM:SS;FF for drop frame",
+    "k3.b":"If the timecode that is burned in does not fit your timeline, type the start timecode into Project start TC (optional) in the sidebar: HH:MM:SS:FF, or HH:MM:SS;FF for drop frame",
     "k3.c":"The role selection of a preset belongs to the project it was made for. Check the picked roles after importing a preset",
     "k3.d":"Removing a library only removes it from Malibu Burn; the file is not touched. Dropping anything that is not a .fcpbundle is ignored without a message",
-    "k3.e":"If the license is expired or blocked, the viewer shows only the message instead of the burn-in. If the app has been offline too long to verify the license, it asks you to connect to the internet",
+    "k3.e":"If the license is expired or blocked, the viewer shows only the message and none of the metadata. If the app has been offline too long to verify the license, it asks you to connect to the internet",
     "dl.title":"Download Malibu Burn",
     "dl.sub":"Beta. The installer provides the plugin with the MalibuBurn effect for Final Cut Pro. The Host checks for its own updates; Check for Updates… in the app menu checks on demand.",
     "dl.btn":"Download for Mac",
@@ -282,19 +282,19 @@ window.PAGE_T = {
     "foot.sub":"A Studio Malibu Berlin product",
     "foot.imprint":"Legal Notice",
     "foot.privacy":"Privacy Policy",
-    "foot.legal":"Malibu Burn is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"Malibu Burn is a professional tool for post production. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
     "nav.back":"← Alle Apps",
     "nav.cta":"Laden",
-    "hero.eyebrow":"Metadaten-Einblendung · Final Cut Pro",
+    "hero.eyebrow":"Metadaten im Bild · Final Cut Pro",
     "hero.badge":"Beta",
-    "hero.h1":"Timecode und Clip-Daten<br><span class=\"soft\">ins Bild eingebrannt.</span>",
-    "hero.lead":"Malibu Burn brennt Clip-Metadaten in den Final-Cut-Pro-Viewer und in deine Exporte: Source-Timecode, Clip- und Dateinamen, Reel, Scene und Shot, Marker, Rollen und mehr. Die Host-App bestimmt, was angezeigt wird und wo; ein Effekt auf einer Adjustment Layer zeichnet es.",
+    "hero.h1":"Timecode und Clipdaten<br><span class=\"soft\">ins Bild eingebrannt.</span>",
+    "hero.lead":"Malibu Burn brennt Metadaten deiner Clips in den Viewer von Final Cut Pro und in deine Exporte: Source Timecode, die Namen von Clip und Datei, Reel, Scene und Shot, Marker, Rollen und mehr. Der Host bestimmt, was angezeigt wird und wo; ein Effekt auf einer Adjustment Layer zeichnet es.",
     "hero.dl":"Für Mac laden",
     "hero.buy":"Kaufen",
-    "hero.meta":"PKG-Installer · macOS 14+ · Beta 0.3.63 · wird €49 kosten",
-    "w1.head":"Host-App",
+    "hero.meta":"Installer als PKG · macOS 14+ · Beta 0.3.63 · wird €49 kosten",
+    "w1.head":"Host",
     "w1.r1":"Preset",
     "w1.r2":"Elemente",
     "w2.head":"Position Preview",
@@ -302,66 +302,66 @@ window.PAGE_T = {
     "w2.t2":"Unten links",
     "w2.t3":"Unten rechts",
     "w3.r1":"Adjustment Layer",
-    "w3.r2":"Effekte-Browser",
+    "w3.r2":"Effektbrowser",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Vier Schritte",
-    "wf.sub":"Von der Library zum Burn-in im Viewer.",
+    "wf.sub":"Von der Library zu den eingebrannten Daten im Viewer.",
     "s1.h":"Library hinzufügen, Timeline wählen",
-    "s1.p":"Ziehe deine Final-Cut-Pro-Library (die .fcpbundle) ins Host-Fenster, nutze die Plus-Taste oder klicke auf Detect from Final Cut Pro, solange die Library geöffnet ist. Klicke dann in der Seitenleiste auf die Timeline; sie zeigt burning in.",
+    "s1.p":"Ziehe deine Library aus Final Cut Pro (die .fcpbundle) ins Fenster des Hosts, nutze die Plustaste oder klicke auf Detect from Final Cut Pro, solange die Library geöffnet ist. Klicke dann in der Seitenleiste auf die Timeline; sie zeigt burning in.",
     "s2.h":"Festlegen, was angezeigt wird",
     "s2.p":"Wähle ein Preset oder baue ein eigenes mit Add element…. Änderungen erreichen Final Cut Pro nach einem Moment; es gibt nichts zu exportieren oder zu speichern.",
     "s3.h":"Platzieren und gestalten",
     "s3.p":"Wähle einen Anchor und setze X und Y, oder ziehe das Element in der Position Preview. Textgröße, Farbe und Hintergrund stellst du pro Element im Editor ein.",
     "s4.h":"Effekt hinzufügen",
-    "s4.p":"Verbinde in Final Cut Pro eine Adjustment Layer über deiner Timeline und ziehe sie über die volle Länge. Ziehe im Effekte-Browser den MalibuBurn-Effekt aus Studio Malibu darauf.",
+    "s4.p":"Verbinde in Final Cut Pro eine Adjustment Layer über deiner Timeline und ziehe sie über die volle Länge. Ziehe im Effektbrowser den Effekt MalibuBurn aus Studio Malibu darauf.",
     "f.title":"Was drinsteckt",
     "f.sub":"Was die aktuelle Version (0.3.63, Beta) kann.",
     "t1.l":"Felder",
     "t1.h":"23 Feldtypen",
-    "t1.p":"Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, vier Marker-Felder (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips und zwei Stacked-Layer-Blöcke. Ein Element ohne Wert zeichnet nichts.",
+    "t1.p":"Source TC, Project TC, Clip Name, Source File, Reel, Scene / Shot, Speed / Retime, Notes, Angle, Resolution, Source Frame, Resize / Transform, Position / Rotation, Stabilization, Role Text, Custom Text, vier Markerfelder (Marker (Note or Name), Marker Name, Marker Note, Marker Name + Note), Stacked Video Clips und zwei Blöcke für gestapelte Ebenen. Ein Element ohne Wert zeichnet nichts.",
     "t2.h":"Neun Anker",
-    "t2.p":"Wähle einen Anchor in einem 3×3-Raster und setze dann X und Y: den Abstand von dieser Kante des sichtbaren Bilds oder von der Mitte. Beim Ziehen in der Position Preview rastet das Element an Bildkanten, Mitte und anderen Elementen ein.",
+    "t2.p":"Wähle einen Anchor in einem Raster aus 3×3 Feldern und setze dann X und Y: den Abstand von dieser Kante des sichtbaren Bilds oder von der Mitte. Beim Ziehen in der Position Preview rastet das Element an Bildkanten, Mitte und anderen Elementen ein.",
     "t3.h":"Stil und Bulk Style",
-    "t3.p":"Textgröße 12 bis 72, Farbe, Deckkraft, Ausrichtung und ein Hintergrund pro Element. Bulk Style wendet einen Text-, Hintergrund- oder Anchor-Entwurf mit Apply to all auf jedes Element an.",
+    "t3.p":"Textgröße 12 bis 72, Farbe, Deckkraft, Ausrichtung und ein Hintergrund pro Element. Bulk Style überträgt mit Apply to all einen Entwurf für Text, Hintergrund oder Anchor auf jedes Element.",
     "t4.h":"Role Text",
-    "t4.p":"Zeigt ein Label, den Namen des Clips oder den Namen der Rolle, solange ein Clip mit einer gewählten Rolle aktiv ist. Die Rollen kommen aus deinen Libraries, gruppiert als Video-, Audio- und Caption-Rollen.",
+    "t4.p":"Zeigt ein Label, den Namen des Clips oder den Namen der Rolle, solange ein Clip mit einer gewählten Rolle aktiv ist. Die Rollen kommen aus deinen Libraries, gruppiert in Rollen für Video, Audio und Caption.",
     "t5.h":"Gestapelte Ebenen",
     "t5.p":"Show stacked layers fügt Source TC, Source Frame, Reel, Scene / Shot und Source File eine Zeile pro Ebene hinzu. Stack order und Layer tag stellst du pro Preset ein.",
     "t6.h":"Source Frame",
     "t6.p":"Gezählt ab dem ersten Frame der Mediendatei, beginnend bei 0. Die Geschwindigkeit eines retimten Clips fließt in Source TC und Source Frame ein.",
     "t7.h":"Presets",
-    "t7.p":"Eingebaute Presets wie Netflix QC Layout, Conform und Colorist lassen sich direkt bearbeiten, aber nicht umbenennen oder löschen. Die Plus-Taste dupliziert eines als dein eigenes. Export und Import als JSON; jede Änderung wird automatisch gespeichert.",
+    "t7.p":"Eingebaute Presets wie Netflix QC Layout, Conform und Colorist lassen sich direkt bearbeiten, aber nicht umbenennen oder löschen. Die Plustaste dupliziert eines als dein eigenes. Export und Import als JSON; jede Änderung wird automatisch gespeichert.",
     "t8.h":"Sichtbares Bild",
     "t8.p":"Setze Visible picture auf Full Frame, 2.39:1, 2.35:1, 1.85:1, 4:3 oder Custom. X und Y sind Bruchteile dieser Fläche. Keep inside visible picture ist standardmäßig aus.",
-    "t9.h":"Library-Erkennung",
+    "t9.h":"Library erkennen",
     "t9.p":"Mit laufendem Final Cut Pro und geöffneter Library fügt ein Klick auf Detect from Final Cut Pro sie hinzu. Beim ersten Mal fragt macOS, ob der Host Final Cut Pro steuern darf.",
     "t10.h":"Validate",
-    "t10.p":"Vergleicht die Clip-Liste, die Malibu Burn für eine Timeline aufgelöst hat, mit einer exportierten FCPXML und antwortet PASS oder FAIL. Geprüft wird die Clip-Liste, nicht das Bild.",
-    "t11.h":"Plugin-Updates",
+    "t10.p":"Vergleicht die Clipliste, die Malibu Burn für eine Timeline aufgelöst hat, mit einer exportierten FCPXML und antwortet PASS oder FAIL. Geprüft wird die Clipliste, nicht das Bild.",
+    "t11.h":"Updates für das Plugin",
     "t11.p":"Stammt das Plugin vom Installer und ist älter als der Host, bietet ein Banner Update Plugin… an. macOS fragt einmal nach deinem Passwort. Starte Final Cut Pro danach neu.",
     "k.title":"Gut zu wissen",
     "k.sub":"Was du brauchst, wo die Grenzen liegen und worauf du achten solltest.",
     "k1.h":"Voraussetzungen",
     "k1.a":"macOS 14 oder neuer und Final Cut Pro",
-    "k1.b":"Zwei Teile: Die Host-App bestimmt, was angezeigt wird und wo; der MalibuBurn-Effekt in Final Cut Pro zeichnet es",
-    "k1.c":"Das Plugin mit dem Effekt installiert der MalibuBurn-Installer; der Effekt liegt in der Kategorie Studio Malibu",
-    "k1.d":"Der erste Start fragt nach deiner E-Mail-Adresse, sie ist Pflicht. Klicke auf Start Trial; die Adresse ordnet deine kostenlose Testphase dir zu",
+    "k1.b":"Zwei Teile: Der Host bestimmt, was angezeigt wird und wo; der Effekt MalibuBurn in Final Cut Pro zeichnet es",
+    "k1.c":"Das Plugin mit dem Effekt installiert der Installer von MalibuBurn; der Effekt liegt in der Kategorie Studio Malibu",
+    "k1.d":"Der erste Start fragt nach deiner Mailadresse, sie ist Pflicht. Klicke auf Start Trial; die Adresse ordnet deine kostenlose Testphase dir zu",
     "k1.e":"Der Host muss laufen und eine Timeline gewählt haben, sonst zeigt der Viewer eine Statuszeile",
     "k2.h":"Grenzen",
-    "k2.a":"Live-Updates sind nicht sofort da: Final Cut Pro kann eine Änderung eine Weile zurückhalten, bevor es sie auf die Platte schreibt. Die Aktualisieren-Taste in der Statusleiste liest neu ein",
-    "k2.b":"Einzelwert-Felder kommen vom primären Clip der Storyline. Darüber gestapelte Clips erscheinen über die Stacked-Layer-Optionen; Role Text reagiert auch auf Rollen verbundener Clips",
-    "k2.c":"Die Position Preview ist eine Näherung, das echte Textlayout macht Final Cut Pro. Stacked-Layer-Blöcke zeigen dort Platzhalterdaten",
+    "k2.a":"Aktualisierungen kommen nicht sofort an: Final Cut Pro kann eine Änderung eine Weile zurückhalten, bevor es sie auf die Platte schreibt. Die Taste zum Aktualisieren in der Statusleiste liest neu ein",
+    "k2.b":"Felder mit einem einzelnen Wert kommen vom primären Clip der Storyline. Darüber gestapelte Clips erscheinen über die Optionen für gestapelte Ebenen; Role Text reagiert auch auf Rollen verbundener Clips",
+    "k2.c":"Die Position Preview ist eine Näherung, das echte Textlayout macht Final Cut Pro. Die Blöcke für gestapelte Ebenen zeigen dort Platzhalterdaten",
     "k2.d":"Resize / Transform, Position / Rotation, Stabilization und Speed / Retime zeichnen bei Standardwerten nichts. Sie zeigen nur die Werte des Clips an",
-    "k2.e":"Bei einer Timeline-Framerate, die Malibu Burn nicht unterstützt, gibt es kein Burn-in; der Viewer nennt die Rate",
-    "k2.f":"Source Frame bleibt leer, wenn die Quell-Framerate des Clips nicht ermittelt werden kann, etwa bei Offline-Medien, und auf einer Lücke in der primären Storyline",
+    "k2.e":"Bei einer Framerate der Timeline, die Malibu Burn nicht unterstützt, wird nichts eingebrannt; der Viewer nennt die Rate",
+    "k2.f":"Source Frame bleibt leer, wenn sich die Framerate der Quelle des Clips nicht ermitteln lässt, etwa bei Medien, die offline sind, und auf einer Lücke in der primären Storyline",
     "k3.h":"Gut zu wissen",
     "k3.a":"Das Entfernen eines Elements hat keine Rückfrage und kein Undo. Bulk Style überschreibt alle Elemente sofort; dupliziere das Preset vorher, um den alten Stand zu behalten. Delete preset wirkt sofort",
-    "k3.b":"Passt der eingebrannte Timecode nicht zu deiner Timeline, trage den Start-Timecode in Project start TC (optional) in der Seitenleiste ein: HH:MM:SS:FF, bei Drop Frame HH:MM:SS;FF",
+    "k3.b":"Passt der eingebrannte Timecode nicht zu deiner Timeline, trage den Starttimecode in Project start TC (optional) in der Seitenleiste ein: HH:MM:SS:FF, bei Drop Frame HH:MM:SS;FF",
     "k3.c":"Die Rollenauswahl eines Presets gehört zu dem Projekt, für das es gemacht wurde. Prüfe die gewählten Rollen nach dem Import eines Presets",
     "k3.d":"Eine Library zu entfernen nimmt sie nur aus Malibu Burn; die Datei bleibt unberührt. Alles, was keine .fcpbundle ist, wird beim Ablegen ohne Meldung ignoriert",
-    "k3.e":"Ist die Lizenz abgelaufen oder gesperrt, zeigt der Viewer statt des Burn-in nur die Meldung. War die App zu lange offline, um die Lizenz zu prüfen, bittet sie dich, dich mit dem Internet zu verbinden",
+    "k3.e":"Ist die Lizenz abgelaufen oder gesperrt, zeigt der Viewer nur die Meldung und keine eingebrannten Daten. War die App zu lange offline, um die Lizenz zu prüfen, bittet sie dich, dich mit dem Internet zu verbinden",
     "dl.title":"Malibu Burn laden",
-    "dl.sub":"Beta. Der Installer liefert das Plugin mit dem MalibuBurn-Effekt für Final Cut Pro. Der Host prüft selbst auf Updates; Check for Updates… im App-Menü prüft auf Abruf.",
+    "dl.sub":"Beta. Der Installer liefert das Plugin mit dem Effekt MalibuBurn für Final Cut Pro. Der Host prüft selbst auf Updates; Check for Updates… im Menü der App prüft auf Abruf.",
     "dl.btn":"Für Mac laden",
     "foot.help":"Hilfe",
     "foot.sub":"Ein Studio Malibu Berlin Produkt",

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malibu Drop · Drag-and-Drop Import for Final Cut Pro</title>
+<title>Malibu Drop · Import into Final Cut Pro by Dropping Files</title>
 <link rel="icon" type="image/png" href="/apps/malibu-drop/icon.png">
 <meta name="description" content="Malibu Drop is a menu bar app for Final Cut Pro: drop a file or folder on a tile and it is copied or moved into the tile's media folder and imported into the tile's event through a generated FCPXML.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
 
   <header class="hero">
     <div>
-      <div class="eyebrow"><span data-i18n="hero.eyebrow">Drag-and-drop import · Final Cut Pro</span><span class="badge">Beta</span></div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Import by dropping files · Final Cut Pro</span><span class="badge">Beta</span></div>
       <h1 data-i18n="hero.h1">Drop it on a tile.<br><span class="soft">It lands</span> in the right event.</h1>
       <p class="lead" data-i18n="hero.lead">Malibu Drop is a menu bar app for Final Cut Pro. Drop a file or folder on a tile: it is copied or moved into the tile's media folder and imported into the tile's Final Cut event through a generated FCPXML.</p>
       <div class="cta-row">
@@ -57,7 +57,7 @@
         <div class="win w3">
           <div class="win-head"><i><b></b><b></b><b></b></i><span>Final Cut Pro</span></div>
           <div class="row"><span class="k" data-i18n="w3.r1">Clip in the tile's event</span><span class="tag good" data-i18n="w3.tag">Imported</span></div>
-          <div class="row"><span class="k" data-i18n="w3.r2">Generated FCPXML</span><span class="v" data-i18n="w3.v">Hand-over</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">Generated FCPXML</span><span class="v" data-i18n="w3.v">Handover</span></div>
         </div>
       </div>
       <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
@@ -113,8 +113,8 @@
         <p data-i18n="t7.p">A drop waits when Final Cut is not running, no library is open or the event does not exist yet. Malibu Drop retries after 2, 5, 15 and 60 seconds, then every 300 seconds, and the list survives a restart.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t8.h">PostLab-locked events</h3>
-        <p data-i18n="t8.p">An event PostLab has locked is recognized by its lock-symbol folder name. The clip then goes into your Sort event (Sort plus your first name), and the menu reminds you which clips belong in their real event. If that is locked too, the drop waits. Without PostLab, clips go to the tile's event.</p>
+        <h3 data-i18n="t8.h">Events locked by PostLab</h3>
+        <p data-i18n="t8.p">An event PostLab has locked is recognized by the lock symbol in its folder name. The clip then goes into your Sort event (Sort plus your first name), and the menu reminds you which clips belong in their real event. If that is locked too, the drop waits. Without PostLab, clips go to the tile's event.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t9.h">Needs attention</h3>
@@ -162,7 +162,7 @@
           <li data-i18n="k3.a">The default media folders are placeholders. Without your own Media folder on the tile, the drop fails because the volume is not mounted.</li>
           <li data-i18n="k3.b">The name in Final Cut event must match the event in the library exactly; only emoji variation selectors are ignored.</li>
           <li data-i18n="k3.c">Opening the library does not trigger an immediate retry; the pause between tries grows up to five minutes.</li>
-          <li data-i18n="k3.d">After the hand-over, Malibu Drop checks for about 20 seconds whether the clip shows up in the event. If not, the menu warns until you choose Dismiss notices.</li>
+          <li data-i18n="k3.d">After the handover, Malibu Drop checks for about 20 seconds whether the clip shows up in the event. If not, the menu warns until you choose Dismiss notices.</li>
           <li data-i18n="k3.e">If Edit &gt; Connect to Primary Storyline is not found, is disabled or does not react, the Q key is used, which only works with Final Cut's default binding. The placement is then reported as sent to Final Cut, but not confirmed.</li>
           <li data-i18n="k3.f">Whether Final Cut creates a missing Sort event by itself has not been verified live.</li>
           <li data-i18n="k3.g">If tiles.json cannot be read, it is renamed to tiles.json.corrupt- followed by the time and the default tiles are shown.</li>
@@ -190,7 +190,7 @@
         <a href="/apps/malibu-drop/help/" data-i18n="foot.help">Help</a><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
-    <p class="legal" data-i18n="foot.legal">Malibu Drop is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. PostLab is a trademark of its owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+    <p class="legal" data-i18n="foot.legal">Malibu Drop is a professional tool for post production. Apple and Final Cut Pro are trademarks of Apple Inc. PostLab is a trademark of its owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
   </footer>
 </div>
 
@@ -199,7 +199,7 @@ window.PAGE_T = {
   en: {
     "nav.back":"← All apps",
     "nav.cta":"Download",
-    "hero.eyebrow":"Drag-and-drop import · Final Cut Pro",
+    "hero.eyebrow":"Import by dropping files · Final Cut Pro",
     "hero.h1":"Drop it on a tile.<br><span class=\"soft\">It lands</span> in the right event.",
     "hero.lead":"Malibu Drop is a menu bar app for Final Cut Pro. Drop a file or folder on a tile: it is copied or moved into the tile's media folder and imported into the tile's Final Cut event through a generated FCPXML.",
     "hero.dl":"Download for Mac",
@@ -212,7 +212,7 @@ window.PAGE_T = {
     "w3.tag":"Imported",
     "w3.r1":"Clip in the tile's event",
     "w3.r2":"Generated FCPXML",
-    "w3.v":"Hand-over",
+    "w3.v":"Handover",
     "illu":"Illustration of the workflow, not a screenshot.",
     "wf.title":"Four steps",
     "wf.sub":"From a loose file to a clip in the right event.",
@@ -241,8 +241,8 @@ window.PAGE_T = {
     "t6.p":"New and default tiles accept audio only. Switch on Video or Image under Accept to take those too. A file of a kind the tile does not accept is skipped.",
     "t7.h":"Waiting drops",
     "t7.p":"A drop waits when Final Cut is not running, no library is open or the event does not exist yet. Malibu Drop retries after 2, 5, 15 and 60 seconds, then every 300 seconds, and the list survives a restart.",
-    "t8.h":"PostLab-locked events",
-    "t8.p":"An event PostLab has locked is recognized by its lock-symbol folder name. The clip then goes into your Sort event (Sort plus your first name), and the menu reminds you which clips belong in their real event. If that is locked too, the drop waits. Without PostLab, clips go to the tile's event.",
+    "t8.h":"Events locked by PostLab",
+    "t8.p":"An event PostLab has locked is recognized by the lock symbol in its folder name. The clip then goes into your Sort event (Sort plus your first name), and the menu reminds you which clips belong in their real event. If that is locked too, the drop waits. Without PostLab, clips go to the tile's event.",
     "t9.h":"Needs attention",
     "t9.p":"Items that gave up show the reason, with Retry and Dismiss; the file stays where it is. The menu bar icon shows a warning symbol while something needs a look.",
     "t10.h":"Connect at playhead",
@@ -266,7 +266,7 @@ window.PAGE_T = {
     "k3.a":"The default media folders are placeholders. Without your own Media folder on the tile, the drop fails because the volume is not mounted.",
     "k3.b":"The name in Final Cut event must match the event in the library exactly; only emoji variation selectors are ignored.",
     "k3.c":"Opening the library does not trigger an immediate retry; the pause between tries grows up to five minutes.",
-    "k3.d":"After the hand-over, Malibu Drop checks for about 20 seconds whether the clip shows up in the event. If not, the menu warns until you choose Dismiss notices.",
+    "k3.d":"After the handover, Malibu Drop checks for about 20 seconds whether the clip shows up in the event. If not, the menu warns until you choose Dismiss notices.",
     "k3.e":"If Edit &gt; Connect to Primary Storyline is not found, is disabled or does not react, the Q key is used, which only works with Final Cut's default binding. The placement is then reported as sent to Final Cut, but not confirmed.",
     "k3.f":"Whether Final Cut creates a missing Sort event by itself has not been verified live.",
     "k3.g":"If tiles.json cannot be read, it is renamed to tiles.json.corrupt- followed by the time and the default tiles are shown.",
@@ -277,20 +277,20 @@ window.PAGE_T = {
     "foot.sub":"A Studio Malibu Berlin product",
     "foot.imprint":"Legal Notice",
     "foot.privacy":"Privacy Policy",
-    "foot.legal":"Malibu Drop is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. PostLab is a trademark of its owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"Malibu Drop is a professional tool for post production. Apple and Final Cut Pro are trademarks of Apple Inc. PostLab is a trademark of its owner. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
     "nav.back":"← Alle Apps",
     "nav.cta":"Laden",
-    "hero.eyebrow":"Drag-and-Drop-Import · Final Cut Pro",
+    "hero.eyebrow":"Import per Ziehen und Ablegen · Final Cut Pro",
     "hero.h1":"Auf eine Kachel ziehen.<br><span class=\"soft\">Landet</span> im richtigen Event.",
-    "hero.lead":"Malibu Drop ist eine Menüleisten-App für Final Cut Pro. Zieh eine Datei oder einen Ordner auf eine Kachel: Sie werden in den Medienordner der Kachel kopiert oder verschoben und über eine generierte FCPXML in das Final-Cut-Event der Kachel importiert.",
+    "hero.lead":"Malibu Drop ist eine App in der Menüleiste für Final Cut Pro. Zieh eine Datei oder einen Ordner auf eine Kachel. Malibu Drop kopiert oder verschiebt sie in den Medienordner der Kachel und importiert sie über eine generierte FCPXML in das Event der Kachel in Final Cut.",
     "hero.dl":"Für Mac laden",
     "hero.meta":"Notarisiert · macOS 14+ · Beta 0.2.6 · wird €19 kosten",
     "w1.head":"Drop",
     "w1.r1":"Dateien oder Ordner",
     "w1.v1":"Audio · Video · Bild",
-    "w1.r2":"Ziel-Kachel",
+    "w1.r2":"Zielkachel",
     "w2.head":"Kacheln",
     "w3.tag":"Importiert",
     "w3.r1":"Clip im Event der Kachel",
@@ -300,9 +300,9 @@ window.PAGE_T = {
     "wf.title":"Vier Schritte",
     "wf.sub":"Von der losen Datei zum Clip im richtigen Event.",
     "s1.h":"Kachel einrichten",
-    "s1.p":"Wähle in Settings… einen Media folder und tippe das Final Cut event genau so, wie es in der Library heißt. Die Medienordner der sieben Standard-Kacheln sind Platzhalter, setze also zuerst deinen eigenen.",
+    "s1.p":"Wähle in Settings… einen Media folder und tippe das Final Cut event genau so, wie es in der Library heißt. Die Medienordner der sieben Standardkacheln sind Platzhalter, setze also zuerst deinen eigenen.",
     "s2.h":"Droppen oder importieren",
-    "s2.p":"Halte die Umschalttaste, während du Dateien oder Ordner aus Finder, Mail oder Browser ziehst; das Drop-Panel erscheint neben dem Cursor. Oder wähle Import files to… im Menüleisten-Menü.",
+    "s2.p":"Halte die Umschalttaste, während du Dateien oder Ordner aus Finder, Mail oder Browser ziehst; das Panel zum Ablegen erscheint neben dem Cursor. Oder wähle Import files to… im Menü in der Menüleiste.",
     "s3.h":"Kopiert oder verschoben, dann importiert",
     "s3.p":"Die Datei landet im Medienordner (Original file entscheidet über Kopieren oder Verschieben; neue Kacheln kopieren) und wird über eine generierte FCPXML ins Event importiert. Das Ergebnis steht unter Recent.",
     "s4.h":"Wartende Drops bleiben erhalten",
@@ -311,50 +311,50 @@ window.PAGE_T = {
     "f.sub":"Was die aktuelle Beta (0.2.6) wirklich kann.",
     "t1.l":"Import",
     "t1.h":"Über eine generierte FCPXML",
-    "t1.p":"Clips werden nur über eine generierte FCPXML importiert; nichts wird in das Library-Paket geschrieben. Ein Namenskonflikt überschreibt nie eine Datei: die neue bekommt eine Nummer. Die Unterordner eines gedroppten Ordners werden unter dem Medienordner nachgebaut, und Ordner werden bis 100.000 Einträge gelesen.",
+    "t1.p":"Clips werden nur über eine generierte FCPXML importiert; nichts wird in das Paket der Library geschrieben. Ein Namenskonflikt überschreibt nie eine Datei: die neue bekommt eine Nummer. Die Unterordner eines gedroppten Ordners werden unter dem Medienordner nachgebaut, und Ordner werden bis 100.000 Einträge gelesen.",
     "t2.h":"Kopieren oder verschieben",
-    "t2.p":"Original file legt fest, ob das Original in den Medienordner kopiert oder verschoben wird. Neue Kacheln kopieren. Im Verschieben-Modus werden Dateien innerhalb einer Final-Cut-Library abgelehnt; Kopieren ist erlaubt.",
-    "t3.h":"Sieben Standard-Kacheln, alle editierbar",
-    "t3.p":"Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout und ADR Recorded sind ein Ausgangspunkt. Kacheln lassen sich hinzufügen, duplizieren und entfernen, und dein Set speicherst und lädst du mit Export Tiles… und Import Tiles… als JSON-Datei. Beim Import werden alle Kacheln ersetzt, nachdem du mit Replace bestätigt hast.",
-    "t4.h":"Drop-Panel am Cursor",
+    "t2.p":"Original file legt fest, ob das Original in den Medienordner kopiert oder verschoben wird. Neue Kacheln kopieren. Beim Verschieben werden Dateien innerhalb einer Library von Final Cut abgelehnt; Kopieren ist erlaubt.",
+    "t3.h":"Sieben Standardkacheln, alle editierbar",
+    "t3.p":"Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout und ADR Recorded sind ein Ausgangspunkt. Kacheln lassen sich hinzufügen, duplizieren und entfernen, und dein Set speicherst und lädst du mit Export Tiles… und Import Tiles… als Datei in JSON. Beim Import werden alle Kacheln ersetzt, nachdem du mit Replace bestätigt hast.",
+    "t4.h":"Panel zum Ablegen am Cursor",
     "t4.p":"Halte beim Ziehen die Umschalttaste; die Taste ist fest. Show tiles oder das Kürzel unter Appearance hält das Panel auf dem Bildschirm. Das Kürzel braucht Control, Option oder Command.",
     "t5.h":"Rolle, Kanäle, Pegel",
     "t5.p":"Setze unter Audio die Role (das Menü listet Rollen aus der geöffneten Library) und die Channels von Stereodateien: Unchanged, Stereo, Dual Mono, Mono oder Swapped. Change level wendet einen festen Pegel in dB an.",
     "t6.h":"Audio, Video, Standbilder",
-    "t6.p":"Neue und Standard-Kacheln nehmen nur Audio an. Schalte unter Accept Video oder Image ein, um auch diese anzunehmen. Eine Datei, deren Art die Kachel nicht annimmt, wird übersprungen.",
+    "t6.p":"Neue Kacheln und die Standardkacheln nehmen nur Audio an. Schalte unter Accept Video oder Image ein, um auch diese anzunehmen. Eine Datei, deren Art die Kachel nicht annimmt, wird übersprungen.",
     "t7.h":"Wartende Drops",
     "t7.p":"Ein Drop wartet, wenn Final Cut nicht läuft, keine Library offen ist oder das Event noch nicht existiert. Malibu Drop versucht es nach 2, 5, 15 und 60 Sekunden, danach alle 300 Sekunden erneut, und die Liste übersteht einen Neustart.",
     "t8.h":"Von PostLab gesperrte Events",
-    "t8.p":"Ein von PostLab gesperrtes Event erkennt Malibu Drop am Ordnernamen mit Schloss-Symbol. Der Clip geht dann in dein Sort-Event (Sort plus dein Vorname), und das Menü erinnert dich, welche Clips ins echte Event gehören. Ist auch dieses gesperrt, wartet der Drop. Ohne PostLab gehen Clips in das Event der Kachel.",
+    "t8.p":"Ein von PostLab gesperrtes Event erkennt Malibu Drop am Schlosssymbol im Ordnernamen. Der Clip geht dann in dein Event Sort (Sort plus dein Vorname), und das Menü erinnert dich, welche Clips ins echte Event gehören. Ist auch dieses gesperrt, wartet der Drop. Ohne PostLab gehen Clips in das Event der Kachel.",
     "t9.h":"Needs attention",
-    "t9.p":"Aufgegebene Einträge zeigen den Grund, mit Retry und Dismiss; die Datei bleibt, wo sie ist. Das Menüleisten-Symbol wechselt zu einem Warnsymbol, solange etwas Aufmerksamkeit braucht.",
+    "t9.p":"Aufgegebene Einträge zeigen den Grund, mit Retry und Dismiss; die Datei bleibt, wo sie ist. Das Symbol in der Menüleiste wechselt zu einem Warnsymbol, solange etwas Aufmerksamkeit braucht.",
     "t10.h":"Connect at playhead",
-    "t10.p":"Optional pro Kachel, standardmäßig aus. Malibu Drop wählt Edit &gt; Connect to Primary Storyline in Final Cut, dafür braucht es die Bedienungshilfen-Berechtigung. Der Import funktioniert auch ohne.",
+    "t10.p":"Optional pro Kachel, standardmäßig aus. Malibu Drop wählt Edit &gt; Connect to Primary Storyline in Final Cut, dafür braucht es die Berechtigung für Bedienungshilfen. Der Import funktioniert auch ohne.",
     "t11.h":"Ordnernamen als Keywords",
     "t11.p":"Standardmäßig an: Die Ordnernamen eines gedroppten Ordners werden als Keywords auf die importierten Clips geschrieben.",
     "k.title":"Gut zu wissen",
     "k.sub":"Was du brauchst, was es nicht tut und worauf du achten solltest.",
     "k1.h":"Voraussetzungen",
     "k1.a":"macOS 14.0 oder neuer",
-    "k1.b":"Final Cut Pro mit geöffneter Library; das Ziel-Event muss darin bereits existieren",
+    "k1.b":"Final Cut Pro mit geöffneter Library; das Zielevent muss darin bereits existieren",
     "k1.c":"PostLab ist nicht erforderlich",
-    "k1.d":"Bedienungshilfen-Berechtigung, nur für Connect at playhead",
+    "k1.d":"Berechtigung für Bedienungshilfen, nur für Connect at playhead",
     "k1.e":"Malibu Drop ist nicht sandboxed",
     "k2.h":"Was es nicht tut",
-    "k2.a":"Nur Final Cut Pro. Pakete und Final-Cut-Library-Dateien werden nicht als Medien angenommen.",
+    "k2.a":"Nur Final Cut Pro. Pakete und Libraries von Final Cut werden nicht als Medien angenommen.",
     "k2.b":"Es legt das Event nicht an und öffnet die Library nicht für dich; der Drop wartet, bis beides da ist.",
     "k2.c":"Wird ein Clip nicht im Event gefunden, importiert Malibu Drop ihn nicht selbst erneut, um einen Doppelimport zu vermeiden.",
-    "k2.d":"Final Cuts Einstellung zum Positionieren des Playheads nach einem Edit liest es nur über englische Beschriftungen; in anderen Final-Cut-Sprachen zeigt das Menü keinen Hinweis.",
+    "k2.d":"Final Cuts Einstellung zum Positionieren des Playheads nach einem Edit liest es nur über englische Beschriftungen; läuft Final Cut in einer anderen Sprache, zeigt das Menü keinen Hinweis.",
     "k3.h":"Worauf du achten solltest",
-    "k3.a":"Die Standard-Medienordner sind Platzhalter. Ohne deinen eigenen Media folder auf der Kachel scheitert der Drop, weil das Volume nicht eingehängt ist.",
-    "k3.b":"Der Name in Final Cut event muss genau zum Event in der Library passen; nur Emoji-Variantenselektoren werden ignoriert.",
+    "k3.a":"Die voreingestellten Medienordner sind Platzhalter. Ohne deinen eigenen Media folder auf der Kachel scheitert der Drop, weil das Volume nicht eingehängt ist.",
+    "k3.b":"Der Name in Final Cut event muss genau zum Event in der Library passen; nur Variantenselektoren für Emoji werden ignoriert.",
     "k3.c":"Das Öffnen der Library löst keinen sofortigen neuen Versuch aus; die Pause zwischen den Versuchen wächst bis auf fünf Minuten.",
     "k3.d":"Nach der Übergabe prüft Malibu Drop etwa 20 Sekunden lang, ob der Clip im Event auftaucht. Falls nicht, warnt das Menü, bis du Dismiss notices wählst.",
-    "k3.e":"Wird Edit &gt; Connect to Primary Storyline nicht gefunden, ist deaktiviert oder reagiert nicht, wird die Q-Taste benutzt, die nur mit Final Cuts Standardbelegung funktioniert. Die Platzierung wird dann als sent to Final Cut, but not confirmed gemeldet.",
-    "k3.f":"Dass Final Cut ein fehlendes Sort-Event selbst anlegt, wurde nicht live verifiziert.",
-    "k3.g":"Lässt sich tiles.json nicht lesen, wird die Datei in tiles.json.corrupt- mit der Uhrzeit umbenannt und die Standard-Kacheln werden gezeigt.",
+    "k3.e":"Wird Edit &gt; Connect to Primary Storyline nicht gefunden, ist deaktiviert oder reagiert nicht, wird die Taste Q benutzt, die nur mit Final Cuts Standardbelegung funktioniert. Die Platzierung wird dann als sent to Final Cut, but not confirmed gemeldet.",
+    "k3.f":"Dass Final Cut ein fehlendes Event Sort selbst anlegt, wurde nicht live verifiziert.",
+    "k3.g":"Lässt sich tiles.json nicht lesen, wird die Datei in tiles.json.corrupt- mit der Uhrzeit umbenannt und die Standardkacheln werden gezeigt.",
     "dl.title":"Malibu Drop laden",
-    "dl.sub":"Beta 0.2.6 für macOS 14 oder neuer. Wähle Check for Updates… im Menüleisten-Menü, um nach einer neueren Version zu suchen.",
+    "dl.sub":"Beta 0.2.6 für macOS 14 oder neuer. Wähle Check for Updates… im Menü in der Menüleiste, um nach einer neueren Version zu suchen.",
     "dl.btn":"Für Mac laden",
     "foot.help":"Hilfe",
     "foot.sub":"Ein Studio Malibu Berlin Produkt",

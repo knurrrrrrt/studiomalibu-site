@@ -52,7 +52,7 @@
         <div class="win w2">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w2.head">Meter</span></div>
           <div class="row"><span class="k" data-i18n="w2.r1">Momentary</span><span class="v">LUFS</span></div>
-          <div class="row"><span class="k" data-i18n="w2.r2">Short-term</span><span class="v">LUFS</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Short term</span><span class="v">LUFS</span></div>
           <div class="row"><span class="k" data-i18n="w2.r3">Integrated</span><span class="v">LUFS</span></div>
         </div>
         <div class="win w3">
@@ -72,9 +72,9 @@
     </div>
     <div class="steps">
       <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Start the trial</h3><p data-i18n="s1.p">On the first start, enter your email address and click Start Trial. macOS asks for microphone access right away, before you have chosen a source.</p></div>
-      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Choose a source</h3><p data-i18n="s2.p">Right-click the meter window, choose Settings... and open the Input tab. Pick App, Device or Screen Audio. On a fresh install nothing is selected, so the bars stay at silence.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Choose a source</h3><p data-i18n="s2.p">Click the meter window with the right mouse button, choose Settings... and open the Input tab. Pick App, Device or Screen Audio. On a fresh install nothing is selected, so the bars stay at silence.</p></div>
       <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">Select the audio</h3><p data-i18n="s3.p">App: open Select Process... and pick an app that plays audio; its name appears with a green dot. Device: pick System Default or a listed device. Screen Audio: tick Enable and choose apps in the Applications menu.</p></div>
-      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Read and check</h3><p data-i18n="s4.p">Play audio in the source. The bars show the level. Press Command-Shift-L for the LUFS Meter and pick a preset under Standard: to check the result against a target.</p></div>
+      <div class="step"><div class="n">04</div><h3 data-i18n="s4.h">Read and check</h3><p data-i18n="s4.p">Play audio in the source. The bars show the level. Press ⌘⇧L for the LUFS Meter and pick a preset under Standard: to check the result against a target.</p></div>
     </div>
   </section>
 
@@ -87,7 +87,7 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Measure</div>
         <h3 data-i18n="t1.h">Loudness values</h3>
-        <p data-i18n="t1.p">Momentary (M), short-term (S) and integrated (I) loudness in LUFS, plus loudness range (LRA) and true peak (TP). Show them as text or as three rings. The loudness meter is off by default: choose LUFS Meter in the View menu. The values are only computed while it is shown.</p>
+        <p data-i18n="t1.p">Momentary (M), short term (S) and integrated (I) loudness in LUFS, plus loudness range (LRA) and true peak (TP). Show them as text or as three rings. The loudness meter is off by default: choose LUFS Meter in the View menu. The values are only computed while it is shown.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Three capture modes</h3>
@@ -95,7 +95,7 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Surround in Device mode</h3>
-        <p data-i18n="t3.p">Sources with 5, 6 or 8 channels (5.0, 5.1, 7.1) are measured for loudness with their real channels; the level bars show a stereo fold-down. Other channel counts, and the App and Screen Audio modes, are measured as stereo.</p>
+        <p data-i18n="t3.p">Sources with 5, 6 or 8 channels (5.0, 5.1, 7.1) are measured for loudness with their real channels; the level bars fold them down to stereo. Other channel counts, and the App and Screen Audio modes, are measured as stereo.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Level, spectrum, goniometer</h3>
@@ -107,15 +107,15 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Test signal and test tones</h3>
-        <p data-i18n="t6.p">Test Signal feeds a built-in sweep through the meters. Export Test Tones… writes five 30-second WAV files with a 997 Hz sine tone, from 0 to -30 dBFS, to load into the app you measure.</p>
+        <p data-i18n="t6.p">Test Signal feeds a sweep that comes with the app through the meters. Export Test Tones… writes five WAV files of 30 seconds each with a 997 Hz sine tone, from 0 to -30 dBFS, to load into the app you measure.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Loudness targets</h3>
-        <p data-i18n="t7.p">Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85. Each has a target, an allowed deviation and a true-peak limit; EBU R128, for example, is -23 LUFS, ±1 LU and -1 dB. The result counts as passed only when integrated loudness is in range and true peak is at or below the limit. Netflix is selected by default.</p>
+        <p data-i18n="t7.p">Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85. Each has a target, an allowed deviation and a limit for true peak; EBU R128, for example, is -23 LUFS, ±1 LU and -1 dB. The result counts as passed only when integrated loudness is in range and true peak is at or below the limit. Netflix is selected by default.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Your own status colours</h3>
-        <p data-i18n="t8.p">Choose the colours for Too Quiet, In Range and Too Loud. They colour the integrated value and the pass or fail indicator; the true-peak value uses only In Range and Too Loud.</p>
+        <p data-i18n="t8.p">Choose the colours for Too Quiet, In Range and Too Loud. They colour the integrated value and the pass or fail indicator; the value for true peak uses only In Range and Too Loud.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t9.h">App level calibration</h3>
@@ -142,7 +142,7 @@
         <h3 data-i18n="k1.h">Requirements</h3>
         <ul>
           <li data-i18n="k1.a">macOS 14.0 or later; App mode needs macOS 14.4 or later</li>
-          <li data-i18n="k1.b">Microphone access for Device (macOS asks at the first start), audio-capture access for App, Screen Recording access for Screen Audio</li>
+          <li data-i18n="k1.b">Microphone access for Device (macOS asks at the first start), access to audio capture for App, Screen Recording access for Screen Audio</li>
           <li data-i18n="k1.c">Free trial after you enter your email address; a license key unlocks the app afterwards</li>
           <li data-i18n="k1.d">The app is sandboxed and needs a network connection for the license check and updates</li>
         </ul>
@@ -159,7 +159,7 @@
       <div class="fact">
         <h3 data-i18n="k3.h">Worth knowing</h3>
         <ul>
-          <li data-i18n="k3.a">Reset Peaks (Command-R) and a double-click reset only the peak hold, not integrated loudness or range. Those restart when you choose the source again, or with Auto-Reset on Silence.</li>
+          <li data-i18n="k3.a">Reset Peaks (⌘R) and two quick clicks reset only the peak hold, not integrated loudness or range. Those restart when you choose the source again, or with Auto-Reset on Silence.</li>
           <li data-i18n="k3.b">After you switch the output device in App mode, choose the app again so the new compensation applies.</li>
           <li data-i18n="k3.c">Deterministic level (experimental) is off by default. It can leave the meter silent on some Macs; turn it off if the signal drops out.</li>
           <li data-i18n="k3.d">Treat LUFS readings of the exported test tone as approximate.</li>
@@ -210,7 +210,7 @@ window.PAGE_T = {
     "w1.r2":"Surround (Device)",
     "w2.head":"Meter",
     "w2.r1":"Momentary",
-    "w2.r2":"Short-term",
+    "w2.r2":"Short term",
     "w2.r3":"Integrated",
     "w3.head":"Target",
     "w3.r1":"Standard",
@@ -222,30 +222,30 @@ window.PAGE_T = {
     "s1.h":"Start the trial",
     "s1.p":"On the first start, enter your email address and click Start Trial. macOS asks for microphone access right away, before you have chosen a source.",
     "s2.h":"Choose a source",
-    "s2.p":"Right-click the meter window, choose Settings... and open the Input tab. Pick App, Device or Screen Audio. On a fresh install nothing is selected, so the bars stay at silence.",
+    "s2.p":"Click the meter window with the right mouse button, choose Settings... and open the Input tab. Pick App, Device or Screen Audio. On a fresh install nothing is selected, so the bars stay at silence.",
     "s3.h":"Select the audio",
     "s3.p":"App: open Select Process... and pick an app that plays audio; its name appears with a green dot. Device: pick System Default or a listed device. Screen Audio: tick Enable and choose apps in the Applications menu.",
     "s4.h":"Read and check",
-    "s4.p":"Play audio in the source. The bars show the level. Press Command-Shift-L for the LUFS Meter and pick a preset under Standard: to check the result against a target.",
+    "s4.p":"Play audio in the source. The bars show the level. Press ⌘⇧L for the LUFS Meter and pick a preset under Standard: to check the result against a target.",
     "f.title":"What's inside",
     "f.sub":"What the current version (1.30) actually does.",
     "t1.l":"Measure",
     "t1.h":"Loudness values",
-    "t1.p":"Momentary (M), short-term (S) and integrated (I) loudness in LUFS, plus loudness range (LRA) and true peak (TP). Show them as text or as three rings. The loudness meter is off by default: choose LUFS Meter in the View menu. The values are only computed while it is shown.",
+    "t1.p":"Momentary (M), short term (S) and integrated (I) loudness in LUFS, plus loudness range (LRA) and true peak (TP). Show them as text or as three rings. The loudness meter is off by default: choose LUFS Meter in the View menu. The values are only computed while it is shown.",
     "t2.h":"Three capture modes",
     "t2.p":"App measures one app at a time and needs macOS 14.4 or later. Device measures System Default or a named input device, including virtual devices such as loopback drivers. Screen Audio measures one or more apps chosen from a list, using ScreenCaptureKit.",
     "t3.h":"Surround in Device mode",
-    "t3.p":"Sources with 5, 6 or 8 channels (5.0, 5.1, 7.1) are measured for loudness with their real channels; the level bars show a stereo fold-down. Other channel counts, and the App and Screen Audio modes, are measured as stereo.",
+    "t3.p":"Sources with 5, 6 or 8 channels (5.0, 5.1, 7.1) are measured for loudness with their real channels; the level bars fold them down to stereo. Other channel counts, and the App and Screen Audio modes, are measured as stereo.",
     "t4.h":"Level, spectrum, goniometer",
     "t4.p":"Peak and RMS level bars, an optional spectrum with resolutions from 1 to 1/48 octave, and a Lissajous goniometer.",
     "t5.h":"Ballistics and scales",
     "t5.p":"Digital Peak, PPM (EBU/BBC), PPM (DIN), PPM (Nordic) and VU. Scales: Linear (dBFS), Final Cut Pro, DIN, VU (+3), K-20, K-14, K-12 and EBU R128.",
     "t6.h":"Test signal and test tones",
-    "t6.p":"Test Signal feeds a built-in sweep through the meters. Export Test Tones… writes five 30-second WAV files with a 997 Hz sine tone, from 0 to -30 dBFS, to load into the app you measure.",
+    "t6.p":"Test Signal feeds a sweep that comes with the app through the meters. Export Test Tones… writes five WAV files of 30 seconds each with a 997 Hz sine tone, from 0 to -30 dBFS, to load into the app you measure.",
     "t7.h":"Loudness targets",
-    "t7.p":"Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85. Each has a target, an allowed deviation and a true-peak limit; EBU R128, for example, is -23 LUFS, ±1 LU and -1 dB. The result counts as passed only when integrated loudness is in range and true peak is at or below the limit. Netflix is selected by default.",
+    "t7.p":"Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85. Each has a target, an allowed deviation and a limit for true peak; EBU R128, for example, is -23 LUFS, ±1 LU and -1 dB. The result counts as passed only when integrated loudness is in range and true peak is at or below the limit. Netflix is selected by default.",
     "t8.h":"Your own status colours",
-    "t8.p":"Choose the colours for Too Quiet, In Range and Too Loud. They colour the integrated value and the pass or fail indicator; the true-peak value uses only In Range and Too Loud.",
+    "t8.p":"Choose the colours for Too Quiet, In Range and Too Loud. They colour the integrated value and the pass or fail indicator; the value for true peak uses only In Range and Too Loud.",
     "t9.h":"App level calibration",
     "t9.p":"In App mode the level is compensated automatically from your output device. If a test tone does not read its true level, calibrate with Auto-calibrate or by hand.",
     "t10.h":"Auto-Reset on Silence",
@@ -256,7 +256,7 @@ window.PAGE_T = {
     "k.sub":"What you need, what to watch for, and what it does not do.",
     "k1.h":"Requirements",
     "k1.a":"macOS 14.0 or later; App mode needs macOS 14.4 or later",
-    "k1.b":"Microphone access for Device (macOS asks at the first start), audio-capture access for App, Screen Recording access for Screen Audio",
+    "k1.b":"Microphone access for Device (macOS asks at the first start), access to audio capture for App, Screen Recording access for Screen Audio",
     "k1.c":"Free trial after you enter your email address; a license key unlocks the app afterwards",
     "k1.d":"The app is sandboxed and needs a network connection for the license check and updates",
     "k2.h":"What it does not do",
@@ -265,7 +265,7 @@ window.PAGE_T = {
     "k2.c":"Surround loudness works only in Device mode with 5, 6 or 8 channels; other counts are measured as stereo",
     "k2.d":"Test Signal works only with System Default as input device and is not a calibrated tone",
     "k3.h":"Worth knowing",
-    "k3.a":"Reset Peaks (Command-R) and a double-click reset only the peak hold, not integrated loudness or range. Those restart when you choose the source again, or with Auto-Reset on Silence.",
+    "k3.a":"Reset Peaks (⌘R) and two quick clicks reset only the peak hold, not integrated loudness or range. Those restart when you choose the source again, or with Auto-Reset on Silence.",
     "k3.b":"After you switch the output device in App mode, choose the app again so the new compensation applies.",
     "k3.c":"Deterministic level (experimental) is off by default. It can leave the meter silent on some Macs; turn it off if the signal drops out.",
     "k3.d":"Treat LUFS readings of the exported test tone as approximate.",
@@ -281,19 +281,19 @@ window.PAGE_T = {
   de: {
     "nav.back":"← Alle Apps",
     "nav.cta":"Laden",
-    "hero.eyebrow":"Loudness-Messung · EBU R128",
-    "hero.h1":"Pegel und Lautheit<br><span class=\"soft\">für Mac-Audio.</span>",
+    "hero.eyebrow":"Lautheitsmessung · EBU R128",
+    "hero.h1":"Pegel und Lautheit<br><span class=\"soft\">für Audio auf dem Mac.</span>",
     "hero.lead":"Malibu Meter zeigt Pegel und Lautheit des Audios auf deinem Mac. Miss eine App, ein Eingabegerät oder ausgewählte Apps und prüfe das Ergebnis gegen Ziele wie EBU R128, Netflix oder Spotify.",
     "hero.dl":"Für Mac laden",
     "hero.buy":"Kaufen",
-    "hero.meta":"macOS 14.0+ (App-Modus: 14.4+) · Version 1.30",
+    "hero.meta":"macOS 14.0+ (Modus App: 14.4+) · Version 1.30",
     "w1.head":"Quelle",
     "w1.r1":"Aufnahme",
     "w1.v1":"App · Device · Screen Audio",
     "w1.r2":"Surround (Device)",
     "w2.head":"Messung",
     "w2.r1":"Momentary",
-    "w2.r2":"Short-term",
+    "w2.r2":"Short term",
     "w2.r3":"Integrated",
     "w3.head":"Ziel",
     "w3.r1":"Standard",
@@ -303,34 +303,34 @@ window.PAGE_T = {
     "wf.title":"Vier Schritte",
     "wf.sub":"Vom ersten Start bis zum geprüften Ziel.",
     "s1.h":"Testphase starten",
-    "s1.p":"Gib beim ersten Start deine E-Mail-Adresse ein und klicke auf Start Trial. macOS fragt sofort nach Mikrofonzugriff, noch bevor du eine Quelle gewählt hast.",
+    "s1.p":"Gib beim ersten Start deine Mailadresse ein und klicke auf Start Trial. macOS fragt sofort nach Mikrofonzugriff, noch bevor du eine Quelle gewählt hast.",
     "s2.h":"Quelle wählen",
-    "s2.p":"Rechtsklick auf das Meter-Fenster, Settings... wählen und den Tab Input öffnen. Wähle App, Device oder Screen Audio. Bei einer frischen Installation ist nichts gewählt, die Balken bleiben deshalb still.",
+    "s2.p":"Rechtsklick auf das Fenster des Meters, Settings... wählen und den Tab Input öffnen. Wähle App, Device oder Screen Audio. Bei einer frischen Installation ist nichts gewählt, die Balken bleiben deshalb still.",
     "s3.h":"Audio auswählen",
     "s3.p":"App: Select Process... öffnen und eine App wählen, die Ton abspielt; ihr Name erscheint mit einem grünen Punkt. Device: System Default oder ein aufgelistetes Gerät wählen. Screen Audio: Enable ankreuzen und Apps im Menü Applications wählen.",
     "s4.h":"Ablesen und prüfen",
-    "s4.p":"Spiele Audio in der Quelle ab. Die Balken zeigen den Pegel. Mit Befehl-Umschalt-L schaltest du das LUFS Meter ein; unter Standard: wählst du ein Preset und prüfst das Ergebnis gegen ein Ziel.",
+    "s4.p":"Spiele Audio in der Quelle ab. Die Balken zeigen den Pegel. Mit ⌘⇧L schaltest du das LUFS Meter ein; unter Standard: wählst du ein Preset und prüfst das Ergebnis gegen ein Ziel.",
     "f.title":"Was drinsteckt",
     "f.sub":"Was die aktuelle Version (1.30) wirklich kann.",
     "t1.l":"Messen",
     "t1.h":"Lautheitswerte",
-    "t1.p":"Momentary (M), Short-term (S) und Integrated (I) in LUFS, dazu Loudness Range (LRA) und True Peak (TP). Anzeige als Text oder als drei Ringe. Der Lautheitsmesser ist standardmäßig aus: wähle LUFS Meter im Menü View. Die Werte werden nur berechnet, solange er sichtbar ist.",
+    "t1.p":"Momentary (M), Short Term (S) und Integrated (I) in LUFS, dazu Loudness Range (LRA) und True Peak (TP). Anzeige als Text oder als drei Ringe. Der Lautheitsmesser ist standardmäßig aus: wähle LUFS Meter im Menü View. Die Werte werden nur berechnet, solange er sichtbar ist.",
     "t2.h":"Drei Aufnahmemodi",
-    "t2.p":"App misst eine App nach der anderen und braucht macOS 14.4 oder neuer. Device misst System Default oder ein benanntes Eingabegerät, auch virtuelle Geräte wie Loopback-Treiber. Screen Audio misst eine oder mehrere aus einer Liste gewählte Apps über ScreenCaptureKit.",
-    "t3.h":"Surround im Device-Modus",
-    "t3.p":"Quellen mit 5, 6 oder 8 Kanälen (5.0, 5.1, 7.1) werden für die Lautheit mit ihren echten Kanälen gemessen; die Pegelbalken zeigen einen Stereo-Downmix. Andere Kanalzahlen sowie die Modi App und Screen Audio werden als Stereo gemessen.",
+    "t2.p":"App misst eine App nach der anderen und braucht macOS 14.4 oder neuer. Device misst System Default oder ein benanntes Eingabegerät, auch virtuelle Geräte wie Treiber für Loopback. Screen Audio misst eine oder mehrere aus einer Liste gewählte Apps über ScreenCaptureKit.",
+    "t3.h":"Surround im Modus Device",
+    "t3.p":"Quellen mit 5, 6 oder 8 Kanälen (5.0, 5.1, 7.1) werden für die Lautheit mit ihren echten Kanälen gemessen; die Pegelbalken zeigen einen Downmix auf Stereo. Andere Kanalzahlen sowie die Modi App und Screen Audio werden als Stereo gemessen.",
     "t4.h":"Pegel, Spektrum, Goniometer",
-    "t4.p":"Peak- und RMS-Pegelbalken, ein optionales Spektrum mit Auflösungen von 1 bis 1/48 Oktave und ein Lissajous-Goniometer.",
+    "t4.p":"Pegelbalken für Peak und RMS, ein optionales Spektrum mit Auflösungen von 1 bis 1/48 Oktave und ein Goniometer mit Lissajousfigur.",
     "t5.h":"Ballistik und Skalen",
     "t5.p":"Digital Peak, PPM (EBU/BBC), PPM (DIN), PPM (Nordic) und VU. Skalen: Linear (dBFS), Final Cut Pro, DIN, VU (+3), K-20, K-14, K-12 und EBU R128.",
     "t6.h":"Testsignal und Testtöne",
-    "t6.p":"Test Signal schickt einen eingebauten Sweep durch die Meter. Export Test Tones… schreibt fünf 30-Sekunden-WAV-Dateien mit einem 997-Hz-Sinus, von 0 bis -30 dBFS, zum Laden in die App, die du misst.",
+    "t6.p":"Test Signal schickt einen eingebauten Sweep durch die Meter. Export Test Tones… schreibt fünf Dateien im Format WAV, je 30 Sekunden lang, mit einem Sinuston von 997 Hz, von 0 bis -30 dBFS, zum Laden in die App, die du misst.",
     "t7.h":"Lautheitsziele",
-    "t7.p":"Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music und ATSC A/85. Jedes hat ein Ziel, eine erlaubte Abweichung und eine True-Peak-Grenze; EBU R128 etwa -23 LUFS, ±1 LU und -1 dB. Das Ergebnis gilt nur als bestanden, wenn die integrierte Lautheit im Bereich liegt und der True Peak höchstens die Grenze erreicht. Netflix ist standardmäßig gewählt.",
+    "t7.p":"Presets: EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music und ATSC A/85. Jedes hat ein Ziel, eine erlaubte Abweichung und eine Grenze für True Peak; EBU R128 etwa -23 LUFS, ±1 LU und -1 dB. Das Ergebnis gilt nur als bestanden, wenn die integrierte Lautheit im Bereich liegt und der True Peak höchstens die Grenze erreicht. Netflix ist standardmäßig gewählt.",
     "t8.h":"Eigene Statusfarben",
-    "t8.p":"Wähle die Farben für Too Quiet, In Range und Too Loud. Sie färben den integrierten Wert und die Bestanden/Nicht-bestanden-Anzeige; der True-Peak-Wert nutzt nur In Range und Too Loud.",
-    "t9.h":"Pegelkalibrierung im App-Modus",
-    "t9.p":"Im App-Modus wird der Pegel automatisch aus deinem Ausgabegerät ausgeglichen. Liest ein Testton nicht seinen wahren Pegel, kalibrierst du mit Auto-calibrate oder von Hand.",
+    "t8.p":"Wähle die Farben für Too Quiet, In Range und Too Loud. Sie färben den integrierten Wert und die Anzeige für bestanden oder nicht bestanden; der Wert für True Peak nutzt nur In Range und Too Loud.",
+    "t9.h":"Pegel kalibrieren im Modus App",
+    "t9.p":"Im Modus App wird der Pegel automatisch aus deinem Ausgabegerät ausgeglichen. Liest ein Testton nicht seinen wahren Pegel, kalibrierst du mit Auto-calibrate oder von Hand.",
     "t10.h":"Auto-Reset on Silence",
     "t10.p":"Setzt Integrated und Range nach etwa 1,5 Sekunden Stille zurück. Standardmäßig aus, ebenso wie Always on Top.",
     "t11.h":"Einstellungen und Verläufe",
@@ -338,28 +338,28 @@ window.PAGE_T = {
     "k.title":"Gut zu wissen",
     "k.sub":"Was du brauchst, worauf du achten solltest und was nicht geht.",
     "k1.h":"Voraussetzungen",
-    "k1.a":"macOS 14.0 oder neuer; der App-Modus braucht macOS 14.4 oder neuer",
-    "k1.b":"Mikrofonzugriff für Device (macOS fragt beim ersten Start), Audio-Capture-Zugriff für App, Bildschirmaufnahme-Zugriff für Screen Audio",
-    "k1.c":"Kostenlose Testphase nach Eingabe deiner E-Mail-Adresse; danach schaltet ein Lizenzschlüssel die App frei",
+    "k1.a":"macOS 14.0 oder neuer; der Modus App braucht macOS 14.4 oder neuer",
+    "k1.b":"Mikrofonzugriff für Device (macOS fragt beim ersten Start), Zugriff auf die Audioaufnahme für App, Zugriff auf die Bildschirmaufnahme für Screen Audio",
+    "k1.c":"Kostenlose Testphase nach Eingabe deiner Mailadresse; danach schaltet ein Lizenzschlüssel die App frei",
     "k1.d":"Die App läuft in der Sandbox und braucht eine Netzwerkverbindung für Lizenzprüfung und Updates",
     "k2.h":"Was nicht geht",
-    "k2.a":"Der App-Modus misst eine App nach der anderen, als Stereosignal",
-    "k2.b":"App und Screen Audio berechnen die Lautheit nie aus Surround-Kanälen",
-    "k2.c":"Surround-Lautheit gibt es nur im Device-Modus mit 5, 6 oder 8 Kanälen; andere Kanalzahlen werden als Stereo gemessen",
+    "k2.a":"Der Modus App misst eine App nach der anderen, als Stereosignal",
+    "k2.b":"App und Screen Audio berechnen die Lautheit nie aus Surroundkanälen",
+    "k2.c":"Lautheit in Surround gibt es nur im Modus Device mit 5, 6 oder 8 Kanälen; andere Kanalzahlen werden als Stereo gemessen",
     "k2.d":"Test Signal funktioniert nur mit System Default als Eingabegerät und ist kein kalibrierter Ton",
     "k3.h":"Gut zu wissen",
-    "k3.a":"Reset Peaks (Befehl-R) und ein Doppelklick setzen nur den Peak Hold zurück, nicht Integrated oder Range. Die beginnen neu, wenn du die Quelle erneut wählst, oder mit Auto-Reset on Silence.",
-    "k3.b":"Wechselst du im App-Modus das Ausgabegerät, wähle die App erneut, damit der neue Ausgleich gilt.",
+    "k3.a":"Reset Peaks (⌘R) und ein Doppelklick setzen nur den Peak Hold zurück, nicht Integrated oder Range. Die beginnen neu, wenn du die Quelle erneut wählst, oder mit Auto-Reset on Silence.",
+    "k3.b":"Wechselst du im Modus App das Ausgabegerät, wähle die App erneut, damit der neue Ausgleich gilt.",
     "k3.c":"Deterministic level (experimental) ist standardmäßig aus. Es kann das Meter auf manchen Macs stumm lassen; schalte es aus, wenn das Signal aussetzt.",
-    "k3.d":"LUFS-Werte des exportierten Testtons sind nur ungefähr zu verstehen.",
+    "k3.d":"Werte in LUFS vom exportierten Testton sind nur ungefähr zu verstehen.",
     "dl.title":"Malibu Meter laden",
-    "dl.sub":"Version 1.30 für macOS 14.0 oder neuer (App-Modus: 14.4).",
+    "dl.sub":"Version 1.30 für macOS 14.0 oder neuer (Modus App: 14.4).",
     "dl.btn":"Für Mac laden",
     "foot.help":"Hilfe",
     "foot.sub":"Ein Studio Malibu Berlin Produkt",
     "foot.imprint":"Impressum",
     "foot.privacy":"Datenschutz",
-    "foot.legal":"Malibu Meter ist ein professionelles Audio-Werkzeug. Apple, Mac und macOS sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"Malibu Meter ist ein professionelles Werkzeug für Audio. Apple, Mac und macOS sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
   }
 };
 

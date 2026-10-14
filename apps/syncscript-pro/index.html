@@ -103,7 +103,7 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Timeline editor</h3>
-        <p data-i18n="t5.p">One clip at a time, with video, waveform, keyword blocks and captions. Drag to move or trim, Option-drag to duplicate. Magnetic snapping is on by default; hold Shift to ripple the blocks after it.</p>
+        <p data-i18n="t5.p">One clip at a time, with video, waveform, keyword blocks and captions. Drag to move or trim, hold Option while dragging to duplicate. Magnetic snapping is on by default; hold Shift to ripple the blocks after it.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Action Cut</h3>
@@ -115,7 +115,7 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">Optional local LLM check</h3>
-        <p data-i18n="t8.p"><b>Enable LLM Matching</b> (Settings, tab <b>LLM</b>) lets a local Ollama model double-check matches and drop captions it rejects. It is off by default and off again at every launch. You install Ollama and pull the model yourself, and it runs only when matching the whole session.</p>
+        <p data-i18n="t8.p"><b>Enable LLM Matching</b> (Settings, tab <b>LLM</b>) lets a local Ollama model check matches a second time and drop captions it rejects. It is off by default and off again at every launch. You install Ollama and pull the model yourself, and it runs only when matching the whole session.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t9.h">Additional titles</h3>
@@ -155,14 +155,14 @@
           <li data-i18n="k2.b">The export contains keywords only: no Final Cut Pro titles, captions or timeline, and projects in the Event are left out</li>
           <li data-i18n="k2.c">Only the first Event of a file is imported; a live Final Cut Pro library is not read</li>
           <li data-i18n="k2.d">25 European languages; Chinese, Japanese and Korean are not available</li>
-          <li data-i18n="k2.e">The dialogue parser is tuned for German-language screenplays: scene headings such as INNEN, AUSSEN, INT. and EXT. are recognized in capitals, and narrator cues are not imported</li>
+          <li data-i18n="k2.e">The dialogue parser is tuned for screenplays in German: scene headings such as INNEN, AUSSEN, INT. and EXT. are recognized in capitals, and narrator cues are not imported</li>
         </ul>
       </div>
       <div class="fact">
         <h3 data-i18n="k3.h">Worth knowing</h3>
         <ul>
           <li data-i18n="k3.a">Nothing changes in Final Cut Pro until you export. Send to FCP reports the handoff, not the finished import: Final Cut Pro then asks which library to import into.</li>
-          <li data-i18n="k3.b">Importing a new Event clears the transcription, captions and matches of the session. Re-matching discards manual keyword edits in its scope, after asking first.</li>
+          <li data-i18n="k3.b">Importing a new Event clears the transcription, captions and matches of the session. Matching again discards the manual keyword edits it covers, after asking you first.</li>
           <li data-i18n="k3.c"><b>Reset Everything...</b> in the File menu clears transcription, script, keywords, matches and titles, and cannot be undone.</li>
           <li data-i18n="k3.d">Transcription, matching and editing run on your Mac. The app contacts api.malibureview.app (license, updates, feedback) and huggingface.co (speech model), and localhost only if you enable the local LLM.</li>
           <li data-i18n="k3.e">Feedback and diagnostics are sent only when you click send. A diagnostics ticket contains script dialogue, clip names and media references.</li>
@@ -191,7 +191,7 @@
         <a href="/apps/syncscript-pro/help/" data-i18n="foot.help">Help</a><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
-    <p class="legal" data-i18n="foot.legal">SyncScript Pro is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple Inc. © 2026 Studio Malibu / Knut Hake.</p>
+    <p class="legal" data-i18n="foot.legal">SyncScript Pro is a professional tool for postproduction. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple Inc. © 2026 Studio Malibu / Knut Hake.</p>
   </footer>
 </div>
 
@@ -242,13 +242,13 @@ window.PAGE_T = {
     "t4.h":"Scene Check and aliases",
     "t4.p":"<b>Scene Check</b> lists every clip with its scene and flags clips without scene metadata. <b>Also Use for Clips of Scene…</b> lets the lines of one scene serve the clips of another.",
     "t5.h":"Timeline editor",
-    "t5.p":"One clip at a time, with video, waveform, keyword blocks and captions. Drag to move or trim, Option-drag to duplicate. Magnetic snapping is on by default; hold Shift to ripple the blocks after it.",
+    "t5.p":"One clip at a time, with video, waveform, keyword blocks and captions. Drag to move or trim, hold Option while dragging to duplicate. Magnetic snapping is on by default; hold Shift to ripple the blocks after it.",
     "t6.h":"Action Cut",
     "t6.p":"Set In and Out with I and O at the playhead. Everything outside becomes <b>DISCARD</b> and its dialogue is not exported. The export can also mark that range as Rejected.",
     "t7.h":"Export: keywords only",
     "t7.p":"Writes one keyword marker per dialogue line into a new Event named like your source Event plus \" - SyncScript Pro\", so it does not merge into the original. Keyword Handles extend the keywords by a number of frames; the presets set 0, 12, 24 or 48. <b>Send to FCP</b> hands the file to Final Cut Pro, <b>Export FCPXML…</b> saves it.",
     "t8.h":"Optional local LLM check",
-    "t8.p":"<b>Enable LLM Matching</b> (Settings, tab <b>LLM</b>) lets a local Ollama model double-check matches and drop captions it rejects. It is off by default and off again at every launch. You install Ollama and pull the model yourself, and it runs only when matching the whole session.",
+    "t8.p":"<b>Enable LLM Matching</b> (Settings, tab <b>LLM</b>) lets a local Ollama model check matches a second time and drop captions it rejects. It is off by default and off again at every launch. You install Ollama and pull the model yourself, and it runs only when matching the whole session.",
     "t9.h":"Additional titles",
     "t9.p":"Add extra markers on their own lane, by dragging or with T. They are exported as ordinary keyword markers, not as Final Cut Pro titles.",
     "t10.h":"Sessions",
@@ -268,10 +268,10 @@ window.PAGE_T = {
     "k2.b":"The export contains keywords only: no Final Cut Pro titles, captions or timeline, and projects in the Event are left out",
     "k2.c":"Only the first Event of a file is imported; a live Final Cut Pro library is not read",
     "k2.d":"25 European languages; Chinese, Japanese and Korean are not available",
-    "k2.e":"The dialogue parser is tuned for German-language screenplays: scene headings such as INNEN, AUSSEN, INT. and EXT. are recognized in capitals, and narrator cues are not imported",
+    "k2.e":"The dialogue parser is tuned for screenplays in German: scene headings such as INNEN, AUSSEN, INT. and EXT. are recognized in capitals, and narrator cues are not imported",
     "k3.h":"Worth knowing",
     "k3.a":"Nothing changes in Final Cut Pro until you export. Send to FCP reports the handoff, not the finished import: Final Cut Pro then asks which library to import into.",
-    "k3.b":"Importing a new Event clears the transcription, captions and matches of the session. Re-matching discards manual keyword edits in its scope, after asking first.",
+    "k3.b":"Importing a new Event clears the transcription, captions and matches of the session. Matching again discards the manual keyword edits it covers, after asking you first.",
     "k3.c":"<b>Reset Everything...</b> in the File menu clears transcription, script, keywords, matches and titles, and cannot be undone.",
     "k3.d":"Transcription, matching and editing run on your Mac. The app contacts api.malibureview.app (license, updates, feedback) and huggingface.co (speech model), and localhost only if you enable the local LLM.",
     "k3.e":"Feedback and diagnostics are sent only when you click send. A diagnostics ticket contains script dialogue, clip names and media references.",
@@ -282,14 +282,14 @@ window.PAGE_T = {
     "foot.help":"Help",
     "foot.imprint":"Legal Notice",
     "foot.privacy":"Privacy Policy",
-    "foot.legal":"SyncScript Pro is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple Inc. © 2026 Studio Malibu / Knut Hake."
+    "foot.legal":"SyncScript Pro is a professional tool for postproduction. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple Inc. © 2026 Studio Malibu / Knut Hake."
   },
   de: {
     "nav.back":"← Alle Apps",
     "nav.cta":"Laden",
-    "hero.eyebrow":"Drehbuch-Sync · Final Cut Pro",
+    "hero.eyebrow":"Sync mit dem Drehbuch · Final Cut Pro",
     "hero.h1":"Drehbuch rein.<br><span class=\"soft\">Keywords</span> raus.",
-    "hero.lead":"SyncScript Pro transkribiert die Clips eines exportierten Final-Cut-Pro-Events auf deinem Mac, gleicht den Dialog mit deinem Drehbuch-PDF ab und schickt das Ergebnis als Keywords zurück an Final Cut Pro.",
+    "hero.lead":"SyncScript Pro transkribiert die Clips eines aus Final Cut Pro exportierten Events auf deinem Mac, gleicht den Dialog mit deinem Drehbuch als PDF ab und schickt das Ergebnis als Keywords zurück an Final Cut Pro.",
     "hero.dl":"Für Mac laden",
     "hero.buy":"Kaufen · 99 €",
     "hero.meta":"macOS 15+ · Apple Silicon · Version 1.2.85",
@@ -304,14 +304,14 @@ window.PAGE_T = {
     "w3.r1":"Keywords",
     "w3.tag":"Übergeben",
     "w3.r2":"Neues Event",
-    "w3.v":"Event-Name - SyncScript Pro",
+    "w3.v":"Eventname - SyncScript Pro",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "wf.title":"Vier Schritte",
-    "wf.sub":"Von einem exportierten Event und einem Drehbuch-PDF zu Keywords in Final Cut Pro.",
+    "wf.sub":"Von einem exportierten Event und einem Drehbuch als PDF zu Keywords in Final Cut Pro.",
     "s1.h":"Event transkribieren",
     "s1.p":"Exportiere ein Event aus Final Cut Pro als FCPXML und zieh es auf Seite <b>1. Transcribe</b>. Klicke auf <b>Transcribe Clips</b>; der erste Durchlauf lädt das Sprachmodell herunter.",
     "s2.h":"Drehbuch importieren",
-    "s2.p":"Zieh auf Seite <b>2. Script</b> das Drehbuch-PDF hinein und wähle die gedrehten Szenen aus. Bearbeite die Zeilen im Block Editor oder in der Classic List.",
+    "s2.p":"Zieh auf Seite <b>2. Script</b> das Drehbuch als PDF hinein und wähle die gedrehten Szenen aus. Bearbeite die Zeilen im Block Editor oder in der Classic List.",
     "s3.h":"Matchen und prüfen",
     "s3.p":"Klicke auf Seite <b>3. Matching</b> auf <b>Start Matching</b>. Zeilen ohne Caption korrigierst du mit <b>Assign Caption Manually</b>.",
     "s4.h":"Prüfen und exportieren",
@@ -320,47 +320,47 @@ window.PAGE_T = {
     "f.sub":"Was die aktuelle Version (1.2.85) wirklich kann.",
     "t1.l":"Transkribieren",
     "t1.h":"Transkription auf deinem Mac",
-    "t1.p":"Parakeet v3 transkribiert jeden Take einmal aus seinem eigenen Quellaudio, in 25 europäischen Sprachen. Die Captions werden auf jeden Kamerawinkel und den Multicam-Clip dieses Takes übertragen. Clips ohne Audiospur werden übersprungen. Brichst du einen Durchlauf ab, bleiben die fertigen Clips im Cache.",
-    "t2.h":"Drehbuch-Import und Bearbeitung",
-    "t2.p":"Zieh ein Drehbuch-PDF mit Textebene hinein und wähle die gedrehten Szenen. Im Block Editor (Standard) und in der Classic List bearbeitest, teilst und verbindest du Zeilen. Mit <b>Add Scene Manually</b> ergänzt du eine Szene, die der Import verpasst hat.",
+    "t1.p":"Parakeet v3 transkribiert jeden Take einmal aus seinem eigenen Quellaudio, in 25 europäischen Sprachen. Die Captions werden auf jeden Kamerawinkel dieses Takes übertragen und auch auf seinen Multicam. Clips ohne Audiospur werden übersprungen. Brichst du einen Durchlauf ab, bleiben die fertigen Clips im Cache.",
+    "t2.h":"Drehbuch importieren und bearbeiten",
+    "t2.p":"Zieh ein Drehbuch als PDF mit Textebene hinein und wähle die gedrehten Szenen. Im Block Editor (Standard) und in der Classic List bearbeitest, teilst und verbindest du Zeilen. Mit <b>Add Scene Manually</b> ergänzt du eine Szene, die der Import verpasst hat.",
     "t3.h":"Matching, das du lesen kannst",
     "t3.p":"Jede Skriptzeile wird mit den Captions ihrer eigenen Szene abgeglichen und als Exact Match, Close Match, Minor Difference, Major Difference oder No Match gekennzeichnet, mit einem Ähnlichkeitswert in Prozent. <b>Assign Caption Manually</b> korrigiert eine Zeile ohne Treffer.",
     "t4.h":"Scene Check und Aliase",
-    "t4.p":"<b>Scene Check</b> listet jeden Clip mit seiner Szene und markiert Clips ohne Szenen-Metadaten. Mit <b>Also Use for Clips of Scene…</b> bedienen die Zeilen einer Szene die Clips einer anderen.",
-    "t5.h":"Timeline-Editor",
-    "t5.p":"Ein Clip nach dem anderen, mit Video, Wellenform, Keyword-Blöcken und Captions. Ziehen verschiebt oder kürzt, Option-Ziehen dupliziert. Magnetisches Einrasten ist standardmäßig an; mit Shift ziehst du die folgenden Blöcke mit.",
+    "t4.p":"<b>Scene Check</b> listet jeden Clip mit seiner Szene und markiert Clips ohne Metadaten zur Szene. Mit <b>Also Use for Clips of Scene…</b> bedienen die Zeilen einer Szene die Clips einer anderen.",
+    "t5.h":"Editor für die Timeline",
+    "t5.p":"Ein Clip nach dem anderen, mit Video, Wellenform, Blöcken für Keywords und Captions. Ziehen verschiebt oder kürzt, Ziehen mit gedrückter Optionstaste dupliziert. Magnetisches Einrasten ist standardmäßig an; mit Shift ziehst du die folgenden Blöcke mit.",
     "t6.h":"Action Cut",
     "t6.p":"Setze In und Out mit I und O am Playhead. Alles außerhalb wird zu <b>DISCARD</b>, sein Dialog wird nicht exportiert. Der Export kann diesen Bereich zusätzlich als Rejected markieren.",
     "t7.h":"Export: nur Keywords",
-    "t7.p":"Schreibt einen Keyword-Marker pro Dialogzeile in ein neues Event, das wie dein Quell-Event heißt plus \" - SyncScript Pro\", sodass es nicht mit dem Original verschmilzt. Keyword Handles verlängern die Keywords um eine Anzahl Frames; die Presets setzen 0, 12, 24 oder 48. <b>Send to FCP</b> übergibt die Datei an Final Cut Pro, <b>Export FCPXML…</b> speichert sie.",
-    "t8.h":"Optionale lokale LLM-Prüfung",
-    "t8.p":"<b>Enable LLM Matching</b> (Settings, Tab <b>LLM</b>) lässt ein lokales Ollama-Modell Treffer gegenprüfen und Captions verwerfen, die es ablehnt. Es ist standardmäßig aus und nach jedem Start wieder aus. Ollama installierst und das Modell lädst du selbst, und es läuft nur beim Matching der ganzen Session.",
+    "t7.p":"Schreibt pro Dialogzeile einen Marker mit Keyword in ein neues Event, das so heißt wie dein ursprüngliches Event plus \" - SyncScript Pro\", sodass es nicht mit dem Original verschmilzt. Keyword Handles verlängern die Keywords um eine Anzahl Frames; die Presets setzen 0, 12, 24 oder 48. <b>Send to FCP</b> übergibt die Datei an Final Cut Pro, <b>Export FCPXML…</b> speichert sie.",
+    "t8.h":"Optionale Prüfung durch ein lokales LLM",
+    "t8.p":"<b>Enable LLM Matching</b> (Settings, Tab <b>LLM</b>) lässt ein lokales Modell in Ollama die Treffer noch einmal prüfen und Captions verwerfen, die es ablehnt. Es ist standardmäßig aus und nach jedem Start wieder aus. Ollama installierst und das Modell lädst du selbst, und es läuft nur beim Matching der ganzen Session.",
     "t9.h":"Zusatztitel",
-    "t9.p":"Füge zusätzliche Marker auf einer eigenen Spur hinzu, per Ziehen oder mit T. Sie werden als gewöhnliche Keyword-Marker exportiert, nicht als Final-Cut-Pro-Titel.",
+    "t9.p":"Füge zusätzliche Marker auf einer eigenen Spur hinzu, per Ziehen oder mit T. Sie werden als gewöhnliche Marker mit Keyword exportiert, nicht als Titel in Final Cut Pro.",
     "t10.h":"Sessions",
-    "t10.p":"Deine Arbeit wird als Sessions gespeichert, automatisch alle fünf Sekunden, sobald das Drehbuch Zeilen hat. Eine Session wird als <code>.syncscript</code>-Ordner exportiert; er enthält Medienpfade, keine Medien.",
+    "t10.p":"Deine Arbeit wird als Sessions gespeichert, automatisch alle fünf Sekunden, sobald das Drehbuch Zeilen hat. Eine Session wird als Ordner <code>.syncscript</code> exportiert; er enthält Medienpfade, keine Medien.",
     "t11.h":"Shortcuts",
     "t11.p":"Belege Shortcuts in den Settings im Tab <b>Shortcuts</b> neu und exportiere oder importiere sie als JSON. J, K, L, die Zahlentasten sowie Undo und Redo sind fest.",
     "k.title":"Gut zu wissen",
     "k.sub":"Was du brauchst, was es nicht tut und worauf du achten solltest.",
     "k1.h":"Voraussetzungen",
     "k1.a":"macOS 15.0 oder neuer auf Apple Silicon, und Final Cut Pro",
-    "k1.b":"Ein als .fcpxml oder .fcpxmld exportiertes Event mit Sync-Clips und/oder Multicam-Clips; die Quellmedien müssen auf der Platte erreichbar sein",
-    "k1.c":"Ein Drehbuch-PDF mit Textebene",
+    "k1.b":"Ein als .fcpxml oder .fcpxmld exportiertes Event mit synchronisierten Clips und/oder Multicams; die Quellmedien müssen auf der Platte erreichbar sein",
+    "k1.c":"Ein Drehbuch als PDF mit Textebene",
     "k1.d":"Internet für die erste Transkription (Sprachmodell, etwa 1,5 GB) und für die Lizenzprüfung",
-    "k1.e":"Kostenlose Testphase; beim ersten Start ist eine E-Mail-Adresse Pflicht und wird mit der Lizenzprüfung gesendet",
+    "k1.e":"Kostenlose Testphase; beim ersten Start ist eine Mailadresse Pflicht und wird mit der Lizenzprüfung gesendet",
     "k2.h":"Was es nicht tut",
     "k2.a":"Keine Texterkennung (OCR): Ein gescanntes PDF liefert keine Skriptzeilen, und kein anderes Drehbuchformat als PDF lässt sich importieren",
-    "k2.b":"Der Export enthält nur Keywords: keine Final-Cut-Pro-Titel, keine Captions, keine Timeline, und Projekte im Event bleiben außen vor",
-    "k2.c":"Nur das erste Event einer Datei wird importiert; eine laufende Final-Cut-Pro-Mediathek wird nicht gelesen",
+    "k2.b":"Der Export enthält nur Keywords: keine Titel für Final Cut Pro, keine Captions, keine Timeline, und Projekte im Event bleiben außen vor",
+    "k2.c":"Nur das erste Event einer Datei wird importiert; eine Mediathek, die gerade in Final Cut Pro offen ist, wird nicht gelesen",
     "k2.d":"25 europäische Sprachen; Chinesisch, Japanisch und Koreanisch sind nicht verfügbar",
-    "k2.e":"Der Dialog-Parser ist auf deutschsprachige Drehbücher abgestimmt: Szenenüberschriften wie INNEN, AUSSEN, INT. und EXT. werden in Großbuchstaben erkannt, und Erzähler-Cues werden nicht importiert",
+    "k2.e":"Der Parser für Dialoge ist auf Drehbücher in deutscher Sprache abgestimmt: Szenenüberschriften wie INNEN, AUSSEN, INT. und EXT. werden in Großbuchstaben erkannt, und Cues des Erzählers werden nicht importiert",
     "k3.h":"Gut zu wissen",
     "k3.a":"In Final Cut Pro ändert sich nichts, bis du exportierst. Send to FCP meldet die Übergabe, nicht den fertigen Import: Final Cut Pro fragt danach, in welche Mediathek importiert wird.",
-    "k3.b":"Ein neues Event zu importieren löscht Transkription, Captions und Matches der Session. Erneutes Matchen verwirft manuelle Keyword-Änderungen in seinem Bereich, nach Rückfrage.",
-    "k3.c":"<b>Reset Everything...</b> im File-Menü löscht Transkription, Drehbuch, Keywords, Matches und Titel und lässt sich nicht rückgängig machen.",
+    "k3.b":"Ein neues Event zu importieren löscht Transkription, Captions und Matches der Session. Erneutes Matchen verwirft manuelle Änderungen an Keywords in seinem Bereich, nach Rückfrage.",
+    "k3.c":"<b>Reset Everything...</b> im Menü File löscht Transkription, Drehbuch, Keywords, Matches und Titel und lässt sich nicht rückgängig machen.",
     "k3.d":"Transkription, Matching und Bearbeitung laufen auf deinem Mac. Die App kontaktiert api.malibureview.app (Lizenz, Updates, Feedback) und huggingface.co (Sprachmodell), und localhost nur, wenn du das lokale LLM einschaltest.",
-    "k3.e":"Feedback und Diagnose werden nur gesendet, wenn du auf Senden klickst. Ein Diagnose-Ticket enthält Skript-Dialog, Clip-Namen und Medienreferenzen.",
+    "k3.e":"Feedback und Diagnose werden nur gesendet, wenn du auf Senden klickst. Ein Ticket mit Diagnosedaten enthält den Dialog aus dem Skript, die Namen der Clips und Verweise auf die Medien.",
     "dl.title":"SyncScript Pro laden",
     "dl.sub":"Version 1.2.85 · macOS 15 oder neuer · Apple Silicon.",
     "dl.btn":"Für Mac laden",
