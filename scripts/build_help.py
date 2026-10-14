@@ -136,7 +136,8 @@ PAGE = """<!DOCTYPE html>
 .doc h1{{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}}
 .doc h1:first-child{{margin-top:0;padding-top:0;border-top:0}}
 .toc .t{{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}}
-.doc{{max-width:72ch}}
+.help>*{{min-width:0}}
+.doc{{max-width:72ch;overflow-wrap:anywhere}}
 .doc h1{{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}}
 .doc h2{{font-size:1.45rem;margin:44px 0 10px;padding-top:28px;border-top:1px solid var(--line)}}
 .doc h3{{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:28px 0 6px}}
@@ -147,7 +148,7 @@ PAGE = """<!DOCTYPE html>
 .doc code{{font:400 13px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 6px}}
 .doc pre{{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}}
 .doc pre code{{background:none;border:0;padding:0}}
-.doc strong.ui{{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px;white-space:nowrap}}
+.doc strong.ui{{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px}}
 .doc img{{border:1px solid var(--line);border-radius:10px;margin:14px 0}}
 .doc a{{color:var(--accent);text-decoration:underline;text-underline-offset:3px}}
 .ver{{font:400 11.5px var(--mono);color:var(--dim);margin-top:40px}}
