@@ -109,7 +109,7 @@
     { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29" },
     { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, price: "€99" },
     { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and more, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", download: { url: "https://api.malibureview.app/metalink-updates/MalibuBurn-Installer-latest.pkg", meta: "PKG · macOS 14+" }, beta: true },
-    { name: "Malibu Drop", tagline: "Menu-bar drag-and-drop import for Final Cut Pro and PostLab — files land in the right media folder and event, with role, level and channel layout.", href: "/apps/malibu-drop", icon: "/apps/malibu-drop/icon.png", download: { url: "https://api.malibureview.app/malibudrop-updates/MalibuDrop-latest.dmg", meta: "DMG · macOS 14+" }, beta: true },
+    { name: "Malibu Drop", tagline: "Menu-bar drag-and-drop import for Final Cut Pro and PostLab — files land in the right media folder and event, with role, level and channel layout.", href: "/apps/malibu-drop", icon: "/apps/malibu-drop/icon.png", download: { url: "https://api.malibureview.app/malibudrop-updates/MalibuDrop-latest.dmg", meta: "DMG · macOS 14+" }, price: "€19", priceNote: "Planned price once the beta ends", beta: true },
     // MalibuToDo, MalibuMesh and MalibuReview pulled 2026-09-14/15 (Knut: still
     // internal-only tools, not ready to be publicly discoverable yet). Pages
     // themselves moved out of the served tree too — re-add once ready.
@@ -155,7 +155,7 @@
       priceHtml = '<div class="price-row"><div>' +
         (app.launchPrice ? '<p class="price-old">' + escapeHtml(app.price) + '</p>' : '') +
         '<p class="price-new">' + escapeHtml(app.launchPrice || app.price) + '</p>' +
-        (app.launchPrice ? '<p class="price-label">Launch price</p>' : '') +
+        (app.launchPrice ? '<p class="price-label">Launch price</p>' : app.priceNote ? '<p class="price-label">' + escapeHtml(app.priceNote) + '</p>' : '') +
         '</div></div>';
     }
 
