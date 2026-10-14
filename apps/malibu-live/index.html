@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Live · Watch Your Cut Remotely</title>
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="description" content="Malibu Live sends Final Cut Pro's picture and sound to a director, client or producer on another Mac, iPad or iPhone. They watch and talk to the editor, without any control over the timeline. In beta with testers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#FFD23F;--accent-ink:#1d1600}
+.tag{background:rgba(255,210,63,.14)}
+.tag.quiet{background:rgba(255,255,255,.08)}
+.lr{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin:0}
+.lr input[type=email]{flex:1 1 220px;min-width:0;max-width:300px;font:400 14px 'Inter',sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.lr input[type=email]::placeholder{color:var(--dim)}
+.lr input[type=email]:focus{border-color:var(--accent)}
+.lr button.btn{cursor:pointer;font-family:'Inter',sans-serif}
+.lr button.btn:disabled{opacity:.55;cursor:default;filter:none}
+.lr-msg{margin:12px 0 0;font-size:13.5px;color:var(--dim)}
+.lr-msg.ok{color:var(--good)}
+.lr-msg.err{color:#FF8A80}
+.dl .lr-wrap{min-width:min(100%,420px)}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/" data-i18n="nav.back">← All apps</a>
+      <div class="brand"><img src="icon.png" alt="">Malibu Live</div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#notify" class="pill-cta" data-i18n="nav.cta">Get notified</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow"><span data-i18n="hero.eyebrow">Final Cut Pro · Remote viewing</span><span class="badge" data-i18n="badge">In the works</span></div>
+      <h1 data-i18n="hero.h1">Your cut, live<br><span class="soft">for whoever needs to watch.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Malibu Live sends Final Cut Pro's picture and sound to a director, client or producer on another Mac, iPad or iPhone. They watch and talk to you. They get no control over your timeline.</p>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+      <div class="cta-meta" data-i18n="hero.meta">Beta with testers · v0.1.29 · host: macOS 15+, Apple Silicon</div>
+    </div>
+
+    <div>
+      <div class="stack" aria-hidden="true">
+        <div class="win w1">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span>Final Cut Pro</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r1">A/V Output</span><span class="v">Malibu Live Bridge</span></div>
+          <div class="row"><span class="k" data-i18n="w1.r2">Sound</span><span class="tag quiet" data-i18n="w1.t">Captured</span></div>
+        </div>
+        <div class="win w2">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span>Malibu Live</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r1">Join code</span><span class="v">6 characters</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r2">Picture and sound</span><span class="tag" data-i18n="w2.t2">Sending</span></div>
+          <div class="row"><span class="k" data-i18n="w2.r3">Viewers</span><span class="tag quiet" data-i18n="w2.t3">Watching</span></div>
+        </div>
+        <div class="win w3">
+          <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w3.h">Viewer</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r1">Mac, iPad, iPhone</span><span class="tag good" data-i18n="w3.t">Connected</span></div>
+          <div class="row"><span class="k" data-i18n="w3.r2">Timeline control</span><span class="v" data-i18n="w3.v">none</span></div>
+        </div>
+      </div>
+      <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="wf.title">Three steps</h2>
+      <p data-i18n="wf.sub">From your timeline to someone else's screen.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3 data-i18n="s1.h">Send out of Final Cut Pro</h3><p data-i18n="s1.p">Final Cut Pro's A/V Output goes to the virtual camera “Malibu Live Bridge”. The sound is captured from Final Cut Pro.</p></div>
+      <div class="step"><div class="n">02</div><h3 data-i18n="s2.h">Share a code</h3><p data-i18n="s2.p">Viewers join with a 6-character code. No account is needed to join.</p></div>
+      <div class="step"><div class="n">03</div><h3 data-i18n="s3.h">They watch and talk</h3><p data-i18n="s3.p">Your guests see and hear the cut and speak with you, on a Mac, iPad or iPhone.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="f.title">What's inside</h2>
+      <p data-i18n="f.sub">What the current beta (0.1.29) does.</p>
+    </div>
+    <div class="bento">
+      <div class="tile big">
+        <div class="label" data-i18n="t1.l">Picture and sound</div>
+        <h3 data-i18n="t1.h">What you see in Final Cut Pro, they see too</h3>
+        <p data-i18n="t1.p">Picture and sound from Final Cut Pro are sent to your viewers. Testers have used it in real sessions, with a viewer on an iPad hearing the editor.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t2.h">Join with a code</h3>
+        <p data-i18n="t2.p">A 6-character code is the invitation. Nobody has to create an account to watch.</p>
+      </div>
+      <div class="tile mid">
+        <h3 data-i18n="t3.h">Mac, iPad and iPhone viewers</h3>
+        <p data-i18n="t3.p">Viewers run on Mac, iPad (iPadOS 17.5+) and iPhone (iOS 17.5+).</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t4.h">Watch and talk</h3>
+        <p data-i18n="t4.p">Viewers see, hear and speak. That is the whole job, on purpose.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t5.h">Your timeline stays yours</h3>
+        <p data-i18n="t5.p">No markers, no scrubbing, no control over your timeline for viewers.</p>
+      </div>
+      <div class="tile small">
+        <h3 data-i18n="t6.h">Direct or via server</h3>
+        <p data-i18n="t6.p">Devices connect directly or through Studio Malibu's own servers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="k.title">Good to know</h2>
+      <p data-i18n="k.sub">What you need, and what it does not do.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3 data-i18n="k1.h">Requirements</h3>
+        <ul>
+          <li data-i18n="k1.a">Host: a Mac with Apple Silicon, macOS 15.0 or later</li>
+          <li data-i18n="k1.b">Final Cut Pro on the host</li>
+          <li data-i18n="k1.c">The camera extension “Malibu Live Bridge” has to be installed; a restart is needed</li>
+          <li data-i18n="k1.d">Viewers: Mac, or iPad and iPhone with iOS/iPadOS 17.5 or later</li>
+          <li data-i18n="k1.e">Currently in beta with testers (v0.1.29), not released yet, no date</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3 data-i18n="k2.h">What it does not do</h3>
+        <ul>
+          <li data-i18n="k2.a">No markers, no scrubbing and no control over the timeline. Viewers only see, hear and speak</li>
+          <li data-i18n="k2.b">No Apple TV, Windows, Android or web viewer</li>
+          <li data-i18n="k2.c">Not on the Mac App Store; distributed as a notarized download</li>
+          <li data-i18n="k2.d">Direct and relay connections are end-to-end encrypted. Connections via the server use transport encryption only</li>
+          <li data-i18n="k2.e">No price and no release date yet</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="notify">
+    <div class="dl">
+      <div>
+        <h2 data-i18n="dl.title">In the works</h2>
+        <p data-i18n="dl.sub">Malibu Live is not released yet. Leave your email and we'll write to you at launch.</p>
+      </div>
+      <div class="lr-wrap">
+        <form class="lr" data-launch-form>
+          <input type="email" required autocomplete="email" data-ph="lr.ph" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="lr.btn">Notify me at launch</button>
+        </form>
+        <p class="lr-msg ok" data-lr-ok hidden data-i18n="lr.ok">Thanks. We'll email you at launch.</p>
+        <p class="lr-msg err" data-lr-err hidden data-i18n="lr.err">That did not go through. Please try again in a moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <span>Malibu Live · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span>
+        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+      </span>
+    </div>
+    <p class="legal" data-i18n="foot.legal">Malibu Live is a professional post-production tool. Apple, Final Cut Pro, Mac, iPad and iPhone are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake.</p>
+  </footer>
+</div>
+
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {
+    "nav.back":"← All apps","nav.cta":"Get notified",
+    "hero.eyebrow":"Final Cut Pro · Remote viewing","badge":"In the works",
+    "hero.h1":'Your cut, live<br><span class="soft">for whoever needs to watch.</span>',
+    "hero.lead":"Malibu Live sends Final Cut Pro's picture and sound to a director, client or producer on another Mac, iPad or iPhone. They watch and talk to you. They get no control over your timeline.",
+    "hero.meta":"Beta with testers · v0.1.29 · host: macOS 15+, Apple Silicon",
+    "lr.ph":"you@email.com","lr.btn":"Notify me at launch",
+    "lr.ok":"Thanks. We'll email you at launch.","lr.err":"That did not go through. Please try again in a moment.",
+    "w1.r1":"A/V Output","w1.r2":"Sound","w1.t":"Captured",
+    "w2.r1":"Join code","w2.r2":"Picture and sound","w2.t2":"Sending","w2.r3":"Viewers","w2.t3":"Watching",
+    "w3.h":"Viewer","w3.r1":"Mac, iPad, iPhone","w3.t":"Connected","w3.r2":"Timeline control","w3.v":"none",
+    "illu":"Illustration of the workflow, not a screenshot.",
+    "wf.title":"Three steps","wf.sub":"From your timeline to someone else's screen.",
+    "s1.h":"Send out of Final Cut Pro","s1.p":"Final Cut Pro's A/V Output goes to the virtual camera “Malibu Live Bridge”. The sound is captured from Final Cut Pro.",
+    "s2.h":"Share a code","s2.p":"Viewers join with a 6-character code. No account is needed to join.",
+    "s3.h":"They watch and talk","s3.p":"Your guests see and hear the cut and speak with you, on a Mac, iPad or iPhone.",
+    "f.title":"What's inside","f.sub":"What the current beta (0.1.29) does.",
+    "t1.l":"Picture and sound","t1.h":"What you see in Final Cut Pro, they see too","t1.p":"Picture and sound from Final Cut Pro are sent to your viewers. Testers have used it in real sessions, with a viewer on an iPad hearing the editor.",
+    "t2.h":"Join with a code","t2.p":"A 6-character code is the invitation. Nobody has to create an account to watch.",
+    "t3.h":"Mac, iPad and iPhone viewers","t3.p":"Viewers run on Mac, iPad (iPadOS 17.5+) and iPhone (iOS 17.5+).",
+    "t4.h":"Watch and talk","t4.p":"Viewers see, hear and speak. That is the whole job, on purpose.",
+    "t5.h":"Your timeline stays yours","t5.p":"No markers, no scrubbing, no control over your timeline for viewers.",
+    "t6.h":"Direct or via server","t6.p":"Devices connect directly or through Studio Malibu's own servers.",
+    "k.title":"Good to know","k.sub":"What you need, and what it does not do.",
+    "k1.h":"Requirements","k1.a":"Host: a Mac with Apple Silicon, macOS 15.0 or later","k1.b":"Final Cut Pro on the host","k1.c":"The camera extension “Malibu Live Bridge” has to be installed; a restart is needed","k1.d":"Viewers: Mac, or iPad and iPhone with iOS/iPadOS 17.5 or later","k1.e":"Currently in beta with testers (v0.1.29), not released yet, no date",
+    "k2.h":"What it does not do","k2.a":"No markers, no scrubbing and no control over the timeline. Viewers only see, hear and speak","k2.b":"No Apple TV, Windows, Android or web viewer","k2.c":"Not on the Mac App Store; distributed as a notarized download","k2.d":"Direct and relay connections are end-to-end encrypted. Connections via the server use transport encryption only","k2.e":"No price and no release date yet",
+    "dl.title":"In the works","dl.sub":"Malibu Live is not released yet. Leave your email and we'll write to you at launch.",
+    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu Live is a professional post-production tool. Apple, Final Cut Pro, Mac, iPad and iPhone are trademarks of Apple Inc. Studio Malibu is not affiliated with these companies. © 2026 Studio Malibu / Knut Hake."
+  },
+  de: {
+    "nav.back":"← Alle Apps","nav.cta":"Benachrichtigen",
+    "hero.eyebrow":"Final Cut Pro · Remote-Ansicht","badge":"In Arbeit",
+    "hero.h1":'Dein Schnitt, live<br><span class="soft">für alle, die zuschauen müssen.</span>',
+    "hero.lead":"Malibu Live schickt Bild und Ton aus Final Cut Pro an Regie, Kunde oder Produzent auf einem anderen Mac, iPad oder iPhone. Sie schauen zu und sprechen mit dir. Auf deine Timeline haben sie keinen Zugriff.",
+    "hero.meta":"Beta mit Testern · v0.1.29 · Host: macOS 15+, Apple Silicon",
+    "lr.ph":"deine@email.de","lr.btn":"Zum Launch benachrichtigen",
+    "lr.ok":"Danke. Wir melden uns beim Launch.","lr.err":"Das hat nicht geklappt. Bitte versuch es gleich noch einmal.",
+    "w1.r1":"A/V Output","w1.r2":"Ton","w1.t":"Erfasst",
+    "w2.r1":"Beitrittscode","w2.r2":"Bild und Ton","w2.t2":"Sendet","w2.r3":"Zuschauer","w2.t3":"Schauen zu",
+    "w3.h":"Zuschauer","w3.r1":"Mac, iPad, iPhone","w3.t":"Verbunden","w3.r2":"Timeline-Zugriff","w3.v":"keiner",
+    "illu":"Illustration des Ablaufs, kein Screenshot.",
+    "wf.title":"Drei Schritte","wf.sub":"Von deiner Timeline auf einen fremden Bildschirm.",
+    "s1.h":"Aus Final Cut Pro senden","s1.p":"Der A/V Output von Final Cut Pro geht an die virtuelle Kamera „Malibu Live Bridge“. Der Ton wird aus Final Cut Pro abgegriffen.",
+    "s2.h":"Code teilen","s2.p":"Zuschauer treten mit einem 6-stelligen Code bei. Zum Beitreten braucht es kein Konto.",
+    "s3.h":"Sie schauen und sprechen","s3.p":"Deine Gäste sehen und hören den Schnitt und sprechen mit dir, auf Mac, iPad oder iPhone.",
+    "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Beta (0.1.29) kann.",
+    "t1.l":"Bild und Ton","t1.h":"Was du in Final Cut Pro siehst, sehen sie auch","t1.p":"Bild und Ton aus Final Cut Pro gehen an deine Zuschauer. Tester haben es in echten Sitzungen genutzt, mit einem Zuschauer am iPad, der den Cutter hört.",
+    "t2.h":"Beitritt per Code","t2.p":"Ein 6-stelliger Code ist die Einladung. Zum Zuschauen muss niemand ein Konto anlegen.",
+    "t3.h":"Zuschauer auf Mac, iPad und iPhone","t3.p":"Zuschauer laufen auf Mac, iPad (iPadOS 17.5+) und iPhone (iOS 17.5+).",
+    "t4.h":"Zuschauen und sprechen","t4.p":"Zuschauer sehen, hören und sprechen. Das ist absichtlich die ganze Aufgabe.",
+    "t5.h":"Deine Timeline bleibt deine","t5.p":"Keine Marker, kein Scrubbing, kein Zugriff der Zuschauer auf deine Timeline.",
+    "t6.h":"Direkt oder über Server","t6.p":"Geräte verbinden sich direkt oder über Studio Malibus eigene Server.",
+    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was es nicht macht.",
+    "k1.h":"Voraussetzungen","k1.a":"Host: ein Mac mit Apple Silicon, macOS 15.0 oder neuer","k1.b":"Final Cut Pro auf dem Host","k1.c":"Die Kamera-Erweiterung „Malibu Live Bridge“ muss installiert sein; ein Neustart ist nötig","k1.d":"Zuschauer: Mac, oder iPad und iPhone mit iOS/iPadOS 17.5 oder neuer","k1.e":"Derzeit Beta mit Testern (v0.1.29), noch nicht veröffentlicht, kein Termin",
+    "k2.h":"Was es nicht macht","k2.a":"Keine Marker, kein Scrubbing, keine Kontrolle über die Timeline. Zuschauer sehen, hören und sprechen nur","k2.b":"Kein Apple-TV-, Windows-, Android- oder Web-Viewer","k2.c":"Nicht im Mac App Store; Auslieferung als notarisierter Download","k2.d":"Direkte und Relay-Verbindungen sind Ende-zu-Ende-verschlüsselt. Verbindungen über den Server nutzen nur Transportverschlüsselung","k2.e":"Noch kein Preis und kein Veröffentlichungstermin",
+    "dl.title":"In Arbeit","dl.sub":"Malibu Live ist noch nicht veröffentlicht. Trag deine E-Mail ein, dann melden wir uns zum Launch.",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu Live ist ein professionelles Werkzeug für die Postproduktion. Apple, Final Cut Pro, Mac, iPad und iPhone sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu diesen Unternehmen. © 2026 Studio Malibu / Knut Hake."
+  }
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+// Launch-request form: same endpoint, app_module and source as the Malibu Conform page.
+(function () {
+  var ENDPOINT = "https://api.malibureview.app/api/collections/launch_requests/records";
+  var APP_MODULE = "Malibu Live";
+
+  function lang() { return document.documentElement.lang === "de" ? "de" : "en"; }
+
+  // Placeholder and aria-label are attributes, so the shared i18n pass does not reach them.
+  function localizeInputs() {
+    var t = (window.PAGE_T || {})[lang()] || {};
+    document.querySelectorAll("[data-launch-form] input[type=email]").forEach(function (input) {
+      var v = t[input.getAttribute("data-ph")];
+      if (v !== undefined) { input.placeholder = v; input.setAttribute("aria-label", v); }
+    });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); localizeInputs(); };
+  localizeInputs();
+
+  document.querySelectorAll("[data-launch-form]").forEach(function (form) {
+    var box = form.parentNode;
+    var ok = box.querySelector("[data-lr-ok]");
+    var err = box.querySelector("[data-lr-err]");
+    var input = form.querySelector("input[type=email]");
+    var btn = form.querySelector("button");
+    var busy = false;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (busy) return;
+      var email = input.value.trim();
+      if (!email || !input.checkValidity()) { input.reportValidity(); return; }
+      busy = true;
+      btn.disabled = true;
+      err.hidden = true;
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ app_module: APP_MODULE, email: email, source: "coming-soon-website" })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("http " + r.status);
+        form.hidden = true;
+        ok.hidden = false;
+      }).catch(function () {
+        err.hidden = false;
+        busy = false;
+        btn.disabled = false;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
