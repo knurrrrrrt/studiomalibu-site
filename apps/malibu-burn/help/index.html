@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/apps/_shared/app-page.css">
 <style>
-:root{--accent:#FF453A;--accent-ink:#1f0402}
+:root{--accent:#FF453A;--accent-ink:#2a0705}
 .help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
 .toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
 .toc a{display:block;color:var(--dim);padding:5px 0}
@@ -83,7 +83,7 @@
 <p>With Final Cut Pro running and the library open, click <strong class="ui">Detect from Final Cut Pro</strong>. The button is in the empty sidebar and, as a wand icon, in the top row. One new library is added directly. If several are open, a list titled <strong class="ui">Multiple libraries are open in Final Cut Pro</strong> offers each library and <strong class="ui">Add All</strong>.</p>
 <p>The first time, macOS asks whether MalibuBurn Host may control Final Cut Pro. Allow it. Libraries that are already added are skipped. If nothing new is open, nothing happens.</p>
 <h2 id="en1-fix-a-failed-detection">Fix a failed detection</h2>
-<p>If detection fails, the reason appears under the button in the empty sidebar (in the top row it is the tooltip). When macOS blocks the permission, the button in the empty sidebar is joined by two actions: <strong class="ui">Open Automation Settings</strong> opens the Automation pane in System Settings, where MalibuBurn Host must be allowed to control Final Cut Pro. <strong class="ui">Copy Reset Command</strong> copies a Terminal command that resets the stuck permission; run it, make sure Final Cut Pro is open, then click <strong class="ui">Detect from Final Cut Pro</strong> again.</p>
+<p>If detection fails, the reason appears under the button in the empty sidebar (in the top row it is the tooltip). When macOS blocks the permission, the message in the empty sidebar gains two actions: <strong class="ui">Open Automation Settings</strong> opens the Automation pane in System Settings, where MalibuBurn Host must be allowed to control Final Cut Pro. <strong class="ui">Copy Reset Command</strong> copies a Terminal command that resets the stuck permission; run it, make sure Final Cut Pro is open, then click <strong class="ui">Detect from Final Cut Pro</strong> again.</p>
 <h2 id="en1-choose-the-timeline">Choose the timeline</h2>
 <p>Once a library is read, its Events appear in the sidebar as collapsible cards. Click a timeline to make it active; it then shows <strong class="ui">burning in</strong>. Click the active timeline again to deselect it. Events that contain no project or compound clip are not listed.</p>
 <p>When the MalibuBurn workflow extension is open in Final Cut Pro, the Host follows the sequence that is active there. A timeline you pick in the Host replaces the extension's earlier choice.</p>
@@ -177,7 +177,7 @@
 <li><strong class="ui">Send Feedback…</strong> (Help menu, ⌘?) — opens the feedback dialog.</li>
 <li><strong class="ui">Check for Updates…</strong> (app menu, not in Mac App Store builds) — checks for a new Host version.</li>
 <li><strong class="ui">Buy MalibuBurn</strong> (app menu) — opens the purchase page; shown until a license is confirmed.</li>
-<li>The menu bar icon — a menu with the status, the active timeline and the libraries, <strong class="ui">Open MalibuBurn Host</strong> and <strong class="ui">Quit MalibuBurn</strong>.</li>
+<li>The menu bar icon — a popover with the status, the active timeline and the libraries (a click on a library opens the Host window), a small icon in the top row that opens MalibuBurn Host (its tooltip is <strong class="ui">Open MalibuBurn Host</strong>), and a footer with Settings (⌘,) and Quit (⌘Q).</li>
 <li>Delete — removes the selected elements.</li>
 </ul>
 <h2 id="en7-settings">Settings</h2>
@@ -304,7 +304,7 @@
 <p>Klicke bei laufendem Final Cut Pro und geöffneter Library auf <strong class="ui">Detect from Final Cut Pro</strong>. Die Taste ist in der leeren Seitenleiste und als Zauberstab-Symbol in der oberen Zeile. Eine neue Library wird direkt hinzugefügt. Sind mehrere geöffnet, bietet eine Liste mit dem Titel <strong class="ui">Multiple libraries are open in Final Cut Pro</strong> jede Library und <strong class="ui">Add All</strong> an.</p>
 <p>Beim ersten Mal fragt macOS, ob MalibuBurn Host Final Cut Pro steuern darf. Erlaube es. Bereits hinzugefügte Libraries werden übersprungen. Ist nichts Neues geöffnet, passiert nichts.</p>
 <h2 id="de1-fehlgeschlagene-erkennung-beheben">Fehlgeschlagene Erkennung beheben</h2>
-<p>Schlägt die Erkennung fehl, steht der Grund unter der Taste in der leeren Seitenleiste (in der oberen Zeile ist es der Tooltip). Blockiert macOS die Berechtigung, kommen zur Taste in der leeren Seitenleiste zwei Aktionen hinzu: <strong class="ui">Open Automation Settings</strong> öffnet den Bereich Automation in den Systemeinstellungen, wo MalibuBurn Host Final Cut Pro steuern dürfen muss. <strong class="ui">Copy Reset Command</strong> kopiert einen Terminal-Befehl, der die festgefahrene Berechtigung zurücksetzt; führe ihn aus, stelle sicher, dass Final Cut Pro geöffnet ist, und klicke dann erneut auf <strong class="ui">Detect from Final Cut Pro</strong>.</p>
+<p>Schlägt die Erkennung fehl, steht der Grund unter der Taste in der leeren Seitenleiste (in der oberen Zeile ist es der Tooltip). Blockiert macOS die Berechtigung, bekommt die Meldung in der leeren Seitenleiste zwei Aktionen: <strong class="ui">Open Automation Settings</strong> öffnet den Bereich Automation in den Systemeinstellungen, wo MalibuBurn Host Final Cut Pro steuern dürfen muss. <strong class="ui">Copy Reset Command</strong> kopiert einen Terminal-Befehl, der die festgefahrene Berechtigung zurücksetzt; führe ihn aus, stelle sicher, dass Final Cut Pro geöffnet ist, und klicke dann erneut auf <strong class="ui">Detect from Final Cut Pro</strong>.</p>
 <h2 id="de1-timeline-w-hlen">Timeline wählen</h2>
 <p>Sobald eine Library gelesen ist, erscheinen ihre Events als einklappbare Karten in der Seitenleiste. Klicke auf eine Timeline, um sie aktiv zu machen; sie zeigt dann <strong class="ui">burning in</strong>. Klicke die aktive Timeline erneut, um die Auswahl aufzuheben. Events ohne Projekt oder Compound Clip werden nicht aufgelistet.</p>
 <p>Ist die MalibuBurn-Workflow-Extension in Final Cut Pro geöffnet, folgt der Host der dort aktiven Sequenz. Eine Timeline, die du im Host wählst, ersetzt die frühere Wahl der Extension.</p>
@@ -398,7 +398,7 @@
 <li><strong class="ui">Send Feedback…</strong> (Hilfe-Menü, ⌘?) — öffnet den Feedback-Dialog.</li>
 <li><strong class="ui">Check for Updates…</strong> (App-Menü, nicht in Mac-App-Store-Builds) — sucht nach einer neuen Host-Version.</li>
 <li><strong class="ui">Buy MalibuBurn</strong> (App-Menü) — öffnet die Kaufseite; sichtbar, bis eine Lizenz bestätigt ist.</li>
-<li>Das Menüleistensymbol — ein Menü mit Status, aktiver Timeline und Libraries, <strong class="ui">Open MalibuBurn Host</strong> und <strong class="ui">Quit MalibuBurn</strong>.</li>
+<li>Das Menüleistensymbol — ein Popover mit Status, aktiver Timeline und Libraries (ein Klick auf eine Library öffnet das Host-Fenster), einem kleinen Symbol in der oberen Zeile, das MalibuBurn Host öffnet (sein Tooltip ist <strong class="ui">Open MalibuBurn Host</strong>), und einer Fußzeile mit Settings (⌘,) und Quit (⌘Q).</li>
 <li>Löschen-Taste (⌫) — löscht die ausgewählten Elemente.</li>
 </ul>
 <h2 id="de7-einstellungen">Einstellungen</h2>
