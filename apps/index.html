@@ -105,10 +105,11 @@
   // `download` URLs must match the buttons on apps/<slug>/index.html (kept in sync by hand).
   // Malibu Conform has none on purpose: it stays "In the works" until Knut releases it.
   var postProductionApps = [
-    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", download: { url: "https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg", meta: "DMG · macOS 14+" }, price: "€99 · $99", launchPrice: "€79 · $79" },
-    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29 · $29", launchPrice: "€23 · $23" },
-    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, beta: true },
+    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", download: { url: "https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg", meta: "DMG · macOS 14+" }, price: "€99" },
+    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29" },
+    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, price: "€99" },
     { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", download: { url: "https://api.malibureview.app/metalink-updates/MalibuBurn-Installer-latest.pkg", meta: "PKG · macOS 14+" }, beta: true },
+    { name: "Malibu Drop", tagline: "Menu-bar drag-and-drop import for Final Cut Pro and PostLab — files land in the right media folder and event, with role, level and channel layout.", href: "/apps/malibu-drop", icon: "/apps/malibu-drop/icon.png", download: { url: "https://api.malibureview.app/malibudrop-updates/MalibuDrop-latest.dmg", meta: "DMG · macOS 14+" }, beta: true },
     // MalibuToDo, MalibuMesh and MalibuReview pulled 2026-09-14/15 (Knut: still
     // internal-only tools, not ready to be publicly discoverable yet). Pages
     // themselves moved out of the served tree too — re-add once ready.
@@ -116,8 +117,8 @@
   ];
 
   var everydayApps = [
-    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", download: { url: "https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg", meta: "DMG · macOS 26+, Apple Silicon" }, price: "€19 · $19", launchPrice: "€15 · $15" },
-    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", download: { url: "https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg", meta: "DMG · macOS 15+" }, price: "€19 · $19", launchPrice: "€15 · $15" }
+    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", download: { url: "https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg", meta: "DMG · macOS 26+, Apple Silicon" }, price: "€19" },
+    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", download: { url: "https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg", meta: "DMG · macOS 15+" }, price: "€19" }
     // Malibu Calc, Malibu Screen Capture, Malibu Meeting Notes and Malibu
     // NotesBar pulled 2026-09-15 (Knut: internal-only tools for now).
   ];

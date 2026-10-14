@@ -23,8 +23,9 @@
       apps: [
         { name: "MalibuSync", href: "/apps/malibusync" },
         { name: "Malibu Meter", href: "/apps/malibu-meter" },
-        { name: "SyncScript Pro", href: "/apps/syncscript-pro", beta: true },
+        { name: "SyncScript Pro", href: "/apps/syncscript-pro" },
         { name: "Malibu Burn", href: "/apps/malibu-burn", beta: true },
+        { name: "Malibu Drop", href: "/apps/malibu-drop", beta: true },
         { name: "Malibu Conform", href: "/apps/malibu-conform", soon: true }
       ]
     },
