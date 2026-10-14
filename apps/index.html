@@ -38,6 +38,18 @@
     padding: 1.5rem; transition: border-color 0.15s;
   }
   .card:hover { border-color: #3a3b42; }
+  .card.has-dl { display: flex; flex-direction: column; }
+  .card-body { display: block; text-decoration: none; color: inherit; flex: 1; }
+  .card-dl {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+    margin-top: 1.1rem; padding-top: 0.95rem; border-top: 1px solid var(--border);
+  }
+  .card-dl .dl-meta { font-size: 0.68rem; color: var(--muted); }
+  .card-dl .dl-btn {
+    font-size: 0.8rem; font-weight: 600; text-decoration: none; white-space: nowrap;
+    color: #08080c; background: var(--accent); border-radius: 8px; padding: 0.45rem 0.85rem;
+  }
+  .card-dl .dl-btn:hover { filter: brightness(1.1); }
   .card-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 0.7rem; }
   .card h3 { font-size: 1.05rem; color: #fff; margin: 0; }
   .card img { width: 30px; height: 30px; border-radius: 7px; object-fit: cover; flex-shrink: 0; background: var(--border); }
@@ -90,11 +102,13 @@
 (function () {
   var SITE = "https://www.knuthake.de";
 
+  // `download` URLs must match the buttons on apps/<slug>/index.html (kept in sync by hand).
+  // Malibu Conform has none on purpose: it stays "In the works" until Knut releases it.
   var postProductionApps = [
-    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", price: "€99 · $99", launchPrice: "€79 · $79" },
-    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", price: "€29 · $29", launchPrice: "€23 · $23" },
-    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", beta: true },
-    { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", beta: true },
+    { name: "MalibuSync", tagline: "Dual-system audio sync for Final Cut Pro — timecode matching, best-channel selection, ready FCPXML.", href: "/apps/malibusync", icon: "/apps/malibusync/icon.png", download: { url: "https://api.malibureview.app/malibusync-updates/MalibuSync-latest.dmg", meta: "DMG · macOS 14+" }, price: "€99 · $99", launchPrice: "€79 · $79" },
+    { name: "Malibu Meter", tagline: "Real-time EBU R128 loudness metering for macOS — no DAW required, taps any app's audio.", href: "/apps/malibu-meter", icon: "/apps/malibu-meter/icon.png", download: { url: "https://api.malibureview.app/malibumeters-updates/MalibuMeters-latest.dmg", meta: "DMG · macOS 14+" }, price: "€29 · $29", launchPrice: "€23 · $23" },
+    { name: "SyncScript Pro", tagline: "Line-by-line keywording for Final Cut Pro — transcribes and matches every clip against the screenplay.", href: "/apps/syncscript-pro", icon: "/apps/syncscript-pro/icon.png", download: { url: "https://api.malibureview.app/syncscriptpro-updates/SyncScript-Pro-latest.dmg", meta: "DMG · macOS 15+" }, beta: true },
+    { name: "Malibu Burn", tagline: "Frame-accurate metadata burn-in for Final Cut Pro — timecode, clip name, reel, and camera, overlaid live.", href: "/apps/malibu-burn", icon: "/apps/malibu-burn/icon.png", download: { url: "https://api.malibureview.app/metalink-updates/MalibuBurn-Installer-latest.pkg", meta: "PKG · macOS 14+" }, beta: true },
     // MalibuToDo, MalibuMesh and MalibuReview pulled 2026-09-14/15 (Knut: still
     // internal-only tools, not ready to be publicly discoverable yet). Pages
     // themselves moved out of the served tree too — re-add once ready.
@@ -102,8 +116,8 @@
   ];
 
   var everydayApps = [
-    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" },
-    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", price: "€19 · $19", launchPrice: "€15 · $15" }
+    { name: "MalibuClip", tagline: "Menu bar clipboard manager for macOS, with a full screenshot toolkit — scrolling capture, annotation, and redaction.", href: "/apps/malibuclip", icon: "/apps/malibuclip/icon.png", download: { url: "https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg", meta: "DMG · macOS 14+" }, price: "€19 · $19", launchPrice: "€15 · $15" },
+    { name: "MalibuDictate", tagline: "Push-to-talk dictation with optional AI rewriting — fast notes, cleaned up as you go.", href: "/apps/malibudictate", icon: "/apps/malibudictate/icon.png", download: { url: "https://api.malibureview.app/md-updates/MalibuDictate-latest.dmg", meta: "DMG · macOS 14+" }, price: "€19 · $19", launchPrice: "€15 · $15" }
     // Malibu Calc, Malibu Screen Capture, Malibu Meeting Notes and Malibu
     // NotesBar pulled 2026-09-15 (Knut: internal-only tools for now).
   ];
@@ -151,6 +165,12 @@
       badgeHtml +
       '<p class="tagline">' + escapeHtml(app.tagline) + '</p>' +
       priceHtml;
+
+    if (app.download && href) {
+      return '<div class="card has-dl"><a class="card-body" href="' + href + '">' + inner + '</a>' +
+        '<div class="card-dl"><span class="dl-meta">' + escapeHtml(app.download.meta) + '</span>' +
+        '<a class="dl-btn" href="' + app.download.url + '">Download</a></div></div>';
+    }
 
     if (href) {
       var target = app.externalHref ? ' target="_blank" rel="noopener noreferrer"' : '';
