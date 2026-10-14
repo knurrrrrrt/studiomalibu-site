@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Drop · Help</title>
+<link rel="icon" type="image/png" href="/apps/malibu-drop/icon.png">
+<meta name="description" content="How to use Malibu Drop: getting started and step-by-step guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#2DD4BF;--accent-ink:#04201c}
+.help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
+.toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
+.toc a{display:block;color:var(--dim);padding:5px 0}
+.toc a:hover{color:var(--text)}
+.toc a.l1{color:var(--text);font-weight:600;margin-top:12px}
+.toc a.l2{padding-left:12px;font-size:12.5px}
+.doc h1{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}
+.doc h1:first-child{margin-top:0;padding-top:0;border-top:0}
+.toc .t{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.doc{max-width:72ch}
+.doc h1{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}
+.doc h2{font-size:1.45rem;margin:44px 0 10px;padding-top:28px;border-top:1px solid var(--line)}
+.doc h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:28px 0 6px}
+.doc p,.doc li{color:#C9CCD3;font-size:15.5px}
+.doc li+li{margin-top:6px}
+.doc ol,.doc ul{padding-left:22px}
+.doc blockquote{margin:16px 0;padding:10px 16px;border-left:2px solid var(--accent);background:var(--surface);color:var(--dim);font-size:14px;border-radius:0 8px 8px 0}
+.doc code{font:400 13px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.doc pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+.doc pre code{background:none;border:0;padding:0}
+.doc strong.ui{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px;white-space:nowrap}
+.doc img{border:1px solid var(--line);border-radius:10px;margin:14px 0}
+.doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.ver{font:400 11.5px var(--mono);color:var(--dim);margin-top:40px}
+@media(max-width:860px){.help{grid-template-columns:1fr;gap:20px}.toc{position:static}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/malibu-drop/" data-i18n="nav.back">← Malibu Drop</a>
+      <div class="brand"><img src="/apps/malibu-drop/icon.png" alt="">Malibu Drop <span style="color:var(--dim);font-weight:500" data-i18n="nav.help">Help</span></div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="help">
+    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-set-up-a-tile">Set up a tile</a><a class="l1" href="#en2-drop-files-and-folders">Drop files and folders</a><a class="l1" href="#en3-when-postlab-locks-the-event">When PostLab locks the event</a><a class="l1" href="#en4-handle-failed-and-waiting-drops">Handle failed and waiting drops</a><a class="l1" href="#en5-connect-clips-at-the-playhead">Connect clips at the playhead</a><a class="l1" href="#en6-reference">Reference</a><a class="l1" href="#en7-troubleshooting">Troubleshooting</a></div>
+    <article class="doc" data-lang="en" lang="en">
+<h1 id="en0-getting-started">Getting started</h1>
+<h2 id="en0-what-malibu-drop-does">What Malibu Drop does</h2>
+<p>Malibu Drop is a menu bar app for Final Cut Pro. You drop a file on a tile; the file is copied (or moved) into the tile's media folder and imported into the tile's Final Cut event through a generated FCPXML.</p>
+<h2 id="en0-before-you-start">Before you start</h2>
+<p>You need macOS 14 or later and Final Cut Pro with a library open. The target event must already exist in that library. PostLab is not required.</p>
+<p>The seven default tiles accept audio only and point at the folder /Volumes/DVL/Media/Assets. Set your own <strong class="ui">Media folder</strong> first (see the tile setup guide), or the drop fails because that volume is not mounted.</p>
+<h2 id="en0-your-first-drop">Your first drop</h2>
+<p>Hold Shift while you drag a WAV file from Finder; the drop panel appears next to the cursor. Drop the file on the tile <strong class="ui">Songs</strong>. Or choose <strong class="ui">Import files to…</strong> in the menu bar menu and pick the tile; a file panel opens.</p>
+<p>When the event exists in the library that is open in Final Cut, the clip appears in the event named in <strong class="ui">Final Cut event</strong>. The menu lists the result under <strong class="ui">Recent</strong>.</p>
+<h2 id="en0-if-it-does-not-import-at-once">If it does not import at once</h2>
+<p>If Final Cut is not running or the event is missing, the drop waits and Malibu Drop tries again. See the guide on failed drops.</p>
+<h1 id="en1-set-up-a-tile">Set up a tile</h1>
+<h2 id="en1-open-the-tile-settings">Open the tile settings</h2>
+<p>Choose <strong class="ui">Settings…</strong> in the menu bar menu. The sidebar lists your tiles; select one to edit it.</p>
+<h2 id="en1-point-the-tile-at-a-folder-and-an-event">Point the tile at a folder and an event</h2>
+<p>Under <strong class="ui">Destination</strong>, click <strong class="ui">Choose…</strong> to pick the <strong class="ui">Media folder</strong>, and type the <strong class="ui">Final Cut event</strong> exactly as it is named in the library. Use the <strong class="ui">Project</strong> field only to group tiles in the drop panel.</p>
+<h2 id="en1-set-role-channels-and-level">Set role, channels and level</h2>
+<p>Under <strong class="ui">Audio</strong>, set the <strong class="ui">Role</strong>; the menu next to it lists roles read from the open library. <strong class="ui">Channels (stereo files only)</strong> offers Unchanged, Stereo, Dual Mono, Mono and Swapped. Switch on <strong class="ui">Change level</strong> to apply a fixed level in dB to audio clips.</p>
+<h2 id="en1-allow-video-and-stills">Allow video and stills</h2>
+<p>Under <strong class="ui">Files</strong>, <strong class="ui">Accept</strong> decides which kinds the tile takes. New and default tiles accept audio only. Switch on Video or Image there to take those too.</p>
+<h2 id="en1-add-duplicate-remove-share">Add, duplicate, remove, share</h2>
+<p>Use <strong class="ui">Add tile</strong>, <strong class="ui">Duplicate tile</strong> and <strong class="ui">Remove tile</strong> in the settings window. <strong class="ui">Export Tiles…</strong> and <strong class="ui">Import Tiles…</strong> (under the More menu) save and load your set as a JSON file. Importing replaces all your tiles after you confirm with <strong class="ui">Replace</strong>.</p>
+<h1 id="en2-drop-files-and-folders">Drop files and folders</h1>
+<h2 id="en2-drag-onto-a-tile">Drag onto a tile</h2>
+<p>Drag files or folders from Finder, Mail or a browser onto a tile in the drop panel. The tiles are not in the menu bar menu. Folders are expanded; each file is checked against the tile's <strong class="ui">Accept</strong> setting.</p>
+<h2 id="en2-show-the-drop-panel-while-dragging">Show the drop panel while dragging</h2>
+<p>Hold Shift while you drag. The panel appears next to the cursor. You can also keep it on screen: choose <strong class="ui">Show tiles</strong> in the menu, or press the shortcut set under <strong class="ui">Appearance</strong>.</p>
+<h2 id="en2-import-without-dragging">Import without dragging</h2>
+<p>Choose <strong class="ui">Import files to…</strong> in the menu, pick a tile and select files or folders in the panel. They go through the same path as a drop.</p>
+<h2 id="en2-folder-names-become-keywords">Folder names become keywords</h2>
+<p>With <strong class="ui">Folder names as keywords</strong> on (the default), the folder names of a dropped folder are written as keywords on the imported clips.</p>
+<h2 id="en2-copy-or-move">Copy or move</h2>
+<p><strong class="ui">Original file</strong> decides whether the original is copied or moved into the media folder. New tiles copy. A name clash never overwrites: the new file gets a number. The subfolders of a dropped folder are recreated below the media folder. In move mode, files inside a Final Cut library are refused; copying them is allowed.</p>
+<h1 id="en3-when-postlab-locks-the-event">When PostLab locks the event</h1>
+<h2 id="en3-what-happens">What happens</h2>
+<p>Malibu Drop finds the libraries open in Final Cut with lsof, then looks in the library for an event folder named with a lock symbol, a space and the tile's event name, which is how PostLab marks a locked event. If no open library has that event writable, the clip goes into your own Sort event. If the Sort event is locked too, the drop waits. This is checked at drop time and on every retry.</p>
+<h2 id="en3-the-sort-event">The Sort event</h2>
+<p>The Sort event is named Sort plus your first name on this Mac. The app has no setting for it, and Import Tiles keeps this Mac's name. The menu reminds you which clips sit there and still belong in their real event; clear the reminder with <strong class="ui">Dismiss notices</strong>. That Final Cut creates a missing Sort event itself was not verified live.</p>
+<h2 id="en3-without-postlab">Without PostLab</h2>
+<p>Without PostLab nothing is locked and clips go to the event named on the tile.</p>
+<h1 id="en4-handle-failed-and-waiting-drops">Handle failed and waiting drops</h1>
+<h2 id="en4-waiting-drops">Waiting drops</h2>
+<p>A drop waits when Final Cut is not running, no library is open or the event does not exist yet. The menu shows how many wait and the reason of the first one. Malibu Drop retries with pauses of 2, 5, 15 and 60 seconds, then every 300 seconds, and the list survives a restart. A drop that waits for a library or an event keeps waiting. A hand-over that fails five times, an unreadable file or a deleted tile moves the item to <strong class="ui">Needs attention</strong>.</p>
+<h2 id="en4-needs-attention">Needs attention</h2>
+<p>Items that gave up appear under <strong class="ui">Needs attention</strong> with the reason. Click <strong class="ui">Retry</strong> to try again at once, or <strong class="ui">Dismiss</strong> to remove the entry; the file itself stays where it is. A notification appears for failed drops and for clips that were imported but not placed (only in the installed app). The menu bar icon switches to a warning symbol while something needs a look, and returns to normal after you open the menu unless a failed item or a notice remains.</p>
+<h2 id="en4-clips-not-found-in-the-event">Clips not found in the event</h2>
+<p>After the hand-over, Malibu Drop checks for up to about 20 seconds whether the clip shows up in the event. If it does not, the menu warns and keeps the notice across restarts until you choose <strong class="ui">Dismiss notices</strong>. Malibu Drop does not import the clip again by itself, to avoid a double import.</p>
+<h1 id="en5-connect-clips-at-the-playhead">Connect clips at the playhead</h1>
+<h2 id="en5-switch-it-on">Switch it on</h2>
+<p>Select the tile and switch on <strong class="ui">Connect at playhead</strong> under Timeline. It is off by default.</p>
+<h2 id="en5-allow-accessibility">Allow Accessibility</h2>
+<p>Malibu Drop selects the clip in the Final Cut browser and chooses Edit &gt; Connect to Primary Storyline from the menu, so any key binding you set works. This needs the Accessibility permission for Malibu Drop in System Settings. Importing itself works without it.</p>
+<h2 id="en5-several-clips">Several clips</h2>
+<p>With more than one clip Malibu Drop asks once: <strong class="ui">Import Only</strong> or <strong class="ui">Connect at Playhead</strong>. Clear <strong class="ui">Ask before connecting several</strong> to skip the question. The clips are connected at the playhead. Where they land depends on Final Cut's setting for positioning the playhead after an edit: with it on they sit back to back and the menu says so; with it off they stack in lanes at the same position. Malibu Drop reads that setting through English labels only; in other Final Cut languages the menu shows no note.</p>
+<h2 id="en5-limits">Limits</h2>
+<p>The menu item is found by its English, German or French title. If the item is not found, is disabled or does not react, Malibu Drop falls back to the Q key, which only works with Final Cut's default binding. Whenever the fallback is used, the placement is reported as: sent to Final Cut, but not confirmed.</p>
+<h1 id="en6-reference">Reference</h1>
+<h2 id="en6-menu-bar-menu">Menu bar menu</h2>
+<p><strong class="ui">Import files to…</strong>, <strong class="ui">Show tiles</strong> or <strong class="ui">Hide tiles</strong> (with the shortcut shown), <strong class="ui">Icons only</strong>, <strong class="ui">Settings…</strong>, <strong class="ui">Check for Updates…</strong>, <strong class="ui">Quit Malibu Drop</strong>. Sections <strong class="ui">Needs attention</strong> and <strong class="ui">Recent</strong> appear when there is something to show.</p>
+<h2 id="en6-tile-options-and-defaults">Tile options and defaults</h2>
+<p>Defaults below are those of a new tile; the default tiles set some values themselves (Songs: Stereo, -9 dB; SoundFX: Dual Mono). <strong class="ui">Name</strong>, <strong class="ui">Icon</strong>, <strong class="ui">Project</strong>: labels and grouping. <strong class="ui">Media folder</strong> and <strong class="ui">Final Cut event</strong>: destination. <strong class="ui">Role</strong>: audio and video role, empty means Final Cut's default. <strong class="ui">Channels (stereo files only)</strong>: Unchanged is the default. <strong class="ui">Level</strong>: off by default. <strong class="ui">Spatial conform</strong>: Default leaves Final Cut's setting. <strong class="ui">Accept</strong>: audio only by default. <strong class="ui">Original file</strong>: Copy by default. <strong class="ui">Connect at playhead</strong>: off. <strong class="ui">Ask before connecting several</strong>: on. <strong class="ui">Open in LogicSplitter</strong>: off. <strong class="ui">Folder names as keywords</strong>: on.</p>
+<h2 id="en6-default-tiles">Default tiles</h2>
+<p>Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout and ADR Recorded, with media folders below /Volumes/DVL/Media/Assets.</p>
+<h2 id="en6-shortcut-and-drop-panel">Shortcut and drop panel</h2>
+<p>Under <strong class="ui">Appearance</strong> (the gear in the settings sidebar) you set the shortcut that shows or hides the tiles; it needs Control, Option or Command. <strong class="ui">Icons only</strong> shrinks the tiles. Hold Shift while dragging to show the panel at the cursor; the trigger key is fixed.</p>
+<h2 id="en6-limits-and-requirements">Limits and requirements</h2>
+<p>macOS 14.0 or later. Final Cut Pro only, with a library open. Packages and Final Cut library files are not accepted. In move mode, files inside a Final Cut library are refused. Folders are read up to 100,000 entries. Clips are imported only through a generated FCPXML; nothing is written into the library package. Not sandboxed.</p>
+<h1 id="en7-troubleshooting">Troubleshooting</h1>
+<h2 id="en7-the-drop-waits-no-library-open">The drop waits: no library open</h2>
+<p>The menu shows: no library open in Final Cut. Open the library in Final Cut. The waiting drop is retried automatically; the pause between tries grows up to five minutes, and opening the library does not trigger an immediate check.</p>
+<h2 id="en7-the-drop-waits-event-not-found">The drop waits: event not found</h2>
+<p>The menu shows: event not found in the open library. The name in <strong class="ui">Final Cut event</strong> must match the library name; emoji variation selectors are ignored, everything else must be exact. Fix the name in the tile settings or create the event.</p>
+<h2 id="en7-the-volume-is-not-mounted">The volume is not mounted</h2>
+<p>The error says that the volume is not mounted. The default media folder is on /Volumes/DVL. Mount the volume or set another <strong class="ui">Media folder</strong>.</p>
+<h2 id="en7-a-file-is-skipped">A file is skipped</h2>
+<p>The menu shows skipped with a reason. Typical reasons are file type not allowed (switch the kind on under <strong class="ui">Accept</strong>) and a package or Final Cut library is not media.</p>
+<h2 id="en7-the-clip-is-imported-but-not-connected">The clip is imported but not connected</h2>
+<p>The menu line says not placed. Allow Accessibility for Malibu Drop, make sure Final Cut is running, and check that Edit &gt; Connect to Primary Storyline exists in your Final Cut language. If the line says not confirmed, look at the timeline.</p>
+<h2 id="en7-a-tile-settings-file-was-kept-aside">A tile settings file was kept aside</h2>
+<p>If tiles.json cannot be read, Malibu Drop shows a notice, renames the file to tiles.json.corrupt- followed by the time, and shows the default tiles. If the file cannot be renamed, the default tiles are shown without a notice and your next change overwrites the unreadable file.</p>
+<p class="ver">Written for version 0.2.5.</p>
+    </article>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-eine-kachel-einrichten">Eine Kachel einrichten</a><a class="l1" href="#de2-dateien-und-ordner-droppen">Dateien und Ordner droppen</a><a class="l1" href="#de3-wenn-postlab-das-event-sperrt">Wenn PostLab das Event sperrt</a><a class="l1" href="#de4-fehlgeschlagene-und-wartende-drops-behandeln">Fehlgeschlagene und wartende Drops behandeln</a><a class="l1" href="#de5-clips-am-playhead-anh-ngen">Clips am Playhead anhängen</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-fehlerbehebung">Fehlerbehebung</a></div>
+    <article class="doc" data-lang="de" hidden lang="de">
+<h1 id="de0-erste-schritte">Erste Schritte</h1>
+<h2 id="de0-was-malibu-drop-macht">Was Malibu Drop macht</h2>
+<p>Malibu Drop ist eine Menüleisten-App für Final Cut Pro. Du ziehst eine Datei auf eine Kachel; die Datei wird in den Medienordner der Kachel kopiert (oder verschoben) und über eine generierte FCPXML in das Event der Kachel importiert.</p>
+<h2 id="de0-bevor-du-anf-ngst">Bevor du anfängst</h2>
+<p>Du brauchst macOS 14 oder neuer und Final Cut Pro mit einer geöffneten Library. Das Ziel-Event muss in dieser Library bereits existieren. PostLab ist nicht erforderlich.</p>
+<p>Die sieben Standard-Kacheln nehmen nur Audio an und zeigen auf den Ordner /Volumes/DVL/Media/Assets. Setze zuerst deinen eigenen <strong class="ui">Media folder</strong> (siehe Anleitung zur Kachel-Einrichtung), sonst scheitert der Drop, weil dieses Volume nicht eingehängt ist.</p>
+<h2 id="de0-dein-erster-drop">Dein erster Drop</h2>
+<p>Halte die Umschalttaste, während du eine WAV-Datei aus dem Finder ziehst; das Drop-Panel erscheint neben dem Cursor. Lege die Datei auf die Kachel <strong class="ui">Songs</strong>. Oder wähle <strong class="ui">Import files to…</strong> im Menüleisten-Menü und die Kachel; ein Dateidialog öffnet sich.</p>
+<p>Existiert das Event in der in Final Cut geöffneten Library, erscheint der Clip in dem Event aus <strong class="ui">Final Cut event</strong>. Das Ergebnis steht im Menü unter <strong class="ui">Recent</strong>.</p>
+<h2 id="de0-wenn-es-nicht-sofort-importiert">Wenn es nicht sofort importiert</h2>
+<p>Läuft Final Cut nicht oder fehlt das Event, wartet der Drop und Malibu Drop versucht es erneut. Siehe die Anleitung zu fehlgeschlagenen Drops.</p>
+<h1 id="de1-eine-kachel-einrichten">Eine Kachel einrichten</h1>
+<h2 id="de1-kachel-einstellungen-ffnen">Kachel-Einstellungen öffnen</h2>
+<p>Wähle <strong class="ui">Settings…</strong> im Menüleisten-Menü. Die Seitenleiste listet deine Kacheln; wähle eine zum Bearbeiten.</p>
+<h2 id="de1-kachel-auf-ordner-und-event-legen">Kachel auf Ordner und Event legen</h2>
+<p>Klicke unter <strong class="ui">Destination</strong> auf <strong class="ui">Choose…</strong>, um den <strong class="ui">Media folder</strong> zu wählen, und tippe das <strong class="ui">Final Cut event</strong> genau so, wie es in der Library heißt. Das Feld <strong class="ui">Project</strong> gruppiert Kacheln nur im Drop-Panel.</p>
+<h2 id="de1-rolle-kan-le-und-pegel-setzen">Rolle, Kanäle und Pegel setzen</h2>
+<p>Setze unter <strong class="ui">Audio</strong> die <strong class="ui">Role</strong>; das Menü daneben listet Rollen aus der geöffneten Library. <strong class="ui">Channels (stereo files only)</strong> bietet Unchanged, Stereo, Dual Mono, Mono und Swapped. Mit <strong class="ui">Change level</strong> wird ein fester Pegel in dB auf Audio-Clips angewendet.</p>
+<h2 id="de1-video-und-standbilder-zulassen">Video und Standbilder zulassen</h2>
+<p>Unter <strong class="ui">Files</strong> legt <strong class="ui">Accept</strong> fest, welche Arten die Kachel annimmt. Neue und Standard-Kacheln nehmen nur Audio an. Schalte dort Video oder Image ein, um auch diese anzunehmen.</p>
+<h2 id="de1-hinzuf-gen-duplizieren-entfernen-teilen">Hinzufügen, duplizieren, entfernen, teilen</h2>
+<p>Nutze <strong class="ui">Add tile</strong>, <strong class="ui">Duplicate tile</strong> und <strong class="ui">Remove tile</strong> im Einstellungsfenster. <strong class="ui">Export Tiles…</strong> und <strong class="ui">Import Tiles…</strong> (im Menü More) speichern und laden dein Set als JSON-Datei. Beim Import werden alle Kacheln ersetzt, nachdem du mit <strong class="ui">Replace</strong> bestätigt hast.</p>
+<h1 id="de2-dateien-und-ordner-droppen">Dateien und Ordner droppen</h1>
+<h2 id="de2-auf-eine-kachel-ziehen">Auf eine Kachel ziehen</h2>
+<p>Ziehe Dateien oder Ordner aus Finder, Mail oder Browser auf eine Kachel im Drop-Panel. Die Kacheln sind nicht im Menüleisten-Menü. Ordner werden aufgelöst; jede Datei wird gegen die Einstellung <strong class="ui">Accept</strong> der Kachel geprüft.</p>
+<h2 id="de2-drop-panel-beim-ziehen-zeigen">Drop-Panel beim Ziehen zeigen</h2>
+<p>Halte beim Ziehen die Umschalttaste gedrückt. Das Panel erscheint neben dem Cursor. Du kannst es auch dauerhaft anzeigen: wähle <strong class="ui">Show tiles</strong> im Menü oder nutze das Kürzel aus <strong class="ui">Appearance</strong>.</p>
+<h2 id="de2-ohne-ziehen-importieren">Ohne Ziehen importieren</h2>
+<p>Wähle <strong class="ui">Import files to…</strong> im Menü, dann eine Kachel und Dateien oder Ordner im Dialog. Sie laufen über denselben Weg wie ein Drop.</p>
+<h2 id="de2-ordnernamen-werden-keywords">Ordnernamen werden Keywords</h2>
+<p>Ist <strong class="ui">Folder names as keywords</strong> an (Standard), werden die Ordnernamen eines gedroppten Ordners als Keywords auf die importierten Clips geschrieben.</p>
+<h2 id="de2-kopieren-oder-verschieben">Kopieren oder verschieben</h2>
+<p><strong class="ui">Original file</strong> legt fest, ob das Original in den Medienordner kopiert oder verschoben wird. Neue Kacheln kopieren. Ein Namenskonflikt überschreibt nie: die neue Datei bekommt eine Nummer. Die Unterordner eines gedroppten Ordners werden unter dem Medienordner nachgebaut. Im Verschieben-Modus werden Dateien innerhalb einer Final-Cut-Library abgelehnt; Kopieren ist erlaubt.</p>
+<h1 id="de3-wenn-postlab-das-event-sperrt">Wenn PostLab das Event sperrt</h1>
+<h2 id="de3-was-passiert">Was passiert</h2>
+<p>Malibu Drop findet mit lsof die in Final Cut geöffneten Libraries und sucht dann in der Library einen Event-Ordner, der aus einem Schloss-Symbol, einem Leerzeichen und dem Event-Namen der Kachel besteht; so markiert PostLab ein gesperrtes Event. Hat keine geöffnete Library dieses Event beschreibbar, landet der Clip in deinem eigenen Sort-Event. Ist auch das Sort-Event gesperrt, wartet der Drop. Das wird beim Drop und bei jedem erneuten Versuch geprüft.</p>
+<h2 id="de3-das-sort-event">Das Sort-Event</h2>
+<p>Das Sort-Event heißt Sort plus dein Vorname auf diesem Mac. Die App hat dafür keine Einstellung, und Import Tiles behält den Namen dieses Macs. Das Menü erinnert dich, welche Clips dort liegen und noch ins echte Event gehören; die Erinnerung löschst du mit <strong class="ui">Dismiss notices</strong>. Dass Final Cut ein fehlendes Sort-Event selbst anlegt, wurde nicht live verifiziert.</p>
+<h2 id="de3-ohne-postlab">Ohne PostLab</h2>
+<p>Ohne PostLab ist nichts gesperrt und Clips gehen in das Event der Kachel.</p>
+<h1 id="de4-fehlgeschlagene-und-wartende-drops-behandeln">Fehlgeschlagene und wartende Drops behandeln</h1>
+<h2 id="de4-wartende-drops">Wartende Drops</h2>
+<p>Ein Drop wartet, wenn Final Cut nicht läuft, keine Library offen ist oder das Event noch nicht existiert. Das Menü zeigt, wie viele warten und den Grund des ersten. Malibu Drop versucht es mit Pausen von 2, 5, 15 und 60 Sekunden, danach alle 300 Sekunden erneut, und die Liste übersteht einen Neustart. Ein Drop, der auf Library oder Event wartet, wartet weiter. Eine Übergabe, die fünfmal scheitert, eine unlesbare Datei oder eine gelöschte Kachel verschiebt den Eintrag nach <strong class="ui">Needs attention</strong>.</p>
+<h2 id="de4-needs-attention">Needs attention</h2>
+<p>Aufgegebene Einträge erscheinen unter <strong class="ui">Needs attention</strong> mit dem Grund. <strong class="ui">Retry</strong> versucht es sofort erneut, <strong class="ui">Dismiss</strong> entfernt den Eintrag; die Datei selbst bleibt, wo sie ist. Für fehlgeschlagene Drops und für importierte, aber nicht platzierte Clips erscheint eine Mitteilung (nur in der installierten App). Das Menüleisten-Symbol wechselt zu einem Warnsymbol, solange etwas Aufmerksamkeit braucht, und kehrt nach dem Öffnen des Menüs zurück, sofern kein fehlgeschlagener Eintrag oder Hinweis bleibt.</p>
+<h2 id="de4-clips-nicht-im-event-gefunden">Clips nicht im Event gefunden</h2>
+<p>Nach der Übergabe prüft Malibu Drop bis zu etwa 20 Sekunden, ob der Clip im Event auftaucht. Falls nicht, warnt das Menü und behält den Hinweis über Neustarts hinweg, bis du <strong class="ui">Dismiss notices</strong> wählst. Malibu Drop importiert den Clip nicht selbst erneut, um einen Doppelimport zu vermeiden.</p>
+<h1 id="de5-clips-am-playhead-anh-ngen">Clips am Playhead anhängen</h1>
+<h2 id="de5-einschalten">Einschalten</h2>
+<p>Wähle die Kachel und schalte unter Timeline <strong class="ui">Connect at playhead</strong> ein. Standardmäßig ist es aus.</p>
+<h2 id="de5-bedienungshilfen-erlauben">Bedienungshilfen erlauben</h2>
+<p>Malibu Drop wählt den Clip im Final-Cut-Browser aus und wählt im Menü Edit &gt; Connect to Primary Storyline, deshalb funktioniert jede Tastenbelegung. Dafür braucht Malibu Drop die Bedienungshilfen-Berechtigung in den Systemeinstellungen. Der Import selbst funktioniert auch ohne.</p>
+<h2 id="de5-mehrere-clips">Mehrere Clips</h2>
+<p>Bei mehr als einem Clip fragt Malibu Drop einmal: <strong class="ui">Import Only</strong> oder <strong class="ui">Connect at Playhead</strong>. Mit abgeschaltetem <strong class="ui">Ask before connecting several</strong> entfällt die Frage. Die Clips werden am Playhead angehängt. Wo sie landen, hängt von Final Cuts Einstellung zum Positionieren des Playheads nach einem Edit ab: eingeschaltet liegen sie hintereinander und das Menü weist darauf hin; ausgeschaltet stapeln sie sich in Spuren an derselben Position. Malibu Drop liest diese Einstellung nur über englische Beschriftungen; in anderen Final-Cut-Sprachen zeigt das Menü keinen Hinweis.</p>
+<h2 id="de5-grenzen">Grenzen</h2>
+<p>Der Menüpunkt wird über seinen englischen, deutschen oder französischen Titel gefunden. Wird der Menüpunkt nicht gefunden, ist er deaktiviert oder reagiert nicht, fällt Malibu Drop auf die Q-Taste zurück, die nur mit Final Cuts Standardbelegung funktioniert. Wird dieser Rückfall benutzt, meldet das Menü die Platzierung als: sent to Final Cut, but not confirmed.</p>
+<h1 id="de6-referenz">Referenz</h1>
+<h2 id="de6-men-leisten-men">Menüleisten-Menü</h2>
+<p><strong class="ui">Import files to…</strong>, <strong class="ui">Show tiles</strong> oder <strong class="ui">Hide tiles</strong> (mit angezeigtem Kürzel), <strong class="ui">Icons only</strong>, <strong class="ui">Settings…</strong>, <strong class="ui">Check for Updates…</strong>, <strong class="ui">Quit Malibu Drop</strong>. Die Bereiche <strong class="ui">Needs attention</strong> und <strong class="ui">Recent</strong> erscheinen, wenn es etwas zu zeigen gibt.</p>
+<h2 id="de6-kachel-optionen-und-standardwerte">Kachel-Optionen und Standardwerte</h2>
+<p>Die Standardwerte unten gelten für eine neue Kachel; die Standard-Kacheln setzen einzelne Werte selbst (Songs: Stereo, -9 dB; SoundFX: Dual Mono). <strong class="ui">Name</strong>, <strong class="ui">Icon</strong>, <strong class="ui">Project</strong>: Bezeichnung und Gruppierung. <strong class="ui">Media folder</strong> und <strong class="ui">Final Cut event</strong>: Ziel. <strong class="ui">Role</strong>: Audio- und Video-Rolle, leer bedeutet Final Cuts Standard. <strong class="ui">Channels (stereo files only)</strong>: Standard ist Unchanged. <strong class="ui">Level</strong>: standardmäßig aus. <strong class="ui">Spatial conform</strong>: Default lässt Final Cuts Einstellung. <strong class="ui">Accept</strong>: standardmäßig nur Audio. <strong class="ui">Original file</strong>: standardmäßig Copy. <strong class="ui">Connect at playhead</strong>: aus. <strong class="ui">Ask before connecting several</strong>: an. <strong class="ui">Open in LogicSplitter</strong>: aus. <strong class="ui">Folder names as keywords</strong>: an.</p>
+<h2 id="de6-standard-kacheln">Standard-Kacheln</h2>
+<p>Songs, Composer, SoundFX, Score Layout, Atmos, ADR Layout und ADR Recorded, mit Medienordnern unter /Volumes/DVL/Media/Assets.</p>
+<h2 id="de6-k-rzel-und-drop-panel">Kürzel und Drop-Panel</h2>
+<p>Unter <strong class="ui">Appearance</strong> (das Zahnrad in der Einstellungs-Seitenleiste) legst du das Kürzel fest, das die Kacheln zeigt oder verbirgt; es braucht Control, Option oder Command. <strong class="ui">Icons only</strong> verkleinert die Kacheln. Halte beim Ziehen die Umschalttaste, um das Panel am Cursor zu zeigen; die Taste ist fest.</p>
+<h2 id="de6-grenzen-und-voraussetzungen">Grenzen und Voraussetzungen</h2>
+<p>macOS 14.0 oder neuer. Nur Final Cut Pro, mit geöffneter Library. Pakete und Final-Cut-Library-Dateien werden nicht angenommen. Im Verschieben-Modus werden Dateien innerhalb einer Final-Cut-Library abgelehnt. Ordner werden bis 100.000 Einträge gelesen. Clips werden nur über eine generierte FCPXML importiert; nichts wird in das Library-Paket geschrieben. Nicht sandboxed.</p>
+<h1 id="de7-fehlerbehebung">Fehlerbehebung</h1>
+<h2 id="de7-der-drop-wartet-keine-library-offen">Der Drop wartet: keine Library offen</h2>
+<p>Das Menü zeigt: no library open in Final Cut. Öffne die Library in Final Cut. Der wartende Drop wird automatisch erneut versucht; die Pause zwischen den Versuchen wächst bis auf fünf Minuten, und das Öffnen der Library löst keine sofortige Prüfung aus.</p>
+<h2 id="de7-der-drop-wartet-event-nicht-gefunden">Der Drop wartet: Event nicht gefunden</h2>
+<p>Das Menü zeigt: event not found in the open library. Der Name in <strong class="ui">Final Cut event</strong> muss zum Library-Namen passen; Emoji-Variantenselektoren werden ignoriert, alles andere muss exakt stimmen. Korrigiere den Namen in den Kachel-Einstellungen oder lege das Event an.</p>
+<h2 id="de7-das-volume-ist-nicht-eingeh-ngt">Das Volume ist nicht eingehängt</h2>
+<p>Der Fehler sagt, dass das Volume nicht eingehängt ist. Der Standard-Medienordner liegt auf /Volumes/DVL. Hänge das Volume ein oder setze einen anderen <strong class="ui">Media folder</strong>.</p>
+<h2 id="de7-eine-datei-wird-bersprungen">Eine Datei wird übersprungen</h2>
+<p>Das Menü zeigt skipped mit einem Grund. Typische Gründe sind file type not allowed (schalte die Art unter <strong class="ui">Accept</strong> ein) und a package or Final Cut library is not media.</p>
+<h2 id="de7-der-clip-ist-importiert-aber-nicht-angeh-ngt">Der Clip ist importiert, aber nicht angehängt</h2>
+<p>Die Menüzeile sagt not placed. Erlaube Bedienungshilfen für Malibu Drop, stelle sicher, dass Final Cut läuft, und prüfe, ob Edit &gt; Connect to Primary Storyline in deiner Final-Cut-Sprache existiert. Sagt die Zeile not confirmed, schau in die Timeline.</p>
+<h2 id="de7-eine-kachel-einstellungsdatei-wurde-beiseitegelegt">Eine Kachel-Einstellungsdatei wurde beiseitegelegt</h2>
+<p>Lässt sich tiles.json nicht lesen, zeigt Malibu Drop einen Hinweis, benennt die Datei in tiles.json.corrupt- mit der Uhrzeit um und zeigt die Standard-Kacheln. Lässt sich die Datei nicht umbenennen, werden die Standard-Kacheln ohne Hinweis gezeigt und deine nächste Änderung überschreibt die unlesbare Datei.</p>
+<p class="ver">Geschrieben für Version 0.2.5.</p>
+    </article>
+  </div>
+  <footer>
+    <div class="foot">
+      <span>Malibu Drop · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</div>
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {"nav.back":"← Malibu Drop","nav.help":"Help","foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy"},
+  de: {"nav.back":"← Malibu Drop","nav.help":"Hilfe","foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz"}
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+(function () {
+  function show(l) {
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== l; });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); show(l); };
+  show(document.documentElement.lang === "de" ? "de" : "en");
+})();
+</script>
+</body>
+</html>

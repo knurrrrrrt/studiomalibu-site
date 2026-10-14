@@ -80,13 +80,12 @@ def render(body: str, prefix: str):
         if m:
             flush_para(); close_list()
             level, title = len(m.group(1)), m.group(2).strip()
+            sid = f"{prefix}-{slugify(title)}"
             if level == 1:
-                out.append(f"<h1>{inline(title)}</h1>")
-            else:
-                sid = f"{prefix}-{slugify(title)}"
-                if level == 2:
-                    toc.append((sid, title))
-                out.append(f'<h{level} id="{sid}">{inline(title)}</h{level}>')
+                toc.append((sid, title, 1))
+            elif level == 2:
+                toc.append((sid, title, 2))
+            out.append(f'<h{level} id="{sid}">{inline(title)}</h{level}>')
         elif re.match(r"^\s*([-*])\s+", line):
             flush_para()
             if list_kind != "ul":
@@ -132,6 +131,10 @@ PAGE = """<!DOCTYPE html>
 .toc{{position:sticky;top:76px;align-self:start;font-size:13.5px}}
 .toc a{{display:block;color:var(--dim);padding:5px 0}}
 .toc a:hover{{color:var(--text)}}
+.toc a.l1{{color:var(--text);font-weight:600;margin-top:12px}}
+.toc a.l2{{padding-left:12px;font-size:12.5px}}
+.doc h1{{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}}
+.doc h1:first-child{{margin-top:0;padding-top:0;border-top:0}}
 .toc .t{{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}}
 .doc{{max-width:72ch}}
 .doc h1{{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}}
@@ -226,7 +229,13 @@ def main():
     label = {"en": ("On this page", f"Written for version {ver}."), "de": ("Auf dieser Seite", f"Geschrieben für Version {ver}.")}
     parts = []
     for lang in ("en", "de"):
-        toc = "".join(f'<a href="#{sid}">{html.escape(t)}</a>' for sid, t in toc_by_lang[lang])
+        multi = len(blocks[lang]) > 1
+        toc = "".join(
+            f'<a class="l{lv}" href="#{sid}">{html.escape(t)}</a>'
+            for sid, t, lv in toc_by_lang[lang] if lv == 1 or not multi or lv == 2 and False
+        ) if multi else "".join(
+            f'<a class="l2" href="#{sid}">{html.escape(t)}</a>' for sid, t, lv in toc_by_lang[lang] if lv == 2
+        )
         parts.append(
             f'    <div class="toc" data-lang="{lang}"{" hidden" if lang == "de" else ""}><div class="t">{label[lang][0]}</div>{toc}</div>\n'
             f'    <article class="doc" data-lang="{lang}"{" hidden" if lang == "de" else ""} lang="{lang}">\n'
