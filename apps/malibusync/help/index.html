@@ -216,7 +216,7 @@
 <h2 id="en7-how-clips-are-synced">How clips are synced</h2>
 <p>A clip's sync method is one of Timecode, Clap-based or Manual. Timecode is the default. Clips detected as slow motion default to Clap-based. MalibuSync does not match by comparing waveforms.</p>
 <h2 id="en7-timecode-from-a-sound-channel">Timecode from a sound channel</h2>
-<p>In Settings, then the Audio tab, <strong class="ui">Read timecode from LTC audio channel</strong> makes MalibuSync decode linear timecode from one channel of a WAV or BWF file. The reading is used only when the file has no timecode in its header. The switch is off by default. After you switch it on, set the channel with the stepper; until you have changed the stepper, MalibuSync reads channel 1.</p>
+<p>In Settings, then the Audio tab, <strong class="ui">Read timecode from LTC audio channel</strong> makes MalibuSync decode linear timecode from one channel of a WAV or BWF file. The reading is used only when the file has no timecode in its header. The switch is off by default, and the channel defaults to channel 8. Change it with the stepper.</p>
 <h2 id="en7-the-two-result-pages">The two result pages</h2>
 <p><strong class="ui">Match Results</strong> is the table of all clips, grouped by cluster. <strong class="ui">Sync Check</strong> is the clip list with the player, timeline and metadata sidebar.</p>
 <p><strong class="ui">Import ALE / CSV</strong> and <strong class="ui">Sync Lockit</strong> appear on Match Results only. Once a file is loaded, the first button shows the file's name instead of its label. The overflow menu (the three-dot button with the tooltip More actions for this session) appears on both pages.</p>
@@ -464,7 +464,7 @@
 <h2 id="de7-wie-clips-gesynct-werden">Wie Clips gesynct werden</h2>
 <p>Die Sync-Methode eines Clips ist Timecode, Clap-based oder Manual. Timecode ist der Standard. Clips, die als Zeitlupe erkannt werden, stehen standardmäßig auf Clap-based. MalibuSync matcht nicht durch Vergleich von Waveforms.</p>
 <h2 id="de7-timecode-aus-einem-tonkanal">Timecode aus einem Tonkanal</h2>
-<p>In den Einstellungen, im Tab Audio, lässt <strong class="ui">Read timecode from LTC audio channel</strong> MalibuSync linearen Timecode (LTC) aus einem Kanal einer WAV- oder BWF-Datei dekodieren. Der Wert wird nur verwendet, wenn die Datei im Header keinen Timecode hat. Der Schalter ist standardmäßig aus. Stelle nach dem Einschalten den Kanal mit dem Stepper ein; solange du den Stepper nicht verändert hast, liest MalibuSync Kanal 1.</p>
+<p>In den Einstellungen, im Tab Audio, lässt <strong class="ui">Read timecode from LTC audio channel</strong> MalibuSync linearen Timecode (LTC) aus einem Kanal einer WAV- oder BWF-Datei dekodieren. Der Wert wird nur verwendet, wenn die Datei im Header keinen Timecode hat. Der Schalter ist standardmäßig aus, und der Kanal steht standardmäßig auf Kanal 8. Ändere ihn mit dem Stepper.</p>
 <h2 id="de7-die-zwei-ergebnisseiten">Die zwei Ergebnisseiten</h2>
 <p><strong class="ui">Match Results</strong> ist die Tabelle aller Clips, nach Cluster gruppiert. <strong class="ui">Sync Check</strong> ist die Clip-Liste mit Player, Timeline und Metadaten-Seitenleiste.</p>
 <p><strong class="ui">Import ALE / CSV</strong> und <strong class="ui">Sync Lockit</strong> erscheinen nur auf Match Results. Ist eine Datei geladen, zeigt die erste Schaltfläche statt ihrer Beschriftung den Dateinamen. Das Überlaufmenü (die Schaltfläche mit den drei Punkten und dem Tooltip More actions for this session) erscheint auf beiden Seiten.</p>
