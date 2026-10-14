@@ -56,11 +56,11 @@
     </div>
   </div>
   <div class="help">
-    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-set-up-davinci-resolve">Set up DaVinci Resolve</a><a class="l1" href="#en2-import-the-conformed-file-into-resolve-yourself">Import the conformed file into Resolve yourself</a><a class="l1" href="#en3-read-the-conform-report-and-markers">Read the conform report and markers</a><a class="l1" href="#en4-handle-compound-clips-multicams-and-sync-clips">Handle compound clips, multicams and sync clips</a><a class="l1" href="#en5-conform-dailies-proxies-that-carry-burn-in-bars">Conform dailies proxies that carry burn-in bars</a><a class="l1" href="#en6-reference">Reference</a><a class="l1" href="#en7-troubleshooting">Troubleshooting</a></div>
+    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-set-up-davinci-resolve">Set up DaVinci Resolve</a><a class="l1" href="#en2-import-the-conformed-file-into-resolve-yourself">Import the conformed file into Resolve yourself</a><a class="l1" href="#en3-read-the-conform-report-and-markers">Read the conform report and markers</a><a class="l1" href="#en4-handle-compound-clips-multicams-and-sync-clips">Handle compound clips, multicams and sync clips</a><a class="l1" href="#en5-conform-dailies-proxies-with-bars-burned-in">Conform dailies proxies with bars burned in</a><a class="l1" href="#en6-reference">Reference</a><a class="l1" href="#en7-troubleshooting">Troubleshooting</a></div>
     <article class="doc" data-lang="en" lang="en">
 <h1 id="en0-getting-started">Getting started</h1>
 <h2 id="en0-what-malibu-conform-does">What Malibu Conform does</h2>
-<p>Malibu Conform takes a Final Cut Pro project that you exported as FCPXML and prepares it for DaVinci Resolve Studio. It writes a Resolve-ready FCPXML, a manifest and a conform report. Optionally it then imports the timeline into Resolve and applies the transforms there. The conform covers picture only; audio is out of scope.</p>
+<p>Malibu Conform takes a Final Cut Pro project that you exported as FCPXML and prepares it for DaVinci Resolve Studio. It writes an FCPXML that Resolve can use, a manifest and a conform report. Optionally it then imports the timeline into Resolve and applies the transforms there. The conform covers picture only; audio is out of scope.</p>
 <h2 id="en0-before-you-start">Before you start</h2>
 <p>You need macOS 14.0 or later and a project exported from Final Cut Pro.</p>
 <p>The automatic Resolve step needs DaVinci Resolve Studio; the app warns that the free edition does not include the Python scripting API. Without Resolve you still get the conformed files and can import them yourself (see the guide on manual import).</p>
@@ -100,18 +100,18 @@
 <h2 id="en2-switch-on-three-import-options">Switch on three import options</h2>
 <p>In the import dialog enable <strong class="ui">Use color information</strong>, <strong class="ui">Mixed frame rate format: Final Cut Pro X</strong> and <strong class="ui">Automatically import source clips into media pool</strong>. The app's instructions state that without these three options the conform looks correct in the Inspector but drifts visually, and that the media pool option links the clips to your media.</p>
 <h2 id="en2-what-a-manual-import-does-not-include">What a manual import does not include</h2>
-<p>The red "Effect Removed" and "Transform Check" markers, the yellow "Keyframed Transform" marker and the read-back of transform values come from the Resolve step. A manual import has none of them. Markers for adjustment layers and your original Final Cut Pro markers are written into the FCPXML and arrive either way. Removed filters are listed in the conform report and in <code>manifest.json</code>.</p>
+<p>The red "Effect Removed" and "Transform Check" markers, the yellow "Keyframed Transform" marker and the reading back of transform values come from the Resolve step. A manual import has none of them. Markers for adjustment layers and your original Final Cut Pro markers are written into the FCPXML and arrive either way. Removed filters are listed in the conform report and in <code>manifest.json</code>.</p>
 <h1 id="en3-read-the-conform-report-and-markers">Read the conform report and markers</h1>
 <h2 id="en3-open-the-report">Open the report</h2>
 <p>Click <strong class="ui">View Report</strong> in the result window. It opens <code>ConformReport.pdf</code> from the output folder. The same report is also there as Markdown, <code>ConformReport.md</code>; <strong class="ui">View Report</strong> opens that file when the PDF could not be written.</p>
 <h2 id="en3-what-the-report-lists">What the report lists</h2>
-<p>The report has a summary and sections such as Critical — Manual Review Required, Warnings, Removed Effects, Multicam Resolutions, Transforms Applied, Source Media Rasters, Source Media, Cross-Clip Adjustment Layers, Custom LUTs Detected and Reference Movie. It closes with notes for the colorist.</p>
+<p>The report has a summary and sections such as "Critical — Manual Review Required", "Warnings", "Removed Effects", "Multicam Resolutions", "Transforms Applied", "Source Media Rasters", "Source Media", "Cross-Clip Adjustment Layers", "Custom LUTs Detected" and "Reference Movie". It closes with notes for the colorist.</p>
 <h2 id="en3-removed-effects">Removed effects</h2>
 <p>Video filters on clips are removed, including color filters, because none is translated to Resolve. A filter removed from a clip on the main storyline is listed under Removed Effects with a suggestion for how to rebuild it in Resolve. A filter removed from a connected clip appears under Warnings instead and gets no marker in Resolve. Custom LUT filters are removed too and are also listed under Custom LUTs Detected.</p>
 <h2 id="en3-markers-in-resolve">Markers in Resolve</h2>
 <p>Markers on clips come from two places. The conform writes a marker "Adjustment Layer: &lt;name&gt;" on the first clip an adjustment layer covers. The Resolve step sets the others. A red marker named "Effect Removed" followed by the filter name shows a removed filter. A red marker named "Malibu Conform: Transform Check" lists transform values that did not arrive as intended. A yellow marker named "Keyframed Transform" means the clip has more than one transform keyframe and was left as Resolve imported it; check the animation against your reference.</p>
 <h2 id="en3-warnings-in-the-result-window">Warnings in the result window</h2>
-<p>The result window shows the first ten warnings in the order they were recorded; the rest are in the report. The report lists errors under Critical — Manual Review Required and warnings under Warnings; information entries are only counted in its summary. A red dot marks an error, orange a warning and grey information.</p>
+<p>The result window shows the first ten warnings in the order they were recorded; the rest are in the report. The report lists errors under "Critical — Manual Review Required" and warnings under "Warnings"; information entries are only counted in its summary. A red dot marks an error, orange a warning and grey information.</p>
 <h1 id="en4-handle-compound-clips-multicams-and-sync-clips">Handle compound clips, multicams and sync clips</h1>
 <h2 id="en4-what-happens-by-default">What happens by default</h2>
 <p>In the normal case multicam clips are replaced by their active angle and sync clips are unwrapped to their primary video clip, so Resolve receives plain clips. A few cases stay as they are and get a warning, for example a retimed wrapper that carries connected video. A compound clip is flattened when it reduces to a single clip. A compound with several clips stays a compound clip and the conform records the information "Compound contains N elements — kept as compound". A compound whose only content is a title is not flattened and is reported with "Inner element is not inlinable".</p>
@@ -121,9 +121,9 @@
 <p>If clips with picture remain sync, compound or multicam clips, the conform adds a warning with their number: they import into Resolve as Compound Clips that cannot be graded per clip. The warnings for each clip give the reason.</p>
 <h2 id="en4-connected-clips">Connected clips</h2>
 <p>Clips on lanes and secondary storylines are conformed in the FCPXML, but their transforms are not applied in Resolve: the Resolve step only addresses clips on video track 1. A note in the warnings shows how many connected clips were conformed.</p>
-<h1 id="en5-conform-dailies-proxies-that-carry-burn-in-bars">Conform dailies proxies that carry burn-in bars</h1>
+<h1 id="en5-conform-dailies-proxies-with-bars-burned-in">Conform dailies proxies with bars burned in</h1>
 <h2 id="en5-when-you-need-this">When you need this</h2>
-<p>Use this when your edit was cut on dailies proxies with extra burn-in rows that the camera originals do not have. The conform then calculates clips whose source raster matches a proxy raster you entered for the camera originals; clips with other rasters are not changed.</p>
+<p>Use this when your edit was cut on dailies proxies with extra rows burned in that the camera originals do not have. The conform then calculates clips whose source raster matches a proxy raster you entered for the camera originals; clips with other rasters are not changed.</p>
 <h2 id="en5-add-a-proxy-raster">Add a proxy raster</h2>
 <p>Open Settings, choose the tab <strong class="ui">Proxies</strong> and click <strong class="ui">Add Proxy Raster</strong>. A new row starts with the placeholder sizes 1920 × 1080 for the proxy and 3840 × 2160 for the original; replace both with your sizes. Enter <strong class="ui">Proxy size</strong> and <strong class="ui">Original size</strong>. The bars are worked out from the two sizes: the picture area is the largest part of the proxy with the original's aspect ratio, centered, and an odd leftover pixel goes to the bottom or right. A row with edited bars no longer follows the sizes.</p>
 <h2 id="en5-set-uneven-bars">Set uneven bars</h2>
@@ -131,7 +131,7 @@
 <h2 id="en5-run-the-conform">Run the conform</h2>
 <p>The rows are read fresh at every conform run. The conform report lists the raster sizes of your project under Source Media Rasters. Relink to the camera originals in Resolve before you check the picture; until then the proxies look too small.</p>
 <h2 id="en5-known-limits">Known limits</h2>
-<p>Clips with keyframes are not re-based to the camera original; the conform warns for each of them, and you check size and position after relinking.</p>
+<p>Clips with keyframes are not recalculated for the camera original; the conform warns for each of them, and you check size and position after relinking.</p>
 <h1 id="en6-reference">Reference</h1>
 <h2 id="en6-requirements-and-versions">Requirements and versions</h2>
 <ul>
@@ -142,22 +142,22 @@
 </ul>
 <h2 id="en6-main-window">Main window</h2>
 <ul>
-<li><strong class="ui">Drop FCPXML or .fcpxmld here</strong> — the drop zone; click it to choose a file instead.</li>
-<li><strong class="ui">Drive Resolve after export</strong> — Standard: on; the main-window checkbox starts out off for the session if the Resolve setup check fails when the app launches. Runs the Resolve step after the files are written.</li>
-<li><strong class="ui">Aggressive compound inlining</strong> — Standard: off. Flattens compounds with several clips by keeping only the first.</li>
-<li><strong class="ui">Include reference movie</strong> — Standard: on. Takes the movie chosen under Reference Movie into the output.</li>
-<li><strong class="ui">Burn in timecode if missing</strong> — Standard: on. Adds the timeline start timecode as a text overlay on the reference movie unless its file name suggests it already has timecode.</li>
-<li><strong class="ui">Select...</strong> — chooses a reference movie. <strong class="ui">Change...</strong> — chooses the output directory.</li>
-<li><strong class="ui">Conform for Resolve</strong> — starts the preflight check and the conform.</li>
+<li><strong class="ui">Drop FCPXML or .fcpxmld here</strong>: the drop zone; click it to choose a file instead.</li>
+<li><strong class="ui">Drive Resolve after export</strong>: default on; the checkbox in the main window starts out off for the session if the Resolve setup check fails when the app launches. Runs the Resolve step after the files are written.</li>
+<li><strong class="ui">Aggressive compound inlining</strong>: default off. Flattens compounds with several clips by keeping only the first.</li>
+<li><strong class="ui">Include reference movie</strong>: default on. Takes the movie chosen under Reference Movie into the output.</li>
+<li><strong class="ui">Burn in timecode if missing</strong>: default on. Adds the timeline start timecode as a text overlay on the reference movie unless its file name suggests it already has timecode.</li>
+<li><strong class="ui">Select...</strong>: chooses a reference movie. <strong class="ui">Change...</strong>: chooses the output directory.</li>
+<li><strong class="ui">Conform for Resolve</strong>: starts the preflight check and the conform.</li>
 </ul>
 <p>The options appear once a file is chosen.</p>
 <h2 id="en6-settings">Settings</h2>
 <ul>
-<li><strong class="ui">General</strong> — <strong class="ui">Aggressive compound inlining</strong> (off), <strong class="ui">Include reference movie</strong> (on), <strong class="ui">Burn in timecode if missing</strong> (on, available only while a reference movie is included) and the output folder with <strong class="ui">Choose...</strong>. The default output folder is <code>Movies/MalibuConform</code> in your home folder.</li>
-<li><strong class="ui">Resolve</strong> — <strong class="ui">Drive Resolve after export</strong> (on), the status list and <strong class="ui">Check Resolve Setup</strong>.</li>
-<li><strong class="ui">Proxies</strong> — proxy rasters with burn-in bars; see the guide on proxies.</li>
-<li><strong class="ui">License</strong> — shows status, email and device ID; <strong class="ui">Redeem License Key...</strong> and <strong class="ui">Deactivate This Device...</strong>.</li>
-<li><strong class="ui">Diagnostics</strong> — <strong class="ui">Verbose logging</strong> (off), <strong class="ui">Open Log Directory</strong> and <strong class="ui">Send Feedback…</strong>.</li>
+<li><strong class="ui">General</strong>: <strong class="ui">Aggressive compound inlining</strong> (off), <strong class="ui">Include reference movie</strong> (on), <strong class="ui">Burn in timecode if missing</strong> (on, available only while a reference movie is included) and the output folder with <strong class="ui">Choose...</strong>. The default output folder is <code>Movies/MalibuConform</code> in your home folder.</li>
+<li><strong class="ui">Resolve</strong>: <strong class="ui">Drive Resolve after export</strong> (on), the status list and <strong class="ui">Check Resolve Setup</strong>.</li>
+<li><strong class="ui">Proxies</strong>: proxy rasters with bars burned in; see the guide on proxies.</li>
+<li><strong class="ui">License</strong>: shows status, email and device ID; <strong class="ui">Redeem License Key...</strong> and <strong class="ui">Deactivate This Device...</strong>.</li>
+<li><strong class="ui">Diagnostics</strong>: <strong class="ui">Verbose logging</strong> (off), <strong class="ui">Open Log Directory</strong> and <strong class="ui">Send Feedback…</strong>.</li>
 </ul>
 <p>The options in the main window and the matching options here are the same settings: a change in either place applies at once and is saved. The Proxies tab is read at every run.</p>
 <h2 id="en6-menus-and-shortcuts">Menus and shortcuts</h2>
@@ -167,14 +167,14 @@
 </ul>
 <h2 id="en6-output-files">Output files</h2>
 <ul>
-<li><code>&lt;input name&gt;_Conform.fcpxml</code> — the Resolve-ready FCPXML. It keeps the version of the input.</li>
-<li><code>manifest.json</code> — the transforms and removed filters that the Resolve step reads.</li>
-<li><code>ConformReport.md</code> — the conform report in Markdown.</li>
-<li><code>ConformReport.pdf</code> — the same report as an A4 PDF. If it cannot be written, the conform records an information message and the Markdown report is still there.</li>
-<li><code>reference_&lt;file name&gt;</code> — a copy of the reference movie; <code>&lt;name&gt;_TC.mp4</code> when timecode was burned in.</li>
+<li><code>&lt;input name&gt;_Conform.fcpxml</code>: the FCPXML for Resolve. It keeps the version of the input.</li>
+<li><code>manifest.json</code>: the transforms and removed filters that the Resolve step reads.</li>
+<li><code>ConformReport.md</code>: the conform report in Markdown.</li>
+<li><code>ConformReport.pdf</code>: the same report as an A4 PDF. If it cannot be written, the conform records an information message and the Markdown report is still there.</li>
+<li><code>reference_&lt;file name&gt;</code>: a copy of the reference movie; <code>&lt;name&gt;_TC.mp4</code> when timecode was burned in.</li>
 </ul>
 <h2 id="en6-reference-movie">Reference movie</h2>
-<p>A reference movie must have a video track. It is validated, copied into the output folder and listed in the report. Whether it already carries burned-in timecode is guessed from the file name: names containing "_tc", "timecode" or "burnin" count as having it.</p>
+<p>A reference movie must have a video track. It is validated, copied into the output folder and listed in the report. Whether it already has timecode burned in is guessed from the file name: names containing "_tc", "timecode" or "burnin" count as having it.</p>
 <h2 id="en6-warning-severities">Warning severities</h2>
 <p>A message is a hard block, an error, a warning or information. A hard block stops the conform before it starts. Only the preflight findings appear before the run; with errors or warnings the continue button reads <strong class="ui">Conform Anyway</strong>, with only information it reads <strong class="ui">Conform</strong>. Warnings from the conform and from the Resolve step appear afterwards in the result window and the report.</p>
 <h2 id="en6-limits">Limits</h2>
@@ -206,172 +206,172 @@
 <h2 id="en7-a-transform-check-marker-appears">A "Transform Check" marker appears</h2>
 <p>Resolve can clip values silently, so Malibu Conform reads each value back after setting it. When a value ends up different from what was set (small differences are ignored), or could not be set or read, the clip gets a red marker named "Malibu Conform: Transform Check" and the report lists it.</p>
 <h2 id="en7-the-picture-looks-too-small">The picture looks too small</h2>
-<p>If you conformed dailies proxies with burn-in bars, relink to the camera originals in Resolve; until then the proxies look too small. Also check the sizes on the <strong class="ui">Proxies</strong> tab.</p>
+<p>If you conformed dailies proxies with bars burned in, relink to the camera originals in Resolve; until then the proxies look too small. Also check the sizes on the <strong class="ui">Proxies</strong> tab.</p>
 <h2 id="en7-clips-are-offline-after-a-manual-import">Clips are offline after a manual import</h2>
 <p>Import again with <strong class="ui">Automatically import source clips into media pool</strong> enabled.</p>
 <h2 id="en7-cuts-land-on-the-wrong-source-frame">Cuts land on the wrong source frame</h2>
-<p>The preflight check warns about assets with Sony-style names that start at 0: Final Cut Pro may have failed to read the camera timecode, and cuts may land on the wrong source frame in Resolve. Relink the media in Final Cut Pro before you export.</p>
+<p>The preflight check warns about assets with names of the kind Sony uses that start at 0: Final Cut Pro may have failed to read the camera timecode, and cuts may land on the wrong source frame in Resolve. Relink the media in Final Cut Pro before you export.</p>
 <h2 id="en7-the-app-asks-for-a-license">The app asks for a license</h2>
 <p>When the license check blocks the app, for example after the trial, a screen offers <strong class="ui">Check Again</strong>, <strong class="ui">I already have a license</strong>, <strong class="ui">Lost your license key?</strong>, <strong class="ui">Buy Malibu Conform</strong> and <strong class="ui">Quit Malibu Conform</strong>; the device ID shown there is what support needs for a renewal. On the first launch a screen asks for your email address before you can continue. A key can be entered later under <strong class="ui">License</strong> in Settings with <strong class="ui">Redeem License Key...</strong>.</p>
 <p class="ver">Written for version 0.1.11.</p>
     </article>
-    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-davinci-resolve-einrichten">DaVinci Resolve einrichten</a><a class="l1" href="#de2-die-konformierte-datei-selbst-in-resolve-importieren">Die konformierte Datei selbst in Resolve importieren</a><a class="l1" href="#de3-conform-report-und-marker-lesen">Conform-Report und Marker lesen</a><a class="l1" href="#de4-compound-clips-multicams-und-sync-clips-behandeln">Compound-Clips, Multicams und Sync-Clips behandeln</a><a class="l1" href="#de5-dailies-proxies-mit-burn-in-balken-konformieren">Dailies-Proxies mit Burn-in-Balken konformieren</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-fehlersuche">Fehlersuche</a></div>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-davinci-resolve-einrichten">DaVinci Resolve einrichten</a><a class="l1" href="#de2-die-konformierte-datei-selbst-in-resolve-importieren">Die konformierte Datei selbst in Resolve importieren</a><a class="l1" href="#de3-conform-report-und-marker-lesen">Conform Report und Marker lesen</a><a class="l1" href="#de4-compound-clips-multicams-und-sync-clips-behandeln">Compound Clips, Multicams und Sync Clips behandeln</a><a class="l1" href="#de5-proxies-aus-den-dailies-mit-eingebrannten-balken-konformieren">Proxies aus den Dailies mit eingebrannten Balken konformieren</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-fehlersuche">Fehlersuche</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
 <h1 id="de0-erste-schritte">Erste Schritte</h1>
 <h2 id="de0-was-malibu-conform-macht">Was Malibu Conform macht</h2>
-<p>Malibu Conform nimmt ein Final-Cut-Pro-Projekt, das du als FCPXML exportiert hast, und bereitet es für DaVinci Resolve Studio vor. Es schreibt eine Resolve-taugliche FCPXML, ein Manifest und einen Conform-Report. Optional importiert es die Timeline anschließend in Resolve und wendet dort die Transformationen an. Das Conform betrifft nur das Bild; Audio ist nicht Teil des Umfangs.</p>
+<p>Malibu Conform nimmt ein Projekt aus Final Cut Pro, das du als FCPXML exportiert hast, und bereitet es für DaVinci Resolve Studio vor. Es schreibt eine FCPXML für Resolve, ein Manifest und einen Conform Report. Optional importiert es die Timeline anschließend in Resolve und wendet dort die Transformationen an. Das Conform betrifft nur das Bild; Audio ist nicht Teil des Umfangs.</p>
 <h2 id="de0-bevor-du-startest">Bevor du startest</h2>
 <p>Du brauchst macOS 14.0 oder neuer und ein aus Final Cut Pro exportiertes Projekt.</p>
-<p>Der automatische Resolve-Schritt braucht DaVinci Resolve Studio; die App warnt, dass die kostenlose Edition die Python-Scripting-API nicht enthält. Ohne Resolve bekommst du trotzdem die konformierten Dateien und kannst sie selbst importieren (siehe die Anleitung zum manuellen Import).</p>
-<p>Der Resolve-Schritt läuft mit Python 3.10 oder 3.11. Die App nutzt ein in die App gebündeltes Python 3.11, wenn der Build eines enthält, und sucht sonst nach einem installierten 3.10 oder 3.11. Beim ersten Start kann die App nach deiner E-Mail-Adresse fragen, damit der Support deinen Testzugang finden und verlängern kann.</p>
+<p>Der automatische Schritt in Resolve braucht DaVinci Resolve Studio; die App warnt, dass die kostenlose Edition die Python Scripting API nicht enthält. Ohne Resolve bekommst du trotzdem die konformierten Dateien und kannst sie selbst importieren (siehe die Anleitung zum manuellen Import).</p>
+<p>Der Schritt in Resolve läuft mit Python 3.10 oder 3.11. Die App nutzt ein in die App gebündeltes Python 3.11, wenn der Build eines enthält, und sucht sonst nach einem installierten 3.10 oder 3.11. Beim ersten Start kann die App nach deiner Mailadresse fragen, damit der Support deinen Testzugang finden und verlängern kann.</p>
 <h2 id="de0-aus-final-cut-pro-exportieren">Aus Final Cut Pro exportieren</h2>
-<p>Wähle in Final Cut Pro das Projekt (die fertige Timeline, nicht ein Event oder die Mediathek) und exportiere es mit Ablage ▸ XML exportieren (englisch: File ▸ Export XML). Malibu Conform liest FCPXML-Versionen 1.10 bis 1.14, entweder als <code>.fcpxml</code>-Datei oder als <code>.fcpxmld</code>-Bundle. Eine Datei ohne Projekt-Timeline, etwa ein Event-Export, wird vom Preflight-Check blockiert oder als „nothing conformed“ gemeldet.</p>
+<p>Wähle in Final Cut Pro das Projekt (die fertige Timeline, nicht ein Event oder die Mediathek) und exportiere es mit Ablage ▸ XML exportieren (englisch: File ▸ Export XML). Malibu Conform liest FCPXML in den Versionen 1.10 bis 1.14, entweder als Datei <code>.fcpxml</code> oder als Bundle <code>.fcpxmld</code>. Eine Datei ohne Timeline eines Projekts, etwa der Export eines Events, wird von der Vorabprüfung blockiert oder als "nothing conformed" gemeldet.</p>
 <h2 id="de0-die-datei-conformen">Die Datei conformen</h2>
 <p>Starte Malibu Conform und ziehe die Datei auf die Ablagefläche <strong class="ui">Drop FCPXML or .fcpxmld here</strong>, oder klicke auf die Fläche und wähle die Datei aus.</p>
 <p>Lass die Optionen auf ihren Standardwerten und klicke auf <strong class="ui">Conform for Resolve</strong>.</p>
-<p>Wenn der Preflight-Check etwas zu melden hat, auch nur Informationen, listet ein Fenster das zuerst auf. Klicke auf <strong class="ui">Conform Anyway</strong>, um fortzufahren; gibt es nur Informationen, heißt die Schaltfläche <strong class="ui">Conform</strong>. Ein Hard Block heißt, dass die Datei nicht konformiert werden kann; exportiere das Projekt neu und versuche es erneut.</p>
+<p>Wenn die Vorabprüfung etwas zu melden hat, auch nur Informationen, listet ein Fenster das zuerst auf. Klicke auf <strong class="ui">Conform Anyway</strong>, um fortzufahren; gibt es nur Informationen, heißt die Schaltfläche <strong class="ui">Conform</strong>. Ein Hard Block heißt, dass die Datei nicht konformiert werden kann; exportiere das Projekt neu und versuche es erneut.</p>
 <h2 id="de0-das-ergebnis-lesen">Das Ergebnis lesen</h2>
 <p>Nach dem Lauf zeigt das Fenster die Dauer, eine Zusammenfassung (Clips, Multicams, eingebettete Compounds, Transformationen, entfernte Effekte), die Ausgabedateien und eventuelle Warnungen. Die Schaltflächen heißen <strong class="ui">Open Output Folder</strong>, <strong class="ui">View Report</strong>, <strong class="ui">Import into Resolve</strong> und <strong class="ui">New Conform</strong>.</p>
 <p>Die Dateien liegen im Ausgabeordner, standardmäßig <code>Movies/MalibuConform</code> in deinem Benutzerordner: <code>&lt;Eingabename&gt;_Conform.fcpxml</code>, <code>manifest.json</code>, <code>ConformReport.md</code> und <code>ConformReport.pdf</code>, dazu ein Referenzfilm, falls du einen angegeben hast.</p>
 <h2 id="de0-was-in-resolve-passiert">Was in Resolve passiert</h2>
 <p>Ist <strong class="ui">Drive Resolve after export</strong> eingeschaltet und Resolve Studio eingerichtet, startet Malibu Conform Resolve, falls es nicht läuft. Es importiert die FCPXML als Timeline, benannt nach deiner Datei mit dem Zusatz <code>_Conform</code>, in das Projekt, das in Resolve offen ist, wendet die Transformationen an und liest die Werte zur Kontrolle zurück. Clips mit mehreren Keyframes bleiben so, wie Resolve sie importiert hat, und bekommen nur einen Marker.</p>
-<p>Ist die Option ausgeschaltet, öffnet sich stattdessen ein Fenster mit Import-Anleitung.</p>
+<p>Ist die Option ausgeschaltet, öffnet sich stattdessen ein Fenster mit Importanleitung.</p>
 <h1 id="de1-davinci-resolve-einrichten">DaVinci Resolve einrichten</h1>
 <h2 id="de1-die-einrichtung-pr-fen">Die Einrichtung prüfen</h2>
 <p>Öffne die Einstellungen der App (das Zahnrad in der Kopfzeile), wähle den Tab <strong class="ui">Resolve</strong> und klicke auf <strong class="ui">Check Resolve Setup</strong>. Die Liste zeigt <strong class="ui">Installed</strong>, <strong class="ui">Studio Edition</strong>, <strong class="ui">Scripting Available</strong> und <strong class="ui">Python</strong>.</p>
-<p>Beim allerersten Start öffnet sich ein Einrichtungsfenster. Klicke auf <strong class="ui">Check Setup</strong>, um die Prüfungen auszuführen; die Schaltfläche heißt danach <strong class="ui">Re-check</strong>. <strong class="ui">Skip</strong> schließt das Fenster und <strong class="ui">Done</strong> erscheint, sobald alles bereit ist. Die Liste dort ist anders beschriftet als die Liste in den Einstellungen, zum Beispiel „Studio edition detected“. Findet ein späterer Start etwas Fehlendes, bietet ein Hinweisbalken <strong class="ui">Check Setup</strong> an.</p>
-<h2 id="de1-die-studio-edition-verwenden">Die Studio-Edition verwenden</h2>
-<p>Der automatische Modus braucht DaVinci Resolve Studio; laut Hinweis der App enthält die kostenlose Edition die Python-Scripting-API nicht. Die Prüfung sucht Resolve und seine Scripting-Bibliothek am Standardort im Programme-Ordner; eine Kopie an anderer Stelle wird als nicht installiert gemeldet. Sie prüft auf diese Dateien, nicht auf eine Lizenz.</p>
+<p>Beim allerersten Start öffnet sich ein Einrichtungsfenster. Klicke auf <strong class="ui">Check Setup</strong>, um die Prüfungen auszuführen; die Schaltfläche heißt danach <strong class="ui">Re-check</strong>. <strong class="ui">Skip</strong> schließt das Fenster und <strong class="ui">Done</strong> erscheint, sobald alles bereit ist. Die Liste dort ist anders beschriftet als die Liste in den Einstellungen, zum Beispiel "Studio edition detected". Findet ein späterer Start etwas Fehlendes, bietet ein Hinweisbalken <strong class="ui">Check Setup</strong> an.</p>
+<h2 id="de1-die-studio-edition-verwenden">Die Studio Edition verwenden</h2>
+<p>Der automatische Modus braucht DaVinci Resolve Studio; laut Hinweis der App enthält die kostenlose Edition die Python Scripting API nicht. Die Prüfung sucht Resolve und seine Skriptbibliothek am Standardort im Ordner Programme; eine Kopie an anderer Stelle wird als nicht installiert gemeldet. Sie prüft auf diese Dateien, nicht auf eine Lizenz.</p>
 <h2 id="de1-externes-scripting-aktivieren">Externes Scripting aktivieren</h2>
-<p>Öffne in DaVinci Resolve die Einstellungen und setze External scripting using auf Local. Der Einrichtungshinweis der App nennt den Pfad Preferences → System → External Scripting Using → Local; die Meldung des Resolve-Schritts nennt Preferences &gt; General. Ohne die Einstellung läuft Resolve eventuell, antwortet aber nicht, und der Resolve-Schritt bricht mit einem Hinweis ab, der dich auf diese Einstellung verweist.</p>
+<p>Öffne in DaVinci Resolve die Einstellungen und setze External scripting using auf Local. Der Einrichtungshinweis der App nennt den Pfad Preferences → System → External Scripting Using → Local; die Meldung des Schritts in Resolve nennt Preferences &gt; General. Ohne die Einstellung läuft Resolve eventuell, antwortet aber nicht, und der Schritt in Resolve bricht mit einem Hinweis ab, der dich auf diese Einstellung verweist.</p>
 <h2 id="de1-ein-projekt-in-resolve-ffnen">Ein Projekt in Resolve öffnen</h2>
-<p>Malibu Conform importiert in das Projekt, das in Resolve gerade offen ist, und legt nie selbst eines an. Öffnet sich innerhalb von 20 Sekunden kein Projekt, bricht der Resolve-Schritt mit „No project is open in Resolve. Open (or create) a project, then run again.“ ab. Dateien und Report werden trotzdem geschrieben; der Fehler erscheint als Warnung „Resolve driver failed“.</p>
+<p>Malibu Conform importiert in das Projekt, das in Resolve gerade offen ist, und legt nie selbst eines an. Öffnet sich innerhalb von 20 Sekunden kein Projekt, bricht der Schritt in Resolve mit "No project is open in Resolve. Open (or create) a project, then run again." ab. Dateien und Report werden trotzdem geschrieben; der Fehler erscheint als Warnung "Resolve driver failed".</p>
 <h2 id="de1-malibu-conform-resolve-starten-lassen">Malibu Conform Resolve starten lassen</h2>
 <p>Läuft Resolve nicht, startet Malibu Conform es und wartet bis zu 180 Sekunden auf eine Antwort. Ein bereits laufendes Resolve, das nicht antwortet, wird nicht neu gestartet.</p>
-<h2 id="de1-den-resolve-schritt-ein-oder-ausschalten">Den Resolve-Schritt ein- oder ausschalten</h2>
-<p>Verwende <strong class="ui">Drive Resolve after export</strong>, entweder in den Optionen des Hauptfensters (sichtbar, sobald eine Datei gewählt ist) oder in den Einstellungen unter <strong class="ui">Resolve</strong>. Die Option ist standardmäßig an. Schlägt die Einrichtungsprüfung beim App-Start fehl, steht das Häkchen im Hauptfenster für diese Sitzung zunächst auf aus, während die Einstellungen weiter deine gespeicherte Wahl zeigen.</p>
+<h2 id="de1-den-schritt-in-resolve-aktivieren-oder-deaktivieren">Den Schritt in Resolve aktivieren oder deaktivieren</h2>
+<p>Verwende <strong class="ui">Drive Resolve after export</strong>, entweder in den Optionen des Hauptfensters (sichtbar, sobald eine Datei gewählt ist) oder in den Einstellungen unter <strong class="ui">Resolve</strong>. Die Option ist standardmäßig an. Schlägt die Einrichtungsprüfung beim Start der App fehl, steht das Häkchen im Hauptfenster für diese Sitzung zunächst auf aus, während die Einstellungen weiter deine gespeicherte Wahl zeigen.</p>
 <p>Das Häkchen im Hauptfenster und das in den Einstellungen sind dieselbe Einstellung: Eine Änderung an einer der beiden Stellen gilt sofort und wird gespeichert.</p>
 <h1 id="de2-die-konformierte-datei-selbst-in-resolve-importieren">Die konformierte Datei selbst in Resolve importieren</h1>
 <h2 id="de2-wann-du-das-brauchst">Wann du das brauchst</h2>
-<p>Importiere manuell, wenn <strong class="ui">Drive Resolve after export</strong> aus ist oder der Resolve-Schritt einen Fehler gemeldet hat. War die Option aus, öffnet sich die Anleitung nach dem Lauf von selbst; sonst klicke im Ergebnisfenster auf <strong class="ui">Import into Resolve</strong>.</p>
+<p>Importiere manuell, wenn <strong class="ui">Drive Resolve after export</strong> aus ist oder der Schritt in Resolve einen Fehler gemeldet hat. War die Option aus, öffnet sich die Anleitung nach dem Lauf von selbst; sonst klicke im Ergebnisfenster auf <strong class="ui">Import into Resolve</strong>.</p>
 <h2 id="de2-die-timeline-importieren">Die Timeline importieren</h2>
 <p>Wähle in DaVinci Resolve Studio File → Import → Timeline… und nimm die Datei <code>&lt;Eingabename&gt;_Conform.fcpxml</code>, die das Fenster anzeigt. <strong class="ui">Show FCPXML in Finder</strong> zeigt sie im Finder.</p>
 <h2 id="de2-drei-importoptionen-einschalten">Drei Importoptionen einschalten</h2>
-<p>Schalte im Importdialog <strong class="ui">Use color information</strong>, <strong class="ui">Mixed frame rate format: Final Cut Pro X</strong> und <strong class="ui">Automatically import source clips into media pool</strong> ein. Laut Anleitung der App sieht das Conform ohne diese drei Optionen im Inspector richtig aus, driftet aber im Bild; die Media-Pool-Option verknüpft die Clips mit deinen Medien.</p>
+<p>Schalte im Importdialog <strong class="ui">Use color information</strong>, <strong class="ui">Mixed frame rate format: Final Cut Pro X</strong> und <strong class="ui">Automatically import source clips into media pool</strong> ein. Laut Anleitung der App sieht das Conform ohne diese drei Optionen im Inspector richtig aus, driftet aber im Bild; die Option für den Media Pool verknüpft die Clips mit deinen Medien.</p>
 <h2 id="de2-was-ein-manueller-import-nicht-enth-lt">Was ein manueller Import nicht enthält</h2>
-<p>Die roten Marker „Effect Removed“ und „Transform Check“, der gelbe Marker „Keyframed Transform“ und das Zurücklesen der Transformationswerte kommen aus dem Resolve-Schritt. Ein manueller Import hat nichts davon. Marker für Adjustment Layer und deine ursprünglichen Final-Cut-Pro-Marker stehen in der FCPXML und kommen in beiden Fällen an. Entfernte Filter stehen im Conform-Report und in <code>manifest.json</code>.</p>
-<h1 id="de3-conform-report-und-marker-lesen">Conform-Report und Marker lesen</h1>
+<p>Die roten Marker "Effect Removed" und "Transform Check", der gelbe Marker "Keyframed Transform" und das Zurücklesen der Transformationswerte kommen aus dem Schritt in Resolve. Ein manueller Import hat nichts davon. Marker für Adjustment Layer und deine ursprünglichen Marker aus Final Cut Pro stehen in der FCPXML und kommen in beiden Fällen an. Entfernte Filter stehen im Conform Report und in <code>manifest.json</code>.</p>
+<h1 id="de3-conform-report-und-marker-lesen">Conform Report und Marker lesen</h1>
 <h2 id="de3-den-report-ffnen">Den Report öffnen</h2>
 <p>Klicke im Ergebnisfenster auf <strong class="ui">View Report</strong>. Das öffnet <code>ConformReport.pdf</code> aus dem Ausgabeordner. Derselbe Report liegt dort auch als Markdown, <code>ConformReport.md</code>; <strong class="ui">View Report</strong> öffnet diese Datei, wenn sich das PDF nicht schreiben ließ.</p>
 <h2 id="de3-was-der-report-auflistet">Was der Report auflistet</h2>
-<p>Der Report hat eine Zusammenfassung und Abschnitte wie Critical — Manual Review Required, Warnings, Removed Effects, Multicam Resolutions, Transforms Applied, Source Media Rasters, Source Media, Cross-Clip Adjustment Layers, Custom LUTs Detected und Reference Movie. Am Ende stehen Hinweise für die Colorist:in.</p>
+<p>Der Report hat eine Zusammenfassung und Abschnitte wie "Critical — Manual Review Required", "Warnings", "Removed Effects", "Multicam Resolutions", "Transforms Applied", "Source Media Rasters", "Source Media", "Cross-Clip Adjustment Layers", "Custom LUTs Detected" und "Reference Movie". Am Ende stehen Hinweise für Coloristinnen und Coloristen.</p>
 <h2 id="de3-entfernte-effekte">Entfernte Effekte</h2>
-<p>Video-Filter auf Clips werden entfernt, auch Farbfilter, weil keiner nach Resolve übersetzt wird. Ein von einem Clip der Hauptstoryline entfernter Filter steht unter Removed Effects mit einem Vorschlag, wie du ihn in Resolve nachbaust. Ein von einem Connected Clip entfernter Filter erscheint stattdessen unter Warnings und bekommt keinen Marker in Resolve. Custom-LUT-Filter werden ebenfalls entfernt und zusätzlich unter Custom LUTs Detected aufgeführt.</p>
+<p>Videofilter auf Clips werden entfernt, auch Farbfilter, weil keiner nach Resolve übersetzt wird. Ein von einem Clip der Hauptstoryline entfernter Filter steht unter Removed Effects mit einem Vorschlag, wie du ihn in Resolve nachbaust. Ein von einem Connected Clip entfernter Filter erscheint stattdessen unter Warnings und bekommt keinen Marker in Resolve. Filter mit eigener LUT werden ebenfalls entfernt und zusätzlich unter Custom LUTs Detected aufgeführt.</p>
 <h2 id="de3-marker-in-resolve">Marker in Resolve</h2>
-<p>Marker auf Clips kommen aus zwei Quellen. Das Conform schreibt einen Marker „Adjustment Layer: &lt;Name&gt;“ auf den ersten Clip, den ein Adjustment Layer überdeckt. Die übrigen setzt der Resolve-Schritt. Ein roter Marker „Effect Removed“ mit dem Filternamen zeigt einen entfernten Filter. Ein roter Marker „Malibu Conform: Transform Check“ listet Transformationswerte, die nicht wie vorgesehen angekommen sind. Ein gelber Marker „Keyframed Transform“ heißt, der Clip hat mehr als einen Transform-Keyframe und blieb so, wie Resolve ihn importiert hat; prüfe die Animation gegen deine Referenz.</p>
+<p>Marker auf Clips kommen aus zwei Quellen. Das Conform schreibt einen Marker "Adjustment Layer: &lt;Name&gt;" auf den ersten Clip, den ein Adjustment Layer überdeckt. Die übrigen setzt der Schritt in Resolve. Ein roter Marker "Effect Removed" mit dem Filternamen zeigt einen entfernten Filter. Ein roter Marker "Malibu Conform: Transform Check" listet Transformationswerte, die nicht wie vorgesehen angekommen sind. Ein gelber Marker "Keyframed Transform" heißt, der Clip hat mehr als einen Keyframe auf Transform und blieb so, wie Resolve ihn importiert hat; prüfe die Animation gegen deine Referenz.</p>
 <h2 id="de3-warnungen-im-ergebnisfenster">Warnungen im Ergebnisfenster</h2>
-<p>Das Ergebnisfenster zeigt die ersten zehn Warnungen in der Reihenfolge, in der sie entstanden sind; der Rest steht im Report. Der Report listet Fehler unter Critical — Manual Review Required und Warnungen unter Warnings; Informationen werden nur in der Zusammenfassung gezählt. Ein roter Punkt kennzeichnet einen Fehler, orange eine Warnung und grau eine Information.</p>
-<h1 id="de4-compound-clips-multicams-und-sync-clips-behandeln">Compound-Clips, Multicams und Sync-Clips behandeln</h1>
+<p>Das Ergebnisfenster zeigt die ersten zehn Warnungen in der Reihenfolge, in der sie entstanden sind; der Rest steht im Report. Der Report listet Fehler unter "Critical — Manual Review Required" und Warnungen unter "Warnings"; Informationen werden nur in der Zusammenfassung gezählt. Ein roter Punkt kennzeichnet einen Fehler, orange eine Warnung und grau eine Information.</p>
+<h1 id="de4-compound-clips-multicams-und-sync-clips-behandeln">Compound Clips, Multicams und Sync Clips behandeln</h1>
 <h2 id="de4-was-standardm-ig-passiert">Was standardmäßig passiert</h2>
-<p>Im Normalfall werden Multicam-Clips durch ihren aktiven Winkel ersetzt und Sync-Clips auf ihren primären Videoclip entpackt, sodass Resolve normale Clips bekommt. Einige Fälle bleiben unverändert und bekommen eine Warnung, zum Beispiel ein retimter Wrapper mit Connected Video. Ein Compound-Clip wird aufgelöst, wenn er sich auf einen einzigen Clip reduziert. Ein Compound mit mehreren Clips bleibt ein Compound-Clip, und das Conform vermerkt die Information „Compound contains N elements — kept as compound“. Ein Compound, dessen einziger Inhalt ein Titel ist, wird nicht aufgelöst und mit „Inner element is not inlinable“ gemeldet.</p>
+<p>Im Normalfall werden Multicam Clips durch ihren aktiven Winkel ersetzt und Sync Clips auf ihren primären Videoclip entpackt, sodass Resolve normale Clips bekommt. Einige Fälle bleiben unverändert und bekommen eine Warnung, zum Beispiel ein retimter Wrapper mit Connected Video. Ein Compound Clip wird aufgelöst, wenn er sich auf einen einzigen Clip reduziert. Ein Compound mit mehreren Clips bleibt ein Compound Clip, und das Conform vermerkt die Information "Compound contains N elements — kept as compound". Ein Compound, dessen einziger Inhalt ein Titel ist, wird nicht aufgelöst und mit "Inner element is not inlinable" gemeldet.</p>
 <h2 id="de4-compounds-mit-mehreren-clips-aufl-sen">Compounds mit mehreren Clips auflösen</h2>
-<p>Schalte vor <strong class="ui">Conform for Resolve</strong> in den Optionen <strong class="ui">Aggressive compound inlining</strong> ein, oder in den Einstellungen unter <strong class="ui">General</strong>. Malibu Conform nimmt dann den ersten inneren Clip eines solchen Compounds, wenn es ein Asset-Clip ist, und verwirft den Rest; ist das erste Element etwas anderes, bleibt das Compound unverändert. Verschachtelte Anordnungen können verloren gehen; nutze die Option nur, wenn die Compounds in deinem Schnitt reine Hüllen sind. Die Option ist standardmäßig aus.</p>
+<p>Schalte vor <strong class="ui">Conform for Resolve</strong> in den Optionen <strong class="ui">Aggressive compound inlining</strong> ein, oder in den Einstellungen unter <strong class="ui">General</strong>. Malibu Conform nimmt dann den ersten inneren Clip eines solchen Compounds, wenn es ein Asset Clip ist, und verwirft den Rest; ist das erste Element etwas anderes, bleibt das Compound unverändert. Verschachtelte Anordnungen können verloren gehen; nutze die Option nur, wenn die Compounds in deinem Schnitt reine Hüllen sind. Die Option ist standardmäßig aus.</p>
 <h2 id="de4-finden-was-nicht-konformiert-wurde">Finden, was nicht konformiert wurde</h2>
-<p>Bleiben Clips mit Bild als Sync-, Compound- oder Multicam-Clip übrig, fügt das Conform eine Warnung mit der Anzahl hinzu: Sie landen in Resolve als Compound Clips, die sich nicht pro Clip graden lassen. Die Warnungen zu den einzelnen Clips nennen den Grund.</p>
+<p>Bleiben Clips mit Bild als Sync Clip, Compound Clip oder Multicam Clip übrig, fügt das Conform eine Warnung mit der Anzahl hinzu: Sie landen in Resolve als Compound Clips, die sich nicht pro Clip graden lassen. Die Warnungen zu den einzelnen Clips nennen den Grund.</p>
 <h2 id="de4-connected-clips">Connected Clips</h2>
-<p>Clips auf Lanes und in sekundären Storylines werden in der FCPXML konformiert, ihre Transformationen werden in Resolve aber nicht angewendet: Der Resolve-Schritt spricht nur Clips auf Videospur 1 an. Ein Hinweis in den Warnungen nennt, wie viele Connected Clips konformiert wurden.</p>
-<h1 id="de5-dailies-proxies-mit-burn-in-balken-konformieren">Dailies-Proxies mit Burn-in-Balken konformieren</h1>
+<p>Clips auf Lanes und in sekundären Storylines werden in der FCPXML konformiert, ihre Transformationen werden in Resolve aber nicht angewendet: Der Schritt in Resolve spricht nur Clips auf Videospur 1 an. Ein Hinweis in den Warnungen nennt, wie viele Connected Clips konformiert wurden.</p>
+<h1 id="de5-proxies-aus-den-dailies-mit-eingebrannten-balken-konformieren">Proxies aus den Dailies mit eingebrannten Balken konformieren</h1>
 <h2 id="de5-wann-du-das-brauchst">Wann du das brauchst</h2>
-<p>Nutze das, wenn dein Schnitt auf Dailies-Proxies mit zusätzlichen Burn-in-Zeilen entstand, die die Kameraoriginale nicht haben. Das Conform rechnet dann Clips, deren Quellraster zu einem von dir eingetragenen Proxy-Raster passt, für die Kameraoriginale; Clips mit anderen Rastern bleiben unverändert.</p>
-<h2 id="de5-ein-proxy-raster-hinzuf-gen">Ein Proxy-Raster hinzufügen</h2>
+<p>Nutze das, wenn dein Schnitt auf Proxies aus den Dailies mit zusätzlichen eingebrannten Zeilen entstand, die die Kameraoriginale nicht haben. Das Conform rechnet dann Clips, deren Quellraster zu einem von dir eingetragenen Raster für Proxies passt, für die Kameraoriginale; Clips mit anderen Rastern bleiben unverändert.</p>
+<h2 id="de5-ein-raster-f-r-proxies-hinzuf-gen">Ein Raster für Proxies hinzufügen</h2>
 <p>Öffne die Einstellungen, wähle den Tab <strong class="ui">Proxies</strong> und klicke auf <strong class="ui">Add Proxy Raster</strong>. Eine neue Zeile startet mit den Platzhaltergrößen 1920 × 1080 für den Proxy und 3840 × 2160 für das Original; ersetze beide durch deine Größen. Trage <strong class="ui">Proxy size</strong> und <strong class="ui">Original size</strong> ein. Die Balken werden aus den beiden Größen berechnet: Die Bildfläche ist der größte Teil des Proxys mit dem Seitenverhältnis des Originals, zentriert, und ein übrig bleibendes Pixel geht nach unten oder rechts. Eine Zeile mit geänderten Balken folgt den Größen nicht mehr.</p>
 <h2 id="de5-ungleiche-balken-setzen">Ungleiche Balken setzen</h2>
-<p>Ändere einen beliebigen Balken unter <strong class="ui">Bars (px)</strong> (<strong class="ui">Top</strong>, <strong class="ui">Bottom</strong>, <strong class="ui">Left</strong>, <strong class="ui">Right</strong>), um eigene Werte einzutragen. Die Zeile zeigt dann „Custom bars.“; mit <strong class="ui">Work out from sizes</strong> kehrst du zu den automatischen Werten zurück. Mit dem Papierkorb-Knopf entfernst du eine Zeile.</p>
+<p>Ändere einen beliebigen Balken unter <strong class="ui">Bars (px)</strong> (<strong class="ui">Top</strong>, <strong class="ui">Bottom</strong>, <strong class="ui">Left</strong>, <strong class="ui">Right</strong>), um eigene Werte einzutragen. Die Zeile zeigt dann "Custom bars."; mit <strong class="ui">Work out from sizes</strong> kehrst du zu den automatischen Werten zurück. Mit dem Papierkorbknopf entfernst du eine Zeile.</p>
 <h2 id="de5-das-conform-ausf-hren">Das Conform ausführen</h2>
-<p>Die Zeilen werden bei jedem Conform-Lauf neu gelesen. Der Conform-Report listet die Rastergrößen deines Projekts unter Source Media Rasters. Relinke in Resolve auf die Kameraoriginale, bevor du das Bild prüfst; bis dahin wirken die Proxies zu klein.</p>
+<p>Die Zeilen werden bei jedem Lauf des Conforms neu gelesen. Der Conform Report listet die Rastergrößen deines Projekts unter Source Media Rasters. Relinke in Resolve auf die Kameraoriginale, bevor du das Bild prüfst; bis dahin wirken die Proxies zu klein.</p>
 <h2 id="de5-bekannte-grenzen">Bekannte Grenzen</h2>
 <p>Clips mit Keyframes werden nicht auf das Kameraoriginal umgerechnet; das Conform warnt für jeden davon, und du prüfst Größe und Position nach dem Relink.</p>
 <h1 id="de6-referenz">Referenz</h1>
 <h2 id="de6-voraussetzungen-und-versionen">Voraussetzungen und Versionen</h2>
 <ul>
 <li>macOS 14.0 oder neuer.</li>
-<li>Eingabe: FCPXML-Versionen 1.10 bis 1.14 als <code>.fcpxml</code>-Datei oder <code>.fcpxmld</code>-Bundle, exportiert aus einem Final-Cut-Pro-Projekt.</li>
-<li>Resolve-Schritt: DaVinci Resolve Studio mit externem Scripting auf Local und Python 3.11. Die App nutzt ein mit dem Build gebündeltes Python 3.11, wenn es eines gibt, und weicht sonst auf ein python.org-3.11, ein Homebrew-3.10 oder -3.11 oder <code>/usr/bin/python3</code> aus, falls das 3.10 oder 3.11 ist.</li>
-<li>Nur gegen DaVinci Resolve Studio 21.1.0.17 verifiziert; andere Resolve-Versionen sind ungetestet.</li>
+<li>Eingabe: FCPXML in den Versionen 1.10 bis 1.14, als Datei <code>.fcpxml</code> oder als Bundle <code>.fcpxmld</code>, aus einem Projekt in Final Cut Pro exportiert.</li>
+<li>Schritt in Resolve: DaVinci Resolve Studio mit externem Scripting auf Local und Python 3.11. Die App nutzt ein mit dem Build gebündeltes Python 3.11, wenn es eines gibt, und weicht sonst auf Python 3.11 von python.org, auf Python 3.10 oder 3.11 von Homebrew oder auf <code>/usr/bin/python3</code> aus, falls das 3.10 oder 3.11 ist.</li>
+<li>Nur gegen DaVinci Resolve Studio 21.1.0.17 verifiziert; andere Versionen von Resolve sind ungetestet.</li>
 </ul>
 <h2 id="de6-hauptfenster">Hauptfenster</h2>
 <ul>
-<li><strong class="ui">Drop FCPXML or .fcpxmld here</strong> — die Ablagefläche; ein Klick darauf öffnet stattdessen die Dateiauswahl.</li>
-<li><strong class="ui">Drive Resolve after export</strong> — Standard: an; das Häkchen im Hauptfenster startet für die Sitzung auf aus, wenn die Resolve-Einrichtungsprüfung beim App-Start fehlschlägt. Führt nach dem Schreiben der Dateien den Resolve-Schritt aus.</li>
-<li><strong class="ui">Aggressive compound inlining</strong> — Standard: aus. Löst Compounds mit mehreren Clips auf und behält nur den ersten.</li>
-<li><strong class="ui">Include reference movie</strong> — Standard: an. Übernimmt den unter Reference Movie gewählten Film in die Ausgabe.</li>
-<li><strong class="ui">Burn in timecode if missing</strong> — Standard: an. Legt den Start-Timecode der Timeline als Text über den Referenzfilm, sofern sein Dateiname nicht schon auf Timecode hindeutet.</li>
-<li><strong class="ui">Select...</strong> — wählt einen Referenzfilm. <strong class="ui">Change...</strong> — wählt den Ausgabeordner.</li>
-<li><strong class="ui">Conform for Resolve</strong> — startet den Preflight-Check und das Conform.</li>
+<li><strong class="ui">Drop FCPXML or .fcpxmld here</strong>: die Ablagefläche; ein Klick darauf öffnet stattdessen die Dateiauswahl.</li>
+<li><strong class="ui">Drive Resolve after export</strong>: standardmäßig an; das Häkchen im Hauptfenster startet für die Sitzung auf aus, wenn die Einrichtungsprüfung für Resolve beim Start der App fehlschlägt. Führt nach dem Schreiben der Dateien den Schritt in Resolve aus.</li>
+<li><strong class="ui">Aggressive compound inlining</strong>: standardmäßig aus. Löst Compounds mit mehreren Clips auf und behält nur den ersten.</li>
+<li><strong class="ui">Include reference movie</strong>: standardmäßig an. Übernimmt den unter Reference Movie gewählten Film in die Ausgabe.</li>
+<li><strong class="ui">Burn in timecode if missing</strong>: standardmäßig an. Legt den Starttimecode der Timeline als Text über den Referenzfilm, sofern sein Dateiname nicht schon auf Timecode hindeutet.</li>
+<li><strong class="ui">Select...</strong>: wählt einen Referenzfilm. <strong class="ui">Change...</strong>: wählt den Ausgabeordner.</li>
+<li><strong class="ui">Conform for Resolve</strong>: startet die Vorabprüfung und das Conform.</li>
 </ul>
 <p>Die Optionen erscheinen, sobald eine Datei gewählt ist.</p>
 <h2 id="de6-einstellungen">Einstellungen</h2>
 <ul>
-<li><strong class="ui">General</strong> — <strong class="ui">Aggressive compound inlining</strong> (aus), <strong class="ui">Include reference movie</strong> (an), <strong class="ui">Burn in timecode if missing</strong> (an, nur wählbar, solange ein Referenzfilm einbezogen ist) und der Ausgabeordner mit <strong class="ui">Choose...</strong>. Der Standard-Ausgabeordner ist <code>Movies/MalibuConform</code> in deinem Benutzerordner.</li>
-<li><strong class="ui">Resolve</strong> — <strong class="ui">Drive Resolve after export</strong> (an), die Statusliste und <strong class="ui">Check Resolve Setup</strong>.</li>
-<li><strong class="ui">Proxies</strong> — Proxy-Raster mit Burn-in-Balken; siehe die Anleitung zu Proxies.</li>
-<li><strong class="ui">License</strong> — zeigt Status, E-Mail und Geräte-ID; <strong class="ui">Redeem License Key...</strong> und <strong class="ui">Deactivate This Device...</strong>.</li>
-<li><strong class="ui">Diagnostics</strong> — <strong class="ui">Verbose logging</strong> (aus), <strong class="ui">Open Log Directory</strong> und <strong class="ui">Send Feedback…</strong>.</li>
+<li><strong class="ui">General</strong>: <strong class="ui">Aggressive compound inlining</strong> (aus), <strong class="ui">Include reference movie</strong> (an), <strong class="ui">Burn in timecode if missing</strong> (an, nur wählbar, solange ein Referenzfilm einbezogen ist) und der Ausgabeordner mit <strong class="ui">Choose...</strong>. Der Ausgabeordner ist standardmäßig <code>Movies/MalibuConform</code> in deinem Benutzerordner.</li>
+<li><strong class="ui">Resolve</strong>: <strong class="ui">Drive Resolve after export</strong> (an), die Statusliste und <strong class="ui">Check Resolve Setup</strong>.</li>
+<li><strong class="ui">Proxies</strong>: Raster für Proxies mit eingebrannten Balken; siehe die Anleitung zu Proxies.</li>
+<li><strong class="ui">License</strong>: zeigt Status, Mailadresse und Gerätekennung; <strong class="ui">Redeem License Key...</strong> und <strong class="ui">Deactivate This Device...</strong>.</li>
+<li><strong class="ui">Diagnostics</strong>: <strong class="ui">Verbose logging</strong> (aus), <strong class="ui">Open Log Directory</strong> und <strong class="ui">Send Feedback…</strong>.</li>
 </ul>
 <p>Die Optionen im Hauptfenster und die passenden Optionen hier sind dieselben Einstellungen: Eine Änderung an einer der beiden Stellen gilt sofort und wird gespeichert. Der Tab Proxies wird bei jedem Lauf gelesen.</p>
 <h2 id="de6-men-s-und-tastenk-rzel">Menüs und Tastenkürzel</h2>
 <ul>
 <li>Malibu Conform ▸ <strong class="ui">Check for Updates…</strong> sucht nach einer neuen Version.</li>
-<li>Help ▸ <strong class="ui">Send Feedback…</strong> öffnet das Feedback-Fenster; das Kürzel ist ⌘?.</li>
+<li>Help ▸ <strong class="ui">Send Feedback…</strong> öffnet das Feedbackfenster; das Kürzel ist ⌘?.</li>
 </ul>
 <h2 id="de6-ausgabedateien">Ausgabedateien</h2>
 <ul>
-<li><code>&lt;Eingabename&gt;_Conform.fcpxml</code> — die Resolve-taugliche FCPXML. Sie behält die Version der Eingabe.</li>
-<li><code>manifest.json</code> — die Transformationen und entfernten Filter, die der Resolve-Schritt liest.</li>
-<li><code>ConformReport.md</code> — der Conform-Report als Markdown.</li>
-<li><code>ConformReport.pdf</code> — derselbe Report als A4-PDF. Lässt es sich nicht schreiben, vermerkt das Conform eine Information, und der Markdown-Report ist trotzdem da.</li>
-<li><code>reference_&lt;Dateiname&gt;</code> — eine Kopie des Referenzfilms; <code>&lt;Name&gt;_TC.mp4</code>, wenn Timecode eingebrannt wurde.</li>
+<li><code>&lt;Eingabename&gt;_Conform.fcpxml</code>: die FCPXML für Resolve. Sie behält die Version der Eingabe.</li>
+<li><code>manifest.json</code>: die Transformationen und entfernten Filter, die der Schritt in Resolve liest.</li>
+<li><code>ConformReport.md</code>: der Conform Report als Markdown.</li>
+<li><code>ConformReport.pdf</code>: derselbe Report als PDF im Format A4. Lässt es sich nicht schreiben, vermerkt das Conform eine Information, und der Report als Markdown ist trotzdem da.</li>
+<li><code>reference_&lt;Dateiname&gt;</code>: eine Kopie des Referenzfilms; <code>&lt;Name&gt;_TC.mp4</code>, wenn Timecode eingebrannt wurde.</li>
 </ul>
 <h2 id="de6-referenzfilm">Referenzfilm</h2>
-<p>Ein Referenzfilm muss eine Videospur haben. Er wird geprüft, in den Ausgabeordner kopiert und im Report aufgeführt. Ob er schon Timecode eingebrannt hat, wird am Dateinamen erraten: Namen mit „_tc“, „timecode“ oder „burnin“ gelten als solche.</p>
+<p>Ein Referenzfilm muss eine Videospur haben. Er wird geprüft, in den Ausgabeordner kopiert und im Report aufgeführt. Ob er schon Timecode eingebrannt hat, wird am Dateinamen erraten: Namen mit "_tc", "timecode" oder "burnin" gelten als solche.</p>
 <h2 id="de6-schweregrade-von-warnungen">Schweregrade von Warnungen</h2>
-<p>Eine Meldung ist ein Hard Block, ein Fehler, eine Warnung oder eine Information. Ein Hard Block hält das Conform vor dem Start an. Vor dem Lauf erscheinen nur die Funde des Preflight-Checks; bei Fehlern oder Warnungen heißt die Weiter-Schaltfläche <strong class="ui">Conform Anyway</strong>, bei reinen Informationen <strong class="ui">Conform</strong>. Warnungen aus dem Conform und dem Resolve-Schritt erscheinen danach im Ergebnisfenster und im Report.</p>
+<p>Eine Meldung ist ein Hard Block, ein Fehler, eine Warnung oder eine Information. Ein Hard Block hält das Conform vor dem Start an. Vor dem Lauf erscheinen nur die Funde der Vorabprüfung; bei Fehlern oder Warnungen heißt die Schaltfläche zum Weitermachen <strong class="ui">Conform Anyway</strong>, bei reinen Informationen <strong class="ui">Conform</strong>. Warnungen aus dem Conform und dem Schritt in Resolve erscheinen danach im Ergebnisfenster und im Report.</p>
 <h2 id="de6-grenzen">Grenzen</h2>
 <ul>
 <li>Nur Bild. Audio ist nicht Teil des Umfangs; Connected Audio eines aufgelösten Wrappers fällt weg.</li>
 <li>Transformationen werden nur auf Clips der Videospur 1 angewendet. Connected Clips werden in der FCPXML konformiert, in Resolve aber nicht angefasst.</li>
-<li>Video-Filter auf Clips werden entfernt und gemeldet; keiner wird nach Resolve übersetzt. Bei Connected Clips werden sie nur als Warnung gemeldet und bekommen keinen Marker in Resolve.</li>
-<li>Clips mit mehr als einem Transform-Keyframe behalten, was Resolve importiert hat, und bekommen einen gelben Marker; der Resolve-Schritt kann keine Keyframes schreiben. Connected Clips mit Keyframes bekommen keinen Marker.</li>
+<li>Videofilter auf Clips werden entfernt und gemeldet; keiner wird nach Resolve übersetzt. Bei Connected Clips werden sie nur als Warnung gemeldet und bekommen keinen Marker in Resolve.</li>
+<li>Clips mit mehr als einem Keyframe auf Transform behalten, was Resolve importiert hat, und bekommen einen gelben Marker; der Schritt in Resolve kann keine Keyframes schreiben. Connected Clips mit Keyframes bekommen keinen Marker.</li>
 <li>Adjustment Layer werden nicht auf die Clips angewendet, die sie überdecken. Ein Titel, der ein Adjustment Layer mit Transformation ist und auf der Hauptstoryline liegt, wird aus der Ausgabe entfernt, auf dem ersten überdeckten Clip markiert und im Report aufgeführt; Adjustment Layer an anderer Stelle werden nicht erkannt.</li>
-<li>Bei Audition-Clips kommt nur die aktive Auswahl in Resolve an.</li>
-<li>Pan- und Tilt-Einheiten sind nur für Resolves Skalierungsmodi Crop und Fit gemessen.</li>
-<li>Die Studio-Prüfung testet auf eine Datei am Standardort von Resolve, nicht auf eine Lizenz.</li>
+<li>Bei Audition Clips kommt nur die aktive Auswahl in Resolve an.</li>
+<li>Die Einheiten von Pan und Tilt sind nur für die Skalierungsmodi Crop und Fit von Resolve gemessen.</li>
+<li>Die Prüfung auf die Studio Edition testet auf eine Datei am Standardort von Resolve, nicht auf eine Lizenz.</li>
 </ul>
 <h1 id="de7-fehlersuche">Fehlersuche</h1>
 <h2 id="de7-die-datei-wird-vor-dem-conform-abgelehnt">Die Datei wird vor dem Conform abgelehnt</h2>
-<p>„This appears to be an Event XML (clip-only) export“: Du hast ein Event oder die Mediathek ohne Projekt exportiert. Wähle in Final Cut Pro das Projekt und exportiere es neu. „No timeline sequence found in FCPXML“ heißt, die Datei enthält gar kein Projekt und keine Timeline; exportiere das Projekt erneut. „FCPXML … is not supported. Need 1.10–1.14“: Die Datei hat eine andere FCPXML-Version; die Meldung nennt Final Cut Pro 10.6.5 oder neuer als Quelle.</p>
+<p>"This appears to be an Event XML (clip-only) export": Du hast ein Event oder die Mediathek ohne Projekt exportiert. Wähle in Final Cut Pro das Projekt und exportiere es neu. "No timeline sequence found in FCPXML" heißt, die Datei enthält gar kein Projekt und keine Timeline; exportiere das Projekt erneut. "FCPXML … is not supported. Need 1.10–1.14": Die Datei hat eine andere Version von FCPXML; die Meldung nennt Final Cut Pro 10.6.5 oder neuer als Quelle.</p>
 <h2 id="de7-das-conform-ist-fertig-aber-nichts-hat-sich-ge-ndert">Das Conform ist fertig, aber nichts hat sich geändert</h2>
-<p>Der Report meldet, dass keine Multicam- oder Compound-Clips in einer konformierbaren Projekt-Timeline lagen. Wahrscheinlich ist die Datei ein Export von Event oder Mediathek, oder das exportierte Projekt ist leer. Wähle in Final Cut Pro das Projekt und exportiere es neu.</p>
-<h2 id="de7-clips-bleiben-in-resolve-compound-clips">Clips bleiben in Resolve Compound-Clips</h2>
-<p>Compounds mit mehreren Clips bleiben standardmäßig Compounds. Schalte <strong class="ui">Aggressive compound inlining</strong> ein, wenn du akzeptierst, dass nur der erste Clip bleibt. Siehe die Anleitung zu Compound-Clips.</p>
+<p>Der Report meldet, dass keine Multicam Clips oder Compound Clips in der Timeline eines konformierbaren Projekts lagen. Wahrscheinlich ist die Datei ein Export von Event oder Mediathek, oder das exportierte Projekt ist leer. Wähle in Final Cut Pro das Projekt und exportiere es neu.</p>
+<h2 id="de7-clips-bleiben-in-resolve-compound-clips">Clips bleiben in Resolve Compound Clips</h2>
+<p>Compounds mit mehreren Clips bleiben standardmäßig Compounds. Schalte <strong class="ui">Aggressive compound inlining</strong> ein, wenn du akzeptierst, dass nur der erste Clip bleibt. Siehe die Anleitung zu Compound Clips.</p>
 <h2 id="de7-resolve-antwortet-nicht">Resolve antwortet nicht</h2>
-<p>„Cannot connect to Resolve. It is running, but scripting does not answer“: Setze in den Resolve-Einstellungen External scripting using auf Local und starte das Conform erneut. „It was started but did not answer within 180 s“: Warte, bis Resolve fertig gestartet ist, prüfe dieselbe Einstellung und versuche es erneut.</p>
+<p>"Cannot connect to Resolve. It is running, but scripting does not answer": Setze in den Einstellungen von Resolve External scripting using auf Local und starte das Conform erneut. "It was started but did not answer within 180 s": Warte, bis Resolve fertig gestartet ist, prüfe dieselbe Einstellung und versuche es erneut.</p>
 <h2 id="de7-in-resolve-ist-kein-projekt-offen">In Resolve ist kein Projekt offen</h2>
 <p>Öffne oder erstelle in Resolve ein Projekt und starte das Conform erneut. Malibu Conform legt nie selbst ein Projekt an.</p>
 <h2 id="de7-resolve-kann-die-datei-nicht-importieren">Resolve kann die Datei nicht importieren</h2>
-<p>„Resolve failed to import the FCPXML“: Prüfe, dass alle Quellmedien erreichbar sind. Die FCPXML im Ausgabeordner lässt sich auch von Hand importieren; siehe die Anleitung zum manuellen Import.</p>
+<p>"Resolve failed to import the FCPXML": Prüfe, dass alle Quellmedien erreichbar sind. Die FCPXML im Ausgabeordner lässt sich auch von Hand importieren; siehe die Anleitung zum manuellen Import.</p>
 <h2 id="de7-kein-kompatibles-python-gefunden">Kein kompatibles Python gefunden</h2>
-<p>„No compatible Python 3.10 or 3.11 found“: Das mitgelieferte Python war nicht nutzbar, und es wurde kein installiertes 3.10 oder 3.11 gefunden. Installiere Python 3.11 von python.org oder mit Homebrew. Python 3.12 und neuer funktioniert nicht mit Resolves Scripting-Bibliothek.</p>
-<h2 id="de7-ein-transform-check-marker-erscheint">Ein „Transform Check“-Marker erscheint</h2>
-<p>Resolve kann Werte stillschweigend beschneiden, deshalb liest Malibu Conform jeden Wert nach dem Setzen zurück. Weicht ein Wert vom gesetzten ab (kleine Abweichungen werden ignoriert) oder ließ er sich nicht setzen oder lesen, bekommt der Clip einen roten Marker „Malibu Conform: Transform Check“, und der Report listet ihn.</p>
+<p>"No compatible Python 3.10 or 3.11 found": Das mitgelieferte Python war nicht nutzbar, und es wurde kein installiertes 3.10 oder 3.11 gefunden. Installiere Python 3.11 von python.org oder mit Homebrew. Python 3.12 und neuer funktioniert nicht mit der Skriptbibliothek von Resolve.</p>
+<h2 id="de7-ein-marker-transform-check-erscheint">Ein Marker "Transform Check" erscheint</h2>
+<p>Resolve kann Werte stillschweigend beschneiden, deshalb liest Malibu Conform jeden Wert nach dem Setzen zurück. Weicht ein Wert vom gesetzten ab (kleine Abweichungen werden ignoriert) oder ließ er sich nicht setzen oder lesen, bekommt der Clip einen roten Marker "Malibu Conform: Transform Check", und der Report listet ihn.</p>
 <h2 id="de7-das-bild-wirkt-zu-klein">Das Bild wirkt zu klein</h2>
-<p>Hast du Dailies-Proxies mit Burn-in-Balken konformiert, relinke in Resolve auf die Kameraoriginale; bis dahin wirken die Proxies zu klein. Prüfe außerdem die Größen im Tab <strong class="ui">Proxies</strong>.</p>
+<p>Hast du Proxies aus den Dailies mit eingebrannten Balken konformiert, relinke in Resolve auf die Kameraoriginale; bis dahin wirken die Proxies zu klein. Prüfe außerdem die Größen im Tab <strong class="ui">Proxies</strong>.</p>
 <h2 id="de7-clips-sind-nach-einem-manuellen-import-offline">Clips sind nach einem manuellen Import offline</h2>
 <p>Importiere erneut, mit eingeschaltetem <strong class="ui">Automatically import source clips into media pool</strong>.</p>
 <h2 id="de7-schnitte-landen-auf-dem-falschen-quellbild">Schnitte landen auf dem falschen Quellbild</h2>
-<p>Der Preflight-Check warnt vor Assets mit Sony-typischen Namen, die bei 0 beginnen: Final Cut Pro hat eventuell den Kamera-Timecode nicht gelesen, und Schnitte können in Resolve auf dem falschen Quellbild landen. Relinke die Medien in Final Cut Pro, bevor du exportierst.</p>
+<p>Die Vorabprüfung warnt vor Assets mit Namen, wie Sony sie vergibt, die bei 0 beginnen: Final Cut Pro hat eventuell den Timecode der Kamera nicht gelesen, und Schnitte können in Resolve auf dem falschen Quellbild landen. Relinke die Medien in Final Cut Pro, bevor du exportierst.</p>
 <h2 id="de7-die-app-fragt-nach-einer-lizenz">Die App fragt nach einer Lizenz</h2>
-<p>Blockiert die Lizenzprüfung die App, zum Beispiel nach der Testphase, bietet ein Bildschirm <strong class="ui">Check Again</strong>, <strong class="ui">I already have a license</strong>, <strong class="ui">Lost your license key?</strong>, <strong class="ui">Buy Malibu Conform</strong> und <strong class="ui">Quit Malibu Conform</strong> an; die dort gezeigte Geräte-ID braucht der Support für eine Verlängerung. Beim ersten Start fragt ein Bildschirm nach deiner E-Mail-Adresse, bevor du weitermachen kannst. Einen Schlüssel kannst du später in den Einstellungen unter <strong class="ui">License</strong> mit <strong class="ui">Redeem License Key...</strong> eingeben.</p>
+<p>Blockiert die Lizenzprüfung die App, zum Beispiel nach der Testphase, bietet ein Bildschirm <strong class="ui">Check Again</strong>, <strong class="ui">I already have a license</strong>, <strong class="ui">Lost your license key?</strong>, <strong class="ui">Buy Malibu Conform</strong> und <strong class="ui">Quit Malibu Conform</strong> an; die dort gezeigte Gerätekennung braucht der Support für eine Verlängerung. Beim ersten Start fragt ein Bildschirm nach deiner Mailadresse, bevor du weitermachen kannst. Einen Schlüssel kannst du später in den Einstellungen unter <strong class="ui">License</strong> mit <strong class="ui">Redeem License Key...</strong> eingeben.</p>
 <p class="ver">Geschrieben für Version 0.1.11.</p>
     </article>
   </div>
