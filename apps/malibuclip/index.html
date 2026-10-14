@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MalibuClip · Clipboard and Screen Capture for macOS</title>
 <link rel="icon" type="image/png" href="/apps/malibuclip/icon.png">
-<meta name="description" content="MalibuClip lives in your menu bar: clipboard history that keeps Final Cut Pro formats intact, screenshots with annotation, and screen recordings with cursor-tracked Auto-Zoom and Final Cut Pro export.">
+<meta name="description" content="MalibuClip lives in your menu bar: clipboard history that keeps Final Cut Pro formats intact, screenshots with annotation, and screen recordings with click-driven Auto-Zoom and Final Cut Pro export.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,12 +34,12 @@
     <div>
       <div class="eyebrow" data-i18n="hero.eyebrow">Clipboard · Screen capture · Final Cut Pro</div>
       <h1 data-i18n="hero.h1">Copy it. Capture it.<br><span class="soft">Record it</span> for Final Cut Pro.</h1>
-      <p class="lead" data-i18n="hero.lead">MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with cursor-tracked Auto-Zoom, ready to export to Final Cut Pro.</p>
+      <p class="lead" data-i18n="hero.lead">MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with click-driven Auto-Zoom, ready to export to Final Cut Pro.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://api.malibureview.app/malibuclip-updates/MalibuClip-latest.dmg" data-i18n="hero.dl">Download for Mac</a>
         <a class="btn btn-ghost" data-buy hidden data-i18n="hero.buy">Buy</a>
       </div>
-      <div class="cta-meta" data-i18n="hero.meta">Version 2.4.0 · macOS 26.0+ · Apple Silicon · free trial</div>
+      <div class="cta-meta" data-i18n="hero.meta">Version 2.4.0 · macOS 26.0+ · Apple Silicon · 30-day free trial</div>
     </div>
 
     <div>
@@ -59,7 +59,7 @@
         <div class="win w3">
           <div class="win-head"><i><b></b><b></b><b></b></i><span data-i18n="w3.head">Export</span></div>
           <div class="row"><span class="k">FCPXML</span><span class="tag good" data-i18n="w3.tag">Ready</span></div>
-          <div class="row"><span class="k">GIF</span><span class="v" data-i18n="w3.v2">Beta</span></div>
+          <div class="row"><span class="k">GIF</span><span class="v" data-i18n="w3.v2">Export</span></div>
         </div>
       </div>
       <p class="illu" data-i18n="illu">Illustration of the workflow, not a screenshot.</p>
@@ -75,19 +75,19 @@
       <div class="tile big">
         <div class="label" data-i18n="t1.l">Clipboard</div>
         <h3 data-i18n="t1.h">History that respects Final Cut Pro</h3>
-        <p data-i18n="t1.p">MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. The history is encrypted at rest with AES-GCM.</p>
+        <p data-i18n="t1.p">MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. Clipboard contents are encrypted at rest. A blocklist ignores password managers, text clips are editable, and Space opens a Quick Look preview. The optional Notch Shelf is off by default and replaces the ⌘⇧V panel when switched on.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Screenshots</h3>
-        <p data-i18n="t2.p">Capture, annotate, and polish with Beautify. Scrolling capture and OCR are built in.</p>
+        <p data-i18n="t2.p">Capture, annotate, crop and polish with Beautify. Hotkeys cover a window, the full screen and the last area. Capture Text (OCR) is one hotkey away, and scrolling capture is built in. MalibuClip can stand in for the ⇧⌘3/4/5 shortcuts, and Save to folder is available.</p>
       </div>
       <div class="tile mid">
-        <h3 data-i18n="t3.h">Screen recording</h3>
+        <h3 data-i18n="t3.h">Screen recording (Beta)</h3>
         <p data-i18n="t3.p">Record your screen with system audio, microphone and camera, then refine it in the recording editor with its zoom timeline.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Auto-Zoom</h3>
-        <p data-i18n="t4.p">Zoom follows your cursor during the recording, and you adjust it afterwards on the timeline.</p>
+        <p data-i18n="t4.p">Auto-Zoom is calculated after the recording, driven by your clicks and cursor data. You adjust it on the timeline. Older recordings without cursor data are not supported.</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t5.h">Look and feel</h3>
@@ -95,15 +95,15 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">GIF export</h3>
-        <p data-i18n="t6.p">Export a recording as a GIF, up to 72 seconds. Beta.</p>
+        <p data-i18n="t6.p">Export a recording as a GIF: about 30 seconds at the default 12 fps. Longer recordings lower the frame rate, and past a limit the export fails.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Final Cut Pro export</h3>
-        <p data-i18n="t7.p">Export an FCPXML with zoom keyframes, the camera as picture-in-picture, and optional captions.</p>
+        <p data-i18n="t7.p">Export an FCPXML with zoom keyframes, the camera as picture-in-picture (see Not there yet), and optional captions.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t8.h">FCP Buffer</h3>
-        <p data-i18n="t8.p">10 to 20 numbered clipboard slots, each with its own hotkey and a malibuclip://buffer/... URL you can call from elsewhere.</p>
+        <p data-i18n="t8.p">1 to 20 numbered clipboard slots (10 by default), each with one paste hotkey and a malibuclip://buffer/... URL you can call from elsewhere. Hotkeys are empty by default, and you fill slots from the menu, the panel or the URL.</p>
       </div>
     </div>
   </section>
@@ -119,16 +119,19 @@
         <ul>
           <li data-i18n="k1.a">macOS 26.0 or later</li>
           <li data-i18n="k1.b">Apple Silicon Mac</li>
-          <li data-i18n="k1.c">Free trial, then a one-time license</li>
+          <li data-i18n="k1.c">Free 30-day trial (starts once you enter your email address), then a one-time license</li>
         </ul>
       </div>
       <div class="fact">
         <h3 data-i18n="k2.h">Not there yet</h3>
         <ul>
-          <li data-i18n="k2.a">GIF export and Studio Mode are still in beta</li>
+          <li data-i18n="k2.a">Recording is still in beta: the whole Recording tab is labelled Recording (Beta) in the app</li>
           <li data-i18n="k2.b">Studio Mode records without the cursor and draws it smoothed at export. The cursor is always an arrow there, and it is absent in the Final Cut Pro export</li>
           <li data-i18n="k2.c">FCP Buffer slots are stored unencrypted</li>
-          <li data-i18n="k2.d">The newest recording features are checked with pixel tests and are still being proven in daily use</li>
+          <li data-i18n="k2.d">The recording features are new in 2.3 and 2.4 and have so far been verified by automated tests, not by long-term use</li>
+          <li data-i18n="k2.e">Known bug: a 16:9 camera image can appear distorted in the picture-in-picture</li>
+          <li data-i18n="k2.f">The Look (background, corners, highlight) applies to video and GIF export only, not to the Final Cut Pro export, and Look changes have no undo</li>
+          <li data-i18n="k2.g">No trim, no motion blur, no keystroke display and no cloud upload</li>
         </ul>
       </div>
     </div>
@@ -165,24 +168,24 @@ window.PAGE_T = {
     "nav.back":"← All apps","nav.cta":"Download",
     "hero.eyebrow":"Clipboard · Screen capture · Final Cut Pro",
     "hero.h1":'Copy it. Capture it.<br><span class="soft">Record it</span> for Final Cut Pro.',
-    "hero.lead":"MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with cursor-tracked Auto-Zoom, ready to export to Final Cut Pro.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · free trial",
+    "hero.lead":"MalibuClip lives in your menu bar. It keeps your clipboard history with Final Cut Pro formats intact, takes annotated screenshots, and records your screen with click-driven Auto-Zoom, ready to export to Final Cut Pro.",
+    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · 30-day free trial",
     "w1.head":"Clipboard","w1.r1":"Item 1","w1.v1":"Text","w1.r2":"Item 2","w1.v2":"Image","w1.r3":"Item 3",
     "w2.head":"Record","w2.r1":"Screen","w2.r2":"Microphone","w2.t2":"ON","w2.r3":"Auto-Zoom","w2.t3":"ON",
-    "w3.head":"Export","w3.tag":"Ready","w3.v2":"Beta",
+    "w3.head":"Export","w3.tag":"Ready","w3.v2":"Export",
     "illu":"Illustration of the workflow, not a screenshot.",
     "f.title":"What's inside","f.sub":"What the current version (2.4.0) actually does.",
-    "t1.l":"Clipboard","t1.h":"History that respects Final Cut Pro","t1.p":"MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. The history is encrypted at rest with AES-GCM.",
-    "t2.h":"Screenshots","t2.p":"Capture, annotate, and polish with Beautify. Scrolling capture and OCR are built in.",
-    "t3.h":"Screen recording","t3.p":"Record your screen with system audio, microphone and camera, then refine it in the recording editor with its zoom timeline.",
-    "t4.h":"Auto-Zoom","t4.p":"Zoom follows your cursor during the recording, and you adjust it afterwards on the timeline.",
+    "t1.l":"Clipboard","t1.h":"History that respects Final Cut Pro","t1.p":"MalibuClip keeps what you copy in the menu bar, including Final Cut Pro clipboard content with its format intact. Clipboard contents are encrypted at rest. A blocklist ignores password managers, text clips are editable, and Space opens a Quick Look preview. The optional Notch Shelf is off by default and replaces the ⌘⇧V panel when switched on.",
+    "t2.h":"Screenshots","t2.p":"Capture, annotate, crop and polish with Beautify. Hotkeys cover a window, the full screen and the last area. Capture Text (OCR) is one hotkey away, and scrolling capture is built in. MalibuClip can stand in for the ⇧⌘3/4/5 shortcuts, and Save to folder is available.",
+    "t3.h":"Screen recording (Beta)","t3.p":"Record your screen with system audio, microphone and camera, then refine it in the recording editor with its zoom timeline.",
+    "t4.h":"Auto-Zoom","t4.p":"Auto-Zoom is calculated after the recording, driven by your clicks and cursor data. You adjust it on the timeline. Older recordings without cursor data are not supported.",
     "t5.h":"Look and feel","t5.p":"Set a recording background (colour, gradient or image), padding, corners and shadow, plus a click highlight.",
-    "t6.h":"GIF export","t6.p":"Export a recording as a GIF, up to 72 seconds. Beta.",
-    "t7.h":"Final Cut Pro export","t7.p":"Export an FCPXML with zoom keyframes, the camera as picture-in-picture, and optional captions.",
-    "t8.h":"FCP Buffer","t8.p":"10 to 20 numbered clipboard slots, each with its own hotkey and a malibuclip://buffer/... URL you can call from elsewhere.",
+    "t6.h":"GIF export","t6.p":"Export a recording as a GIF: about 30 seconds at the default 12 fps. Longer recordings lower the frame rate, and past a limit the export fails.",
+    "t7.h":"Final Cut Pro export","t7.p":"Export an FCPXML with zoom keyframes, the camera as picture-in-picture (see Not there yet), and optional captions.",
+    "t8.h":"FCP Buffer","t8.p":"1 to 20 numbered clipboard slots (10 by default), each with one paste hotkey and a malibuclip://buffer/... URL you can call from elsewhere. Hotkeys are empty by default, and you fill slots from the menu, the panel or the URL.",
     "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 26.0 or later","k1.b":"Apple Silicon Mac","k1.c":"Free trial, then a one-time license",
-    "k2.h":"Not there yet","k2.a":"GIF export and Studio Mode are still in beta","k2.b":"Studio Mode records without the cursor and draws it smoothed at export. The cursor is always an arrow there, and it is absent in the Final Cut Pro export","k2.c":"FCP Buffer slots are stored unencrypted","k2.d":"The newest recording features are checked with pixel tests and are still being proven in daily use",
+    "k1.h":"Requirements","k1.a":"macOS 26.0 or later","k1.b":"Apple Silicon Mac","k1.c":"Free 30-day trial (starts once you enter your email address), then a one-time license",
+    "k2.h":"Not there yet","k2.a":"Recording is still in beta: the whole Recording tab is labelled Recording (Beta) in the app","k2.b":"Studio Mode records without the cursor and draws it smoothed at export. The cursor is always an arrow there, and it is absent in the Final Cut Pro export","k2.c":"FCP Buffer slots are stored unencrypted","k2.d":"The recording features are new in 2.3 and 2.4 and have so far been verified by automated tests, not by long-term use","k2.e":"Known bug: a 16:9 camera image can appear distorted in the picture-in-picture","k2.f":"The Look (background, corners, highlight) applies to video and GIF export only, not to the Final Cut Pro export, and Look changes have no undo","k2.g":"No trim, no motion blur, no keystroke display and no cloud upload",
     "dl.title":"Download MalibuClip","dl.sub":"Version 2.4.0 for macOS 26.0 or later on Apple Silicon.","dl.btn":"Download for Mac",
     "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
     "foot.legal":"MalibuClip is a professional post-production tool. Apple and Final Cut Pro are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
@@ -191,24 +194,24 @@ window.PAGE_T = {
     "nav.back":"← Alle Apps","nav.cta":"Laden",
     "hero.eyebrow":"Zwischenablage · Bildschirmaufnahme · Final Cut Pro",
     "hero.h1":'Kopieren. Aufnehmen.<br><span class="soft">Aufzeichnen</span> für Final Cut Pro.',
-    "hero.lead":"MalibuClip lebt in deiner Menüleiste. Es führt deinen Zwischenablage-Verlauf mit erhaltenen Final-Cut-Pro-Formaten, macht Screenshots mit Anmerkungen und zeichnet deinen Bildschirm mit cursorgeführtem Auto-Zoom auf, bereit für den Export nach Final Cut Pro.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · kostenlos testen",
+    "hero.lead":"MalibuClip lebt in deiner Menüleiste. Es führt deinen Zwischenablage-Verlauf mit erhaltenen Final-Cut-Pro-Formaten, macht Screenshots mit Anmerkungen und zeichnet deinen Bildschirm mit klickgesteuertem Auto-Zoom auf, bereit für den Export nach Final Cut Pro.",
+    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"Version 2.4.0 · macOS 26.0+ · Apple Silicon · 30 Tage kostenlos testen",
     "w1.head":"Zwischenablage","w1.r1":"Eintrag 1","w1.v1":"Text","w1.r2":"Eintrag 2","w1.v2":"Bild","w1.r3":"Eintrag 3",
     "w2.head":"Aufnahme","w2.r1":"Bildschirm","w2.r2":"Mikrofon","w2.t2":"AN","w2.r3":"Auto-Zoom","w2.t3":"AN",
-    "w3.head":"Export","w3.tag":"Bereit","w3.v2":"Beta",
+    "w3.head":"Export","w3.tag":"Bereit","w3.v2":"Export",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
     "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (2.4.0) wirklich kann.",
-    "t1.l":"Zwischenablage","t1.h":"Verlauf, der Final Cut Pro respektiert","t1.p":"MalibuClip hält fest, was du kopierst, in der Menüleiste, auch Inhalte aus der Final-Cut-Pro-Zwischenablage mit erhaltenem Format. Der Verlauf ist im Ruhezustand mit AES-GCM verschlüsselt.",
-    "t2.h":"Screenshots","t2.p":"Aufnehmen, annotieren und mit Beautify aufpolieren. Scrolling-Aufnahme und OCR sind eingebaut.",
-    "t3.h":"Bildschirmaufnahme","t3.p":"Nimm deinen Bildschirm mit Systemton, Mikrofon und Kamera auf und verfeinere ihn im Aufnahme-Editor mit seiner Zoom-Timeline.",
-    "t4.h":"Auto-Zoom","t4.p":"Der Zoom folgt während der Aufnahme deinem Cursor, und du passt ihn danach auf der Timeline an.",
+    "t1.l":"Zwischenablage","t1.h":"Verlauf, der Final Cut Pro respektiert","t1.p":"MalibuClip hält fest, was du kopierst, in der Menüleiste, auch Inhalte aus der Final-Cut-Pro-Zwischenablage mit erhaltenem Format. Der Inhalt deiner Zwischenablage ist im Ruhezustand verschlüsselt. Eine Blockliste ignoriert Passwortmanager, Text-Clips lassen sich bearbeiten, und die Leertaste öffnet eine Quick-Look-Vorschau. Die optionale Notch Shelf ist standardmäßig aus und ersetzt im aktivierten Zustand das ⌘⇧V-Panel.",
+    "t2.h":"Screenshots","t2.p":"Aufnehmen, annotieren, zuschneiden und mit Beautify aufpolieren. Hotkeys gibt es für Fenster, Vollbild und den letzten Bereich. Capture Text (OCR) liegt auf einem Hotkey, die Scrolling-Aufnahme ist eingebaut. MalibuClip kann die Kurzbefehle ⇧⌘3/4/5 ersetzen, und „In Ordner sichern“ ist möglich.",
+    "t3.h":"Bildschirmaufnahme (Beta)","t3.p":"Nimm deinen Bildschirm mit Systemton, Mikrofon und Kamera auf und verfeinere ihn im Aufnahme-Editor mit seiner Zoom-Timeline.",
+    "t4.h":"Auto-Zoom","t4.p":"Auto-Zoom wird nach der Aufnahme aus deinen Klicks und Cursordaten berechnet. Du passt ihn auf der Timeline an. Ältere Aufnahmen ohne Cursordaten gehen nicht.",
     "t5.h":"Look","t5.p":"Wähle einen Aufnahme-Hintergrund (Farbe, Verlauf oder Bild), Abstand, Ecken und Schatten, dazu eine Klick-Hervorhebung.",
-    "t6.h":"GIF-Export","t6.p":"Exportiere eine Aufnahme als GIF, bis zu 72 Sekunden. Beta.",
-    "t7.h":"Export nach Final Cut Pro","t7.p":"Exportiere eine FCPXML mit Zoom-Keyframes, der Kamera als Bild-in-Bild und optionalen Untertiteln.",
-    "t8.h":"FCP Buffer","t8.p":"10 bis 20 nummerierte Zwischenablage-Slots, jeder mit eigenem Hotkey und einer malibuclip://buffer/...-URL, die du von anderswo aufrufen kannst.",
+    "t6.h":"GIF-Export","t6.p":"Exportiere eine Aufnahme als GIF: etwa 30 Sekunden bei den standardmäßigen 12 fps. Längere Aufnahmen senken die Bildrate, ab einer Grenze schlägt der Export fehl.",
+    "t7.h":"Export nach Final Cut Pro","t7.p":"Exportiere eine FCPXML mit Zoom-Keyframes, der Kamera als Bild-in-Bild (siehe Noch nicht da) und optionalen Untertiteln.",
+    "t8.h":"FCP Buffer","t8.p":"1 bis 20 nummerierte Zwischenablage-Slots (standardmäßig 10), jeder mit einem Einfüge-Hotkey und einer malibuclip://buffer/...-URL, die du von anderswo aufrufen kannst. Die Hotkeys sind standardmäßig leer, und Slots füllst du über das Menü, das Panel oder die URL.",
     "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 26.0 oder neuer","k1.b":"Mac mit Apple Silicon","k1.c":"Kostenlos testen, danach einmalige Lizenz",
-    "k2.h":"Noch nicht da","k2.a":"GIF-Export und Studio Mode sind noch in der Beta","k2.b":"Der Studio Mode zeichnet ohne Cursor auf und zeichnet ihn beim Export geglättet. Der Cursor ist dort immer ein Pfeil und fehlt im Final-Cut-Pro-Export","k2.c":"FCP-Buffer-Slots werden unverschlüsselt gespeichert","k2.d":"Die neuesten Aufnahme-Funktionen werden mit Pixeltests geprüft und müssen sich im täglichen Einsatz noch bewähren",
+    "k1.h":"Voraussetzungen","k1.a":"macOS 26.0 oder neuer","k1.b":"Mac mit Apple Silicon","k1.c":"Kostenlos 30 Tage testen (startet nach Eingabe deiner E-Mail-Adresse), danach einmalige Lizenz",
+    "k2.h":"Noch nicht da","k2.a":"Die Aufnahme ist noch in der Beta: In der App trägt der gesamte Tab „Recording (Beta)“ dieses Label","k2.b":"Der Studio Mode zeichnet ohne Cursor auf und zeichnet ihn beim Export geglättet. Der Cursor ist dort immer ein Pfeil und fehlt im Final-Cut-Pro-Export","k2.c":"FCP-Buffer-Slots werden unverschlüsselt gespeichert","k2.d":"Die Aufnahme-Funktionen sind neu in 2.3 und 2.4 und bisher durch automatisierte Tests geprüft, nicht durch langfristigen Einsatz","k2.e":"Bekannter Fehler: Ein 16:9-Kamerabild kann im Bild-in-Bild verzerrt erscheinen","k2.f":"Der Look (Hintergrund, Ecken, Hervorhebung) gilt nur für den Video- und GIF-Export, nicht für den Final-Cut-Pro-Export, und Änderungen am Look lassen sich nicht rückgängig machen","k2.g":"Kein Trim, kein Motion Blur, keine Tastenanzeige und kein Cloud-Upload",
     "dl.title":"MalibuClip laden","dl.sub":"Version 2.4.0 für macOS 26.0 oder neuer auf Apple Silicon.","dl.btn":"Für Mac laden",
     "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
     "foot.legal":"MalibuClip ist ein professionelles Werkzeug für die Postproduktion. Apple und Final Cut Pro sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
