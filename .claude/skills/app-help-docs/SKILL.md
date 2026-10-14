@@ -140,6 +140,13 @@ Systemlokalisierte Menues (View/Darstellung) nur nennen, wenn die App sie selbst
    Kommas enthalten (UI-Text), solange nach dem Komma kein Pfad mit Dateiendung + `:`/`#` folgt.
    Bei Apps mit mehreren Bundles (Host + Plugin) zaehlt die Version des Bundles, das die Hilfe
    beschreibt (`--app-version` setzt sie explizit).
+   **Gegenproben (Dictate/Clip):** Jede Allaussage (alle/nie/immer/beide) braucht eine Gegenprobe
+   im Code; die haeufigsten Funde sind fehlende Einschraenkungen, kaum Erfindungen. Runde 2 mit
+   frischem Agenten. Reviewer gezielt nach Defaults mit Entwicklerdaten (Default-Snippets,
+   Beispielpfade) fragen. Schreib-Agenten brauchen den exakten Statuszeilen-Text ("new, so far
+   only tested automatically") im Briefing, sonst formulieren sie frei. Belege nie auf
+   gitignorte Pfade (build/SourcePackages); fuer Drittpaket-Aussagen `Package.resolved` nennen.
+   Das Skript sucht unter `docs` nicht von selbst: Pfad explizit uebergeben.
    **Branches:** Die Hilfe beschreibt `main`/die ausgelieferte Version. UI-Umbauten auf
    Branches machen Seiten beim Merge ungueltig; das Gate meldet das beim naechsten Lauf, also
    nach jedem Merge das Skript laufen lassen.
