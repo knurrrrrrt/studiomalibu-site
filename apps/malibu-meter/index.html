@@ -78,11 +78,11 @@
       </div>
       <div class="tile mid">
         <h3 data-i18n="t2.h">Native multichannel</h3>
-        <p data-i18n="t2.p">Natively measures 5-, 6- and 8-channel sources (5.0, 5.1, 7.1) with a fixed channel assignment (L R C LFE Ls Rs Lrs Rrs); other channel counts are downmixed to stereo. No Atmos or 7.1.4. 5.0 and 5.1 results are checked against EBU Tech 3341. Level bars and ballistics show the stereo downmix; LFE does not count in the bars.</p>
+        <p data-i18n="t2.p">In Device mode, 5-, 6- and 8-channel sources (5.0, 5.1, 7.1) are measured natively with a fixed channel assignment (L R C LFE Ls Rs Lrs Rrs); other channel counts are measured as stereo. App and Screen Audio modes always measure a stereo signal. No Atmos or 7.1.4. 5.0 and 5.1 results are checked against EBU Tech 3341. Level bars and ballistics show the stereo downmix; LFE does not count in the bars.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t3.h">Tap an app's audio</h3>
-        <p data-i18n="t3.p">Four capture backends: AVAudioEngine input, AUHAL device, ScreenCaptureKit and Process Tap, used by the modes Device, App (Process Tap, macOS 14.4+) and Screen Audio. Process Tap compensates the mixdown attenuation automatically (heuristic).</p>
+        <p data-i18n="t3.p">Three modes: Device (input device), App (one app at a time, via Process Tap, macOS 14.4+) and Screen Audio (apps chosen from a list, via ScreenCaptureKit). In App mode the level compensation for the system mixdown is automatic (heuristic).</p>
       </div>
       <div class="tile small">
         <h3 data-i18n="t4.h">Peak, True Peak, RMS, spectrum</h3>
@@ -94,7 +94,7 @@
       </div>
       <div class="tile small">
         <h3 data-i18n="t6.h">Test signal</h3>
-        <p data-i18n="t6.p">Device mode only: Settings &gt; Level Meter &gt; Test Signal: Preview runs the meter on a mono sweep (100–8000 Hz) plus noise, not calibrated. Calibrated 997 Hz tones exist only as a 30 s WAV export (Settings &gt; Input) to load into your NLE or Final Cut Pro.</p>
+        <p data-i18n="t6.p">Settings &gt; Level Meter &gt; Test Signal: Preview runs the meter on a mono sweep (100–8000 Hz) plus noise. It works only in Device mode with the input device set to System Default, and is not calibrated. Calibrated 997 Hz tones exist only as a 30 s WAV export (Settings &gt; Input) to load into your NLE or Final Cut Pro.</p>
       </div>
       <div class="tile mid">
         <h3 data-i18n="t7.h">Broadcast and streaming presets</h3>
@@ -119,6 +119,7 @@
           <li data-i18n="k1.a">macOS 14.0 or later; App mode (Process Tap) needs macOS 14.4, Device and Screen Audio run on 14.0+</li>
           <li data-i18n="k1.b">30-day trial (email required at first launch), then a license key unlocks the app</li>
           <li data-i18n="k1.c">Permissions: Microphone (Device), Audio Capture (App), Screen Recording (Screen Audio)</li>
+          <li data-i18n="k1.d">The app is sandboxed and needs a network connection for the license check and updates</li>
         </ul>
       </div>
       <div class="fact">
@@ -127,6 +128,8 @@
           <li data-i18n="k2.a">The LUFS meter is off by default; switch it on in Settings &gt; Spectrum</li>
           <li data-i18n="k2.b">Live measurement only; there is no file analysis</li>
           <li data-i18n="k2.c">Auto-reset on silence, always-on-top window and automatic updates via Sparkle</li>
+          <li data-i18n="k2.d">Defaults: Netflix preset, Final Cut Pro scale, spectrum and Lissajous on, LUFS meter off</li>
+          <li data-i18n="k2.e">Reset Peaks (Command-R) resets only the peak hold, not Integrated or LRA; those reset when you restart the measurement or by Auto-Reset on Silence</li>
         </ul>
       </div>
     </div>
@@ -149,7 +152,7 @@
     <div class="foot">
       <span>Malibu Meter · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
       <span>
-        <a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="/apps/malibu-meter/help/" data-i18n="foot.help">Help</a><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a>
       </span>
     </div>
     <p class="legal" data-i18n="foot.legal">Malibu Meter is a professional audio tool. Apple, Mac and macOS are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake.</p>
@@ -160,56 +163,130 @@
 window.PAGE_CONFIG = { buyUrl: null };
 window.PAGE_T = {
   en: {
-    "nav.back":"← All apps","nav.cta":"Download",
+    "nav.back":"← All apps",
+    "nav.cta":"Download",
     "hero.eyebrow":"Loudness metering · EBU R128",
-    "hero.h1":'Loudness metering,<br><span class="soft">without a DAW.</span>',
+    "hero.h1":"Loudness metering,<br><span class=\"soft\">without a DAW.</span>",
     "hero.lead":"Malibu Meter measures EBU R128 loudness in real time and meters app audio, an input device or screen audio on your Mac. Check your mix against broadcast and streaming targets while it plays.",
-    "hero.dl":"Download for Mac","hero.buy":"Buy","hero.meta":"macOS 14.0+ (App mode: 14.4+) · Version 1.29",
-    "w1.head":"Source","w1.r1":"Capture","w1.v1":"App · Device · Screen Audio","w1.r2":"Channels",
-    "w2.head":"Meter","w2.r1":"Momentary","w2.r2":"Short-term","w2.r3":"Integrated",
-    "w3.head":"Target","w3.r1":"Preset","w3.r2":"Status","w3.tag":"In range",
+    "hero.dl":"Download for Mac",
+    "hero.buy":"Buy",
+    "hero.meta":"macOS 14.0+ (App mode: 14.4+) · Version 1.29",
+    "w1.head":"Source",
+    "w1.r1":"Capture",
+    "w1.v1":"App · Device · Screen Audio",
+    "w1.r2":"Channels",
+    "w2.head":"Meter",
+    "w2.r1":"Momentary",
+    "w2.r2":"Short-term",
+    "w2.r3":"Integrated",
+    "w3.head":"Target",
+    "w3.r1":"Preset",
+    "w3.r2":"Status",
+    "w3.tag":"In range",
     "illu":"Illustration of the workflow, not a screenshot.",
-    "f.title":"What's inside","f.sub":"What the current version (1.29) actually does.",
-    "t1.l":"Measure","t1.h":"Real-time EBU R128 loudness","t1.p":"Momentary, short-term and integrated LUFS plus loudness range (LRA), live, in a standalone app that needs no DAW. Since 1.29 the LUFS read-outs are only computed while the LUFS meter is visible, which keeps CPU use down.",
-    "t2.h":"Native multichannel","t2.p":"Natively measures 5-, 6- and 8-channel sources (5.0, 5.1, 7.1) with a fixed channel assignment (L R C LFE Ls Rs Lrs Rrs); other channel counts are downmixed to stereo. No Atmos or 7.1.4. 5.0 and 5.1 results are checked against EBU Tech 3341. Level bars and ballistics show the stereo downmix; LFE does not count in the bars.",
-    "t3.h":"Tap an app's audio","t3.p":"Four capture backends: AVAudioEngine input, AUHAL device, ScreenCaptureKit and Process Tap, used by the modes Device, App (Process Tap, macOS 14.4+) and Screen Audio. Process Tap compensates the mixdown attenuation automatically (heuristic).",
-    "t4.h":"Peak, True Peak, RMS, spectrum","t4.p":"Peak and RMS bars, True Peak (dBTP) with preset limits, a spectrum display and a Lissajous goniometer.",
-    "t5.h":"Five ballistics","t5.p":"Digital peak, PPM (EBU, DIN, Nordic) and VU. Scales: Linear, Final Cut Pro, DIN, VU, K-20/14/12 and EBU R128.",
-    "t6.h":"Test signal","t6.p":"Device mode only: Settings &gt; Level Meter &gt; Test Signal: Preview runs the meter on a mono sweep (100–8000 Hz) plus noise, not calibrated. Calibrated 997 Hz tones exist only as a 30 s WAV export (Settings &gt; Input) to load into your NLE or Final Cut Pro.",
-    "t7.h":"Broadcast and streaming presets","t7.p":"EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85.",
-    "t8.h":"Your own status colours","t8.p":"Set the colours for too quiet, in range and too loud. Import and export settings and gradients.",
-    "k.title":"Good to know","k.sub":"What you need, and what it does not do yet.",
-    "k1.h":"Requirements","k1.a":"macOS 14.0 or later; App mode (Process Tap) needs macOS 14.4, Device and Screen Audio run on 14.0+","k1.b":"30-day trial (email required at first launch), then a license key unlocks the app","k1.c":"Permissions: Microphone (Device), Audio Capture (App), Screen Recording (Screen Audio)",
-    "k2.h":"Also good to know","k2.a":"The LUFS meter is off by default; switch it on in Settings &gt; Spectrum","k2.b":"Live measurement only; there is no file analysis","k2.c":"Auto-reset on silence, always-on-top window and automatic updates via Sparkle",
-    "dl.title":"Download Malibu Meter","dl.sub":"Version 1.29 for macOS 14.0 or later (App mode: 14.4).","dl.btn":"Download for Mac",
-    "foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy",
-    "foot.legal":"Malibu Meter is a professional audio tool. Apple, Mac and macOS are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake."
+    "f.title":"What's inside",
+    "f.sub":"What the current version (1.29) actually does.",
+    "t1.l":"Measure",
+    "t1.h":"Real-time EBU R128 loudness",
+    "t1.p":"Momentary, short-term and integrated LUFS plus loudness range (LRA), live, in a standalone app that needs no DAW. Since 1.29 the LUFS read-outs are only computed while the LUFS meter is visible, which keeps CPU use down.",
+    "t2.h":"Native multichannel",
+    "t2.p":"In Device mode, 5-, 6- and 8-channel sources (5.0, 5.1, 7.1) are measured natively with a fixed channel assignment (L R C LFE Ls Rs Lrs Rrs); other channel counts are measured as stereo. App and Screen Audio modes always measure a stereo signal. No Atmos or 7.1.4. 5.0 and 5.1 results are checked against EBU Tech 3341. Level bars and ballistics show the stereo downmix; LFE does not count in the bars.",
+    "t3.h":"Tap an app's audio",
+    "t3.p":"Three modes: Device (input device), App (one app at a time, via Process Tap, macOS 14.4+) and Screen Audio (apps chosen from a list, via ScreenCaptureKit). In App mode the level compensation for the system mixdown is automatic (heuristic).",
+    "t4.h":"Peak, True Peak, RMS, spectrum",
+    "t4.p":"Peak and RMS bars, True Peak (dBTP) with preset limits, a spectrum display and a Lissajous goniometer.",
+    "t5.h":"Five ballistics",
+    "t5.p":"Digital peak, PPM (EBU, DIN, Nordic) and VU. Scales: Linear, Final Cut Pro, DIN, VU, K-20/14/12 and EBU R128.",
+    "t6.h":"Test signal",
+    "t6.p":"Settings &gt; Level Meter &gt; Test Signal: Preview runs the meter on a mono sweep (100–8000 Hz) plus noise. It works only in Device mode with the input device set to System Default, and is not calibrated. Calibrated 997 Hz tones exist only as a 30 s WAV export (Settings &gt; Input) to load into your NLE or Final Cut Pro.",
+    "t7.h":"Broadcast and streaming presets",
+    "t7.p":"EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music and ATSC A/85.",
+    "t8.h":"Your own status colours",
+    "t8.p":"Set the colours for too quiet, in range and too loud. Import and export settings and gradients.",
+    "k.title":"Good to know",
+    "k.sub":"What you need, and what it does not do yet.",
+    "k1.h":"Requirements",
+    "k1.a":"macOS 14.0 or later; App mode (Process Tap) needs macOS 14.4, Device and Screen Audio run on 14.0+",
+    "k1.b":"30-day trial (email required at first launch), then a license key unlocks the app",
+    "k1.c":"Permissions: Microphone (Device), Audio Capture (App), Screen Recording (Screen Audio)",
+    "k2.h":"Also good to know",
+    "k2.a":"The LUFS meter is off by default; switch it on in Settings &gt; Spectrum",
+    "k2.b":"Live measurement only; there is no file analysis",
+    "k2.c":"Auto-reset on silence, always-on-top window and automatic updates via Sparkle",
+    "dl.title":"Download Malibu Meter",
+    "dl.sub":"Version 1.29 for macOS 14.0 or later (App mode: 14.4).",
+    "dl.btn":"Download for Mac",
+    "foot.help":"Help",
+    "foot.sub":"A Studio Malibu Berlin product",
+    "foot.imprint":"Legal Notice",
+    "foot.privacy":"Privacy Policy",
+    "foot.legal":"Malibu Meter is a professional audio tool. Apple, Mac and macOS are trademarks of Apple Inc. Studio Malibu is not affiliated with Apple. © 2026 Studio Malibu / Knut Hake.",
+    "k1.d":"The app is sandboxed and needs a network connection for the license check and updates",
+    "k2.d":"Defaults: Netflix preset, Final Cut Pro scale, spectrum and Lissajous on, LUFS meter off",
+    "k2.e":"Reset Peaks (Command-R) resets only the peak hold, not Integrated or LRA; those reset when you restart the measurement or by Auto-Reset on Silence"
   },
   de: {
-    "nav.back":"← Alle Apps","nav.cta":"Laden",
+    "nav.back":"← Alle Apps",
+    "nav.cta":"Laden",
     "hero.eyebrow":"Loudness-Messung · EBU R128",
-    "hero.h1":'Loudness messen,<br><span class="soft">ganz ohne DAW.</span>',
+    "hero.h1":"Loudness messen,<br><span class=\"soft\">ganz ohne DAW.</span>",
     "hero.lead":"Malibu Meter misst die EBU-R128-Lautheit in Echtzeit und greift App-Ton, ein Eingabegerät oder Screen Audio auf deinem Mac ab. Prüfe deinen Mix gegen Broadcast- und Streaming-Ziele, während er läuft.",
-    "hero.dl":"Für Mac laden","hero.buy":"Kaufen","hero.meta":"macOS 14.0+ (App-Modus: 14.4+) · Version 1.29",
-    "w1.head":"Quelle","w1.r1":"Aufnahme","w1.v1":"App · Gerät · Screen Audio","w1.r2":"Kanäle",
-    "w2.head":"Messung","w2.r1":"Momentary","w2.r2":"Short-term","w2.r3":"Integrated",
-    "w3.head":"Ziel","w3.r1":"Preset","w3.r2":"Status","w3.tag":"Im Bereich",
+    "hero.dl":"Für Mac laden",
+    "hero.buy":"Kaufen",
+    "hero.meta":"macOS 14.0+ (App-Modus: 14.4+) · Version 1.29",
+    "w1.head":"Quelle",
+    "w1.r1":"Aufnahme",
+    "w1.v1":"App · Gerät · Screen Audio",
+    "w1.r2":"Kanäle",
+    "w2.head":"Messung",
+    "w2.r1":"Momentary",
+    "w2.r2":"Short-term",
+    "w2.r3":"Integrated",
+    "w3.head":"Ziel",
+    "w3.r1":"Preset",
+    "w3.r2":"Status",
+    "w3.tag":"Im Bereich",
     "illu":"Illustration des Ablaufs, kein Screenshot.",
-    "f.title":"Was drinsteckt","f.sub":"Was die aktuelle Version (1.29) wirklich kann.",
-    "t1.l":"Messen","t1.h":"EBU-R128-Lautheit in Echtzeit","t1.p":"Momentary, Short-term und Integrated LUFS plus Loudness Range (LRA), live, in einer eigenständigen App, die keine DAW braucht. Seit 1.29 werden die LUFS-Anzeigen nur berechnet, solange das LUFS-Meter sichtbar ist, das spart CPU.",
-    "t2.h":"Natives Multichannel","t2.p":"Misst 5-, 6- und 8-Kanal-Quellen (5.0, 5.1, 7.1) nativ mit fester Kanalbelegung (L R C LFE Ls Rs Lrs Rrs); andere Kanalzahlen werden auf Stereo heruntergemischt. Kein Atmos, kein 7.1.4. Die Ergebnisse für 5.0 und 5.1 sind gegen EBU Tech 3341 geprüft. Pegelbalken und Ballistik zeigen den Stereo-Downmix; LFE zählt nicht in die Balken.",
-    "t3.h":"App-Ton abgreifen","t3.p":"Vier Capture-Backends: AVAudioEngine-Eingang, AUHAL-Gerät, ScreenCaptureKit und Process Tap. Genutzt von den Modi Device, App (Process Tap, macOS 14.4+) und Screen Audio. Process Tap gleicht die Mixdown-Dämpfung automatisch aus (Heuristik).",
-    "t4.h":"Peak, True Peak, RMS, Spektrum","t4.p":"Peak- und RMS-Balken, True Peak (dBTP) mit Preset-Grenzwerten, eine Spektrumanzeige und ein Lissajous-Goniometer.",
-    "t5.h":"Fünf Ballistiken","t5.p":"Digital Peak, PPM (EBU, DIN, Nordic) und VU. Skalen: Linear, Final Cut Pro, DIN, VU, K-20/14/12 und EBU R128.",
-    "t6.h":"Testsignal","t6.p":"Nur im Modus Device: Einstellungen &gt; Level Meter &gt; Test Signal: Preview lässt das Meter auf einem Mono-Sweep (100–8000 Hz) plus Rauschen laufen, nicht kalibriert. Kalibrierte 997-Hz-Töne gibt es nur als WAV-Export (Einstellungen &gt; Input, 30 s) zum Laden in NLE oder Final Cut Pro.",
-    "t7.h":"Broadcast- und Streaming-Presets","t7.p":"EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music und ATSC A/85.",
-    "t8.h":"Eigene Statusfarben","t8.p":"Lege die Farben für zu leise, im Bereich und zu laut selbst fest. Einstellungen und Verläufe lassen sich importieren und exportieren.",
-    "k.title":"Gut zu wissen","k.sub":"Was du brauchst und was noch nicht geht.",
-    "k1.h":"Voraussetzungen","k1.a":"macOS 14.0 oder neuer; der App-Modus (Process Tap) braucht macOS 14.4, Device und Screen Audio laufen ab 14.0","k1.b":"30 Tage Testphase (E-Mail beim ersten Start erforderlich), dann schaltet ein Lizenzschlüssel die App frei","k1.c":"Berechtigungen: Mikrofon (Device), Audio Capture (App), Bildschirmaufnahme (Screen Audio)",
-    "k2.h":"Außerdem gut zu wissen","k2.a":"Das LUFS-Meter ist standardmäßig aus; einschalten unter Einstellungen &gt; Spectrum","k2.b":"Nur Live-Messung; eine Datei-Analyse gibt es nicht","k2.c":"Auto-Reset bei Stille, Fenster immer im Vordergrund und automatische Updates über Sparkle",
-    "dl.title":"Malibu Meter laden","dl.sub":"Version 1.29 für macOS 14.0 oder neuer (App-Modus: 14.4).","dl.btn":"Für Mac laden",
-    "foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz",
-    "foot.legal":"Malibu Meter ist ein professionelles Audio-Werkzeug. Apple, Mac und macOS sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake."
+    "f.title":"Was drinsteckt",
+    "f.sub":"Was die aktuelle Version (1.29) wirklich kann.",
+    "t1.l":"Messen",
+    "t1.h":"EBU-R128-Lautheit in Echtzeit",
+    "t1.p":"Momentary, Short-term und Integrated LUFS plus Loudness Range (LRA), live, in einer eigenständigen App, die keine DAW braucht. Seit 1.29 werden die LUFS-Anzeigen nur berechnet, solange das LUFS-Meter sichtbar ist, das spart CPU.",
+    "t2.h":"Natives Multichannel",
+    "t2.p":"Im Device-Modus werden Quellen mit 5, 6 und 8 Kanälen (5.0, 5.1, 7.1) nativ mit fester Kanalbelegung gemessen (L R C LFE Ls Rs Lrs Rrs); andere Kanalzahlen werden als Stereo gemessen. App- und Screen-Audio-Modus messen immer ein Stereosignal. Kein Atmos oder 7.1.4. 5.0- und 5.1-Ergebnisse sind gegen EBU Tech 3341 geprüft. Pegelbalken und Ballistik zeigen den Stereo-Downmix; LFE zählt in den Balken nicht.",
+    "t3.h":"App-Ton abgreifen",
+    "t3.p":"Drei Modi: Device (Eingabegerät), App (eine App nach der anderen, per Process Tap, macOS 14.4+) und Screen Audio (aus einer Liste gewählte Apps, per ScreenCaptureKit). Im App-Modus ist der Pegelausgleich für den System-Mixdown automatisch (Heuristik).",
+    "t4.h":"Peak, True Peak, RMS, Spektrum",
+    "t4.p":"Peak- und RMS-Balken, True Peak (dBTP) mit Preset-Grenzwerten, eine Spektrumanzeige und ein Lissajous-Goniometer.",
+    "t5.h":"Fünf Ballistiken",
+    "t5.p":"Digital Peak, PPM (EBU, DIN, Nordic) und VU. Skalen: Linear, Final Cut Pro, DIN, VU, K-20/14/12 und EBU R128.",
+    "t6.h":"Testsignal",
+    "t6.p":"Settings &gt; Level Meter &gt; Test Signal: Preview lässt das Meter auf einem Mono-Sweep (100–8000 Hz) plus Rauschen laufen. Das geht nur im Device-Modus mit dem Eingabegerät System Default und ist nicht kalibriert. Kalibrierte 997-Hz-Töne gibt es nur als 30-s-WAV-Export (Settings &gt; Input) zum Laden in deinen NLE oder Final Cut Pro.",
+    "t7.h":"Broadcast- und Streaming-Presets",
+    "t7.p":"EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music und ATSC A/85.",
+    "t8.h":"Eigene Statusfarben",
+    "t8.p":"Lege die Farben für zu leise, im Bereich und zu laut selbst fest. Einstellungen und Verläufe lassen sich importieren und exportieren.",
+    "k.title":"Gut zu wissen",
+    "k.sub":"Was du brauchst und was noch nicht geht.",
+    "k1.h":"Voraussetzungen",
+    "k1.a":"macOS 14.0 oder neuer; der App-Modus (Process Tap) braucht macOS 14.4, Device und Screen Audio laufen ab 14.0",
+    "k1.b":"30 Tage Testphase (E-Mail beim ersten Start erforderlich), dann schaltet ein Lizenzschlüssel die App frei",
+    "k1.c":"Berechtigungen: Mikrofon (Device), Audio Capture (App), Bildschirmaufnahme (Screen Audio)",
+    "k2.h":"Außerdem gut zu wissen",
+    "k2.a":"Das LUFS-Meter ist standardmäßig aus; einschalten unter Einstellungen &gt; Spectrum",
+    "k2.b":"Nur Live-Messung; eine Datei-Analyse gibt es nicht",
+    "k2.c":"Auto-Reset bei Stille, Fenster immer im Vordergrund und automatische Updates über Sparkle",
+    "dl.title":"Malibu Meter laden",
+    "dl.sub":"Version 1.29 für macOS 14.0 oder neuer (App-Modus: 14.4).",
+    "dl.btn":"Für Mac laden",
+    "foot.help":"Hilfe",
+    "foot.sub":"Ein Studio Malibu Berlin Produkt",
+    "foot.imprint":"Impressum",
+    "foot.privacy":"Datenschutz",
+    "foot.legal":"Malibu Meter ist ein professionelles Audio-Werkzeug. Apple, Mac und macOS sind Marken von Apple Inc. Studio Malibu steht in keiner Verbindung zu Apple. © 2026 Studio Malibu / Knut Hake.",
+    "k1.d":"Die App läuft in der Sandbox und braucht eine Netzwerkverbindung für Lizenzprüfung und Updates",
+    "k2.d":"Standardwerte: Netflix-Preset, Final-Cut-Pro-Skala, Spektrum und Lissajous an, LUFS-Meter aus",
+    "k2.e":"Reset Peaks (Command-R) setzt nur den Peak Hold zurück, nicht Integrated oder LRA; die werden beim Neustart der Messung oder per Auto-Reset on Silence zurückgesetzt"
   }
 };
 </script>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malibu Meter · Help</title>
+<link rel="icon" type="image/png" href="/apps/malibu-meter/icon.png">
+<meta name="description" content="How to use Malibu Meter: getting started and step-by-step guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/apps/_shared/app-page.css">
+<style>
+:root{--accent:#34C759;--accent-ink:#04170a}
+.help{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:24px 80px}
+.toc{position:sticky;top:76px;align-self:start;font-size:13.5px}
+.toc a{display:block;color:var(--dim);padding:5px 0}
+.toc a:hover{color:var(--text)}
+.toc a.l1{color:var(--text);font-weight:600;margin-top:12px}
+.toc a.l2{padding-left:12px;font-size:12.5px}
+.doc h1{margin-top:56px;padding-top:36px;border-top:1px solid var(--line)}
+.doc h1:first-child{margin-top:0;padding-top:0;border-top:0}
+.toc .t{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.help>*{min-width:0}
+.doc{max-width:72ch;overflow-wrap:anywhere}
+.doc h1{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:12px}
+.doc h2{font-size:1.45rem;margin:44px 0 10px;padding-top:28px;border-top:1px solid var(--line)}
+.doc h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:28px 0 6px}
+.doc p,.doc li{color:#C9CCD3;font-size:15.5px}
+.doc li+li{margin-top:6px}
+.doc ol,.doc ul{padding-left:22px}
+.doc blockquote{margin:16px 0;padding:10px 16px;border-left:2px solid var(--accent);background:var(--surface);color:var(--dim);font-size:14px;border-radius:0 8px 8px 0}
+.doc code{font:400 13px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+.doc pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto}
+.doc pre code{background:none;border:0;padding:0}
+.doc strong.ui{font-weight:600;color:var(--text);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.doc img{border:1px solid var(--line);border-radius:10px;margin:14px 0}
+.doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.ver{font:400 11.5px var(--mono);color:var(--dim);margin-top:40px}
+@media(max-width:860px){.help{grid-template-columns:1fr;gap:20px}.toc{position:static}}
+</style>
+</head>
+<body>
+<script src="/nav.js" defer></script>
+<div class="wrap">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <a class="back" href="/apps/malibu-meter/" data-i18n="nav.back">← Malibu Meter</a>
+      <div class="brand"><img src="/apps/malibu-meter/icon.png" alt="">Malibu Meter <span style="color:var(--dim);font-weight:500" data-i18n="nav.help">Help</span></div>
+    </div>
+    <div class="pagebar-right">
+      <div class="lang">
+        <button id="btn-de" onclick="setLang('de')">DE</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="help">
+    <div class="toc" data-lang="en"><div class="t">On this page</div><a class="l1" href="#en0-getting-started">Getting started</a><a class="l1" href="#en1-measure-the-audio-of-one-app">Measure the audio of one app</a><a class="l1" href="#en2-measure-an-input-device">Measure an input device</a><a class="l1" href="#en3-show-the-loudness-meter-and-check-a-target">Show the loudness meter and check a target</a><a class="l1" href="#en4-calibrate-the-level-in-app-mode">Calibrate the level in App mode</a><a class="l1" href="#en5-export-test-tones">Export test tones</a><a class="l1" href="#en6-trial-license-key-and-device-switch">Trial, license key and device switch</a><a class="l1" href="#en7-reference">Reference</a><a class="l1" href="#en8-troubleshooting">Troubleshooting</a></div>
+    <article class="doc" data-lang="en" lang="en">
+<h1 id="en0-getting-started">Getting started</h1>
+<h2 id="en0-what-malibu-meter-does">What Malibu Meter does</h2>
+<p>Malibu Meter is a level and loudness meter for Mac audio. The main window shows peak and RMS level bars. You can add a spectrum display, a Lissajous goniometer and a loudness meter (momentary, short-term and integrated LUFS, loudness range, true peak). It measures audio from one app, from an input device or from selected apps via screen audio.</p>
+<h2 id="en0-before-you-start">Before you start</h2>
+<p>You need macOS 14.0 or later. Measuring a single app (the <strong class="ui">App</strong> mode) needs macOS 14.4 or later. On the first start the app asks for your email address and begins a 30-day trial; a license key unlocks it afterwards.</p>
+<h2 id="en0-start-the-trial">Start the trial</h2>
+<p>Enter your email address and click <strong class="ui">Start Trial</strong>. The trial starts only after that. The meter window opens behind the sheet.</p>
+<h2 id="en0-choose-a-source">Choose a source</h2>
+<p>No input is selected on a fresh install, so the bars stay at silence until you pick a source. Right-click the meter window and choose <strong class="ui">Settings...</strong>, then open the <strong class="ui">Input</strong> tab. For a first measurement click <strong class="ui">App</strong>, open <strong class="ui">Select Process...</strong> and pick an app that plays audio (apps with the speaker symbol are playing right now). The app name appears with a green dot.</p>
+<h2 id="en0-read-the-meter">Read the meter</h2>
+<p>Play audio in the app you picked. The bars show the level; double-click the meter to reset the peak hold. To see loudness values, press Command-Shift-L (<strong class="ui">LUFS Meter</strong> in the View menu); it is off by default.</p>
+<h2 id="en0-if-macos-asks-for-permission">If macOS asks for permission</h2>
+<p>macOS asks for microphone access right at the first start, even before you have chosen a source. Other permission prompts (capturing the audio of apps, screen recording) belong to the modes that need them. If you declined one, enable it in System Settings under Privacy &amp; Security and see the troubleshooting page.</p>
+<h1 id="en1-measure-the-audio-of-one-app">Measure the audio of one app</h1>
+<h2 id="en1-requirements">Requirements</h2>
+<p>This mode needs macOS 14.4 or later. On an earlier macOS 14 version the <strong class="ui">Input</strong> tab shows "Requires macOS 14.4 or later" and the mode is unavailable. Use <strong class="ui">Device</strong> or <strong class="ui">Screen Audio</strong> instead.</p>
+<h2 id="en1-pick-the-app">Pick the app</h2>
+<p>Right-click the meter window, choose <strong class="ui">Settings...</strong>, open <strong class="ui">Input</strong> and click <strong class="ui">App</strong>. Open <strong class="ui">Select Process...</strong>. The list shows apps that are playing audio under <strong class="ui">Audio Active</strong> and all other audio processes under <strong class="ui">Other</strong>. Choose one. Use <strong class="ui">Refresh</strong> if the app is missing.</p>
+<h2 id="en1-what-happens-next">What happens next</h2>
+<p>The name of the app appears with a green dot, and <strong class="ui">Backend:</strong> shows which capture path is active. Only one app is measured at a time; choosing another one replaces the first. After a restart the app reconnects to the app you used last. If that app is not running, it waits for about 30 seconds and shows a waiting message, then reports that the app was not found. The messages use the last part of the app's bundle identifier, not its display name.</p>
+<h2 id="en1-stop-measuring">Stop measuring</h2>
+<p>Click <strong class="ui">Stop Process Tap</strong> under the app list.</p>
+<h2 id="en1-level-looks-too-low-or-too-high">Level looks too low or too high</h2>
+<p>While <strong class="ui">Deterministic level (experimental)</strong> is off (the default), the app compensates the attenuation of the system mixdown. By default it derives the factor from the output channels of the system default output device (channels divided by two, at least ×1). If you switch the output device while measuring, choose the app again so the new value is applied. For a manual correction see the guide on calibrating the app level.</p>
+<h2 id="en1-limits">Limits</h2>
+<p>The app is measured as a stereo signal; loudness is computed from that stereo mixdown, not from surround channels. The option <strong class="ui">Deterministic level (experimental)</strong> is off by default. It can leave the meter silent on some Macs; turn it off again if the signal drops out.</p>
+<h1 id="en2-measure-an-input-device">Measure an input device</h1>
+<h2 id="en2-choose-the-device">Choose the device</h2>
+<p>Right-click the meter window, choose <strong class="ui">Settings...</strong>, open <strong class="ui">Input</strong> and click <strong class="ui">Device</strong>. Under <strong class="ui">Input Device</strong> pick <strong class="ui">System Default</strong> or one of the listed devices. <strong class="ui">None</strong> switches device capture off; it is the setting on a fresh install. Virtual devices such as loopback drivers work too. Click <strong class="ui">Refresh Devices</strong> after plugging in a device.</p>
+<h2 id="en2-allow-microphone-access">Allow microphone access</h2>
+<p>Device capture needs the macOS microphone permission. If it is missing, the <strong class="ui">Input</strong> tab shows <strong class="ui">Microphone permission required</strong> with a button <strong class="ui">Open System Preferences</strong>.</p>
+<h2 id="en2-if-a-device-disappears">If a device disappears</h2>
+<p>If the selected device is missing or not responding when the capture starts, the app falls back to <strong class="ui">System Default</strong>.</p>
+<h2 id="en2-surround-sources">Surround sources</h2>
+<p>Sources with 5, 6 or 8 channels (5.0, 5.1, 7.1 in the usual channel order) are measured for loudness with their real channels; the level bars show a stereo fold-down. Other channel counts are measured as a stereo signal.</p>
+<h2 id="en2-check-the-meters-without-a-source">Check the meters without a source</h2>
+<p>Open the <strong class="ui">Level Meter</strong> tab and tick <strong class="ui">Test Signal:</strong> to feed a built-in sweep through the meters. It works only while <strong class="ui">System Default</strong> is the input device and is not a calibrated tone. For calibrated test tones see the guide on exporting test tones.</p>
+<h1 id="en3-show-the-loudness-meter-and-check-a-target">Show the loudness meter and check a target</h1>
+<h2 id="en3-turn-the-loudness-meter-on">Turn the loudness meter on</h2>
+<p>The loudness meter is off by default. Choose <strong class="ui">LUFS Meter</strong> in the View menu (Command-Shift-L), or open <strong class="ui">Settings...</strong>, go to the <strong class="ui">Spectrum</strong> tab and tick <strong class="ui">LUFS Meter:</strong>. The values are only computed while the meter is shown.</p>
+<h2 id="en3-read-the-values">Read the values</h2>
+<p>The text view shows <strong class="ui">M</strong> (momentary), <strong class="ui">S</strong> (short-term), <strong class="ui">I</strong> (integrated), <strong class="ui">LRA</strong> (loudness range) and <strong class="ui">TP</strong> (true peak). Dashes appear until a value exists. The ring view shows momentary, short-term and integrated as three rings (momentary outside, short-term in the middle, integrated inside); the integrated value is the large number in the centre, and LRA and TP appear as small numbers below it.</p>
+<h2 id="en3-switch-between-text-and-ring">Switch between text and ring</h2>
+<p>Under <strong class="ui">Display:</strong> choose <strong class="ui">Text</strong> or <strong class="ui">Ring</strong>. In text mode <strong class="ui">Font Size:</strong> sets the size of the numbers.</p>
+<h2 id="en3-check-against-a-target">Check against a target</h2>
+<p>The box next to <strong class="ui">Standard:</strong> is ticked by default, with Netflix selected. Tick it if it is off, and pick a preset (or <strong class="ui">None</strong>): EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music or ATSC A/85. The line below shows the target, the allowed deviation and the true-peak limit. The meter marks the result as passed only when the integrated loudness is inside the range and the true peak is at or below the limit.</p>
+<h2 id="en3-change-the-status-colors">Change the status colors</h2>
+<p>With a preset active, <strong class="ui">Colors:</strong> lets you choose the colors for <strong class="ui">Too Quiet</strong>, <strong class="ui">In Range</strong> and <strong class="ui">Too Loud</strong>. <strong class="ui">Too Quiet</strong> and the other two color the integrated value; the true-peak value uses only <strong class="ui">In Range</strong> and <strong class="ui">Too Loud</strong>. The pass or fail indicator uses them as well.</p>
+<h2 id="en3-start-a-new-measurement">Start a new measurement</h2>
+<p><strong class="ui">Reset Peaks</strong> (Command-R) and a double-click on the meter reset only the peak hold, not the integrated loudness. The integrated value and the range start again when the capture restarts, for example when you choose the source again. To reset them automatically after about 1.5 seconds of silence, switch on <strong class="ui">Auto-Reset on Silence</strong> in the View menu; it is off by default.</p>
+<h1 id="en4-calibrate-the-level-in-app-mode">Calibrate the level in App mode</h1>
+<h2 id="en4-when-to-calibrate">When to calibrate</h2>
+<p>Only if a known test tone does not read its true level in <strong class="ui">App</strong> mode. By default the app compensates the system mixdown automatically from your output device, so most setups need nothing.</p>
+<h2 id="en4-prepare">Prepare</h2>
+<p>Export the test tones first (see the guide on exporting test tones) and load the file with the level you want, for example the -18 dBFS file, into the app you are measuring. Select that app under <strong class="ui">App</strong> so it shows the green dot.</p>
+<h2 id="en4-switch-to-manual-calibration">Switch to manual calibration</h2>
+<p>In the <strong class="ui">Input</strong> tab, make sure <strong class="ui">Deterministic level (experimental)</strong> is off; with it on, the controls below are hidden. Then untick <strong class="ui">Auto-detect from output device (recommended)</strong>. The controls <strong class="ui">Mixdown calibration</strong> and <strong class="ui">Auto-calibrate</strong> appear.</p>
+<h2 id="en4-calibrate-in-one-step">Calibrate in one step</h2>
+<p>Play the tone in the measured app. Under <strong class="ui">Auto-calibrate</strong> choose the level of the file you play, then click <strong class="ui">Calibrate</strong>. The status line shows the new factor, or a failure message (for example when no app is being measured or no signal arrives). The <strong class="ui">0 dBFS</strong> entry assumes a peak of exactly 0 dBFS, but the 0 dBFS file is generated at -0.1 dBFS; prefer the -18 dBFS or -20 dBFS file.</p>
+<h2 id="en4-adjust-by-hand">Adjust by hand</h2>
+<p>Move the <strong class="ui">Mixdown calibration</strong> slider until the tone reads its true level. <strong class="ui">Reset 3.0</strong> sets the factor back to 3.0.</p>
+<h1 id="en5-export-test-tones">Export test tones</h1>
+<h2 id="en5-what-you-get">What you get</h2>
+<p>Five 30-second WAV files with a 997 Hz sine tone at 48 kHz, 24-bit, stereo: 0 dBFS (generated at -0.1 dBFS so it stays true-peak safe), -10, -18, -20 and -30 dBFS. A text file lists the reading each meter should show.</p>
+<h2 id="en5-export">Export</h2>
+<p>Right-click the meter window, choose <strong class="ui">Settings...</strong>, open <strong class="ui">Input</strong> and scroll to <strong class="ui">Test Tones</strong>. Click <strong class="ui">Export Test Tones…</strong>, choose a folder and confirm with <strong class="ui">Export</strong>. Files with the same names in that folder are replaced. The status line reports how many tones were written, and the first file is shown in Finder.</p>
+<h2 id="en5-use-the-files">Use the files</h2>
+<p>Load a file into the app you measure and play it. With <strong class="ui">Digital Peak</strong> ballistics the peak meter should read the file level (the 0 dBFS file reads -0.1 dBFS), and RMS or VU about 3 dB lower. Treat loudness (LUFS) readings of this tone as approximate.</p>
+<h1 id="en6-trial-license-key-and-device-switch">Trial, license key and device switch</h1>
+<h2 id="en6-how-the-trial-works">How the trial works</h2>
+<p>The first start asks for your email address and starts a trial; the dialog names 30 days, and the license server decides the actual length. The meter keeps measuring while a license message is shown; the message is a sheet over the meter window.</p>
+<h2 id="en6-enter-a-license-key">Enter a license key</h2>
+<p>Open the settings from the app menu (Command-comma), click <strong class="ui">License</strong> in the bottom bar and choose <strong class="ui">Enter License Key…</strong>. Paste the key from your purchase confirmation email and click <strong class="ui">Activate</strong>. When the trial has ended, the blocking sheet offers <strong class="ui">I Already Have a License</strong> for the same step.</p>
+<h2 id="en6-move-the-license-to-another-mac">Move the license to another Mac</h2>
+<p>A key can be active on a limited number of devices. On the Mac that should give up the key, open the settings from the app menu, open <strong class="ui">License</strong> and choose <strong class="ui">Deactivate This Device</strong>; the key can then be entered on the other Mac. If the limit is reached while entering a key, the sheet says so and offers <strong class="ui">Switch Devices (Deactivate Old Device)</strong>. That button acts on the Mac you are using; if in doubt, deactivate on the old Mac or contact support.</p>
+<h2 id="en6-lost-key-or-blocked-sheet">Lost key or blocked sheet</h2>
+<p>In the blocking sheet <strong class="ui">Check Again</strong> checks the license once more, and <strong class="ui">Lost your license key?</strong> opens the customer portal of the payment provider. When available, the sheet also shows an ID you can send to support for a renewal.</p>
+<h2 id="en6-buy">Buy</h2>
+<p><strong class="ui">Buy Now</strong> in the blocking sheet, and <strong class="ui">Buy MalibuMeters …</strong> in the app menu while you have not bought yet, open the author's website: <strong class="ui">Buy Now</strong> the overview of his apps, <strong class="ui">Buy MalibuMeters …</strong> the Malibu Meter product page.</p>
+<h1 id="en7-reference">Reference</h1>
+<h2 id="en7-requirements-and-permissions">Requirements and permissions</h2>
+<ul>
+<li>macOS 14.0 or later; the <strong class="ui">App</strong> mode needs macOS 14.4 or later.</li>
+<li>Microphone access for <strong class="ui">Device</strong> capture (and the first start asks for it).</li>
+<li>Audio-capture access for <strong class="ui">App</strong> mode, with this usage text: "MalibuMeters needs audio capture access to monitor audio from specific applications in real-time."</li>
+<li>Screen Recording access for <strong class="ui">Screen Audio</strong>. The mode is never switched on automatically.</li>
+<li>A network connection for the license check and updates; the app is sandboxed.</li>
+</ul>
+<h2 id="en7-capture-modes">Capture modes</h2>
+<ul>
+<li><strong class="ui">App</strong> — one app at a time, measured as a stereo signal. Level compensation for the system mixdown is automatic by default.</li>
+<li><strong class="ui">Device</strong> — <strong class="ui">None</strong>, <strong class="ui">System Default</strong> or a named input device. Sources with 5, 6 or 8 channels are measured for loudness with their real channels; other counts as stereo.</li>
+<li><strong class="ui">Screen Audio</strong> — one or more apps chosen from a list, using ScreenCaptureKit. Loudness is measured on a stereo signal. Enable it with its <strong class="ui">Enable</strong> checkbox.</li>
+</ul>
+<h2 id="en7-menus-and-shortcuts">Menus and shortcuts</h2>
+<ul>
+<li><strong class="ui">Check for Updates…</strong> and <strong class="ui">Send Feedback…</strong> (Command-?) in the app menu.</li>
+<li>View menu: <strong class="ui">Title Bar</strong> (Command-Shift-W), <strong class="ui">Show Scale</strong> (Command-Shift-S), <strong class="ui">Show Value</strong> (Command-Shift-V), <strong class="ui">Peak Hold</strong> (Command-Shift-P), <strong class="ui">Spectrum</strong> (Command-Shift-F), <strong class="ui">LUFS Meter</strong> (Command-Shift-L), <strong class="ui">Level Meter</strong> (Command-Shift-M), <strong class="ui">Always on Top</strong>, <strong class="ui">Auto-Reset on Silence</strong>, <strong class="ui">Reset Peaks</strong> (Command-R).</li>
+<li>File menu: <strong class="ui">Import Settings...</strong> (Command-Shift-I), <strong class="ui">Export Settings...</strong> (Command-Shift-E), <strong class="ui">Import Gradients...</strong>, <strong class="ui">Export All Custom Gradients...</strong>.</li>
+<li>Right-click menu of the meter: the view toggles above plus <strong class="ui">Lissajous</strong> and <strong class="ui">Settings...</strong>.</li>
+<li>Double-click on the meter: reset peak hold.</li>
+</ul>
+<h2 id="en7-settings-tabs">Settings tabs</h2>
+<ul>
+<li><strong class="ui">Input</strong> — source, status, test tones.</li>
+<li><strong class="ui">Level Meter</strong> — background, size, gradient, title bar, scale and scale type, custom range, value display, peak hold, ballistics and decay rate, test signal.</li>
+<li><strong class="ui">Spectrum</strong> — spectrum, Lissajous and loudness meter.</li>
+<li><strong class="ui">Gradients</strong> — built-in and custom color gradients.</li>
+<li>Bottom bar: <strong class="ui">Import/Export</strong>, <strong class="ui">License</strong>, Privacy and Terms links, <strong class="ui">Done</strong>.</li>
+</ul>
+<h2 id="en7-defaults">Defaults</h2>
+<ul>
+<li><strong class="ui">LUFS Meter</strong>: off. <strong class="ui">Spectrum</strong>: on. <strong class="ui">Lissajous</strong>: on. <strong class="ui">Peak Hold</strong>: on. <strong class="ui">Show Scale</strong>: on. <strong class="ui">Always on Top</strong>: off. <strong class="ui">Auto-Reset on Silence</strong>: off.</li>
+<li>Scale type: Final Cut Pro. Ballistics: Digital Peak with a decay rate of 26 dB/s (the decay rate is not remembered between launches).</li>
+<li>Loudness standard: Netflix, ring display.</li>
+<li><strong class="ui">Test Signal:</strong> off. <strong class="ui">Deterministic level (experimental)</strong>: off. <strong class="ui">Auto-detect from output device (recommended)</strong>: on.</li>
+</ul>
+<h2 id="en7-ballistics">Ballistics</h2>
+<p>Five modes: Digital Peak (instant attack, adjustable decay of 10 to 60 dB/s), PPM (EBU/BBC), PPM (DIN), PPM (Nordic) and VU. Only Digital Peak has an adjustable decay rate.</p>
+<h2 id="en7-scales">Scales</h2>
+<p>Linear (dBFS), Final Cut Pro, DIN, VU (+3), K-20, K-14, K-12 and EBU R128.</p>
+<h2 id="en7-loudness-presets">Loudness presets</h2>
+<p>Each preset has a target, an allowed deviation and a true-peak limit. EBU R128: -23 LUFS, ±1 LU, -1 dB. Netflix: -27, ±2, -2. Apple TV+: -24, ±2, -1. YouTube: -14, ±1, -1. Spotify: -14, ±1, -1. Apple Music: -16, ±1, -1. ATSC A/85: -24, ±2, -2.</p>
+<h2 id="en7-spectrum-and-lissajous">Spectrum and Lissajous</h2>
+<p>Spectrum resolutions: 1, 1/2, 1/3, 1/6, 1/12, 1/24 and 1/48 octave. The frequency range, amplitude range and a calibration offset (0 to 36 dB) are adjustable. The Lissajous display has position (top or bottom), height, line width, trail length, glow and a lines or points style.</p>
+<h2 id="en7-files">Files</h2>
+<ul>
+<li>Settings are exported as a JSON file; the suggested name is <code>MalibuMeters_Settings.mmsettings</code> (the save dialog may add <code>.json</code>). Older exports can still be imported. Numeric values from a file are limited to valid ranges on import.</li>
+<li>Custom gradients are exported with the suggested name <code>MalibuMeters_Gradients.mmgradients</code>.</li>
+<li>Test tones are exported as WAV files plus a text file <code>MalibuMeters_TestTones_README.txt</code>.</li>
+</ul>
+<h1 id="en8-troubleshooting">Troubleshooting</h1>
+<h2 id="en8-the-meter-stays-at-silence-after-the-first-start">The meter stays at silence after the first start</h2>
+<p>No source is selected on a fresh install. Open <strong class="ui">Settings...</strong>, go to <strong class="ui">Input</strong> and pick an app (<strong class="ui">App</strong>), a device (<strong class="ui">Device</strong>) or apps for <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="en8-requires-macos-14-4-or-later">"Requires macOS 14.4 or later"</h2>
+<p>The <strong class="ui">App</strong> mode is not available on macOS 14.0 to 14.3. Use <strong class="ui">Device</strong> or <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="en8-no-audio-received-enable-screen-recording-permission">"No audio received — enable Screen Recording permission …"</h2>
+<p>The app shows this text when both channels in <strong class="ui">App</strong> mode stay at or below -59 dB for about three seconds. It can also appear simply because the app is silent or very quiet. Play audio in the app first. If it stays silent, check the Privacy &amp; Security settings of macOS for audio capture and, as the message suggests, Screen Recording. Which of the two App mode needs on your system is not verified here.</p>
+<h2 id="en8-process-tap-failed-waiting-for-or-not-found">"Process Tap failed", "Waiting for …" or "… not found"</h2>
+<p>"Waiting for &lt;app&gt;… (n)" appears after a restart while the app you used last is not running yet; start it. "Process Tap: &lt;app&gt; not found" means the app did not appear after about 30 seconds; choose it again under <strong class="ui">Select Process...</strong>. "Process Tap failed" shows the system's reason; choose the app again. In these messages &lt;app&gt; is the last part of the app's bundle identifier, not its display name. "Waiting for …" also appears in <strong class="ui">Screen Audio</strong> mode when all selected apps have quit.</p>
+<h2 id="en8-the-level-in-app-mode-is-off-or-it-went-silent-after-switching-speakers">The level in App mode is off, or it went silent after switching speakers</h2>
+<p>The compensation is derived from the output device when you choose the app. After you switch the output device (for example headphones), choose the app again. If it still reads wrong, calibrate with a test tone (see the guide on calibrating).</p>
+<h2 id="en8-app-mode-is-silent-with-deterministic-level-experimental-on">App mode is silent with "Deterministic level (experimental)" on</h2>
+<p>This option can leave the signal silent on some Macs. Turn <strong class="ui">Deterministic level (experimental)</strong> off and choose the app again.</p>
+<h2 id="en8-microphone-permission-required">"Microphone permission required"</h2>
+<p><strong class="ui">Device</strong> capture needs microphone access. Click <strong class="ui">Open System Preferences</strong> and allow MalibuMeters under Microphone.</p>
+<h2 id="en8-the-loudness-meter-is-missing">The loudness meter is missing</h2>
+<p>It is off by default. Press Command-Shift-L or tick <strong class="ui">LUFS Meter:</strong> in the <strong class="ui">Spectrum</strong> tab.</p>
+<h2 id="en8-the-integrated-value-does-not-reset">The integrated value does not reset</h2>
+<p><strong class="ui">Reset Peaks</strong> and a double-click reset only the peak hold. Choose the source again, or switch on <strong class="ui">Auto-Reset on Silence</strong>.</p>
+<h2 id="en8-test-signal-does-nothing">"Test Signal:" does nothing</h2>
+<p>The test signal works only with the <strong class="ui">System Default</strong> input device, not with named devices, <strong class="ui">App</strong> or <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="en8-surround-sources-read-like-stereo">Surround sources read like stereo</h2>
+<p>Loudness uses the real channels only in <strong class="ui">Device</strong> mode with 5, 6 or 8 channels. In <strong class="ui">App</strong> and <strong class="ui">Screen Audio</strong> it is measured on a stereo signal.</p>
+<h2 id="en8-no-apps-selected-for-capture-in-screen-audio">"No apps selected for capture" in Screen Audio</h2>
+<p>Open the <strong class="ui">Applications</strong> menu and tick at least one app after enabling <strong class="ui">Screen Audio</strong>; the tab shows "Select at least one app to monitor" while none is selected.</p>
+<h2 id="en8-license-messages">License messages</h2>
+<p>In the key-entry sheet: "This key is already active on the maximum number of devices" means deactivate a device (see the license guide); "This key is invalid or has been revoked" means check the key; "Couldn't reach the license server" means try again later. In the key-entry sheet and in the blocking sheet: "Your system clock appears to have moved backward" means correct the clock; "Couldn't verify your license yet" means connect to the internet once.</p>
+<p class="ver">Written for version 1.29.</p>
+    </article>
+    <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-das-audio-einer-app-messen">Das Audio einer App messen</a><a class="l1" href="#de2-ein-eingabeger-t-messen">Ein Eingabegerät messen</a><a class="l1" href="#de3-lautheitsmesser-anzeigen-und-gegen-ein-ziel-pr-fen">Lautheitsmesser anzeigen und gegen ein Ziel prüfen</a><a class="l1" href="#de4-den-pegel-im-app-modus-kalibrieren">Den Pegel im App-Modus kalibrieren</a><a class="l1" href="#de5-testt-ne-exportieren">Testtöne exportieren</a><a class="l1" href="#de6-testphase-lizenzschl-ssel-und-ger-te-wechsel">Testphase, Lizenzschlüssel und Geräte-Wechsel</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlersuche">Fehlersuche</a></div>
+    <article class="doc" data-lang="de" hidden lang="de">
+<h1 id="de0-erste-schritte">Erste Schritte</h1>
+<h2 id="de0-was-malibu-meter-macht">Was Malibu Meter macht</h2>
+<p>Malibu Meter ist ein Pegel- und Lautheitsmesser für Mac-Audio. Das Hauptfenster zeigt Peak- und RMS-Pegelbalken. Du kannst eine Spektrumanzeige, ein Lissajous-Goniometer und einen Lautheitsmesser (Momentary, Short-term und Integrated LUFS, Loudness Range, True Peak) dazuschalten. Gemessen wird das Audio einer App, eines Eingabegeräts oder ausgewählter Apps über Screen Audio.</p>
+<h2 id="de0-bevor-du-anf-ngst">Bevor du anfängst</h2>
+<p>Du brauchst macOS 14.0 oder neuer. Eine einzelne App messen (der Modus <strong class="ui">App</strong>) geht erst ab macOS 14.4. Beim ersten Start fragt die App nach deiner E-Mail-Adresse und beginnt eine 30-tägige Testphase; danach schaltet ein Lizenzschlüssel die App frei.</p>
+<h2 id="de0-testphase-starten">Testphase starten</h2>
+<p>Gib deine E-Mail-Adresse ein und klicke auf <strong class="ui">Start Trial</strong>. Erst danach beginnt die Testphase. Das Meter-Fenster öffnet sich hinter dem Dialog.</p>
+<h2 id="de0-quelle-w-hlen">Quelle wählen</h2>
+<p>Bei einer frischen Installation ist kein Eingang gewählt, die Balken bleiben deshalb still, bis du eine Quelle wählst. Rechtsklick auf das Meter-Fenster, <strong class="ui">Settings...</strong> wählen und den Tab <strong class="ui">Input</strong> öffnen. Für die erste Messung auf <strong class="ui">App</strong> klicken, <strong class="ui">Select Process...</strong> öffnen und eine App wählen, die Ton abspielt (Apps mit Lautsprechersymbol spielen gerade). Der App-Name erscheint mit einem grünen Punkt.</p>
+<h2 id="de0-meter-ablesen">Meter ablesen</h2>
+<p>Spiele Audio in der gewählten App ab. Die Balken zeigen den Pegel; per Doppelklick auf das Meter setzt du den Peak Hold zurück. Für Lautheitswerte drückst du Befehl-Umschalt-L (<strong class="ui">LUFS Meter</strong> im Menü View); standardmäßig ist es aus.</p>
+<h2 id="de0-wenn-macos-nach-berechtigungen-fragt">Wenn macOS nach Berechtigungen fragt</h2>
+<p>macOS fragt gleich beim ersten Start nach Mikrofonzugriff, noch bevor du eine Quelle gewählt hast. Weitere Abfragen (Audio der Apps aufnehmen, Bildschirmaufnahme) gehören zu den Modi, die sie brauchen. Hast du eine abgelehnt, aktiviere sie in den Systemeinstellungen unter Datenschutz &amp; Sicherheit und lies die Seite zur Fehlersuche.</p>
+<h1 id="de1-das-audio-einer-app-messen">Das Audio einer App messen</h1>
+<h2 id="de1-voraussetzungen">Voraussetzungen</h2>
+<p>Dieser Modus braucht macOS 14.4 oder neuer. Auf einer früheren macOS-14-Version zeigt der Tab <strong class="ui">Input</strong> den Text „Requires macOS 14.4 or later“, und der Modus steht nicht zur Verfügung. Nutze dann <strong class="ui">Device</strong> oder <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="de1-app-ausw-hlen">App auswählen</h2>
+<p>Rechtsklick auf das Meter-Fenster, <strong class="ui">Settings...</strong> wählen, <strong class="ui">Input</strong> öffnen und auf <strong class="ui">App</strong> klicken. <strong class="ui">Select Process...</strong> öffnen. Die Liste zeigt Apps, die gerade Ton ausgeben, unter <strong class="ui">Audio Active</strong> und alle übrigen Audio-Prozesse unter <strong class="ui">Other</strong>. Wähle einen Eintrag. Fehlt die App, hilft <strong class="ui">Refresh</strong>.</p>
+<h2 id="de1-was-danach-passiert">Was danach passiert</h2>
+<p>Der Name der App erscheint mit einem grünen Punkt, und <strong class="ui">Backend:</strong> zeigt, welcher Aufnahmeweg aktiv ist. Es wird immer nur eine App gemessen; eine andere Auswahl ersetzt die erste. Nach einem Neustart verbindet sich die App wieder mit der zuletzt genutzten App. Läuft sie nicht, wartet die App etwa 30 Sekunden und zeigt eine Wartemeldung, danach meldet sie, dass die App nicht gefunden wurde. Die Meldungen nennen den letzten Teil der Bundle-ID, nicht den Anzeigenamen der App.</p>
+<h2 id="de1-messung-beenden">Messung beenden</h2>
+<p>Klicke unter der App-Liste auf <strong class="ui">Stop Process Tap</strong>.</p>
+<h2 id="de1-pegel-wirkt-zu-niedrig-oder-zu-hoch">Pegel wirkt zu niedrig oder zu hoch</h2>
+<p>Solange <strong class="ui">Deterministic level (experimental)</strong> aus ist (Standard), gleicht die App die Dämpfung des System-Mixdowns aus. Standardmäßig leitet sie den Faktor aus den Ausgangskanälen des System-Standardausgabegeräts ab (Kanäle geteilt durch zwei, mindestens ×1). Wechselst du während der Messung das Ausgabegerät, wähle die App erneut, damit der neue Wert gilt. Für eine manuelle Korrektur siehe die Anleitung zum Kalibrieren des App-Pegels.</p>
+<h2 id="de1-grenzen">Grenzen</h2>
+<p>Die App wird als Stereosignal gemessen; die Lautheit wird aus diesem Stereo-Mixdown berechnet, nicht aus Surround-Kanälen. Die Option <strong class="ui">Deterministic level (experimental)</strong> ist standardmäßig aus. Sie kann das Meter auf manchen Macs stumm lassen; schalte sie wieder aus, wenn das Signal aussetzt.</p>
+<h1 id="de2-ein-eingabeger-t-messen">Ein Eingabegerät messen</h1>
+<h2 id="de2-ger-t-w-hlen">Gerät wählen</h2>
+<p>Rechtsklick auf das Meter-Fenster, <strong class="ui">Settings...</strong> wählen, <strong class="ui">Input</strong> öffnen und auf <strong class="ui">Device</strong> klicken. Unter <strong class="ui">Input Device</strong> wählst du <strong class="ui">System Default</strong> oder eines der aufgelisteten Geräte. <strong class="ui">None</strong> schaltet die Geräteaufnahme aus; so ist eine frische Installation eingestellt. Auch virtuelle Geräte wie Loopback-Treiber funktionieren. Nach dem Anstecken eines Geräts klickst du auf <strong class="ui">Refresh Devices</strong>.</p>
+<h2 id="de2-mikrofonzugriff-erlauben">Mikrofonzugriff erlauben</h2>
+<p>Die Geräteaufnahme braucht die macOS-Berechtigung für das Mikrofon. Fehlt sie, zeigt der Tab <strong class="ui">Input</strong> den Hinweis <strong class="ui">Microphone permission required</strong> mit der Schaltfläche <strong class="ui">Open System Preferences</strong>.</p>
+<h2 id="de2-wenn-ein-ger-t-verschwindet">Wenn ein Gerät verschwindet</h2>
+<p>Fehlt das gewählte Gerät beim Start der Aufnahme oder antwortet es nicht, weicht die App auf <strong class="ui">System Default</strong> aus.</p>
+<h2 id="de2-surround-quellen">Surround-Quellen</h2>
+<p>Quellen mit 5, 6 oder 8 Kanälen (5.0, 5.1, 7.1 in der üblichen Kanalreihenfolge) werden für die Lautheit mit ihren echten Kanälen gemessen; die Pegelbalken zeigen einen Stereo-Downmix. Andere Kanalzahlen werden als Stereosignal gemessen.</p>
+<h2 id="de2-meter-ohne-quelle-pr-fen">Meter ohne Quelle prüfen</h2>
+<p>Öffne den Tab <strong class="ui">Level Meter</strong> und setze das Häkchen bei <strong class="ui">Test Signal:</strong>, um einen eingebauten Sweep durch die Meter zu schicken. Das funktioniert nur, solange <strong class="ui">System Default</strong> das Eingabegerät ist, und ist kein kalibrierter Ton. Kalibrierte Testtöne findest du in der Anleitung zum Exportieren der Testtöne.</p>
+<h1 id="de3-lautheitsmesser-anzeigen-und-gegen-ein-ziel-pr-fen">Lautheitsmesser anzeigen und gegen ein Ziel prüfen</h1>
+<h2 id="de3-lautheitsmesser-einschalten">Lautheitsmesser einschalten</h2>
+<p>Der Lautheitsmesser ist standardmäßig aus. Wähle <strong class="ui">LUFS Meter</strong> im Menü View (Befehl-Umschalt-L), oder öffne <strong class="ui">Settings...</strong>, gehe zum Tab <strong class="ui">Spectrum</strong> und setze das Häkchen bei <strong class="ui">LUFS Meter:</strong>. Die Werte werden nur berechnet, solange das Meter sichtbar ist.</p>
+<h2 id="de3-werte-ablesen">Werte ablesen</h2>
+<p>Die Textansicht zeigt <strong class="ui">M</strong> (Momentary), <strong class="ui">S</strong> (Short-term), <strong class="ui">I</strong> (Integrated), <strong class="ui">LRA</strong> (Loudness Range) und <strong class="ui">TP</strong> (True Peak). Bis ein Wert vorliegt, stehen Striche da. Die Ringansicht zeigt Momentary, Short-term und Integrated als drei Ringe (außen Momentary, in der Mitte Short-term, innen Integrated); der Integrated-Wert steht als große Zahl in der Mitte, LRA und TP als kleine Zahlen darunter.</p>
+<h2 id="de3-zwischen-text-und-ring-wechseln">Zwischen Text und Ring wechseln</h2>
+<p>Unter <strong class="ui">Display:</strong> wählst du <strong class="ui">Text</strong> oder <strong class="ui">Ring</strong>. Im Textmodus stellt <strong class="ui">Font Size:</strong> die Größe der Zahlen ein.</p>
+<h2 id="de3-gegen-ein-ziel-pr-fen">Gegen ein Ziel prüfen</h2>
+<p>Das Häkchen neben <strong class="ui">Standard:</strong> ist standardmäßig gesetzt, mit Netflix als Auswahl. Setze es, falls es aus ist, und wähle ein Preset (oder <strong class="ui">None</strong>): EBU R128, Netflix, Apple TV+, YouTube, Spotify, Apple Music oder ATSC A/85. Die Zeile darunter zeigt Ziel, erlaubte Abweichung und True-Peak-Grenze. Das Meter markiert das Ergebnis nur dann als bestanden, wenn die integrierte Lautheit im Bereich liegt und der True Peak höchstens die Grenze erreicht.</p>
+<h2 id="de3-statusfarben-ndern">Statusfarben ändern</h2>
+<p>Bei aktivem Preset kannst du unter <strong class="ui">Colors:</strong> die Farben für <strong class="ui">Too Quiet</strong>, <strong class="ui">In Range</strong> und <strong class="ui">Too Loud</strong> wählen. Den integrierten Wert färben alle drei, der True-Peak-Wert nutzt nur <strong class="ui">In Range</strong> und <strong class="ui">Too Loud</strong>. Auch die Bestanden/Nicht-bestanden-Anzeige verwendet sie.</p>
+<h2 id="de3-neue-messung-beginnen">Neue Messung beginnen</h2>
+<p><strong class="ui">Reset Peaks</strong> (Befehl-R) und ein Doppelklick auf das Meter setzen nur den Peak Hold zurück, nicht die integrierte Lautheit. Integrated und Range beginnen neu, wenn die Aufnahme neu startet, etwa wenn du die Quelle erneut wählst. Damit sie nach etwa 1,5 Sekunden Stille automatisch zurückgesetzt werden, schaltest du im Menü View <strong class="ui">Auto-Reset on Silence</strong> ein; standardmäßig ist es aus.</p>
+<h1 id="de4-den-pegel-im-app-modus-kalibrieren">Den Pegel im App-Modus kalibrieren</h1>
+<h2 id="de4-wann-kalibrieren">Wann kalibrieren</h2>
+<p>Nur wenn ein bekannter Testton im Modus <strong class="ui">App</strong> nicht seinen wahren Pegel anzeigt. Standardmäßig gleicht die App den System-Mixdown automatisch anhand deines Ausgabegeräts aus, die meisten Setups brauchen deshalb nichts.</p>
+<h2 id="de4-vorbereiten">Vorbereiten</h2>
+<p>Exportiere zuerst die Testtöne (siehe Anleitung zum Exportieren der Testtöne) und lade die Datei mit dem gewünschten Pegel, zum Beispiel die -18-dBFS-Datei, in die App, die du misst. Wähle diese App unter <strong class="ui">App</strong>, sodass sie den grünen Punkt zeigt.</p>
+<h2 id="de4-auf-manuelle-kalibrierung-umschalten">Auf manuelle Kalibrierung umschalten</h2>
+<p>Stelle im Tab <strong class="ui">Input</strong> sicher, dass <strong class="ui">Deterministic level (experimental)</strong> aus ist; ist es an, sind die folgenden Regler verborgen. Entferne dann das Häkchen bei <strong class="ui">Auto-detect from output device (recommended)</strong>. Danach erscheinen <strong class="ui">Mixdown calibration</strong> und <strong class="ui">Auto-calibrate</strong>.</p>
+<h2 id="de4-in-einem-schritt-kalibrieren">In einem Schritt kalibrieren</h2>
+<p>Spiele den Ton in der gemessenen App ab. Wähle unter <strong class="ui">Auto-calibrate</strong> den Pegel der abgespielten Datei und klicke auf <strong class="ui">Calibrate</strong>. Die Statuszeile zeigt den neuen Faktor oder eine Fehlermeldung (zum Beispiel wenn keine App gemessen wird oder kein Signal ankommt). Der Eintrag <strong class="ui">0 dBFS</strong> nimmt einen Spitzenwert von genau 0 dBFS an, die 0-dBFS-Datei ist aber mit -0,1 dBFS erzeugt; nimm lieber die Datei mit -18 dBFS oder -20 dBFS.</p>
+<h2 id="de4-von-hand-einstellen">Von Hand einstellen</h2>
+<p>Verschiebe den Regler <strong class="ui">Mixdown calibration</strong>, bis der Ton seinen wahren Pegel anzeigt. <strong class="ui">Reset 3.0</strong> setzt den Faktor auf 3,0 zurück.</p>
+<h1 id="de5-testt-ne-exportieren">Testtöne exportieren</h1>
+<h2 id="de5-was-du-bekommst">Was du bekommst</h2>
+<p>Fünf WAV-Dateien von 30 Sekunden mit einem 997-Hz-Sinus bei 48 kHz, 24 Bit, Stereo: 0 dBFS (mit -0,1 dBFS erzeugt, damit er true-peak-sicher bleibt), -10, -18, -20 und -30 dBFS. Eine Textdatei nennt die Anzeige, die jedes Meter zeigen sollte.</p>
+<h2 id="de5-exportieren">Exportieren</h2>
+<p>Rechtsklick auf das Meter-Fenster, <strong class="ui">Settings...</strong> wählen, <strong class="ui">Input</strong> öffnen und zu <strong class="ui">Test Tones</strong> scrollen. Klicke auf <strong class="ui">Export Test Tones…</strong>, wähle einen Ordner und bestätige mit <strong class="ui">Export</strong>. Gleichnamige Dateien in diesem Ordner werden ersetzt. Die Statuszeile meldet, wie viele Töne geschrieben wurden, und die erste Datei wird im Finder angezeigt.</p>
+<h2 id="de5-dateien-verwenden">Dateien verwenden</h2>
+<p>Lade eine Datei in die App, die du misst, und spiele sie ab. Mit der Ballistik <strong class="ui">Digital Peak</strong> sollte das Peak-Meter den Pegel der Datei zeigen (die 0-dBFS-Datei zeigt -0,1 dBFS) und RMS oder VU etwa 3 dB weniger. Lautheitswerte (LUFS) dieses Tons sind nur Näherungen.</p>
+<h1 id="de6-testphase-lizenzschl-ssel-und-ger-te-wechsel">Testphase, Lizenzschlüssel und Geräte-Wechsel</h1>
+<h2 id="de6-so-funktioniert-die-testphase">So funktioniert die Testphase</h2>
+<p>Der erste Start fragt nach deiner E-Mail-Adresse und beginnt eine Testphase; der Dialog nennt 30 Tage, die tatsächliche Dauer bestimmt der Lizenzserver. Das Meter misst weiter, während ein Lizenzhinweis angezeigt wird; der Hinweis liegt als Dialog über dem Meter-Fenster.</p>
+<h2 id="de6-lizenzschl-ssel-eingeben">Lizenzschlüssel eingeben</h2>
+<p>Öffne die Einstellungen über das App-Menü (Befehl-Komma), klicke in der unteren Leiste auf <strong class="ui">License</strong> und wähle <strong class="ui">Enter License Key…</strong>. Füge den Schlüssel aus deiner Kaufbestätigung ein und klicke auf <strong class="ui">Activate</strong>. Ist die Testphase abgelaufen, bietet der Sperr-Dialog denselben Schritt über <strong class="ui">I Already Have a License</strong> an.</p>
+<h2 id="de6-lizenz-auf-einen-anderen-mac-bertragen">Lizenz auf einen anderen Mac übertragen</h2>
+<p>Ein Schlüssel kann auf einer begrenzten Zahl von Geräten aktiv sein. Öffne auf dem Mac, der den Schlüssel abgeben soll, die Einstellungen über das App-Menü, öffne <strong class="ui">License</strong> und wähle <strong class="ui">Deactivate This Device</strong>; danach lässt sich der Schlüssel auf dem anderen Mac eingeben. Ist beim Eingeben das Limit erreicht, nennt der Dialog das und bietet <strong class="ui">Switch Devices (Deactivate Old Device)</strong> an. Diese Schaltfläche wirkt auf den Mac, an dem du gerade arbeitest; im Zweifel deaktiviere am alten Mac oder wende dich an den Support.</p>
+<h2 id="de6-schl-ssel-verloren-oder-sperr-dialog">Schlüssel verloren oder Sperr-Dialog</h2>
+<p>Im Sperr-Dialog prüft <strong class="ui">Check Again</strong> die Lizenz noch einmal, und <strong class="ui">Lost your license key?</strong> öffnet das Kundenportal des Zahlungsanbieters. Sofern vorhanden, zeigt der Dialog außerdem eine ID, die du dem Support für eine Verlängerung schicken kannst.</p>
+<h2 id="de6-kaufen">Kaufen</h2>
+<p><strong class="ui">Buy Now</strong> im Sperr-Dialog und <strong class="ui">Buy MalibuMeters …</strong> im App-Menü, solange du noch nicht gekauft hast, öffnen die Website des Autors: <strong class="ui">Buy Now</strong> die Übersicht seiner Apps, <strong class="ui">Buy MalibuMeters …</strong> die Produktseite von Malibu Meter.</p>
+<h1 id="de7-referenz">Referenz</h1>
+<h2 id="de7-voraussetzungen-und-berechtigungen">Voraussetzungen und Berechtigungen</h2>
+<ul>
+<li>macOS 14.0 oder neuer; der Modus <strong class="ui">App</strong> braucht macOS 14.4 oder neuer.</li>
+<li>Mikrofonzugriff für die Aufnahme im Modus <strong class="ui">Device</strong> (der erste Start fragt danach).</li>
+<li>Zugriff auf die Audio-Aufnahme für den Modus <strong class="ui">App</strong>, mit diesem Verwendungstext: „MalibuMeters needs audio capture access to monitor audio from specific applications in real-time.“</li>
+<li>Bildschirmaufnahme-Zugriff für <strong class="ui">Screen Audio</strong>. Der Modus wird nie automatisch eingeschaltet.</li>
+<li>Eine Netzwerkverbindung für die Lizenzprüfung und Updates; die App läuft in der Sandbox.</li>
+</ul>
+<h2 id="de7-aufnahmemodi">Aufnahmemodi</h2>
+<ul>
+<li><strong class="ui">App</strong> — eine App zur Zeit, als Stereosignal gemessen. Der Pegelausgleich für den System-Mixdown läuft standardmäßig automatisch.</li>
+<li><strong class="ui">Device</strong> — <strong class="ui">None</strong>, <strong class="ui">System Default</strong> oder ein benanntes Eingabegerät. Quellen mit 5, 6 oder 8 Kanälen werden für die Lautheit mit ihren echten Kanälen gemessen, andere Kanalzahlen als Stereo.</li>
+<li><strong class="ui">Screen Audio</strong> — eine oder mehrere Apps aus einer Liste, über ScreenCaptureKit. Die Lautheit wird an einem Stereosignal gemessen. Einschalten mit dem Häkchen <strong class="ui">Enable</strong>.</li>
+</ul>
+<h2 id="de7-men-s-und-k-rzel">Menüs und Kürzel</h2>
+<ul>
+<li><strong class="ui">Check for Updates…</strong> und <strong class="ui">Send Feedback…</strong> (Befehl-?) im App-Menü.</li>
+<li>Menü View: <strong class="ui">Title Bar</strong> (Befehl-Umschalt-W), <strong class="ui">Show Scale</strong> (Befehl-Umschalt-S), <strong class="ui">Show Value</strong> (Befehl-Umschalt-V), <strong class="ui">Peak Hold</strong> (Befehl-Umschalt-P), <strong class="ui">Spectrum</strong> (Befehl-Umschalt-F), <strong class="ui">LUFS Meter</strong> (Befehl-Umschalt-L), <strong class="ui">Level Meter</strong> (Befehl-Umschalt-M), <strong class="ui">Always on Top</strong>, <strong class="ui">Auto-Reset on Silence</strong>, <strong class="ui">Reset Peaks</strong> (Befehl-R).</li>
+<li>Menü File: <strong class="ui">Import Settings...</strong> (Befehl-Umschalt-I), <strong class="ui">Export Settings...</strong> (Befehl-Umschalt-E), <strong class="ui">Import Gradients...</strong>, <strong class="ui">Export All Custom Gradients...</strong>.</li>
+<li>Rechtsklick-Menü des Meters: die obigen Anzeige-Schalter plus <strong class="ui">Lissajous</strong> und <strong class="ui">Settings...</strong>.</li>
+<li>Doppelklick auf das Meter: Peak Hold zurücksetzen.</li>
+</ul>
+<h2 id="de7-tabs-der-einstellungen">Tabs der Einstellungen</h2>
+<ul>
+<li><strong class="ui">Input</strong> — Quelle, Status, Testtöne.</li>
+<li><strong class="ui">Level Meter</strong> — Hintergrund, Größe, Verlauf, Titelleiste, Skala und Skalentyp, eigener Bereich, Wertanzeige, Peak Hold, Ballistik und Abklingrate, Testsignal.</li>
+<li><strong class="ui">Spectrum</strong> — Spektrum, Lissajous und Lautheitsmesser.</li>
+<li><strong class="ui">Gradients</strong> — eingebaute und eigene Farbverläufe.</li>
+<li>Untere Leiste: <strong class="ui">Import/Export</strong>, <strong class="ui">License</strong>, Links zu Datenschutz und Nutzungsbedingungen, <strong class="ui">Done</strong>.</li>
+</ul>
+<h2 id="de7-standardwerte">Standardwerte</h2>
+<ul>
+<li><strong class="ui">LUFS Meter</strong>: aus. <strong class="ui">Spectrum</strong>: an. <strong class="ui">Lissajous</strong>: an. <strong class="ui">Peak Hold</strong>: an. <strong class="ui">Show Scale</strong>: an. <strong class="ui">Always on Top</strong>: aus. <strong class="ui">Auto-Reset on Silence</strong>: aus.</li>
+<li>Skalentyp: Final Cut Pro. Ballistik: Digital Peak mit einer Abklingrate von 26 dB/s (die Abklingrate wird zwischen Starts nicht gemerkt).</li>
+<li>Lautheitsstandard: Netflix, Ringanzeige.</li>
+<li><strong class="ui">Test Signal:</strong> aus. <strong class="ui">Deterministic level (experimental)</strong>: aus. <strong class="ui">Auto-detect from output device (recommended)</strong>: an.</li>
+</ul>
+<h2 id="de7-ballistik">Ballistik</h2>
+<p>Fünf Modi: Digital Peak (sofortiger Anstieg, einstellbare Abklingrate von 10 bis 60 dB/s), PPM (EBU/BBC), PPM (DIN), PPM (Nordic) und VU. Nur Digital Peak hat eine einstellbare Abklingrate.</p>
+<h2 id="de7-skalen">Skalen</h2>
+<p>Linear (dBFS), Final Cut Pro, DIN, VU (+3), K-20, K-14, K-12 und EBU R128.</p>
+<h2 id="de7-lautheits-presets">Lautheits-Presets</h2>
+<p>Jedes Preset hat ein Ziel, eine erlaubte Abweichung und eine True-Peak-Grenze. EBU R128: -23 LUFS, ±1 LU, -1 dB. Netflix: -27, ±2, -2. Apple TV+: -24, ±2, -1. YouTube: -14, ±1, -1. Spotify: -14, ±1, -1. Apple Music: -16, ±1, -1. ATSC A/85: -24, ±2, -2.</p>
+<h2 id="de7-spektrum-und-lissajous">Spektrum und Lissajous</h2>
+<p>Spektrum-Auflösungen: 1, 1/2, 1/3, 1/6, 1/12, 1/24 und 1/48 Oktave. Frequenzbereich, Amplitudenbereich und ein Kalibrier-Offset (0 bis 36 dB) sind einstellbar. Die Lissajous-Anzeige hat Position (oben oder unten), Höhe, Linienbreite, Nachleuchtlänge, Glow und einen Linien- oder Punktstil.</p>
+<h2 id="de7-dateien">Dateien</h2>
+<ul>
+<li>Einstellungen werden als JSON-Datei exportiert; der vorgeschlagene Name ist <code>MalibuMeters_Settings.mmsettings</code> (der Sichern-Dialog kann <code>.json</code> anhängen). Ältere Exporte lassen sich weiter importieren. Zahlenwerte aus einer Datei werden beim Import auf zulässige Bereiche begrenzt.</li>
+<li>Eigene Farbverläufe werden mit dem vorgeschlagenen Namen <code>MalibuMeters_Gradients.mmgradients</code> exportiert.</li>
+<li>Testtöne werden als WAV-Dateien plus Textdatei <code>MalibuMeters_TestTones_README.txt</code> exportiert.</li>
+</ul>
+<h1 id="de8-fehlersuche">Fehlersuche</h1>
+<h2 id="de8-das-meter-bleibt-nach-dem-ersten-start-still">Das Meter bleibt nach dem ersten Start still</h2>
+<p>Bei einer frischen Installation ist keine Quelle gewählt. Öffne <strong class="ui">Settings...</strong>, gehe zu <strong class="ui">Input</strong> und wähle eine App (<strong class="ui">App</strong>), ein Gerät (<strong class="ui">Device</strong>) oder Apps für <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="de8-requires-macos-14-4-or-later">„Requires macOS 14.4 or later“</h2>
+<p>Der Modus <strong class="ui">App</strong> steht auf macOS 14.0 bis 14.3 nicht zur Verfügung. Nutze <strong class="ui">Device</strong> oder <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="de8-no-audio-received-enable-screen-recording-permission">„No audio received — enable Screen Recording permission …“</h2>
+<p>Die App zeigt diesen Text, wenn beide Kanäle im Modus <strong class="ui">App</strong> etwa drei Sekunden lang bei höchstens -59 dB bleiben. Er kann auch einfach erscheinen, weil die App still oder sehr leise ist. Spiele zuerst Audio in der App ab. Bleibt es still, prüfe in den Datenschutz-Einstellungen von macOS die Audio-Aufnahme und, wie die Meldung vorschlägt, die Bildschirmaufnahme. Welche der beiden der App-Modus auf deinem System wirklich braucht, ist hier nicht verifiziert.</p>
+<h2 id="de8-process-tap-failed-waiting-for-oder-not-found">„Process Tap failed“, „Waiting for …“ oder „… not found“</h2>
+<p>„Waiting for &lt;App&gt;… (n)“ erscheint nach einem Neustart, solange die zuletzt genutzte App noch nicht läuft; starte sie. „Process Tap: &lt;App&gt; not found“ heißt, dass die App nach etwa 30 Sekunden nicht aufgetaucht ist; wähle sie erneut unter <strong class="ui">Select Process...</strong>. „Process Tap failed“ nennt den Grund des Systems; wähle die App erneut. In diesen Meldungen ist &lt;App&gt; der letzte Teil der Bundle-ID, nicht der Anzeigename. „Waiting for …“ erscheint auch im Modus <strong class="ui">Screen Audio</strong>, wenn alle gewählten Apps beendet wurden.</p>
+<h2 id="de8-der-pegel-im-app-modus-stimmt-nicht-oder-er-ist-nach-dem-lautsprecherwechsel-still">Der Pegel im App-Modus stimmt nicht, oder er ist nach dem Lautsprecherwechsel still</h2>
+<p>Der Ausgleich wird beim Wählen der App aus dem Ausgabegerät abgeleitet. Nach einem Wechsel des Ausgabegeräts (zum Beispiel Kopfhörer) wählst du die App erneut. Stimmt der Wert dann noch nicht, kalibriere mit einem Testton (siehe Anleitung zum Kalibrieren).</p>
+<h2 id="de8-app-modus-ist-still-wenn-deterministic-level-experimental-an-ist">App-Modus ist still, wenn „Deterministic level (experimental)“ an ist</h2>
+<p>Diese Option kann das Signal auf manchen Macs stumm lassen. Schalte <strong class="ui">Deterministic level (experimental)</strong> aus und wähle die App erneut.</p>
+<h2 id="de8-microphone-permission-required">„Microphone permission required“</h2>
+<p>Die Aufnahme im Modus <strong class="ui">Device</strong> braucht Mikrofonzugriff. Klicke auf <strong class="ui">Open System Preferences</strong> und erlaube MalibuMeters unter Mikrofon.</p>
+<h2 id="de8-der-lautheitsmesser-fehlt">Der Lautheitsmesser fehlt</h2>
+<p>Er ist standardmäßig aus. Drücke Befehl-Umschalt-L oder setze im Tab <strong class="ui">Spectrum</strong> das Häkchen bei <strong class="ui">LUFS Meter:</strong>.</p>
+<h2 id="de8-der-integrated-wert-l-sst-sich-nicht-zur-cksetzen">Der Integrated-Wert lässt sich nicht zurücksetzen</h2>
+<p><strong class="ui">Reset Peaks</strong> und ein Doppelklick setzen nur den Peak Hold zurück. Wähle die Quelle erneut oder schalte <strong class="ui">Auto-Reset on Silence</strong> ein.</p>
+<h2 id="de8-test-signal-bewirkt-nichts">„Test Signal:“ bewirkt nichts</h2>
+<p>Das Testsignal funktioniert nur mit dem Eingabegerät <strong class="ui">System Default</strong>, nicht mit benannten Geräten, <strong class="ui">App</strong> oder <strong class="ui">Screen Audio</strong>.</p>
+<h2 id="de8-surround-quellen-messen-wie-stereo">Surround-Quellen messen wie Stereo</h2>
+<p>Die Lautheit nutzt die echten Kanäle nur im Modus <strong class="ui">Device</strong> mit 5, 6 oder 8 Kanälen. In <strong class="ui">App</strong> und <strong class="ui">Screen Audio</strong> wird sie an einem Stereosignal gemessen.</p>
+<h2 id="de8-no-apps-selected-for-capture-bei-screen-audio">„No apps selected for capture“ bei Screen Audio</h2>
+<p>Öffne nach dem Einschalten von <strong class="ui">Screen Audio</strong> das Menü unter <strong class="ui">Applications</strong> und hake mindestens eine App an; solange keine gewählt ist, zeigt der Tab „Select at least one app to monitor“.</p>
+<h2 id="de8-lizenzmeldungen">Lizenzmeldungen</h2>
+<p>Im Dialog zur Schlüsseleingabe: „This key is already active on the maximum number of devices“ heißt, ein Gerät zu deaktivieren (siehe Lizenz-Anleitung); „This key is invalid or has been revoked“ heißt, den Schlüssel zu prüfen; „Couldn't reach the license server“ heißt, es später erneut zu versuchen. Im Dialog zur Schlüsseleingabe und im Sperr-Dialog: „Your system clock appears to have moved backward“ heißt, die Uhr zu korrigieren; „Couldn't verify your license yet“ heißt, sich einmal mit dem Internet zu verbinden.</p>
+<p class="ver">Geschrieben für Version 1.29.</p>
+    </article>
+  </div>
+  <footer>
+    <div class="foot">
+      <span>Malibu Meter · <span data-i18n="foot.sub">A Studio Malibu Berlin product</span></span>
+      <span><a href="https://knuthake.de/impressum" data-i18n="foot.imprint">Legal Notice</a><a href="https://knuthake.de/datenschutz" data-i18n="foot.privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</div>
+<script>
+window.PAGE_CONFIG = { buyUrl: null };
+window.PAGE_T = {
+  en: {"nav.back":"← Malibu Meter","nav.help":"Help","foot.sub":"A Studio Malibu Berlin product","foot.imprint":"Legal Notice","foot.privacy":"Privacy Policy"},
+  de: {"nav.back":"← Malibu Meter","nav.help":"Hilfe","foot.sub":"Ein Studio Malibu Berlin Produkt","foot.imprint":"Impressum","foot.privacy":"Datenschutz"}
+};
+</script>
+<script src="/apps/_shared/app-page.js"></script>
+<script>
+(function () {
+  function show(l) {
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== l; });
+  }
+  var shared = window.setLang;
+  window.setLang = function (l) { shared(l); show(l); };
+  show(document.documentElement.lang === "de" ? "de" : "en");
+})();
+</script>
+</body>
+</html>
