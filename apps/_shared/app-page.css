@@ -80,6 +80,10 @@ h2{font-family:var(--display);font-weight:600;font-size:1.8rem;letter-spacing:-.
 .step p{margin:0;font-size:13.5px;color:var(--dim)}
 
 /* bento */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.shots figcaption{font-size:13px;color:var(--dim);line-height:1.5;margin-top:10px;max-width:60ch}
 .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(132px,auto);gap:12px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end}
 .tile h3{font-family:var(--display);font-weight:600;font-size:16px;margin:0 0 6px;letter-spacing:-.2px}
@@ -114,6 +118,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 56px}
   .stack{height:auto;display:flex;flex-direction:column;gap:12px}
   .win,.win.w1,.win.w2,.win.w3{position:static;width:100%;transform:none}
   .bento{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr}
   .tile.big,.tile.mid,.tile.small{grid-column:auto;grid-row:auto}
   .step{border-right:0;border-bottom:1px solid var(--line)}
   .step:last-child{border-bottom:0}
