@@ -82,7 +82,7 @@
 </ol>
 <p>Press the shortcut again to close the panel. Esc closes it too while the panel has the keyboard focus; if a preview is open, the first Esc closes only the preview.</p>
 <p>To change the shortcut, open <strong class="ui">Settings</strong> (footer of the popover in the menu bar) › <strong class="ui">General</strong>, click the <strong class="ui">Keyboard Shortcut</strong> field and press a new combination (it must include ⌘, ⌃ or ⌥). The arrow button next to it restores <code>⌘⇧V</code>.</p>
-<p>The panel has three tabs: <strong class="ui">Clipboard</strong>, <strong class="ui">Screenshots</strong> and <strong class="ui">FCP Buffer</strong>. This page covers <strong class="ui">Clipboard</strong>. If <strong class="ui">Enable Notch Shelf</strong> is on (it is off by default), <strong class="ui">Show Clipboard</strong> and the shortcut open the notch shelf instead of this panel. <strong class="ui">Auto-reveal on right edge hover</strong> (off by default) still opens this panel.</p>
+<p>The panel has three tabs: <strong class="ui">Clipboard</strong>, <strong class="ui">Screenshots</strong> and <strong class="ui">FCP Buffer</strong>. This page covers <strong class="ui">Clipboard</strong>. You can also switch tabs by swiping two fingers sideways on the trackpad, or with a mouse that has a side scroll wheel. Swiping left shows the next tab, swiping right the previous one, and at the first or last tab nothing happens. Over the row of filter chips the sideways scroll moves the chips instead. If <strong class="ui">Enable Notch Shelf</strong> is on (it is off by default), <strong class="ui">Show Clipboard</strong> and the shortcut open the notch shelf instead of this panel. <strong class="ui">Auto-reveal on right edge hover</strong> (off by default) still opens this panel.</p>
 <h2 id="en1-find-a-clip">Find a clip</h2>
 <p>The search field has focus when the panel opens. Type to narrow the list: a clip matches when its text or the name of the app it came from contains your text (case is ignored). Only the first 10,000 characters of a clip's text are searched. Search and filter are cleared each time the panel opens, and they only cover the 500 most recent clips.</p>
 <p>The chips under the search field filter by kind:</p>
@@ -326,6 +326,17 @@
 <li><strong class="ui">Paste Picture from Clipboard</strong> uses a picture currently on the clipboard as the slot's thumbnail. Hovering a slot and pressing <code>⌘V</code> does the same. <strong class="ui">Choose Picture…</strong> picks an image file; dropping an image onto the slot works too. <strong class="ui">Remove Picture</strong> deletes it; it is listed only for a slot that has a picture you set. The picture only changes the thumbnail, not what is pasted.</li>
 <li><strong class="ui">Clear Slot</strong> empties the slot immediately, without a confirmation.</li>
 </ul>
+<h2 id="en5-share-slots-with-someone-else">Share slots with someone else</h2>
+<p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
+<p>A slot or the whole buffer can go to another Mac as one file with the ending <code>.malibuclipbuffer</code>. The file keeps every format of the content, so a Final Cut Pro clip arrives unchanged, together with the label and the picture of the slot.</p>
+<p>To send:</p>
+<ol>
+<li>Click a filled slot in the <strong class="ui">FCP Buffer</strong> tab with the right mouse button and choose <strong class="ui">Export Slot…</strong>. For the whole buffer use the export icon above the slots (tooltip <strong class="ui">Export all slots…</strong>).</li>
+<li>Choose where to save the file.</li>
+<li>Send the file by AirDrop, mail or chat.</li>
+</ol>
+<p>To take slots over, double click the file in Finder, or use the import icon above the slots (tooltip <strong class="ui">Import buffer file…</strong>). The window <strong class="ui">Import into FCP Buffer</strong> lists the slots of the file. Tick the ones you want and pick a target slot for each. A target that already holds content is marked <strong class="ui">in use</strong>, and MalibuClip asks before it replaces it. Two slots cannot go to the same target, and the targets are limited to the number of slots set in Settings. The app must be unlocked for the import to open.</p>
+<p>The folder icon above the slots (tooltip <strong class="ui">Show buffer folder in Finder</strong>) opens the buffer folder, and <strong class="ui">Show in Finder</strong> in the slot menu opens the folder of one slot. The folder is only for looking. MalibuClip does not read changes made there.</p>
 <h2 id="en5-control-the-buffer-with-urls">Control the buffer with URLs</h2>
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <p>MalibuClip answers URLs of the form <code>malibuclip://buffer/&lt;action&gt;?slot=N</code>. Slot numbers start at 1. Open them in the background so your current app keeps focus:</p>
@@ -542,7 +553,7 @@
 <p>An unknown action, a missing or invalid slot number, or a slot above the configured slot count is answered with an error banner in the <strong class="ui">FCP Buffer</strong> tab and a beep. If that tab is not open, you only hear the beep. The <code>save</code> action needs the Accessibility permission. Without it, <code>restore</code> only puts the slot on the clipboard (press <code>⌘V</code> yourself) and shows a banner and a beep. While the license check blocks the app, valid buffer URLs are ignored without a message.</p>
 <h2 id="en8-launch-at-login-does-not-take-effect">Launch at Login does not take effect</h2>
 <p>macOS may need your approval before MalibuClip can start at login. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> then shows a note with an <strong class="ui">Open Login Items</strong> button.</p>
-<p class="ver">Written for version 2.6.0.</p>
+<p class="ver">Written for version 2.7.0.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-etwas-einf-gen-das-du-fr-her-kopiert-hast">Etwas einfügen, das du früher kopiert hast</a><a class="l1" href="#de2-bildschirmfoto-aufnehmen-und-beschriften">Bildschirmfoto aufnehmen und beschriften</a><a class="l1" href="#de3-den-bildschirm-aufnehmen">Den Bildschirm aufnehmen</a><a class="l1" href="#de4-eine-aufnahme-exportieren">Eine Aufnahme exportieren</a><a class="l1" href="#de5-nummerierte-zwischenablage-slots-anlegen-und-bei-bedarf-einf-gen">Nummerierte Zwischenablage-Slots anlegen und bei Bedarf einfügen</a><a class="l1" href="#de6-verhindern-dass-sensible-inhalte-aufgezeichnet-werden">Verhindern, dass sensible Inhalte aufgezeichnet werden</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -570,7 +581,7 @@
 </ol>
 <p>Drücke das Kürzel noch einmal, um das Fenster zu schließen. Auch Esc schließt es, solange das Fenster den Tastaturfokus hat; ist eine Vorschau offen, schließt das erste Esc nur die Vorschau.</p>
 <p>Um das Kürzel zu ändern, öffne <strong class="ui">Settings</strong> (Fußzeile des Popovers in der Menüleiste) › <strong class="ui">General</strong>, klicke auf das Feld <strong class="ui">Keyboard Shortcut</strong> und drücke eine neue Kombination (sie muss ⌘, ⌃ oder ⌥ enthalten). Die Pfeiltaste daneben stellt <code>⌘⇧V</code> wieder her.</p>
-<p>Das Fenster hat drei Tabs: <strong class="ui">Clipboard</strong>, <strong class="ui">Screenshots</strong> und <strong class="ui">FCP Buffer</strong>. Diese Seite behandelt <strong class="ui">Clipboard</strong>. Ist <strong class="ui">Enable Notch Shelf</strong> eingeschaltet (standardmäßig aus), öffnen <strong class="ui">Show Clipboard</strong> und das Kürzel stattdessen das Notch Shelf. <strong class="ui">Auto-reveal on right edge hover</strong> (standardmäßig aus) öffnet weiterhin dieses Fenster.</p>
+<p>Das Fenster hat drei Tabs: <strong class="ui">Clipboard</strong>, <strong class="ui">Screenshots</strong> und <strong class="ui">FCP Buffer</strong>. Diese Seite behandelt <strong class="ui">Clipboard</strong>. Die Tabs wechselst du auch mit einem Zwei-Finger-Wisch zur Seite auf dem Trackpad oder mit einer Maus mit seitlichem Scrollrad. Wischen nach links zeigt den nächsten Tab, nach rechts den vorherigen, und am ersten oder letzten Tab passiert nichts. Über der Reihe der Filter scrollt die seitliche Bewegung stattdessen die Filter. Ist <strong class="ui">Enable Notch Shelf</strong> eingeschaltet (standardmäßig aus), öffnen <strong class="ui">Show Clipboard</strong> und das Kürzel stattdessen das Notch Shelf. <strong class="ui">Auto-reveal on right edge hover</strong> (standardmäßig aus) öffnet weiterhin dieses Fenster.</p>
 <h2 id="de1-einen-clip-finden">Einen Clip finden</h2>
 <p>Das Suchfeld hat den Fokus, sobald sich das Fenster öffnet. Tippe, um die Liste einzugrenzen: Ein Clip passt, wenn sein Text oder der Name der App, aus der er stammt, deinen Text enthält (ob groß oder klein geschrieben, spielt keine Rolle). Durchsucht werden nur die ersten 10.000 Zeichen vom Text des Clips. Suche und Filter werden bei jedem Öffnen des Fensters zurückgesetzt und gelten nur für die 500 neuesten Clips.</p>
 <p>Die Chips unter dem Suchfeld filtern nach Art:</p>
@@ -814,6 +825,17 @@
 <li><strong class="ui">Paste Picture from Clipboard</strong> nimmt ein Bild, das gerade in der Zwischenablage liegt, als Vorschaubild des Slots. Den Zeiger über einen Slot halten und <code>⌘V</code> drücken bewirkt dasselbe. <strong class="ui">Choose Picture…</strong> wählt eine Bilddatei; du kannst auch ein Bild auf den Slot ziehen. <strong class="ui">Remove Picture</strong> löscht es; der Eintrag erscheint nur bei einem Slot mit einem von dir gesetzten Bild. Das Bild ändert nur das Vorschaubild, nicht, was eingefügt wird.</li>
 <li><strong class="ui">Clear Slot</strong> leert den Slot sofort, ohne Rückfrage.</li>
 </ul>
+<h2 id="de5-slots-an-andere-weitergeben">Slots an andere weitergeben</h2>
+<p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
+<p>Ein Slot oder der ganze Buffer lässt sich als eine Datei mit der Endung <code>.malibuclipbuffer</code> an einen anderen Mac schicken. Die Datei behält jedes Format des Inhalts, ein Clip aus Final Cut Pro kommt also unverändert an, zusammen mit der Bezeichnung und dem Bild des Slots.</p>
+<p>So schickst du Slots:</p>
+<ol>
+<li>Klicke im Reiter <strong class="ui">FCP Buffer</strong> mit der rechten Maustaste auf einen gefüllten Slot und wähle <strong class="ui">Export Slot…</strong>. Für den ganzen Buffer nutzt du das Exportsymbol über den Slots (Tooltip <strong class="ui">Export all slots…</strong>).</li>
+<li>Wähle, wo die Datei gespeichert wird.</li>
+<li>Schicke die Datei per AirDrop, Mail oder Chat.</li>
+</ol>
+<p>Zum Übernehmen klickst du die Datei im Finder doppelt an oder nutzt das Importsymbol über den Slots (Tooltip <strong class="ui">Import buffer file…</strong>). Das Fenster <strong class="ui">Import into FCP Buffer</strong> listet die Slots der Datei. Hake an, was du haben willst, und wähle für jeden Slot einen Zielslot. Ein Ziel, das schon Inhalt hat, ist als <strong class="ui">in use</strong> markiert, und MalibuClip fragt nach, bevor es ersetzt wird. Zwei Slots können nicht dasselbe Ziel haben, und als Ziele stehen nur so viele Slots zur Wahl, wie in den Einstellungen eingestellt sind. Die App muss entsperrt sein, damit der Import sich öffnet.</p>
+<p>Das Ordnersymbol über den Slots (Tooltip <strong class="ui">Show buffer folder in Finder</strong>) öffnet den Buffer-Ordner, und <strong class="ui">Show in Finder</strong> im Slot-Menü öffnet den Ordner eines Slots. Der Ordner dient nur zum Ansehen. MalibuClip liest Änderungen dort nicht ein.</p>
 <h2 id="de5-den-buffer-per-url-steuern">Den Buffer per URL steuern</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <p>MalibuClip reagiert auf URLs der Form <code>malibuclip://buffer/&lt;action&gt;?slot=N</code>. Die Nummern der Slots beginnen bei 1. Öffne sie im Hintergrund, damit deine aktuelle App den Fokus behält:</p>
@@ -1030,7 +1052,7 @@
 <p>Eine unbekannte Aktion, eine fehlende oder ungültige Slotnummer oder ein Slot über der eingestellten Slotzahl wird mit einer Fehlermeldung als Banner im Tab <strong class="ui">FCP Buffer</strong> und einem Signalton beantwortet. Ist der Tab nicht offen, hörst du nur den Ton. Die Aktion <code>save</code> braucht die Berechtigung für die Bedienungshilfen. Ohne sie legt <code>restore</code> den Slot nur in die Zwischenablage (drücke <code>⌘V</code> selbst) und zeigt ein Banner und einen Signalton. Solange die Lizenzprüfung die App sperrt, werden gültige Buffer URLs ohne Meldung ignoriert.</p>
 <h2 id="de8-launch-at-login-greift-nicht">Launch at Login greift nicht</h2>
 <p>Möglicherweise braucht macOS deine Zustimmung, bevor MalibuClip bei der Anmeldung starten kann. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> zeigt dann einen Hinweis mit dem Knopf <strong class="ui">Open Login Items</strong>.</p>
-<p class="ver">Geschrieben für Version 2.6.0.</p>
+<p class="ver">Geschrieben für Version 2.7.0.</p>
     </article>
   </div>
   <footer>
