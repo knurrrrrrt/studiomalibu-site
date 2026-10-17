@@ -122,6 +122,13 @@
 <li>Click <strong class="ui">Save</strong> or press <code>⌘S</code>. <strong class="ui">Cancel</strong> closes the window; if you changed the text you are asked before it is discarded.</li>
 </ol>
 <p>Saving replaces all stored formats of the clip with one plain text version, so rich text and HTML formatting are gone (for a clip with such formatting the window warns "Saving removes formatting" before you save). A link title and image saved with the clip are dropped. The clip keeps its place in the list and its pin.</p>
+<h2 id="en1-add-text-to-what-you-copied">Add text to what you copied</h2>
+<p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
+<ol>
+<li>Copy some text as usual.</li>
+<li>Select more text, hold <code>⌘</code> and tap <code>C</code> twice.</li>
+</ol>
+<p>The second text is added below the first one, separated by a new line. You hear a short sound, the combined text is on the clipboard ready to paste, and it appears as one new clip in the history. Tap <code>⌘C</code> twice on a third piece to add that as well. Only text is added: if the copy also holds an image, a file or Final Cut Pro content, it is copied normally. A second tap that comes too late, or without <code>⌘</code> held, is also an ordinary copy. Switch the feature or the sound off under <strong class="ui">Settings</strong> (tab <strong class="ui">General</strong>) with <strong class="ui">Double-tap ⌘C appends text</strong> and <strong class="ui">Play a sound when appending</strong>.</p>
 <h1 id="en2-take-a-screenshot-and-mark-it-up">Take a screenshot and mark it up</h1>
 <h2 id="en2-allow-screen-recording">Allow Screen Recording</h2>
 <p>Every capture mode needs permission to record the screen. Without it, no capture starts. MalibuClip shows the alert "Screen Recording Permission Required" instead, with an <strong class="ui">Open System Settings</strong> button.</p>
@@ -455,6 +462,8 @@
 <li><strong class="ui">Reject duplicates</strong>: Default: on.</li>
 <li><strong class="ui">Download link previews</strong>: Default: on. Addresses that point to the local machine or a private network (as IP addresses or known internal host names) are not fetched.</li>
 <li><strong class="ui">Show full text (selectable)</strong>: Default: on.</li>
+<li><strong class="ui">Double-tap ⌘C appends text</strong>: Default: on.</li>
+<li><strong class="ui">Play a sound when appending</strong>: Default: on.</li>
 <li><strong class="ui">Double-click to paste</strong>: Default: off.</li>
 <li><strong class="ui">Close after pasting</strong>: Default: on.</li>
 <li><strong class="ui">Close when clicking outside</strong>: Default: on.</li>
@@ -553,7 +562,7 @@
 <p>An unknown action, a missing or invalid slot number, or a slot above the configured slot count is answered with an error banner in the <strong class="ui">FCP Buffer</strong> tab and a beep. If that tab is not open, you only hear the beep. The <code>save</code> action needs the Accessibility permission. Without it, <code>restore</code> only puts the slot on the clipboard (press <code>⌘V</code> yourself) and shows a banner and a beep. While the license check blocks the app, valid buffer URLs are ignored without a message.</p>
 <h2 id="en8-launch-at-login-does-not-take-effect">Launch at Login does not take effect</h2>
 <p>macOS may need your approval before MalibuClip can start at login. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> then shows a note with an <strong class="ui">Open Login Items</strong> button.</p>
-<p class="ver">Written for version 2.7.0.</p>
+<p class="ver">Written for version 2.8.0.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-etwas-einf-gen-das-du-fr-her-kopiert-hast">Etwas einfügen, das du früher kopiert hast</a><a class="l1" href="#de2-bildschirmfoto-aufnehmen-und-beschriften">Bildschirmfoto aufnehmen und beschriften</a><a class="l1" href="#de3-den-bildschirm-aufnehmen">Den Bildschirm aufnehmen</a><a class="l1" href="#de4-eine-aufnahme-exportieren">Eine Aufnahme exportieren</a><a class="l1" href="#de5-nummerierte-zwischenablage-slots-anlegen-und-bei-bedarf-einf-gen">Nummerierte Zwischenablage-Slots anlegen und bei Bedarf einfügen</a><a class="l1" href="#de6-verhindern-dass-sensible-inhalte-aufgezeichnet-werden">Verhindern, dass sensible Inhalte aufgezeichnet werden</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -621,6 +630,13 @@
 <li>Klicke auf <strong class="ui">Save</strong> oder drücke <code>⌘S</code>. <strong class="ui">Cancel</strong> schließt das Fenster; hast du den Text geändert, wirst du vor dem Verwerfen gefragt.</li>
 </ol>
 <p>Das Speichern ersetzt alle gespeicherten Formate des Clips durch eine reine Textfassung; Formatierungen als Rich Text oder HTML gehen damit verloren (bei einem Clip mit solcher Formatierung warnt das Fenster schon vor dem Speichern mit „Saving removes formatting“). Ein mit dem Clip gespeicherter Linktitel und das Linkbild werden verworfen. Der Clip behält seinen Platz in der Liste und seinen Pin.</p>
+<h2 id="de1-text-an-kopiertes-anh-ngen">Text an Kopiertes anhängen</h2>
+<p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
+<ol>
+<li>Kopiere einen Text wie gewohnt.</li>
+<li>Markiere weiteren Text, halte <code>⌘</code> gedrückt und tippe zweimal auf <code>C</code>.</li>
+</ol>
+<p>Der zweite Text wird unter den ersten gesetzt, getrennt durch einen Zeilenumbruch. Du hörst einen kurzen Ton, der zusammengesetzte Text liegt zum Einfügen in der Zwischenablage und erscheint als ein neuer Clip im Verlauf. Tippst du bei einem dritten Stück wieder zweimal <code>⌘C</code>, wird auch dieses angehängt. Angehängt wird nur Text: Enthält die Kopie auch ein Bild, eine Datei oder Inhalt aus Final Cut Pro, wird normal kopiert. Ein zu spät kommender zweiter Tipp oder einer ohne gehaltenes <code>⌘</code> ist ebenfalls ein gewöhnliches Kopieren. Schalte die Funktion oder den Ton unter <strong class="ui">Settings</strong> (Tab <strong class="ui">General</strong>) mit <strong class="ui">Double-tap ⌘C appends text</strong> und <strong class="ui">Play a sound when appending</strong> ab.</p>
 <h1 id="de2-bildschirmfoto-aufnehmen-und-beschriften">Bildschirmfoto aufnehmen und beschriften</h1>
 <h2 id="de2-bildschirmaufnahme-erlauben">Bildschirmaufnahme erlauben</h2>
 <p>Jeder Aufnahmemodus braucht die Berechtigung, den Bildschirm aufzunehmen. Ohne sie startet keine Aufnahme. Stattdessen zeigt MalibuClip den Hinweis „Screen Recording Permission Required“ mit der Schaltfläche <strong class="ui">Open System Settings</strong>.</p>
@@ -954,6 +970,8 @@
 <li><strong class="ui">Reject duplicates</strong>: Standard: an.</li>
 <li><strong class="ui">Download link previews</strong>: Standard: an. Adressen, die auf den eigenen Rechner oder ein privates Netz zeigen (als IP-Adresse oder bekannter interner Hostname), werden nicht abgerufen.</li>
 <li><strong class="ui">Show full text (selectable)</strong>: Standard: an.</li>
+<li><strong class="ui">Double-tap ⌘C appends text</strong>: Standard: an.</li>
+<li><strong class="ui">Play a sound when appending</strong>: Standard: an.</li>
 <li><strong class="ui">Double-click to paste</strong>: Standard: aus.</li>
 <li><strong class="ui">Close after pasting</strong>: Standard: an.</li>
 <li><strong class="ui">Close when clicking outside</strong>: Standard: an.</li>
@@ -1052,7 +1070,7 @@
 <p>Eine unbekannte Aktion, eine fehlende oder ungültige Slotnummer oder ein Slot über der eingestellten Slotzahl wird mit einer Fehlermeldung als Banner im Tab <strong class="ui">FCP Buffer</strong> und einem Signalton beantwortet. Ist der Tab nicht offen, hörst du nur den Ton. Die Aktion <code>save</code> braucht die Berechtigung für die Bedienungshilfen. Ohne sie legt <code>restore</code> den Slot nur in die Zwischenablage (drücke <code>⌘V</code> selbst) und zeigt ein Banner und einen Signalton. Solange die Lizenzprüfung die App sperrt, werden gültige Buffer URLs ohne Meldung ignoriert.</p>
 <h2 id="de8-launch-at-login-greift-nicht">Launch at Login greift nicht</h2>
 <p>Möglicherweise braucht macOS deine Zustimmung, bevor MalibuClip bei der Anmeldung starten kann. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> zeigt dann einen Hinweis mit dem Knopf <strong class="ui">Open Login Items</strong>.</p>
-<p class="ver">Geschrieben für Version 2.7.0.</p>
+<p class="ver">Geschrieben für Version 2.8.0.</p>
     </article>
   </div>
   <footer>
