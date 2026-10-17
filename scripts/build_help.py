@@ -17,6 +17,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# basename of a source file (e.g. "howto-x.en.md") -> id of its H1 on the built page.
+# Filled in main() before rendering; links to sibling .md files are rewritten with it.
+LINKMAP: dict = {}
+LINK_ERRORS: list = []
+LINK_COUNT = 0
+
+
+def link(label: str, href: str) -> str:
+    global LINK_COUNT
+    target, _, frag = href.partition("#")
+    if target.endswith(".md"):
+        anchor = LINKMAP.get(Path(target).name)
+        if anchor is None:
+            LINK_ERRORS.append(f"unknown .md link target: {href!r} (label {label!r})")
+            return f'<a href="{href}">{label}</a>'
+        LINK_COUNT += 1
+        href = "#" + anchor
+    return f'<a href="{href}">{label}</a>'
+
 
 def inline(s: str) -> str:
     s = html.escape(s, quote=False)
@@ -25,7 +44,7 @@ def inline(s: str) -> str:
     s = re.sub(r"(?<![\w*])_([^_]+)_(?![\w*])", r"<em>\1</em>", s)
     s = re.sub(r"(?<![\w*])\*([^*\s][^*]*)\*(?![\w*])", r"<em>\1</em>", s)
     s = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)", r'<img src="\2" alt="\1">', s)
-    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', s)
+    s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", lambda m: link(m.group(1), m.group(2)), s)
     return s
 
 
@@ -223,6 +242,12 @@ def main():
             return 999
     sorted_pairs = sorted(zip(a.en, a.de), key=lambda p: order_of(p[0]))
     a.en, a.de = [p[0] for p in sorted_pairs], [p[1] for p in sorted_pairs]
+    for n, (en, de) in enumerate(zip(a.en, a.de)):
+        for lang, path in (("en", en), ("de", de)):
+            _, body = parse(Path(path).read_text(encoding="utf-8"))
+            h1 = re.search(r"^#\s+(.*)$", body, re.M)
+            if h1:
+                LINKMAP[Path(path).name] = f"{lang}{n}-{slugify(h1.group(1).strip())}"
     blocks = {"en": [], "de": []}
     versions = set()
     toc_by_lang = {"en": [], "de": []}
@@ -234,6 +259,8 @@ def main():
             htmlbody, toc = render(body, f"{lang}{n}")
             blocks[lang].append(htmlbody)
             toc_by_lang[lang] += toc
+    if LINK_ERRORS:
+        sys.exit("\n".join(LINK_ERRORS))
     ver = ", ".join(sorted(versions))
     label = {"en": ("On this page", f"Written for version {ver}."), "de": ("Auf dieser Seite", f"Geschrieben für Version {ver}.")}
     parts = []
@@ -255,7 +282,7 @@ def main():
     out = ROOT / "apps" / a.slug / "help" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
-    print("wrote", out.relative_to(ROOT))
+    print("wrote", out.relative_to(ROOT), f"({LINK_COUNT} sibling links rewritten)")
 
 
 if __name__ == "__main__":
