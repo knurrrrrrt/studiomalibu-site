@@ -241,7 +241,6 @@
 <li><strong class="ui">Copy last</strong>: copies the last inserted text to the clipboard. It is disabled until there is a last text. The text is stored only when <strong class="ui">Show Last Dictation</strong> (Settings &gt; <strong class="ui">Vocabulary</strong> &gt; <strong class="ui">Auto-Vocabulary</strong>, default off) is on at the moment a dictation is inserted. Switching it off later does not clear it; it stays until you quit the app. The result of a clipboard rewrite is not stored.</li>
 <li><strong class="ui">Meeting</strong>: shown only while Meeting mode is on. Opens the Meetings window with the <strong class="ui">New Meeting</strong> sheet; recording does not start until you click <strong class="ui">Start Recording</strong> there. While a meeting is running or starting, the window opens without the sheet. While a meeting records, the button reads <strong class="ui">End meeting</strong> and stops it.</li>
 <li><strong class="ui">Marker</strong>: shown only while Meeting mode is on. Disabled unless a meeting records; adds a marker to the running meeting.</li>
-<li><strong class="ui">Updates</strong>: checks for a new version.</li>
 <li><strong class="ui">Sounds</strong>, <strong class="ui">Pause media</strong>, <strong class="ui">History</strong>: switches at the end of the bar; a tinted button is on. They set the same options as <strong class="ui">Sounds</strong> and <strong class="ui">Pause Media During Recording</strong> in Settings &gt; <strong class="ui">General</strong> and <strong class="ui">Enable History</strong> in Settings &gt; <strong class="ui">History</strong>.</li>
 </ul>
 <p>Below the icon bar:</p>
@@ -249,7 +248,7 @@
 <li><strong class="ui">Microphone</strong> (microphone icon, name as tooltip): the input device, the same choice as <strong class="ui">Input Device</strong> in Settings &gt; <strong class="ui">General</strong>.</li>
 <li><strong class="ui">Rewrite</strong>: chooses <strong class="ui">Claude</strong> or <strong class="ui">Local</strong> for rewriting. <strong class="ui">Local</strong> is disabled while the model on your Mac is not available.</li>
 </ul>
-<p>When Meeting mode is on, a Meetings icon at the end of the top row (tooltip <strong class="ui">Meetings</strong>) opens the Meetings window. The two buttons at the bottom are <strong class="ui">Settings</strong> (⌘,), which opens the Settings window, and <strong class="ui">Quit</strong> (⌘Q), which quits the app.</p>
+<p>When Meeting mode is on, a Meetings icon at the end of the top row (tooltip <strong class="ui">Meetings</strong>) opens the Meetings window. The bottom row has an update button at the left (tooltip "Check for Updates"), which checks for a new version, then <strong class="ui">Settings</strong> (⌘,), which opens the Settings window, and <strong class="ui">Quit</strong> (⌘Q), which quits the app.</p>
 <p>Buying is not in the popover: with no active license, Settings &gt; <strong class="ui">License</strong> &gt; <strong class="ui">License Key</strong> has a <strong class="ui">Buy …</strong> button that opens the purchase page in your browser.</p>
 <h2 id="en6-settings-window">Settings window</h2>
 <p>The Settings sidebar lists <strong class="ui">General</strong>, <strong class="ui">Keys</strong>, <strong class="ui">Claude</strong>, <strong class="ui">Vocabulary</strong>, <strong class="ui">Dictionary</strong>, <strong class="ui">Snippets</strong>, <strong class="ui">History</strong>, <strong class="ui">Meetings</strong> and <strong class="ui">License</strong>. The <strong class="ui">Meetings</strong> tab holds the meeting mode (beta) and is not covered here. The Help menu of the app menu bar contains <strong class="ui">Send Feedback …</strong>. The button at the top right of the Settings window (tooltip <strong class="ui">Status</strong>) opens a panel with the state of Microphone, Accessibility, License and the engine.</p>
@@ -479,7 +478,7 @@
 </ul>
 <h2 id="en8-apple-notes-or-mail-refuses-the-export">Apple Notes or Mail refuses the export</h2>
 <p>The message says that MalibuDictate isn't allowed to control Notes or Mail. Click <strong class="ui">Open Automation Settings</strong> and turn the app on under MalibuDictate in Privacy &amp; Security &gt; Automation, then try again. If Notes or Mail cannot be launched, the message says that the app could not be reached.</p>
-<p class="ver">Written for version 0.10.9.</p>
+<p class="ver">Written for version 0.10.10.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-sprachengine-und-sprache-w-hlen">Sprachengine und Sprache wählen</a><a class="l1" href="#de2-diktat-umschreiben-lassen">Diktat umschreiben lassen</a><a class="l1" href="#de3-dictionary-snippets-und-smart-formatting">Dictionary, Snippets und Smart Formatting</a><a class="l1" href="#de4-freih-ndig-aufnehmen-und-diktat-in-der-zwischenablage-behalten">Freihändig aufnehmen und Diktat in der Zwischenablage behalten</a><a class="l1" href="#de5-ein-meeting-aufnehmen">Ein Meeting aufnehmen</a><a class="l1" href="#de6-referenz">Referenz</a><a class="l1" href="#de7-meetings-exportieren">Meetings exportieren</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -666,7 +665,6 @@
 <li><strong class="ui">Copy last</strong>: kopiert den zuletzt eingefügten Text in die Zwischenablage. Der Knopf ist deaktiviert, bis es einen letzten Text gibt. Der Text wird nur gespeichert, wenn <strong class="ui">Show Last Dictation</strong> (Einstellungen &gt; <strong class="ui">Vocabulary</strong> &gt; <strong class="ui">Auto-Vocabulary</strong>, standardmäßig aus) in dem Moment an ist, in dem ein Diktat eingefügt wird. Späteres Ausschalten löscht ihn nicht; er bleibt, bis du die App beendest. Das Ergebnis einer Umschreibung der Zwischenablage wird nicht gespeichert.</li>
 <li><strong class="ui">Meeting</strong>: nur sichtbar, solange der Meetingmodus an ist. Öffnet das Fenster Meetings mit dem Blatt <strong class="ui">New Meeting</strong>; die Aufnahme beginnt erst, wenn du dort auf <strong class="ui">Start Recording</strong> klickst. Läuft oder startet gerade ein Meeting, öffnet sich das Fenster ohne das Blatt. Während ein Meeting aufnimmt, heißt der Knopf <strong class="ui">End meeting</strong> und beendet es.</li>
 <li><strong class="ui">Marker</strong>: nur sichtbar, solange der Meetingmodus an ist. Deaktiviert, solange kein Meeting aufnimmt; setzt einen Marker im laufenden Meeting.</li>
-<li><strong class="ui">Updates</strong>: sucht nach einer neuen Version.</li>
 <li><strong class="ui">Sounds</strong>, <strong class="ui">Pause media</strong>, <strong class="ui">History</strong>: Schalter am Ende der Leiste; ein getönter Knopf ist an. Sie setzen dieselben Optionen wie <strong class="ui">Sounds</strong> und <strong class="ui">Pause Media During Recording</strong> in den Einstellungen unter <strong class="ui">General</strong> und <strong class="ui">Enable History</strong> in den Einstellungen unter <strong class="ui">History</strong>.</li>
 </ul>
 <p>Unter der Symbolleiste:</p>
@@ -674,7 +672,7 @@
 <li><strong class="ui">Microphone</strong> (Mikrofonsymbol, Name als Tooltip): das Eingabegerät, dieselbe Wahl wie <strong class="ui">Input Device</strong> in den Einstellungen unter <strong class="ui">General</strong>.</li>
 <li><strong class="ui">Rewrite</strong>: wählt <strong class="ui">Claude</strong> oder <strong class="ui">Local</strong> zum Umschreiben. <strong class="ui">Local</strong> ist deaktiviert, solange das Modell auf diesem Mac nicht verfügbar ist.</li>
 </ul>
-<p>Ist der Meetingmodus an, öffnet ein Symbol für Meetings am Ende der obersten Zeile (Tooltip <strong class="ui">Meetings</strong>) das Fenster Meetings. Die beiden Knöpfe ganz unten sind <strong class="ui">Settings</strong> (⌘,), der das Einstellungsfenster öffnet, und <strong class="ui">Quit</strong> (⌘Q), der die App beendet.</p>
+<p>Ist der Meetingmodus an, öffnet ein Symbol für Meetings am Ende der obersten Zeile (Tooltip <strong class="ui">Meetings</strong>) das Fenster Meetings. Die unterste Zeile hat links einen Update-Knopf (Tooltip <strong class="ui">Check for Updates</strong>), der nach einer neuen Version sucht, dann <strong class="ui">Settings</strong> (⌘,), der das Einstellungsfenster öffnet, und <strong class="ui">Quit</strong> (⌘Q), der die App beendet.</p>
 <p>Kaufen ist nicht im Popover: Ohne aktive Lizenz hat Einstellungen &gt; <strong class="ui">License</strong> &gt; <strong class="ui">License Key</strong> einen Knopf <strong class="ui">Buy …</strong>, der die Kaufseite im Browser öffnet.</p>
 <h2 id="de6-einstellungsfenster">Einstellungsfenster</h2>
 <p>Die Seitenleiste der Einstellungen listet <strong class="ui">General</strong>, <strong class="ui">Keys</strong>, <strong class="ui">Claude</strong>, <strong class="ui">Vocabulary</strong>, <strong class="ui">Dictionary</strong>, <strong class="ui">Snippets</strong>, <strong class="ui">History</strong>, <strong class="ui">Meetings</strong> und <strong class="ui">License</strong>. Der Tab <strong class="ui">Meetings</strong> enthält den Meetingmodus (Beta) und wird hier nicht behandelt. Das Menü Hilfe der Menüleiste der App enthält <strong class="ui">Send Feedback …</strong>. Der Button oben rechts im Einstellungsfenster (Tooltip <strong class="ui">Status</strong>) öffnet ein Panel mit dem Zustand von Microphone, Accessibility, License und der Engine.</p>
@@ -904,7 +902,7 @@
 </ul>
 <h2 id="de8-apple-notes-oder-mail-verweigert-den-export">Apple Notes oder Mail verweigert den Export</h2>
 <p>Die Meldung sagt, dass MalibuDictate Notes oder Mail nicht steuern darf. Klicke auf <strong class="ui">Open Automation Settings</strong> und schalte die App unter MalibuDictate in Datenschutz &amp; Sicherheit &gt; Automation ein, dann versuche es erneut. Lässt sich Notes oder Mail nicht starten, sagt die Meldung, dass die App nicht erreicht werden konnte.</p>
-<p class="ver">Geschrieben für Version 0.10.9.</p>
+<p class="ver">Geschrieben für Version 0.10.10.</p>
     </article>
   </div>
   <footer>
