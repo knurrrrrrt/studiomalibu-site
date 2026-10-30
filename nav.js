@@ -3,7 +3,7 @@
     { label: "FCP Videos", href: "/videos/" },
     { label: "FCP Workflow", href: "/workflow/" },
     { label: "FCP Worldwide", href: "/projects/" },
-    { label: "FCP Talent Pool", href: "/experts/" },
+    // Talent Pool hidden 2026-10-30 (too empty for now); re-add: { label: "FCP Talent Pool", href: "/experts/" },
     { label: "FCP Ideas", href: "/ideas/" },
     { label: "Film Craft", href: "/film-craft/" },
     { label: "Gear & Tools", href: "/gear/" }
