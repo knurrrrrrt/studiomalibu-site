@@ -141,7 +141,8 @@
 <p>Click the MalibuClip icon in the menu bar, then the screenshot icon in the popover (tooltip <strong class="ui">Screenshot</strong>). That starts <strong class="ui">Screenshot (Area)</strong>. All other modes start with a global shortcut. No capture shortcut is assigned by default. Assign each one in <strong class="ui">Settings</strong>, on the <strong class="ui">Screenshots</strong> tab, in the <strong class="ui">Shortcuts</strong> section. An assigned shortcut also shows in the tooltip of the screenshot icon.</p>
 <ul>
 <li><strong class="ui">Screenshot (Area)</strong>: drag a rectangle. With the toolbar off (the default), the capture happens when you release the mouse button. A very small rectangle cancels instead.</li>
-<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: the rectangle stays on screen so you can move or resize it. A toolbar lets you switch the mode or arm a <strong class="ui">Timer</strong> (3, 5 or 10 seconds). Click inside the selection or click the confirm button (it reads <strong class="ui">Capture</strong>) to capture. If <strong class="ui">All-in-One Starts With the Last Area</strong> is on (the default) and you made a selection before, the overlay opens with that selection already in place.</li>
+<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: the rectangle stays on screen so you can move or resize it. A toolbar lets you switch the mode, arm a <strong class="ui">Timer</strong> (3, 5 or 10 seconds) or pick an aspect ratio with the <strong class="ui">Aspect</strong> button (Free, 1:1, 4:3, 3:2, 16:9, 3:4, 2:3, 9:16 or a fixed pixel size). The choice reshapes the selection around its center and is the same as <strong class="ui">Aspect Ratio</strong> in Settings. Click inside the selection or click the confirm button (it reads <strong class="ui">Capture</strong>) to capture. If <strong class="ui">All-in-One Starts With the Last Area</strong> is on (the default) and you made a selection before, the overlay opens with that selection already in place.</li>
+<li><strong class="ui">Screenshot (Area)</strong> and the toolbar variant: hold <strong class="ui">Shift</strong> while you drag to keep the ratio (with <strong class="ui">Aspect Ratio</strong> on Free this is a 1:1 square) and <strong class="ui">Option</strong> to grow the rectangle from its center. Both also work when you drag a corner or edge of the selection in the toolbar variant. With a ratio chosen, it always applies and Shift changes nothing.</li>
 <li><strong class="ui">Screenshot (Window)</strong>: click a window. You cannot select MalibuClip's own windows, windows that are not on screen or not on the normal window layer, windows 100 points or less in width or height, and windows the size of a display (within 2 points). Use <strong class="ui">Screenshot (Full Screen)</strong> for the last kind.</li>
 <li><strong class="ui">Screenshot (Full Screen)</strong>: no overlay. With one display it captures at once. With several displays, a small menu asks which one.</li>
 <li><strong class="ui">Capture Last Area Again</strong>: no overlay. It grabs the area of your most recent area screenshot at once, without you drawing it again. If there has been none since MalibuClip started, it opens a normal area selection.</li>
@@ -178,9 +179,10 @@
 <li>Pick a tool and drag on the image. The color swatch opens preset colors, a custom color, an eyedropper and a hex field. The slider changes line width, font size, the size of numbered steps, or the strength of Mosaic and Blur, depending on the tool.</li>
 <li>Click <strong class="ui">Crop</strong>, drag the rectangle, then click <strong class="ui">Apply</strong>. <strong class="ui">Reset</strong> and <strong class="ui">Cancel</strong> are next to it.</li>
 <li>Click the sparkles button for Beautify and turn on <strong class="ui">Enable Beautify</strong>. It adds a background, <strong class="ui">Spacing</strong>, <strong class="ui">Corner Radius</strong>, a <strong class="ui">Shadow</strong> and an <strong class="ui">Aspect Ratio</strong>. The drawing tools are locked while the Beautify panel is open.</li>
-<li>Click <strong class="ui">Save</strong> to update the screenshot in the <strong class="ui">Screenshots</strong> list, or <strong class="ui">Copy</strong> to put the finished image on the clipboard. <strong class="ui">Drag Me</strong> drags the finished image into another app.</li>
-<li>Click <strong class="ui">Done</strong> to close the editor. <strong class="ui">Done</strong> does not save. Click <strong class="ui">Save</strong> or <strong class="ui">Copy</strong> first.</li>
+<li>Nothing needs saving: after each change, a moment later, the image is on the clipboard and updated in the <strong class="ui">Screenshots</strong> list. <strong class="ui">Save</strong> does that at once and also makes the text in the image searchable. <strong class="ui">Copy</strong> puts the image on the clipboard as a new entry in the clipboard history, and <strong class="ui">Drag Me</strong> drags it into another app.</li>
+<li>Click <strong class="ui">Done</strong> to close the editor, or click another app or the desktop: the editor closes by itself. An image you opened from the clipboard history is added to <strong class="ui">Screenshots</strong> with your first change.</li>
 </ol>
+<p>Both automatic steps can be switched off in <strong class="ui">Settings</strong>, tab <strong class="ui">Screenshots</strong>, section <strong class="ui">Editor</strong>. The clipboard copy made by the editor does not add entries to the clipboard history.</p>
 <p>Click an annotated screenshot in the list with the right mouse button and choose <strong class="ui">Reset to Original</strong> to go back to the unmarked capture.</p>
 <h2 id="en2-use-3-4-and-5-for-malibuclip">Use ⇧⌘3, ⇧⌘4 and ⇧⌘5 for MalibuClip</h2>
 <p>This is optional and off by default.</p>
@@ -237,6 +239,17 @@
 <li>Clear <strong class="ui">Show Zoom</strong> to see the whole picture in the preview.</li>
 </ol>
 <p>A zoom edit is saved to the recording when the drag or slider move ends. ⌘Z and ⇧⌘Z undo and redo zoom edits, up to 100 steps.</p>
+<h2 id="en3-hide-sensitive-content">Hide sensitive content</h2>
+<p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
+<p>Before you share a recording, the editor can cover what should not be seen: email addresses, phone numbers, payment card numbers, bank account numbers (IBAN), keys and tokens, words of your own, and faces.</p>
+<ol>
+<li>Optional: in <strong class="ui">Settings</strong> on the <strong class="ui">Recording (Beta)</strong> tab, under <strong class="ui">Privacy</strong>, turn <strong class="ui">Hide sensitive text</strong> and <strong class="ui">Hide faces</strong> on or off, and list words to hide in <strong class="ui">Also hide these words</strong>, one per line (client names, project names).</li>
+<li>Open the recording in the editor. In the panel on the right, under <strong class="ui">Hide sensitive content</strong>, click <strong class="ui">Scan Recording</strong>. A progress bar shows the scan; <strong class="ui">Cancel Scan</strong> stops it.</li>
+<li>Check the list of areas. Click an entry to jump to it, untick it to leave that area visible, or click the trash icon to remove it. The preview shows the areas that will be covered.</li>
+<li>Click <strong class="ui">Export Video</strong> or <strong class="ui">Export GIF</strong>. Both cover every ticked area. Your choices are saved at once.</li>
+</ol>
+<p>The scan runs on your Mac; nothing is sent anywhere. It checks about four moments per second. The recording itself is not changed, only the exported video and GIF are. <strong class="ui">Scan Again</strong> replaces the list, including areas you removed or switched off, and asks first.</p>
+<p>Detection can miss things, such as very small or faint text, so check the result before you share a recording. The camera picture in picture is not scanned or covered. If the saved list cannot be read, Export Video and Export GIF stop with a message instead of exporting. <strong class="ui">Export to Final Cut Pro</strong> uses the original recording and does not hide anything; when areas are ticked it asks before it exports.</p>
 <h2 id="en3-style-the-recording-look">Style the recording (Look)</h2>
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <p>The <strong class="ui">Look</strong> section in the panel on the right of the editor styles the exported picture:</p>
@@ -252,11 +265,14 @@
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <ol>
 <li>In the <strong class="ui">Recordings</strong> window, click the recording with the right mouse button and choose <strong class="ui">Quick Export</strong>. In the recording editor, click <strong class="ui">Export Video</strong> instead; it first saves the zooms the editor shows and then exports like <strong class="ui">Quick Export</strong>.</li>
-<li>Wait for the progress to finish. The finished <code>.mp4</code> is shown in Finder.</li>
+<li>Wait for the progress to finish. The finished movie is shown in Finder.</li>
 </ol>
 <p>The file is named <code>&lt;recording&gt; Quick Export.mp4</code> and sits next to the recording; exporting again replaces it. The export uses the zooms stored for the recording. Auto-Zoom runs first only when no zooms have been stored yet (nothing planned or edited) and the recording has cursor data. A stored empty list (all zooms deleted, or Auto-Zoom found no clicks) stays empty: the export has no zoom and, for a recording with cursor data, warns <em>Exported without zoom: this recording has no zooms</em>. It also contains the look from the editor and the camera as picture in picture when you recorded one. When the recording has more than one audio track (system audio and microphone), they are mixed into one track; if the mix fails, both tracks are kept and a warning says so.</p>
 <p>With <strong class="ui">Quick Export</strong>, a recording that has no stored zooms and no cursor data exports without zoom and warns that it has no cursor data. <strong class="ui">Export Video</strong> in the editor saves the editor's current zooms first (an empty list if there are none), so it exports without zoom and without that warning. Zooms you added by hand are used even without cursor data. A line under the recording says <code>Exported &lt;file name&gt;</code>; hover over it to read warnings.</p>
 <p>The exported file is yours: deleting the recording does not delete it.</p>
+<h3 id="en4-choose-prores-instead-of-mp4">Choose ProRes instead of MP4</h3>
+<p>By default the export is an MP4. To get a ProRes movie for editing, choose <strong class="ui">Quick Export As</strong> in the recording's menu in the <strong class="ui">Recordings</strong> window, or click the arrow next to <strong class="ui">Export Video</strong> in the recording editor, and pick <strong class="ui">ProRes 422 LT</strong>, <strong class="ui">ProRes 422</strong>, <strong class="ui">ProRes 422 HQ</strong> or <strong class="ui">ProRes 4444</strong>. To change the default for <strong class="ui">Quick Export</strong> and <strong class="ui">Export Video</strong>, set <strong class="ui">Format</strong> under <strong class="ui">Video Export</strong> in <strong class="ui">Settings</strong> on the <strong class="ui">Recording (Beta)</strong> tab.</p>
+<p>A ProRes export is a <code>.mov</code> named <code>&lt;recording&gt; Quick Export (ProRes 422 HQ).mov</code> (with the profile you chose). It sits next to the MP4 and never replaces it. ProRes files are many times larger than an MP4: about 0.8 GB per minute for <strong class="ui">ProRes 422 LT</strong> and about 1.7 GB per minute for <strong class="ui">ProRes 422 HQ</strong> at 1920 × 1080 and 30 fps, more at larger sizes. If the disk does not have enough free space, the export stops before it starts and says how much it needs. The export has no transparency: <strong class="ui">ProRes 4444</strong> is offered for its quality, and the picture is opaque.</p>
 <h2 id="en4-export-a-gif">Export a GIF</h2>
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
 <ol>
@@ -264,7 +280,7 @@
 <li>Click the recording with the right mouse button in the <strong class="ui">Recordings</strong> window and choose <strong class="ui">Export GIF</strong>, or click <strong class="ui">Export GIF</strong> in the recording editor.</li>
 <li>Wait for the <em>Making GIF</em> progress to finish. The <code>.gif</code> is shown in Finder.</li>
 </ol>
-<p>The GIF is named <code>&lt;recording&gt;.gif</code>, sits next to the recording and is replaced by a new export. It shows the picture as Quick Export would: zooms, look and camera picture in picture. A GIF has no audio.</p>
+<p>The GIF is named <code>&lt;recording&gt;.gif</code>, sits next to the recording and is replaced by a new export. It shows the picture as Quick Export would: zooms, look and camera picture in picture. A GIF has no audio. When the picture stands still for a while, the GIF keeps one picture on screen for that time instead of repeating it, so the file is smaller and plays at the same speed.</p>
 <p>GIFs are limited to 72 seconds. A recording that would exceed 360 frames at the chosen frame rate is exported at a lower rate, down to 5 fps, and the export reports the lowered rate. A recording longer than 72 seconds is refused with the message that it is too long for a GIF; use <strong class="ui">Quick Export</strong> for it.</p>
 <h2 id="en4-export-to-final-cut-pro">Export to Final Cut Pro</h2>
 <p><em>Status: new, so far only tested automatically; not yet proven in daily use.</em></p>
@@ -280,9 +296,10 @@
 <li><code>&lt;recording&gt; Camera.mov</code>: the camera movie, only if the recording has one. It is placed on the timeline as picture in picture.</li>
 </ul>
 <p>The zooms are written as keyframes. The timeline gets a zoom clip whenever zooms are stored for the recording, including zooms you added by hand. Auto-Zoom runs first only when no zooms have been stored yet and the recording has cursor data; a stored empty list gives no zoom clip. From the editor, the zooms it shows are saved first.</p>
-<p>Two limits:</p>
+<p>Three limits:</p>
 <ul>
 <li>The look from the editor (background, padding, corners, shadow, click highlight) is not applied; the picture goes to Final Cut Pro untouched.</li>
+<li>Areas hidden with <strong class="ui">Hide sensitive content</strong> are not hidden: the timeline uses the original movie. When areas are ticked, the export asks before it starts and its result carries a warning.</li>
 <li>A Studio Mode recording has no cursor in its picture, so the timeline shows none.</li>
 </ul>
 <h2 id="en4-add-captions-to-the-final-cut-pro-export">Add captions to the Final Cut Pro export</h2>
@@ -483,8 +500,9 @@
 <ul>
 <li><strong class="ui">Shortcuts</strong>: the eight screenshot and capture actions listed above.</li>
 <li><strong class="ui">Replace macOS Screenshot Shortcuts</strong>: the button <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> assigns ⇧⌘3 to Full Screen, ⇧⌘4 to Area and ⇧⌘5 to Area with Toolbar, replacing any assignment those actions had. Turn off the macOS shortcuts in System Settings yourself.</li>
-<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, off by default. <strong class="ui">All-in-One Starts With the Last Area</strong>, on by default. <strong class="ui">Aspect Ratio</strong> snaps a new selection to a ratio or a pixel size.</li>
+<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, off by default. <strong class="ui">All-in-One Starts With the Last Area</strong>, on by default. <strong class="ui">Aspect Ratio</strong> snaps a selection to a ratio or a pixel size; the <strong class="ui">Aspect</strong> button in the capture toolbar sets the same value.</li>
 <li><strong class="ui">Scrolling Page</strong>: <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, on by default. It applies to <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, including the scrolling window mode of the All-in-One toolbar.</li>
+<li><strong class="ui">Editor</strong>: <strong class="ui">Keep clipboard and Screenshots up to date</strong>, on by default: every change in the screenshot editor lands on the clipboard and in <strong class="ui">Screenshots</strong> a moment later. <strong class="ui">Close the editor when I switch to another app</strong>, on by default and only available while the first switch is on.</li>
 <li><strong class="ui">Save Location</strong>: <strong class="ui">Also Save Screenshots to a Folder</strong>, off by default. When on, new screenshots are also written as PNG files to the folder shown in <strong class="ui">Folder</strong>. Until you choose another one with <strong class="ui">Choose Folder…</strong>, that is <code>~/Pictures/MalibuClip Screenshots</code>.</li>
 </ul>
 <h2 id="en7-settings-fcp-buffer">Settings: FCP Buffer</h2>
@@ -502,6 +520,8 @@
 <li><strong class="ui">Record System Audio</strong>: off by default.</li>
 <li><strong class="ui">Record Microphone</strong> and <strong class="ui">Record Camera</strong>: off by default, each with a device picker (<strong class="ui">System Default</strong> or a named device) that appears while the switch is on.</li>
 <li><strong class="ui">Captions</strong>: off by default, with a language choice. Applies to the Final Cut Pro export.</li>
+<li><strong class="ui">Privacy</strong>: <strong class="ui">Hide sensitive text</strong> and <strong class="ui">Hide faces</strong> (both on by default) choose what <strong class="ui">Scan Recording</strong> looks for in the recording editor; <strong class="ui">Also hide these words</strong> takes your own words, one per line.</li>
+<li><strong class="ui">Video Export</strong>: <strong class="ui">Format</strong>: <strong class="ui">MP4 (H.264)</strong>, <strong class="ui">ProRes 422 LT</strong>, <strong class="ui">ProRes 422</strong>, <strong class="ui">ProRes 422 HQ</strong> or <strong class="ui">ProRes 4444</strong>, default <strong class="ui">MP4 (H.264)</strong>. Applies to <strong class="ui">Quick Export</strong> and <strong class="ui">Export Video</strong>.</li>
 <li><strong class="ui">GIF Export</strong>: <strong class="ui">Frame Rate</strong>: 8, 12 or 15 fps, default 12. <strong class="ui">Width</strong>: 480, 720 or 960 px, default 720.</li>
 <li><strong class="ui">Storage</strong>: <strong class="ui">Open Folder</strong> opens the recordings folder.</li>
 </ul>
@@ -562,7 +582,7 @@
 <p>An unknown action, a missing or invalid slot number, or a slot above the configured slot count is answered with an error banner in the <strong class="ui">FCP Buffer</strong> tab and a beep. If that tab is not open, you only hear the beep. The <code>save</code> action needs the Accessibility permission. Without it, <code>restore</code> only puts the slot on the clipboard (press <code>⌘V</code> yourself) and shows a banner and a beep. While the license check blocks the app, valid buffer URLs are ignored without a message.</p>
 <h2 id="en8-launch-at-login-does-not-take-effect">Launch at Login does not take effect</h2>
 <p>macOS may need your approval before MalibuClip can start at login. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> then shows a note with an <strong class="ui">Open Login Items</strong> button.</p>
-<p class="ver">Written for version 2.8.1.</p>
+<p class="ver">Written for version 2.11.0.</p>
     </article>
     <div class="toc" data-lang="de" hidden><div class="t">Auf dieser Seite</div><a class="l1" href="#de0-erste-schritte">Erste Schritte</a><a class="l1" href="#de1-etwas-einf-gen-das-du-fr-her-kopiert-hast">Etwas einfügen, das du früher kopiert hast</a><a class="l1" href="#de2-bildschirmfoto-aufnehmen-und-beschriften">Bildschirmfoto aufnehmen und beschriften</a><a class="l1" href="#de3-den-bildschirm-aufnehmen">Den Bildschirm aufnehmen</a><a class="l1" href="#de4-eine-aufnahme-exportieren">Eine Aufnahme exportieren</a><a class="l1" href="#de5-nummerierte-zwischenablage-slots-anlegen-und-bei-bedarf-einf-gen">Nummerierte Zwischenablage-Slots anlegen und bei Bedarf einfügen</a><a class="l1" href="#de6-verhindern-dass-sensible-inhalte-aufgezeichnet-werden">Verhindern, dass sensible Inhalte aufgezeichnet werden</a><a class="l1" href="#de7-referenz">Referenz</a><a class="l1" href="#de8-fehlerbehebung">Fehlerbehebung</a></div>
     <article class="doc" data-lang="de" hidden lang="de">
@@ -649,7 +669,8 @@
 <p>Klicke in der Menüleiste auf das Symbol von MalibuClip und dann im Popover auf das Symbol für Screenshots (Tooltip <strong class="ui">Screenshot</strong>). Das startet <strong class="ui">Screenshot (Area)</strong>. Alle anderen Modi starten mit einem globalen Tastenkürzel. Keins der Kürzel für Bildschirmfotos ist standardmäßig belegt. Weise jedes in <strong class="ui">Settings</strong> auf dem Tab <strong class="ui">Screenshots</strong> im Abschnitt <strong class="ui">Shortcuts</strong> zu. Ein belegtes Kürzel steht auch im Tooltip dieses Symbols.</p>
 <ul>
 <li><strong class="ui">Screenshot (Area)</strong>: ziehe ein Rechteck auf. Bei ausgeschalteter Symbolleiste (Standard) löst die Aufnahme aus, sobald du die Maustaste loslässt. Ein sehr kleines Rechteck bricht stattdessen ab.</li>
-<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: das Rechteck bleibt stehen, sodass du es verschieben oder in der Größe ändern kannst. Eine Symbolleiste wechselt den Modus oder aktiviert einen <strong class="ui">Timer</strong> (3, 5 oder 10 Sekunden). Klicke in die Auswahl oder auf die Bestätigungsschaltfläche (sie heißt <strong class="ui">Capture</strong>), um aufzunehmen. Ist <strong class="ui">All-in-One Starts With the Last Area</strong> an (Standard) und du hattest schon einmal eine Auswahl, öffnet sich die Überlagerung mit dieser Auswahl bereits an ihrem Platz.</li>
+<li><strong class="ui">Screenshot (Area, with Toolbar)</strong>: das Rechteck bleibt stehen, sodass du es verschieben oder in der Größe ändern kannst. Eine Symbolleiste wechselt den Modus, aktiviert einen <strong class="ui">Timer</strong> (3, 5 oder 10 Sekunden) oder wählt mit der Schaltfläche <strong class="ui">Aspect</strong> ein Seitenverhältnis (Free, 1:1, 4:3, 3:2, 16:9, 3:4, 2:3, 9:16 oder eine feste Pixelgröße). Die Wahl formt die Auswahl um ihre Mitte neu und ist dieselbe wie <strong class="ui">Aspect Ratio</strong> in den Einstellungen. Klicke in die Auswahl oder auf die Bestätigungsschaltfläche (sie heißt <strong class="ui">Capture</strong>), um aufzunehmen. Ist <strong class="ui">All-in-One Starts With the Last Area</strong> an (Standard) und du hattest schon einmal eine Auswahl, öffnet sich die Überlagerung mit dieser Auswahl bereits an ihrem Platz.</li>
+<li><strong class="ui">Screenshot (Area)</strong> und die Variante mit Symbolleiste: Halte beim Ziehen <strong class="ui">Shift</strong>, um das Seitenverhältnis zu halten (bei <strong class="ui">Aspect Ratio</strong> auf Free ist das ein 1:1-Quadrat), und <strong class="ui">Option</strong>, damit das Rechteck von der Mitte aus wächst. Beides gilt auch beim Ziehen an einer Ecke oder Kante der Auswahl in der Variante mit Symbolleiste. Ist ein Seitenverhältnis gewählt, gilt es immer und Shift ändert nichts.</li>
 <li><strong class="ui">Screenshot (Window)</strong>: klicke auf ein Fenster. Nicht auswählbar sind die eigenen Fenster von MalibuClip, Fenster, die nicht auf dem Bildschirm oder nicht auf der normalen Fensterebene liegen, Fenster mit 100 Punkt oder weniger Breite oder Höhe sowie Fenster, die (auf 2 Punkt genau) so groß sind wie ein Bildschirm. Nutze für Letztere <strong class="ui">Screenshot (Full Screen)</strong>.</li>
 <li><strong class="ui">Screenshot (Full Screen)</strong>: keine Überlagerung. Bei einem Bildschirm nimmt es sofort auf, bei mehreren fragt ein kleines Menü nach dem gewünschten.</li>
 <li><strong class="ui">Capture Last Area Again</strong>: keine Überlagerung. Es nimmt den Bereich deiner letzten Bereichsaufnahme sofort erneut auf, ohne dass du ihn neu aufziehst. Gab es seit dem Start von MalibuClip keine, öffnet sich eine normale Bereichsauswahl.</li>
@@ -686,9 +707,10 @@
 <li>Wähle ein Werkzeug und ziehe auf dem Bild. Das Farbfeld öffnet voreingestellte Farben, eine eigene Farbe, eine Pipette und ein Feld für Hexwerte. Der Regler ändert je nach Werkzeug Linienstärke, Schriftgröße, Größe der nummerierten Schritte oder Stärke von Mosaic und Blur.</li>
 <li>Klicke auf <strong class="ui">Crop</strong>, ziehe das Rechteck und klicke dann auf <strong class="ui">Apply</strong>. <strong class="ui">Reset</strong> und <strong class="ui">Cancel</strong> stehen daneben.</li>
 <li>Klicke auf die Schaltfläche mit dem Funkensymbol für Beautify und schalte <strong class="ui">Enable Beautify</strong> ein. Es fügt einen Hintergrund, <strong class="ui">Spacing</strong>, <strong class="ui">Corner Radius</strong>, einen <strong class="ui">Shadow</strong> und ein <strong class="ui">Aspect Ratio</strong> hinzu. Die Zeichenwerkzeuge sind gesperrt, solange das Bedienfeld von Beautify offen ist.</li>
-<li>Klicke auf <strong class="ui">Save</strong>, um das Bildschirmfoto in der Liste <strong class="ui">Screenshots</strong> zu aktualisieren, oder auf <strong class="ui">Copy</strong>, um das fertige Bild in die Zwischenablage zu legen. Mit <strong class="ui">Drag Me</strong> ziehst du das fertige Bild in eine andere App.</li>
-<li>Klicke auf <strong class="ui">Done</strong>, um den Editor zu schließen. <strong class="ui">Done</strong> speichert nicht. Klicke vorher auf <strong class="ui">Save</strong> oder <strong class="ui">Copy</strong>.</li>
+<li>Du musst nichts speichern: Nach jeder Änderung liegt das Bild einen Moment später in der Zwischenablage und ist in der Liste <strong class="ui">Screenshots</strong> aktualisiert. <strong class="ui">Save</strong> erledigt das sofort und macht außerdem den Text im Bild durchsuchbar. <strong class="ui">Copy</strong> legt das Bild als neuen Eintrag im Verlauf in die Zwischenablage, und mit <strong class="ui">Drag Me</strong> ziehst du es in eine andere App.</li>
+<li>Klicke auf <strong class="ui">Done</strong>, um den Editor zu schließen, oder klicke auf eine andere App oder den Schreibtisch: Der Editor schließt sich von selbst. Ein Bild, das du aus dem Verlauf der Zwischenablage geöffnet hast, kommt mit deiner ersten Änderung in <strong class="ui">Screenshots</strong>.</li>
 </ol>
+<p>Beide automatischen Schritte lassen sich in den <strong class="ui">Settings</strong> auf dem Tab <strong class="ui">Screenshots</strong> im Abschnitt <strong class="ui">Editor</strong> ausschalten. Die Kopie in die Zwischenablage, die der Editor macht, legt keine Einträge im Verlauf an.</p>
 <p>Klicke mit der rechten Maustaste auf ein beschriftetes Bildschirmfoto in der Liste und wähle <strong class="ui">Reset to Original</strong>, um zur unbeschrifteten Aufnahme zurückzukehren.</p>
 <h2 id="de2-3-4-und-5-f-r-malibuclip-nutzen">⇧⌘3, ⇧⌘4 und ⇧⌘5 für MalibuClip nutzen</h2>
 <p>Das ist optional und standardmäßig aus.</p>
@@ -745,6 +767,17 @@
 <li>Entferne den Haken bei <strong class="ui">Show Zoom</strong>, um in der Vorschau das ganze Bild zu sehen.</li>
 </ol>
 <p>Eine Änderung an einem Zoom wird in der Aufnahme gespeichert, wenn das Ziehen oder die Reglerbewegung endet. Mit ⌘Z und ⇧⌘Z machst du Änderungen an Zooms rückgängig oder stellst sie wieder her, bis zu 100 Schritte.</p>
+<h2 id="de3-sensible-inhalte-verbergen">Sensible Inhalte verbergen</h2>
+<p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
+<p>Bevor du eine Aufnahme teilst, kann der Editor abdecken, was niemand sehen soll: E-Mail-Adressen, Telefonnummern, Zahlungskartennummern, Kontonummern (IBAN), Schlüssel und Tokens, eigene Wörter und Gesichter.</p>
+<ol>
+<li>Optional: Schalte in den <strong class="ui">Settings</strong> auf dem Tab <strong class="ui">Recording (Beta)</strong> unter <strong class="ui">Privacy</strong> die Optionen <strong class="ui">Hide sensitive text</strong> und <strong class="ui">Hide faces</strong> ein oder aus und trage unter <strong class="ui">Also hide these words</strong> Wörter ein, die verborgen werden sollen, eines pro Zeile (Kundennamen, Projektnamen).</li>
+<li>Öffne die Aufnahme im Editor. Klicke im Bereich rechts unter <strong class="ui">Hide sensitive content</strong> auf <strong class="ui">Scan Recording</strong>. Ein Fortschrittsbalken zeigt den Scan; <strong class="ui">Cancel Scan</strong> bricht ihn ab.</li>
+<li>Prüfe die Liste der Bereiche. Ein Klick auf einen Eintrag springt dorthin, entferne das Häkchen, um den Bereich sichtbar zu lassen, oder klicke auf das Papierkorb-Symbol, um ihn zu entfernen. Die Vorschau zeigt die Bereiche, die abgedeckt werden.</li>
+<li>Klicke auf <strong class="ui">Export Video</strong> oder <strong class="ui">Export GIF</strong>. Beide decken jeden angehakten Bereich ab. Deine Auswahl wird sofort gespeichert.</li>
+</ol>
+<p>Der Scan läuft auf deinem Mac; nichts wird irgendwohin gesendet. Er prüft etwa vier Zeitpunkte pro Sekunde. Die Aufnahme selbst bleibt unverändert, nur das exportierte Video und GIF ändern sich. <strong class="ui">Scan Again</strong> ersetzt die Liste, auch Bereiche, die du entfernt oder ausgeschaltet hast, und fragt vorher nach.</p>
+<p>Die Erkennung kann etwas übersehen, zum Beispiel sehr kleinen oder blassen Text. Prüfe das Ergebnis deshalb, bevor du eine Aufnahme teilst. Das Kamerabild in Bild ist nicht gescannt und nicht abgedeckt. Lässt sich die gespeicherte Liste nicht lesen, brechen Export Video und Export GIF mit einer Meldung ab, statt zu exportieren. <strong class="ui">Export to Final Cut Pro</strong> nutzt die Originalaufnahme und verbirgt nichts; sind Bereiche angehakt, fragt es vor dem Export nach.</p>
 <h2 id="de3-die-aufnahme-gestalten-look">Die Aufnahme gestalten (Look)</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <p>Der Bereich <strong class="ui">Look</strong> im rechten Bereich des Editors gestaltet das exportierte Bild:</p>
@@ -760,11 +793,14 @@
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <ol>
 <li>Klicke im Fenster <strong class="ui">Recordings</strong> mit der rechten Maustaste auf die Aufnahme und wähle <strong class="ui">Quick Export</strong>. Im Aufnahmeeditor klickst du stattdessen auf <strong class="ui">Export Video</strong>; das speichert zuerst die Zooms, die der Editor zeigt, und exportiert dann wie <strong class="ui">Quick Export</strong>.</li>
-<li>Warte, bis der Fortschritt durch ist. Die fertige <code>.mp4</code> wird im Finder angezeigt.</li>
+<li>Warte, bis der Fortschritt durch ist. Das fertige Video wird im Finder angezeigt.</li>
 </ol>
 <p>Die Datei heißt <code>&lt;Aufnahme&gt; Quick Export.mp4</code> und liegt neben der Aufnahme; ein erneuter Export ersetzt sie. Der Export verwendet die für die Aufnahme gespeicherten Zooms. Auto-Zoom läuft nur dann zuerst, wenn noch keine Zooms gespeichert wurden (nichts geplant oder bearbeitet) und die Aufnahme Cursordaten hat. Eine gespeicherte leere Liste (alle Zooms gelöscht oder Auto-Zoom fand keine Klicks) bleibt leer: Der Export hat keinen Zoom und warnt bei einer Aufnahme mit Cursordaten <em>Exported without zoom: this recording has no zooms</em>. Er enthält außerdem den Look aus dem Editor und die Kamera als Bild in Bild, wenn du eine aufgenommen hast. Hat die Aufnahme mehr als eine Tonspur (Systemton und Mikrofon), werden sie zu einer Spur gemischt; scheitert das Mischen, bleiben beide Spuren erhalten und eine Warnung sagt das.</p>
 <p>Bei <strong class="ui">Quick Export</strong> wird eine Aufnahme ohne gespeicherte Zooms und ohne Cursordaten ohne Zoom exportiert und warnt, dass sie keine Cursordaten hat. <strong class="ui">Export Video</strong> im Editor speichert zuerst die aktuellen Zooms des Editors (eine leere Liste, wenn es keine gibt), exportiert also ohne Zoom und ohne diese Warnung. Von Hand hinzugefügte Zooms werden auch ohne Cursordaten verwendet. Eine Zeile unter der Aufnahme zeigt <code>Exported &lt;Dateiname&gt;</code>; fahre mit der Maus darüber, um Warnungen zu lesen.</p>
 <p>Die exportierte Datei gehört dir: Löschst du die Aufnahme, bleibt sie erhalten.</p>
+<h3 id="de4-prores-statt-mp4-w-hlen">ProRes statt MP4 wählen</h3>
+<p>Standardmäßig ist der Export eine MP4. Für ein ProRes-Video zum Schneiden wählst du im Fenster <strong class="ui">Recordings</strong> im Menü der Aufnahme <strong class="ui">Quick Export As</strong> oder klickst im Aufnahmeeditor auf den Pfeil neben <strong class="ui">Export Video</strong> und wählst <strong class="ui">ProRes 422 LT</strong>, <strong class="ui">ProRes 422</strong>, <strong class="ui">ProRes 422 HQ</strong> oder <strong class="ui">ProRes 4444</strong>. Den Standard für <strong class="ui">Quick Export</strong> und <strong class="ui">Export Video</strong> stellst du bei <strong class="ui">Format</strong> unter <strong class="ui">Video Export</strong> in den <strong class="ui">Settings</strong> auf dem Tab <strong class="ui">Recording (Beta)</strong> ein.</p>
+<p>Ein ProRes-Export ist eine <code>.mov</code> mit dem Namen <code>&lt;Aufnahme&gt; Quick Export (ProRes 422 HQ).mov</code> (mit dem gewählten Profil). Sie liegt neben der MP4 und ersetzt sie nie. ProRes-Dateien sind um ein Vielfaches größer als eine MP4: etwa 0,8 GB pro Minute bei <strong class="ui">ProRes 422 LT</strong> und etwa 1,7 GB pro Minute bei <strong class="ui">ProRes 422 HQ</strong> bei 1920 × 1080 und 30 fps, bei größeren Formaten mehr. Reicht der freie Speicherplatz nicht, bricht der Export ab, bevor er beginnt, und nennt den Bedarf. Der Export hat keine Transparenz: <strong class="ui">ProRes 4444</strong> wird wegen der Qualität angeboten, das Bild ist deckend.</p>
 <h2 id="de4-ein-gif-exportieren">Ein GIF exportieren</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
 <ol>
@@ -772,7 +808,7 @@
 <li>Klicke im Fenster <strong class="ui">Recordings</strong> mit der rechten Maustaste auf die Aufnahme und wähle <strong class="ui">Export GIF</strong>, oder klicke im Aufnahmeeditor auf <strong class="ui">Export GIF</strong>.</li>
 <li>Warte, bis der Fortschritt <em>Making GIF</em> durch ist. Die <code>.gif</code> wird im Finder angezeigt.</li>
 </ol>
-<p>Das GIF heißt <code>&lt;Aufnahme&gt;.gif</code>, liegt neben der Aufnahme und wird von einem neuen Export ersetzt. Es zeigt das Bild so wie Quick Export: Zooms, Look und Kamera als Bild in Bild. Ein GIF hat keinen Ton.</p>
+<p>Das GIF heißt <code>&lt;Aufnahme&gt;.gif</code>, liegt neben der Aufnahme und wird von einem neuen Export ersetzt. Es zeigt das Bild so wie Quick Export: Zooms, Look und Kamera als Bild in Bild. Ein GIF hat keinen Ton. Steht das Bild eine Weile still, zeigt das GIF dieses eine Bild so lange, statt es zu wiederholen; die Datei wird kleiner und läuft gleich schnell.</p>
 <p>GIFs sind auf 72 Sekunden begrenzt. Würde eine Aufnahme bei der gewählten Bildrate mehr als 360 Bilder ergeben, wird sie mit einer niedrigeren Rate exportiert, bis hinunter zu 5 fps, und der Export meldet die gesenkte Rate. Eine Aufnahme über 72 Sekunden wird mit der Meldung abgelehnt, dass sie für ein GIF zu lang ist; nimm dafür <strong class="ui">Quick Export</strong>.</p>
 <h2 id="de4-nach-final-cut-pro-exportieren">Nach Final Cut Pro exportieren</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
@@ -788,10 +824,11 @@
 <li><code>&lt;Aufnahme&gt; Camera.mov</code>: der Kamerafilm, nur wenn die Aufnahme einen hat. Er liegt als Bild in Bild auf der Timeline.</li>
 </ul>
 <p>Die Zooms werden als Keyframes geschrieben. Die Timeline bekommt einen Zoomclip, sobald für die Aufnahme Zooms gespeichert sind, auch von Hand hinzugefügte. Auto-Zoom läuft nur dann zuerst, wenn noch keine Zooms gespeichert wurden und die Aufnahme Cursordaten hat; eine gespeicherte leere Liste ergibt keinen Zoomclip. Aus dem Editor werden zuerst die Zooms gespeichert, die er zeigt.</p>
-<p>Zwei Grenzen:</p>
+<p>Drei Grenzen:</p>
 <ul>
 <li>Der Look aus dem Editor (Hintergrund, Rand, Ecken, Schatten, Klickhervorhebung) wird nicht angewendet; das Bild geht unverändert nach Final Cut Pro.</li>
 <li>Eine Aufnahme im Studio Mode hat keinen Cursor im Bild, die Timeline zeigt daher keinen.</li>
+<li>Mit <strong class="ui">Hide sensitive content</strong> verborgene Bereiche bleiben sichtbar: Die Timeline nutzt den Original-Film. Sind Bereiche angehakt, fragt der Export vor dem Start nach, und sein Ergebnis trägt eine Warnung.</li>
 </ul>
 <h2 id="de4-untertitel-f-r-den-final-cut-pro-export">Untertitel für den Final-Cut-Pro-Export</h2>
 <p><em>Status: neu, bisher nur automatisiert getestet; im täglichen Einsatz noch nicht bewährt.</em></p>
@@ -991,8 +1028,9 @@
 <ul>
 <li><strong class="ui">Shortcuts</strong>: die oben aufgeführten acht Aktionen für Screenshots und Aufnahmen.</li>
 <li><strong class="ui">Replace macOS Screenshot Shortcuts</strong>: der Knopf <strong class="ui">Take Over ⇧⌘3 / ⇧⌘4 / ⇧⌘5</strong> belegt ⇧⌘3 mit Full Screen, ⇧⌘4 mit Area und ⇧⌘5 mit Area with Toolbar und ersetzt dabei die bisherige Belegung dieser Aktionen. Die Kürzel von macOS schaltest du selbst in den Systemeinstellungen ab.</li>
-<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, standardmäßig aus. <strong class="ui">All-in-One Starts With the Last Area</strong>, standardmäßig an. <strong class="ui">Aspect Ratio</strong> rastet eine neue Auswahl auf ein Seitenverhältnis oder eine Pixelgröße ein.</li>
+<li><strong class="ui">Selection Tool</strong>: <strong class="ui">Show All-in-One Toolbar After Dragging</strong>, standardmäßig aus. <strong class="ui">All-in-One Starts With the Last Area</strong>, standardmäßig an. <strong class="ui">Aspect Ratio</strong> rastet eine Auswahl auf ein Seitenverhältnis oder eine Pixelgröße ein; die Schaltfläche <strong class="ui">Aspect</strong> in der Capture-Symbolleiste setzt denselben Wert.</li>
 <li><strong class="ui">Scrolling Page</strong>: <strong class="ui">Start with Auto-Scroll Pre-Selected</strong>, standardmäßig an. Gilt für <strong class="ui">Capture Scrolling Page (Window, Automatic)</strong>, auch im Modus für scrollende Fenster der All-in-One Toolbar.</li>
+<li><strong class="ui">Editor</strong>: <strong class="ui">Keep clipboard and Screenshots up to date</strong>, standardmäßig an: Jede Änderung im Screenshot-Editor liegt einen Moment später in der Zwischenablage und in <strong class="ui">Screenshots</strong>. <strong class="ui">Close the editor when I switch to another app</strong>, standardmäßig an und nur wählbar, solange der erste Schalter an ist.</li>
 <li><strong class="ui">Save Location</strong>: <strong class="ui">Also Save Screenshots to a Folder</strong>, standardmäßig aus. Eingeschaltet werden neue Screenshots zusätzlich als Dateien im Format PNG in den Ordner geschrieben, der bei <strong class="ui">Folder</strong> steht. Solange du mit <strong class="ui">Choose Folder…</strong> keinen anderen wählst, ist das <code>~/Pictures/MalibuClip Screenshots</code>.</li>
 </ul>
 <h2 id="de7-einstellungen-fcp-buffer">Einstellungen: FCP Buffer</h2>
@@ -1010,6 +1048,8 @@
 <li><strong class="ui">Record System Audio</strong>: standardmäßig aus.</li>
 <li><strong class="ui">Record Microphone</strong> und <strong class="ui">Record Camera</strong>: standardmäßig aus, jeweils mit Geräteauswahl (<strong class="ui">System Default</strong> oder ein benanntes Gerät), die erscheint, solange der Schalter an ist.</li>
 <li><strong class="ui">Captions</strong>: standardmäßig aus, mit Sprachauswahl. Gilt für den Export für Final Cut Pro.</li>
+<li><strong class="ui">Privacy</strong>: <strong class="ui">Hide sensitive text</strong> und <strong class="ui">Hide faces</strong> (beide standardmäßig an) legen fest, wonach <strong class="ui">Scan Recording</strong> im Aufnahmeeditor sucht; unter <strong class="ui">Also hide these words</strong> stehen eigene Wörter, eines pro Zeile.</li>
+<li><strong class="ui">Video Export</strong>: <strong class="ui">Format</strong>: <strong class="ui">MP4 (H.264)</strong>, <strong class="ui">ProRes 422 LT</strong>, <strong class="ui">ProRes 422</strong>, <strong class="ui">ProRes 422 HQ</strong> oder <strong class="ui">ProRes 4444</strong>, Standard <strong class="ui">MP4 (H.264)</strong>. Gilt für <strong class="ui">Quick Export</strong> und <strong class="ui">Export Video</strong>.</li>
 <li><strong class="ui">GIF Export</strong>: <strong class="ui">Frame Rate</strong>: 8, 12 oder 15 fps, Standard 12. <strong class="ui">Width</strong>: 480, 720 oder 960 px, Standard 720.</li>
 <li><strong class="ui">Storage</strong>: <strong class="ui">Open Folder</strong> öffnet den Ordner mit den Aufnahmen.</li>
 </ul>
@@ -1070,7 +1110,7 @@
 <p>Eine unbekannte Aktion, eine fehlende oder ungültige Slotnummer oder ein Slot über der eingestellten Slotzahl wird mit einer Fehlermeldung als Banner im Tab <strong class="ui">FCP Buffer</strong> und einem Signalton beantwortet. Ist der Tab nicht offen, hörst du nur den Ton. Die Aktion <code>save</code> braucht die Berechtigung für die Bedienungshilfen. Ohne sie legt <code>restore</code> den Slot nur in die Zwischenablage (drücke <code>⌘V</code> selbst) und zeigt ein Banner und einen Signalton. Solange die Lizenzprüfung die App sperrt, werden gültige Buffer URLs ohne Meldung ignoriert.</p>
 <h2 id="de8-launch-at-login-greift-nicht">Launch at Login greift nicht</h2>
 <p>Möglicherweise braucht macOS deine Zustimmung, bevor MalibuClip bei der Anmeldung starten kann. <strong class="ui">Settings</strong> › <strong class="ui">General</strong> zeigt dann einen Hinweis mit dem Knopf <strong class="ui">Open Login Items</strong>.</p>
-<p class="ver">Geschrieben für Version 2.8.1.</p>
+<p class="ver">Geschrieben für Version 2.11.0.</p>
     </article>
   </div>
   <footer>
